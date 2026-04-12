@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0e1117">
+  <title>Dynasty Puck</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#0e1117;color:#c9d1d9;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+    .container{max-width:600px;width:100%;text-align:center}
+    h1{font-size:2.2em;margin-bottom:8px;letter-spacing:-.02em}
+    h1 .emoji{font-size:1.1em}
+    h1 .accent{color:#f0883e}
+    .subtitle{color:#8b949e;font-size:.95em;margin-bottom:40px}
+    .cards{display:flex;flex-direction:column;gap:16px}
+    .card{background:linear-gradient(135deg,#161b22,#1a1f2e);border:1px solid #30363d;border-radius:16px;padding:28px 24px;text-decoration:none;color:#c9d1d9;transition:all .25s ease;display:block;position:relative;overflow:hidden}
+    .card::after{content:'';position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);transition:left .5s}
+    .card:hover{transform:translateY(-3px);border-color:#f0883e;box-shadow:0 8px 30px rgba(240,136,62,.15)}
+    .card:hover::after{left:100%}
+    .card:active{transform:translateY(-1px)}
+    .card-icon{font-size:2em;margin-bottom:10px}
+    .card h2{font-size:1.2em;font-weight:700;margin-bottom:6px}
+    .card-fa h2{color:#f0883e}
+    .card-prospect h2{color:#a371f7}
+    .card p{color:#8b949e;font-size:.85em;line-height:1.4}
+    .card .arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:#484f58;font-size:1.4em;transition:all .25s}
+    .card:hover .arrow{color:#f0883e;right:16px}
+    .footer{margin-top:40px;color:#484f58;font-size:.78em}
+    .footer a{color:#58a6ff;text-decoration:none}
+    .pwa-hint{margin-top:24px;background:#161b22;border:1px solid #21262d;border-radius:10px;padding:14px 18px;font-size:.82em;color:#8b949e;line-height:1.5}
+    .pwa-hint strong{color:#c9d1d9}
+    @media(max-width:480px){
+      h1{font-size:1.6em}
+      .card{padding:20px 18px}
+      .card h2{font-size:1.05em}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span class="emoji">&#x1F3D2;</span> <span class="accent">Dynasty Puck</span></h1>
+    <p class="subtitle">14-Team Dynasty League Tools</p>
+    <div class="cards">
+      <a href="./fa/" class="card card-fa">
+        <div class="card-icon">&#x1F4CB;</div>
+        <h2>Offseason Planning HQ</h2>
+        <p>Free agents, projections, signing simulator, trade analyzer, budget planner, category analysis & more</p>
+        <span class="arrow">&#x2192;</span>
+      </a>
+      <a href="./prospects/" class="card card-prospect">
+        <div class="card-icon">&#x1F31F;</div>
+        <h2>Prospect Pool</h2>
+        <p>Dynasty valuations, fantasy readiness, pipeline analysis, trade value board & 2026 draft</p>
+        <span class="arrow">&#x2192;</span>
+      </a>
+    </div>
+    <div class="pwa-hint">
+      <strong>Add to Home Screen:</strong> Open this page in Safari (iOS) or Chrome (Android), tap the share/menu icon, then "Add to Home Screen" for an app-like experience.
+    </div>
+    <div class="footer">
+      Dynasty Puck v3.1 &bull; Runs entirely in your browser &bull; No server needed
+    </div>
+  </div>
+</body>
+</html>
