@@ -3,8 +3,11 @@ library(DT)
 library(dplyr)
 library(readr)
 library(stringr)
-library(httr)
-library(jsonlite)
+# httr/jsonlite loaded on-demand (may not be available in webR/shinylive)
+has_httr <- requireNamespace("httr", quietly=TRUE)
+has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
+if(has_httr) library(httr)
+if(has_jsonlite) library(jsonlite)
 
 # ── Projected contract model constants ──
 SALARY_CAP <- 104000000  # 2026-27 projected cap
@@ -92,6 +95,7 @@ classify_trade_block <- function(value, age, contract_yrs) {
 
 # ── Hockey Reference career GP scraping ──
 fetch_career_gp_href <- function(player_name) {
+  if(!has_httr) return(NA_integer_)
   tryCatch({
     search_url <- paste0("https://www.hockey-reference.com/search/search.fcgi?search=", URLencode(player_name))
     res <- GET(search_url, timeout(10), add_headers(`User-Agent` = "Mozilla/5.0"))

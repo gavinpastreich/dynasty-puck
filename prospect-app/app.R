@@ -3,8 +3,11 @@ library(DT)
 library(dplyr)
 library(readr)
 library(stringr)
-library(jsonlite)
-library(httr)
+# jsonlite/httr loaded on-demand (may not be available in webR/shinylive)
+has_httr <- requireNamespace("httr", quietly=TRUE)
+has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
+if(has_jsonlite) library(jsonlite)
+if(has_httr) library(httr)
 
 # ── Prospect Valuation Model ──
 # Dynasty value tiers based on score, age, position, GP
@@ -573,6 +576,7 @@ server <- function(input, output, session) {
   safe_salary <- function(x) { if (is.numeric(x)) return(x); as.numeric(gsub("[^0-9.]","",as.character(x))) }
 
   fetch_career_gp_href <- function(player_name) {
+    if(!has_httr) return(NA_integer_)
     tryCatch({
       # Search hockey-reference for the player
       search_url <- paste0("https://www.hockey-reference.com/search/search.fcgi?search=", URLencode(player_name))
