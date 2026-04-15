@@ -1,0 +1,115 @@
+Rank,Player,Pos,Nationality,League,GP,G,A,Pts,NHLe,Size,Fantasy_Tier
+1,Gavin McKenna,LW,CAN,NCAA (Penn State),35,15,36,51,39.8,"6'0 170",Elite
+2,Ivar Stenberg,LW/RW,SWE,SHL (Frolunda),43,11,22,33,37.5,"6'0 181",Elite
+3,Keaton Verhoeff,RD,CAN,NCAA (North Dakota),35,6,14,20,20.6,"6'4 212",Elite
+4,Chase Reid,RD,USA,OHL (Soo),45,18,30,48,28.3,"6'2 187",Top 10
+5,Alberts Smits,LD,LAT,Liiga (Jukurit),38,6,7,13,12.7,"6'3 205",Top 10
+6,Caleb Malhotra,C,CAN,OHL (Brantford),67,29,55,84,33.2,"6'2 183",Top 10
+7,Tynan Lawrence,C,CAN,NCAA (Boston U),18,2,5,7,12.5,"6'0 185",Top 10
+8,Carson Carels,LD,CAN,WHL (Prince George),58,20,53,73,31.2,"6'2 194",Top 10
+9,Ethan Belchetz,LW,CAN,OHL (Windsor),57,34,25,59,27.4,"6'5 227",Top 10
+10,Viggo Bjorck,C/RW,SWE,SHL (Djurgardens),43,7,14,21,23.8,"5'10 172",Top 10
+11,Daxon Rudolph,RD,CAN,WHL (Prince Albert),54,8,32,40,19.7,"6'2 203",Rd 1
+12,Ryan Lin,RD,CAN,WHL (Vancouver),58,12,38,50,22.4,"5'11 176",Rd 1
+13,Oscar Hemming,C,FIN,NCAA (Boston College),36,10,15,25,22.7,"6'4 198",Rd 1
+14,Adam Novotny,LW/RW,CZE,OHL (Peterborough),62,28,34,62,25.2,"6'1 205",Rd 1
+15,Oliver Suvanto,C,FIN,Liiga (Tappara),38,5,8,13,11.9,"6'3 209",Rd 1
+16,Xavier Villeneuve,LD,CAN,QMJHL (Blainville-Boisbriand),55,8,35,43,19.1,"5'11 157",Rd 1
+17,Malte Gustafsson,LD,SWE,J20 Nationell (HV71),38,5,18,23,5.1,"6'4 201",Rd 1
+18,Elton Hermansson,RW/LW,SWE,Allsvenskan (MoDo),42,9,11,20,13.4,"6'1 174",Rd 1
+19,Marcus Nordmark,RW,SWE,J20 Nationell (Djurgardens),36,14,16,30,6.4,"6'2 187",Rd 1
+20,Ilya Morozov,C,RUS,NCAA (Miami Ohio),34,8,14,22,19.4,"6'3 205",Rd 1
+21,Nikita Klepov,LW,RUS,OHL (Saginaw),60,25,30,55,22.6,"6'0 181",Rd 1-2
+22,JP Hurlbert,C,USA,WHL (Kamloops),56,22,28,50,21.9,"6'0 183",Rd 1-2
+23,Juho Piiparinen,RD,FIN,Liiga (Tappara),36,3,8,11,10.0,"6'3 203",Rd 1-2
+24,Mathis Preston,C,CAN,WHL (Vancouver),55,18,32,50,22.3,"5'11 176",Rd 1-2
+25,William Hakansson,LD,SWE,SHL (Lulea),40,2,8,10,11.5,"6'4 207",Rd 1-2
+26,Wyatt Cullen,LW,USA,NTDP (USHL),33,12,21,33,14.5,"6'0 172",Rd 1-2
+27,Yegor Shilov,C,RUS,QMJHL (Victoriaville),58,18,35,53,21.1,"6'1 181",Rd 1-2
+28,Ryan Roobroeck,C,CAN,OHL (Niagara),60,22,30,52,21.3,"6'4 216",Rd 1-2
+29,Alexander Command,C,SWE,J20 Nationell (Orebro),36,8,14,22,4.8,"6'1 185",Rd 1-2
+30,Maddox Dagenais,C,CAN,QMJHL (Quebec),56,16,28,44,18.2,"6'4 196",Rd 1-2
+31,Niklas Aaram-Olsen,RW/LW,NOR,J20 Nationell (Orebro),34,10,12,22,4.7,"6'1 187",Rd 1-2
+32,Liam Ruck,LW,CAN,WHL (Medicine Hat),54,18,22,40,18.3,"6'0 176",Rd 1-2
+33,Tomas Chrenko,C,SVK,Slovak (HK Nitra),44,10,14,24,8.2,"6'1 178",Rd 2
+34,Brooks Rogowski,C,USA,OHL (Oshawa),58,14,22,36,15.2,"6'6 231",Rd 2
+35,Jack Hextall,C,USA,USHL (Youngstown),48,16,22,38,11.4,"6'0 185",Rd 2
+36,Simas Ignatavicius,C,LTU,NL (Geneve-Servette),38,4,6,10,6.9,"6'3 198",Rd 2
+37,Jaxon Cover,LW,CAN,OHL (London),58,20,24,44,18.6,"6'1 185",Rd 2
+38,Nikita Shcherbakov,LD,RUS,MHL (Tolpar Ufa),42,4,14,18,3.8,"6'5 187",Rd 2
+39,Alessandro Di Iorio,C,CAN,OHL (Sarnia),56,12,26,38,16.6,"6'1 190",Rd 2
+40,Adam Valentini,C,CAN,NCAA (Michigan),32,6,10,16,14.1,"5'11 185",Rd 2
+41,Giorgos Pantelas,RD,CAN,WHL (Brandon),52,6,22,28,13.3,"6'2 214",Rd 2
+42,Adam Goljer,RD,SVK,Slovak (HK Dukla Trencin),40,4,10,14,5.3,"6'3 194",Rd 2
+43,Beckham Edwards,C,CAN,OHL (Sarnia),54,14,20,34,15.4,"6'1 181",Rd 2
+44,Pierce Mbuyi,LW,CAN,OHL (Owen Sound),56,18,20,38,16.7,"5'11 159",Rd 2
+45,Vladimir Dravecky,RD,CZE,OHL (Brantford),54,6,18,24,10.9,"6'0 187",Rd 2
+46,Lars Steiner,RW,CHE,QMJHL (Rouyn-Noranda),52,14,20,34,15.1,"5'10 176",Rd 2
+47,Adam Nemec,LW,SVK,OHL (Sudbury),52,12,16,28,13.2,"6'1 176",Rd 2
+48,Casey Mutryn,C,USA,NTDP (USHL),30,8,14,22,10.6,"6'3 201",Rd 2-3
+49,Axel Elofsson,RD,SWE,J20 Nationell (Orebro),34,4,12,16,3.6,"5'11 165",Rd 2-3
+50,Tommy Bleyl,RD,USA,QMJHL (Moncton),52,4,16,20,8.9,"6'0 170",Rd 2-3
+51,Gleb Pugachyov,RW/LW,RUS,MHL (Chaika NN),40,12,10,22,4.3,"6'3 198",Rd 2-3
+52,Ben Macbeath,LD,CAN,WHL (Calgary),50,4,14,18,8.9,"6'2 181",Rd 2-3
+53,Victor Plante,C,USA,NTDP (USHL),30,6,10,16,7.6,"5'10 157",Rd 2-3
+54,Luke Schairer,RD,USA,NTDP (USHL),30,3,10,13,6.3,"6'3 201",Rd 2-3
+55,Oscar Holmertz,C,SWE,J20 Nationell (Linkoping),34,8,12,20,4.3,"6'0 192",Rd 2-3
+56,Markus Ruck,LW,CAN,WHL (Medicine Hat),54,14,18,32,14.6,"6'0 168",Rd 2-3
+57,Thomas Vandenberg,C,CAN,OHL (Ottawa),52,10,16,26,12.3,"6'0 181",Rd 2-3
+58,Mikey Berchild,C,USA,NTDP (USHL),28,6,10,16,8.2,"5'10 181",Rd 2-3
+59,Lavr Gashilov,C,RUS,MHL (Avto Yekaterinburg),38,6,10,16,3.3,"6'2 170",Rd 2-3
+60,Jakub Vanecek,LD,CZE,WHL (Tri-City),50,4,14,18,8.9,"6'2 194",Rd 2-3
+61,Ryder Cali,C,CAN,OHL (North Bay),52,12,14,26,12.3,"6'2 209",Rd 2-3
+62,Braidy Wassilyn,LW,CAN,OHL (London),50,10,12,22,10.8,"5'11 194",Rd 2-3
+63,Samu Alalauri,RD,FIN,SM-sarja (Pelicans),32,2,6,8,3.3,"6'3 205",Rd 2-3
+64,Landon Hafele,C,USA,USHL (Green Bay),40,10,14,24,7.4,"6'1 183",Rd 3
+65,Tobias Trejbal,G,CZE,USHL (Youngstown),28,0,0,0,0.0,"6'3 190",Rd 3
+66,Vilho Vanhatalo,RW/LW,FIN,SM-sarja (Tappara),30,4,4,8,3.5,"6'1 183",Rd 3
+67,Blake Zielinski,C,USA,USHL (Des Moines),38,8,12,20,6.4,"6'0 187",Rd 3
+68,Vertti Svensk,LD,FIN,SM-sarja (SaiPa),28,2,4,6,2.9,"6'2 181",Rd 3
+69,Chase Harrington,C,CAN,WHL (Spokane),48,8,14,22,11.3,"6'1 181",Rd 3
+70,Tomas Galvas,LD,CZE,Czechia (Liberec),36,2,6,8,3.0,"6'1 183",Rd 3
+71,Charlie Morrison,LD,CAN,QMJHL (Quebec),48,4,14,18,8.7,"6'0 176",Rd 3
+72,Landon Nycz,LD,USA,NCAA (Massachusetts),30,2,6,8,7.2,"6'2 198",Rd 3
+73,Olivers Murnieks,C,LAT,QMJHL (Saint John),46,8,12,20,10.0,"6'1 181",Rd 3
+74,Simon Katolicky,LW/RW,SVK,U20 SM-sarja (Tappara),30,8,8,16,3.2,"6'4 198",Rd 3
+75,Jean-Cristoph Lemieux,C,CAN,OHL (Sudbury),48,8,12,20,10.2,"6'0 176",Rd 3
+76,Dmitri Borichev,G,RUS,MHL (Loko-76),28,0,0,0,0.0,"6'4 194",Rd 3
+77,Nils Bartholdsson,RW,SWE,J20 Nationell (Rogle),32,6,8,14,3.2,"6'1 178",Rd 3
+78,Cooper Williams,C,CAN,WHL (Saskatoon),46,6,10,16,8.6,"6'1 159",Rd 3
+79,Viktor Fyodorov,C,RUS,MHL (Chaika NN),36,6,8,14,3.1,"6'0 176",Rd 3
+80,Cole Zurawski,RW,CAN,OHL (Owen Sound),48,10,10,20,10.2,"6'1 176",Rd 3
+81,Yaroslav Fedoseyev,RD,RUS,MHL (Belye Medvedi),32,2,6,8,2.0,"6'1 183",Rd 3
+82,Jonas Lagerberg Hoen,RW,SWE,J20 Nationell (Leksand),30,6,6,12,2.9,"6'2 185",Rd 3
+83,Brady Knowling,G,USA,NTDP (USHL),22,0,0,0,0.0,"6'2 190",Rd 3
+84,Ethan MacKenzie,LD,CAN,WHL (Edmonton),46,4,12,16,8.6,"6'2 185",Rd 3
+85,Filip Novak,LW,CZE,Czechia U20 (Sparta Praha),28,6,6,12,2.4,"6'0 178",Rd 3
+86,Evan Jardine,C,USA,USHL (Youngstown),36,6,8,14,4.7,"6'0 181",Rd 3
+87,Colin Fitzgerald,C,CAN,OHL (Soo),44,6,10,16,8.9,"6'1 183",Late
+88,Brek Liske,RD,CAN,WHL (Everett),42,4,8,12,7.0,"6'2 190",Late
+89,Egor Barabanov,LW,RUS,OHL (Saginaw),42,6,8,14,8.2,"6'2 192",Late
+90,Landon Amrhein,C,USA,WHL (Calgary),40,4,8,12,7.4,"6'0 178",Late
+91,Max Isaksson,C,SWE,J20 Nationell (Vaxjo),28,4,6,10,2.6,"6'1 181",Late
+92,Alexander Bilecki,LD,CAN,OHL (Kitchener),40,2,8,10,6.1,"6'1 183",Late
+93,Myles Brosnan,RD,USA,USHS-Prep (Dexter Southfield),24,4,10,14,1.9,"6'3 194",Late
+94,Casper Juustovaara Karlsson,C/LW,SWE,SHL (Lulea),30,2,4,6,8.2,"6'0 176",Late
+95,Alan Shaikhlislamov,RW/LW,RUS,MHL (Tolpar Ufa),34,8,6,14,2.8,"6'1 181",Late
+96,Parker Vaughan,RW,CAN,OHL (North Bay),42,6,8,14,8.2,"6'0 178",Late
+97,Alexei Vlasov,LW,RUS,QMJHL (Victoriaville),42,8,10,18,9.9,"6'0 176",Late
+98,Ossi Tukio,LD,FIN,SM-sarja (Ilves),26,1,3,4,2.0,"6'2 190",Late
+99,Morgan Anderberg,LW/C,SWE,SHL (Vaxjo),32,2,4,6,7.7,"6'1 183",Late
+100,Rian Chudzinski,RW,USA,QMJHL (Moncton),40,6,8,14,8.1,"6'0 176",Late
+101,Wiggo Sorensson,C,SWE,Division 2 (Boro/Vetlanda),20,4,4,8,0.8,"6'0 174",Late
+102,Callum Croskery,LD,CAN,OHL (Soo),38,2,6,8,5.2,"6'1 181",Late
+103,Noah Kosick,C,CAN,WHL (Seattle),38,4,6,10,6.5,"6'0 178",Late
+104,Luka Arkko,C,FIN,U20 SM-sarja (Pelicans),26,4,4,8,1.8,"6'0 174",Late
+105,Michal Orsulak,G,CZE,WHL (Prince Albert),32,0,0,0,0.0,"6'3 194",Late
+106,Niko Tournas,RW,USA,QMJHL (Moncton),38,6,6,12,7.3,"6'1 185",Late
+107,Adam Andersson,C,SWE,J20 Nationell (Leksand),26,4,4,8,2.2,"6'0 178",Late
+108,Dayne Beuker,C,USA,NTDP (USHL),24,4,6,10,5.1,"6'1 183",Late
+109,Theodor Knights,LD,SWE,J20 Nationell (MoDo),24,2,6,8,2.4,"6'2 185",Late
+110,Timofei Runtso,RD,USA,WHL (Victoria),36,2,6,8,5.5,"6'1 181",Late
+111,Axel Brongel-Larsson,LD,SWE,J20 Nationell (Frolunda),22,2,4,6,2.0,"6'0 176",Late
+112,Rudolfs Berzkalns,C,LAT,USHL (Muskegon),32,4,6,10,3.8,"6'4 203",Late
+113,Layne Gallacher,C,CAN,OHL (Guelph),36,4,6,10,6.8,"6'0 178",Late
+114,Cameron Chartrand,RD,CAN,QMJHL (Saint John),34,2,6,8,5.5,"6'1 181",Late
