@@ -3,11 +3,16 @@ library(DT)
 library(dplyr)
 library(readr)
 library(stringr)
-# httr/jsonlite loaded on-demand (may not be available in webR/shinylive)
-has_httr <- requireNamespace("httr", quietly=TRUE)
-has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
-if(has_httr) library(httr)
-if(has_jsonlite) library(jsonlite)
+# httr/jsonlite only available natively, not in webR/shinylive
+if(identical(R.version$os, "emscripten")) {
+  has_httr <- FALSE
+  has_jsonlite <- FALSE
+} else {
+  has_httr <- requireNamespace("httr", quietly=TRUE)
+  has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
+  if(has_httr) library(httr)
+  if(has_jsonlite) library(jsonlite)
+}
 
 # ── Projected contract model constants ──
 SALARY_CAP <- 104000000  # 2026-27 projected cap

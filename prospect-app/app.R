@@ -3,11 +3,16 @@ library(DT)
 library(dplyr)
 library(readr)
 library(stringr)
-# jsonlite/httr loaded on-demand (may not be available in webR/shinylive)
-has_httr <- requireNamespace("httr", quietly=TRUE)
-has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
-if(has_jsonlite) library(jsonlite)
-if(has_httr) library(httr)
+# httr/jsonlite only available natively, not in webR/shinylive
+if(identical(R.version$os, "emscripten")) {
+  has_httr <- FALSE
+  has_jsonlite <- FALSE
+} else {
+  has_httr <- requireNamespace("httr", quietly=TRUE)
+  has_jsonlite <- requireNamespace("jsonlite", quietly=TRUE)
+  if(has_httr) library(httr)
+  if(has_jsonlite) library(jsonlite)
+}
 
 # ── Prospect Valuation Model ──
 # Dynasty value tiers based on score, age, position, GP
