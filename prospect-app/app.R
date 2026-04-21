@@ -645,7 +645,7 @@ server <- function(input, output, session) {
 
   skaters_raw <- reactive({
     uploaded <- input$upload_skaters
-    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__74_.csv"
+    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__78_.csv"
     tryCatch(read_csv(path,show_col_types=FALSE) %>%
       mutate(Salary_Num=safe_salary(Salary),across(c(Score,GP,Age,G,A,`2G+A`,PIM,SOG,STP,Hit,Blk),~suppressWarnings(as.numeric(.)))),
       error=function(e){showNotification(paste("Error:",e$message),type="error");data.frame()})
@@ -653,7 +653,7 @@ server <- function(input, output, session) {
 
   goalies_raw <- reactive({
     uploaded <- input$upload_goalies
-    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__75_.csv"
+    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__79_.csv"
     tryCatch(read_csv(path,show_col_types=FALSE) %>%
       mutate(Salary_Num=safe_salary(Salary),across(c(Score,GP,Age),~suppressWarnings(as.numeric(.)))),
       error=function(e){showNotification(paste("Error:",e$message),type="error");data.frame()})

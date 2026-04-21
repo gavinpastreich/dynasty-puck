@@ -677,13 +677,13 @@ server <- function(input, output, session) {
   # ═══ DATA LOADING WITH UPLOAD SUPPORT ═══
   skaters_raw <- reactive({
     uploaded <- input$upload_skaters
-    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__74_.csv"
+    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__78_.csv"
     tryCatch(read_csv(path, show_col_types=FALSE), error=function(e) data.frame())
   })
 
   goalies_raw <- reactive({
     uploaded <- input$upload_goalies
-    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__75_.csv"
+    path <- if(!is.null(uploaded)) uploaded$datapath else "Fantrax-Players-Dynasty_Puck__79_.csv"
     tryCatch(read_csv(path, show_col_types=FALSE), error=function(e) data.frame())
   })
 
