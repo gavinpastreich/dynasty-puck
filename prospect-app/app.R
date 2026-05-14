@@ -558,6 +558,7 @@ ui <- fluidPage(
         selectInput("dr_pos","Position",c("All","Forward","Defense","Goalie")),
         selectInput("dr_tier","Fantasy Tier",c("All")),selectInput("dr_league","League",c("All")),selectInput("dr_nat","Nationality",c("All")),
         selectInput("dr_ceiling","Ceiling",c("All","Franchise","Star","Top Line","Middle Six","Bottom Six","Depth","Longshot")),
+        selectInput("dr_style","Player Style",c("All","Elite Playmaker","Playmaker","Sniper","Power Forward","Skilled Winger","Two-Way C","Two-Way F","Offensive D","Two-Way D","Defensive D","Starting G Upside","Backup G")),
         hr(style="border-color:#21262d;"),
         div(class="upload-zone",fileInput("upload_draft","Upload Draft CSV",accept=".csv")))),
       column(9,
@@ -1485,6 +1486,7 @@ server <- function(input, output, session) {
     if(input$dr_league!="All") df <- df %>% filter(League==input$dr_league)
     if(input$dr_nat!="All") df <- df %>% filter(Nationality==input$dr_nat)
     if(input$dr_ceiling!="All") df <- df %>% filter(Ceiling==input$dr_ceiling)
+    if(!is.null(input$dr_style) && input$dr_style!="All" && "Style" %in% names(df)) df <- df %>% filter(Style==input$dr_style)
     df
   })
 
@@ -1513,16 +1515,23 @@ server <- function(input, output, session) {
   output$dr_table <- renderDT({
     df <- dr_f()
     if(nrow(df)==0) return(datatable(data.frame(Message="No prospects match filters"),rownames=FALSE))
+    has_style <- "Style" %in% names(df)
     display <- df %>%
-      mutate(Value = ifelse(Is_Value_Pick, "VALUE", "")) %>%
-      select(Rank,Player,Pos,Nationality,League,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
+      mutate(Value = ifelse(Is_Value_Pick, "VALUE", ""))
+    if(has_style) {
+      display <- display %>% select(Rank,Player,Pos,Nationality,League,Style,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
+    } else {
+      display <- display %>% select(Rank,Player,Pos,Nationality,League,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
+    }
+    col_names <- if(has_style) c("Rank","Player","Pos","Nat","League","Style","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value") else c("Rank","Player","Pos","Nat","League","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value")
+    value_col <- if(has_style) 15 else 14
     datatable(display, selection="single",rownames=FALSE,
-      colnames=c("Rank","Player","Pos","Nat","League","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value"),
+      colnames=col_names,
       options=list(pageLength=50,scrollX=TRUE,dom='lftipr',order=list(list(0,'asc')),
         language=list(search="Search draft prospects:"),
         rowCallback=JS(
           "function(row, data, displayNum, displayIndex, dataIndex) {",
-          "  if(data[14] === 'VALUE') {",
+          paste0("  if(data[",value_col,"] === 'VALUE') {"),
           "    $(row).addClass('draft-value-pick');",
           "  }",
           "}"
@@ -1536,7 +1545,12 @@ server <- function(input, output, session) {
       formatStyle('Make_Pct',background=styleColorBar(c(0,100),'rgba(63,185,80,0.2)'),backgroundSize='98% 70%',backgroundRepeat='no-repeat',backgroundPosition='center') %>%
       formatStyle('Dyn_Score',background=styleColorBar(c(0,max(df$Dyn_Score,na.rm=TRUE)),'rgba(163,113,247,0.2)'),backgroundSize='98% 70%',backgroundRepeat='no-repeat',backgroundPosition='center') %>%
       formatStyle('NHLe',background=styleColorBar(c(0,max(df$NHLe,na.rm=TRUE)),'rgba(240,136,62,0.15)'),backgroundSize='98% 70%',backgroundRepeat='no-repeat',backgroundPosition='center') %>%
-      formatStyle('Value',color=styleEqual(c("VALUE",""),c("#3fb950","#0d1117")),fontWeight='bold')
+      formatStyle('Value',color=styleEqual(c("VALUE",""),c("#3fb950","#0d1117")),fontWeight='bold') %>%
+      {if(has_style) formatStyle(., 'Style',
+        color=styleEqual(
+          c("Elite Playmaker","Playmaker","Sniper","Power Forward","Skilled Winger","Two-Way C","Two-Way F","Offensive D","Two-Way D","Defensive D","Starting G Upside","Backup G"),
+          c("#ffd700","#a371f7","#f85149","#f0883e","#3fb950","#58a6ff","#58a6ff","#79c0ff","#8b949e","#6e7681","#3fb950","#484f58")),
+        fontWeight='bold') else .}
   })
 
   output$dr_card <- renderUI({
@@ -1561,6 +1575,47 @@ server <- function(input, output, session) {
       '<div class="val-card" style="flex:1;min-width:130px;"><div class="val-label">NHLe</div><div class="val-value" style="color:#f0883e;">',r$NHLe,'</div></div>',
       '</div>')
 
+    # Fantasy profile section (new)
+    fantasy_html <- ""
+    has_style_col <- "Style" %in% names(r) && !is.na(r$Style) && nchar(r$Style) > 0
+    has_cats_col  <- "Fantasy_Cats" %in% names(r) && !is.na(r$Fantasy_Cats) && nchar(r$Fantasy_Cats) > 0
+    has_note_col  <- "Scouting_Note" %in% names(r) && !is.na(r$Scouting_Note) && nchar(r$Scouting_Note) > 0
+    if(has_style_col || has_cats_col || has_note_col) {
+      style_color <- switch(r$Style,
+        "Elite Playmaker"="#ffd700","Playmaker"="#a371f7","Sniper"="#f85149",
+        "Power Forward"="#f0883e","Skilled Winger"="#3fb950","Two-Way C"="#58a6ff",
+        "Two-Way F"="#58a6ff","Offensive D"="#79c0ff","Two-Way D"="#8b949e",
+        "Defensive D"="#6e7681","Starting G Upside"="#3fb950","Backup G"="#484f58","#8b949e")
+      style_badge <- if(has_style_col) paste0('<span style="background:',style_color,'22;border:1px solid ',style_color,';color:',style_color,';padding:3px 10px;border-radius:12px;font-size:.82em;font-weight:700;">',r$Style,'</span>') else ""
+
+      # Category chips
+      cat_chips <- ""
+      if(has_cats_col) {
+        cats <- strsplit(r$Fantasy_Cats, ",\\s*")[[1]]
+        cat_color_map <- c("G"="#f85149","A"="#58a6ff","2G+A"="#a371f7","PIM"="#f0883e","SOG"="#ffd700","Hit"="#e57373","Blk"="#4caf50","TK/GV"="#26c6da","Cor"="#9e9e9e","W"="#3fb950","SV%"="#79c0ff","SHO"="#ffd700","GAA"="#8b949e")
+        chips <- sapply(cats, function(cat) {
+          cat <- trimws(cat)
+          col <- if(cat %in% names(cat_color_map)) cat_color_map[cat] else "#8b949e"
+          paste0('<span style="background:',col,'22;border:1px solid ',col,';color:',col,';padding:2px 8px;border-radius:10px;font-size:.78em;font-weight:700;margin:2px;">',cat,'</span>')
+        })
+        cat_chips <- paste0('<div style="margin:6px 0;display:flex;flex-wrap:wrap;gap:4px;">',paste(chips,collapse=""),'</div>')
+      }
+
+      scouting_box <- if(has_note_col) paste0(
+        '<div style="margin:8px 0;padding:10px 14px;background:#0d1117;border-left:3px solid ',style_color,';border-radius:0 6px 6px 0;font-size:.85em;color:#c9d1d9;line-height:1.5;">',
+        '<b style="color:',style_color,';">\U0001F3AF Fantasy Profile</b><br>',
+        htmltools::htmlEscape(r$Scouting_Note),'</div>') else ""
+
+      scoring_legend <- paste0(
+        '<div style="margin:6px 0;padding:6px 10px;background:#161b22;border:1px solid #21262d;border-radius:6px;font-size:.75em;color:#8b949e;">',
+        '<b>Scoring cats:</b> G=Goals \u2022 A=Assists \u2022 2G+A=Multi-pt \u2022 SOG=Shots \u2022 Hit=Hits \u2022 Blk=Blocks \u2022 PIM=Penalties \u2022 TK/GV=Takeaways \u2022 Cor=Corsi</div>')
+
+      fantasy_html <- paste0(
+        '<div style="margin:10px 0;padding:12px;background:#161b22;border:1px solid #30363d;border-radius:8px;">',
+        '<div style="font-size:.8em;color:#8b949e;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Fantasy Profile</div>',
+        style_badge, cat_chips, scouting_box, scoring_legend, '</div>')
+    }
+
     nhle_analysis <- ""
     if(!is.na(r$NHLe)){
       nhle_class <- case_when(r$NHLe>=35~"Likely star",r$NHLe>=30~"Strong prospect",r$NHLe>=20~"Solid prospect",r$NHLe>=12~"Developmental",TRUE~"High bust risk")
@@ -1575,7 +1630,7 @@ server <- function(input, output, session) {
     HTML(paste0('<div class="player-card"><h3>',htmltools::htmlEscape(r$Player),' <span class="badge-prospect">#',r$Rank,'</span>',value_badge,'</h3>',
       '<div class="meta">',r$Pos,' \u2022 ',r$Nationality,' \u2022 ',r$Size,' \u2022 <b style="color:#f0883e">',r$Fantasy_Tier,'</b></div>',
       '<div class="meta">',r$League,' \u2022 ',r$Pts,' pts (',r$G,'G, ',r$A,'A) in ',r$GP,' GP',ppg,'</div>',
-      val_html, nhle_analysis,
+      val_html, fantasy_html, nhle_analysis,
       '<div class="link-section"><h4>\u2B50 Scouting</h4>',
         make_btn("Elite Prospects",paste0("https://www.eliteprospects.com/search/player?q=",enc),"dr"),
         make_btn("Scouting Reports",paste0("https://www.google.com/search?q=",pq),"dr"),
