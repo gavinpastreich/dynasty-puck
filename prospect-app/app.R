@@ -547,12 +547,16 @@ ui <- fluidPage(
     tabPanel("\U0001F4DD 2026 Draft",fluidRow(
       column(3,wellPanel(h4("2026 NHL Draft",style="color:#a371f7;margin-top:0;font-weight:700;"),
         p("June 27\u201328 \u2022 Buffalo, NY",style="color:#8b949e;font-size:.85em;margin-bottom:4px;"),
-        p(HTML("114 prospects with <b>dynasty valuations</b>, NHL make-it probability, projected debut timeline & ceiling projections.<br><br>
+        p(HTML("115 prospects with <b>dynasty valuations</b>, fantasy category profiles, stock trends &amp; scouting notes.<br><br>
           <span class='dv-franchise'>Franchise</span> = generational talent<br>
           <span class='dv-star'>Star</span> = perennial all-star upside<br>
           <span class='dv-topline'>Top Line</span> = 1st line / top pair<br>
           <span class='dv-middlesix'>Middle Six</span> = solid contributor<br>
           <span class='dv-bottomsix'>Bottom Six</span> = depth role player<br><br>
+          <span style='color:#3fb950;font-weight:700'>&#x25B2;&#x25B2;</span> = Major riser &nbsp;
+          <span style='color:#3fb950;'>&#x25B2;</span> = Rising<br>
+          <span style='color:#f85149;font-weight:700'>&#x25BC;&#x25BC;</span> = Major faller &nbsp;
+          <span style='color:#f0883e;'>&#x25BC;</span> = Falling<br><br>
           <span style='color:#3fb950;font-weight:700'>VALUE PICK</span> = Dynasty Score exceeds expected value for draft position"),
           style="color:#8b949e;font-size:.8em;margin-bottom:14px;"),
         selectInput("dr_pos","Position",c("All","Forward","Defense","Goalie")),
@@ -1516,15 +1520,25 @@ server <- function(input, output, session) {
     df <- dr_f()
     if(nrow(df)==0) return(datatable(data.frame(Message="No prospects match filters"),rownames=FALSE))
     has_style <- "Style" %in% names(df)
+    has_trend <- "Trend" %in% names(df)
     display <- df %>%
-      mutate(Value = ifelse(Is_Value_Pick, "VALUE", ""))
+      mutate(
+        Value = ifelse(Is_Value_Pick, "VALUE", ""),
+        Trend_Arrow = if(has_trend) case_when(
+          Trend == "up_big"   ~ "▲▲",
+          Trend == "up"       ~ "▲",
+          Trend == "down"     ~ "▼",
+          Trend == "down_big" ~ "▼▼",
+          TRUE ~ ""
+        ) else ""
+      )
     if(has_style) {
-      display <- display %>% select(Rank,Player,Pos,Nationality,League,Style,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
+      display <- display %>% select(Rank,Trend_Arrow,Player,Pos,Nationality,League,Style,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
     } else {
-      display <- display %>% select(Rank,Player,Pos,Nationality,League,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
+      display <- display %>% select(Rank,Trend_Arrow,Player,Pos,Nationality,League,Ceiling,Make_Pct,Debut_Est,Dyn_Score,NHLe,Pts,GP,Size,Fantasy_Tier,Value)
     }
-    col_names <- if(has_style) c("Rank","Player","Pos","Nat","League","Style","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value") else c("Rank","Player","Pos","Nat","League","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value")
-    value_col <- if(has_style) 15 else 14
+    col_names <- if(has_style) c("Rank","▲▼","Player","Pos","Nat","League","Style","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value") else c("Rank","▲▼","Player","Pos","Nat","League","Ceiling","%Make","Debut","Dyn Score","NHLe","Pts","GP","Size","Tier","Value")
+    value_col <- if(has_style) 16 else 15
     datatable(display, selection="single",rownames=FALSE,
       colnames=col_names,
       options=list(pageLength=50,scrollX=TRUE,dom='lftipr',order=list(list(0,'asc')),
@@ -1546,6 +1560,9 @@ server <- function(input, output, session) {
       formatStyle('Dyn_Score',background=styleColorBar(c(0,max(df$Dyn_Score,na.rm=TRUE)),'rgba(163,113,247,0.2)'),backgroundSize='98% 70%',backgroundRepeat='no-repeat',backgroundPosition='center') %>%
       formatStyle('NHLe',background=styleColorBar(c(0,max(df$NHLe,na.rm=TRUE)),'rgba(240,136,62,0.15)'),backgroundSize='98% 70%',backgroundRepeat='no-repeat',backgroundPosition='center') %>%
       formatStyle('Value',color=styleEqual(c("VALUE",""),c("#3fb950","#0d1117")),fontWeight='bold') %>%
+      formatStyle('Trend_Arrow',
+        color=styleEqual(c("▲▲","▲","▼","▼▼",""),c("#3fb950","#56d364","#f0883e","#f85149","#0d1117")),
+        fontWeight='bold', textAlign='center') %>%
       {if(has_style) formatStyle(., 'Style',
         color=styleEqual(
           c("Elite Playmaker","Playmaker","Sniper","Power Forward","Skilled Winger","Two-Way C","Two-Way F","Offensive D","Two-Way D","Defensive D","Starting G Upside","Backup G"),
@@ -1616,6 +1633,22 @@ server <- function(input, output, session) {
         style_badge, cat_chips, scouting_box, scoring_legend, '</div>')
     }
 
+    # Stock trend alert
+    stock_html <- ""
+    has_trend_col  <- "Trend" %in% names(r) && !is.na(r$Trend)
+    has_note_stock <- "Stock_Note" %in% names(r) && !is.na(r$Stock_Note) && nchar(r$Stock_Note) > 0
+    if(has_trend_col && r$Trend != "stable") {
+      t_arrow <- switch(r$Trend, up_big="\u25b2\u25b2", up="\u25b2", down="\u25bc", down_big="\u25bc\u25bc", "")
+      t_color <- switch(r$Trend, up_big="#3fb950", up="#56d364", down="#f0883e", down_big="#f85149", "#8b949e")
+      t_label <- switch(r$Trend, up_big="Major Riser", up="Rising", down="Falling", down_big="Major Faller", "")
+      note_text <- if(has_note_stock) htmltools::htmlEscape(r$Stock_Note) else ""
+      stock_html <- paste0(
+        '<div style="margin:10px 0;padding:10px 14px;background:',t_color,'11;border:1px solid ',t_color,'44;border-radius:8px;">',
+        '<div style="font-size:.8em;font-weight:700;color:',t_color,';margin-bottom:4px;">',t_arrow,' STOCK UPDATE \u2014 ',t_label,'</div>',
+        if(nchar(note_text)>0) paste0('<div style="font-size:.83em;color:#c9d1d9;line-height:1.5;">',note_text,'</div>') else '',
+        '</div>')
+    }
+
     nhle_analysis <- ""
     if(!is.na(r$NHLe)){
       nhle_class <- case_when(r$NHLe>=35~"Likely star",r$NHLe>=30~"Strong prospect",r$NHLe>=20~"Solid prospect",r$NHLe>=12~"Developmental",TRUE~"High bust risk")
@@ -1627,10 +1660,18 @@ server <- function(input, output, session) {
 
     ppg <- if(!is.na(r$GP)&&r$GP>0) paste0(" \u2022 ",round(r$Pts/r$GP,2)," PPG") else ""
 
-    HTML(paste0('<div class="player-card"><h3>',htmltools::htmlEscape(r$Player),' <span class="badge-prospect">#',r$Rank,'</span>',value_badge,'</h3>',
+    # Trend badge for header
+    trend_badge <- ""
+    if(has_trend_col && r$Trend != "stable") {
+      tb_arrow <- switch(r$Trend, up_big="\u25b2\u25b2", up="\u25b2", down="\u25bc", down_big="\u25bc\u25bc", "")
+      tb_color <- switch(r$Trend, up_big="#3fb950", up="#56d364", down="#f0883e", down_big="#f85149", "#8b949e")
+      trend_badge <- paste0(' <span style="color:',tb_color,';font-size:.85em;font-weight:700;">',tb_arrow,'</span>')
+    }
+
+    HTML(paste0('<div class="player-card"><h3>',htmltools::htmlEscape(r$Player),' <span class="badge-prospect">#',r$Rank,'</span>',value_badge,trend_badge,'</h3>',
       '<div class="meta">',r$Pos,' \u2022 ',r$Nationality,' \u2022 ',r$Size,' \u2022 <b style="color:#f0883e">',r$Fantasy_Tier,'</b></div>',
       '<div class="meta">',r$League,' \u2022 ',r$Pts,' pts (',r$G,'G, ',r$A,'A) in ',r$GP,' GP',ppg,'</div>',
-      val_html, fantasy_html, nhle_analysis,
+      val_html, stock_html, fantasy_html, nhle_analysis,
       '<div class="link-section"><h4>\u2B50 Scouting</h4>',
         make_btn("Elite Prospects",paste0("https://www.eliteprospects.com/search/player?q=",enc),"dr"),
         make_btn("Scouting Reports",paste0("https://www.google.com/search?q=",pq),"dr"),
