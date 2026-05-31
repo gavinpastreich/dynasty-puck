@@ -1,3 +1,5 @@
+This was built and updated by Claude Code for a personal fantasy hockey league
+
 ===============================================
   DYNASTY PUCK - Fantasy Hockey League Tools
   14-Team Dynasty League Apps
