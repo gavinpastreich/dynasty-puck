@@ -88,7 +88,7 @@ async function doDaily() {
   const moves = (DP.league.moves || []).filter((x) => x.d >= yday);
   const title = 'Dynasty Puck update ' + et(d, { month: 'short', day: 'numeric' });
   const desc = (x) => x.type === 'add' ? `${x.to} added ${x.n} (${x.ct}${x.ct === 'MNR' ? '' : ' ' + m(x.sal / 1e6)})`
-    : x.type === 'drop' ? `${x.from} dropped ${x.n}` : x.type === 'move' ? `${x.n}: ${x.from} → ${x.to}` : `${x.n} (${x.to}): now ${x.ct} ${m(x.sal / 1e6)}`;
+    : x.type === 'drop' ? `${x.from} dropped ${x.n}` : x.type === 'move' || x.type === 'pick' ? `${x.n}: ${x.from} → ${x.to}` : `${x.n} (${x.to}): now ${x.ct} ${m(x.sal / 1e6)}`;
   for (const t of E.teams) {
     const lines = moves.filter((x) => x.from === t || x.to === t).map(desc);
     E.rosters[t].filter((p) => p.inj && p.inj[3] >= yday && p.r).forEach((p) => lines.push(`Injury: ${p.n} ${p.inj[0]}${p.inj[1] ? ' (' + p.inj[1] + ')' : ''}${p.inj[2] ? ', ' + p.inj[2] : ''}`));
@@ -101,7 +101,7 @@ async function doDaily() {
     if (FORCE !== 'daily' && await alreadySent(topic, title, '20h')) continue;
     await ntfy(topic, title, lines.join('\n'), SITE + '#/team/' + encodeURIComponent(t));
   }
-  const trades = moves.filter((x) => x.type === 'move');
+  const trades = moves.filter((x) => x.type === 'move' || x.type === 'pick');
   if (trades.length) {
     const topic = topicOf('league');
     if (FORCE === 'daily' || !await alreadySent(topic, title, '20h')) await ntfy(topic, title, trades.map(desc).join('\n'), SITE + '#/history');
@@ -170,7 +170,7 @@ async function doWeekly() {
   }
   const since = new Date(d - 7 * 864e5).toISOString().slice(0, 10), mv = (DP.league.moves || []).filter((x) => x.d >= since);
   if (mv.length) {
-    H('<h3>Roster moves this week</h3><ul style="padding-left:18px">' + mv.map((x) => `<li>${esc(x.d)}: ${esc(x.type === 'move' ? x.n + ': ' + x.from + ' → ' + x.to : x.type === 'add' ? x.to + ' added ' + x.n : x.type === 'drop' ? x.from + ' dropped ' + x.n : x.n + ' contract change')}</li>`).join('') + '</ul>');
+    H('<h3>Roster moves this week</h3><ul style="padding-left:18px">' + mv.map((x) => `<li>${esc(x.d)}: ${esc(x.type === 'move' || x.type === 'pick' ? x.n + ': ' + x.from + ' → ' + x.to : x.type === 'add' ? x.to + ' added ' + x.n : x.type === 'drop' ? x.from + ' dropped ' + x.n : x.n + ' contract change')}</li>`).join('') + '</ul>');
     T('ROSTER MOVES'); mv.forEach((x) => T(`- ${x.d} ${x.type} ${x.n}`)); T('');
   }
   const unsub = A.emailAddress ? `mailto:${A.emailAddress}?subject=${encodeURIComponent('Dynasty Puck HQ: unsubscribe')}` : SITE + '#/alerts';

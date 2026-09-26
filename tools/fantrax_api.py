@@ -136,6 +136,13 @@ def diff_moves(old, new, when):
         elif x["ct"] != y["ct"] or x["sal"] != y["sal"]:
             ev.append({"d": when, "id": pid, "type": "contract", "to": y["gm"], "ct": y["ct"], "sal": y["sal"],
                        "was": [x["ct"], x["sal"]]})
+    # draft picks changing hands (only happens in trades)
+    op = {(p["year"], p["round"], p["orig"]): p["owner"] for p in (old or {}).get("picks", [])}
+    for p in new.get("picks", []):
+        k = (p["year"], p["round"], p["orig"])
+        if k in op and op[k] != p["owner"]:
+            ev.append({"d": when, "id": f"pick-{k[0]}-{k[1]}-{k[2]}", "type": "pick", "year": k[0], "round": k[1],
+                       "orig": k[2], "from": op[k], "to": p["owner"]})
     return ev
 
 
@@ -156,7 +163,7 @@ def sync(offline=False, log=print):
         new = diff_moves(prev, snap, snap["fetched"][:10])
         # carry names for players who left the league so the log can still show them
         for e in new:
-            if e["id"] not in snap["names"] and e["id"] in prev.get("names", {}):
+            if e["type"] != "pick" and e["id"] not in snap["names"] and e["id"] in prev.get("names", {}):
                 e["n"] = prev["names"][e["id"]]["n"]
         if new:
             log(f"Fantrax: {len(new)} roster changes since {prev['fetched']}")

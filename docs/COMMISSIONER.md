@@ -41,6 +41,14 @@ the contract sheet; edit it to match Fantrax's "Cap hit penalties". Drops seen i
 You can also replace any file in `raw/` (contract sheet, Fantrax CSV exports) with GitHub's **Add file → Upload files**; the
 rebuild starts on its own.
 
+What updates itself vs. what needs you:
+- Automatic: rosters, contract types, salaries, lineups, standings, draft picks, adds/drops, **trades** (detected nightly
+  when players or picks switch teams; a one-way move is treated as a waiver claim), cap penalties from drops, NHL stats,
+  injuries, projections, alerts.
+- Needs an upload now and then: the **contract sheet**, because Fantrax doesn't store contract lengths. Upload it after
+  the offseason (RFA/ELC decisions, auction) or whenever multi-year deals change. Uploading Fantrax's trade-history
+  export is optional (it only adds exact trade dates).
+
 ## Turning on the weekly email (5 minutes, once)
 
 The league inbox is **dynastypucknotifications@gmail.com** (already set in `config/league.json` → `alerts.emailAddress`,

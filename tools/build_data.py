@@ -995,6 +995,54 @@ def cap_penalties(players, sheet, moves):
     return pen
 
 
+def add_logged_trades(league, moves):
+    """Trades the nightly Fantrax log saw (players and picks switching teams the same night) that aren't in the uploaded
+    trade exports yet. A one-way player move with nothing coming back is a waiver claim, not a trade."""
+    known = set()
+    for t in league["trades"]:
+        for m in t["moves"]:
+            known.add(m.get("id") or f"pick-{m.get('year')}-{m.get('round')}-{m.get('orig')}")
+    by_day = defaultdict(list)
+    for e in moves:
+        if e["type"] in ("move", "pick") and e["id"] not in known:
+            by_day[e["d"]].append(e)
+    added = 0
+    for day, evs in sorted(by_day.items()):
+        parent = {}
+
+        def find(x):
+            parent.setdefault(x, x)
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+        for e in evs:
+            parent[find(e["from"])] = find(e["to"])
+        groups = defaultdict(list)
+        for e in evs:
+            groups[find(e["from"])].append(e)
+        for g in groups.values():
+            dirs = {(e["from"], e["to"]) for e in g}
+            if not any((b, a) in dirs for a, b in dirs) and not any(e["type"] == "pick" for e in g):
+                continue  # one-way player move: waiver claim
+            mv = []
+            for e in g:
+                if e["type"] == "pick":
+                    mv.append({"date": day, "from": e["from"], "to": e["to"], "kind": "pick", "year": e["year"], "round": e["round"],
+                               "orig": e["orig"], "label": f"{e['year']} R{e['round']} ({e['orig']})", "obj": 0, "period": 0})
+                else:
+                    mv.append({"date": day, "from": e["from"], "to": e["to"], "kind": "player", "id": e["id"], "label": e["n"],
+                               "obj": 0, "period": 0})
+            league["trades"].append({"date": day, "period": 0, "teams": sorted({e["from"] for e in g} | {e["to"] for e in g}),
+                                     "moves": mv, "obj": 0, "season": "2026-27", "src": "Fantrax nightly log (date seen)"})
+            added += 1
+    if added:
+        league["trades"].sort(key=lambda t: t["date"], reverse=True)
+        for i, t in enumerate(league["trades"]):
+            t["id"] = len(league["trades"]) - i
+        log(f"Trades: {added} new trade(s) picked up from the Fantrax nightly log")
+
+
 def apply_fantrax_league(league, weeks, players, snap, moves):
     """Fantrax is the source of truth for future pick ownership, standings, divisions and lineup-lock times."""
     if not snap:
@@ -1022,10 +1070,14 @@ def apply_fantrax_league(league, weeks, players, snap, moves):
     out = []
     for e in moves[-400:]:
         e = dict(e)
-        e["n"] = names.get(f"*{e['id']}*") or e.get("n") or (snap["names"].get(e["id"]) or {}).get("n") or e["id"]
-        e["id"] = f"*{e['id']}*"
+        if e["type"] == "pick":
+            e["n"] = f"{e['year']} R{e['round']} pick ({e['orig']})"
+        else:
+            e["n"] = names.get(f"*{e['id']}*") or e.get("n") or (snap["names"].get(e["id"]) or {}).get("n") or e["id"]
+            e["id"] = f"*{e['id']}*"
         out.append(e)
     league["moves"] = out
+    add_logged_trades(league, out)
     league["fantrax"] = {"id": snap["league"]["id"], "url": snap["league"]["url"], "fetched": snap["fetched"],
                          "period": snap.get("period"), "teamIds": {tid: t["code"] for tid, t in snap["teams"].items()},
                          "divisions": {t["code"]: t["div"] for t in snap["teams"].values() if t.get("code")},

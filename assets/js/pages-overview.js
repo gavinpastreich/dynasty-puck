@@ -103,9 +103,9 @@
     var E = DP.E, L = DP.league, items = [];
     (DP.live.changes || []).forEach(function (c) { items.push('<li><span class="badge good">today</span> ' + DP.live.describe(c) + '</li>'); });
     (L.moves || []).slice().reverse().forEach(function (m) {
-      var p = E.byId[m.id], who = p ? ui.plink(p) : esc(m.n || m.id), money = m.ct === 'MNR' ? 'MNR' : esc(m.ct) + ' ' + U.m(m.sal / 1e6);
+      var p = m.type === 'pick' ? null : E.byId[m.id], who = p ? ui.plink(p) : esc(m.n || m.id), money = m.ct === 'MNR' ? 'MNR' : esc(m.ct) + ' ' + U.m(m.sal / 1e6);
       var txt = m.type === 'add' ? esc(m.to) + ' added ' + who + ' (' + money + ')' : m.type === 'drop' ? esc(m.from) + ' dropped ' + who + (m.ct && m.ct !== 'MNR' ? ' (' + money + ')' : '')
-        : m.type === 'move' ? who + ': ' + esc(m.from) + ' → ' + esc(m.to) : who + ' (' + esc(m.to) + '): ' + esc(m.was[0]) + ' ' + U.m(m.was[1] / 1e6) + ' → ' + money;
+        : m.type === 'move' || m.type === 'pick' ? (m.type === 'pick' ? esc(m.n) : who) + ': ' + esc(m.from) + ' → ' + esc(m.to) : who + ' (' + esc(m.to) + '): ' + esc(m.was[0]) + ' ' + U.m(m.was[1] / 1e6) + ' → ' + money;
       items.push('<li><span class="faint small">' + esc(U.date(new Date(m.d + 'T12:00:00Z'))) + '</span> ' + txt + '</li>');
     });
     if (!items.length) return '<p class="small muted">No roster moves logged yet. From ' + esc(((L.fantrax || {}).fetched || '2026-09-26').slice(0, 10)) + ' on, every add, drop, trade and contract change in Fantrax is logged here each night (and changes since then show up live).</p>';
