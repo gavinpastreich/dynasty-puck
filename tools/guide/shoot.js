@@ -21,6 +21,8 @@ const SHOTS = [
   ['decision', 'player/*06xmq*', 'TommyG10', { card: 'Next contract decision', lookup: 'Matthew Schaefer' }],
   ['fa', 'fa', 'mertin', { h: 900 }],
   ['trade', 'trade?t=M.M,ROO&a=p:*04lc0*>M.M', 'M.M', { h: 1050 }],
+  ['tradectx', 'trade?t=SPG,CGN', 'SPG', { card: 'Team context', tradeLookup: ['Charlie McAvoy', 'SPG'] }],
+  ['strategy', 'team/CGN', 'CGN', { card: 'Trade strategy', wait: 3500 }],
   ['values', 'values', 'nebsnave', { h: 900 }],
   ['personas', 'history', 'BHHC', { card: 'GM trade personas' }],
   ['picks', 'picks', 'PuckLuck', { h: 850 }],
@@ -54,6 +56,14 @@ const SHOTS = [
     await ctx.addInitScript((t) => { try { localStorage.setItem('dp_team', JSON.stringify(t)); } catch (e) {} }, team);
     const page = await ctx.newPage();
     let r = route;
+    if (o.tradeLookup) { // a contender buying a veteran from a rebuilding team for its 2027 1st + a prospect
+      await page.goto(URL + 'home'); await page.waitForTimeout(800);
+      r = await page.evaluate(([n, buyer]) => {
+        const E = DP.E, p = E.P.find((x) => x.n === n), pr = E.rosters[buyer].filter((x) => x.ct === 'MNR').sort((a, b) => b.DV - a.DV)[3];
+        const pk = E.picksOf(buyer).find((x) => x.year === 2027 && x.round === 1);
+        return 'trade?t=' + buyer + ',' + p.gm + '&a=' + encodeURIComponent('p:' + p.id + '>' + buyer + '|p:' + pr.id + '>' + p.gm + (pk ? '|k:' + E.pickKey(pk) + '>' + p.gm : ''));
+      }, o.tradeLookup);
+    }
     if (o.lookup) { // resolve a player id by name
       await page.goto(URL + 'home'); await page.waitForTimeout(800);
       const id = await page.evaluate((n) => (DP.E.P.find((p) => p.n === n) || {}).id, o.lookup);

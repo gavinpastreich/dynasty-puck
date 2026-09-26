@@ -132,7 +132,8 @@ textarea { width: 100%; min-height: 120px; font-family: ui-monospace, SFMono-Reg
 :root[data-theme="light"] .pill.BID { color: #0550ae; } :root[data-theme="light"] .pill.MNR { color: #6639ba; }
 :root[data-theme="light"] .pill.ELC1 { color: #116329; } :root[data-theme="light"] .pill.RFA1 { color: #7d4e00; }
 .pos { display: inline-block; min-width: 20px; text-align: center; font-size: .72rem; font-weight: 700; border-radius: 4px; padding: 0 4px; background: var(--card2); color: var(--ink2); }
-.badge { display: inline-block; padding: 1px 6px; border-radius: 5px; font-size: .72rem; font-weight: 600; }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 5px; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+.badge.multiline { white-space: normal; }
 .badge.good { background: var(--good-bg); color: var(--good); } .badge.bad { background: var(--bad-bg); color: var(--bad); }
 .badge.warn { background: var(--warn-bg); color: var(--warn); } .badge.info { background: var(--info-bg); color: var(--link); }
 .plink { color: var(--ink); cursor: pointer; font-weight: 500; }

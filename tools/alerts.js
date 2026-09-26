@@ -65,6 +65,7 @@ function lockMessage(team, wi) {
   if (c.sit.length) lines.push('Sit: ' + c.sit.map((x) => x.p.n).join(', ') + '.');
   const idle = c.hurt.concat(c.dead).filter((p, i, a) => a.indexOf(p) === i && !c.sit.some((x) => x.p === p));
   if (idle.length) lines.push('Active but not expected to play: ' + idle.map((p) => p.n + (p.inj ? ` (${p.inj[0]})` : '')).join(', ') + '.');
+  if (c.gradRisk && c.gradRisk.length) lines.push('Graduation watch: ' + c.gradRisk.map((x) => `${x.p.n} ${x.g.cgp}/${x.g.thr} GP`).join(', ') + '. A player on the active roster when he graduates can\'t go back to the minors.');
   if (c.irCap) lines.push(`Activating from IR adds $${c.irCap.sal.toFixed(2)}M back to your cap (space after: $${c.irCap.space.toFixed(2)}M${c.irCap.space < 0 ? ', does not fit' : ''}).`);
   if (c.gFailSet > 0.12) lines.push(`Goalie minimum: ${Math.round(c.gFailSet * 100)}% chance of fewer than ${E.RULES.goalieMinGP} goalie GP.`);
   return { title: `${weekLabel(wi)} locks ${lockLabel(wi)}`, message: lines.join('\n') };

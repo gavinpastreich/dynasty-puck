@@ -9,8 +9,9 @@
   DP.getSim = function (cb, n) {
     var E = DP.E;
     if (DP.simCache && DP.simCache.v === E.version && DP.simCache.n >= (n || 1500)) return cb(DP.simCache.res);
+    if ((n || 1500) <= 1500 && E._bsim && E._bsim.v === E.version) return cb(E.baseSim());
     setTimeout(function () {
-      var res = E.simSeason({ n: n || 1500 });
+      var res = (n || 1500) <= 1500 ? E.baseSim() : E.simSeason({ n: n });
       DP.simCache = { v: E.version, n: n || 1500, res: res };
       cb(res);
     }, 20);
@@ -95,6 +96,7 @@
     if (extra.length) h += '<p class="small warn">Active in Fantrax but not expected to play: ' + extra.map(function (p) { return ui.plink(p) + why(p); }).join(', ') + '.</p>';
     if (chk.gFailSet > 0.12) h += '<p class="small bad">Goalie minimum: your set lineup has a ' + U.pct(chk.gFailSet) + ' chance of fewer than 2 goalie GP (optimal: ' + U.pct(chk.gFailOpt) + ').</p>';
     if (chk.irCap) h += '<p class="small ' + (chk.irCap.space < 0 ? 'bad' : 'muted') + '">Activating from IR adds ' + U.m(chk.irCap.sal) + ' back to your 2026-27 cap: space goes to ' + U.m(chk.irCap.space) + (chk.irCap.space < 0 ? '. That doesn\'t fit, so clear room first (IR players don\'t count against the cap).' : ' (IR players don\'t count against the cap).') + '</p>';
+    if (chk.gradRisk && chk.gradRisk.length) h += '<p class="small warn">Graduation watch: ' + chk.gradRisk.map(function (x) { return ui.plink(x.p) + ' (' + x.g.cgp + '/' + x.g.thr + ' career GP' + (x.g.status === 'graduated' ? ', already past the threshold' : ', projected to graduate week ' + E.weeks[x.g.week].n) + ')'; }).join(', ') + '. A player on your active roster when he graduates can\'t be moved back down to the minors.</p>';
     if (chk.start.some(function (x) { return x.p.fs === 'M'; })) h += '<p class="small muted">Players in Minors slots have to be moved up in Fantrax first (Active + Bench max ' + ((DP.league.fantrax && DP.league.fantrax.roster && DP.league.fantrax.roster.maxTotalPlayers) || 23) + ').</p>';
     h += '<p class="small muted">Lineups ' + (DP.live.state === 'ok' ? 'synced live from Fantrax at ' + esc(DP.live.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) : 'from the nightly Fantrax sync (' + esc((DP.league.fantrax || {}).fetched || '').slice(0, 16).replace('T', ' ') + ' UTC)') + '. Opponent uses their Fantrax lineup too. Injuries from Daily Faceoff.</p>';
     return h;
@@ -177,6 +179,7 @@
           { k: 'pct', l: 'Win%', v: function (r) { return r.exp.pct; }, f: function (r) { return U.rate(r.exp.pct); }, cls: 'num' },
           { k: 'po', l: 'Playoffs', v: function (r) { return r.sim ? r.sim.po : null; }, f: function (r) { return r.sim ? U.pct(r.sim.po) : '<span class="faint">…</span>'; }, cls: 'num', title: 'Monte Carlo: probability of a top-8 finish' },
           { k: 'champ', l: 'Title', v: function (r) { return r.sim ? r.sim.champ : null; }, f: function (r) { return r.sim ? U.pct(r.sim.champ, 1) : '<span class="faint">…</span>'; }, cls: 'num' },
+          { k: 'tier', l: 'Status', v: function (r) { return r.sim ? E.contention()[r.t].k[0] : null; }, f: function (r) { return r.sim ? DP.tierBadge(r.t) : '<span class="faint">…</span>'; }, title: 'Contender / bubble / not contending, from the title odds (see Windows)' },
           { k: 'war', l: 'Starter WAR', v: function (r) { return r.war; }, f: function (r) { return U.fmt(r.war, 0); }, cls: 'num', title: 'Sum of projected WAR of the week-1 starting lineup' },
           { k: 'dv', l: 'Dynasty', v: function (r) { return r.dv; }, f: function (r) { return U.fmt(r.dv, 0); }, cls: 'num', title: 'Sum of player dynasty values (7 seasons)' },
           { k: 'pros', l: 'Prospects', v: function (r) { return r.pros; }, f: function (r) { return '<b>' + r.prosGrade + '</b> <span class="faint small">#' + r.prosRank + '</span>'; }, cls: 'num' },
@@ -243,12 +246,13 @@
         DP.statTile('Starter age', U.fmt(s.age, 1), 'average') + '</div>';
       h += '<div class="grid g2">';
       h += '<div class="card span2"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
+      h += '<div class="card span2"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
       h += '<div class="card"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
       h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
       h += '<div class="card"><h2>Cap by season</h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
-      h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes all 24 weeks with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
+      h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes every week still to lock with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
       h += '<div class="card"><h2>Lineup usage by week</h2><div class="hint">How often each player makes the optimal weekly lineup (24 regular-season weeks). Part-time starters are your streaming and trade chips.</div><div id="t-usage"></div></div>';
       h += '<div class="card span2"><h2>Full roster</h2><div id="t-roster"></div></div>';
       h += '</div>';
@@ -298,7 +302,7 @@
       DP.rosterTable(U.qs('#t-roster', el), ros, { csv: 'roster-' + t + '.csv' });
 
       // recommendations (async: exact FA fits take a moment)
-      setTimeout(function () { recs(t, s, U.qs('#recs', el)); }, 30);
+      setTimeout(function () { recs(t, s, U.qs('#recs', el)); strategyCard(t, s, U.qs('#t-strat', el)); }, 30);
       // usage
       var starts = {}, benchW = {};
       for (var wi2 = 0; wi2 < E.REG_WEEKS; wi2++) {
@@ -362,6 +366,43 @@
     var dead = ros.filter(function (p) { return p.gm && p.r && p.ct === 'BID' && p.surplus < -3; });
     if (dead.length) flags.push('Negative-value contracts: ' + dead.map(function (p) { return ui.plink(p) + ' (' + U.sm(p.surplus) + ')'; }).join(', ') + '.');
     h += '<h3>Cap & contract notes</h3><ul>' + flags.map(function (f) { return '<li class="small">' + f + '</li>'; }).join('') + '</ul>';
+    box.innerHTML = h;
+  }
+
+  // Trade strategy: status from the title odds, then the players whose value differs most between this team and the
+  // rest of the league (exact roster-fit use value for the shortlist)
+  function strategyCard(t, s, box) {
+    if (!box) return;
+    var E = DP.E, C = E.contention(), c = C[t], st = DP.strategy(t), me = t, tb = box.closest('.card') && box.closest('.card').querySelector('#t-tier');
+    if (tb) tb.innerHTML = DP.tierBadge(t);
+    var h = DP.deadlineNote() + '<p>' + esc(st.text) + '</p>';
+    var li = function (x, side) {
+      var p = x.p, who = side === 'buy' ? p.gm : x.to;
+      var link = side === 'buy' ? U.hash('finder', null, { mode: 'get', p: p.id }) : U.hash('finder', null, { mode: 'give', p: p.id });
+      return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + (side === 'buy' ? 'on ' : 'best fit: ') + esc(U.teamName(who)) + ' ' + DP.tierBadge(who) + ' · ' + U.m(p.sal26) + ' ' + esc(p.ct) + ' · market ' + U.fmt(p.DV, 1) + '</span></span><span class="num" style="margin-left:auto" title="How much more he is worth in the new team\'s roster and window than in the old one (use value)">' + ui.delta(x.gap, 1) + '</span><a class="btn sm" href="' + link + '">Deals</a></li>';
+    };
+    var buy = function () {
+      var shortlist = E.P.filter(function (p) { return p.gm && p.gm !== me && p.yVal && p.yVal[0] > 0.5 && C[p.gm].k[0] < c.k[0]; })
+        .map(function (p) { return { p: p, q: E.valueGap(p, me) }; }).sort(function (a, b) { return b.q - a.q; }).slice(0, 24);
+      shortlist.forEach(function (x) { x.gap = E.useValue(me, [x.p], []).total + E.useValue(x.p.gm, [], [x.p]).total; });
+      return shortlist.filter(function (x) { return x.gap > 0; }).sort(function (a, b) { return b.gap - a.gap; }).slice(0, 6);
+    };
+    var sell = function () {
+      var buyers = E.teams.filter(function (u) { return u !== me && C[u].k[0] > c.k[0]; });
+      var shortlist = E.rosters[me].filter(function (p) { return p.yVal && p.yVal[0] > 0.5; }).map(function (p) {
+        var best = null; buyers.forEach(function (u) { var g = E.valueGap(p, u); if (!best || g > best.q) best = { u: u, q: g }; });
+        return best ? { p: p, to: best.u, q: -best.q } : null;
+      }).filter(Boolean).sort(function (a, b) { return a.q - b.q; }).slice(0, 16);
+      shortlist.forEach(function (x) { x.gap = E.useValue(x.to, [x.p], []).total + E.useValue(me, [], [x.p]).total; });
+      return shortlist.filter(function (x) { return x.gap > 0; }).sort(function (a, b) { return b.gap - a.gap; }).slice(0, 6);
+    };
+    var cols = [];
+    if (c.tier !== 'out') { var b = buy(); cols.push('<div><h3>Buy targets</h3><p class="small muted">Worth more on your roster and in your window than to their current team.</p>' + (b.length ? '<ul class="list-plain">' + b.map(function (x) { return li(x, 'buy'); }).join('') + '</ul>' : '<p class="small muted">No clear value gaps right now.</p>') + '</div>'); }
+    if (c.tier !== 'contender') { var sl = sell(); cols.push('<div><h3>Sell candidates</h3><p class="small muted">Worth more to a team ahead of you in the race than to you.</p>' + (sl.length ? '<ul class="list-plain">' + sl.map(function (x) { return li(x, 'sell'); }).join('') + '</ul>' : '<p class="small muted">Nothing on this roster is worth much more elsewhere.</p>') + '</div>'); }
+    h += '<div class="grid g2">' + cols.join('') + '</div>';
+    var others = E.teams.filter(function (u) { return u !== me; });
+    var contenders = others.filter(function (u) { return C[u].tier === 'contender'; }), sellers = others.filter(function (u) { return C[u].tier === 'out'; });
+    h += '<p class="small muted">Contenders (buyers): ' + (contenders.map(function (u) { return esc(u) + ' ' + U.pct(C[u].champ, 0) + ' · ' + U.m(DP.teamSummary()[u].space) + ' space'; }).join(', ') || 'none') + '. Not contending (sellers): ' + (sellers.map(esc).join(', ') || 'none') + '. Value gap = the player\'s use value to the new team minus what he is worth to the old one (roster fit × win-now weight, all seasons, in discounted category wins). <a href="#/windows">How status is set →</a></p>';
     box.innerHTML = h;
   }
 

@@ -736,6 +736,11 @@
     var d = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
     return d && !isNaN(d) ? d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET' : null;
   };
+  // trades closed: after the deadline until the season's last lineup lock has passed (the offseason reopens them)
+  E.tradesClosed = function () {
+    var d = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
+    return !!(d && !isNaN(d) && E.now() > d && E.lockWeek() !== null);
+  };
   E.htdPrice = function (bid) { return bid * (1 - (E.RULES.htdPct || 0)); };
   // projected price at the 2027 auction (y = 1), or what he'd have gone for in the 2026 auction (y = 0)
   E.auctionPrice = function (p, y) {
@@ -763,7 +768,7 @@
 
   function computeDynasty() {
     fitPtsToWar();
-    var d = E.DISCOUNT, lam = E.LAMBDA, dpw = E.dollarPerWAR, minS = E.RULES.minSalary;
+    var d = E.DISCOUNT, lam = E.LAMBDA, dpw = E.dollarPerWAR, minS = E.RULES.minSalary, rem = E.remFrac();
     E.P.forEach(function (p) {
       var pr = E.projectYears(p);
       p._pros = pr.pros;
@@ -784,7 +789,7 @@
           val = Math.max(val, E.deadCapCounts(p) ? -lam * E.RULES.deadCapPct * c / E.dpwY(y) : 0);
         }
         p.yVal.push(val);
-        dv += Math.pow(d, y) * val;
+        dv += Math.pow(d, y) * val * (y === 0 ? rem : 1);   // 2026-27: only the part of the season still to play
         tal += Math.pow(d, y) * w;
         sur += Math.pow(d, y) * (w * E.dpwY(y) + minS - (c || 0));
       }
@@ -882,8 +887,11 @@
     // activating someone from IR puts his salary back on this season's cap
     var irUp = start.filter(function (x) { return x.p.fs === 'IR' && E.RULES.irCapExempt !== false; }), irCap = null;
     if (irUp.length) { var irSal = E.sum(irUp.map(function (x) { return typeof x.p.cy[0] === 'number' ? x.p.cy[0] : 0; })); irCap = { sal: irSal, space: E.teamCap(team)[0].space - irSal }; }
+    // promoting an MNR player from a Minors slot: if he is on the active roster when he graduates, he can't go back down
+    var gradRisk = start.filter(function (x) { return x.p.fs === 'M' && x.p.ct === 'MNR'; }).map(function (x) { return { p: x.p, g: E.graduation(x.p) }; })
+      .filter(function (x) { return x.g.status === 'graduated' || x.g.week !== null; });
     return { wi: wi, opp: opp, opt: opt, set: set, eOpt: exp(opt), eSet: exp(set), start: start.sort(byV), sit: sit.sort(byV).reverse(),
-      hurt: hurt, dead: dead, nAct: Object.keys(act).length, gFailSet: set.r.gFail, gFailOpt: opt.r.gFail, irCap: irCap };
+      hurt: hurt, dead: dead, nAct: Object.keys(act).length, gFailSet: set.r.gFail, gFailOpt: opt.r.gFail, irCap: irCap, gradRisk: gradRisk };
   };
 
   // ---------------------------------------------------------------- league weeks & expected standings
@@ -991,13 +999,23 @@
     return out;
   };
 
-  // expected regular-season category wins (W + T/2) for one team given a roster (exact: re-optimises every week)
+  // weeks a roster move can still affect: from the next lineup lock on (weeks already locked or played are settled)
+  E.openFrom = function () { var lw = E.lockWeek(); return lw === null ? E.NW : lw; };
+  // share of the regular season's NHL games still ahead of the next lock (1 before the season, 0 after the last lock)
+  E.remFrac = function () {
+    var from = E.openFrom(), all = 0, left = 0;
+    E.weeks.forEach(function (w, wi) { if (w.po) return; all += E.avgWeekGames[wi]; if (wi >= from) left += E.avgWeekGames[wi]; });
+    return all ? left / all : 1;
+  };
+  // expected regular-season category wins (W + T/2) for one team given a roster, over the weeks still open
+  // (exact: re-optimises every week)
   E.seasonCatWins = function (team, roster, oppWeeks) {
     oppWeeks = oppWeeks || E.baseline;
-    var tot = 0, byCat = new Array(E.NC).fill(0), cache = {};
+    var tot = 0, byCat = new Array(E.NC).fill(0), cache = {}, from = E.openFrom();
     DP.meta.h2h.forEach(function (m) {
       var wi = m[0] - 1, a = m[1], b = m[2];
       if (a !== team && b !== team) return;
+      if (wi < from) return;
       var mine = cache[wi] || (cache[wi] = E.teamWeek(roster, wi));
       var pr = E.matchupProbs(mine, oppWeeks[a === team ? b : a][wi]);
       pr.forEach(function (x, c) { var v = x.w + 0.5 * x.t; tot += v; byCat[c] += v; });
@@ -1006,7 +1024,7 @@
   };
   E._baseWins = {};
   E.baseWins = function (team) {
-    var k = team + ':' + E.version;
+    var k = team + ':' + E.version + ':' + E.openFrom();
     if (!E._baseWins[k]) E._baseWins[k] = E.seasonCatWins(team, E.rosters[team]);
     return E._baseWins[k];
   };
@@ -1106,7 +1124,7 @@
   E.dvWith = function (p, L) {
     L = L || E.LENS_MODEL;
     if (!p.yWar) return 0;
-    var dpw = E.dollarPerWAR, minS = E.RULES.minSalary, v = 0;
+    var dpw = E.dollarPerWAR, minS = E.RULES.minSalary, v = 0, rem = E.remFrac();
     for (var y = 0; y < 7; y++) {
       var c = p.yCost[y], w = Math.max(0, p.yWar[y]);
       if (c === null && p.gm) continue;
@@ -1116,7 +1134,7 @@
       if (/^(RFA|ELC ext)/.test(p.yStatus[y]) && val < 0) val = 0;
       if (p.yStatus[y] === 'contract' || p.yStatus[y] === p.ct) val = Math.max(val, E.deadCapCounts(p) ? -L.lam * E.RULES.deadCapPct * c / dy : 0);
       void dpw;
-      v += Math.pow(L.disc, y) * val * (y === 0 ? L.now : 1);
+      v += Math.pow(L.disc, y) * val * (y === 0 ? L.now * rem : 1);
     }
     return v;
   };
@@ -1154,7 +1172,7 @@
   // probability of each draft slot (1..14) for a team's 2027 pick, from a cached season simulation
   E.slotDist = function (team) {
     if (!E._slots || E._slots.v !== E.version) {
-      var sim = E.simSeason({ n: 600, seed: 99 }), d = {};
+      var sim = E.baseSim(), d = {};
       sim.forEach(function (r) { d[r.t] = r.slot; });
       E._slots = { v: E.version, d: d };
     }
@@ -1255,6 +1273,95 @@
     });
     Object.keys(out).forEach(function (t) { out[t].net = out[t].in - out[t].out; });
     return out;
+  };
+
+  // ---------------------------------------------------------------- contention & team-context ("use") value
+  // One cached 1,500-season sim shared by title odds, draft-slot odds and contention, so every page shows the same numbers.
+  E.baseSim = function () {
+    if (!E._bsim || E._bsim.v !== E.version) E._bsim = { v: E.version, n: 1500, res: E.simSeason({ n: 1500 }) };
+    return E._bsim.res;
+  };
+  // Win-now weight: what one more category win this season is worth to a team, relative to the league average.
+  // Title odds behave like a softmax of team strength, so d(title odds)/d(strength) is proportional to p(1-p): steep for
+  // the few real contenders, close to zero for everyone else. A floor keeps some credit for this-season production
+  // (it can be flipped at the deadline). Later seasons: the same curve on each roster's projected strength, shrunk
+  // toward 1 (rosters change a lot), so future value counts about the same for every team.
+  E.CONTEND = { floor: 0.2, shrink: 0.5, contender: 1.5, bubble: 0.6 };
+  E.contention = function () {
+    if (E._cont && E._cont.v === E.version) return E._cont.d;
+    var K = E.CONTEND, teams = E.teams, n = teams.length, sim = E.baseSim(), by = {};
+    sim.forEach(function (r) { by[r.t] = r; });
+    var S = teams.map(function (t) { return E.windowStrength(t); });
+    var soft = function (xs, b) { var m = Math.max.apply(null, xs), e = xs.map(function (x) { return Math.exp(b * (x - m)); }), z = sum(e); return e.map(function (v) { return v / z; }); };
+    var c0 = teams.map(function (t) { return by[t].champ; }), s0 = S.map(function (s) { return s[0]; });
+    // fit beta (title odds per WAR of lineup strength) to this season's sim by maximum likelihood (golden section)
+    var ll = function (b) { var p = soft(s0, b); return sum(c0.map(function (c, i) { return c * Math.log(Math.max(1e-12, p[i])); })); };
+    var a = 0, b = 0.5, gr = (Math.sqrt(5) - 1) / 2;
+    for (var it = 0; it < 60; it++) { var x1 = b - gr * (b - a), x2 = a + gr * (b - a); if (ll(x1) > ll(x2)) b = x2; else a = x1; }
+    var beta = (a + b) / 2;
+    var lev = function (p) { var g = p.map(function (x) { return x * (1 - x); }), m = sum(g) / n || 1; return g.map(function (x) { return K.floor + (1 - K.floor) * x / m; }); };
+    var k0 = lev(c0), share = [c0], ks = [k0];
+    for (var y = 1; y < E.YEARS.length; y++) {
+      var py = soft(S.map(function (s) { return s[y]; }), beta), w = Math.pow(K.shrink, y);
+      share.push(py); ks.push(lev(py).map(function (k) { return 1 + w * (k - 1); }));
+    }
+    var d = {};
+    teams.forEach(function (t, i) {
+      var k = ks.map(function (row) { return row[i]; }), sh = share.map(function (row) { return row[i]; });
+      var tier = k[0] >= K.contender ? 'contender' : k[0] >= K.bubble ? 'bubble' : 'out';
+      // rising: within 3 seasons the core already under contract projects a title share 1.5x the league average
+      var rise = null; for (var yy = 1; yy <= 3; yy++) if (sh[yy] >= 1.5 / n && sh[yy] > sh[0]) { rise = yy; break; }
+      d[t] = { t: t, champ: by[t].champ, po: by[t].po, k: k, share: sh, tier: tier, rise: rise, strength: S[i] };
+    });
+    d._beta = beta;
+    E._cont = { v: E.version, d: d };
+    return d;
+  };
+  E.TIER = { contender: 'Contender', bubble: 'Bubble', out: 'Not contending' };
+  // What incoming / outgoing players are worth to ONE team, given its roster, needs and window ("use value"):
+  //   2026-27: change in expected category wins with weekly lineups re-optimised (E.gain: depth, positions, category fit)
+  //   later:   change in the team's best projected 12F/6D/2G WAR (seasons it controls the player)
+  //   each season x that team's win-now weight for the season, minus the cap cost counted by the lens, discounted.
+  E.useValue = function (team, add, remove, L) {
+    L = L || E.LENS_MODEL; add = add || []; remove = remove || [];
+    var c = E.contention()[team], ids = {}, minS = E.RULES.minSalary;
+    remove.forEach(function (p) { ids[p.id] = 1; });
+    var before = E.rosters[team], after = before.filter(function (p) { return !ids[p.id]; }).concat(add);
+    var sB = E.windowStrength(team, before), sA = E.windowStrength(team, after);
+    var g0 = add.length || remove.length ? E.gain(team, add, remove).total : 0;
+    var cost = function (list, y) { return sum(list.map(function (p) { var v = p.yCost && p.yCost[y]; return typeof v === 'number' ? Math.max(0, v - minS) : 0; })); };
+    var out = { now: 0, later: 0, total: 0, byYear: [], k: c.k, tier: c.tier, g0: g0 }, rem = E.remFrac();
+    for (var y = 0; y < E.YEARS.length; y++) {
+      var dl = y === 0 ? g0 : sA[y] - sB[y], dc = (cost(add, y) - cost(remove, y)) * L.lam / E.dpwY(y) * (y === 0 ? rem : 1);
+      var v = Math.pow(L.disc, y) * c.k[y] * (dl - dc) * (y === 0 ? L.now : 1);
+      out.byYear.push(v); out.total += v; if (y === 0) out.now += v; else out.later += v;
+    }
+    return out;
+  };
+  // use value of a whole trade for every team in it (picks count at their lens value: a future asset is worth
+  // about the same to everyone)
+  E.tradeUse = function (moves, L) {
+    var out = {}, teams = [];
+    moves.forEach(function (m) { [m.from, m.to].forEach(function (t) { if (teams.indexOf(t) < 0) teams.push(t); }); });
+    teams.forEach(function (t) {
+      var add = moves.filter(function (m) { return m.to === t && m.asset.kind === 'player'; }).map(function (m) { return m.asset.p; });
+      var rem = moves.filter(function (m) { return m.from === t && m.asset.kind === 'player'; }).map(function (m) { return m.asset.p; });
+      var u = E.useValue(t, add, rem, L), pk = 0;
+      moves.forEach(function (m) { if (m.asset.kind === 'pick') { var v = E.pickValue(m.asset.pk, L); if (m.to === t) pk += v; if (m.from === t) pk -= v; } });
+      u.picks = pk; u.total += pk; u.later += pk;
+      out[t] = u;
+    });
+    return out;
+  };
+  // how much more a player is worth in `team`'s window than in his current team's (standalone yearly values x the
+  // two teams' win-now weights; quick screen, the Trade Finder does the exact roster-fit math)
+  E.valueGap = function (p, team, L) {
+    L = L || E.LENS_MODEL;
+    if (!p.yVal || !p.gm || p.gm === team) return 0;
+    var C = E.contention(), a = C[team], b = C[p.gm], g = 0;
+    var rem = E.remFrac();
+    for (var y = 0; y < p.yVal.length; y++) g += Math.pow(L.disc, y) * (a.k[y] - b.k[y]) * p.yVal[y] * (y === 0 ? rem : 1);
+    return g;
   };
 
   // ---------------------------------------------------------------- Monte Carlo season

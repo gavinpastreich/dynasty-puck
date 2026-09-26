@@ -174,7 +174,25 @@
       var p = DP.E.byId[h.arg];
       if (!p) { el.innerHTML = '<div class="callout bad">Player not found.</div>'; return; }
       document.title = p.n + ' · Dynasty Puck HQ';
-      el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true);
+      el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
+      if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
     }
   };
+  // what the player is worth to each team (roster fit x window) vs to his current team
+  function market(p, box) {
+    if (!box) return;
+    var E = DP.E, me = DP.state.team, own = -E.useValue(p.gm, [], [p]).total;
+    var rows = E.teams.filter(function (t) { return t !== p.gm; }).map(function (t) { return { t: t, v: E.useValue(t, [p], []).total }; }).sort(function (a, b) { return b.v - a.v; });
+    var top = rows.slice(0, 5), mine = me && me !== p.gm ? rows.find(function (r) { return r.t === me; }) : null;
+    var h = '<p class="small muted">Use value: what adding him does for each team\'s lineup (depth, positions, categories) across the seasons it would control him, × that team\'s win-now weight, minus cap cost. Market value (same for everyone): <b>' + U.fmt(p.DV, 1) + '</b>.</p>' +
+      '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Status</th><th class="num">Worth to them</th><th class="num">vs ' + esc(p.gm) + '</th></tr></thead><tbody>' +
+      '<tr class="' + (p.gm === me ? 'mine' : '') + '"><td><b>' + esc(U.teamName(p.gm)) + '</b> <span class="faint small">current team</span></td><td>' + DP.tierBadge(p.gm) + '</td><td class="num"><b>' + U.fmt(own, 1) + '</b></td><td></td></tr>' +
+      top.concat(mine && top.indexOf(mine) < 0 ? [mine] : []).map(function (r) {
+        return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + esc(U.teamName(r.t)) + '</td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.fmt(r.v, 1) + '</td><td class="num">' + ui.delta(r.v - own, 1) + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+    var best = rows[0];
+    h += '<p class="small">' + (best && best.v > own + 0.5 ? 'Worth most to <b>' + esc(U.teamName(best.t)) + '</b> (+' + U.fmt(best.v - own, 1) + ' more than to ' + esc(p.gm) + '), so a deal there can help both sides.' : esc(p.gm) + ' values him about as much as anyone: no obvious trade surplus.') + ' ' +
+      (p.gm === me ? '<a class="btn sm" href="' + U.hash('finder', null, { mode: 'give', p: p.id }) + '">Find deals for him</a>' : me ? '<a class="btn sm" href="' + U.hash('finder', null, { mode: 'get', p: p.id }) + '">What would it take?</a>' : '') + '</p>';
+    box.innerHTML = h;
+  }
 })();

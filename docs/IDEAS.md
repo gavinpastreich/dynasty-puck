@@ -32,7 +32,10 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
 - **Rival scouting report.** Before each week: your opponent's weakest categories, which of their players are
   on back-to-backs, and the lineup tweak that maximizes your win probability against *that* opponent.
 - **Monte Carlo "what would it take to win the title?"** Search trades and FA adds that raise title odds the most per
-  unit of dynasty value spent.
+  unit of dynasty value spent. (Partly there since 2026-09-26: win-now weights come from the title odds and the Team Hub
+  lists buy targets; a full search that re-simulates the season per candidate is the next step.)
+- **Tank math.** Extra wins cost a bad team draft position; the win-now weight ignores that today. The sim already
+  gives each team's draft-slot distribution, so the value of losing could be priced for non-contenders.
 - **Injury-adjusted everything.** Feed Daily Faceoff injury status and line changes into weekly projections
   automatically (the plumbing exists; lineups can already auto-bench injured players).
 - **Voice-of-the-league newsletter.** A weekly auto-written column (power-ranking movers, trade grades, prospect

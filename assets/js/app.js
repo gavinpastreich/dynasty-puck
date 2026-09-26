@@ -54,12 +54,14 @@
     var route = DP.pages[h.route] ? h.route : 'home';
     U.qs('#nav').innerHTML = navHtml(route === 'player' ? 'players' : route);
     U.qs('#nav').classList.remove('open');
-    var main = U.qs('#main');
+    // a fresh <main> each render: pages attach click handlers to it, and a reused node would stack them
+    // (one click firing several times, e.g. a Mock Draft pick taken twice) and leak them onto other pages
+    var old = U.qs('#main'), main = old.cloneNode(false);
+    old.parentNode.replaceChild(main, old);
     ui.tipHide();
     try {
-      main.innerHTML = '';
+      document.title = (page.title ? page.title + ' · ' : '') + 'Dynasty Puck HQ'; // before render: a page may set its own
       page.render(main, h);
-      document.title = (page.title ? page.title + ' · ' : '') + 'Dynasty Puck HQ';
     } catch (e) {
       console.error(e);
       main.innerHTML = '<div class="callout bad"><b>Something went wrong rendering this page.</b><br><span class="small">' + esc(e.message) + '</span></div>';

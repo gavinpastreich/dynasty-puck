@@ -40,6 +40,18 @@ lineup set for that period), getDraftPicks (future picks with original owner), g
 - Headless Chromium in the cloud sandbox doesn't trust the proxy CA; tools/test/browser_check.js relays Fantrax
   requests through curl instead of loosening TLS.
 
+Tests (run before pushing; the browser ones need Playwright via PW_PATH):
+- `node tools/test/check_trade.js`: assertions for contention weights, use value, in-season proration, IR cap, picks.
+- `node tools/test/check_engine.js`: engine diagnostics (prints, no asserts).
+- `node tools/test/browser_check.js`: every route at desktop + phone width; page errors, sideways scroll, and
+  oversized widgets (a badge once inherited the page-layout `.wrap` class and grew 850px tall).
+- `node tools/test/flows_check.js`: multi-step flows with expected results (trade machine, finder, signing sim,
+  mock draft, auction tracker, search, team picker, theme, CSV upload + reset, phone menu).
+- `node tools/test/interact_check.js`: fuzz; uses every select / tab / slider / button / sort on every route and
+  flags page errors, render failures and junk text (NaN, undefined, [object Object]). Slow (~25 min).
+- Pages attach click handlers to their container; app.js gives each render a fresh `<main>` so they never stack
+  (stacked handlers made one Mock Draft click take two picks and crash at the end of the draft).
+
 Contract rules from the commissioner (2026-09-26, with screenshots of the constitution):
 - Cap: $104M 2026-27, $113.5M 2027-28 (NHL/NHLPA agreement), $127.5M 2028-29 (NHL projection to the Board of
   Governors, reported by Elliotte Friedman; commissioner had heard ~$129M). Held flat after that (assumption).

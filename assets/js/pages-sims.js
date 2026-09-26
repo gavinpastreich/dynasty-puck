@@ -137,7 +137,7 @@
             }).join('') + '</tr>';
             void nt;
           });
-          U.qs('#s-seeds', el).innerHTML = sh + '</tbody></table></div><p class="small muted">Cells show % of seasons; darker = more likely. Top ' + po + ' make the playoffs.</p>';
+          U.qs('#s-seeds', el).innerHTML = sh + '</tbody></table></div><p class="small muted">Cells show % of seasons; more intense shading = more likely. Top ' + po + ' make the playoffs.</p>';
         }, 30);
       };
       run();
@@ -198,7 +198,12 @@
       });
       function out() {
         var box = U.qs('#g-out', el);
-        st.adds = st.adds.filter(function (a) { return E.byId[a.id]; }); st.drops = st.drops.filter(function (d) { return E.byId[d]; });
+        // plans are saved in the browser: drop entries the league has moved past (FA signed elsewhere, player traded away)
+        var stale = st.adds.filter(function (a) { var p = E.byId[a.id]; return !p || (a.kind === 'fa' ? p.gm : p.gm !== t); }).map(function (a) { return E.byId[a.id]; })
+          .concat(st.drops.filter(function (d) { var p = E.byId[d]; return !p || p.gm !== t; }).map(function (d) { return E.byId[d]; })).filter(Boolean);
+        st.adds = st.adds.filter(function (a) { var p = E.byId[a.id]; return p && (a.kind === 'fa' ? !p.gm : p.gm === t); });
+        st.drops = st.drops.filter(function (d) { var p = E.byId[d]; return p && p.gm === t; });
+        if (stale.length) U.store.set('sign_' + t, st);
         var drops = st.drops.map(function (id) { return E.byId[id]; });
         var faAdds = st.adds.filter(function (a) { return a.kind === 'fa'; }).map(function (a) { return E.byId[a.id]; });
         var after = ros.filter(function (p) { return st.drops.indexOf(p.id) < 0; }).concat(faAdds);
@@ -208,14 +213,19 @@
         st.adds.forEach(function (a) {
           var p = E.byId[a.id];
           if (a.kind === 'fa') { capA[0].total += a.sal; capA[0].n++; }
-          else { capA[0].total += a.sal - (typeof p.cy[0] === 'number' ? p.cy[0] : 0); if (a.sal > 0 && p.ct === 'MNR') { capA[1].total += a.sal; } }
+          else {
+            if (!(p.fs === 'IR' && E.RULES.irCapExempt !== false)) capA[0].total += a.sal - (typeof p.cy[0] === 'number' ? p.cy[0] : 0); // IR: off this season's cap either way
+            if (a.sal > 0 && p.ct === 'MNR') { capA[1].total += a.sal; }
+          }
         });
+        capA.forEach(function (x) { x.space = x.cap - x.total; });
         var winsB = E.baseWins(t), winsA = E.seasonCatWins(t, after);
         var wb = {}; wb[t] = E.baseline[t];
         var weeksA = {}; E.teams.forEach(function (u) { weeksA[u] = E.baseline[u]; }); weeksA[t] = E.weeks.map(function (_, wi) { return E.teamWeek(after, wi); });
         var catsB = E.teamCats(), catsA = E.teamCats(weeksA);
         var stA = E.expectedStandings(weeksA), rB = E.expStandings.find(function (r) { return r.t === t; }), rA = stA.find(function (r) { return r.t === t; });
         var h2 = '<div class="grid g2"><div class="card"><h2>Your plan</h2>';
+        if (stale.length) h2 += '<p class="small warn">Removed from your saved plan (the league moved on): ' + stale.map(function (p) { return ui.plink(p) + (p.gm ? ' (now on ' + esc(p.gm) + ')' : ' (no longer on your roster)'); }).join(', ') + '.</p>';
         if (!st.adds.length && !st.drops.length) h2 += '<p class="muted">No moves yet. Add signings or drops above.</p>';
         h2 += '<ul class="list-plain">' + st.adds.map(function (a) { var p = E.byId[a.id]; return '<li>' + ui.pos(p) + '<span>' + (a.kind === 'fa' ? 'Sign ' : 'Re-sign ') + ui.plink(p) + ' <span class="muted small">WAR ' + U.fmt(p.WAR, 1) + '</span></span><span class="num" style="margin-left:auto">' + U.m(a.sal) + '</span><button class="btn sm ghost" data-rm="' + esc(a.id) + '" aria-label="Remove">✕</button></li>'; }).join('') +
           drops.map(function (p) { return '<li>' + ui.pos(p) + '<span>Drop ' + ui.plink(p) + ' <span class="muted small">dead cap ' + U.m(E.deadCap(p)[0]) + ' this season</span></span><span class="num bad" style="margin-left:auto">−' + U.m(p.sal26) + '</span><button class="btn sm ghost" data-rm="' + esc(p.id) + '" aria-label="Remove">✕</button></li>'; }).join('') + '</ul>';

@@ -41,24 +41,32 @@
   DP.pages.windows = {
     title: 'Contention Windows',
     render: function (el) {
-      var E = DP.E, me = DP.state.team;
-      var rows = E.teams.map(function (t) { var s = E.windowStrength(t); var peak = s.indexOf(Math.max.apply(null, s)); return { t: t, s: s, peak: peak, now: s[0], avg3: (s[0] + s[1] + s[2]) / 3 }; });
+      var E = DP.E, me = DP.state.team, CT = E.contention();
+      var rows = E.teams.map(function (t) { var c = CT[t], s = c.strength; return { t: t, c: c, s: s, now: s[0], avg3: (s[0] + s[1] + s[2]) / 3 }; });
       var all = []; rows.forEach(function (r) { all = all.concat(r.s); });
       var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
-      var h = '<div class="page-head"><h1>Contention Windows</h1><p class="sub">Projected strength of each roster by season: the best 12 F / 6 D / 2 G by projected WAR (age curves + prospect model), counting only seasons the team still controls the player (UFA exits removed). Signings, trades and drafts will change this. It shows who is built for now and who for later.</p></div>';
-      h += '<div class="card"><div class="tbl-wrap"><table class="t heat"><thead><tr><th>Team</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y + '</th>'; }).join('') + '<th>Window</th></tr></thead><tbody>';
-      rows.sort(function (a, b) { return b.avg3 - a.avg3; }).forEach(function (r) {
-        var trend = r.s[3] - r.s[0];
-        var label = r.peak === 0 ? (trend < -15 ? 'Win now (fading)' : 'Win now') : r.peak <= 2 ? 'Rising, peaks ' + E.YEARS[r.peak] : 'Rebuild, peaks ' + E.YEARS[r.peak];
-        h += '<tr class="' + (r.t === me ? 'mine' : '') + '"><td><a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a></td>' + r.s.map(function (v, y) {
+      var avgY = E.YEARS.map(function (_, y) { return E.sum(rows.map(function (r) { return r.s[y]; })) / rows.length; });
+      var sdY = E.YEARS.map(function (_, y) { return Math.sqrt(E.sum(rows.map(function (r) { return Math.pow(r.s[y] - avgY[y], 2); })) / rows.length); });
+      var nC = rows.filter(function (r) { return r.c.tier === 'contender'; }).length, nB = rows.filter(function (r) { return r.c.tier === 'bubble'; }).length;
+      var topShare = E.sum(rows.map(function (r) { return r.c.tier === 'contender' ? r.c.champ : 0; }));
+      var h = '<div class="page-head"><h1>Contention Windows</h1><p class="sub">Who is really playing for the 2026-27 title, and who is built for later. Status comes from the season sim\'s title odds; the heat map is each roster\'s projected strength by season (best 12 F / 6 D / 2 G by projected WAR, counting only seasons the team still controls the player). Signings, trades and drafts will change it.</p></div>';
+      h += '<div class="stats">' + DP.statTile('Contenders', String(nC), U.pct(topShare, 0) + ' of the title odds between them') + DP.statTile('On the bubble', String(nB), 'one big move from contending') + DP.statTile('Not contending', String(rows.length - nC - nB), 'better off selling 2026-27 value') + '</div>';
+      h += '<div class="card"><div class="tbl-wrap"><table class="t heat"><thead><tr><th>Team</th><th>Status</th><th class="num">Title odds</th><th class="num" title="What one 2026-27 category win is worth to this team vs the league average">Win-now weight</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y + '</th>'; }).join('') + '<th>Window</th><th>Strategy</th></tr></thead><tbody>';
+      rows.sort(function (a, b) { return b.c.k[0] - a.c.k[0] || b.avg3 - a.avg3; }).forEach(function (r) {
+        // window: compare the roster's standing vs the league now and in two seasons (every roster shrinks as deals expire)
+        var c = r.c, z = function (y) { return (r.s[y] - avgY[y]) / (sdY[y] || 1); }, fade = z(2) < z(0) - 0.8;
+        var label = c.tier === 'contender' ? (fade ? 'Now; core ages out fast' : 'Now, and built to last')
+          : c.rise ? 'Core peaks vs league ' + E.YEARS[c.rise] : c.tier === 'bubble' ? 'On the bubble' : 'Rebuild';
+        h += '<tr class="' + (r.t === me ? 'mine' : '') + '"><td><a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a></td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.pct(c.champ, 1) + '</td><td class="num">×' + U.fmt(c.k[0], 2) + '</td>' + r.s.map(function (v, y) {
           var t = (v - lo) / (hi - lo || 1);
-          return '<td class="hc" style="background:' + C.heat(t) + ';color:' + C.heatInk(t) + '" data-tip="' + esc('<div class="tv">' + U.fmt(v, 0) + ' WAR</div><div class="tl">' + U.teamName(r.t) + ' · ' + E.YEARS[y] + '</div>') + '">' + U.fmt(v, 0) + '</td>';
-        }).join('') + '<td class="small">' + esc(label) + '</td></tr>';
+          return '<td class="hc" style="background:' + C.heat(t) + ';color:' + C.heatInk(t) + '" data-tip="' + esc('<div class="tv">' + U.fmt(v, 0) + ' WAR</div><div class="tl">' + U.teamName(r.t) + ' · ' + E.YEARS[y] + (y ? ' · projected title share on this roster ' + U.pct(c.share[y], 0) : '') + '</div>') + '">' + U.fmt(v, 0) + '</td>';
+        }).join('') + '<td class="small" style="min-width:150px">' + esc(label) + '</td><td class="small" style="min-width:120px"><b>' + esc(DP.strategy(r.t).short) + '</b></td></tr>';
       });
-      h += '</tbody></table></div><p class="small muted">Darker = stronger. Numbers are summed projected WAR of the best possible lineup that season.</p></div>';
+      h += '</tbody></table></div><p class="small muted">More intense shading = stronger roster that season. <b>Win-now weight</b>: title odds rise steeply with strength only near the top, so an extra 2026-27 category win is worth several times more to a contender than to the league average, and little to a team out of the race (floor ×' + E.CONTEND.floor + ': that production can still be flipped at the deadline). Contender = weight ≥ ×' + E.CONTEND.contender + ', bubble ≥ ×' + E.CONTEND.bubble + '. Later seasons use the same curve on each roster\'s projected strength, pulled halfway toward average per year because rosters change. The Trade Machine and Trade Finder use these weights.</p></div>';
       if (me) {
-        var mine = rows.find(function (r) { return r.t === me; }), avg = E.YEARS.map(function (_, y) { return E.sum(rows.map(function (r) { return r.s[y]; })) / rows.length; });
-        h += '<div class="card" style="margin-top:14px"><h2>' + esc(U.teamName(me)) + ' vs the league</h2>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), [{ name: U.teamName(me), values: mine.s.map(function (v) { return +v.toFixed(1); }), color: 'var(--accent)' }, { name: 'League average', values: avg.map(function (v) { return +v.toFixed(1); }), color: 'var(--s1)', dash: true }], { height: 220, width: 900, title: 'Window vs league average' }) + '</div>';
+        var mine = rows.find(function (r) { return r.t === me; }), avg = avgY;
+        h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>' + esc(U.teamName(me)) + ': ' + esc(DP.strategy(me).short) + '</h2><p>' + esc(DP.strategy(me).text) + '</p><p class="small"><a href="#/team/' + encodeURIComponent(me) + '">Buy and sell targets on your Team Hub →</a></p></div>' +
+          '<div class="card"><h2>' + esc(U.teamName(me)) + ' vs the league</h2>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), [{ name: U.teamName(me), values: mine.s.map(function (v) { return +v.toFixed(1); }), color: 'var(--accent)' }, { name: 'League average', values: avg.map(function (v) { return +v.toFixed(1); }), color: 'var(--s1)', dash: true }], { height: 220, width: 900, title: 'Window vs league average' }) + '</div></div>';
       }
       el.innerHTML = h;
     }
@@ -159,7 +167,7 @@
             }).join('') + '</tbody></table></div></div>';
         }
         out.innerHTML = watch + cards.join('') + '<details><summary>Text version</summary><textarea id="pv-text" rows="18">' + esc(text.join('\n')) + '</textarea></details>';
-        U.qs('#pv-copy', el).onclick = function () { var t = text.join('\n'); if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { U.toast('Preview copied. Paste it in the league chat.'); }); else U.toast('Open "Text version" and copy manually.'); };
+        U.qs('#pv-copy', el).onclick = function () { U.copy(text.join('\n'), 'Preview copied. Paste it in the league chat.'); };
       }, 30);
     }
   };

@@ -91,4 +91,9 @@ as you ship them, and add any new ideas you come up with.
 - [x] Opt-in alerts run by GitHub Actions: ntfy phone push, per-team calendar feeds, weekly email digest (Alerts page).
 - [x] Live Scoreboard (week-to-date totals + simulated rest of week) and rest-of-season projections.
 - [x] 2027 Auction War Room, league Mock Draft, Awards race & Team Wrapped, GM trade personas.
+- [x] Team-context trade model (2026-09-26): win-now weight per team from the title odds (steep for the few real
+      contenders), roster fit via re-optimized lineups, "use value" per team in the Trade Machine and Trade Finder
+      (player and pick returns ranked by mutual fit), contender / bubble / not-contending status on Windows, the
+      dashboard and every trade tool, Team Hub buy targets / sell candidates, FA page status note.
+- [x] Lineup check + lock alerts: IR cap warning, MNR graduation watch when promoting from the minors.
 - [ ] Next ideas: see docs/IDEAS.md (prospect stock watch; trade block when a storage option is chosen).

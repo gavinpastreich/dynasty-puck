@@ -51,10 +51,15 @@
       h += '<div class="controls"><label>Fit for ' + ui.teamSelect('fa-team', me, 'No team (rank by WAR)') + '</label><span class="small muted" id="fa-status"></span></div>';
       if (me) {
         var s = DP.teamSummary()[me], order = E.CATS.map(function (c, i) { return i; }).sort(function (a, b) { return s.z[a] - s.z[b]; });
-        h += '<div class="callout">Weakest categories for ' + esc(me) + ': ' + order.slice(0, 5).map(function (c) { return '<b>' + esc(E.CATS[c].l) + '</b> (' + U.ord(s.rank[c]) + ')'; }).join(', ') + '. The fit score already weights these by how often they swing your matchups.</div>';
+        h += '<div class="callout">Weakest categories for ' + esc(me) + ': ' + order.slice(0, 5).map(function (c) { return '<b>' + esc(E.CATS[c].l) + '</b> (' + U.ord(s.rank[c]) + ')'; }).join(', ') + '. The fit score already weights these by how often they swing your matchups.</div><div id="fa-ctx"></div>';
       }
       h += '<div id="fa-t"></div>';
       el.innerHTML = h;
+      if (me) DP.getSim(function () {
+        var box = U.qs('#fa-ctx', el), c = E.contention()[me]; if (!box || !c) return;
+        box.innerHTML = c.tier === 'contender' ? '<div class="callout good">' + DP.tierBadge(me) + ' ' + esc(me) + ' has ' + U.pct(c.champ, 1) + ' title odds: every 2026-27 category win here is worth ×' + U.fmt(c.k[0], 1) + ' the league average, so stream aggressively.</div>'
+          : '<div class="callout">' + DP.tierBadge(me) + ' ' + esc(me) + ' has ' + U.pct(c.champ, 1) + ' title odds, so a 2026-27 category win is worth ×' + U.fmt(c.k[0], 1) + ' the league average to you. Use roster spots on players with a future (try the <b>Age ≤ 23</b> filter) unless the pickup is cheap to cut. <a href="#/windows">Why →</a></div>';
+      }, 1500);
       U.qs('#fa-team', el).addEventListener('change', function (e) { DP.go('fa', null, { team: e.target.value }); });
       var draw = function () {
         ui.table(U.qs('#fa-t', el), {
@@ -136,7 +141,7 @@
         });
         U.qs('#c-clear', el).addEventListener('click', function () { DP.cmp = []; U.store.set('cmp', []); DP.go('compare'); DP.render(); });
         var sh = U.qs('#c-share', el);
-        if (sh) sh.addEventListener('click', function () { var url = location.href.split('#')[0] + U.hash('compare', null, { ids: ids.join(',') }); if (navigator.clipboard) navigator.clipboard.writeText(url); U.toast('Link copied'); });
+        if (sh) sh.addEventListener('click', function () { var url = location.href.split('#')[0] + U.hash('compare', null, { ids: ids.join(',') }); U.copy(url, 'Link copied'); });
         el.addEventListener('click', function (e) { var b = e.target.closest('[data-rmc]'); if (!b) return; DP.cmp = DP.cmp.filter(function (x) { return x !== b.dataset.rmc; }); U.store.set('cmp', DP.cmp); DP.go('compare'); DP.render(); });
       }
     }

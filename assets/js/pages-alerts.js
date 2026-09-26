@@ -74,7 +74,7 @@
     var s = U.qs('#al-team', el);
     if (s) s.addEventListener('change', function (e) { U.store.set('alertTeam', e.target.value); DP.go('alerts', null, { team: e.target.value }); });
     U.qsa('[data-copy]', el).forEach(function (b) {
-      b.addEventListener('click', function () { if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(function () { U.toast('Copied'); }); });
+      b.addEventListener('click', function () { U.copy(b.dataset.copy, 'Copied'); });
     });
   }
 })();

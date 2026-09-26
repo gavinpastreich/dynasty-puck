@@ -176,7 +176,7 @@
       }).join('') + '</tbody></table></div>';
       el.addEventListener('click', function (e) {
         var b = e.target.closest('[data-draft]'); if (!b) return;
-        var x = st.pool.find(function (y) { return y.key === b.dataset.draft; }); if (!x) return;
+        var x = st.pool.find(function (y) { return y.key === b.dataset.draft; }); if (!x || st.taken[x.key] || !st.order[st.i]) return;
         st.taken[x.key] = 1; st.log.push({ slot: st.order[st.i], x: x }); st.i++; mockRun(st); DP.render();
       });
     }

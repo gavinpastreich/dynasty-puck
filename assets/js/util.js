@@ -94,6 +94,24 @@
     clearTimeout(U._tt); U._tt = setTimeout(function () { t.style.display = 'none'; }, ms || 2600);
   };
 
+  // copy text: async clipboard API, then the legacy execCommand path, and if both are blocked show the text to copy by hand
+  U.copy = function (text, okMsg) {
+    var legacy = function () {
+      var ta = document.createElement('textarea'), ok = false;
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) U.toast(okMsg || 'Copied');
+      else if (DP.ui && DP.ui.modal) DP.ui.modal('<h2>Copy this</h2><p class="small muted">Your browser blocked the clipboard. Select the text and copy it.</p><textarea readonly style="width:100%;min-height:140px">' + U.esc(text) + '</textarea>');
+      else U.toast(text, 8000);
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { U.toast(okMsg || 'Copied'); }, legacy);
+      else legacy();
+    } catch (e) { legacy(); }
+  };
+
   // hash routing: #/route?key=val&...
   U.parseHash = function () {
     var h = (location.hash || '#/').slice(1), qi = h.indexOf('?'), path = qi >= 0 ? h.slice(0, qi) : h, q = {};

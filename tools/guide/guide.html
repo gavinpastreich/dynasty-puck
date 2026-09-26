@@ -97,7 +97,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <div class="grp" style="margin-top:14px">Everything in the app</div>
   <div class="feat">
     <div><b>🏠 Dashboard</b>Your team's power rank, playoff odds, cap space, this week's opponent and lineup check.</div>
-    <div><b>🧢 Team Hub</b>Lineup check, category strengths, needs, trade partners, cap by season, prospects.</div>
+    <div><b>🧢 Team Hub</b>Lineup check, trade strategy (buy or sell), category needs, cap by season, prospects.</div>
     <div><b>📺 Live Scoreboard</b>This week's category score for every matchup, projected finals and win odds.</div>
     <div><b>🔔 Alerts</b>Opt-in lineup reminders on your phone, calendar or email.</div>
     <div><b>📋 Players · 🛒 Free Agents</b>Every player with projections, value, contract; best FA fits for your team.</div>
@@ -106,7 +106,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
     <div><b>🔁 Trade Machine · 🔎 Trade Finder</b>2-4 team trades with picks; "what would it take to get X?"</div>
     <div><b>✍️ Signing Sim</b>Plan signings and drops, see the cap and category impact.</div>
     <div><b>📊 Standings · 🏅 Awards & Wrapped</b>Real standings with divisions and odds; award races; team recap.</div>
-    <div><b>💎 Trade Value Chart · 📈 Contention Windows</b>Every player and pick on one scale; who's built for now vs later.</div>
+    <div><b>💎 Trade Value Chart · 📈 Contention Windows</b>Every player and pick on one scale; who's really contending and who's built for later.</div>
     <div><b>📰 Weekly Preview · 📜 Trade History · 🎟️ Draft Picks</b>Matchup write-ups for the chat; every trade graded; who owns which pick.</div>
     <div><b>💰 Contracts & Cap · 📅 2027 Offseason</b>Cap by season, penalties, RFA/ELC decisions with prices.</div>
     <div><b>🔨 Auction War Room</b>Next summer's budgets, prices, targets and a live sale tracker.</div>
@@ -130,9 +130,10 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
       <ul>
         <li>See where you rank in each of the <b>15 categories</b> and which ones to fix.</li>
         <li>Get <b>free-agent targets</b> ranked by how many category wins they add to <i>your</i> lineup.</li>
+        <li>Know whether to <b>buy or sell</b>: contender, bubble or not contending, with buy targets or sell candidates and who'd pay most.</li>
         <li>Find <b>trade partners</b> whose strengths match your needs (and vice versa).</li>
         <li><b>Punt check</b>: would ignoring a category win you more overall?</li>
-        <li>Plan around <b>graduations</b>: MNR players close to 82 career GP (41 for goalies).</li>
+        <li>Plan around <b>graduations</b>: MNR players close to 82 career GP (41 for goalies). The lineup check warns before you promote one who's about to graduate.</li>
         <li>See your <b>cap by season</b> with the rising cap line ($104M → $113.5M → $127.5M projected).</li>
       </ul>
     </div>
@@ -227,18 +228,17 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
     <div style="flex:1.3"><img class="shot" src="{{img:trade}}"><div class="cap">🔁 Trade Machine: 2-4 teams, players and draft picks. Shows value under different "lenses" (the model, the league's own trading tendencies, or your own weights for cap, patience, picks and win-now), the category impact this season, playoff odds before and after, cap after the trade, and a "balance it" suggestion. Share a link to any trade.</div></div>
     <div>
       <ul>
+        <li><b>Team context</b>: a contender and a rebuilding team value the same player differently. Every trade shows what it's worth to <i>each</i> team: roster fit (depth, positions, categories) × how much this season matters to them.</li>
+        <li><b>Trade Finder</b>: "who could I get for X?" and "what would it take to get Y?", ranked by deals that help both sides.</li>
         <li><b>League lens</b>: fitted to our 17 real trades, so you can see how <i>this league</i> tends to value picks, youth and cap.</li>
-        <li><b>Trade Finder</b>: "who could I get for X?" and "what would it take to get Y?"</li>
-        <li><b>Trade Value Chart</b>: every player and future pick on one 0-100 scale, in tiers.</li>
-        <li><b>Trade History</b>: every league trade graded with today's projections, a scoreboard, and GM trade personas.</li>
-        <li><b>Draft Picks</b>: who owns every 2027-2029 pick (straight from Fantrax) and what each is worth.</li>
+        <li><b>Trade History</b> grades every league trade; the <b>Trade Value Chart</b> puts every player and pick on one scale; <b>Draft Picks</b> shows who owns every 2027-2029 pick.</li>
       </ul>
+      <img class="shot" src="{{img:tradectx}}" style="margin-top:6px"><div class="cap">Team context: the same deal for a contender (×3.2 win-now weight) and a rebuilding team.</div>
     </div>
   </div>
   <div class="row">
-    <div><img class="shot" src="{{img:values}}"><div class="cap">💎 Trade Value Chart.</div></div>
-    <div><img class="shot" src="{{img:personas}}"><div class="cap">🧠 GM trade personas (Trade History).</div>
-      <img class="shot" src="{{img:picks}}" style="margin-top:8px"><div class="cap">🎟️ Draft Picks: every future pick, its owner and projected value.</div></div>
+    <div><img class="shot" src="{{img:strategy}}"><div class="cap">🧭 Trade strategy (Team Hub): contender, bubble or not contending, plus buy targets or sell candidates with the best buyer.</div></div>
+    <div><img class="shot" src="{{img:personas}}"><div class="cap">🧠 GM trade personas (Trade History): who buys now, who stockpiles picks.</div></div>
   </div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>7</span></div>
 </section>
@@ -296,7 +296,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <img class="shot" src="{{img:awards}}">
   <div class="cap">🏅 Awards race: MVP, contract of the year, rookie of the year, trade of the year, pickup of the year and a luck meter (category wins vs what was expected), plus 🎁 Team Wrapped, a season recap card for any team.</div>
   <div class="row">
-    <div><img class="shot" src="{{img:windows}}"><div class="cap">📈 Contention windows: projected strength of every roster, season by season. Who's built for now, who's built for 2029?</div></div>
+    <div><img class="shot" src="{{img:windows}}"><div class="cap">📈 Contention windows: who is really contending (title odds and win-now weight), each roster's projected strength season by season, and a strategy for every team.</div></div>
     <div><img class="shot" src="{{img:wrapped}}"><div class="cap">🎁 Team Wrapped for one team: record, MVP, best bargain, top prospect, trades, moves, cap and luck.</div>
       <div class="tip">Share a team's Wrapped card or any trade idea with a link: the address bar always holds the exact view.</div></div>
   </div>

@@ -31,6 +31,9 @@ const routes = process.argv.slice(2).length ? process.argv.slice(2) : ['home', '
       const main = await page.$eval('#main', el => el.innerText.slice(0, 160).replace(/\s+/g, ' '));
       if (r === 'home') console.log('   live sync:', await page.evaluate(() => DP.live && [DP.live.state, DP.live.period, DP.live.changes.length, (DP.live.standings || []).length].join(' ')));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      // layout sanity: small inline widgets that blow up (e.g. a class-name clash giving a badge a full-page height)
+      const blown = await page.evaluate(() => [...document.querySelectorAll('#main .badge, #main .pill, #main .btn, #main .pos')].filter((e) => e.getBoundingClientRect().height > 80).map((e) => e.className + ' "' + e.textContent.trim().slice(0, 30) + '" ' + Math.round(e.getBoundingClientRect().height) + 'px').slice(0, 3));
+      blown.forEach((b) => errs.push('layout: oversized ' + b));
       const file = path.join(OUT, vp.n + '_' + r.replace(/[^a-z0-9]+/gi, '_') + '.png');
       await page.screenshot({ path: file, fullPage: false });
       const flag = errs.length || overflow > 2 ? '✗' : '✓';
