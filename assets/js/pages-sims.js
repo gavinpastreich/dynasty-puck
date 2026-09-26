@@ -219,12 +219,12 @@
         if (!st.adds.length && !st.drops.length) h2 += '<p class="muted">No moves yet. Add signings or drops above.</p>';
         h2 += '<ul class="list-plain">' + st.adds.map(function (a) { var p = E.byId[a.id]; return '<li>' + ui.pos(p) + '<span>' + (a.kind === 'fa' ? 'Sign ' : 'Re-sign ') + ui.plink(p) + ' <span class="muted small">WAR ' + U.fmt(p.WAR, 1) + '</span></span><span class="num" style="margin-left:auto">' + U.m(a.sal) + '</span><button class="btn sm ghost" data-rm="' + esc(a.id) + '" aria-label="Remove">✕</button></li>'; }).join('') +
           drops.map(function (p) { return '<li>' + ui.pos(p) + '<span>Drop ' + ui.plink(p) + ' <span class="muted small">dead cap ' + U.m(E.deadCap(p)[0]) + ' this season</span></span><span class="num bad" style="margin-left:auto">−' + U.m(p.sal26) + '</span><button class="btn sm ghost" data-rm="' + esc(p.id) + '" aria-label="Remove">✕</button></li>'; }).join('') + '</ul>';
-        h2 += '<div class="stats" style="margin-top:12px">' + DP.statTile('Cap 2026-27', U.m(capA[0].total), 'was ' + U.m(capB[0].total) + ' · space ' + U.m(E.CAP - capA[0].total)) +
+        h2 += '<div class="stats" style="margin-top:12px">' + DP.statTile('Cap 2026-27', U.m(capA[0].total), 'was ' + U.m(capB[0].total) + ' · space ' + U.m(capA[0].space)) +
           DP.statTile('Cap 2027-28', U.m(capA[1].total), 'was ' + U.m(capB[1].total)) +
           DP.statTile('Roster', String(after.length), 'was ' + ros.length) +
           DP.statTile('Exp. cat wins', U.fmt(winsA.total, 1), ui.delta(winsA.total - winsB.total, 1).replace(/<[^>]+>/g, '') + ' vs now') +
           DP.statTile('Projected finish', U.ord(rA.rank), 'was ' + U.ord(rB.rank)) + '</div>';
-        if (capA[0].total > E.CAP) h2 += '<div class="callout bad">Over the $' + E.CAP + 'M cap by ' + U.m(capA[0].total - E.CAP) + '.</div>';
+        if (capA[0].space < 0) h2 += '<div class="callout bad">Over the $' + capA[0].cap + 'M cap by ' + U.m(-capA[0].space) + '.</div>';
         h2 += '</div><div class="card"><h2>Category ranks before → after</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Cat</th><th class="num">Before</th><th class="num">After</th><th class="num">Δ exp. wins</th></tr></thead><tbody>' +
           E.CATS.map(function (c, i) { var b = catsB.rank[t][i], a2 = catsA.rank[t][i]; return '<tr><td><b>' + esc(c.l) + '</b></td><td class="num">' + U.ord(b) + '</td><td class="num ' + (a2 < b ? 'good' : a2 > b ? 'bad' : '') + '">' + U.ord(a2) + '</td><td class="num">' + ui.delta(winsA.byCat[i] - winsB.byCat[i], 2) + '</td></tr>'; }).join('') + '</tbody></table></div></div></div>';
         box.innerHTML = h2;

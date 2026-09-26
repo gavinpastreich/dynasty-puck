@@ -71,6 +71,9 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
 
 ## 2026-09-26: commissioner answers round 4
 - RFA1 drops count as dead cap (confirmed). TommyG10's Lundkvist/Buchnevich penalties match Fantrax.
+- IR (commissioner, 2026-09-26): a player in a Fantrax IR slot doesn't count against the current season's cap
+  (`irCapExempt`). The slot comes from the nightly/live Fantrax sync (`p.fs`); future seasons are unaffected.
+  Lineup check + lock alerts warn when activating an IR player would put the team over the cap.
 - Hometown discount (HTD): anyone on the team's roster continuously from the trade deadline to season end; 10% off
   the winning bid, the bid still sets the term (Evangelista: $3.1M bid = 2-yr band, paid $2.79M). Deadline date not
   yet known (config hometownDiscount.tradeDeadline); until then the current owner is assumed eligible.

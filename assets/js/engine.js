@@ -879,8 +879,11 @@
     var hurt = ros.filter(function (p) { return act[p.id] && p.r && E.injuredOut(p, wi); });
     var dead = ros.filter(function (p) { return act[p.id] && (!p.r || !E.games(p, wi).N); });
     var byV = function (a, b) { return b.v - a.v; };
+    // activating someone from IR puts his salary back on this season's cap
+    var irUp = start.filter(function (x) { return x.p.fs === 'IR' && E.RULES.irCapExempt !== false; }), irCap = null;
+    if (irUp.length) { var irSal = E.sum(irUp.map(function (x) { return typeof x.p.cy[0] === 'number' ? x.p.cy[0] : 0; })); irCap = { sal: irSal, space: E.teamCap(team)[0].space - irSal }; }
     return { wi: wi, opp: opp, opt: opt, set: set, eOpt: exp(opt), eSet: exp(set), start: start.sort(byV), sit: sit.sort(byV).reverse(),
-      hurt: hurt, dead: dead, nAct: Object.keys(act).length, gFailSet: set.r.gFail, gFailOpt: opt.r.gFail };
+      hurt: hurt, dead: dead, nAct: Object.keys(act).length, gFailSet: set.r.gFail, gFailOpt: opt.r.gFail, irCap: irCap };
   };
 
   // ---------------------------------------------------------------- league weeks & expected standings
@@ -1065,10 +1068,12 @@
   // committed cap by team and year ($M), plus dead cap entries (added by what-if tools)
   E.teamCap = function (team, roster, dead) {
     roster = roster || E.rosters[team];
-    var yrs = E.YEARS.map(function (_, y) { return { total: 0, byType: {}, n: 0, cap: E.capY(y) }; });
+    var yrs = E.YEARS.map(function (_, y) { return { total: 0, byType: {}, n: 0, cap: E.capY(y), ir: 0, irP: [] }; });
+    var irOk = E.RULES.irCapExempt !== false;
     roster.forEach(function (p) {
       p.cy.forEach(function (v, y) {
         if (typeof v !== 'number') return;
+        if (y === 0 && irOk && p.fs === 'IR') { yrs[0].ir += v; yrs[0].irP.push(p); yrs[0].n++; return; } // IR: off this season's cap
         yrs[y].total += v; yrs[y].n++;
         var ty = y === 0 ? p.ct : (p.yStatus && p.yStatus[y] === 'ELC' ? 'ELC1' : p.ct);
         yrs[y].byType[ty] = (yrs[y].byType[ty] || 0) + v;

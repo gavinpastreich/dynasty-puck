@@ -38,6 +38,7 @@ list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
   RFAs on auction contracts (BID, and RFA1 deals signed off them) use the sheet formula instead (mult x salary + add-on).
   Hometown discount: the team that held the player from the trade deadline to season end pays 10% less than its
   winning bid (the bid sets the term). ELCs are $1.5M for 1 or 2 years. Dead cap: BID/RFA1/ELC drops only.
+  Players in a Fantrax IR slot don't count against the current season's cap (future seasons still do).
 - League settings live in `config/league.json` (commissioner edits it on GitHub; the site rebuilds itself).
 - Fantrax league `cbufqc8umo5xrjzu`: public API at `https://www.fantrax.com/fxea/general/` (tools/fantrax_api.py).
 - Raw data: `raw/2026-27/`. Fantrax's "+/-" column is roster-% change, not plus-minus.

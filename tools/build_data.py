@@ -1364,15 +1364,20 @@ def main():
         if r["gm"] and isinstance(r["yrs"][0], (int, float)):
             sheet_pay[r["gm"]] += r["yrs"][0]
     fx_pay = defaultdict(float)
+    ir_pay = defaultdict(float)
     counts = defaultdict(Counter)
     for p in players.values():
         if p["gm"]:
             fx_pay[p["gm"]] += p["sal"] / 1e6
             counts[p["gm"]][p["ct"]] += 1
+            if p.get("fs") == "IR" and CFG.get("irCapExempt", True):
+                ir_pay[p["gm"]] += p["sal"] / 1e6
     for code, name in GMS:
         diff = fx_pay[code] - sheet_pay[code]
         flag = "" if abs(diff) < 0.01 else f"   <- differs by {diff:+.2f}M (Fantrax is current)"
-        over = "  OVER CAP" if fx_pay[code] > CAP / 1e6 else ""
+        over = "  OVER CAP" if fx_pay[code] - ir_pay[code] > CAP / 1e6 else ""
+        if ir_pay[code]:
+            over += f"  (IR relief ${ir_pay[code]:.2f}M)"
         log(f"  {code:9s} Fantrax ${fx_pay[code]:6.2f}M  sheet ${sheet_pay[code]:6.2f}M  "
             f"{dict(counts[code])}{flag}{over}")
     for r in sheet:
@@ -1649,6 +1654,7 @@ def rules_from_config():
         "goalieMinGP": C.get("goalieMinGP", 2), "goalieMinCats": ["W", "GAA", "SV%", "SHO"], "goalieMinNote": C.get("goalieMinNote", ""),
         "deadCapPct": C.get("deadCapPct", 0.5), "deadCapNote": C.get("deadCapNote", ""),
         "deadCapContracts": C.get("deadCapContracts", ["BID", "ELC1", "RFA1"]),
+        "irCapExempt": C.get("irCapExempt", True), "irNote": C.get("irNote", ""),
         "gradSkater": g.get("skaterGP", 82), "gradGoalie": g.get("goalieGP", 41), "gradNote": C.get("gradNote", ""),
         "elcSalary": e.get("salary", 1.5), "elcYears": e.get("years", 2), "elcNote": e.get("note", ""),
         "minSalary": C.get("minSalary", 1.0), "lineup": C.get("lineup", {"F": 12, "D": 6, "G": 2, "bench": 3}),

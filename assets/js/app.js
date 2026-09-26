@@ -35,7 +35,7 @@
     var bg = U.qs('#picker-bg'), E = DP.E;
     var st = {}; (E.expStandings || []).forEach(function (r) { st[r.t] = r; });
     U.qs('#picker-teams').innerHTML = DP.meta.gms.map(function (g) {
-      var ros = E.rosters[g.code] || [], pay = ros.reduce(function (a, p) { return a + p.sal26; }, 0);
+      var ros = E.rosters[g.code] || [], pay = E.teamCap(g.code)[0].total;
       return '<button data-team="' + esc(g.code) + '"><b>' + esc(g.name) + '</b><span>' + esc(g.code) + ' · ' + ros.length + ' players · ' + U.m(pay) + '</span></button>';
     }).join('');
     bg.classList.add('open');

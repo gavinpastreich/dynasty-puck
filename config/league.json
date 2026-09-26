@@ -26,6 +26,8 @@
   "minSalary": 1.0,
   "deadCapPct": 0.5,
   "deadCapContracts": ["BID", "ELC1", "RFA1"],
+  "irCapExempt": true,
+  "irNote": "Players in an IR slot in Fantrax don't count against the current season's cap (commissioner 2026-09-26). Moving one back to the active roster adds his salary back.",
   "deadCapNote": "Commissioner 2026-09-25/26: dropping a BID, RFA1 or ELC contract keeps 50% of its salary on the cap for every remaining contract year; dropping an FA contract costs nothing. Current penalties: raw/<season>/league/cap_penalties.csv.",
 
   "lineup": { "F": 12, "D": 6, "G": 2, "bench": 3 },

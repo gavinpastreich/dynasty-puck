@@ -24,6 +24,7 @@ The site rebuilds itself about 3 minutes later.
 | --- | --- |
 | `capByYear` | Cap per season in $M. Add the new season each year. |
 | `deadCapPct`, `deadCapContracts` | Dead cap on dropped contracts (50% of each remaining year; which contract types count). |
+| `irCapExempt` | `true`: players in an IR slot in Fantrax don't count against the current season's cap. |
 | `lineup`, `goalieMinGP` | Weekly lineup slots and the goalie-games minimum. |
 | `graduation`, `elc` | Career-GP lines for MNR graduation; ELC salary and length. |
 | `elcExpiry` | The menu when an ELC is up (years → AAV), plus the 1-year extension price. |

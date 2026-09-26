@@ -26,7 +26,7 @@
       var lu = E.baseline[t][0].lu, starters = lu.F.concat(lu.D, lu.G).map(function (x) { return x.p; });
       var mnr = ros.filter(function (p) { return p.ct === 'MNR'; });
       out[t] = {
-        t: t, n: ros.length, pay: cap[0].total, space: E.CAP - cap[0].total, cap: cap,
+        t: t, n: ros.length, pay: cap[0].total, space: cap[0].space, ir: cap[0].ir, nIR: cap[0].irP.length, cap: cap,
         dv: E.sum(ros.map(function (p) { return Math.max(0, p.DV); })),
         war: E.sum(starters.map(function (p) { return p.WAR; })),
         pros: E.sum(mnr.map(function (p) { return Math.max(0, p.DV); })), nMnr: mnr.length,
@@ -67,7 +67,7 @@
     return 'locks ' + s + ' (in ' + (d ? d + 'd ' + hh + 'h' : hh ? hh + 'h ' + mm + 'm' : mm + 'm') + ')';
   };
   DP.fsTag = function (p) {
-    return p && p.gm && p.fs && p.fs !== 'A' ? '<span class="fs ' + p.fs + '" title="Slot in Fantrax right now">' + (DP.SLOT_NAME || {})[p.fs] + '</span>' : '';
+    return p && p.gm && p.fs && p.fs !== 'A' ? '<span class="fs ' + p.fs + '" title="Slot in Fantrax right now' + (p.fs === 'IR' && DP.E.RULES.irCapExempt !== false ? ': off the 2026-27 cap while on IR' : '') + '">' + (DP.SLOT_NAME || {})[p.fs] + '</span>' : '';
   };
   DP.lineupCheckHtml = function (team, compact) {
     var E = DP.E, wi = E.lockWeek();
@@ -82,6 +82,7 @@
       if (fine && !chk.start.length) return '<div class="callout good">✓ Your Fantrax lineup for ' + head + ' matches the optimal lineup (' + U.fmt(chk.eSet, 1) + ' expected cats).</div>';
       return '<div class="callout ' + (gap > 0.3 ? 'bad' : 'warn') + '"><b>Lineup check</b>, ' + head + ': as set in Fantrax you project <b>' + U.fmt(chk.eSet, 1) + '</b> cats, optimal <b>' + U.fmt(chk.eOpt, 1) + '</b> (' + U.sgn(-gap, 1) + ').' +
         (chk.start.length ? ' Start ' + chk.start.slice(0, 3).map(nm).join(', ') + (chk.sit.length ? ' over ' + chk.sit.slice(0, 3).map(function (x) { return ui.plink(x.p) + why(x.p); }).join(', ') : '') + '.' : '') +
+        (chk.irCap && chk.irCap.space < 0 ? ' <span class="bad">Activating from IR puts you ' + U.m(-chk.irCap.space) + ' over the cap.</span>' : '') +
         ' <a href="#/team/' + encodeURIComponent(team) + '">Details →</a></div>';
     }
     var h = '<p class="small">' + head + '</p><div class="stats" style="margin:6px 0 10px">' +
@@ -93,6 +94,7 @@
     var extra = chk.hurt.concat(chk.dead).filter(function (p, i, a) { return a.indexOf(p) === i && !chk.sit.some(function (x) { return x.p === p; }); });
     if (extra.length) h += '<p class="small warn">Active in Fantrax but not expected to play: ' + extra.map(function (p) { return ui.plink(p) + why(p); }).join(', ') + '.</p>';
     if (chk.gFailSet > 0.12) h += '<p class="small bad">Goalie minimum: your set lineup has a ' + U.pct(chk.gFailSet) + ' chance of fewer than 2 goalie GP (optimal: ' + U.pct(chk.gFailOpt) + ').</p>';
+    if (chk.irCap) h += '<p class="small ' + (chk.irCap.space < 0 ? 'bad' : 'muted') + '">Activating from IR adds ' + U.m(chk.irCap.sal) + ' back to your 2026-27 cap: space goes to ' + U.m(chk.irCap.space) + (chk.irCap.space < 0 ? '. That doesn\'t fit, so clear room first (IR players don\'t count against the cap).' : ' (IR players don\'t count against the cap).') + '</p>';
     if (chk.start.some(function (x) { return x.p.fs === 'M'; })) h += '<p class="small muted">Players in Minors slots have to be moved up in Fantrax first (Active + Bench max ' + ((DP.league.fantrax && DP.league.fantrax.roster && DP.league.fantrax.roster.maxTotalPlayers) || 23) + ').</p>';
     h += '<p class="small muted">Lineups ' + (DP.live.state === 'ok' ? 'synced live from Fantrax at ' + esc(DP.live.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) : 'from the nightly Fantrax sync (' + esc((DP.league.fantrax || {}).fetched || '').slice(0, 16).replace('T', ' ') + ' UTC)') + '. Opponent uses their Fantrax lineup too. Injuries from Daily Faceoff.</p>';
     return h;
@@ -132,7 +134,7 @@
           DP.statTile('Power rank', '#' + s.prank, 'now + dynasty + prospects') +
           DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' cats') +
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
-          DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(E.CAP, 0)) +
+          DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(E.CAP, 0) + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
           (nm ? DP.statTile((E.weeks[nm[0] - 1].po ? 'Playoffs' : 'Week ' + nm[0]) + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
           '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
@@ -234,7 +236,7 @@
       h += '<div class="stats">' +
         DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' category record') +
         '<div class="stat"><div class="l">Playoff odds</div><div class="v" id="t-po">…</div><div class="d" id="t-champ">title odds …</div></div>' +
-        DP.statTile('Payroll 2026-27', U.m(s.pay), 'cap space ' + U.m(s.space)) +
+        DP.statTile('Payroll 2026-27', U.m(s.pay), 'cap space ' + U.m(s.space) + (s.ir ? ' · ' + U.m(s.ir) + ' on IR, off the cap' : '')) +
         DP.statTile('Starter WAR', U.fmt(s.war, 1), 'week-1 optimal lineup') +
         DP.statTile('Dynasty value', U.fmt(s.dv, 0), U.ord(Object.keys(TS).filter(function (k) { return TS[k].dv > s.dv; }).length + 1) + ' in league') +
         DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') +
@@ -279,7 +281,8 @@
       var types = ['BID', 'RFA1', 'ELC1', 'FA', 'MNR', 'Dead'];
       var series = types.map(function (ty, k) { return { name: ty, values: s.cap.map(function (y) { return y.byType[ty] || 0; }), color: C.SERIES[k] }; }).filter(function (sr) { return sr.values.some(function (v) { return v > 0; }); });
       U.qs('#t-cap', el).innerHTML = C.stacked(E.YEARS.map(function (y) { return y.slice(2); }), series, { refLine: s.cap.map(function (y) { return y.cap; }), refLabel: 'cap', fmt: function (v) { return U.m(v); }, tickFmt: function (v) { return '$' + v + 'M'; }, title: 'Committed cap by season' }) +
-        '<div class="tbl-wrap"><table class="t"><thead><tr><th></th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody><tr><td>Committed</td>' + s.cap.map(function (y) { return '<td class="num">' + U.m(y.total, 1) + '</td>'; }).join('') + '</tr><tr><td>Space</td>' + s.cap.map(function (y) { return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.space, 1) + '</td>'; }).join('') + '</tr><tr><td>Players</td>' + s.cap.map(function (y) { return '<td class="num">' + y.n + '</td>'; }).join('') + '</tr></tbody></table></div>';
+        '<div class="tbl-wrap"><table class="t"><thead><tr><th></th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody><tr><td>Committed</td>' + s.cap.map(function (y) { return '<td class="num">' + U.m(y.total, 1) + '</td>'; }).join('') + '</tr><tr><td>Space</td>' + s.cap.map(function (y) { return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.space, 1) + '</td>'; }).join('') + '</tr><tr><td>Players</td>' + s.cap.map(function (y) { return '<td class="num">' + y.n + '</td>'; }).join('') + '</tr></tbody></table></div>' +
+        (s.ir ? '<p class="small muted">IR relief: ' + s.cap[0].irP.map(function (p) { return ui.plink(p) + ' ' + U.m(p.cy[0]); }).join(', ') + (s.nIR > 1 ? ' (' + U.m(s.ir) + ')' : '') + ' ' + (s.nIR > 1 ? 'are' : 'is') + ' on IR in Fantrax, so ' + (s.nIR > 1 ? 'they don\'t' : 'it doesn\'t') + ' count against the 2026-27 cap. Future seasons still count.</p>' : '');
 
       // age & pipeline
       var buckets = [['≤21', 0, 21.99], ['22-24', 22, 24.99], ['25-27', 25, 27.99], ['28-30', 28, 30.99], ['31-33', 31, 33.99], ['34+', 34, 99]];
