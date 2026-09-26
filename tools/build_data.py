@@ -1245,6 +1245,7 @@ def main():
     league["drafts"] = load_drafts(players)
     build_prospects(players, act27, hist26, bios, leagues)
     write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_cor, league)
+    write_calendars(weeks, h2h)
     with open(os.path.join(ROOT, "tools", "build_report.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(REPORT) + "\n")
     print("wrote tools/build_report.txt")
@@ -1355,6 +1356,71 @@ def build_prospects(players, act27, hist26, bios, leagues):
 
 
 # ----------------------------------------------------------------------------- league file
+def team_slug(code):
+    return re.sub(r"[^A-Za-z0-9]", "", code)
+
+
+def write_calendars(weeks, h2h):
+    """Per-team iCalendar feeds (data/cal/<team>.ics): every lineup lock with the opponent, plus a league feed."""
+    folder = os.path.join(OUT, "cal")
+    os.makedirs(folder, exist_ok=True)
+    site = CFG.get("alerts", {}).get("siteUrl", "")
+    hours = CFG.get("alerts", {}).get("lockReminderHours", 3)
+    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    name = dict(GMS)
+
+    def utc(iso):
+        return dt.datetime.fromisoformat(iso).astimezone(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+    def esc(t):
+        return t.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+    def fold(line):  # RFC 5545: lines over 75 octets are folded
+        out, b = [], line.encode("utf-8")
+        while len(b) > 74:
+            cut = 74
+            while (b[cut] & 0xC0) == 0x80:
+                cut -= 1
+            out.append(b[:cut].decode("utf-8"))
+            b = b" " + b[cut:]
+        out.append(b.decode("utf-8"))
+        return "\r\n".join(out)
+
+    def cal(code):
+        title = f"Dynasty Puck: {name[code]}" if code else "Dynasty Puck: lineup locks"
+        L = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Dynasty Puck HQ//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+             f"X-WR-CALNAME:{esc(title)}", "X-WR-TIMEZONE:America/New_York", "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+             "X-PUBLISHED-TTL:PT12H"]
+        for w in weeks:
+            if not w.get("lock"):
+                continue
+            opp = None
+            if code and not w["po"]:
+                for g in h2h:
+                    if g[0] == w["n"] and code in (g[1], g[2]):
+                        opp = g[2] if g[1] == code else g[1]
+            label = f"Playoffs round {w['po']}" if w["po"] else f"Week {w['n']}"
+            summary = f"Lineup lock: {label}" + (f" vs {name[opp]}" if opp else "")
+            link = f"{site}#/team/{code}" if code else f"{site}#/preview"
+            desc = (f"{label} ({w['start']} to {w['end']}) locks now. Set your Fantrax lineup before puck drop. "
+                    f"Lineup check and matchup preview: {link}")
+            start = utc(w["lock"])
+            end = (dt.datetime.fromisoformat(w["lock"]).astimezone(dt.timezone.utc) + dt.timedelta(minutes=15)).strftime("%Y%m%dT%H%M%SZ")
+            L += ["BEGIN:VEVENT", f"UID:dp-{SEASON_ID}-{team_slug(code) if code else 'league'}-w{w['n']}@dynastypuck", f"DTSTAMP:{stamp}",
+                  f"DTSTART:{start}", f"DTEND:{end}", f"SUMMARY:{esc(summary)}", f"DESCRIPTION:{esc(desc)}", f"URL:{link}",
+                  "BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{esc(summary)}", f"TRIGGER:-PT{hours}H", "END:VALARM",
+                  "END:VEVENT"]
+        L.append("END:VCALENDAR")
+        return "\r\n".join(fold(x) for x in L) + "\r\n"
+
+    for code, _ in GMS:
+        with open(os.path.join(folder, team_slug(code) + ".ics"), "w", encoding="utf-8", newline="") as f:
+            f.write(cal(code))
+    with open(os.path.join(folder, "league.ics"), "w", encoding="utf-8", newline="") as f:
+        f.write(cal(None))
+    log(f"wrote data/cal/*.ics ({len(GMS)} team feeds + league feed)")
+
+
 def rules_from_config():
     C = CFG
     g, e, x, r = C.get("graduation", {}), C.get("elc", {}), C.get("elcExpiry", {}), C.get("rfa", {})

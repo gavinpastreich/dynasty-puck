@@ -121,7 +121,7 @@
     return h;
   };
 
-  document.addEventListener('click', function (e) {
+  if (typeof document !== 'undefined') document.addEventListener('click', function (e) {
     var b = e.target.closest('#livebtn');
     if (b) { DP.ui.modal(live.panel()); return; }
     var a = e.target.closest('[data-live]'); if (!a) return;

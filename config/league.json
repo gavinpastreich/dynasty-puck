@@ -87,8 +87,12 @@
   "oldTeamNames": { "Cawlidge Hockey": "ROO", "Gavitron": "M.M", "Lsleeves": "BULLIES", "btsay45": "btsay45", "mertin": "mertin", "nbracken": "nbracken" },
 
   "alerts": {
-    "_what": "Opt-in alerts sent by GitHub Actions. ntfy topics are '<ntfyPrefix>-<team code>'. Email needs repository secrets (see docs/COMMISSIONER.md).",
+    "_what": "Opt-in alerts sent by GitHub Actions (.github/workflows/alerts.yml). Phone push topics are '<ntfyPrefix>-<team code letters>'. Email needs the league Gmail address below plus the repository secret DP_EMAIL_APP_PASSWORD (see docs/COMMISSIONER.md); leave emailAddress empty to hide email sign-up.",
     "ntfyPrefix": "dynastypuck-7q2",
-    "siteUrl": "https://gavinpastreich.github.io/dynasty-puck/"
+    "siteUrl": "https://gavinpastreich.github.io/dynasty-puck/",
+    "emailAddress": "",
+    "lockReminderHours": 3,
+    "weeklyDigestDay": "Monday",
+    "weeklyDigestHourET": 9
   }
 }

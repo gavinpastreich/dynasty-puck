@@ -1,0 +1,34 @@
+name: Alerts
+# Opt-in alerts for GMs (see the Alerts page on the site and docs/COMMISSIONER.md). Runs on GitHub's servers every hour;
+# each run only sends something when it's time: lineup-lock reminders a few hours before each lock, a daily team update
+# after the nightly refresh, and the Monday email digest. Uses no Claude usage.
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Send now instead of waiting: lock, daily or weekly (leave empty for the normal schedule check)"
+        required: false
+        default: ""
+permissions:
+  contents: read
+concurrency:
+  group: alerts
+  cancel-in-progress: false
+jobs:
+  alerts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Push alerts (ntfy) and weekly digest
+        run: node tools/alerts.js ${{ inputs.mode && format('--force {0}', inputs.mode) || '' }}
+      - name: Email (league Gmail)
+        if: always()
+        env:
+          DP_EMAIL_APP_PASSWORD: ${{ secrets.DP_EMAIL_APP_PASSWORD }}
+        run: python3 tools/alerts_email.py

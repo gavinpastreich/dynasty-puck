@@ -6,7 +6,7 @@
   if (DP.state.team && !DP.meta.gms.some(function (g) { return g.code === DP.state.team; })) DP.state.team = null;
 
   var NAV = [
-    ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub']]],
+    ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub'], ['alerts', '🔔', 'Alerts']]],
     ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
     ['League', [['standings', '🏅', 'Standings'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],

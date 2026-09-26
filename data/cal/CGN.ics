@@ -1,0 +1,442 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Dynasty Puck HQ//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Dynasty Puck: Colganites
+X-WR-TIMEZONE:America/New_York
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w1@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20260929T210000Z
+DTEND:20260929T211500Z
+SUMMARY:Lineup lock: Week 1 vs Book Hockey HC
+DESCRIPTION:Week 1 (2026-09-29 to 2026-10-04) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 1 vs Book Hockey HC
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w2@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261005T230000Z
+DTEND:20261005T231500Z
+SUMMARY:Lineup lock: Week 2 vs Worcester Gators
+DESCRIPTION:Week 2 (2026-10-05 to 2026-10-11) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 2 vs Worcester Gators
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w3@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261012T170000Z
+DTEND:20261012T171500Z
+SUMMARY:Lineup lock: Week 3 vs Beginner's Luck
+DESCRIPTION:Week 3 (2026-10-12 to 2026-10-18) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 3 vs Beginner's Luck
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w4@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261019T230000Z
+DTEND:20261019T231500Z
+SUMMARY:Lineup lock: Week 4 vs mcianfrani
+DESCRIPTION:Week 4 (2026-10-19 to 2026-10-25) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 4 vs mcianfrani
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w5@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261026T230000Z
+DTEND:20261026T231500Z
+SUMMARY:Lineup lock: Week 5 vs Bethesda Bullies
+DESCRIPTION:Week 5 (2026-10-26 to 2026-11-01) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 5 vs Bethesda Bullies
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w6@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261103T000000Z
+DTEND:20261103T001500Z
+SUMMARY:Lineup lock: Week 6 vs Kalamazoo Kangaroo
+DESCRIPTION:Week 6 (2026-11-02 to 2026-11-08) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 6 vs Kalamazoo Kangaroo
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w7@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261110T010000Z
+DTEND:20261110T011500Z
+SUMMARY:Lineup lock: Week 7 vs South Philly Gravy
+DESCRIPTION:Week 7 (2026-11-09 to 2026-11-15) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 7 vs South Philly Gravy
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w8@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261117T003000Z
+DTEND:20261117T004500Z
+SUMMARY:Lineup lock: Week 8 vs nebsnave
+DESCRIPTION:Week 8 (2026-11-16 to 2026-11-22) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 8 vs nebsnave
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w9@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261124T000000Z
+DTEND:20261124T001500Z
+SUMMARY:Lineup lock: Week 9 vs Cake Eaters
+DESCRIPTION:Week 9 (2026-11-23 to 2026-11-29) locks now. Set your Fantrax 
+ lineup before puck drop. Lineup check and matchup preview: https://gavinp
+ astreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 9 vs Cake Eaters
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w10@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261130T180000Z
+DTEND:20261130T181500Z
+SUMMARY:Lineup lock: Week 10 vs Upper Darby Rats
+DESCRIPTION:Week 10 (2026-11-30 to 2026-12-06) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 10 vs Upper Darby Rats
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w11@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261207T180000Z
+DTEND:20261207T181500Z
+SUMMARY:Lineup lock: Week 11 vs TommyG1095
+DESCRIPTION:Week 11 (2026-12-07 to 2026-12-13) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 11 vs TommyG1095
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w12@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261214T190000Z
+DTEND:20261214T191500Z
+SUMMARY:Lineup lock: Week 12 vs Milwaukee Musketeers
+DESCRIPTION:Week 12 (2026-12-14 to 2026-12-20) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 12 vs Milwaukee Musketeers
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w13@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261221T190000Z
+DTEND:20261221T191500Z
+SUMMARY:Lineup lock: Week 13 vs Wags8210
+DESCRIPTION:Week 13 (2026-12-21 to 2026-12-27) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 13 vs Wags8210
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w14@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20261228T190000Z
+DTEND:20261228T191500Z
+SUMMARY:Lineup lock: Week 14 vs Book Hockey HC
+DESCRIPTION:Week 14 (2026-12-28 to 2027-01-03) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 14 vs Book Hockey HC
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w15@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270105T003000Z
+DTEND:20270105T004500Z
+SUMMARY:Lineup lock: Week 15 vs Worcester Gators
+DESCRIPTION:Week 15 (2027-01-04 to 2027-01-10) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 15 vs Worcester Gators
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w16@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270112T003000Z
+DTEND:20270112T004500Z
+SUMMARY:Lineup lock: Week 16 vs Beginner's Luck
+DESCRIPTION:Week 16 (2027-01-11 to 2027-01-17) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 16 vs Beginner's Luck
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w17@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270118T183000Z
+DTEND:20270118T184500Z
+SUMMARY:Lineup lock: Week 17 vs mcianfrani
+DESCRIPTION:Week 17 (2027-01-18 to 2027-01-24) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 17 vs mcianfrani
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w18@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270126T000000Z
+DTEND:20270126T001500Z
+SUMMARY:Lineup lock: Week 18 vs Bethesda Bullies
+DESCRIPTION:Week 18 (2027-01-25 to 2027-01-31) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 18 vs Bethesda Bullies
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w19@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270201T190000Z
+DTEND:20270201T191500Z
+SUMMARY:Lineup lock: Week 19 vs Kalamazoo Kangaroo
+DESCRIPTION:Week 19 (2027-02-01 to 2027-02-14) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 19 vs Kalamazoo Kangaroo
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w20@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270215T190000Z
+DTEND:20270215T191500Z
+SUMMARY:Lineup lock: Week 20 vs South Philly Gravy
+DESCRIPTION:Week 20 (2027-02-15 to 2027-02-21) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 20 vs South Philly Gravy
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w21@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270222T190000Z
+DTEND:20270222T191500Z
+SUMMARY:Lineup lock: Week 21 vs nebsnave
+DESCRIPTION:Week 21 (2027-02-22 to 2027-02-28) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 21 vs nebsnave
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w22@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270302T000000Z
+DTEND:20270302T001500Z
+SUMMARY:Lineup lock: Week 22 vs Cake Eaters
+DESCRIPTION:Week 22 (2027-03-01 to 2027-03-07) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 22 vs Cake Eaters
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w23@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270309T000000Z
+DTEND:20270309T001500Z
+SUMMARY:Lineup lock: Week 23 vs Upper Darby Rats
+DESCRIPTION:Week 23 (2027-03-08 to 2027-03-14) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 23 vs Upper Darby Rats
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w24@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270315T190000Z
+DTEND:20270315T191500Z
+SUMMARY:Lineup lock: Week 24 vs TommyG1095
+DESCRIPTION:Week 24 (2027-03-15 to 2027-03-21) locks now. Set your Fantrax
+  lineup before puck drop. Lineup check and matchup preview: https://gavin
+ pastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Week 24 vs TommyG1095
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w25@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270322T230000Z
+DTEND:20270322T231500Z
+SUMMARY:Lineup lock: Playoffs round 1
+DESCRIPTION:Playoffs round 1 (2027-03-22 to 2027-03-28) locks now. Set you
+ r Fantrax lineup before puck drop. Lineup check and matchup preview: http
+ s://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Playoffs round 1
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w26@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270329T230000Z
+DTEND:20270329T231500Z
+SUMMARY:Lineup lock: Playoffs round 2
+DESCRIPTION:Playoffs round 2 (2027-03-29 to 2027-04-04) locks now. Set you
+ r Fantrax lineup before puck drop. Lineup check and matchup preview: http
+ s://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Playoffs round 2
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-CGN-w27@dynastypuck
+DTSTAMP:20260926T015316Z
+DTSTART:20270405T180000Z
+DTEND:20270405T181500Z
+SUMMARY:Lineup lock: Playoffs round 3
+DESCRIPTION:Playoffs round 3 (2027-04-05 to 2027-04-10) locks now. Set you
+ r Fantrax lineup before puck drop. Lineup check and matchup preview: http
+ s://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+URL:https://gavinpastreich.github.io/dynasty-puck/#/team/CGN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lineup lock: Playoffs round 3
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
