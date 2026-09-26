@@ -1,6 +1,6 @@
-Dynasty Puck HQ build 2026-09-26T03:04:42
+Dynasty Puck HQ build 2026-09-26T09:52:46
 Fantrax: synced 596 rostered players, 126 future picks, 14 teams in standings
-Fantrax sync (2026-09-26T03:04:44+00:00): 596 rostered; changes vs CSV: none
+Fantrax sync (2026-09-26T09:52:48+00:00): 596 rostered; changes vs CSV: none
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1258 players (596 rostered)
 NHL id match: {'index': 1150, 'search': 106, None: 2}; unmatched 2 (rostered: 0)
@@ -58,7 +58,7 @@ Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay
 2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
 2025 draft: a departed owner's picks credited to CGN (inferred from where their picks are today)
 2025 initial draft: 280 picks; matched to current player file: 279
-Leagues seen in player histories (top 40): NHL:7504, AHL:3316, OHL:842, WHL:822, NCAA:806, WC:716, WJC-20:685, USHL:630, QMJHL:405, WJC-18:398, KHL:303, SHL:295, WHC-17:274, QC Int PW:251, EHT:238, WJC-A:223, WC-A:221, MHL:219, Hlinka Gretzky Cup:188, OG:181, ECHL:180, J20 Nationell:169, Liiga:164, Brick Invitational:153, NTDP:146, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:108, U16 SM:107, J18 Allsvenskan:107, USHS-Prep:104, AMBHL:102, USHS-MN:101
+Leagues seen in player histories (top 40): NHL:7504, AHL:3316, OHL:845, WHL:822, NCAA:806, WC:716, WJC-20:685, USHL:630, QMJHL:406, WJC-18:398, KHL:303, SHL:295, WHC-17:274, QC Int PW:251, EHT:238, WJC-A:223, WC-A:221, MHL:219, Hlinka Gretzky Cup:188, OG:181, ECHL:180, J20 Nationell:169, Liiga:164, Brick Invitational:153, NTDP:146, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:108, U16 SM:107, J18 Allsvenskan:107, USHS-Prep:104, AMBHL:102, USHS-MN:101
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'USHS-Prep', 'AMBHL', 'USHS-MN', 'Russia U16', '4 Nations', 'TV-Pucken', 'USA-S15', 'Russia U17', 'WSI U12', 'Memorial Cup', 'WJAC-19', 'J18 Nationell', 'WSI U13', 'USA-S17', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'USA-S16', 'QMAAA', 'AMHL', 'U-17', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
