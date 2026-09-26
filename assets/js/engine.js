@@ -271,8 +271,8 @@
   };
   // weekly-lock optimizer: best 12F / 6D / 2G from every owned player (MNR included)
   E.lineup = function (roster, wi, opts) {
-    var L = E.RULES.lineup, excl = (opts && opts.exclude) || null, inj = opts && opts.injuries;
-    var pool = roster.filter(function (p) { return p.r && (!excl || !excl[p.id]) && (!inj || !E.injuredOut(p, wi)); })
+    var L = E.RULES.lineup, excl = (opts && opts.exclude) || null, inj = opts && opts.injuries, only = (opts && opts.only) || null;
+    var pool = roster.filter(function (p) { return p.r && (!excl || !excl[p.id]) && (!only || only[p.id]) && (!inj || !E.injuredOut(p, wi)); })
       .map(function (p) { return { p: p, v: E.weeklyValue(p, wi) }; })
       .sort(function (a, b) { return b.v - a.v; });
     var G = [], D = [], F = [], used = {};
@@ -700,6 +700,64 @@
     return res;
   };
 
+  // ---------------------------------------------------------------- calendar: which week is live / next to lock
+  E.now = function () { return DP.nowOverride ? new Date(DP.nowOverride) : new Date(); };
+  E.lockTime = function (wi) { // lineups lock when the Fantrax period starts (first puck drop); fallback 7 PM ET
+    var w = E.weeks[wi]; return w ? new Date(w.lock || (w.start + 'T19:00:00-04:00')) : null;
+  };
+  E.lockWeek = function () { // week index your lineup changes apply to now (null after the last lock)
+    var t = E.now().getTime();
+    for (var i = 0; i < E.NW; i++) if (E.lockTime(i).getTime() > t) return i;
+    return null;
+  };
+  E.nowWeek = function () { // week in progress (-1 before the season starts)
+    var lw = E.lockWeek(); return lw === null ? E.NW - 1 : lw - 1;
+  };
+  E.opponent = function (team, wi) {
+    var g = DP.meta.h2h.find(function (m) { return m[0] === wi + 1 && (m[1] === team || m[2] === team); });
+    return g ? (g[1] === team ? g[2] : g[1]) : null;
+  };
+
+  // ---------------------------------------------------------------- actual standings (Fantrax) as the sim's starting point
+  // Fantrax category standings: every matchup gives each team 15 results, so W+L+T = 15 x weeks played.
+  E.actual = function () {
+    var st = (DP.live && DP.live.standings) || DP.league.standings || [];
+    var tot = st.map(function (r) { return r.W + r.L + r.T; }), mx = tot.length ? Math.max.apply(null, tot) : 0;
+    if (!mx) return null;
+    if (mx % E.NC) return { done: 0, rec: {}, odd: true, list: st };
+    var rec = {}; st.forEach(function (r) { rec[r.t] = r; });
+    return { done: Math.min(E.REG_WEEKS, mx / E.NC), rec: rec, list: st };
+  };
+
+  // Fantrax lineup check: the lineup a team has set (ACTIVE slots) vs the optimal weekly-lock lineup
+  E.setLineupIds = function (team) {
+    var act = {}, n = 0;
+    (E.rosters[team] || []).forEach(function (p) { if (p.fs === 'A') { act[p.id] = 1; n++; } });
+    return n ? act : null;
+  };
+  E.lineupCheck = function (team, wi) {
+    var ros = E.rosters[team], act = E.setLineupIds(team);
+    if (!act || wi === null || wi === undefined) return null;
+    var opt = E.teamWeek(ros, wi, { injuries: true }), set = E.teamWeek(ros, wi, { only: act, injuries: true });
+    var opp = E.opponent(team, wi), oppW = null;
+    if (opp) { var oa = E.setLineupIds(opp); oppW = E.teamWeek(E.rosters[opp], wi, oa ? { only: oa, injuries: true } : { injuries: true }); }
+    var exp = function (A) {
+      if (oppW) return E.sum(E.matchupProbs(A, oppW).map(function (x) { return x.w + x.t / 2; }));
+      var s = 0, n = 0; // playoffs / bye: average over the league's optimal lineups
+      E.teams.forEach(function (u) { if (u !== team) { s += E.sum(E.matchupProbs(A, E.baseline[u][wi]).map(function (x) { return x.w + x.t / 2; })); n++; } });
+      return s / n;
+    };
+    var ids = function (lu) { var o = {}; lu.F.concat(lu.D, lu.G).forEach(function (x) { o[x.p.id] = x; }); return o; };
+    var io = ids(opt.lu), is = ids(set.lu);
+    var start = Object.keys(io).filter(function (id) { return !is[id]; }).map(function (id) { return io[id]; });
+    var sit = Object.keys(is).filter(function (id) { return !io[id]; }).map(function (id) { return is[id]; });
+    var hurt = ros.filter(function (p) { return act[p.id] && p.r && E.injuredOut(p, wi); });
+    var dead = ros.filter(function (p) { return act[p.id] && (!p.r || !E.games(p, wi).N); });
+    var byV = function (a, b) { return b.v - a.v; };
+    return { wi: wi, opp: opp, opt: opt, set: set, eOpt: exp(opt), eSet: exp(set), start: start.sort(byV), sit: sit.sort(byV).reverse(),
+      hurt: hurt, dead: dead, nAct: Object.keys(act).length, gFailSet: set.r.gFail, gFailOpt: opt.r.gFail };
+  };
+
   // ---------------------------------------------------------------- league weeks & expected standings
   E.leagueWeeks = function (rosters) {
     rosters = rosters || E.rosters;
@@ -711,10 +769,14 @@
     return out;
   };
   E.expectedStandings = function (weeksByTeam) {
-    var rec = {};
-    E.teams.forEach(function (t) { rec[t] = { t: t, W: 0, L: 0, T: 0, cats: new Array(E.NC).fill(0), mw: 0 }; });
+    var rec = {}, act = E.actual(), done = act ? act.done : 0;
+    E.teams.forEach(function (t) {
+      var r0 = act && act.rec[t];
+      rec[t] = { t: t, W: r0 ? r0.W : 0, L: r0 ? r0.L : 0, T: r0 ? r0.T : 0, cats: new Array(E.NC).fill(0), mw: 0 };
+    });
     DP.meta.h2h.forEach(function (g) {
       var wi = g[0] - 1, a = g[1], b = g[2];
+      if (wi < done) return; // already played: the Fantrax record is in the starting totals
       var pr = E.matchupProbs(weeksByTeam[a][wi], weeksByTeam[b][wi]);
       var ea = 0, eb = 0;
       pr.forEach(function (x, c) {
@@ -1074,7 +1136,11 @@
         return { mu: cv.mu, sd: cv.va.map(Math.sqrt), cdf: cdf, ggp: agg.m.GGP };
       });
     });
-    var games = DP.meta.h2h.map(function (g) { return [g[0] - 1, idx[g[1]], idx[g[2]]]; });
+    var act = opts.fromScratch ? null : E.actual(), done = act ? act.done : 0;
+    var games = DP.meta.h2h.filter(function (g) { return g[0] - 1 >= done; }).map(function (g) { return [g[0] - 1, idx[g[1]], idx[g[2]]]; });
+    var W0 = teams.map(function (t) { return act && act.rec[t] ? act.rec[t].W : 0; });
+    var L0 = teams.map(function (t) { return act && act.rec[t] ? act.rec[t].L : 0; });
+    var T0 = teams.map(function (t) { return act && act.rec[t] ? act.rec[t].T : 0; });
     var res = teams.map(function () {
       return { W: 0, L: 0, T: 0, seed: new Array(nt).fill(0), po: 0, r2: 0, fin: 0, champ: 0, first: 0, last: 0, slot: new Array(nt).fill(0) };
     });
@@ -1122,7 +1188,7 @@
     var eps = new Array(nt);
     for (var s = 0; s < N; s++) {
       for (var t = 0; t < nt; t++) eps[t] = noise * nrm();
-      var W = new Array(nt).fill(0), L = new Array(nt).fill(0), T = new Array(nt).fill(0);
+      var W = W0.slice(), L = L0.slice(), T = T0.slice();
       for (var gi = 0; gi < games.length; gi++) {
         var g = games[gi], a = sample(P[g[1]][g[0]], g[1], eps), b = sample(P[g[2]][g[0]], g[2], eps);
         var r = compare(a, b), lost = E.NC - r[0] - r[1] - r[2];
@@ -1179,13 +1245,15 @@
         }
       }
     }
-    return teams.map(function (t, i) {
+    var out = teams.map(function (t, i) {
       var r = res[i];
       return { t: t, W: r.W / N, L: r.L / N, T: r.T / N, pct: (r.W + 0.5 * r.T) / Math.max(1, r.W + r.L + r.T),
         seed: r.seed.map(function (x) { return x / N; }), po: r.po / N, r2: r.r2 / N, fin: r.fin / N, champ: r.champ / N,
         first: r.first / N, last: r.last / N, slot: r.slot.map(function (x) { return x / N; }),
         avgSeed: r.seed.reduce(function (a, x, k) { return a + x * (k + 1); }, 0) / N };
     }).sort(function (a, b) { return b.pct - a.pct; });
+    out.done = done;
+    return out;
   };
 
   // single-week Monte Carlo for the matchup page: P(win matchup), distribution of category score

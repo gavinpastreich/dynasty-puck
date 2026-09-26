@@ -10,10 +10,8 @@
       return '<option value="' + (i + 1) + '"' + (i + 1 === sel ? ' selected' : '') + '>' + lab + ' · ' + U.date(new Date(w.start + 'T12:00:00Z')) + '–' + U.date(new Date(w.end + 'T12:00:00Z')) + '</option>';
     }).join('');
   }
-  function currentWeek() {
-    var E = DP.E, today = new Date().toISOString().slice(0, 10);
-    for (var i = 0; i < E.weeks.length; i++) if (today <= E.weeks[i].end) return i + 1;
-    return 1;
+  function currentWeek() { // the week in progress, or week 1 before the season
+    var nw = DP.E.nowWeek(); return nw < 0 ? 1 : nw + 1;
   }
   DP.currentWeek = currentWeek;
   function catFmt(c, v) {
@@ -35,11 +33,14 @@
       if (!a || !b) { a = a || (games[0] ? games[0][1] : E.teams[0]); b = b || (games[0] ? games[0][2] : E.teams[1]); }
       if (a === b) b = E.teams.find(function (t) { return t !== a; });
       var excl = {}; (q.x || '').split(',').filter(Boolean).forEach(function (id) { excl[id] = 1; });
-      var autoInj = q.inj !== '0';
+      var autoInj = q.inj !== '0', useSet = q.set === '1';
       var h = '<div class="page-head"><h1>Weekly Matchup Simulator</h1><p class="sub">Weekly lineup lock: each team starts its best 12F / 6D / 2G for the whole week. Real 2026-27 NHL schedule (games per team per fantasy week) and the real Fantrax H2H schedule.</p></div>';
       h += '<div class="controls"><label>Week <select id="m-w">' + weekOptions(w) + '</select></label><label>Team A <select id="m-a">' + U.teamOptions(a) + '</select></label><span class="muted">vs</span><label>Team B <select id="m-b">' + U.teamOptions(b) + '</select></label>' +
-        '<button class="btn sm" id="m-sched">Use scheduled opponent</button><label title="Bench players listed OUT / on IR / holding out on Daily Faceoff for the weeks their status implies"><input type="checkbox" id="m-inj"' + (autoInj ? ' checked' : '') + '> Auto-bench injured (DFO list)</label></div>';
-      var A = E.teamWeek(E.rosters[a], wi, { exclude: excl, injuries: autoInj }), B = E.teamWeek(E.rosters[b], wi, { exclude: excl, injuries: autoInj });
+        '<button class="btn sm" id="m-sched">Use scheduled opponent</button><label title="Bench players listed OUT / on IR / holding out on Daily Faceoff for the weeks their status implies"><input type="checkbox" id="m-inj"' + (autoInj ? ' checked' : '') + '> Auto-bench injured (DFO list)</label>' +
+        '<label title="Use the lineups each team has set in Fantrax (Active slots) instead of the optimal lineup"><input type="checkbox" id="m-set"' + (useSet ? ' checked' : '') + '> Lineups as set in Fantrax</label></div>';
+      var oA = { exclude: excl, injuries: autoInj, only: useSet ? E.setLineupIds(a) : null }, oB = { exclude: excl, injuries: autoInj, only: useSet ? E.setLineupIds(b) : null };
+      var A = E.teamWeek(E.rosters[a], wi, oA), B = E.teamWeek(E.rosters[b], wi, oB);
+      if (useSet && (!oA.only || !oB.only)) h += '<div class="callout warn small">' + [a, b].filter(function (t) { return !E.setLineupIds(t); }).map(esc).join(' and ') + ' has no Fantrax lineup set; using the optimal lineup.</div>';
       var pr = E.matchupProbs(A, B), ca = E.catVec(A), cb = E.catVec(B);
       var expA = E.sum(pr.map(function (x) { return x.w + x.t / 2; })), mc = E.simWeek(A, B, 6000, w * 31 + 7);
       var wk = E.weeks[wi];
@@ -68,12 +69,13 @@
       }).join('') + '</tbody></table></div>';
       h += '</div>';
       el.innerHTML = h;
-      var go = function (o) { DP.go('matchup', null, Object.assign({ w: w, a: a, b: b, x: q.x, inj: q.inj }, o)); };
+      var go = function (o) { DP.go('matchup', null, Object.assign({ w: w, a: a, b: b, x: q.x, inj: q.inj, set: q.set }, o)); };
       U.qs('#m-w', el).addEventListener('change', function (e) { go({ w: e.target.value, b: '', x: '' }); });
       U.qs('#m-a', el).addEventListener('change', function (e) { go({ a: e.target.value, b: '' }); });
       U.qs('#m-b', el).addEventListener('change', function (e) { go({ b: e.target.value }); });
       U.qs('#m-sched', el).addEventListener('click', function () { go({ b: '' }); });
       U.qs('#m-inj', el).addEventListener('change', function (e) { go({ inj: e.target.checked ? '' : '0' }); });
+      U.qs('#m-set', el).addEventListener('change', function (e) { go({ set: e.target.checked ? '1' : '' }); });
       el.addEventListener('click', function (e) {
         var x = e.target.closest('[data-out]'); if (!x) return;
         var ids = Object.keys(excl); ids.push(x.dataset.out); go({ x: ids.join(',') });

@@ -135,7 +135,7 @@
         '<li><b>MNR graduation:</b> career NHL regular-season GP ≥ 82 (skaters) / 41 (goalies), from the NHL API career totals (goalies included). A graduated player must sign an ELC ($1.5M) or be dropped; one not graduated by the end of the regular season stays at $0.</li>' +
         '<li><b>2027 extensions</b> (S = current salary): 1yr S+1.5, 2yr 1.5S+1.5, 3yr 1.5S+3, 4yr 1.5S+4, 5yr 1.75S+5, 6yr 1.75S+6. (2026 scale used +1.0 bases.)</li>' +
         '<li><b>League draft:</b> 3 rounds; picks exist through 2029, and a new year is added after each draft. Order = reverse standings (worst picks 1st, champion 14th). Ownership is replayed from the trade log.</li></ul></div>';
-      h += '<div class="card"><h2>Data sources</h2><ul>' + M.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' · <a target="_blank" rel="noopener" href="' + esc(s.url) + '">' + esc(s.url) + '</a>' : ' · <code>' + esc(s.file) + '</code>') + '</li>'; }).join('') +
+      h += '<div class="card"><h2>Data sources</h2><ul>' + M.sources.map(function (s) { return '<li>' + esc(s.name) + (s.url ? ' · <a target="_blank" rel="noopener" href="' + esc(s.url) + '" style="word-break:break-all">' + esc(s.url.replace(/^https:\/\//, '').replace(/\?.*$/, '')) + '</a>' : ' · <code>' + esc(s.file) + '</code>') + '</li>'; }).join('') +
         '<li>League trade history (Fantrax export, Nov 2025 – Aug 2026), 2025 initial rookie & minors draft, 2026 rookie draft.</li>' +
         '<li>2026 pre-draft scouting notes: prospect-app/draft_2026.csv (old Prospect app).</li>' +
         '<li>2027–2029 draft boards, injuries and depth notes: public web research (sources listed on each row).</li></ul>' +

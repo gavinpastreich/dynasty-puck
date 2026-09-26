@@ -1,5 +1,6 @@
 name: Nightly data refresh
-# Rebuilds data/*.js from the NHL APIs + Daily Faceoff depth/injuries every night during the season,
+# Rebuilds data/*.js from the Fantrax league API (rosters, contracts, picks, standings), the NHL APIs and
+# Daily Faceoff depth/injuries every night during the season,
 # commits the result, and redeploys the site. (Pushes made with GITHUB_TOKEN don't trigger other
 # workflows, so this job deploys Pages itself.)
 on:
@@ -25,7 +26,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install openpyxl
-      - name: Refresh research (injuries, depth charts) and rebuild data
+      - name: Sync Fantrax, refresh research (injuries, depth charts) and rebuild data
         run: |
           python tools/research/scrape_dfo.py || echo "depth/injury scrape failed; keeping previous"
           python tools/build_data.py --refresh
@@ -34,7 +35,7 @@ jobs:
         run: |
           git config user.name "dynasty-puck-bot"
           git config user.email "dynasty-puck-bot@users.noreply.github.com"
-          git add data tools/research/injuries.json tools/research/depth.json tools/build_report.txt
+          git add data raw/2026-27/fantrax tools/research/injuries.json tools/research/depth.json tools/build_report.txt
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
             git commit -m "Nightly data refresh $(date -u +%Y-%m-%d)"; git push; echo "changed=true" >> "$GITHUB_OUTPUT"; fi
       - name: Assemble site

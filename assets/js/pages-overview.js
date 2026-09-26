@@ -52,10 +52,65 @@
     return out;
   };
 
-  function nextMatch(team) {
-    var g = DP.meta.h2h.filter(function (m) { return m[1] === team || m[2] === team; });
+  function nextMatch(team) { // the matchup your lineup changes apply to now (next lock)
+    var E = DP.E, lw = E.lockWeek(), from = lw === null ? E.NW : lw + 1;
+    var g = DP.meta.h2h.filter(function (m) { return m[0] >= from && (m[1] === team || m[2] === team); });
     return g.length ? g[0] : null;
   }
+
+  // ------------------------------------------------------------ shared: Fantrax lineup lock + lineup check
+  DP.lockText = function (wi) {
+    var E = DP.E, t = E.lockTime(wi); if (!t) return '';
+    var s = t.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET';
+    var ms = t - E.now(); if (ms <= 0) return 'locked ' + s;
+    var d = Math.floor(ms / 864e5), hh = Math.floor(ms % 864e5 / 36e5), mm = Math.floor(ms % 36e5 / 6e4);
+    return 'locks ' + s + ' (in ' + (d ? d + 'd ' + hh + 'h' : hh ? hh + 'h ' + mm + 'm' : mm + 'm') + ')';
+  };
+  DP.fsTag = function (p) {
+    return p && p.gm && p.fs && p.fs !== 'A' ? '<span class="fs ' + p.fs + '" title="Slot in Fantrax right now">' + (DP.SLOT_NAME || {})[p.fs] + '</span>' : '';
+  };
+  DP.lineupCheckHtml = function (team, compact) {
+    var E = DP.E, wi = E.lockWeek();
+    if (wi === null) return '<p class="muted small">No lineup locks left this season.</p>';
+    var chk = E.lineupCheck(team, wi), w = E.weeks[wi], lab = w.po ? 'Playoffs round ' + w.po : 'Week ' + w.n;
+    var head = '<b>' + lab + '</b> ' + esc(DP.lockText(wi)) + (chk && chk.opp ? ' · vs ' + esc(U.teamName(chk.opp)) : '');
+    if (!chk) return compact ? '' : '<p class="small">' + head + '</p><p class="small muted">No Fantrax lineup found for this team yet (no players in Active slots).</p>';
+    var gap = chk.eOpt - chk.eSet, fine = gap < 0.05 && !chk.hurt.length && !chk.dead.length;
+    var nm = function (x) { var p = x.p || x; return ui.plink(p) + DP.fsTag(p) + ' <span class="faint small">' + (E.games(p, wi).N || 0) + 'G</span>'; };
+    var why = function (p) { return E.injuredOut(p, wi) ? ' <span class="bad small">' + esc(p.inj[0]) + '</span>' : !E.games(p, wi).N ? ' <span class="bad small">no games</span>' : !p.r ? ' <span class="bad small">no projection</span>' : ''; };
+    if (compact) {
+      if (fine && !chk.start.length) return '<div class="callout good">✓ Your Fantrax lineup for ' + head + ' matches the optimal lineup (' + U.fmt(chk.eSet, 1) + ' expected cats).</div>';
+      return '<div class="callout ' + (gap > 0.3 ? 'bad' : 'warn') + '"><b>Lineup check</b>, ' + head + ': as set in Fantrax you project <b>' + U.fmt(chk.eSet, 1) + '</b> cats, optimal <b>' + U.fmt(chk.eOpt, 1) + '</b> (' + U.sgn(-gap, 1) + ').' +
+        (chk.start.length ? ' Start ' + chk.start.slice(0, 3).map(nm).join(', ') + (chk.sit.length ? ' over ' + chk.sit.slice(0, 3).map(function (x) { return ui.plink(x.p) + why(x.p); }).join(', ') : '') + '.' : '') +
+        ' <a href="#/team/' + encodeURIComponent(team) + '">Details →</a></div>';
+    }
+    var h = '<p class="small">' + head + '</p><div class="stats" style="margin:6px 0 10px">' +
+      DP.statTile('As set in Fantrax', U.fmt(chk.eSet, 1), 'expected cats of 15') + DP.statTile('Optimal', U.fmt(chk.eOpt, 1), 'best 12F / 6D / 2G') +
+      DP.statTile('Left on the table', U.fmt(Math.max(0, gap), 2), 'expected category wins') + '</div>';
+    if (fine && !chk.start.length) h += '<div class="callout good">✓ Your Fantrax lineup is optimal for this week.</div>';
+    if (chk.start.length) h += '<div class="grid g2"><div><h3 class="small">⬆ Start</h3><ul class="list-plain">' + chk.start.map(function (x) { return '<li>' + ui.pos(x.p) + '<span>' + nm(x) + '</span></li>'; }).join('') + '</ul></div>' +
+      '<div><h3 class="small">⬇ Sit</h3><ul class="list-plain">' + chk.sit.map(function (x) { return '<li>' + ui.pos(x.p) + '<span>' + nm(x) + why(x.p) + '</span></li>'; }).join('') + '</ul></div></div>';
+    var extra = chk.hurt.concat(chk.dead).filter(function (p, i, a) { return a.indexOf(p) === i && !chk.sit.some(function (x) { return x.p === p; }); });
+    if (extra.length) h += '<p class="small warn">Active in Fantrax but not expected to play: ' + extra.map(function (p) { return ui.plink(p) + why(p); }).join(', ') + '.</p>';
+    if (chk.gFailSet > 0.12) h += '<p class="small bad">Goalie minimum: your set lineup has a ' + U.pct(chk.gFailSet) + ' chance of fewer than 2 goalie GP (optimal: ' + U.pct(chk.gFailOpt) + ').</p>';
+    if (chk.start.some(function (x) { return x.p.fs === 'M'; })) h += '<p class="small muted">Players in Minors slots have to be moved up in Fantrax first (Active + Bench max ' + ((DP.league.fantrax && DP.league.fantrax.roster && DP.league.fantrax.roster.maxTotalPlayers) || 23) + ').</p>';
+    h += '<p class="small muted">Lineups ' + (DP.live.state === 'ok' ? 'synced live from Fantrax at ' + esc(DP.live.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) : 'from the nightly Fantrax sync (' + esc((DP.league.fantrax || {}).fetched || '').slice(0, 16).replace('T', ' ') + ' UTC)') + '. Opponent uses their Fantrax lineup too. Injuries from Daily Faceoff.</p>';
+    return h;
+  };
+
+  // ------------------------------------------------------------ shared: league activity (nightly Fantrax diffs + live changes)
+  DP.activityHtml = function (limit) {
+    var E = DP.E, L = DP.league, items = [];
+    (DP.live.changes || []).forEach(function (c) { items.push('<li><span class="badge good">today</span> ' + DP.live.describe(c) + '</li>'); });
+    (L.moves || []).slice().reverse().forEach(function (m) {
+      var p = E.byId[m.id], who = p ? ui.plink(p) : esc(m.n || m.id), money = m.ct === 'MNR' ? 'MNR' : esc(m.ct) + ' ' + U.m(m.sal / 1e6);
+      var txt = m.type === 'add' ? esc(m.to) + ' added ' + who + ' (' + money + ')' : m.type === 'drop' ? esc(m.from) + ' dropped ' + who + (m.ct && m.ct !== 'MNR' ? ' (' + money + ')' : '')
+        : m.type === 'move' ? who + ': ' + esc(m.from) + ' → ' + esc(m.to) : who + ' (' + esc(m.to) + '): ' + esc(m.was[0]) + ' ' + U.m(m.was[1] / 1e6) + ' → ' + money;
+      items.push('<li><span class="faint small">' + esc(U.date(new Date(m.d + 'T12:00:00Z'))) + '</span> ' + txt + '</li>');
+    });
+    if (!items.length) return '<p class="small muted">No roster moves logged yet. From ' + esc(((L.fantrax || {}).fetched || '2026-09-26').slice(0, 10)) + ' on, every add, drop, trade and contract change in Fantrax is logged here each night (and changes since then show up live).</p>';
+    return '<ul class="small" style="padding-left:18px;margin:0">' + items.slice(0, limit || 12).join('') + '</ul>' + (items.length > (limit || 12) ? '<p class="small muted">' + (items.length - (limit || 12)) + ' older moves on the <a href="#/history">Trade History</a> page.</p>' : '');
+  };
 
   // ------------------------------------------------------------ Dashboard
   DP.pages.home = {
@@ -77,10 +132,11 @@
           DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' cats') +
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
           DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(E.CAP, 0)) +
-          (nm ? DP.statTile('Week ' + nm[0] + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
+          (nm ? DP.statTile((E.weeks[nm[0] - 1].po ? 'Playoffs' : 'Week ' + nm[0]) + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
           '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a></p></div>';
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
           .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
+        h += DP.lineupCheckHtml(me, true);
         if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Each must sign an ELC ($1.5M) or be dropped once they cross the line.</div>';
       } else {
         h += '<div class="callout">👋 Welcome! <button class="btn sm primary" data-act="pick-team">Pick your team</button> to get your matchup, needs and targets. Everything else works without it.</div>';
@@ -92,6 +148,7 @@
       h += '<div class="card"><h2>🔴 Toughest contracts</h2><div class="hint">Largest negative surplus in 2026-27. Dropping costs 50% of each remaining year.</div><div id="worst"></div></div>';
       h += '<div class="card"><h2>🎓 About to graduate</h2><div class="hint">MNR players projected to reach 82 career NHL GP (41 for goalies) soonest.</div><div id="grads"></div><p><a href="#/prospects">Full graduation tracker →</a></p></div>';
       h += '<div class="card"><h2>🛒 Top free agents</h2><div class="hint">Unowned players by projected 2026-27 WAR.</div><div id="topfa"></div><p><a href="#/fa">Free-agent finder →</a></p></div>';
+      h += '<div class="card span2"><h2>🔔 League activity</h2><div class="hint">Adds, drops, trades and contract changes picked up from Fantrax (nightly log + live since last night).</div>' + DP.activityHtml(12) + '</div>';
       h += '<div class="card span2"><h2>📈 Projected category leaders (2026-27)</h2><div class="hint">Top 5 projected totals in each category (goalies: 30+ GP for GAA/SV%). ★ = owned by your team.</div><div id="leaders" class="grid g4"></div></div>';
       h += '</div>';
       el.innerHTML = h;
@@ -104,6 +161,7 @@
         cols: [
           { k: 'prank', l: '#', cls: 'num', v: function (r) { return r.prank; } },
           { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a> <span class="faint small">' + esc(r.t) + '</span>'; } },
+          E.actual() && !E.actual().odd ? { k: 'act', l: 'Actual W-L-T', v: function (r) { var a = E.actual().rec[r.t]; return a ? (a.W + a.T / 2) / Math.max(1, a.W + a.L + a.T) : null; }, f: function (r) { var a = E.actual().rec[r.t]; return a ? a.W + '-' + a.L + '-' + a.T : '–'; }, cls: 'num', title: 'Category record so far (Fantrax)' } : null,
           { k: 'rec', l: 'Proj cat W-L-T', v: function (r) { return r.exp.pct; }, f: function (r) { return U.fmt(r.exp.W, 0) + '-' + U.fmt(r.exp.L, 0) + '-' + U.fmt(r.exp.T, 0); }, cls: 'num' },
           { k: 'pct', l: 'Win%', v: function (r) { return r.exp.pct; }, f: function (r) { return U.rate(r.exp.pct); }, cls: 'num' },
           { k: 'po', l: 'Playoffs', v: function (r) { return r.sim ? r.sim.po : null; }, f: function (r) { return r.sim ? U.pct(r.sim.po) : '<span class="faint">…</span>'; }, cls: 'num', title: 'Monte Carlo: probability of a top-8 finish' },
@@ -162,7 +220,7 @@
         U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
         return;
       }
-      var TS = DP.teamSummary(), s = TS[t], ros = E.rosters[t], h = '';
+      var TS = DP.teamSummary(), s = TS[t], ros = E.rosters[t], h = '', wk0 = E.lockWeek() === null ? 0 : E.lockWeek();
       h += '<div class="page-head"><h1>' + esc(U.teamName(t)) + '</h1><label class="small muted">Team ' + ui.teamSelect('tsel', t) + '</label><p class="sub">GM ' + esc(t) + ' · ' + ros.length + ' players (' + s.nMnr + ' MNR) · Power rank #' + s.prank + '</p></div>';
       h += '<div class="stats">' +
         DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' category record') +
@@ -173,9 +231,10 @@
         DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') +
         DP.statTile('Starter age', U.fmt(s.age, 1), 'average') + '</div>';
       h += '<div class="grid g2">';
+      h += '<div class="card span2"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
       h += '<div class="card"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
-      h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '">' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
+      h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
       h += '<div class="card"><h2>Cap by season</h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = $' + E.CAP + 'M cap (2026-27; future caps assumed flat).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
       h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes all 24 weeks with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
@@ -194,7 +253,7 @@
       // lineup
       function lineup(wi) {
         var agg = E.baseline[t][wi], lu = agg.lu;
-        var slot = function (x) { var g = E.games(x.p, wi); return '<div class="slot">' + ui.pos(x.p) + ui.plink(x.p) + ' ' + (x.p.ct === 'MNR' ? ui.pill('MNR') : '') + '<span class="gms" title="NHL games this week × availability">' + (g.N || 0) + 'G</span></div>'; };
+        var slot = function (x) { var g = E.games(x.p, wi); return '<div class="slot">' + ui.pos(x.p) + ui.plink(x.p) + DP.fsTag(x.p) + ' ' + (x.p.ct === 'MNR' ? ui.pill('MNR') : '') + '<span class="gms" title="NHL games this week × availability">' + (g.N || 0) + 'G</span></div>'; };
         var starters = {}; lu.F.concat(lu.D, lu.G, lu.bench).forEach(function (x) { starters[x.p.id] = 1; });
         var rest = ros.filter(function (p) { return !starters[p.id]; });
         U.qs('#t-lineup', el).innerHTML = '<h3 class="small muted">Forwards (12)</h3><div class="lineup">' + lu.F.map(slot).join('') + '</div>' +
@@ -204,7 +263,7 @@
           '<h3 class="small muted" style="margin-top:10px">Bench (3)</h3><div class="lineup">' + lu.bench.map(slot).join('') + '</div>' +
           '<details style="margin-top:10px"><summary>Reserves / minors (' + rest.length + ')</summary><div class="lineup" style="margin-top:6px">' + rest.map(function (p) { return '<div class="slot">' + ui.pos(p) + ui.plink(p) + ' ' + ui.pill(p.ct) + '<span class="gms">' + (p.projGP ? p.projGP + ' GP proj' : 'no NHL proj') + '</span></div>'; }).join('') + '</div></details>';
       }
-      lineup(0);
+      lineup(wk0);
       U.qs('#t-week', el).addEventListener('change', function (e) { lineup(+e.target.value); });
 
       // cap chart

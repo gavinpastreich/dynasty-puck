@@ -65,6 +65,49 @@
   };
 
   // ------------------------------------------------------------ Weekly preview (copy-ready for the league chat)
+  // ------------------------------------------------------------ Standings (Fantrax, live) + projected finish
+  DP.pages.standings = {
+    title: 'Standings',
+    render: function (el) {
+      var E = DP.E, act = E.actual(), FX = DP.league.fantrax || {}, div = FX.divisions || {}, me = DP.state.team;
+      var h = '<div class="page-head"><h1>Standings</h1><p class="sub">Category W-L-T straight from Fantrax (' + (DP.live.state === 'ok' ? 'live' : 'nightly sync') + '), with projected final records and odds from the season sim, which starts from the real standings and simulates only the weeks left.</p></div>';
+      if (!act) h += '<div class="callout">No matchups completed yet. ' + esc(DP.lockText(0) ? 'Week 1 ' + DP.lockText(0) + '.' : '') + ' Until then this page shows projections only.</div>';
+      else if (act.odd) h += '<div class="callout warn">The Fantrax standings don\'t add up to 15 categories per week, so the sim is projecting from scratch.</div>';
+      else h += '<div class="callout">' + act.done + ' of ' + E.REG_WEEKS + ' regular-season weeks played.</div>';
+      h += '<div class="card flush"><div id="st-table" style="padding:12px"></div></div><div class="grid g2" style="margin-top:14px" id="st-divs"></div>';
+      el.innerHTML = h;
+      var rows = E.teams.map(function (t) { var a = act && !act.odd ? act.rec[t] : null; return { t: t, a: a, div: div[t] || '', pct: a ? (a.W + a.T / 2) / Math.max(1, a.W + a.L + a.T) : null }; });
+      var tbl = ui.table(U.qs('#st-table', el), {
+        rows: rows, sort: act && !act.odd ? 'pct' : 'proj', csv: 'dynasty-puck-standings.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
+        cols: [
+          { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a> <span class="faint small">' + esc(r.t) + '</span>'; } },
+          { k: 'div', l: 'Div', v: function (r) { return r.div; } },
+          { k: 'rec', l: 'W-L-T', cls: 'num', v: function (r) { return r.pct; }, f: function (r) { return r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0'; } },
+          { k: 'pct', l: 'Win%', cls: 'num', v: function (r) { return r.pct; }, f: function (r) { return r.a ? U.rate(r.pct) : '–'; } },
+          { k: 'gb', l: 'GB', cls: 'num', v: function (r) { return r.a ? r.a.gb : null; }, f: function (r) { return r.a && r.a.gb ? U.fmt(r.a.gb, 1) : '–'; }, title: 'Games back (Fantrax)' },
+          { k: 'proj', l: 'Proj final', cls: 'num', v: function (r) { return r.sim ? r.sim.pct : null; }, f: function (r) { return r.sim ? U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) : '…'; } },
+          { k: 'seed', l: 'Avg seed', cls: 'num', v: function (r) { return r.sim ? -r.sim.avgSeed : null; }, f: function (r) { return r.sim ? U.fmt(r.sim.avgSeed, 1) : '…'; } },
+          { k: 'po', l: 'Playoffs', cls: 'num', v: function (r) { return r.sim ? r.sim.po : null; }, f: function (r) { return r.sim ? U.pct(r.sim.po) : '…'; } },
+          { k: 'champ', l: 'Title', cls: 'num', v: function (r) { return r.sim ? r.sim.champ : null; }, f: function (r) { return r.sim ? U.pct(r.sim.champ, 1) : '…'; } },
+          { k: 'p1', l: '#1 pick', cls: 'num', v: function (r) { return r.sim ? r.sim.slot[0] : null; }, f: function (r) { return r.sim ? U.pct(r.sim.slot[0], 1) : '…'; }, title: 'Chance of the worst record = first pick in the 2027 league draft' }
+        ]
+      });
+      DP.getSim(function (sim) {
+        var by = {}; sim.forEach(function (r) { by[r.t] = r; });
+        rows.forEach(function (r) { r.sim = by[r.t]; });
+        tbl.update();
+        var box = U.qs('#st-divs', el); if (!box) return;
+        var divs = U.uniq(rows.map(function (r) { return r.div; }).filter(Boolean)).sort();
+        box.innerHTML = divs.map(function (d) {
+          var rs = rows.filter(function (r) { return r.div === d; }).sort(function (a, b) { return (b.pct || 0) - (a.pct || 0) || b.sim.pct - a.sim.pct; });
+          return '<div class="card"><h2>' + esc(d) + ' division</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">W-L-T</th><th class="num">Proj final</th><th class="num">Playoffs</th></tr></thead><tbody>' + rs.map(function (r) {
+            return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + esc(U.teamName(r.t)) + '</td><td class="num">' + (r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0') + '</td><td class="num">' + U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) + '</td><td class="num">' + U.pct(r.sim.po) + '</td></tr>';
+          }).join('') + '</tbody></table></div></div>';
+        }).join('') + (divs.length ? '<p class="small muted span2">Divisions come from Fantrax. Playoff seeding here is by overall category win% (8 teams, no byes); tell the commissioner if divisions affect seeding.</p>' : '');
+      }, 1500);
+    }
+  };
+
   DP.pages.preview = {
     title: 'Weekly Preview',
     render: function (el, hsh) {
@@ -105,7 +148,17 @@
         text.push('', 'Generated by Dynasty Puck HQ: https://gavinpastreich.github.io/dynasty-puck/');
         var out = U.qs('#pv-out', el);
         if (!out) return;
-        out.innerHTML = cards.join('') + '<details><summary>Text version</summary><textarea id="pv-text" rows="18">' + esc(text.join('\n')) + '</textarea></details>';
+        // lineup watch: every team's Fantrax lineup vs optimal (only for the week lineups are being set for)
+        var watch = '';
+        if (E.lockWeek() === wi) {
+          var rows = E.teams.map(function (t) { return { t: t, c: E.lineupCheck(t, wi) }; });
+          watch = '<div class="card" style="margin-bottom:12px"><h3>🔒 Lineup watch <span class="muted small">' + esc(DP.lockText(wi)) + '</span></h3><div class="hint">Each team\'s lineup as set in Fantrax vs its optimal weekly lineup: expected category wins left on the table.</div><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Set</th><th class="num">Optimal</th><th class="num">Gap</th><th>Swaps</th></tr></thead><tbody>' +
+            rows.sort(function (x, y) { return (y.c ? y.c.eOpt - y.c.eSet : 9) - (x.c ? x.c.eOpt - x.c.eSet : 9); }).map(function (r) {
+              var c = r.c, gap = c ? c.eOpt - c.eSet : null;
+              return '<tr class="' + (r.t === DP.state.team ? 'mine' : '') + '"><td><a href="#/team/' + encodeURIComponent(r.t) + '">' + esc(U.teamName(r.t)) + '</a></td>' + (c ? '<td class="num">' + U.fmt(c.eSet, 1) + '</td><td class="num">' + U.fmt(c.eOpt, 1) + '</td><td class="num ' + (gap > 0.3 ? 'bad' : gap > 0.05 ? 'warn' : 'good') + '">' + (gap > 0.05 ? U.fmt(gap, 2) : '✓') + '</td><td class="small">' + (c.start.length ? c.start.length + ' (' + c.start.slice(0, 2).map(function (x) { return esc(x.p.n); }).join(', ') + (c.start.length > 2 ? '…' : '') + ')' : '–') + '</td>' : '<td colspan="4" class="muted small">no lineup set in Fantrax</td>') + '</tr>';
+            }).join('') + '</tbody></table></div></div>';
+        }
+        out.innerHTML = watch + cards.join('') + '<details><summary>Text version</summary><textarea id="pv-text" rows="18">' + esc(text.join('\n')) + '</textarea></details>';
         U.qs('#pv-copy', el).onclick = function () { var t = text.join('\n'); if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { U.toast('Preview copied. Paste it in the league chat.'); }); else U.toast('Open "Text version" and copy manually.'); };
       }, 30);
     }

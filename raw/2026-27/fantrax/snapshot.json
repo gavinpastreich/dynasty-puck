@@ -1,0 +1,8309 @@
+{
+"elig": {
+"003ic": "D,F",
+"02wki": "D,F",
+"02zlh": "D,F",
+"031ob": "D,F",
+"03wqw": "G,F",
+"04ayi": "D,F",
+"04kyj": "D,F",
+"04r0v": "D,F",
+"05kjb": "D,F",
+"05ltl": "D,F",
+"05uba": "D,F",
+"05xyh": "D,F",
+"05yjd": "D,F",
+"05ykn": "D,F",
+"07912": "D,F",
+"07940": "D,F"
+},
+"fetched": "2026-09-26T00:56:00+00:00",
+"league": {
+"end": "2027-04-10",
+"id": "cbufqc8umo5xrjzu",
+"name": "Dynasty Puck",
+"playoffs": {
+"firstPlayoffPeriod": 25,
+"lastRegularSeasonPeriod": 24,
+"mergePlayoffPeriods": false,
+"numPlayoffTeams": 8,
+"used": true
+},
+"roster": {
+"maxTotalActivePlayers": 20,
+"maxTotalPlayers": 23,
+"maxTotalReservePlayers": 3,
+"positionConstraints": {
+"D": {
+"maxActive": 6
+},
+"F": {
+"maxActive": 12
+},
+"G": {
+"maxActive": 2
+}
+}
+},
+"season": 2026,
+"start": "2026-09-29",
+"url": "https://www.fantrax.com/fantasy/league/cbufqc8umo5xrjzu/home"
+},
+"names": {
+"003kg": {
+"n": "Kane, Patrick",
+"pos": "RW",
+"t": "CHI"
+},
+"003tz": {
+"n": "Burns, Brent",
+"pos": "D",
+"t": "COL"
+},
+"00454": {
+"n": "Crosby, Sidney",
+"pos": "C",
+"t": "PIT"
+},
+"0045j": {
+"n": "Letang, Kris",
+"pos": "D",
+"t": "PIT"
+},
+"0045k": {
+"n": "Malkin, Evgeni",
+"pos": "C",
+"t": "PIT"
+},
+"004cq": {
+"n": "Ovechkin, Alex",
+"pos": "LW",
+"t": "WSH"
+},
+"004jl": {
+"n": "Marchand, Brad",
+"pos": "LW",
+"t": "FLA"
+},
+"00qnu": {
+"n": "Doughty, Drew",
+"pos": "D",
+"t": "LAK"
+},
+"00qru": {
+"n": "Stamkos, Steven",
+"pos": "C",
+"t": "NSH"
+},
+"01587": {
+"n": "Eberle, Jordan",
+"pos": "RW",
+"t": "SEA"
+},
+"015pv": {
+"n": "Carlson, John",
+"pos": "D",
+"t": "TBL"
+},
+"016g3": {
+"n": "Karlsson, Erik",
+"pos": "D",
+"t": "PIT"
+},
+"016kv": {
+"n": "Allen, Jake",
+"pos": "G",
+"t": "NJD"
+},
+"01c12": {
+"n": "Tavares, John",
+"pos": "C",
+"t": "TOR"
+},
+"01c13": {
+"n": "Hedman, Victor",
+"pos": "D",
+"t": "TBL"
+},
+"01c32": {
+"n": "Schenn, Brayden",
+"pos": "C",
+"t": "NYI"
+},
+"01d6c": {
+"n": "Markstrom, Jacob",
+"pos": "G",
+"t": "FLA"
+},
+"01ex7": {
+"n": "Duchene, Matt",
+"pos": "C",
+"t": "DAL"
+},
+"01f3d": {
+"n": "Ekman-Larsson, Oliver",
+"pos": "D",
+"t": "TOR"
+},
+"01f3e": {
+"n": "Kadri, Nazem",
+"pos": "C",
+"t": "COL"
+},
+"01f5z": {
+"n": "Kreider, Chris",
+"pos": "LW",
+"t": "MTL"
+},
+"01f6d": {
+"n": "OReilly, Ryan",
+"pos": "C",
+"t": "NSH"
+},
+"01fx3": {
+"n": "Josi, Roman",
+"pos": "D",
+"t": "NSH"
+},
+"01mz5": {
+"n": "Orlov, Dmitry",
+"pos": "D",
+"t": "SJS"
+},
+"01ud1": {
+"n": "Bobrovsky, Sergei",
+"pos": "G",
+"t": "TOR"
+},
+"01yj6": {
+"n": "Gudas, Radko",
+"pos": "D",
+"t": "FLA"
+},
+"01zql": {
+"n": "Nelson, Brock",
+"pos": "C",
+"t": "COL"
+},
+"01zs1": {
+"n": "Wedgewood, Scott",
+"pos": "G",
+"t": "COL"
+},
+"01zto": {
+"n": "Coyle, Charlie",
+"pos": "C",
+"t": "CBJ"
+},
+"01ztp": {
+"n": "Hyman, Zach",
+"pos": "RW",
+"t": "EDM"
+},
+"01zu5": {
+"n": "Faulk, Justin",
+"pos": "D",
+"t": "DET"
+},
+"01zvf": {
+"n": "Stone, Mark",
+"pos": "RW",
+"t": "VGK"
+},
+"01zvp": {
+"n": "Rust, Bryan",
+"pos": "RW",
+"t": "PIT"
+},
+"0222k": {
+"n": "Kuemper, Darcy",
+"pos": "G",
+"t": "LAK"
+},
+"02422": {
+"n": "Nugent-Hopkins, Ryan",
+"pos": "LW",
+"t": "EDM"
+},
+"0243e": {
+"n": "Landeskog, Gabriel",
+"pos": "LW",
+"t": "COL"
+},
+"0243f": {
+"n": "Jones, Seth",
+"pos": "D",
+"t": "FLA"
+},
+"02440": {
+"n": "Lee, Anders",
+"pos": "LW",
+"t": "UTA"
+},
+"024lv": {
+"n": "Ekholm, Mattias",
+"pos": "D",
+"t": "EDM"
+},
+"025by": {
+"n": "Chiarot, Ben",
+"pos": "D",
+"t": "DET"
+},
+"026p4": {
+"n": "Huberdeau, Jonathan",
+"pos": "LW",
+"t": "CGY"
+},
+"027i6": {
+"n": "Zibanejad, Mika",
+"pos": "C",
+"t": "NYR"
+},
+"02aez": {
+"n": "Miller, J.T.",
+"pos": "C",
+"t": "NYR"
+},
+"02azb": {
+"n": "Scheifele, Mark",
+"pos": "C",
+"t": "WPG"
+},
+"02azf": {
+"n": "Hamilton, Dougie",
+"pos": "D",
+"t": "NJD"
+},
+"02b3o": {
+"n": "Rakell, Rickard",
+"pos": "LW",
+"t": "PIT"
+},
+"02b3y": {
+"n": "Gibson, John",
+"pos": "G",
+"t": "DET"
+},
+"02b70": {
+"n": "Kucherov, Nikita",
+"pos": "RW",
+"t": "TBL"
+},
+"02b76": {
+"n": "Trocheck, Vincent",
+"pos": "C",
+"t": "UTA"
+},
+"02dq3": {
+"n": "Trouba, Jacob",
+"pos": "D",
+"t": "SJS"
+},
+"02f9l": {
+"n": "MacKinnon, Nathan",
+"pos": "C",
+"t": "COL"
+},
+"02fda": {
+"n": "Binnington, Jordan",
+"pos": "G",
+"t": "STL"
+},
+"02fzj": {
+"n": "Coleman, Blake",
+"pos": "RW",
+"t": "MIN"
+},
+"02fzm": {
+"n": "Forsberg, Filip",
+"pos": "LW",
+"t": "NSH"
+},
+"02g00": {
+"n": "Ekblad, Aaron",
+"pos": "D",
+"t": "FLA"
+},
+"02ni5": {
+"n": "Marchessault, Jonathan",
+"pos": "RW",
+"t": "NSH"
+},
+"02noe": {
+"n": "Rielly, Morgan",
+"pos": "D",
+"t": "TOR"
+},
+"02noj": {
+"n": "Wilson, Tom",
+"pos": "RW",
+"t": "WSH"
+},
+"02nok": {
+"n": "Hertl, Tomas",
+"pos": "C",
+"t": "VGK"
+},
+"02nom": {
+"n": "Vasilevskiy, Andrei",
+"pos": "G",
+"t": "TBL"
+},
+"02noq": {
+"n": "Matheson, Mike",
+"pos": "D",
+"t": "MTL"
+},
+"02np6": {
+"n": "McCabe, Jake",
+"pos": "D",
+"t": "TOR"
+},
+"02np7": {
+"n": "Stolarz, Anthony",
+"pos": "G",
+"t": "TOR"
+},
+"02nq3": {
+"n": "Gostisbehere, Shayne",
+"pos": "D",
+"t": "CAR"
+},
+"02nqb": {
+"n": "Parayko, Colton",
+"pos": "D",
+"t": "STL"
+},
+"02o7s": {
+"n": "Hellebuyck, Connor",
+"pos": "G",
+"t": "WPG"
+},
+"02oar": {
+"n": "Ullmark, Linus",
+"pos": "G",
+"t": "OTT"
+},
+"02un4": {
+"n": "McDavid, Connor",
+"pos": "C",
+"t": "EDM"
+},
+"02un5": {
+"n": "Reinhart, Sam",
+"pos": "RW",
+"t": "FLA"
+},
+"02un7": {
+"n": "Barkov, Aleksander",
+"pos": "C",
+"t": "FLA"
+},
+"02unz": {
+"n": "Schmaltz, Nick",
+"pos": "RW",
+"t": "UTA"
+},
+"02uws": {
+"n": "Barzal, Mathew",
+"pos": "RW",
+"t": "NYI"
+},
+"02wy5": {
+"n": "Zadorov, Nikita",
+"pos": "D",
+"t": "BOS"
+},
+"02wy7": {
+"n": "Buchnevich, Pavel",
+"pos": "RW",
+"t": "STL"
+},
+"02ybl": {
+"n": "Nichushkin, Valeri",
+"pos": "RW",
+"t": "CBJ"
+},
+"02ybn": {
+"n": "Morrissey, Josh",
+"pos": "D",
+"t": "WPG"
+},
+"02yjj": {
+"n": "Nylander, William",
+"pos": "RW",
+"t": "TOR"
+},
+"02yjl": {
+"n": "Draisaitl, Leon",
+"pos": "C",
+"t": "EDM"
+},
+"02yjp": {
+"n": "Barbashev, Ivan",
+"pos": "LW",
+"t": "VGK"
+},
+"02ytx": {
+"n": "Hartman, Ryan",
+"pos": "C",
+"t": "MIN"
+},
+"03161": {
+"n": "Nurse, Darnell",
+"pos": "D",
+"t": "SJS"
+},
+"03167": {
+"n": "Horvat, Bo",
+"pos": "C",
+"t": "NYI"
+},
+"031nx": {
+"n": "Theodore, Shea",
+"pos": "D",
+"t": "VGK"
+},
+"031og": {
+"n": "Bertuzzi, Tyler",
+"pos": "RW",
+"t": "CHI"
+},
+"031p0": {
+"n": "Guentzel, Jake",
+"pos": "LW",
+"t": "TBL"
+},
+"031p3": {
+"n": "Verhaeghe, Carter",
+"pos": "LW",
+"t": "FLA"
+},
+"031pl": {
+"n": "Saros, Juuse",
+"pos": "G",
+"t": "NSH"
+},
+"031v6": {
+"n": "Weegar, MacKenzie",
+"pos": "D",
+"t": "UTA"
+},
+"0322w": {
+"n": "Sorokin, Ilya",
+"pos": "G",
+"t": "NYI"
+},
+"038vb": {
+"n": "Konecny, Travis",
+"pos": "RW",
+"t": "PHI"
+},
+"03924": {
+"n": "Eichel, Jack",
+"pos": "C",
+"t": "VGK"
+},
+"039cg": {
+"n": "Bennett, Sam",
+"pos": "C",
+"t": "FLA"
+},
+"03as6": {
+"n": "McCann, Jared",
+"pos": "LW",
+"t": "SEA"
+},
+"03as8": {
+"n": "Ehlers, Nikolaj",
+"pos": "LW",
+"t": "CAR"
+},
+"03as9": {
+"n": "Strome, Dylan",
+"pos": "C",
+"t": "WSH"
+},
+"03bfj": {
+"n": "Panarin, Artemi",
+"pos": "LW",
+"t": "LAK"
+},
+"03c0c": {
+"n": "Manson, Josh",
+"pos": "D",
+"t": "COL"
+},
+"03d09": {
+"n": "Tuch, Alex",
+"pos": "RW",
+"t": "WSH"
+},
+"03d12": {
+"n": "Pastrnak, David",
+"pos": "RW",
+"t": "BOS"
+},
+"03dde": {
+"n": "Walman, Jake",
+"pos": "D",
+"t": "EDM"
+},
+"03de2": {
+"n": "Montour, Brandon",
+"pos": "D",
+"t": "SEA"
+},
+"03dms": {
+"n": "Fiala, Kevin",
+"pos": "LW",
+"t": "LAK"
+},
+"03duf": {
+"n": "Larkin, Dylan",
+"pos": "C",
+"t": "DET"
+},
+"03e1m": {
+"n": "Point, Brayden",
+"pos": "C",
+"t": "TBL"
+},
+"03e1n": {
+"n": "Kempe, Adrian",
+"pos": "RW",
+"t": "LAK"
+},
+"03e7p": {
+"n": "Sanheim, Travis",
+"pos": "D",
+"t": "PHI"
+},
+"03ece": {
+"n": "Shesterkin, Igor",
+"pos": "G",
+"t": "NYR"
+},
+"03ecl": {
+"n": "Forsling, Gustav",
+"pos": "D",
+"t": "FLA"
+},
+"03ekl": {
+"n": "Gavrikov, Vladislav",
+"pos": "D",
+"t": "NYR"
+},
+"03j8l": {
+"n": "Hanifin, Noah",
+"pos": "D",
+"t": "VGK"
+},
+"03jvu": {
+"n": "Marner, Mitch",
+"pos": "RW",
+"t": "VGK"
+},
+"03jw0": {
+"n": "Daccord, Joey",
+"pos": "G",
+"t": "SEA"
+},
+"03jxy": {
+"n": "Matthews, Auston",
+"pos": "C",
+"t": "TOR"
+},
+"03klz": {
+"n": "Raddysh, Darren",
+"pos": "D",
+"t": "TOR"
+},
+"03kra": {
+"n": "Connor, Kyle",
+"pos": "LW",
+"t": "WPG"
+},
+"03l0t": {
+"n": "Zacha, Pavel",
+"pos": "C",
+"t": "BOS"
+},
+"03mbn": {
+"n": "Blackwood, Mackenzie",
+"pos": "G",
+"t": "COL"
+},
+"03mkm": {
+"n": "Hill, Adin",
+"pos": "G",
+"t": "VGK"
+},
+"03mm6": {
+"n": "Crouse, Lawson",
+"pos": "RW",
+"t": "UTA"
+},
+"03mn8": {
+"n": "Keller, Clayton",
+"pos": "LW",
+"t": "UTA"
+},
+"03mn9": {
+"n": "Rantanen, Mikko",
+"pos": "RW",
+"t": "DAL"
+},
+"03mqg": {
+"n": "Chychrun, Jakob",
+"pos": "D",
+"t": "WSH"
+},
+"03ne3": {
+"n": "Vatrano, Frank",
+"pos": "LW",
+"t": "ANA"
+},
+"03nqi": {
+"n": "Lyon, Alex",
+"pos": "G",
+"t": "BUF"
+},
+"03pax": {
+"n": "Provorov, Ivan",
+"pos": "D",
+"t": "CBJ"
+},
+"03ra7": {
+"n": "Werenski, Zach",
+"pos": "D",
+"t": "CBJ"
+},
+"03ra8": {
+"n": "Meier, Timo",
+"pos": "LW",
+"t": "NJD"
+},
+"03rad": {
+"n": "Chabot, Thomas",
+"pos": "D",
+"t": "OTT"
+},
+"03rae": {
+"n": "Eriksson Ek, Joel",
+"pos": "C",
+"t": "MIN"
+},
+"03raf": {
+"n": "Boeser, Brock",
+"pos": "RW",
+"t": "VAN"
+},
+"03rf2": {
+"n": "Hintz, Roope",
+"pos": "C",
+"t": "DAL"
+},
+"03rf5": {
+"n": "Andersson, Rasmus",
+"pos": "D",
+"t": "VGK"
+},
+"03rf8": {
+"n": "Dunn, Vince",
+"pos": "D",
+"t": "SEA"
+},
+"03rfl": {
+"n": "Cirelli, Anthony",
+"pos": "C",
+"t": "TBL"
+},
+"03rfo": {
+"n": "Vladar, Daniel",
+"pos": "G",
+"t": "PHI"
+},
+"03rfp": {
+"n": "Montembeault, Sam",
+"pos": "G",
+"t": "MTL"
+},
+"03rh3": {
+"n": "Kaprizov, Kirill",
+"pos": "LW",
+"t": "MIN"
+},
+"03rih": {
+"n": "Vejmelka, Karel",
+"pos": "G",
+"t": "UTA"
+},
+"03rmx": {
+"n": "Aho, Sebastian",
+"pos": "C",
+"t": "CAR"
+},
+"03uzr": {
+"n": "Tkachuk, Matthew",
+"pos": "RW",
+"t": "FLA"
+},
+"03v70": {
+"n": "DeBrincat, Alex",
+"pos": "LW",
+"t": "DET"
+},
+"03w5m": {
+"n": "Vilardi, Gabriel",
+"pos": "RW",
+"t": "WPG"
+},
+"03wor": {
+"n": "Marchment, Mason",
+"pos": "LW",
+"t": "SJS"
+},
+"03wpi": {
+"n": "Dubois, Pierre-Luc",
+"pos": "C",
+"t": "WSH"
+},
+"03wpm": {
+"n": "McAvoy, Charlie",
+"pos": "D",
+"t": "BOS"
+},
+"03wpn": {
+"n": "Howden, Brett",
+"pos": "LW",
+"t": "VGK"
+},
+"03yg3": {
+"n": "Sergachev, Mikhail",
+"pos": "D",
+"t": "UTA"
+},
+"03yh8": {
+"n": "Tippett, Owen",
+"pos": "LW",
+"t": "PHI"
+},
+"03ynu": {
+"n": "Hart, Carter",
+"pos": "G",
+"t": "VGK"
+},
+"03yxp": {
+"n": "Skinner, Stuart",
+"pos": "G",
+"t": "WPG"
+},
+"03zul": {
+"n": "Gustavsson, Filip",
+"pos": "G",
+"t": "MIN"
+},
+"042t5": {
+"n": "Thompson, Tage",
+"pos": "C",
+"t": "BUF"
+},
+"042vl": {
+"n": "Kyrou, Jordan",
+"pos": "RW",
+"t": "WSH"
+},
+"042vx": {
+"n": "Hronek, Filip",
+"pos": "D",
+"t": "VAN"
+},
+"042w4": {
+"n": "Fox, Adam",
+"pos": "D",
+"t": "NYR"
+},
+"042yb": {
+"n": "Hagel, Brandon",
+"pos": "LW",
+"t": "TBL"
+},
+"042ye": {
+"n": "Bratt, Jesper",
+"pos": "LW",
+"t": "NJD"
+},
+"0457f": {
+"n": "Hischier, Nico",
+"pos": "C",
+"t": "NJD"
+},
+"0457i": {
+"n": "Luukkonen, Ukko-Pekka",
+"pos": "G",
+"t": "BUF"
+},
+"0457k": {
+"n": "Oettinger, Jake",
+"pos": "G",
+"t": "DAL"
+},
+"048vf": {
+"n": "Svechnikov, Andrei",
+"pos": "LW",
+"t": "CAR"
+},
+"048x9": {
+"n": "Pettersson, Elias",
+"pos": "C",
+"t": "VAN"
+},
+"048xc": {
+"n": "Suzuki, Nick",
+"pos": "C",
+"t": "MTL"
+},
+"049k7": {
+"n": "Necas, Martin",
+"pos": "RW",
+"t": "COL"
+},
+"049ph": {
+"n": "Pionk, Neal",
+"pos": "D",
+"t": "WPG"
+},
+"04a9v": {
+"n": "Geekie, Morgan",
+"pos": "LW",
+"t": "BOS"
+},
+"04ad7": {
+"n": "Dahlin, Rasmus",
+"pos": "D",
+"t": "BUF"
+},
+"04alw": {
+"n": "Makar, Cale",
+"pos": "D",
+"t": "COL"
+},
+"04amd": {
+"n": "Krebs, Peyton",
+"pos": "C",
+"t": "BUF"
+},
+"04amg": {
+"n": "Lafreniere, Alexis",
+"pos": "RW",
+"t": "NYR"
+},
+"04an5": {
+"n": "Heiskanen, Miro",
+"pos": "D",
+"t": "DAL"
+},
+"04apb": {
+"n": "Thomas, Robert",
+"pos": "C",
+"t": "STL"
+},
+"04bdb": {
+"n": "Hughes, Jack",
+"pos": "C",
+"t": "NJD"
+},
+"04bii": {
+"n": "Knight, Spencer",
+"pos": "G",
+"t": "CHI"
+},
+"04dwj": {
+"n": "Robertson, Jason",
+"pos": "LW",
+"t": "DAL"
+},
+"04dwk": {
+"n": "Norris, Josh",
+"pos": "C",
+"t": "BUF"
+},
+"04f24": {
+"n": "Swayman, Jeremy",
+"pos": "G",
+"t": "BOS"
+},
+"04f2d": {
+"n": "Batherson, Drake",
+"pos": "RW",
+"t": "OTT"
+},
+"04kyh": {
+"n": "Tkachuk, Brady",
+"pos": "LW",
+"t": "FLA"
+},
+"04kyn": {
+"n": "Walker, Sean",
+"pos": "D",
+"t": "CAR"
+},
+"04lbz": {
+"n": "Hughes, Quinn",
+"pos": "D",
+"t": "MIN"
+},
+"04lc0": {
+"n": "Bouchard, Evan",
+"pos": "D",
+"t": "EDM"
+},
+"04lc5": {
+"n": "McBain, Jack",
+"pos": "LW",
+"t": "UTA"
+},
+"04lcs": {
+"n": "Samuelsson, Mattias",
+"pos": "D",
+"t": "BUF"
+},
+"04ld3": {
+"n": "Dobson, Noah",
+"pos": "D",
+"t": "MTL"
+},
+"04ldb": {
+"n": "Byram, Bowen",
+"pos": "D",
+"t": "CHI"
+},
+"04ln4": {
+"n": "Sherwood, Kiefer",
+"pos": "RW",
+"t": "SJS"
+},
+"04lo0": {
+"n": "Byfield, Quinton",
+"pos": "C",
+"t": "LAK"
+},
+"04mdc": {
+"n": "Thompson, Logan",
+"pos": "G",
+"t": "WSH"
+},
+"04mq0": {
+"n": "Savoie, Matt",
+"pos": "C",
+"t": "EDM"
+},
+"04mto": {
+"n": "Kakko, Kaapo",
+"pos": "RW",
+"t": "SEA"
+},
+"04mtp": {
+"n": "Cozens, Dylan",
+"pos": "C",
+"t": "OTT"
+},
+"04mv1": {
+"n": "Suzuki, Ryan",
+"pos": "C",
+"t": "OTT"
+},
+"04mv2": {
+"n": "Caufield, Cole",
+"pos": "LW",
+"t": "MTL"
+},
+"04mx6": {
+"n": "Guhle, Kaiden",
+"pos": "D",
+"t": "MTL"
+},
+"04n4n": {
+"n": "Sandin, Rasmus",
+"pos": "D",
+"t": "WSH"
+},
+"04n90": {
+"n": "Taylor, Ty",
+"pos": "G",
+"t": "TBL"
+},
+"04o0g": {
+"n": "Rossi, Marco",
+"pos": "C",
+"t": "VAN"
+},
+"04o0h": {
+"n": "Guenther, Dylan",
+"pos": "RW",
+"t": "UTA"
+},
+"04qve": {
+"n": "Miller, KAndre",
+"pos": "D",
+"t": "CAR"
+},
+"04qxy": {
+"n": "Romanov, Alexander",
+"pos": "D",
+"t": "NYI"
+},
+"04qy3": {
+"n": "Fehervary, Martin",
+"pos": "D",
+"t": "WSH"
+},
+"04qy5": {
+"n": "Marchenko, Kirill",
+"pos": "RW",
+"t": "CBJ"
+},
+"04qyv": {
+"n": "Dostal, Lukas",
+"pos": "G",
+"t": "ANA"
+},
+"04qzc": {
+"n": "Hofer, Joel",
+"pos": "G",
+"t": "STL"
+},
+"04r0j": {
+"n": "Kesselring, Michael",
+"pos": "D",
+"t": "SJS"
+},
+"04uqa": {
+"n": "Podkolzin, Vasily",
+"pos": "LW",
+"t": "EDM"
+},
+"04xec": {
+"n": "Boldy, Matt",
+"pos": "RW",
+"t": "MIN"
+},
+"04xef": {
+"n": "Broberg, Philip",
+"pos": "D",
+"t": "STL"
+},
+"04xjf": {
+"n": "Power, Owen",
+"pos": "D",
+"t": "BUF"
+},
+"04y4m": {
+"n": "Bedard, Connor",
+"pos": "C",
+"t": "CHI"
+},
+"04y8g": {
+"n": "Zegras, Trevor",
+"pos": "LW",
+"t": "PHI"
+},
+"04ye7": {
+"n": "York, Cam",
+"pos": "D",
+"t": "PHI"
+},
+"04ye8": {
+"n": "Spence, Jordan",
+"pos": "D",
+"t": "OTT"
+},
+"04yg5": {
+"n": "Wallstedt, Jesper",
+"pos": "G",
+"t": "MIN"
+},
+"04yla": {
+"n": "Bussi, Brandon",
+"pos": "G",
+"t": "CAR"
+},
+"04ymn": {
+"n": "Hughes, Luke",
+"pos": "D",
+"t": "NJD"
+},
+"04ymt": {
+"n": "Raymond, Lucas",
+"pos": "RW",
+"t": "DET"
+},
+"04yn0": {
+"n": "McMichael, Connor",
+"pos": "LW",
+"t": "STL"
+},
+"04yqp": {
+"n": "Lundell, Anton",
+"pos": "C",
+"t": "FLA"
+},
+"04yu5": {
+"n": "Harley, Thomas",
+"pos": "D",
+"t": "DAL"
+},
+"04yu6": {
+"n": "Drysdale, Jamie",
+"pos": "D",
+"t": "PHI"
+},
+"04zb4": {
+"n": "Seider, Moritz",
+"pos": "D",
+"t": "DET"
+},
+"04zj5": {
+"n": "Peterka, JJ",
+"pos": "LW",
+"t": "BOS"
+},
+"04znw": {
+"n": "Clarke, Brandt",
+"pos": "D",
+"t": "LAK"
+},
+"04zo0": {
+"n": "Dorofeyev, Pavel",
+"pos": "RW",
+"t": "NYR"
+},
+"04zom": {
+"n": "Soderstrom, Victor",
+"pos": "D",
+"t": "BOS"
+},
+"04zop": {
+"n": "Portillo, Erik",
+"pos": "G",
+"t": "LAK"
+},
+"04zox": {
+"n": "Korczak, Kaedan",
+"pos": "D",
+"t": "PIT"
+},
+"04zp9": {
+"n": "Bourque, Mavrik",
+"pos": "RW",
+"t": "NSH"
+},
+"050rc": {
+"n": "Voronkov, Dmitry",
+"pos": "LW",
+"t": "CBJ"
+},
+"051lz": {
+"n": "Pinto, Shane",
+"pos": "C",
+"t": "OTT"
+},
+"051m4": {
+"n": "LaCombe, Jackson",
+"pos": "D",
+"t": "ANA"
+},
+"051tx": {
+"n": "Protas, Aliaksei",
+"pos": "LW",
+"t": "WSH"
+},
+"051um": {
+"n": "Gritsyuk, Arseny",
+"pos": "RW",
+"t": "NJD"
+},
+"051v4": {
+"n": "Silovs, Arturs",
+"pos": "G",
+"t": "PIT"
+},
+"051wf": {
+"n": "Wolf, Dustin",
+"pos": "G",
+"t": "CGY"
+},
+"051yz": {
+"n": "Holloway, Dylan",
+"pos": "LW",
+"t": "STL"
+},
+"051z0": {
+"n": "Stutzle, Tim",
+"pos": "C",
+"t": "OTT"
+},
+"0529k": {
+"n": "Askarov, Yaroslav",
+"pos": "G",
+"t": "SJS"
+},
+"0570x": {
+"n": "Lambert, Brad",
+"pos": "RW",
+"t": "WPG"
+},
+"0579x": {
+"n": "Fantilli, Adam",
+"pos": "C",
+"t": "CBJ"
+},
+"058t9": {
+"n": "Casey, Seamus",
+"pos": "D",
+"t": "NJD"
+},
+"05962": {
+"n": "Moser, J.J.",
+"pos": "D",
+"t": "TBL"
+},
+"059db": {
+"n": "Poirier, Jeremie",
+"pos": "D",
+"t": "(N/A)"
+},
+"059dx": {
+"n": "Cormier, Lukas",
+"pos": "D",
+"t": "VGK"
+},
+"059e0": {
+"n": "Sanderson, Jake",
+"pos": "D",
+"t": "OTT"
+},
+"059e1": {
+"n": "Schneider, Braden",
+"pos": "D",
+"t": "NYR"
+},
+"059e2": {
+"n": "Sourdif, Justin",
+"pos": "C",
+"t": "WSH"
+},
+"059e5": {
+"n": "Neighbours, Jake",
+"pos": "LW",
+"t": "STL"
+},
+"059e7": {
+"n": "Lysell, Fabian",
+"pos": "LW",
+"t": "COL"
+},
+"05aa0": {
+"n": "Yager, Brayden",
+"pos": "C",
+"t": "WPG"
+},
+"05af9": {
+"n": "Wallinder, William",
+"pos": "D",
+"t": "DET"
+},
+"05gcv": {
+"n": "Lambos, Carson",
+"pos": "D",
+"t": "MIN"
+},
+"05gd8": {
+"n": "McTavish, Mason",
+"pos": "C",
+"t": "STL"
+},
+"05gda": {
+"n": "Johnson, Kent",
+"pos": "RW",
+"t": "CBJ"
+},
+"05gdo": {
+"n": "Evangelista, Luke",
+"pos": "RW",
+"t": "NJD"
+},
+"05gvo": {
+"n": "Michkov, Matvei",
+"pos": "RW",
+"t": "PHI"
+},
+"05gvq": {
+"n": "Jarvis, Seth",
+"pos": "RW",
+"t": "CAR"
+},
+"05j3d": {
+"n": "McMann, Bobby",
+"pos": "LW",
+"t": "SEA"
+},
+"05k7t": {
+"n": "Commesso, Drew",
+"pos": "G",
+"t": "CHI"
+},
+"05k8c": {
+"n": "Foerster, Tyson",
+"pos": "LW",
+"t": "PHI"
+},
+"05k9b": {
+"n": "Blomqvist, Joel",
+"pos": "G",
+"t": "PIT"
+},
+"05kbn": {
+"n": "Cuylle, Will",
+"pos": "LW",
+"t": "NYR"
+},
+"05kj5": {
+"n": "Bordeleau, Thomas",
+"pos": "C",
+"t": "(N/A)"
+},
+"05ku9": {
+"n": "Benning, Mike",
+"pos": "D",
+"t": "CGY"
+},
+"05kua": {
+"n": "Heineman, Emil",
+"pos": "LW",
+"t": "NYI"
+},
+"05ltj": {
+"n": "Faber, Brock",
+"pos": "D",
+"t": "MIN"
+},
+"05ltq": {
+"n": "Kerins, Rory",
+"pos": "C",
+"t": "CGY"
+},
+"05ltt": {
+"n": "Laferriere, Alex",
+"pos": "RW",
+"t": "LAK"
+},
+"05lu8": {
+"n": "Nikishin, Alexander",
+"pos": "D",
+"t": "CAR"
+},
+"05lud": {
+"n": "Garand, Dylan",
+"pos": "G",
+"t": "NYR"
+},
+"05m17": {
+"n": "Nazar, Frank",
+"pos": "C",
+"t": "CHI"
+},
+"05mwh": {
+"n": "Levi, Devon",
+"pos": "G",
+"t": "EDM"
+},
+"05nik": {
+"n": "Akhtyamov, Artur",
+"pos": "G",
+"t": "TOR"
+},
+"05nzw": {
+"n": "Ceulemans, Corson",
+"pos": "D",
+"t": "CBJ"
+},
+"05nzx": {
+"n": "Poltapov, Prokhor",
+"pos": "RW",
+"t": "BUF"
+},
+"05nzz": {
+"n": "Edvinsson, Simon",
+"pos": "D",
+"t": "DET"
+},
+"05o01": {
+"n": "Cossa, Sebastian",
+"pos": "G",
+"t": "UTA"
+},
+"05ogy": {
+"n": "Halliday, Stephen",
+"pos": "LW",
+"t": "OTT"
+},
+"05oxs": {
+"n": "Dobes, Jakub",
+"pos": "G",
+"t": "MTL"
+},
+"05oy1": {
+"n": "Rempe, Matt",
+"pos": "RW",
+"t": "NYR"
+},
+"05oyv": {
+"n": "Pastujov, Sasha",
+"pos": "RW",
+"t": "MTL"
+},
+"05r1b": {
+"n": "McGroarty, Rutger",
+"pos": "LW",
+"t": "PIT"
+},
+"05r1c": {
+"n": "Slafkovsky, Juraj",
+"pos": "RW",
+"t": "MTL"
+},
+"05r1i": {
+"n": "Beniers, Matty",
+"pos": "C",
+"t": "SEA"
+},
+"05r1j": {
+"n": "Bourgault, Xavier",
+"pos": "C",
+"t": "OTT"
+},
+"05r1l": {
+"n": "Eklund, William",
+"pos": "LW",
+"t": "OTT"
+},
+"05r2j": {
+"n": "Chibrikov, Nikita",
+"pos": "LW",
+"t": "WPG"
+},
+"05r2l": {
+"n": "Dean, Zach",
+"pos": "C",
+"t": "STL"
+},
+"05r2y": {
+"n": "Miroshnichenko, Ivan",
+"pos": "RW",
+"t": "WSH"
+},
+"05r2z": {
+"n": "Lindstein, Theo",
+"pos": "D",
+"t": "STL"
+},
+"05r3d": {
+"n": "Doan, Josh",
+"pos": "RW",
+"t": "BUF"
+},
+"05r50": {
+"n": "Samoskevich, Mackie",
+"pos": "RW",
+"t": "SEA"
+},
+"05ra8": {
+"n": "Brzustewicz, Hunter",
+"pos": "D",
+"t": "CGY"
+},
+"05ram": {
+"n": "Heidt, Riley",
+"pos": "C",
+"t": "MIN"
+},
+"05ran": {
+"n": "Coronato, Matt",
+"pos": "RW",
+"t": "CGY"
+},
+"05rf0": {
+"n": "Svozil, Stanislav",
+"pos": "D",
+"t": "CBJ"
+},
+"05rf2": {
+"n": "Stankoven, Logan",
+"pos": "RW",
+"t": "CAR"
+},
+"05rfa": {
+"n": "Howard, Isaac",
+"pos": "LW",
+"t": "EDM"
+},
+"05rih": {
+"n": "Salomonsson, Elias",
+"pos": "D",
+"t": "WPG"
+},
+"05ril": {
+"n": "Nemec, Simon",
+"pos": "D",
+"t": "CGY"
+},
+"05rj0": {
+"n": "Devine, Jack",
+"pos": "RW",
+"t": "FLA"
+},
+"05rj2": {
+"n": "Morrow, Scott",
+"pos": "D",
+"t": "NYR"
+},
+"05rj3": {
+"n": "Luneau, Tristan",
+"pos": "D",
+"t": "ANA"
+},
+"05rjd": {
+"n": "Gauthier, Cutter",
+"pos": "LW",
+"t": "ANA"
+},
+"05rjf": {
+"n": "Nelson, Ty",
+"pos": "D",
+"t": "SEA"
+},
+"05rjg": {
+"n": "Yurov, Danila",
+"pos": "LW",
+"t": "MIN"
+},
+"05rjh": {
+"n": "Ostlund, Noah",
+"pos": "C",
+"t": "BUF"
+},
+"05rji": {
+"n": "Gaucher, Nathan",
+"pos": "C",
+"t": "ANA"
+},
+"05rju": {
+"n": "Chesley, Ryan",
+"pos": "D",
+"t": "WSH"
+},
+"05rjy": {
+"n": "Eiserman, Cole",
+"pos": "LW",
+"t": "NYI"
+},
+"05rjz": {
+"n": "Kiviharju, Aron",
+"pos": "D",
+"t": "MIN"
+},
+"05tas": {
+"n": "Zellweger, Olen",
+"pos": "D",
+"t": "BUF"
+},
+"05tcz": {
+"n": "Kapanen, Oliver",
+"pos": "C",
+"t": "MTL"
+},
+"05td4": {
+"n": "Ufko, Ryan",
+"pos": "D",
+"t": "NSH"
+},
+"05tl5": {
+"n": "Behrens, Sean",
+"pos": "D",
+"t": "COL"
+},
+"05tpa": {
+"n": "Koivunen, Ville",
+"pos": "LW",
+"t": "PIT"
+},
+"05tpw": {
+"n": "Vyazovoy, Semyon",
+"pos": "G",
+"t": "SEA"
+},
+"05tqt": {
+"n": "Johnston, Wyatt",
+"pos": "C",
+"t": "DAL"
+},
+"05tqu": {
+"n": "Mailloux, Logan",
+"pos": "D",
+"t": "STL"
+},
+"05tug": {
+"n": "Buium, Shai",
+"pos": "D",
+"t": "DET"
+},
+"05tur": {
+"n": "Knies, Matthew",
+"pos": "LW",
+"t": "TOR"
+},
+"05tv0": {
+"n": "Blake, Jackson",
+"pos": "RW",
+"t": "CAR"
+},
+"05u0t": {
+"n": "Del Mastro, Ethan",
+"pos": "D",
+"t": "CHI"
+},
+"05u2r": {
+"n": "Huuhtanen, Niko",
+"pos": "RW",
+"t": "(N/A)"
+},
+"05ub3": {
+"n": "Hinds, Tyson",
+"pos": "D",
+"t": "ANA"
+},
+"05uh3": {
+"n": "Buchelnikov, Dmitri",
+"pos": "RW",
+"t": "STL"
+},
+"05ui2": {
+"n": "Cooley, Logan",
+"pos": "C",
+"t": "UTA"
+},
+"05ui3": {
+"n": "Kemell, Joakim",
+"pos": "RW",
+"t": "NSH"
+},
+"05ui4": {
+"n": "Dvorsky, Dalibor",
+"pos": "C",
+"t": "STL"
+},
+"05ui5": {
+"n": "Musty, Quentin",
+"pos": "LW",
+"t": "SJS"
+},
+"05und": {
+"n": "Grebenkin, Nikita",
+"pos": "LW",
+"t": "PHI"
+},
+"05w9b": {
+"n": "Ritchie, Calum",
+"pos": "C",
+"t": "NYI"
+},
+"05w9c": {
+"n": "Celebrini, Macklin",
+"pos": "C",
+"t": "SJS"
+},
+"05ws3": {
+"n": "Kokko, Niklas",
+"pos": "G",
+"t": "SEA"
+},
+"05ws4": {
+"n": "Stenberg, Otto",
+"pos": "C",
+"t": "STL"
+},
+"05ww9": {
+"n": "Havelid, Mattias",
+"pos": "D",
+"t": "SJS"
+},
+"05wwg": {
+"n": "Hutson, Lane",
+"pos": "D",
+"t": "MTL"
+},
+"05wwh": {
+"n": "Goyette, David",
+"pos": "C",
+"t": "SEA"
+},
+"05x9g": {
+"n": "Xhekaj, Arber",
+"pos": "D",
+"t": "MTL"
+},
+"05xcm": {
+"n": "Lekkerimaki, Jonathan",
+"pos": "RW",
+"t": "VAN"
+},
+"05xct": {
+"n": "Greaves, Jet",
+"pos": "G",
+"t": "CBJ"
+},
+"05xrx": {
+"n": "Kasper, Marco",
+"pos": "C",
+"t": "DET"
+},
+"05y3a": {
+"n": "Carlsson, Leo",
+"pos": "C",
+"t": "ANA"
+},
+"05y7m": {
+"n": "Mateychuk, Denton",
+"pos": "D",
+"t": "CBJ"
+},
+"05yfk": {
+"n": "Gulyayev, Mikhail",
+"pos": "D",
+"t": "COL"
+},
+"05yli": {
+"n": "Mintyukov, Pavel",
+"pos": "D",
+"t": "ANA"
+},
+"05ylt": {
+"n": "Benson, Zach",
+"pos": "LW",
+"t": "BUF"
+},
+"05ym6": {
+"n": "Ohgren, Liam",
+"pos": "LW",
+"t": "VAN"
+},
+"05yme": {
+"n": "Ivanov, Sergei",
+"pos": "G",
+"t": "CBJ"
+},
+"05ymj": {
+"n": "Snuggerud, Jimmy",
+"pos": "RW",
+"t": "STL"
+},
+"05ymk": {
+"n": "Del Bel Belluz, Luca",
+"pos": "C",
+"t": "CBJ"
+},
+"05ymn": {
+"n": "Lamoureux, Maveric",
+"pos": "D",
+"t": "UTA"
+},
+"05ymo": {
+"n": "Beck, Owen",
+"pos": "C",
+"t": "MTL"
+},
+"05ymp": {
+"n": "Korchinski, Kevin",
+"pos": "D",
+"t": "CHI"
+},
+"05yms": {
+"n": "Rinzel, Sam",
+"pos": "D",
+"t": "CHI"
+},
+"05yn1": {
+"n": "Firkus, Jagger",
+"pos": "C",
+"t": "SEA"
+},
+"05yn2": {
+"n": "Minten, Fraser",
+"pos": "LW",
+"t": "BOS"
+},
+"060hp": {
+"n": "Bichsel, Lian",
+"pos": "D",
+"t": "DAL"
+},
+"060hq": {
+"n": "Bystedt, Filip",
+"pos": "C",
+"t": "SJS"
+},
+"060jj": {
+"n": "Nyman, Jani",
+"pos": "LW",
+"t": "SEA"
+},
+"060jl": {
+"n": "Kulich, Jiri",
+"pos": "C",
+"t": "BUF"
+},
+"060jm": {
+"n": "Duda, Artyom",
+"pos": "D",
+"t": "UTA"
+},
+"060on": {
+"n": "Sykora, Adam",
+"pos": "LW",
+"t": "NYR"
+},
+"060pq": {
+"n": "Bump, Alex",
+"pos": "LW",
+"t": "PHI"
+},
+"060pt": {
+"n": "Dumais, Jordan",
+"pos": "RW",
+"t": "CBJ"
+},
+"060v8": {
+"n": "Pettersson, Elias",
+"pos": "D",
+"t": "VAN"
+},
+"060wx": {
+"n": "Schaefer, Reid",
+"pos": "LW",
+"t": "NSH"
+},
+"060xj": {
+"n": "Kyrou, Christian",
+"pos": "D",
+"t": "OTT"
+},
+"0616n": {
+"n": "Pickering, Owen",
+"pos": "D",
+"t": "PIT"
+},
+"0618l": {
+"n": "Sidorov, Yegor",
+"pos": "RW",
+"t": "ANA"
+},
+"061a1": {
+"n": "Engstrom, Adam",
+"pos": "D",
+"t": "MTL"
+},
+"061i2": {
+"n": "Murashov, Sergei",
+"pos": "G",
+"t": "PIT"
+},
+"061im": {
+"n": "Misa, Michael",
+"pos": "C",
+"t": "SJS"
+},
+"061za": {
+"n": "Dragicevic, Lukas",
+"pos": "D",
+"t": "SEA"
+},
+"062dy": {
+"n": "Cristall, Andrew",
+"pos": "LW",
+"t": "WSH"
+},
+"062h5": {
+"n": "McKenna, Gavin",
+"pos": "LW",
+"t": "TOR"
+},
+"062k9": {
+"n": "Laba, Noah",
+"pos": "C",
+"t": "NYR"
+},
+"062sh": {
+"n": "Locmelis, Dans",
+"pos": "C",
+"t": "BOS"
+},
+"063e0": {
+"n": "Sale, Eduard",
+"pos": "LW",
+"t": "SEA"
+},
+"06449": {
+"n": "Danielson, Nate",
+"pos": "C",
+"t": "DET"
+},
+"0644a": {
+"n": "Barlow, Colby",
+"pos": "RW",
+"t": "WPG"
+},
+"0644b": {
+"n": "Smith, Will",
+"pos": "RW",
+"t": "SJS"
+},
+"0644c": {
+"n": "But, Daniil",
+"pos": "LW",
+"t": "UTA"
+},
+"0644d": {
+"n": "Brindley, Gavin",
+"pos": "C",
+"t": "COL"
+},
+"0644e": {
+"n": "Moore, Oliver",
+"pos": "C",
+"t": "CHI"
+},
+"0644f": {
+"n": "Leonard, Ryan",
+"pos": "RW",
+"t": "WSH"
+},
+"0644g": {
+"n": "Ziemmer, Koehn",
+"pos": "RW",
+"t": "LAK"
+},
+"0644l": {
+"n": "Hrabal, Michael",
+"pos": "G",
+"t": "UTA"
+},
+"064mz": {
+"n": "Stramel, Charlie",
+"pos": "RW",
+"t": "MIN"
+},
+"064n0": {
+"n": "Spence, Malcolm",
+"pos": "LW",
+"t": "NYR"
+},
+"064om": {
+"n": "Hage, Michael",
+"pos": "C",
+"t": "MTL"
+},
+"064r2": {
+"n": "Demidov, Ivan",
+"pos": "RW",
+"t": "MTL"
+},
+"064wm": {
+"n": "Gauthier, Ethan",
+"pos": "RW",
+"t": "TBL"
+},
+"065d1": {
+"n": "Wood, Matthew",
+"pos": "RW",
+"t": "NSH"
+},
+"065nx": {
+"n": "Catton, Berkly",
+"pos": "C",
+"t": "SEA"
+},
+"065ny": {
+"n": "Hemming, Emil",
+"pos": "RW",
+"t": "DAL"
+},
+"065pf": {
+"n": "Halttunen, Kasper",
+"pos": "RW",
+"t": "OTT"
+},
+"066on": {
+"n": "Brandsegg-Nygard, Michael",
+"pos": "RW",
+"t": "DET"
+},
+"066pa": {
+"n": "Bjarnason, Carson",
+"pos": "G",
+"t": "PHI"
+},
+"066q0": {
+"n": "Kiiskinen, Jesse",
+"pos": "RW",
+"t": "DET"
+},
+"066q1": {
+"n": "Boisvert, Sacha",
+"pos": "C",
+"t": "CHI"
+},
+"066q4": {
+"n": "Helenius, Konsta",
+"pos": "C",
+"t": "BUF"
+},
+"066q5": {
+"n": "Howe, Tanner",
+"pos": "LW",
+"t": "PIT"
+},
+"066qt": {
+"n": "Hameenaho, Lenni",
+"pos": "RW",
+"t": "NJD"
+},
+"066sp": {
+"n": "Suniev, Aydar",
+"pos": "LW",
+"t": "CGY"
+},
+"067xd": {
+"n": "Hughes, T.J.",
+"pos": "RW",
+"t": "COL"
+},
+"067xz": {
+"n": "Sandin Pellikka, Axel",
+"pos": "D",
+"t": "DET"
+},
+"067y1": {
+"n": "Hryckowian, Justin",
+"pos": "C",
+"t": "DAL"
+},
+"067yd": {
+"n": "Reinbacher, David",
+"pos": "D",
+"t": "MTL"
+},
+"067yt": {
+"n": "Gajan, Adam",
+"pos": "G",
+"t": "CHI"
+},
+"068yu": {
+"n": "Augustine, Trey",
+"pos": "G",
+"t": "DET"
+},
+"068yz": {
+"n": "Fowler, Jacob",
+"pos": "G",
+"t": "MTL"
+},
+"06aew": {
+"n": "Simashev, Dmitri",
+"pos": "D",
+"t": "UTA"
+},
+"06ag2": {
+"n": "Hagens, James",
+"pos": "C",
+"t": "BOS"
+},
+"06age": {
+"n": "Malinski, Sam",
+"pos": "D",
+"t": "COL"
+},
+"06amv": {
+"n": "Dickinson, Sam",
+"pos": "D",
+"t": "SJS"
+},
+"06axb": {
+"n": "Lardis, Nick",
+"pos": "RW",
+"t": "CHI"
+},
+"06axc": {
+"n": "Honzek, Samuel",
+"pos": "C",
+"t": "CGY"
+},
+"06axd": {
+"n": "Sawchyn, Gracyn",
+"pos": "C",
+"t": "FLA"
+},
+"06axe": {
+"n": "Perreault, Gabe",
+"pos": "RW",
+"t": "NYR"
+},
+"06axr": {
+"n": "Willander, Tom",
+"pos": "D",
+"t": "VAN"
+},
+"06axs": {
+"n": "Molendyk, Tanner",
+"pos": "D",
+"t": "NSH"
+},
+"06axv": {
+"n": "Nelson, Danny",
+"pos": "C",
+"t": "NYI"
+},
+"06axx": {
+"n": "Horcoff, William",
+"pos": "C",
+"t": "PIT"
+},
+"06axy": {
+"n": "Levshunov, Artyom",
+"pos": "D",
+"t": "CHI"
+},
+"06axz": {
+"n": "Nadeau, Bradly",
+"pos": "C",
+"t": "CAR"
+},
+"06ay0": {
+"n": "Price, Caden",
+"pos": "D",
+"t": "SEA"
+},
+"06ay2": {
+"n": "Cagnoni, Luca",
+"pos": "D",
+"t": "SJS"
+},
+"06b7a": {
+"n": "Nilsson, Felix",
+"pos": "C",
+"t": "NSH"
+},
+"06ba8": {
+"n": "Akey, Beau",
+"pos": "D",
+"t": "EDM"
+},
+"06bab": {
+"n": "Wahlberg, Anton",
+"pos": "C",
+"t": "ANA"
+},
+"06bag": {
+"n": "Rehkopf, Carson",
+"pos": "C",
+"t": "SEA"
+},
+"06bak": {
+"n": "Mynio, Sawyer",
+"pos": "D",
+"t": "VAN"
+},
+"06bal": {
+"n": "Morin, Etienne",
+"pos": "D",
+"t": "NJD"
+},
+"06ban": {
+"n": "Edstrom, David",
+"pos": "C",
+"t": "NSH"
+},
+"06bao": {
+"n": "Barkey, Denver",
+"pos": "C",
+"t": "PHI"
+},
+"06bap": {
+"n": "Cowan, Easton",
+"pos": "C",
+"t": "TOR"
+},
+"06bde": {
+"n": "Bonk, Oliver",
+"pos": "D",
+"t": "PHI"
+},
+"06bdr": {
+"n": "Kantserov, Roman",
+"pos": "RW",
+"t": "CHI"
+},
+"06bma": {
+"n": "Roobroeck, Ryan",
+"pos": "C",
+"t": "CHI"
+},
+"06bmb": {
+"n": "Buium, Zeev",
+"pos": "D",
+"t": "VAN"
+},
+"06bui": {
+"n": "Unger Sorum, Felix",
+"pos": "RW",
+"t": "CAR"
+},
+"06byc": {
+"n": "Slukynsky, Hampton",
+"pos": "G",
+"t": "LAK"
+},
+"06byf": {
+"n": "Strbak, Maxim",
+"pos": "D",
+"t": "BUF"
+},
+"06c3y": {
+"n": "Clara, Damian",
+"pos": "G",
+"t": "ANA"
+},
+"06c40": {
+"n": "Zavragin, Yegor",
+"pos": "G",
+"t": "PHI"
+},
+"06c42": {
+"n": "Rautiainen, Benjamin",
+"pos": "C",
+"t": "TBL"
+},
+"06c91": {
+"n": "Volokhin, Yevgeni",
+"pos": "G",
+"t": "MTL"
+},
+"06c9i": {
+"n": "Moysevich, Pavel",
+"pos": "G",
+"t": "VGK"
+},
+"06cdz": {
+"n": "Eriksson, Filip",
+"pos": "C",
+"t": "MTL"
+},
+"06cl1": {
+"n": "Finnie, Emmitt",
+"pos": "LW",
+"t": "DET"
+},
+"06cug": {
+"n": "Masse, Maxim",
+"pos": "RW",
+"t": "ANA"
+},
+"06fzv": {
+"n": "Hutson, Cole",
+"pos": "D",
+"t": "WSH"
+},
+"06fzw": {
+"n": "Jiricek, Adam",
+"pos": "D",
+"t": "STL"
+},
+"06gk0": {
+"n": "Schaefer, Matthew",
+"pos": "D",
+"t": "NYI"
+},
+"06gk1": {
+"n": "Ivankovic, Jack",
+"pos": "G",
+"t": "NSH"
+},
+"06h8g": {
+"n": "Mews, Henry",
+"pos": "D",
+"t": "CGY"
+},
+"06h8h": {
+"n": "Connelly, Trevor",
+"pos": "LW",
+"t": "VGK"
+},
+"06hco": {
+"n": "Parekh, Zayne",
+"pos": "D",
+"t": "CGY"
+},
+"06hcp": {
+"n": "Silayev, Anton",
+"pos": "D",
+"t": "NJD"
+},
+"06hcq": {
+"n": "Yakemchuk, Carter",
+"pos": "D",
+"t": "OTT"
+},
+"06hcr": {
+"n": "Chernyshov, Igor",
+"pos": "LW",
+"t": "SJS"
+},
+"06hcs": {
+"n": "Ritchie, Ryder",
+"pos": "RW",
+"t": "MIN"
+},
+"06hct": {
+"n": "Elick, Charlie",
+"pos": "D",
+"t": "CBJ"
+},
+"06hcw": {
+"n": "Sennecke, Beckett",
+"pos": "RW",
+"t": "ANA"
+},
+"06hcy": {
+"n": "Greentree, Liam",
+"pos": "RW",
+"t": "NYR"
+},
+"06hj8": {
+"n": "Moore, William",
+"pos": "C",
+"t": "BOS"
+},
+"06hj9": {
+"n": "Martone, Porter",
+"pos": "RW",
+"t": "PHI"
+},
+"06hk8": {
+"n": "George, Carter",
+"pos": "G",
+"t": "LAK"
+},
+"06hri": {
+"n": "Beaudoin, Cole",
+"pos": "C",
+"t": "NYR"
+},
+"06hrl": {
+"n": "Mooney, L.J.",
+"pos": "C",
+"t": "MTL"
+},
+"06ig3": {
+"n": "Lindstrom, Cayden",
+"pos": "LW",
+"t": "CBJ"
+},
+"06imm": {
+"n": "McQueen, Roger",
+"pos": "RW",
+"t": "ANA"
+},
+"06imq": {
+"n": "Shabanov, Maxim",
+"pos": "RW",
+"t": "MIN"
+},
+"06ims": {
+"n": "Gamzin, Dmitri",
+"pos": "G",
+"t": "NYI"
+},
+"06j7t": {
+"n": "Nabokov, Ilya",
+"pos": "G",
+"t": "COL"
+},
+"06jha": {
+"n": "Plante, Max",
+"pos": "C",
+"t": "DET"
+},
+"06jhc": {
+"n": "Iginla, Tij",
+"pos": "LW",
+"t": "UTA"
+},
+"06jhd": {
+"n": "Frondell, Anton",
+"pos": "C",
+"t": "CHI"
+},
+"06jhe": {
+"n": "Reschny, Cole",
+"pos": "C",
+"t": "CGY"
+},
+"06jhh": {
+"n": "Gardner, Evan",
+"pos": "G",
+"t": "CBJ"
+},
+"06kr3": {
+"n": "OReilly, Sam",
+"pos": "C",
+"t": "TBL"
+},
+"06lkx": {
+"n": "Parascak, Terik",
+"pos": "RW",
+"t": "WSH"
+},
+"06lkz": {
+"n": "Poirier, Justin",
+"pos": "RW",
+"t": "CAR"
+},
+"06ll5": {
+"n": "Basha, Andrew",
+"pos": "LW",
+"t": "CGY"
+},
+"06loa": {
+"n": "Zellers, William",
+"pos": "LW",
+"t": "BOS"
+},
+"06loc": {
+"n": "Surin, Yegor",
+"pos": "RW",
+"t": "NSH"
+},
+"06lof": {
+"n": "Pettersson, Lucas",
+"pos": "C",
+"t": "ANA"
+},
+"06loj": {
+"n": "Belchetz, Ethan",
+"pos": "LW",
+"t": "UTA"
+},
+"06lok": {
+"n": "Bjorck, Viggo",
+"pos": "C",
+"t": "WPG"
+},
+"06lol": {
+"n": "Preston, Mathis",
+"pos": "C",
+"t": "ANA"
+},
+"06lom": {
+"n": "Yegorov, Mikhail",
+"pos": "G",
+"t": "NJD"
+},
+"06lop": {
+"n": "Ryabkin, Ivan",
+"pos": "C",
+"t": "CAR"
+},
+"06loq": {
+"n": "Desnoyers, Caleb",
+"pos": "C",
+"t": "UTA"
+},
+"06lor": {
+"n": "Boumedienne, Sascha",
+"pos": "D",
+"t": "WPG"
+},
+"06lur": {
+"n": "Stiga, Teddy",
+"pos": "LW",
+"t": "NSH"
+},
+"06lut": {
+"n": "Sahlin Wallenius, Leo",
+"pos": "D",
+"t": "SJS"
+},
+"06luv": {
+"n": "Freij, Alfons",
+"pos": "D",
+"t": "WPG"
+},
+"06luy": {
+"n": "Artamonov, Nikita",
+"pos": "LW",
+"t": "CAR"
+},
+"06lv0": {
+"n": "Gill, Spencer",
+"pos": "D",
+"t": "PHI"
+},
+"06lv1": {
+"n": "Luchanko, Jett",
+"pos": "C",
+"t": "PHI"
+},
+"06lv2": {
+"n": "Badinka, Dominik",
+"pos": "D",
+"t": "CAR"
+},
+"06lv6": {
+"n": "Solberg, Stian",
+"pos": "D",
+"t": "ANA"
+},
+"06lvc": {
+"n": "Brunicke, Harrison",
+"pos": "D",
+"t": "PIT"
+},
+"06maz": {
+"n": "Protas, Ilya",
+"pos": "LW",
+"t": "WSH"
+},
+"06mb0": {
+"n": "Gridin, Matvei",
+"pos": "RW",
+"t": "CGY"
+},
+"06mb2": {
+"n": "Vanacker, Marek",
+"pos": "LW",
+"t": "CHI"
+},
+"06mb4": {
+"n": "Letourneau, Dean",
+"pos": "C",
+"t": "BOS"
+},
+"06mb6": {
+"n": "Emery, EJ",
+"pos": "D",
+"t": "NYR"
+},
+"06mb7": {
+"n": "Smith, Tarin",
+"pos": "D",
+"t": "ANA"
+},
+"06mb8": {
+"n": "Danford, Ben",
+"pos": "D",
+"t": "TOR"
+},
+"06mba": {
+"n": "Saarinen, Kim",
+"pos": "G",
+"t": "SEA"
+},
+"06mce": {
+"n": "Villeneuve, Nathan",
+"pos": "C",
+"t": "SEA"
+},
+"06mcu": {
+"n": "Miettinen, Julius",
+"pos": "C",
+"t": "SEA"
+},
+"06mcw": {
+"n": "Berglund, Jack",
+"pos": "C",
+"t": "PHI"
+},
+"06md8": {
+"n": "Walton, Kieron",
+"pos": "LW",
+"t": "WPG"
+},
+"06nkc": {
+"n": "OBrien, Jake",
+"pos": "C",
+"t": "SEA"
+},
+"06nke": {
+"n": "Smith, Jackson",
+"pos": "D",
+"t": "CBJ"
+},
+"06psl": {
+"n": "Stenberg, Ivar",
+"pos": "LW",
+"t": "SJS"
+},
+"06pww": {
+"n": "Ravensbergen, Joshua",
+"pos": "G",
+"t": "SJS"
+},
+"06pyi": {
+"n": "Hensler, Logan",
+"pos": "D",
+"t": "OTT"
+},
+"06pyk": {
+"n": "Carbonneau, Justin",
+"pos": "RW",
+"t": "STL"
+},
+"06pyl": {
+"n": "Ihs Wozniak, Jakob",
+"pos": "RW",
+"t": "VGK"
+},
+"06pyo": {
+"n": "Benak, Adam",
+"pos": "C",
+"t": "MIN"
+},
+"06pyp": {
+"n": "Mrtka, Radim",
+"pos": "D",
+"t": "BUF"
+},
+"06pyr": {
+"n": "Potter, Cullen",
+"pos": "LW",
+"t": "CGY"
+},
+"06pys": {
+"n": "Schmidt, Cameron",
+"pos": "RW",
+"t": "DAL"
+},
+"06pyv": {
+"n": "Gastrin, Milton",
+"pos": "C",
+"t": "STL"
+},
+"06pyw": {
+"n": "Eklund, Victor",
+"pos": "LW",
+"t": "NYI"
+},
+"06pyy": {
+"n": "Fiddler, Blake",
+"pos": "D",
+"t": "SEA"
+},
+"06pyz": {
+"n": "Zonnon, Bill",
+"pos": "LW",
+"t": "PIT"
+},
+"06qfa": {
+"n": "Pickford, Bryce",
+"pos": "D",
+"t": "MTL"
+},
+"06qqd": {
+"n": "Andreyanov, Pyotr",
+"pos": "G",
+"t": "CBJ"
+},
+"06qqe": {
+"n": "Frolov, Semyon",
+"pos": "G",
+"t": "CAR"
+},
+"06r5z": {
+"n": "Verhoeff, Keaton",
+"pos": "D",
+"t": "SJS"
+},
+"06r60": {
+"n": "Novotny, Adam",
+"pos": "LW",
+"t": "VAN"
+},
+"06r61": {
+"n": "Morozov, Ilia",
+"pos": "LW",
+"t": "BUF"
+},
+"06r63": {
+"n": "Lawrence, Tynan",
+"pos": "C",
+"t": "STL"
+},
+"06rmq": {
+"n": "Hurlbert, J.P.",
+"pos": "RW",
+"t": "DET"
+},
+"06rmr": {
+"n": "Medvedev, Alexei",
+"pos": "G",
+"t": "VAN"
+},
+"06rnr": {
+"n": "Dagenais, Maddox",
+"pos": "C",
+"t": "STL"
+},
+"06rqm": {
+"n": "Bear, Carter",
+"pos": "C",
+"t": "DET"
+},
+"06rus": {
+"n": "Martin, Brady",
+"pos": "C",
+"t": "NSH"
+},
+"06rut": {
+"n": "Reid, Cameron",
+"pos": "D",
+"t": "NSH"
+},
+"06sn3": {
+"n": "Limatov, Kurban",
+"pos": "D",
+"t": "CAR"
+},
+"06sn8": {
+"n": "Wyttenbach, Ethan",
+"pos": "RW",
+"t": "CGY"
+},
+"06sn9": {
+"n": "Aitcheson, Kashawn",
+"pos": "D",
+"t": "NYI"
+},
+"06sna": {
+"n": "Murtagh, Jack",
+"pos": "C",
+"t": "PHI"
+},
+"06snb": {
+"n": "Kindel, Benjamin",
+"pos": "RW",
+"t": "PIT"
+},
+"06snc": {
+"n": "Nesbitt, Jack",
+"pos": "C",
+"t": "PHI"
+},
+"06snd": {
+"n": "Lakovic, Lynden",
+"pos": "LW",
+"t": "WSH"
+},
+"06spt": {
+"n": "Cihar, Vojtech",
+"pos": "LW",
+"t": "LAK"
+},
+"06spu": {
+"n": "Zharovsky, Alexander",
+"pos": "RW",
+"t": "MTL"
+},
+"06spv": {
+"n": "Genborg, Eddie",
+"pos": "LW",
+"t": "DET"
+},
+"06spw": {
+"n": "Nilson, Eric",
+"pos": "C",
+"t": "ANA"
+},
+"06sq9": {
+"n": "Simpson, Cooper",
+"pos": "LW",
+"t": "BOS"
+},
+"06sqc": {
+"n": "Stockselius, Theo",
+"pos": "LW",
+"t": "CGY"
+},
+"06sqf": {
+"n": "Cootes, Braeden",
+"pos": "C",
+"t": "VAN"
+},
+"06sqi": {
+"n": "Amico, Carter",
+"pos": "D",
+"t": "PHI"
+},
+"06sqj": {
+"n": "West, Mason",
+"pos": "RW",
+"t": "CHI"
+},
+"06sqm": {
+"n": "Lee, Ryker",
+"pos": "RW",
+"t": "NSH"
+},
+"06sqn": {
+"n": "Behm, Nathan",
+"pos": "RW",
+"t": "CHI"
+},
+"06sqo": {
+"n": "Wang, Haoxi",
+"pos": "D",
+"t": "SJS"
+},
+"06sqp": {
+"n": "Nestrasil, Vaclav",
+"pos": "RW",
+"t": "CHI"
+},
+"06sqq": {
+"n": "Brzustewicz, Henry",
+"pos": "D",
+"t": "LAK"
+},
+"06sqs": {
+"n": "Rombach, Jacob",
+"pos": "D",
+"t": "NSH"
+},
+"06tau": {
+"n": "Yemelyanov, Kirill",
+"pos": "C",
+"t": "BOS"
+},
+"06tdq": {
+"n": "Prokhorov, Daniil",
+"pos": "RW",
+"t": "NYI"
+},
+"06tzg": {
+"n": "Westergard, Max",
+"pos": "LW",
+"t": "PHI"
+},
+"06xxg": {
+"n": "Fyodorov, Mikhail",
+"pos": "RW",
+"t": "STL"
+},
+"070fm": {
+"n": "Lin, Ryan",
+"pos": "D",
+"t": "SJS"
+},
+"070fo": {
+"n": "Reid, Chase",
+"pos": "D",
+"t": "SEA"
+},
+"070fp": {
+"n": "Rudolph, Daxon",
+"pos": "D",
+"t": "BUF"
+},
+"070fr": {
+"n": "Villeneuve, Xavier",
+"pos": "D",
+"t": "CHI"
+},
+"070fu": {
+"n": "Chrenko, Tomas",
+"pos": "C",
+"t": "NYR"
+},
+"071wj": {
+"n": "Carels, Carson",
+"pos": "D",
+"t": "CGY"
+},
+"071wk": {
+"n": "Hermansson, Elton",
+"pos": "RW",
+"t": "LAK"
+},
+"071wl": {
+"n": "Nordmark, Marcus",
+"pos": "RW",
+"t": "ANA"
+},
+"071wo": {
+"n": "Elofsson, Axel",
+"pos": "D",
+"t": "COL"
+},
+"0725x": {
+"n": "Malhotra, Caleb",
+"pos": "C",
+"t": "VAN"
+},
+"07339": {
+"n": "Suvanto, Oliver",
+"pos": "C",
+"t": "WSH"
+},
+"0744a": {
+"n": "Klepov, Nikita",
+"pos": "LW",
+"t": "ANA"
+},
+"074mg": {
+"n": "Ruck, Liam",
+"pos": "RW",
+"t": "PIT"
+},
+"074mh": {
+"n": "Ruck, Markus",
+"pos": "C",
+"t": "PIT"
+},
+"074v1": {
+"n": "Bleyl, Tommy",
+"pos": "D",
+"t": "NSH"
+},
+"074v8": {
+"n": "Smits, Alberts",
+"pos": "D",
+"t": "NYR"
+},
+"075kn": {
+"n": "Hemming, Oscar",
+"pos": "LW",
+"t": "CBJ"
+},
+"075ko": {
+"n": "Cullen, Wyatt",
+"pos": "LW",
+"t": "NSH"
+},
+"075u7": {
+"n": "Command, Alexander",
+"pos": "C",
+"t": "NJD"
+},
+"075w6": {
+"n": "Gustafsson, Malte",
+"pos": "D",
+"t": "NYI"
+},
+"0760d": {
+"n": "Cover, Jaxon",
+"pos": "LW",
+"t": "OTT"
+},
+"0769v": {
+"n": "Pugachyov, Gleb",
+"pos": "RW",
+"t": "MTL"
+},
+"076cu": {
+"n": "Sokolovskii, Maksim",
+"pos": "D",
+"t": "PHI"
+},
+"076qd": {
+"n": "Shaikhlislamov, Alan",
+"pos": "LW",
+"t": "CGY"
+}
+},
+"periods": [
+{
+"end": "2026-10-05T18:59:59.0-0400",
+"n": 1,
+"start": "2026-09-29T17:00:00.0-0400"
+},
+{
+"end": "2026-10-12T12:59:59.0-0400",
+"n": 2,
+"start": "2026-10-05T19:00:00.0-0400"
+},
+{
+"end": "2026-10-19T18:59:59.0-0400",
+"n": 3,
+"start": "2026-10-12T13:00:00.0-0400"
+},
+{
+"end": "2026-10-26T18:59:59.0-0400",
+"n": 4,
+"start": "2026-10-19T19:00:00.0-0400"
+},
+{
+"end": "2026-11-02T18:59:59.0-0500",
+"n": 5,
+"start": "2026-10-26T19:00:00.0-0400"
+},
+{
+"end": "2026-11-09T19:59:59.0-0500",
+"n": 6,
+"start": "2026-11-02T19:00:00.0-0500"
+},
+{
+"end": "2026-11-16T19:29:59.0-0500",
+"n": 7,
+"start": "2026-11-09T20:00:00.0-0500"
+},
+{
+"end": "2026-11-23T18:59:59.0-0500",
+"n": 8,
+"start": "2026-11-16T19:30:00.0-0500"
+},
+{
+"end": "2026-11-30T12:59:59.0-0500",
+"n": 9,
+"start": "2026-11-23T19:00:00.0-0500"
+},
+{
+"end": "2026-12-07T12:59:59.0-0500",
+"n": 10,
+"start": "2026-11-30T13:00:00.0-0500"
+},
+{
+"end": "2026-12-14T13:59:59.0-0500",
+"n": 11,
+"start": "2026-12-07T13:00:00.0-0500"
+},
+{
+"end": "2026-12-21T13:59:59.0-0500",
+"n": 12,
+"start": "2026-12-14T14:00:00.0-0500"
+},
+{
+"end": "2026-12-28T13:59:59.0-0500",
+"n": 13,
+"start": "2026-12-21T14:00:00.0-0500"
+},
+{
+"end": "2027-01-04T19:29:59.0-0500",
+"n": 14,
+"start": "2026-12-28T14:00:00.0-0500"
+},
+{
+"end": "2027-01-11T19:29:59.0-0500",
+"n": 15,
+"start": "2027-01-04T19:30:00.0-0500"
+},
+{
+"end": "2027-01-18T13:29:59.0-0500",
+"n": 16,
+"start": "2027-01-11T19:30:00.0-0500"
+},
+{
+"end": "2027-01-25T18:59:59.0-0500",
+"n": 17,
+"start": "2027-01-18T13:30:00.0-0500"
+},
+{
+"end": "2027-02-01T13:59:59.0-0500",
+"n": 18,
+"start": "2027-01-25T19:00:00.0-0500"
+},
+{
+"end": "2027-02-15T13:59:59.0-0500",
+"n": 19,
+"start": "2027-02-01T14:00:00.0-0500"
+},
+{
+"end": "2027-02-22T13:59:59.0-0500",
+"n": 20,
+"start": "2027-02-15T14:00:00.0-0500"
+},
+{
+"end": "2027-03-01T18:59:59.0-0500",
+"n": 21,
+"start": "2027-02-22T14:00:00.0-0500"
+},
+{
+"end": "2027-03-08T18:59:59.0-0500",
+"n": 22,
+"start": "2027-03-01T19:00:00.0-0500"
+},
+{
+"end": "2027-03-15T14:59:59.0-0400",
+"n": 23,
+"start": "2027-03-08T19:00:00.0-0500"
+},
+{
+"end": "2027-03-22T18:59:59.0-0400",
+"n": 24,
+"start": "2027-03-15T15:00:00.0-0400"
+},
+{
+"end": "2027-03-29T18:59:59.0-0400",
+"n": 25,
+"start": "2027-03-22T19:00:00.0-0400"
+},
+{
+"end": "2027-04-05T13:59:59.0-0400",
+"n": 26,
+"start": "2027-03-29T19:00:00.0-0400"
+},
+{
+"end": "2027-04-11T11:59:59.0-0400",
+"n": 27,
+"start": "2027-04-05T14:00:00.0-0400"
+}
+],
+"picks": [
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "ROO",
+"owner": "ROO",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "nebsnave",
+"owner": "ROO",
+"round": 1,
+"year": 2027
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "ROO",
+"owner": "M.M",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "SPG",
+"owner": "M.M",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "mcianfra",
+"owner": "ROO",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 2,
+"year": 2027
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "BULLIES",
+"owner": "M.M",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "M.M",
+"owner": "mertin",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "ROO",
+"owner": "mertin",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "SPG",
+"owner": "mcianfra",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "mertin",
+"owner": "SPG",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 3,
+"year": 2027
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "M.M",
+"owner": "BULLIES",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "ROO",
+"owner": "ROO",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "mertin",
+"owner": "ROO",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 1,
+"year": 2028
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "M.M",
+"owner": "ROO",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "ROO",
+"owner": "ROO",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 2,
+"year": 2028
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "ROO",
+"owner": "nebsnave",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 3,
+"year": 2028
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "ROO",
+"owner": "ROO",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 1,
+"year": 2029
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "ROO",
+"owner": "ROO",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 2,
+"year": 2029
+},
+{
+"orig": "BHHC",
+"owner": "BHHC",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "BULLIES",
+"owner": "BULLIES",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "CGN",
+"owner": "CGN",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "M.M",
+"owner": "M.M",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "PuckLuck",
+"owner": "PuckLuck",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "ROO",
+"owner": "SPG",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "SPG",
+"owner": "SPG",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "TommyG10",
+"owner": "TommyG10",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "Wags8210",
+"owner": "Wags8210",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "btsay45",
+"owner": "btsay45",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "mcianfra",
+"owner": "mcianfra",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "mertin",
+"owner": "mertin",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "nbracken",
+"owner": "nbracken",
+"round": 3,
+"year": 2029
+},
+{
+"orig": "nebsnave",
+"owner": "nebsnave",
+"round": 3,
+"year": 2029
+}
+],
+"rosters": {
+"003kg": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"003tz": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"00454": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 6000000,
+"slot": "A"
+},
+"0045j": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"0045k": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 1100000,
+"slot": "A"
+},
+"004cq": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 4400000,
+"slot": "A"
+},
+"004jl": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 4200000,
+"slot": "IR"
+},
+"00qnu": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 900000,
+"slot": "A"
+},
+"00qru": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 3500000,
+"slot": "A"
+},
+"01587": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"015pv": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "D",
+"sal": 5310000,
+"slot": "A"
+},
+"016g3": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 5100000,
+"slot": "A"
+},
+"016kv": {
+"ct": "FA",
+"gm": "PuckLuck",
+"pos": "G",
+"sal": 1000000,
+"slot": "A"
+},
+"01c12": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 3800000,
+"slot": "A"
+},
+"01c13": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 5900000,
+"slot": "A"
+},
+"01c32": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"01d6c": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 2800000,
+"slot": "A"
+},
+"01ex7": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"01f3d": {
+"ct": "FA",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"01f3e": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 2700000,
+"slot": "A"
+},
+"01f5z": {
+"ct": "FA",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"01f6d": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 6000000,
+"slot": "A"
+},
+"01fx3": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "D",
+"sal": 3400000,
+"slot": "A"
+},
+"01mz5": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 2000000,
+"slot": "A"
+},
+"01ud1": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "G",
+"sal": 9600000,
+"slot": "A"
+},
+"01yj6": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 3100000,
+"slot": "A"
+},
+"01zql": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 2700000,
+"slot": "A"
+},
+"01zs1": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "G",
+"sal": 2700000,
+"slot": "A"
+},
+"01zto": {
+"ct": "FA",
+"gm": "SPG",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
+},
+"01ztp": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 3000000,
+"slot": "A"
+},
+"01zu5": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 1600000,
+"slot": "A"
+},
+"01zvf": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"01zvp": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 2340000,
+"slot": "A"
+},
+"0222k": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "G",
+"sal": 4100000,
+"slot": "A"
+},
+"02422": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 3600000,
+"slot": "A"
+},
+"0243e": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"0243f": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 3000000,
+"slot": "A"
+},
+"02440": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 4100000,
+"slot": "A"
+},
+"024lv": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"025by": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"026p4": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 2800000,
+"slot": "R"
+},
+"027i6": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 6900000,
+"slot": "A"
+},
+"02aez": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 7500000,
+"slot": "A"
+},
+"02azb": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 6100000,
+"slot": "A"
+},
+"02azf": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 2610000,
+"slot": "A"
+},
+"02b3o": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"02b3y": {
+"ct": "FA",
+"gm": "M.M",
+"pos": "G",
+"sal": 1000000,
+"slot": "R"
+},
+"02b70": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 15200000,
+"slot": "A"
+},
+"02b76": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 6800000,
+"slot": "A"
+},
+"02dq3": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 1500000,
+"slot": "A"
+},
+"02f9l": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 16200000,
+"slot": "A"
+},
+"02fda": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "G",
+"sal": 5900000,
+"slot": "A"
+},
+"02fzj": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"02fzm": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 7000000,
+"slot": "A"
+},
+"02g00": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 2600000,
+"slot": "A"
+},
+"02ni5": {
+"ct": "FA",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"02noe": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 1500000,
+"slot": "A"
+},
+"02noj": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 6990000,
+"slot": "A"
+},
+"02nok": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 3500000,
+"slot": "A"
+},
+"02nom": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "G",
+"sal": 10100000,
+"slot": "A"
+},
+"02noq": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 2500000,
+"slot": "A"
+},
+"02np6": {
+"ct": "FA",
+"gm": "ROO",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"02np7": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "G",
+"sal": 4600000,
+"slot": "R"
+},
+"02nq3": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "D",
+"sal": 3700000,
+"slot": "A"
+},
+"02nqb": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"02o7s": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "G",
+"sal": 13300000,
+"slot": "R"
+},
+"02oar": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "G",
+"sal": 8100000,
+"slot": "A"
+},
+"02un4": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 17400000,
+"slot": "A"
+},
+"02un5": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 10700000,
+"slot": "A"
+},
+"02un7": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 4300000,
+"slot": "A"
+},
+"02unz": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 5400000,
+"slot": "A"
+},
+"02uws": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 2600000,
+"slot": "A"
+},
+"02wy5": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "D",
+"sal": 1900000,
+"slot": "A"
+},
+"02wy7": {
+"ct": "FA",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"02ybl": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"02ybn": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 5100000,
+"slot": "R"
+},
+"02yjj": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 9100000,
+"slot": "A"
+},
+"02yjl": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 14900000,
+"slot": "A"
+},
+"02yjp": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"02ytx": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"03161": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "D",
+"sal": 3300000,
+"slot": "A"
+},
+"03167": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 4000000,
+"slot": "A"
+},
+"031nx": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 7300000,
+"slot": "A"
+},
+"031og": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1300000,
+"slot": "A"
+},
+"031p0": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 8100000,
+"slot": "A"
+},
+"031p3": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 2900000,
+"slot": "A"
+},
+"031pl": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "G",
+"sal": 1500000,
+"slot": "R"
+},
+"031v6": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 9000000,
+"slot": "A"
+},
+"0322w": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 8000000,
+"slot": "A"
+},
+"038vb": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 9600000,
+"slot": "A"
+},
+"03924": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 10850000,
+"slot": "A"
+},
+"039cg": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 6600000,
+"slot": "A"
+},
+"03as6": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 2100000,
+"slot": "A"
+},
+"03as8": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 5000000,
+"slot": "A"
+},
+"03as9": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 3200000,
+"slot": "A"
+},
+"03bfj": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 7000000,
+"slot": "A"
+},
+"03c0c": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"03d09": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 2900000,
+"slot": "A"
+},
+"03d12": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 12500000,
+"slot": "A"
+},
+"03dde": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 6600000,
+"slot": "R"
+},
+"03de2": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 7400000,
+"slot": "A"
+},
+"03dms": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 3600000,
+"slot": "IR"
+},
+"03duf": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 6400000,
+"slot": "IR"
+},
+"03e1m": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 8000000,
+"slot": "A"
+},
+"03e1n": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 8900000,
+"slot": "A"
+},
+"03e7p": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "D",
+"sal": 6200000,
+"slot": "A"
+},
+"03ece": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "G",
+"sal": 12200000,
+"slot": "A"
+},
+"03ecl": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "D",
+"sal": 1100000,
+"slot": "A"
+},
+"03ekl": {
+"ct": "FA",
+"gm": "M.M",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"03j8l": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 2800000,
+"slot": "A"
+},
+"03jvu": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 11400000,
+"slot": "A"
+},
+"03jw0": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 1350000,
+"slot": "R"
+},
+"03jxy": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 12900000,
+"slot": "A"
+},
+"03klz": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 6300000,
+"slot": "A"
+},
+"03kra": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 9300000,
+"slot": "A"
+},
+"03l0t": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 3000000,
+"slot": "A"
+},
+"03mbn": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "G",
+"sal": 6600000,
+"slot": "A"
+},
+"03mkm": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "G",
+"sal": 4200000,
+"slot": "A"
+},
+"03mm6": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1100000,
+"slot": "A"
+},
+"03mn8": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 5800000,
+"slot": "A"
+},
+"03mn9": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 12000000,
+"slot": "A"
+},
+"03mqg": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 5700000,
+"slot": "A"
+},
+"03ne3": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 4000000,
+"slot": "A"
+},
+"03nqi": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "G",
+"sal": 1000000,
+"slot": "R"
+},
+"03pax": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"03ra7": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 15000000,
+"slot": "A"
+},
+"03ra8": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 5500000,
+"slot": "A"
+},
+"03rad": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 2900000,
+"slot": "A"
+},
+"03rae": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 2500000,
+"slot": "A"
+},
+"03raf": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1600000,
+"slot": "A"
+},
+"03rf2": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"03rf5": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 3200000,
+"slot": "A"
+},
+"03rf8": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 2700000,
+"slot": "A"
+},
+"03rfl": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
+},
+"03rfo": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "G",
+"sal": 4050000,
+"slot": "A"
+},
+"03rfp": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "G",
+"sal": 4100000,
+"slot": "A"
+},
+"03rh3": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 12300000,
+"slot": "A"
+},
+"03rih": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "G",
+"sal": 3600000,
+"slot": "A"
+},
+"03rmx": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 4700000,
+"slot": "A"
+},
+"03uzr": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 10800000,
+"slot": "A"
+},
+"03v70": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 5500000,
+"slot": "A"
+},
+"03w5m": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 3300000,
+"slot": "A"
+},
+"03wor": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"03wpi": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 7600000,
+"slot": "A"
+},
+"03wpm": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "D",
+"sal": 9200000,
+"slot": "A"
+},
+"03wpn": {
+"ct": "FA",
+"gm": "SPG",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"03yg3": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "D",
+"sal": 8000000,
+"slot": "A"
+},
+"03yh8": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 4900000,
+"slot": "A"
+},
+"03ynu": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "G",
+"sal": 1000000,
+"slot": "A"
+},
+"03yxp": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "G",
+"sal": 3300000,
+"slot": "R"
+},
+"03zul": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 6500000,
+"slot": "A"
+},
+"042t5": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 7800000,
+"slot": "A"
+},
+"042vl": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 3000000,
+"slot": "A"
+},
+"042vx": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 2700000,
+"slot": "A"
+},
+"042w4": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 11300000,
+"slot": "A"
+},
+"042yb": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 8100000,
+"slot": "A"
+},
+"042ye": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 8300000,
+"slot": "A"
+},
+"0457f": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 6400000,
+"slot": "A"
+},
+"0457i": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 1200000,
+"slot": "R"
+},
+"0457k": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 11000000,
+"slot": "A"
+},
+"048vf": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 3500000,
+"slot": "A"
+},
+"048x9": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 9500000,
+"slot": "A"
+},
+"048xc": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 6000000,
+"slot": "A"
+},
+"049k7": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 6100000,
+"slot": "A"
+},
+"049ph": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 4300000,
+"slot": "A"
+},
+"04a9v": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"04ad7": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 14300000,
+"slot": "A"
+},
+"04alw": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "D",
+"sal": 15800000,
+"slot": "A"
+},
+"04amd": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 1100000,
+"slot": "R"
+},
+"04amg": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 2700000,
+"slot": "A"
+},
+"04an5": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 7800000,
+"slot": "A"
+},
+"04apb": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 5300000,
+"slot": "A"
+},
+"04bdb": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 11500000,
+"slot": "A"
+},
+"04bii": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "G",
+"sal": 6500000,
+"slot": "A"
+},
+"04dwj": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 7500000,
+"slot": "A"
+},
+"04dwk": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"04f24": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "G",
+"sal": 2700000,
+"slot": "A"
+},
+"04f2d": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 4000000,
+"slot": "A"
+},
+"04kyh": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 13600000,
+"slot": "A"
+},
+"04kyn": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 2700000,
+"slot": "A"
+},
+"04lbz": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 14900000,
+"slot": "A"
+},
+"04lc0": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 11600000,
+"slot": "A"
+},
+"04lc5": {
+"ct": "RFA1",
+"gm": "SPG",
+"pos": "F",
+"sal": 3000000,
+"slot": "A"
+},
+"04lcs": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 2600000,
+"slot": "A"
+},
+"04ld3": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 5800000,
+"slot": "A"
+},
+"04ldb": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "D",
+"sal": 3500000,
+"slot": "A"
+},
+"04ln4": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 5200000,
+"slot": "A"
+},
+"04lo0": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 8900000,
+"slot": "A"
+},
+"04mdc": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "G",
+"sal": 4700000,
+"slot": "A"
+},
+"04mq0": {
+"ct": "ELC1",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 1500000,
+"slot": "IR"
+},
+"04mto": {
+"ct": "RFA1",
+"gm": "CGN",
+"pos": "F",
+"sal": 2650000,
+"slot": "A"
+},
+"04mtp": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 4000000,
+"slot": "A"
+},
+"04mv1": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"04mv2": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 9000000,
+"slot": "A"
+},
+"04mx6": {
+"ct": "RFA1",
+"gm": "SPG",
+"pos": "D",
+"sal": 2800000,
+"slot": "IR"
+},
+"04n4n": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "D",
+"sal": 3200000,
+"slot": "A"
+},
+"04n90": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"04o0g": {
+"ct": "FA",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"04o0h": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 5900000,
+"slot": "A"
+},
+"04qve": {
+"ct": "RFA1",
+"gm": "SPG",
+"pos": "D",
+"sal": 4500000,
+"slot": "A"
+},
+"04qxy": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"04qy3": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"04qy5": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 8300000,
+"slot": "A"
+},
+"04qyv": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "G",
+"sal": 4200000,
+"slot": "A"
+},
+"04qzc": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "G",
+"sal": 3600000,
+"slot": "A"
+},
+"04r0j": {
+"ct": "FA",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"04uqa": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 900000,
+"slot": "A"
+},
+"04xec": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "F",
+"sal": 10500000,
+"slot": "A"
+},
+"04xef": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 3100000,
+"slot": "A"
+},
+"04xjf": {
+"ct": "RFA1",
+"gm": "mertin",
+"pos": "D",
+"sal": 4600000,
+"slot": "A"
+},
+"04y4m": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 14700000,
+"slot": "A"
+},
+"04y8g": {
+"ct": "RFA1",
+"gm": "CGN",
+"pos": "F",
+"sal": 7850000,
+"slot": "A"
+},
+"04ye7": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "D",
+"sal": 1200000,
+"slot": "A"
+},
+"04ye8": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"04yg5": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "G",
+"sal": 0,
+"slot": "A"
+},
+"04yla": {
+"ct": "BID",
+"gm": "mertin",
+"pos": "G",
+"sal": 2200000,
+"slot": "M"
+},
+"04ymn": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 5400000,
+"slot": "A"
+},
+"04ymt": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 5800000,
+"slot": "A"
+},
+"04yn0": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"04yqp": {
+"ct": "RFA1",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 3850000,
+"slot": "A"
+},
+"04yu5": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "D",
+"sal": 8500000,
+"slot": "A"
+},
+"04yu6": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "D",
+"sal": 2500000,
+"slot": "A"
+},
+"04zb4": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 9900000,
+"slot": "A"
+},
+"04zj5": {
+"ct": "RFA1",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 3100000,
+"slot": "A"
+},
+"04znw": {
+"ct": "RFA1",
+"gm": "nbracken",
+"pos": "D",
+"sal": 6000000,
+"slot": "A"
+},
+"04zo0": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 2800000,
+"slot": "A"
+},
+"04zom": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"04zop": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"04zox": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"04zp9": {
+"ct": "BID",
+"gm": "CGN",
+"pos": "F",
+"sal": 1500000,
+"slot": "R"
+},
+"050rc": {
+"ct": "RFA1",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 2300000,
+"slot": "A"
+},
+"051lz": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 2400000,
+"slot": "A"
+},
+"051m4": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "D",
+"sal": 4100000,
+"slot": "A"
+},
+"051tx": {
+"ct": "RFA1",
+"gm": "nbracken",
+"pos": "F",
+"sal": 2600000,
+"slot": "A"
+},
+"051um": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"051v4": {
+"ct": "ELC1",
+"gm": "BHHC",
+"pos": "G",
+"sal": 1500000,
+"slot": "R"
+},
+"051wf": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "G",
+"sal": 10100000,
+"slot": "A"
+},
+"051yz": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 4500000,
+"slot": "A"
+},
+"051z0": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 13300000,
+"slot": "A"
+},
+"0529k": {
+"ct": "ELC1",
+"gm": "M.M",
+"pos": "G",
+"sal": 1500000,
+"slot": "A"
+},
+"0570x": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0579x": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 5200000,
+"slot": "A"
+},
+"058t9": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05962": {
+"ct": "FA",
+"gm": "SPG",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"059db": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"059dx": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"059e0": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "D",
+"sal": 10000000,
+"slot": "A"
+},
+"059e1": {
+"ct": "RFA1",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 2000000,
+"slot": "A"
+},
+"059e2": {
+"ct": "ELC1",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1500000,
+"slot": "R"
+},
+"059e5": {
+"ct": "RFA1",
+"gm": "nbracken",
+"pos": "F",
+"sal": 3100000,
+"slot": "A"
+},
+"059e7": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05aa0": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05af9": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05gcv": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"05gd8": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 5000000,
+"slot": "A"
+},
+"05gda": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 2700000,
+"slot": "A"
+},
+"05gdo": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 2790000,
+"slot": "A"
+},
+"05gvo": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 13050000,
+"slot": "A"
+},
+"05gvq": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 5300000,
+"slot": "IR"
+},
+"05j3d": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"05k7t": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05k8c": {
+"ct": "RFA1",
+"gm": "SPG",
+"pos": "F",
+"sal": 3000000,
+"slot": "A"
+},
+"05k9b": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05kbn": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 2700000,
+"slot": "A"
+},
+"05kj5": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ku9": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05kua": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"05ltj": {
+"ct": "BID",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 6500000,
+"slot": "A"
+},
+"05ltq": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ltt": {
+"ct": "RFA1",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 3550000,
+"slot": "A"
+},
+"05lu8": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05lud": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05m17": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"05mwh": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "G",
+"sal": 1000000,
+"slot": "M"
+},
+"05nik": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05nzw": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05nzx": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05nzz": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "D",
+"sal": 3600000,
+"slot": "A"
+},
+"05o01": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05ogy": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05oxs": {
+"ct": "BID",
+"gm": "nebsnave",
+"pos": "G",
+"sal": 2300000,
+"slot": "A"
+},
+"05oy1": {
+"ct": "RFA1",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 2100000,
+"slot": "A"
+},
+"05oyv": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r1b": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r1c": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 4200000,
+"slot": "A"
+},
+"05r1i": {
+"ct": "RFA1",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 5400000,
+"slot": "A"
+},
+"05r1j": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r1l": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "F",
+"sal": 4900000,
+"slot": "A"
+},
+"05r2j": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r2l": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r2y": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05r2z": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05r3d": {
+"ct": "BID",
+"gm": "nbracken",
+"pos": "F",
+"sal": 3420000,
+"slot": "A"
+},
+"05r50": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
+},
+"05ra8": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05ram": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ran": {
+"ct": "RFA1",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 2600000,
+"slot": "A"
+},
+"05rf0": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05rf2": {
+"ct": "RFA1",
+"gm": "btsay45",
+"pos": "F",
+"sal": 4400000,
+"slot": "A"
+},
+"05rfa": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05rih": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05ril": {
+"ct": "RFA1",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 3650000,
+"slot": "A"
+},
+"05rj0": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05rj2": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05rj3": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05rjd": {
+"ct": "BID",
+"gm": "M.M",
+"pos": "F",
+"sal": 2900000,
+"slot": "A"
+},
+"05rjf": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05rjg": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"05rjh": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05rji": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05rju": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05rjy": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05rjz": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05tas": {
+"ct": "RFA1",
+"gm": "mertin",
+"pos": "D",
+"sal": 2500000,
+"slot": "IR"
+},
+"05tcz": {
+"ct": "ELC1",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"05td4": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"05tl5": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05tpa": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05tpw": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05tqt": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 9100000,
+"slot": "A"
+},
+"05tqu": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05tug": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05tur": {
+"ct": "BID",
+"gm": "btsay45",
+"pos": "F",
+"sal": 9600000,
+"slot": "A"
+},
+"05tv0": {
+"ct": "BID",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 7500000,
+"slot": "A"
+},
+"05u0t": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05u2r": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ub3": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
+"05uh3": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ui2": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 5800000,
+"slot": "A"
+},
+"05ui3": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ui4": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"05ui5": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05und": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05w9b": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05w9c": {
+"ct": "BID",
+"gm": "SPG",
+"pos": "F",
+"sal": 10500000,
+"slot": "A"
+},
+"05ws3": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05ws4": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ww9": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05wwg": {
+"ct": "BID",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 10600000,
+"slot": "A"
+},
+"05wwh": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05x9g": {
+"ct": "RFA1",
+"gm": "CGN",
+"pos": "D",
+"sal": 2500000,
+"slot": "A"
+},
+"05xcm": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05xct": {
+"ct": "ELC1",
+"gm": "btsay45",
+"pos": "G",
+"sal": 1500000,
+"slot": "A"
+},
+"05xrx": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "F",
+"sal": 3100000,
+"slot": "A"
+},
+"05y3a": {
+"ct": "RFA1",
+"gm": "M.M",
+"pos": "F",
+"sal": 7680000,
+"slot": "A"
+},
+"05y7m": {
+"ct": "RFA1",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 3800000,
+"slot": "A"
+},
+"05yfk": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05yli": {
+"ct": "BID",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 1500000,
+"slot": "A"
+},
+"05ylt": {
+"ct": "RFA1",
+"gm": "CGN",
+"pos": "F",
+"sal": 3650000,
+"slot": "A"
+},
+"05ym6": {
+"ct": "ELC1",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"05yme": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"05ymj": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"05ymk": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ymn": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"05ymo": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05ymp": {
+"ct": "ELC1",
+"gm": "mertin",
+"pos": "D",
+"sal": 1500000,
+"slot": "R"
+},
+"05yms": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"05yn1": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"05yn2": {
+"ct": "ELC1",
+"gm": "nbracken",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"060hp": {
+"ct": "BID",
+"gm": "BHHC",
+"pos": "D",
+"sal": 2700000,
+"slot": "A"
+},
+"060hq": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060jj": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060jl": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 1000000,
+"slot": "M"
+},
+"060jm": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"060on": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060pq": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060pt": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060v8": {
+"ct": "RFA1",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 2500000,
+"slot": "A"
+},
+"060wx": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"060xj": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"0616n": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"0618l": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"061a1": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"061i2": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"061im": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"061za": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"062dy": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"062h5": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"062k9": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"062sh": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"063e0": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06449": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644a": {
+"ct": "BID",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644b": {
+"ct": "RFA1",
+"gm": "SPG",
+"pos": "F",
+"sal": 6800000,
+"slot": "A"
+},
+"0644c": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644d": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644e": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644f": {
+"ct": "ELC1",
+"gm": "ROO",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"0644g": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0644l": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"064mz": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"064n0": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"064om": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"064r2": {
+"ct": "ELC1",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"064wm": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"065d1": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "R"
+},
+"065nx": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"065ny": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"065pf": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066on": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066pa": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"066q0": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066q1": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066q4": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066q5": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066qt": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"066sp": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"067xd": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"067xz": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"067y1": {
+"ct": "ELC1",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1500000,
+"slot": "R"
+},
+"067yd": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"067yt": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"068yu": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"068yz": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06aew": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06ag2": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06age": {
+"ct": "BID",
+"gm": "ROO",
+"pos": "D",
+"sal": 1500000,
+"slot": "A"
+},
+"06amv": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06axb": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06axc": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06axd": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06axe": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06axr": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06axs": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06axv": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06axx": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06axy": {
+"ct": "ELC1",
+"gm": "M.M",
+"pos": "D",
+"sal": 1500000,
+"slot": "R"
+},
+"06axz": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06ay0": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06ay2": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"06b7a": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06ba8": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06bab": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bag": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bak": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06bal": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06ban": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bao": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bap": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bde": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06bdr": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bma": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06bmb": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"06bui": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06byc": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06byf": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06c3y": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06c40": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06c42": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06c91": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06c9i": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06cdz": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06cl1": {
+"ct": "ELC1",
+"gm": "M.M",
+"pos": "F",
+"sal": 1500000,
+"slot": "R"
+},
+"06cug": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06fzv": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "R"
+},
+"06fzw": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06gk0": {
+"ct": "ELC1",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 1500000,
+"slot": "A"
+},
+"06gk1": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06h8g": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06h8h": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06hco": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "A"
+},
+"06hcp": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06hcq": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06hcr": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06hcs": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06hct": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06hcw": {
+"ct": "ELC1",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1500000,
+"slot": "A"
+},
+"06hcy": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06hj8": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06hj9": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06hk8": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06hri": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06hrl": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06ig3": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06imm": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06imq": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06ims": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06j7t": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06jha": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06jhc": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06jhd": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06jhe": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06jhh": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06kr3": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lkx": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lkz": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06ll5": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06loa": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06loc": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lof": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06loj": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lok": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lol": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lom": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06lop": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06loq": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lor": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06lur": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lut": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06luv": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06luy": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lv0": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06lv1": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06lv2": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06lv6": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06lvc": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06maz": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06mb0": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06mb2": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06mb4": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06mb6": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06mb7": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06mb8": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06mba": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06mce": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06mcu": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06mcw": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06md8": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06nkc": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06nke": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06psl": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06pww": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06pyi": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06pyk": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyl": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyo": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyp": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06pyr": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pys": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyv": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyw": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06pyy": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06pyz": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06qfa": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06qqd": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06qqe": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06r5z": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06r60": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06r61": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06r63": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06rmq": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06rmr": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "G",
+"sal": 0,
+"slot": "M"
+},
+"06rnr": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06rqm": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06rus": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06rut": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sn3": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sn8": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sn9": {
+"ct": "MNR",
+"gm": "TommyG10",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sna": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06snb": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "A"
+},
+"06snc": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06snd": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06spt": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06spu": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06spv": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06spw": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sq9": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqc": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqf": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqi": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sqj": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqm": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqn": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqo": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sqp": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06sqq": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06sqs": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"06tau": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06tdq": {
+"ct": "MNR",
+"gm": "M.M",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06tzg": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"06xxg": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"070fm": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"070fo": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"070fp": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"070fr": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"070fu": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"071wj": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"071wk": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"071wl": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"071wo": {
+"ct": "MNR",
+"gm": "mertin",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"0725x": {
+"ct": "MNR",
+"gm": "btsay45",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"07339": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0744a": {
+"ct": "MNR",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"074mg": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"074mh": {
+"ct": "MNR",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"074v1": {
+"ct": "MNR",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"074v8": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"075kn": {
+"ct": "MNR",
+"gm": "nbracken",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"075ko": {
+"ct": "MNR",
+"gm": "BHHC",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"075u7": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"075w6": {
+"ct": "MNR",
+"gm": "CGN",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"0760d": {
+"ct": "MNR",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"0769v": {
+"ct": "MNR",
+"gm": "ROO",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+},
+"076cu": {
+"ct": "MNR",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 0,
+"slot": "M"
+},
+"076qd": {
+"ct": "MNR",
+"gm": "SPG",
+"pos": "F",
+"sal": 0,
+"slot": "M"
+}
+},
+"standings": [
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 1,
+"t": "SPG"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 2,
+"t": "nebsnave"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 3,
+"t": "M.M"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 4,
+"t": "TommyG10"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 5,
+"t": "ROO"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 6,
+"t": "CGN"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 7,
+"t": "mertin"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 8,
+"t": "Wags8210"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 9,
+"t": "mcianfra"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 10,
+"t": "btsay45"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 11,
+"t": "BULLIES"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 12,
+"t": "BHHC"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 13,
+"t": "PuckLuck"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 14,
+"t": "nbracken"
+}
+],
+"teams": {
+"0j93vrremo5xrk06": {
+"code": "CGN",
+"div": "West",
+"name": "Colganites"
+},
+"2infq4l6mo5xrk06": {
+"code": "nbracken",
+"div": "West",
+"name": "Cake Eaters"
+},
+"3l5fbv5emo5xrk06": {
+"code": "nebsnave",
+"div": "West",
+"name": "nebsnave"
+},
+"80hql23nmo5xrk06": {
+"code": "BULLIES",
+"div": "East",
+"name": "Bethesda Bullies"
+},
+"8ecma7nlmo5xrk06": {
+"code": "PuckLuck",
+"div": "East",
+"name": "Beginner's Luck"
+},
+"cn6y2q7jmo5xrk06": {
+"code": "TommyG10",
+"div": "West",
+"name": "TommyG1095"
+},
+"cx6b09d3mo5xrk06": {
+"code": "btsay45",
+"div": "East",
+"name": "Worcester Gators"
+},
+"fc663qqamo5xrk06": {
+"code": "mertin",
+"div": "West",
+"name": "Upper Darby Rats"
+},
+"h206aupxmo5xrk06": {
+"code": "BHHC",
+"div": "East",
+"name": "Book Hockey HC"
+},
+"lesmfj40mo5xrk06": {
+"code": "ROO",
+"div": "West",
+"name": "Kalamazoo Kangaroo"
+},
+"madtc9g7mo5xrk06": {
+"code": "Wags8210",
+"div": "West",
+"name": "Wags8210"
+},
+"p5hba1dnmo5xrk06": {
+"code": "SPG",
+"div": "East",
+"name": "South Philly Gravy"
+},
+"qqkj0i85mo5xrk06": {
+"code": "M.M",
+"div": "East",
+"name": "Milwaukee Musketeers"
+},
+"ri82j0mymo5xrk06": {
+"code": "mcianfra",
+"div": "East",
+"name": "mcianfrani"
+}
+},
+"waivers": [
+"07afn",
+"07ant",
+"07anv",
+"07anz"
+]
+}

@@ -92,6 +92,7 @@
   // ---------------------------------------------------------------- table
   // cols: [{k, l, v(row)->sort value, f(row)->html, cls, title, csv(row), hide}]
   ui.table = function (el, o) {
+    o.cols = o.cols.filter(Boolean);
     var st = { sort: o.sort || null, desc: o.desc !== undefined ? o.desc : true, q: '', f: {}, shown: o.page || 60 };
     (o.filters || []).forEach(function (f, i) { st.f[i] = f.def || ''; });
     var id = 't' + Math.random().toString(36).slice(2, 8);

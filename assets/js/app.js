@@ -9,7 +9,7 @@
     ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub']]],
     ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
-    ['League', [['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['League', [['standings', '🏅', 'Standings'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', '2027 Offseason']]],
     ['Prospects', [['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center']]],
     ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],
@@ -66,7 +66,7 @@
     }
     if (current !== route) window.scrollTo(0, 0);
     current = route;
-    main.insertAdjacentHTML('beforeend', '<div class="foot">Dynasty Puck HQ · ' + esc(DP.meta.season) + ' · Fantrax exports + contract sheet + NHL public APIs · projections are model estimates, not facts · <a href="#/rules">methods</a> · <a href="#/data">data</a></div>');
+    main.insertAdjacentHTML('beforeend', '<div class="foot">Dynasty Puck HQ · ' + esc(DP.meta.season) + ' · Fantrax league data (' + (DP.live && DP.live.state === 'ok' ? 'live' : 'nightly') + ') + contract sheet + NHL public APIs · projections are model estimates, not facts · <a href="#/rules">methods</a> · <a href="#/data">data</a></div>');
   }
   DP.render = render;
   DP.go = function (route, arg, q) { location.hash = U.hash(route, arg, q); };
@@ -134,6 +134,7 @@
     render();
     if (!DP.state.team && U.parseHash().route === 'home') DP.openPicker();
     DP.bootMs = Date.now() - t0;
+    if (DP.live) DP.live.start();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

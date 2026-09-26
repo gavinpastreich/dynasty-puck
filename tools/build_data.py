@@ -19,6 +19,7 @@ import sys
 import unicodedata
 from collections import Counter, defaultdict
 
+import fantrax_api as FX
 import nhl_api as API
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -206,6 +207,56 @@ def load_fantrax():
                 rec["p26"] = [num(p.get(c)) for c in ("GP", "W", "GAA", "SV%", "SHO")]
             players[pid] = rec
     return players
+
+
+def apply_fantrax(players, snap):
+    """Live Fantrax rosters override the CSV exports' owner / contract / salary, and add each player's lineup slot."""
+    if not snap:
+        log("Fantrax sync: no snapshot; rosters come from the CSV exports only")
+        return
+    zero_s, zero_g = [0.0] * 11, [0.0] * 5
+    ch, seen = Counter(), set()
+    waivers = {f"*{i}*" for i in snap.get("waivers", [])}
+    for fid, r in snap["rosters"].items():
+        key = f"*{fid}*"
+        p = players.get(key)
+        if p is None:
+            meta = snap["names"].get(fid)
+            if not meta:
+                log(f"  ! Fantrax roster id {fid} ({r['gm']}) has no name; skipped")
+                continue
+            n = meta["n"] or fid
+            if "," in n:
+                last, first = n.split(",", 1)
+                n = f"{first.strip()} {last.strip()}"
+            g = r["pos"] == "G"
+            p = {"id": key, "n": n, "t": meta.get("t") or "", "pos": pos_group(r["pos"]), "fd": 0, "gm": None, "wv": 0,
+                 "ct": r["ct"], "sal": r["sal"], "fxage": 0, "rk": 0, "fx": [0, 0, 0], "fxp": [0, 0, 0],
+                 "kind": "G" if g else "S", "s25": list(zero_g if g else zero_s), "p26": list(zero_g if g else zero_s),
+                 "fxnew": 1}
+            players[key] = p
+            ch["new"] += 1
+            log(f"  + on a Fantrax roster but not in the CSV exports: {n} ({r['gm']}, {r['ct']} ${r['sal'] / 1e6:.2f}M)")
+        seen.add(key)
+        if p["gm"] != r["gm"]:
+            ch["owner"] += 1
+            log(f"  > {p['n']}: {p['gm'] or 'FA'} -> {r['gm']} (Fantrax)")
+        elif p["ct"] != r["ct"] or p["sal"] != r["sal"]:
+            ch["contract"] += 1
+            log(f"  > {p['n']} ({r['gm']}): {p['ct']} ${p['sal'] / 1e6:.2f}M -> {r['ct']} ${r['sal'] / 1e6:.2f}M (Fantrax)")
+        p.update(gm=r["gm"], ct=r["ct"], sal=r["sal"], wv=0, fs=r["slot"])
+    for key, p in players.items():
+        if key not in seen:
+            if p["gm"]:
+                ch["dropped"] += 1
+                log(f"  < {p['n']}: dropped by {p['gm']} since the CSV export (Fantrax)")
+                p["gm"] = None
+            p["wv"] = 1 if key in waivers else 0
+    for fid, e in snap.get("elig", {}).items():
+        p = players.get(f"*{fid}*")
+        if p and p["pos"] != "G":
+            p["fd"] = 1 if set(e.split(",")) >= {"F", "D"} else 0
+    log(f"Fantrax sync ({snap['fetched']}): {len(snap['rosters'])} rostered; changes vs CSV: {dict(ch) or 'none'}")
 
 
 def load_contracts():
@@ -707,6 +758,48 @@ def load_trades(players):
             "note": "Pick ownership replayed from the Fantrax trade history (each team starts with its own picks)."}
 
 
+def apply_fantrax_league(league, weeks, players, snap, moves):
+    """Fantrax is the source of truth for future pick ownership, standings, divisions and lineup-lock times."""
+    if not snap:
+        return
+    fx = {(p["year"], p["round"], p["orig"]): p["owner"] for p in snap["picks"]}
+    mism = 0
+    for pk in league["picks"]:
+        k = (pk["year"], pk["round"], pk["orig"])
+        if k in fx and fx[k] != pk["owner"]:
+            mism += 1
+            log(f"  ! pick {k[0]} R{k[1]} ({k[2]}): trade replay says {pk['owner']}, Fantrax says {fx[k]} (using Fantrax)")
+            pk["owner"] = fx[k]
+    have = {(p["year"], p["round"], p["orig"]) for p in league["picks"]}
+    added = [k for k in sorted(fx) if k not in have]  # a new draft year appears in Fantrax after each draft
+    for k in added:
+        league["picks"].append({"year": k[0], "round": k[1], "orig": k[2], "owner": fx[k]})
+    if added:
+        league["pickYears"] = sorted(set(league["pickYears"]) | {k[0] for k in added})
+        log(f"  + {len(added)} picks from Fantrax in years not tracked by the trade replay")
+    log(f"Picks: Fantrax lists {len(fx)} future picks; {mism} differ from the trade-history replay")
+    league["note"] = (f"Future pick ownership comes from Fantrax (synced {snap['fetched'][:10]}) and matches the replayed "
+                      f"trade history in {len(fx) - mism} of {len(fx)} picks. 2026 picks come from the trade replay.")
+    league["standings"] = snap["standings"]
+    names = {p["id"]: p["n"] for p in players.values()}
+    out = []
+    for e in moves[-400:]:
+        e = dict(e)
+        e["n"] = names.get(f"*{e['id']}*") or e.get("n") or (snap["names"].get(e["id"]) or {}).get("n") or e["id"]
+        e["id"] = f"*{e['id']}*"
+        out.append(e)
+    league["moves"] = out
+    league["fantrax"] = {"id": snap["league"]["id"], "url": snap["league"]["url"], "fetched": snap["fetched"],
+                         "period": snap.get("period"), "teamIds": {tid: t["code"] for tid, t in snap["teams"].items()},
+                         "divisions": {t["code"]: t["div"] for t in snap["teams"].values() if t.get("code")},
+                         "roster": snap["league"].get("roster"), "playoffs": snap["league"].get("playoffs")}
+    lock = {p["n"]: re.sub(r"\.0(?=[-+])", "", p["start"]) for p in snap["periods"]}
+    lock = {n: v[:-2] + ":" + v[-2:] if re.search(r"[-+]\d{4}$", v) else v for n, v in lock.items()}
+    for w in weeks:
+        if w["n"] in lock:
+            w["lock"] = lock[w["n"]]
+
+
 # ----------------------------------------------------------------------------- league (minor-league) drafts
 PEOPLE = {  # real owner names in the league draft sheets -> current GM code
     "Kevin Colgan": "CGN", "Ryan Lessman": "ROO", "Charlie Sayers": "PuckLuck", "Hayden Kennedy": "BULLIES",
@@ -801,6 +894,8 @@ def main():
     log(f"Dynasty Puck HQ build {dt.datetime.now().isoformat(timespec='seconds')}")
 
     players = load_fantrax()
+    fx_snap, fx_moves = FX.sync(offline="--no-fantrax" in sys.argv, log=log)
+    apply_fantrax(players, fx_snap)
     sheet, act27, hist26 = load_contracts()
     weeks, h2h = load_h2h()
     log(f"Fantrax: {len(players)} players; contract sheet: {len(sheet)} rows; H2H: {len(weeks)} periods, {len(h2h)} games")
@@ -930,7 +1025,10 @@ def main():
         if len(rows) > 1:  # e.g. the two Elias Petterssons: pick by position / GM
             rows = [r for r in rows if (r["gm"] == p["gm"]) or (r["pos"] == p["pos"])] or rows
         r = rows[0] if rows else None
-        if r and r["ct"] != "FA" and (r["gm"] == p["gm"] or not p["gm"]):
+        # same deal = same team, or the player was traded with his contract (same type and current salary)
+        same_deal = r and (r["gm"] == p["gm"] or not p["gm"] or (
+            r["ct"] == p["ct"] and isinstance(r["yrs"][0], (int, float)) and abs(r["yrs"][0] - p["sal"] / 1e6) < 0.001))
+        if r and r["ct"] != "FA" and same_deal:
             yrs = r["yrs"][:]
             # Fantrax is the source of truth for the current salary
             cur = p["sal"] / 1e6
@@ -1047,6 +1145,7 @@ def main():
 
     attach_depth(players)
     league = load_trades(players)
+    apply_fantrax_league(league, weeks, players, fx_snap, fx_moves)
     league["drafts"] = load_drafts(players)
     build_prospects(players, act27, hist26, bios, leagues)
     write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_cor, league)
@@ -1165,7 +1264,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
         o = {k: p[k] for k in ("id", "n", "t", "pos", "gm", "ct", "sal", "fxage", "s25", "p26", "fx", "fxp", "cgp") if k in p}
         for k in ("nhl", "fd", "wv", "rk", "dob", "sh", "ht", "wt", "nat", "hs", "nt", "slug", "dr", "car", "h", "tkc",
-                  "c", "act27", "cgps", "dep", "inj"):
+                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew"):
             if p.get(k) not in (None, 0, [], ""):
                 o[k] = p[k]
         o["s25"] = [round(x, 3) for x in o["s25"]]
@@ -1191,6 +1290,8 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
         "corModel": [round(b, 4) for b in beta_cor],
         "sources": [
             {"name": "Fantrax exports (2025-26 official, 2026-27 projected)", "file": "raw/2026-27/*.csv"},
+            {"name": "Fantrax league API (rosters, contracts, salaries, lineup slots, picks, standings), synced nightly and live in the app",
+             "url": "https://www.fantrax.com/fxea/general/getTeamRosters?leagueId=cbufqc8umo5xrjzu"},
             {"name": "Contract Sheet 2026-27.xlsx", "file": "raw/2026-27/Contract Sheet 2026-27.xlsx"},
             {"name": "Fantrax H2H schedule", "file": "raw/2026-27/h2h_schedule_fantrax.txt"},
             {"name": "NHL stats API (bulk season reports 2022-23 to 2025-26)", "url": "https://api.nhle.com/stats/rest/en/"},
