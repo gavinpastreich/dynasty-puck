@@ -399,6 +399,18 @@
    "holdout": false
   },
   {
+   "name": "Brock Faber",
+   "team": "MIN",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Faber (upper-body) left Friday’s preseason game vs. Dallas and did not return.",
+   "date": "2026-09-25",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Filip Gustavsson",
    "team": "MIN",
    "status": "OUT",
