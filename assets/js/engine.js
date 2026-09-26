@@ -617,13 +617,11 @@
   function r3(x) { return Math.round(x * 1000) / 1000; }
   // re-sign options when a deal ends. kinds:
   //  elcUp   - ELC is up: 2y $2.5M, 3y $4.0M, 4y $5.5M, 5y $7.0M, 6y $9.0M, or 1 more ELC year at $1.75M (then UFA)
-  //  rfa     - an RFA contract is up (under 27 on June 30): 2-6 yrs at base x 1.5 (2-4 yrs) / 1.75 (5-6); base can't drop
-  //  rfaInit - first RFA deal of a 2025 initial-auction player: contract-sheet formula (mult x salary + add-on); the
-  //            deal after that follows the 'rfa' rule (commissioner, 2026-09-26)
-  E.initFormula = function (year) {
-    var R = E.RULES, ia = R.initialAuctionRfa || {}, ks = Object.keys(ia).map(Number).filter(function (k) { return k <= year; }).sort();
-    return ks.length ? ia[ks[ks.length - 1]] : R.ext2027;
-  };
+  //  rfa     - a post-ELC RFA deal is up (under 27 on June 30): 2-6 yrs at base x 1.5 (2-4) / 1.75 (5-6); base can't drop
+  //  rfaInit - RFA deal of a player whose contract traces back to an auction BID (BID -> RFA1 -> ...): league sheet
+  //            formula, mult x current salary + add-on by length (commissioner 2026-09-26: the constitution's premium
+  //            rule only covers post-ELC players; base the formula on this past summer's sheet)
+  E.initFormula = function () { var R = E.RULES; return R.initFormula || R.ext2026 || R.ext2027; };
   E.resignOptions = function (st) {
     var R = E.RULES, out = [], menu = R.elcMenu || { 2: 2.5, 3: 4, 4: 5.5, 5: 7, 6: 9 }, prem = R.rfaPrem || [1, 1.5, 1.5, 1.5, 1.75, 1.75];
     if (st.kind === 'elcUp') {
@@ -632,7 +630,7 @@
     } else if (st.kind === 'rfa') {
       [2, 3, 4, 5, 6].forEach(function (L) { var b = Math.max(st.base, menu[L]); out.push({ L: L, price: r3(b * prem[L - 1]), base: b, next: 'rfa', label: L + ' yrs RFA' }); });
     } else {
-      var sc = E.initFormula(st.year || 2027);
+      var sc = E.initFormula();
       for (var L = 1; L <= 6; L++) { var pr = r3(sc.mult[L - 1] * st.sal + sc.base[L - 1]); out.push({ L: L, price: pr, base: pr, next: 'rfa', label: L + ' yr' + (L > 1 ? 's' : '') + ' RFA' }); }
     }
     return out;
@@ -663,7 +661,7 @@
       while (y < 7 && typeof p.cy[y] === 'number') push(p.cy[y], y === 0 ? p.ct : 'contract');
       var mark = y < 7 ? p.cy[y] : null, last = y > 0 && typeof p.cy[y - 1] === 'number' ? p.cy[y - 1] : (p.sal26 || R.minSalary);
       if (p.ct === 'ELC1') st = { kind: 'elcUp' };
-      else if (mark === 'RFA') st = p.ct === 'BID' && p.c && p.c.signed === 2025 ? { kind: 'rfaInit', sal: last, year: 2026 + y } : { kind: 'rfa', base: last };
+      else if (mark === 'RFA') st = { kind: 'rfaInit', sal: last };  // BID / RFA1 lineage
     }
     while (y < 7) {
       if (st && st.kind !== 'elcUp' && E.ageJune30(p, y) >= (R.rfaAge || 27)) { dec.push({ y: y, kind: st.kind, pick: null, why: 'age' }); st = null; }
@@ -674,7 +672,7 @@
       dec.push({ y: y, kind: st.kind, opts: opts, pick: pick });
       if (!pick) { st = null; continue; }
       for (var k2 = 0; k2 < pick.L && y < 7; k2++) push(pick.price, st.kind === 'elcUp' && pick.L === 1 ? 'ELC ext' : 'RFA ' + pick.L + 'yr');
-      st = pick.next !== 'rfa' ? null : { kind: 'rfa', base: pick.base };
+      st = pick.next !== 'rfa' ? null : st.kind === 'rfaInit' ? { kind: 'rfaInit', sal: pick.price } : { kind: 'rfa', base: pick.base };
     }
     return { cost: cost, status: status, grad: grad, dec: dec };
   };
@@ -719,6 +717,19 @@
     });
     return { byTeam: out, total: tot };
   };
+  // hometown discount: the team that had him from the trade deadline to season's end pays (1 - htdPct) of its winning bid;
+  // the bid still sets the term. Without a deadline date in the settings, today's owner is assumed eligible.
+  E.htdTeam = function (p) {
+    if (!p.gm) return null;
+    var dl = E.RULES.tradeDeadline;
+    if (dl) {
+      var moved = (DP.league.moves || []).some(function (m) { return m.id === p.id && m.d >= dl && (m.type === 'move' || m.type === 'add'); }) ||
+        (DP.league.trades || []).some(function (t) { return t.date >= dl && t.moves.some(function (m) { return m.id === p.id; }); });
+      if (moved) return null;
+    }
+    return p.gm;
+  };
+  E.htdPrice = function (bid) { return bid * (1 - (E.RULES.htdPct || 0)); };
   // projected price at the 2027 auction (y = 1), or what he'd have gone for in the 2026 auction (y = 0)
   E.auctionPrice = function (p, y) {
     var A = E.auction; if (!A) return null;
@@ -1072,7 +1083,7 @@
     return p.cy.map(function (v) { return counts && typeof v === 'number' && v > 0 ? v * pct : 0; });
   };
   E.extPrices = function (sal, scale) {
-    var s = scale || E.RULES.ext2027;
+    var s = scale || E.initFormula();
     return s.base.map(function (b, i) { return Math.round((s.mult[i] * sal + b) * 1000) / 1000; });
   };
 

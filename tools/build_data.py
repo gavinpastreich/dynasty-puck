@@ -1581,8 +1581,10 @@ def write_calendars(weeks, h2h):
 def rules_from_config():
     C = CFG
     g, e, x, r = C.get("graduation", {}), C.get("elc", {}), C.get("elcExpiry", {}), C.get("rfa", {})
-    ia = {k: v for k, v in C.get("initialAuctionRfa", {}).items() if k.isdigit()}
-    last_ia = ia[max(ia)] if ia else {"base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]}
+    ia_cfg = C.get("initialAuctionRfa", {})
+    formula = ia_cfg.get("formula") or {"base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]}
+    sheet27 = ia_cfg.get("sheet2027Tab") or formula
+    htd = C.get("hometownDiscount", {})
     return {
         "goalieMinGP": C.get("goalieMinGP", 2), "goalieMinCats": ["W", "GAA", "SV%", "SHO"], "goalieMinNote": C.get("goalieMinNote", ""),
         "deadCapPct": C.get("deadCapPct", 0.5), "deadCapNote": C.get("deadCapNote", ""),
@@ -1590,7 +1592,8 @@ def rules_from_config():
         "gradSkater": g.get("skaterGP", 82), "gradGoalie": g.get("goalieGP", 41), "gradNote": C.get("gradNote", ""),
         "elcSalary": e.get("salary", 1.5), "elcYears": e.get("years", 2), "elcNote": e.get("note", ""),
         "minSalary": C.get("minSalary", 1.0), "lineup": C.get("lineup", {"F": 12, "D": 6, "G": 2, "bench": 3}),
-        "ext2027": last_ia, "ext2026": ia.get("2026", last_ia), "initialAuctionRfa": ia,
+        "ext2027": sheet27, "ext2026": formula, "initFormula": formula,
+        "htdPct": htd.get("pct", 0.10), "tradeDeadline": htd.get("tradeDeadline"),
         "elcMenu": x.get("options", {"2": 2.5, "3": 4.0, "4": 5.5, "5": 7.0, "6": 9.0}), "elcExt": x.get("extension1yr", 1.75),
         "rfaPrem": r.get("premium", [1, 1.5, 1.5, 1.5, 1.75, 1.75]), "rfaAge": r.get("ageLimit", 27),
         "bands": {str(k): {"cap": v.get("cap"), "bands": v["bands"]} for k, v in BAND_SETS.items()},

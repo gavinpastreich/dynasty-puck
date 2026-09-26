@@ -26,7 +26,7 @@
   "minSalary": 1.0,
   "deadCapPct": 0.5,
   "deadCapContracts": ["BID", "ELC1", "RFA1"],
-  "deadCapNote": "Commissioner 2026-09-25/26: dropping a BID (or ELC) contract keeps 50% of its salary on the cap for every remaining contract year; dropping an FA contract costs nothing. RFA1 deals are assumed to count like BID (to confirm). Current penalties: raw/<season>/league/cap_penalties.csv.",
+  "deadCapNote": "Commissioner 2026-09-25/26: dropping a BID, RFA1 or ELC contract keeps 50% of its salary on the cap for every remaining contract year; dropping an FA contract costs nothing. Current penalties: raw/<season>/league/cap_penalties.csv.",
 
   "lineup": { "F": 12, "D": 6, "G": 2, "bench": 3 },
   "goalieMinGP": 2,
@@ -34,7 +34,7 @@
 
   "graduation": { "skaterGP": 82, "goalieGP": 41 },
   "gradNote": "An MNR player who reaches the career-GP line stays at $0 for the rest of the season. If he's on the active roster he has to stay there; if he's in the minors he can stay there, but once he's promoted he can't be sent back down. In the offseason the team signs him to an ELC or releases him.",
-  "elc": { "salary": 1.5, "years": 2, "note": "Most ELCs are 2 years at $1.5M; a 1-year ELC has also been used." },
+  "elc": { "salary": 1.5, "years": 2, "note": "ELCs are $1.5M for 1 or 2 years (team's choice; most sign 2)." },
 
   "elcExpiry": {
     "_what": "When an ELC is up: re-sign for N years at this AAV, or 1 more ELC year at 'extension1yr' (then UFA), or release.",
@@ -47,9 +47,15 @@
     "premium": [1, 1.5, 1.5, 1.5, 1.75, 1.75]
   },
   "initialAuctionRfa": {
-    "_what": "First RFA deal for players from the 2025 initial auction (contract sheet 'Offseason Action' formula): AAV = mult x salary + base, by length 1-6 years. Their next RFA deal follows the 'rfa' rule above.",
-    "2026": { "base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] },
-    "2027": { "base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] }
+    "_what": "RFA deals for players whose contracts trace back to an auction BID (the 2025 initial auction, then the RFA1 deals signed off them): AAV = mult x current salary + base, by length 1-6 years (index = years - 1). The constitution's premium rule only covers players coming off ELCs. Commissioner 2026-09-26: base future ones on this past summer's sheet (+$1M style). 'sheet2027Tab' keeps the +$1.5M version from the contract sheet's 2027 tab for reference; swap it into 'formula' if the league adopts it.",
+    "formula": { "base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] },
+    "sheet2027Tab": { "base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] }
+  },
+
+  "hometownDiscount": {
+    "_what": "Auction: a team that had the player on its roster continuously from the trade deadline to the end of the season pays this share less than its winning bid; the bid still sets the term (e.g. a $3.1M bid = 2-yr band, paid $2.79M).",
+    "pct": 0.10,
+    "tradeDeadline": null
   },
 
   "auctionBands": {

@@ -34,7 +34,10 @@ list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
   moved back down to the minors. One not graduated by the end of the regular season can stay at $0.
 - Auction: winning bid sets the term (2026/2027 bands: $1-2.9M 1y, $3-4.4M 2y, $4.5-7.4M 3y, $7.5-9.9M 4y,
   $10-13.9M 5y, $14M+ 6y). ELC up: 2y $2.5M / 3y $4M / 4y $5.5M / 5y $7M / 6y $9M / 1-yr ELC ext $1.75M then UFA.
-  RFA up (under 27 on June 30): 1.5x (2-4y) or 1.75x (5-6y) premium on a base that can't drop; 27+ = UFA.
-  Initial-auction RFAs use the contract-sheet formula (see docs/BUILD_NOTES.md).
+  Post-ELC RFA up (under 27 on June 30): 1.5x (2-4y) or 1.75x (5-6y) premium on a base that can't drop; 27+ = UFA.
+  RFAs on auction contracts (BID, and RFA1 deals signed off them) use the sheet formula instead (mult x salary + add-on).
+  Hometown discount: the team that held the player from the trade deadline to season end pays 10% less than its
+  winning bid (the bid sets the term). ELCs are $1.5M for 1 or 2 years. Dead cap: BID/RFA1/ELC drops only.
+- League settings live in `config/league.json` (commissioner edits it on GitHub; the site rebuilds itself).
 - Fantrax league `cbufqc8umo5xrjzu`: public API at `https://www.fantrax.com/fxea/general/` (tools/fantrax_api.py).
 - Raw data: `raw/2026-27/`. Fantrax's "+/-" column is roster-% change, not plus-minus.

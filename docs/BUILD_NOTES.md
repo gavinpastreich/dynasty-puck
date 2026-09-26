@@ -68,3 +68,13 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
   (RFA1 assumed to count, to confirm). Penalties: raw/2026-27/league/cap_penalties.csv (Olivier $1.4M confirmed).
 - Upkeep: everything automatic on GitHub (nightly + 1 AM ET refresh, hourly alerts) + config/league.json settings file.
 - Fantrax's internal API (live scoring, trading block, cap penalties) needs a login, so those are computed instead.
+
+## 2026-09-26: commissioner answers round 4
+- RFA1 drops count as dead cap (confirmed). TommyG10's Lundkvist/Buchnevich penalties match Fantrax.
+- Hometown discount (HTD): anyone on the team's roster continuously from the trade deadline to season end; 10% off
+  the winning bid, the bid still sets the term (Evangelista: $3.1M bid = 2-yr band, paid $2.79M). Deadline date not
+  yet known (config hometownDiscount.tradeDeadline); until then the current owner is assumed eligible.
+- ELCs: $1.5M for 1 or 2 years (Savoie, Silovs signed 1-yr). Model uses 2.
+- Zacha's "RFA" cell in the contract sheet is wrong (he's 29); the age rule already sends him to the auction.
+- RFAs on auction contracts (BID -> RFA1 -> ...) keep the sheet formula; the constitution premium rule is only for
+  post-ELC players. Numbers for 2027 not final; commissioner: base them on this past summer's (+$1M) formula.

@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-09-26T02:02:07
+Dynasty Puck HQ build 2026-09-26T02:22:56
 Fantrax: offline, using snapshot from 2026-09-26T01:53:48+00:00
 Fantrax sync (2026-09-26T01:53:48+00:00): 596 rostered; changes vs CSV: none
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games

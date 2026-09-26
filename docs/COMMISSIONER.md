@@ -33,6 +33,7 @@ The site rebuilds itself about 3 minutes later.
 | `playoffs` | Teams, weeks, and whether division winners take seeds 1-2. |
 | `teams`, `oldTeamNames` | Team codes and Fantrax names (codes must match Fantrax's short names). |
 | `alerts` | Phone-topic prefix, the league email address, reminder timing. |
+| `hometownDiscount` | Share off the winning bid for the player's own team, and the trade-deadline date (`"2027-03-05"` style) that decides who qualifies. |
 
 Cap hit penalties: `raw/2026-27/league/cap_penalties.csv` (one row per player, $M per season). The build starts it from
 the contract sheet; edit it to match Fantrax's "Cap hit penalties". Drops seen in Fantrax are added automatically.
@@ -43,6 +44,9 @@ rebuild starts on its own.
 ## Turning on the weekly email (5 minutes, once)
 
 1. Create a new Gmail account just for the league (for example `dynastypuckhq@gmail.com`). Don't use your personal one.
+   Google asks for a name and birthday on every new account; they're only an age check and aren't shown to anyone, so
+   "Dynasty Puck" and any adult birthday are fine (an under-18 birthday limits the account). Google may also ask for a
+   phone number to verify; that stays private too.
 2. In that account: **Google Account → Security → 2-Step Verification** → turn it on.
 3. **Google Account → Security → App passwords** → create one named "Dynasty Puck". Copy the 16-character password.
 4. On GitHub: repo **Settings → Secrets and variables → Actions → New repository secret**. Name `DP_EMAIL_APP_PASSWORD`,
