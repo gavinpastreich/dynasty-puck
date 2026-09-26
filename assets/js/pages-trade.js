@@ -41,7 +41,7 @@
     else if (!good.length && bad.length) { verdict = 'Nobody really gains'; cls = 'bad'; }
     else if (good.length && bad.length) { verdict = 'Helps ' + good.map(function (r) { return r.t; }).join(', ') + '; costs ' + bad.map(function (r) { return r.t; }).join(', '); cls = 'warn'; }
     else { verdict = 'Roughly neutral for everyone'; cls = 'info'; }
-    var fairMkt = marketBal !== null && marketBal !== undefined && Math.abs(marketBal) < 0.15;
+    var fairMkt = marketBal !== null && marketBal !== undefined && Math.abs(marketBal) < 0.1; // same line as the "Fair" badge above
     var h = '<div class="card" style="margin-top:14px"><h2>Team context <span class="badge multiline ' + cls + '">' + esc(verdict) + '</span></h2><div class="hint">Market value (above) is the same for every team. This is what the deal is worth to <b>each team</b> given its roster and window: 2026-27 = change in expected category wins with weekly lineups re-optimised (depth, positions, category fit) × that team\'s win-now weight; later seasons = change in its best projected lineup; minus cap cost; picks at market value.</div>' +
       '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Status</th><th class="num" title="What one 2026-27 category win is worth to this team vs the league average (from its title odds)">Win-now weight</th><th class="num">2026-27</th><th class="num">Later seasons</th><th class="num">Picks</th><th class="num">Total for them</th></tr></thead><tbody>' +
       rows.map(function (r) {
