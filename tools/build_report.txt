@@ -1,0 +1,57 @@
+Dynasty Puck HQ build 2026-09-26T00:01:25
+Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
+Universe: 1258 players (596 rostered)
+NHL id match: {'index': 1150, 'search': 106, None: 2}; unmatched 2 (rostered: 0)
+Landing pages: 1249/1249
+Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
+Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 773/773 matched skaters
+Role prior F (n=473): Tk/GP R^2=0.44, Cor/GP R^2=0.30
+Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
+  ~ term unknown (not on contract sheet), assumed 1 year: Mattias Ekholm CGN BID $1.00M
+  ~ term unknown (not on contract sheet), assumed 1 year: Blake Coleman TommyG10 BID $1.00M
+  ~ term unknown (not on contract sheet), assumed 1 year: Ivan Barbashev PuckLuck BID $1.00M
+  ~ term unknown (not on contract sheet), assumed 1 year: Kris Letang TommyG10 BID $1.00M
+  ~ term unknown (not on contract sheet), assumed 1 year: Mason Marchment PuckLuck BID $1.00M
+  ~ term unknown (not on contract sheet), assumed 1 year: Connor McMichael TommyG10 BID $1.00M
+Payroll check (2026-27): Fantrax salary vs contract sheet column
+  ROO       Fantrax $100.90M  sheet $ 99.90M  {'BID': 16, 'FA': 1, 'ELC1': 1, 'MNR': 29}   <- differs by +1.00M (Fantrax is current)
+  TommyG10  Fantrax $ 99.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 2, 'RFA1': 2, 'MNR': 22}   <- differs by +2.50M (Fantrax is current)
+  Wags8210  Fantrax $100.84M  sheet $ 98.84M  {'BID': 20, 'FA': 2, 'RFA1': 1, 'MNR': 20}   <- differs by +2.00M (Fantrax is current)
+  BULLIES   Fantrax $ 89.85M  sheet $ 88.85M  {'BID': 17, 'ELC1': 2, 'RFA1': 2, 'MNR': 24, 'FA': 1}   <- differs by +1.00M (Fantrax is current)
+  nbracken  Fantrax $101.42M  sheet $ 99.42M  {'BID': 16, 'RFA1': 3, 'ELC1': 1, 'MNR': 22, 'FA': 2}   <- differs by +2.00M (Fantrax is current)
+  SPG       Fantrax $103.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 3, 'MNR': 21}   <- differs by +3.00M (Fantrax is current)
+  BHHC      Fantrax $ 96.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'ELC1': 1}
+  nebsnave  Fantrax $102.81M  sheet $ 98.81M  {'BID': 17, 'FA': 4, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)
+  M.M       Fantrax $102.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 2, 'ELC1': 3, 'MNR': 16}   <- differs by -0.80M (Fantrax is current)
+  mcianfra  Fantrax $ 98.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 3, 'MNR': 22}   <- differs by +3.00M (Fantrax is current)
+  btsay45   Fantrax $ 93.10M  sheet $ 93.10M  {'BID': 15, 'ELC1': 4, 'RFA1': 1, 'MNR': 18}
+  PuckLuck  Fantrax $ 93.50M  sheet $ 89.50M  {'BID': 16, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +4.00M (Fantrax is current)
+  CGN       Fantrax $ 97.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 2, 'MNR': 22}   <- differs by +3.00M (Fantrax is current)
+  mertin    Fantrax $101.60M  sheet $ 99.60M  {'BID': 13, 'FA': 2, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +2.00M (Fantrax is current)
+  ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
+  ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist
+  ~ on contract sheet (mcianfra) but not on a Fantrax roster: Danil Gushchin
+  ! forwards with Pt-D > 0 (dual F,D?): ['Kurtis MacDermid', 'Maxim Groshev']
+Category reconcile: D-men whose Pt-D != G+A (2025-26): 0 []
+Goalie reconcile: 2025-26 GP & W match NHL for 96/96
+  G    Fantrax 2025-26 == NHL: 935/935
+  A    Fantrax 2025-26 == NHL: 935/935
+  PIM  Fantrax 2025-26 == NHL: 929/935
+  SOG  Fantrax 2025-26 == NHL: 934/935
+  STP  Fantrax 2025-26 == NHL: 935/935
+  Hit  Fantrax 2025-26 == NHL: 932/935
+  Blk  Fantrax 2025-26 == NHL: 933/935
+  Tk   Fantrax 2025-26 == NHL: 935/935
+NHL schedule: games per team Counter({84: 32})
+NHL games outside the fantasy calendar: 0
+Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
+  ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
+2026 rookie draft: 42 picks; unmatched players: []
+2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
+2025 draft: a departed owner's picks credited to CGN (inferred from where their picks are today)
+2025 initial draft: 280 picks; matched to current player file: 279
+Leagues seen in player histories (top 40): NHL:7504, AHL:3316, OHL:842, WHL:822, NCAA:806, WC:716, WJC-20:685, USHL:630, QMJHL:405, WJC-18:398, KHL:303, SHL:295, WHC-17:274, QC Int PW:251, EHT:238, WJC-A:223, WC-A:221, MHL:219, Hlinka Gretzky Cup:188, OG:181, ECHL:180, J20 Nationell:169, Liiga:164, Brick Invitational:153, NTDP:146, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:108, U16 SM:107, J18 Allsvenskan:107, USHS-Prep:104, AMBHL:102, USHS-MN:101
+Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'USHS-Prep', 'AMBHL', 'USHS-MN', 'Russia U16', '4 Nations', 'TV-Pucken', 'USA-S15', 'Russia U17', 'WSI U12', 'Memorial Cup', 'WJAC-19', 'J18 Nationell', 'WSI U13', 'USA-S17', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'USA-S16', 'QMAAA', 'AMHL', 'U-17', 'WSI U14', 'GTHL U16']
+2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
+  ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
+wrote data/league.js (1.66 MB, 1258 players)

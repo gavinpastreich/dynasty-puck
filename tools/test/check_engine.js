@@ -1,0 +1,28 @@
+// Sanity report for the model engine: node tools/test/check_engine.js
+const load = require('./load.js');
+const C = load(['data/league.js', 'data/prospects.js', 'assets/js/engine.js']);
+const E = C.DP.E; E.init();
+const f = (x, d = 2) => (x === null || x === undefined) ? '-' : Number(x).toFixed(d);
+console.log('init ms', E.initMs, 'players', E.P.length);
+console.log('league GAA/SV', f(E.lg.gaa), f(E.lg.sv, 3), 'avg team GGP/wk', f(E.lg.avgTeamGGP), 'goalie-min fail rate', f(E.lg.gFailRate, 3));
+console.log('SIG (weekly diff SD):', E.CATS.map((c, i) => c.l + '=' + f(E.SIG[i], c.ratio ? 3 : 1)).join(' '));
+console.log('team mean/wk:', E.CATS.map((c, i) => c.l + '=' + f(E.sigTeamMu[i], c.ratio ? 3 : 1) + '±' + f(E.sigTeamSd[i], c.ratio ? 3 : 1)).join(' '));
+console.log('$/WAR ($M)', f(E.dollarPerWAR, 3), 'replacement cut', ['F', 'D', 'G'].map(s => s + ':' + E.repl[s].cut).join(' '));
+console.log('repl F', JSON.stringify(E.repl.F, (k, v) => typeof v === 'number' ? +v.toFixed(1) : v));
+console.log('repl G', JSON.stringify(E.repl.G, (k, v) => typeof v === 'number' ? +v.toFixed(3) : v));
+const top = E.P.filter(p => p.r).sort((a, b) => b.WAR - a.WAR);
+console.log('\nTop 25 WAR:'); top.slice(0, 25).forEach(p => console.log(p.n.padEnd(22), p.slot, (p.gm || 'FA').padEnd(9), 'WAR', f(p.WAR), 'mkt', f(p.mkt), 'sal', f(p.sal26), 'DV', f(p.DV)));
+['G'].forEach(s => { console.log('\nTop goalies:'); top.filter(p => p.slot === s).slice(0, 10).forEach(p => console.log(p.n.padEnd(22), (p.gm || 'FA').padEnd(9), 'WAR', f(p.WAR), JSON.stringify(p.war, (k, v) => typeof v === 'number' ? +v.toFixed(2) : v))); });
+console.log('\nTop D:'); top.filter(p => p.slot === 'D').slice(0, 8).forEach(p => console.log(p.n.padEnd(22), 'WAR', f(p.WAR), JSON.stringify(p.war, (k, v) => typeof v === 'number' ? +v.toFixed(2) : v)));
+console.log('\nTop DV:'); E.P.slice().sort((a, b) => b.DV - a.DV).slice(0, 25).forEach(p => console.log(p.n.padEnd(22), p.slot, (p.gm || 'FA').padEnd(9), p.ct.padEnd(5), 'age', f(p.age, 1), 'WAR', f(p.WAR), 'DV', f(p.DV), 'yWar', p.yWar.map(x => f(x, 1)).join('/'), 'cost', p.yCost.map(x => x === null ? 'x' : f(x, 1)).join('/')));
+console.log('\nTop MNR prospects by DV:'); E.P.filter(p => p.ct === 'MNR' && p.gm).sort((a, b) => b.DV - a.DV).slice(0, 20).forEach(p => { const pr = p._pros; console.log(p.n.padEnd(24), p.slot, 'age', f(p.age, 1), 'cgp', p.cgp, 'proj', p.projGP, 'DV', f(p.DV), 'grad', p.grad, 'pros', pr ? [pr.basis, f(pr.peakPts, 0), f(pr.peak), 'eta', pr.eta, 'p', pr.p].join(' ') : '-'); });
+console.log('\nExpected standings:'); E.expStandings.forEach(r => console.log(r.rank, r.t.padEnd(9), f(r.W, 1), f(r.L, 1), f(r.T, 1), f(r.pct, 3)));
+const t0 = Date.now(); const sim = E.simSeason({ n: 1000 }); console.log('\nsim 1000 ms', Date.now() - t0);
+sim.forEach(r => console.log(r.t.padEnd(9), 'W-L-T', f(r.W, 0), f(r.L, 0), f(r.T, 0), 'pct', f(r.pct, 3), 'PO', f(r.po, 2), 'champ', f(r.champ, 3), 'avgSeed', f(r.avgSeed, 1)));
+const A = E.baseline['ROO'][0], B = E.baseline['mcianfra'][0];
+console.log('\nWeek1 ROO vs mcianfra', E.matchupProbs(A, B).map((x, i) => E.CATS[i].l + ':' + f(x.w, 2) + '/' + f(x.t, 2)).join(' '));
+console.log('simWeek', JSON.stringify(E.simWeek(A, B, 5000)).slice(0, 200));
+console.log('ROO lineup wk1 F:', A.lu.F.map(x => x.p.n).join(', '));
+console.log('ROO G:', A.lu.G.map(x => x.p.n + ' ' + f(x.v)).join(', '), 'gFail', f(A.r.gFail, 3));
+const grads = E.P.filter(p => p.ct === 'MNR' && p.gm).map(p => [p, E.graduation(p)]).filter(x => x[1].week !== null).sort((a, b) => a[1].week - b[1].week);
+console.log('\nProjected graduations this season:', grads.length); grads.slice(0, 15).forEach(([p, g]) => console.log(p.n.padEnd(24), p.gm.padEnd(9), g.cgp + '/' + g.thr, 'week', g.week + 1, g.date && g.date.toISOString().slice(0, 10), 'prob', f(g.prob, 2)));
