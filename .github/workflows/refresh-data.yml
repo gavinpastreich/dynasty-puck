@@ -6,6 +6,7 @@ name: Nightly data refresh
 on:
   schedule:
     - cron: "17 10 * * *"   # 10:17 UTC daily = early morning in North America
+    - cron: "17 5 * * *"    # 1:17 AM ET: last night's games into the live scoreboard
   workflow_dispatch:
   push:                     # rebuild right away when the commissioner edits settings or uploads new raw files
     branches: [main]

@@ -77,8 +77,9 @@
 
     // categories: 2025-26 actual vs 2026-27 projection
     var labels = p.G ? GKL : SKL;
-    h += '<div class="grid g2" style="margin-top:4px"><div class="card"><h3>2025-26 actual vs 2026-27 projection</h3><div class="hint">Fantrax official 2025-26 and Fantrax 2026-27 projections' + (p.G ? '' : '; Tk and Cor projected by this app') + '. Percentile = per-game rate vs ' + p.slot + ' with 30+ projected GP.</div>';
-    h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Cat</th><th class="num">2025-26</th><th class="num">2026-27 proj</th><th class="num">WAR</th><th style="min-width:110px">Percentile</th></tr></thead><tbody>';
+    var Y = p.ytd, PRE = p.pre;
+    h += '<div class="grid g2" style="margin-top:4px"><div class="card"><h3>' + (Y ? '2026-27 so far vs projection' : '2025-26 actual vs 2026-27 projection') + '</h3><div class="hint">' + (Y ? 'NHL stats this season (Cor estimated from shot attempts). The projection is now <b>rest-of-season</b>: the preseason projection blended with what he has done so far (preseason counts as 25-60 games of evidence depending on the category).' : 'Fantrax official 2025-26 and Fantrax 2026-27 projections' + (p.G ? '' : '; Tk and Cor projected by this app') + '.') + ' Percentile = per-game rate vs ' + p.slot + ' with 30+ projected GP.</div>';
+    h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Cat</th><th class="num">2025-26</th>' + (Y ? '<th class="num">26-27 so far</th><th class="num">Preseason</th><th class="num" title="Full season at the rest-of-season rates">ROS proj</th>' : '<th class="num">2026-27 proj</th>') + '<th class="num">WAR</th><th style="min-width:110px">Percentile</th></tr></thead><tbody>';
     labels.forEach(function (l, i) {
       var a = p.s25[i], b = p.p26[i], war = '', pc = null;
       var fmt = function (v) { return l === 'GAA' ? (v ? v.toFixed(2) : '–') : l === 'SV%' ? (v ? U.rate(v > 1 ? v / 1000 : v) : '–') : U.fmt(v, (l === 'Tk' || l === 'Cor') && i === 9 || i === 10 ? 0 : 0); };
@@ -89,10 +90,10 @@
         if (p.G && p.r) pc = l === 'W' ? pctile(p, 'w') : l === 'GAA' ? 1 - pctile(p, 'gaa') : l === 'SV%' ? pctile(p, 'sv') : l === 'SHO' ? pctile(p, 'sho') : null;
       }
       if (l === 'Pt-D' && !p.D && !p.fd) { war = '<span class="faint">D only</span>'; pc = null; }
-      h += '<tr><td><b>' + esc(l) + '</b></td><td class="num">' + fmt(a) + '</td><td class="num">' + fmt(b) + '</td><td class="num">' + war + '</td><td>' + (pc === null ? '' : '<div class="pbar">' + ui.meter(pc, pc >= .75 ? 'good' : pc < .25 ? 'bad' : '', U.pct(pc) + ' percentile') + '<span class="small muted num" style="width:34px">' + Math.round(pc * 100) + '</span></div>') + '</td></tr>';
+      h += '<tr><td><b>' + esc(l) + '</b></td><td class="num">' + fmt(a) + '</td>' + (Y ? '<td class="num"><b>' + fmt(Y[i]) + '</b></td><td class="num muted">' + fmt(PRE[i]) + '</td>' : '') + '<td class="num">' + fmt(b) + '</td><td class="num">' + war + '</td><td>' + (pc === null ? '' : '<div class="pbar">' + ui.meter(pc, pc >= .75 ? 'good' : pc < .25 ? 'bad' : '', U.pct(pc) + ' percentile') + '<span class="small muted num" style="width:34px">' + Math.round(pc * 100) + '</span></div>') + '</td></tr>';
       if (l === 'A' && !p.G) {
         var ga = 2 * p.s25[2] + p.s25[3], gb = 2 * p.p26[2] + p.p26[3];
-        h += '<tr><td><b>2G+A</b></td><td class="num">' + U.fmt(ga) + '</td><td class="num">' + U.fmt(gb) + '</td><td class="num">' + (p.war ? ui.delta(p.war.GA2, 2) : '') + '</td><td></td></tr>';
+        h += '<tr><td><b>2G+A</b></td><td class="num">' + U.fmt(ga) + '</td>' + (Y ? '<td class="num"><b>' + U.fmt(2 * Y[2] + Y[3]) + '</b></td><td class="num muted">' + U.fmt(2 * PRE[2] + PRE[3]) + '</td>' : '') + '<td class="num">' + U.fmt(gb) + '</td><td class="num">' + (p.war ? ui.delta(p.war.GA2, 2) : '') + '</td><td></td></tr>';
       }
     });
     h += '</tbody></table></div>';

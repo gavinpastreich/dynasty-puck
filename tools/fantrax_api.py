@@ -55,12 +55,24 @@ def next_lock_period(periods, now=None):
     return periods[-1]["number"] if periods else None
 
 
+def current_period(periods, now=None):
+    now = now or dt.datetime.now(dt.timezone.utc)
+    cur = None
+    for p in periods:
+        if _ts(p["startDate"]) <= now:
+            cur = p["number"]
+    return cur
+
+
 def fetch_snapshot():
     """Pull the live league state from Fantrax and reduce it to what the build needs."""
     info = _fetch(f"getLeagueInfo?leagueId={LEAGUE_ID}")
     period = next_lock_period(info.get("rosterPeriods", []))
     # the roster for the next lineup lock = the lineups teams have set and can still change
     rosters = _fetch(f"getTeamRosters?leagueId={LEAGUE_ID}" + (f"&period={period}" if period else ""))
+    # the period being played right now (weekly lock): whoever is Active there is scoring this week
+    cur = current_period(info.get("rosterPeriods", []))
+    cur_rosters = _fetch(f"getTeamRosters?leagueId={LEAGUE_ID}&period={cur}") if cur and cur != period else None
     picks = _fetch(f"getDraftPicks?leagueId={LEAGUE_ID}")
     standings = _fetch(f"getStandings?leagueId={LEAGUE_ID}")
     ids = API.get(BASE + "getPlayerIds?sport=NHL", "fantrax_player_ids", max_age_days=1)
@@ -94,8 +106,13 @@ def fetch_snapshot():
     periods = [{"n": p["number"], "start": p["startDate"], "end": p["endDate"]} for p in info.get("rosterPeriods", [])]
     fut = [{"year": p["year"], "round": p["round"], "orig": code(p["originalOwnerTeamId"]), "owner": code(p["currentOwnerTeamId"])}
            for p in picks.get("futureDraftPicks", [])]
+    current = None
+    if cur_rosters:
+        current = {"period": cur, "active": {}}
+        for tid, t in (cur_rosters.get("rosters") or {}).items():
+            current["active"][code(tid)] = sorted(it["id"] for it in t.get("rosterItems", []) if it.get("status") == "ACTIVE")
     return {
-        "fetched": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "period": rosters.get("period"),
+        "fetched": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "period": rosters.get("period"), "current": current,
         "league": {"id": LEAGUE_ID, "name": info.get("leagueName"), "url": LEAGUE_URL, "season": info.get("seasonYear"),
                    "start": info.get("startDate"), "end": info.get("endDate"), "playoffs": info.get("playoffs"),
                    "roster": info.get("rosterInfo")},

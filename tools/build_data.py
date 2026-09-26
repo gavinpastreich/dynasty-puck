@@ -365,41 +365,50 @@ def load_h2h():
 
 
 # ----------------------------------------------------------------------------- NHL data
+def skater_rows(summ, real, shot, toi):
+    out = {}
+    for pid, r in summ.items():
+        re_, sh, ti = real.get(pid, {}), shot.get(pid, {}), toi.get(pid, {})
+        out[pid] = {
+            "gp": r["gamesPlayed"], "g": r["goals"], "a": r["assists"], "pts": r["points"],
+            "pim": r["penaltyMinutes"], "sog": r["shots"],
+            "stp": (r.get("ppPoints") or 0) + (r.get("shPoints") or 0),
+            "hit": re_.get("hits") or 0, "blk": re_.get("blockedShots") or 0, "tk": re_.get("takeaways") or 0,
+            "gv": re_.get("giveaways") or 0,
+            "sat": sh.get("satTotal") or 0, "satf": sh.get("satFor") or 0, "sata": sh.get("satAgainst") or 0,
+            "pp": (ti.get("ppTimeOnIce") or 0) / 60.0, "shtoi": (ti.get("shTimeOnIce") or 0) / 60.0,
+            "toi": (ti.get("timeOnIce") or 0) / 60.0, "team": r.get("teamAbbrevs"), "pos": r.get("positionCode"),
+        }
+    return out
+
+
+def goalie_rows(gsum):
+    return {r["playerId"]: {"gp": r["gamesPlayed"], "gs": r.get("gamesStarted"), "w": r["wins"],
+                            "ga": r["goalsAgainst"], "sa": r["shotsAgainst"], "sho": r["shutouts"],
+                            "gaa": r["goalsAgainstAverage"], "sv": r["savePct"], "toi": (r.get("timeOnIce") or 0) / 60.0,
+                            "team": r.get("teamAbbrevs")} for r in gsum}
+
+
 def nhl_history():
     """Per NHL player id: {season: row} for skaters and goalies from the bulk stats reports."""
     sk, gk, bios = defaultdict(dict), defaultdict(dict), {}
     for s in HIST_SEASONS:
-        summ = {r["playerId"]: r for r in API.stats_report("skater", "summary", s)}
-        real = {r["playerId"]: r for r in API.stats_report("skater", "realtime", s)}
-        shot = {r["playerId"]: r for r in API.stats_report("skater", "summaryshooting", s)}
-        toi = {r["playerId"]: r for r in API.stats_report("skater", "timeonice", s)}
+        rows = skater_rows(*[{r["playerId"]: r for r in API.stats_report("skater", rep, s)}
+                             for rep in ("summary", "realtime", "summaryshooting", "timeonice")])
         for r in API.stats_report("skater", "bios", s):
             bios[r["playerId"]] = {"name": r["skaterFullName"], "dob": r["birthDate"], "pos": r["positionCode"],
                                    "team": r.get("currentTeamAbbrev"), "sh": r.get("shootsCatches"),
                                    "ht": r.get("height"), "wt": r.get("weight"), "nat": r.get("nationalityCode"),
                                    "dr": [r.get("draftYear"), r.get("draftRound"), r.get("draftOverall")]}
-        for pid, r in summ.items():
-            re_, sh, ti = real.get(pid, {}), shot.get(pid, {}), toi.get(pid, {})
-            sk[pid][s] = {
-                "gp": r["gamesPlayed"], "g": r["goals"], "a": r["assists"], "pts": r["points"],
-                "pim": r["penaltyMinutes"], "sog": r["shots"],
-                "stp": (r.get("ppPoints") or 0) + (r.get("shPoints") or 0),
-                "hit": re_.get("hits") or 0, "blk": re_.get("blockedShots") or 0, "tk": re_.get("takeaways") or 0,
-                "gv": re_.get("giveaways") or 0,
-                "sat": sh.get("satTotal") or 0, "satf": sh.get("satFor") or 0, "sata": sh.get("satAgainst") or 0,
-                "pp": (ti.get("ppTimeOnIce") or 0) / 60.0, "shtoi": (ti.get("shTimeOnIce") or 0) / 60.0,
-                "toi": (ti.get("timeOnIce") or 0) / 60.0, "team": r.get("teamAbbrevs"), "pos": r.get("positionCode"),
-            }
-        gsum = API.stats_report("goalie", "summary", s)
+        for pid, row in rows.items():
+            sk[pid][s] = row
         for r in API.stats_report("goalie", "bios", s):
             bios[r["playerId"]] = {"name": r["goalieFullName"], "dob": r["birthDate"], "pos": "G",
                                    "team": r.get("currentTeamAbbrev"), "sh": r.get("shootsCatches"),
                                    "ht": r.get("height"), "wt": r.get("weight"), "nat": r.get("nationalityCode"),
                                    "dr": [r.get("draftYear"), r.get("draftRound"), r.get("draftOverall")]}
-        for r in gsum:
-            gk[r["playerId"]][s] = {"gp": r["gamesPlayed"], "gs": r.get("gamesStarted"), "w": r["wins"],
-                                    "ga": r["goalsAgainst"], "sa": r["shotsAgainst"], "sho": r["shutouts"],
-                                    "gaa": r["goalsAgainstAverage"], "sv": r["savePct"], "team": r.get("teamAbbrevs")}
+        for pid, row in goalie_rows(API.stats_report("goalie", "summary", s)).items():
+            gk[pid][s] = row
     return sk, gk, bios
 
 
@@ -589,6 +598,142 @@ def project_tk_cor(players, sk):
         pr[10] = round(rate_cor * gp, 1)
         p["tkc"] = [round(rate_tk, 4), round(rate_cor, 3), round(prior_tk, 4), round(prior_cor, 3), round(den, 1)]
     return beta_cor, cor_est
+
+
+# ----------------------------------------------------------------------------- in season
+ROS_SEASON = int(os.environ.get("DP_ROS_SEASON", SEASON_ID))   # override only to test with an old season
+# rest-of-season blend: the preseason projection counts as k games of evidence per category (model choice)
+ROS_K = {"PtD": 60, "G": 60, "A": 60, "PIM": 50, "SOG": 30, "STP": 60, "Hit": 25, "Blk": 25, "Tk": 40, "Cor": 40}
+ROS_K_G = {"W": 30, "GAA": 30, "SV": 40, "SHO": 40}
+AVAIL_K = 20
+
+
+def season_to_date(players, sk_hist, cor_est, sched, season_start):
+    """2026-27 NHL stats so far -> p['ytd'] (Fantrax category order) and a rest-of-season projection that replaces
+    p['p26'] (the preseason projection is kept in p['pre']). Nothing changes before the first game."""
+    reps = {rep: {r["playerId"]: r for r in API.stats_report("skater", rep, ROS_SEASON)} for rep in ("summary", "realtime", "summaryshooting", "timeonice")}
+    if not reps["summary"]:
+        log("Season to date: no games yet, projections are preseason")
+        return 0
+    sk = skater_rows(reps["summary"], reps["realtime"], reps["summaryshooting"], reps["timeonice"])
+    gk = goalie_rows(API.stats_report("goalie", "summary", ROS_SEASON))
+    today = dt.date.fromisoformat(os.environ.get("DP_TODAY", dt.date.today().isoformat()))
+    tday = (today - season_start).days
+    played = {t: sum(1 for r in rows if r[0] < tday) for t, rows in sched.items()}
+    if ROS_SEASON != SEASON_ID:  # test mode: pretend the whole old season has been played
+        played = {t: 82 for t in sched}
+    cats = ["PtD", "G", "A", "PIM", "SOG", "STP", "Hit", "Blk", "Tk", "Cor"]
+    pos_rate = {}
+    for grp in ("F", "D"):  # prior for call-ups with no preseason projection: 70% of an average projected regular
+        rows = [p for p in players.values() if p["kind"] == "S" and p["pos"] == grp and p["p26"][0] >= 40]
+        pos_rate[grp] = [0.7 * sum(p["p26"][c] / p["p26"][0] for p in rows) / max(1, len(rows)) for c in range(1, 11)]
+    n = 0
+    for p in players.values():
+        nid = p.get("nhl")
+        if not nid:
+            continue
+        team = p.get("nt") or p.get("t")
+        tp = played.get(team) or max(played.values() or [0])
+        left = max(0, NHL_GAMES - tp)
+        pre = p["p26"][:]
+        if p["kind"] == "S":
+            h = sk.get(nid)
+            if not h or not h["gp"]:
+                continue
+            ytd = [h["gp"], h["g"] + h["a"] if p["pos"] == "D" else 0, h["g"], h["a"], h["pim"], h["sog"], h["stp"],
+                   h["hit"], h["blk"], h["tk"], round(cor_est(h), 1)]
+            gp0 = pre[0]
+            base = [pre[c] / gp0 for c in range(1, 11)] if gp0 else pos_rate["D" if p["pos"] == "D" else "F"]
+            if p["pos"] != "D":
+                base[0] = 0.0
+            av = ((AVAIL_K * min(1.0, gp0 / NHL_GAMES) + h["gp"]) / (AVAIL_K + tp)) if tp else min(1.0, gp0 / NHL_GAMES)
+            tot_gp = h["gp"] + min(1.0, av) * left
+            new = [round(tot_gp, 1)]
+            for c, cat in enumerate(cats):
+                k = ROS_K[cat]
+                new.append(round((k * base[c] + ytd[c + 1]) / (k + h["gp"]) * tot_gp, 2))
+            p["ytd"], p["pre"], p["p26"] = ytd, pre, new
+        else:
+            h = gk.get(nid)
+            if not h or not h["gp"]:
+                continue
+            ytd = [h["gp"], h["w"], round(h["gaa"] or 0, 3), round(h["sv"] or 0, 4), h["sho"]]
+            gp0 = pre[0]
+            b = [pre[1] / gp0, pre[2], pre[3] if pre[3] <= 1 else pre[3] / 1000, pre[4] / gp0] if gp0 else [0.4, 3.1, 0.895, 0.05]
+            av = ((AVAIL_K * min(1.0, gp0 / NHL_GAMES) + h["gp"]) / (AVAIL_K + tp)) if tp else min(1.0, gp0 / NHL_GAMES)
+            tot_gp = h["gp"] + min(1.0, av) * left
+            g = h["gp"]
+            w_r = (ROS_K_G["W"] * b[0] + h["w"]) / (ROS_K_G["W"] + g)
+            gaa = (ROS_K_G["GAA"] * b[1] + g * (h["gaa"] or b[1])) / (ROS_K_G["GAA"] + g)
+            sv = (ROS_K_G["SV"] * b[2] + g * (h["sv"] or b[2])) / (ROS_K_G["SV"] + g)
+            sho = (ROS_K_G["SHO"] * b[3] + h["sho"]) / (ROS_K_G["SHO"] + g)
+            p["ytd"], p["pre"] = ytd, pre
+            p["p26"] = [round(tot_gp, 1), round(w_r * tot_gp, 2), round(gaa, 3), round(sv, 4), round(sho * tot_gp, 2)]
+        n += 1
+    log(f"Season to date ({ROS_SEASON}): {n} players with games; rest-of-season projections blended (k = {ROS_K}, goalies {ROS_K_G})")
+    return n
+
+
+def week_scoreboard(players, weeks, snap, cor_est):
+    """Category totals so far in the fantasy week being played: each team's Active players in the current Fantrax
+    period x their NHL stats from the week's start through today (NHL stats API, aggregated by date range)."""
+    test = os.environ.get("DP_SCORE_TEST")  # "YYYY-MM-DD:YYYY-MM-DD:week" to exercise this with an old date range
+    now = dt.datetime.now(dt.timezone.utc)
+    if test:
+        a, b, wn = test.split(":")
+        w = dict(next(x for x in weeks if x["n"] == int(wn)), start=a)
+        end = b
+    else:
+        cur = [x for x in weeks if x.get("lock") and dt.datetime.fromisoformat(x["lock"]) <= now]
+        if not cur:
+            return None
+        w = cur[-1]
+        yday_et = ((now - dt.timedelta(hours=4)).date() - dt.timedelta(days=1)).isoformat()
+        end = min(w["end"], yday_et)  # completed days only; today's games get simulated
+        if end < w["start"]:
+            return {"week": w["n"], "from": w["start"], "to": None, "asOf": now.isoformat(timespec="minutes"), "test": False, "teams": {}}
+    active = (snap or {}).get("current", {}) or {}
+    act = active.get("active") if active else None
+    if not act:  # fall back to the lineup slots in the snapshot (next lock) when Fantrax gave no in-progress period
+        act = defaultdict(list)
+        for fid, r in ((snap or {}).get("rosters") or {}).items():
+            if r["slot"] == "A":
+                act[r["gm"]].append(fid)
+    reps = {rep: {r["playerId"]: r for r in API.range_report("skater", rep, w["start"], end)} for rep in ("summary", "realtime", "summaryshooting", "timeonice")}
+    sk = skater_rows(reps["summary"], reps["realtime"], reps["summaryshooting"], reps["timeonice"])
+    gk = goalie_rows(API.range_report("goalie", "summary", w["start"], end))
+    teams = {}
+    for code, ids in act.items():
+        tot = {k: 0.0 for k in ("PtD", "G", "A", "GA2", "PIM", "SOG", "STP", "Hit", "Blk", "Tk", "Cor", "W", "GA", "SA", "SHO", "GGP", "GTOI", "SGP")}
+        pl = {}
+        for fid in ids:
+            p = players.get(f"*{fid}*")
+            if not p or not p.get("nhl"):
+                continue
+            if p["kind"] == "G":
+                h = gk.get(p["nhl"])
+                if not h or not h["gp"]:
+                    continue
+                tot["W"] += h["w"]; tot["GA"] += h["ga"]; tot["SA"] += h["sa"]; tot["SHO"] += h["sho"]
+                tot["GGP"] += h["gp"]; tot["GTOI"] += h["toi"]
+                pl[p["id"]] = [h["gp"], h["w"], h["ga"], h["sa"], h["sho"], round(h["toi"], 1)]
+            else:
+                h = sk.get(p["nhl"])
+                if not h or not h["gp"]:
+                    continue
+                cor = cor_est(h)
+                line = [h["gp"], h["g"], h["a"], h["pim"], h["sog"], h["stp"], h["hit"], h["blk"], h["tk"], round(cor, 1)]
+                if p["pos"] == "D":
+                    tot["PtD"] += h["g"] + h["a"]
+                for k, v in zip(("G", "A", "PIM", "SOG", "STP", "Hit", "Blk", "Tk", "Cor"), line[1:]):
+                    tot[k] += v
+                tot["GA2"] += 2 * h["g"] + h["a"]; tot["SGP"] += h["gp"]
+                pl[p["id"]] = line
+        teams[code] = {"tot": {k: round(v, 2) for k, v in tot.items()}, "pl": pl, "active": [f"*{i}*" for i in ids]}
+    log(f"Scoreboard: {'TEST ' if test else ''}week {w['n']} {w['start']}..{end}: " +
+        ", ".join(f"{c} {int(t['tot']['SGP'])} skater GP" for c, t in list(teams.items())[:4]) + " …")
+    return {"week": w["n"], "from": w["start"], "to": end, "asOf": now.isoformat(timespec="minutes"), "test": bool(test),
+            "period": active.get("period") if active else None, "teams": teams, "corNote": "Cor estimated from NHL shot attempts (model, R² 0.975 vs Fantrax)"}
 
 
 # ----------------------------------------------------------------------------- NHLe
@@ -994,8 +1139,16 @@ def main():
 
     # ---- universe: rostered, waivers, contract-sheet names, and FAs with NHL games or projections
     sheet_names = {norm_name(r["name"]) for r in sheet}
+    # players who have played NHL games this season (call-ups without a preseason projection)
+    now_names = set()
+    for kind, key in (("skater", "skaterFullName"), ("goalie", "goalieFullName")):
+        for r in API.stats_report(kind, "summary", ROS_SEASON):
+            if r.get("gamesPlayed"):
+                now_names.add(norm_name(r[key]))
+
     def relevant(p):
-        return (p["gm"] or p["wv"] or p["s25"][0] > 0 or p["p26"][0] > 0 or norm_name(p["n"]) in sheet_names)
+        return (p["gm"] or p["wv"] or p["s25"][0] > 0 or p["p26"][0] > 0 or norm_name(p["n"]) in sheet_names
+                or norm_name(p["n"]) in now_names)
     players = {k: v for k, v in players.items() if relevant(v)}
     log(f"Universe: {len(players)} players ({sum(1 for p in players.values() if p['gm'])} rostered)")
 
@@ -1238,8 +1391,12 @@ def main():
     except Exception as e:
         log(f"  ! team strength fetch failed: {e}")
 
+    ros_n = season_to_date(players, sk, cor_est, sched, season_start)
+    score = week_scoreboard(players, weeks, fx_snap, cor_est)
     attach_depth(players)
     league = load_trades(players)
+    league["score"] = score
+    league["ros"] = {"n": ros_n, "k": ROS_K, "kG": ROS_K_G, "season": ROS_SEASON}
     apply_fantrax_league(league, weeks, players, fx_snap, fx_moves)
     league["penalties"] = cap_penalties(players, sheet, fx_moves)
     league["drafts"] = load_drafts(players)
@@ -1366,7 +1523,7 @@ def write_calendars(weeks, h2h):
     os.makedirs(folder, exist_ok=True)
     site = CFG.get("alerts", {}).get("siteUrl", "")
     hours = CFG.get("alerts", {}).get("lockReminderHours", 3)
-    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = f"{_y0}0701T000000Z"  # fixed so the feeds only change when the schedule does
     name = dict(GMS)
 
     def utc(iso):
@@ -1445,7 +1602,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
         o = {k: p[k] for k in ("id", "n", "t", "pos", "gm", "ct", "sal", "fxage", "s25", "p26", "fx", "fxp", "cgp") if k in p}
         for k in ("nhl", "fd", "wv", "rk", "dob", "sh", "ht", "wt", "nat", "hs", "nt", "slug", "dr", "car", "h", "tkc",
-                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew"):
+                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew", "ytd", "pre"):
             if p.get(k) not in (None, 0, [], ""):
                 o[k] = p[k]
         o["s25"] = [round(x, 3) for x in o["s25"]]

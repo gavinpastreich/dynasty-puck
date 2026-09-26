@@ -136,6 +136,14 @@
           '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
           .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
+        var sc = DP.league.score;
+        if (sc && sc.week && sc.teams && DP.liveOdds) {
+          var lg = DP.meta.h2h.find(function (m) { return m[0] === sc.week && (m[1] === me || m[2] === me); });
+          if (lg) {
+            var lo = lg[1] === me ? lg[2] : lg[1], od = DP.liveOdds(me, lo), ls = E.liveScore(od);
+            h += '<div class="callout ' + (od.win >= 0.5 ? 'good' : 'warn') + '">📺 <b>Week ' + sc.week + ' so far</b> vs ' + esc(U.teamName(lo)) + ': leading ' + ls[0] + ' categories to ' + ls[1] + (ls[2] ? ' (' + ls[2] + ' tied)' : '') + ' · ' + U.pct(od.win) + ' to win the week' + (sc.to ? ' (games through ' + esc(sc.to) + ')' : '') + '. <a href="#/live">Live scoreboard →</a></div>';
+          }
+        }
         h += DP.lineupCheckHtml(me, true);
         if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) or are released next offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can\'t go back.</div>';
       } else {

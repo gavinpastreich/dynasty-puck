@@ -1382,6 +1382,88 @@
     return out;
   };
 
+  // ---------------------------------------------------------------- live scoreboard (week in progress)
+  E.dayIndex = function (iso) { return Math.round((new Date(iso + 'T12:00:00Z').getTime() - E.seasonStart) / 864e5); };
+  // expected games for a player from day d0 to the end of week wi
+  E.gamesFrom = function (p, wi, d0) {
+    if (!p.r || !p.nt26) return { m: 0, v: 0, N: 0 };
+    var w = E.weeks[wi], end = w.d0 + w.days - 1, N = 0;
+    (DP.nhl.sched[p.nt26] || []).forEach(function (r) { if (r[0] >= d0 && r[0] <= end) N++; });
+    var a = p.avail; return { m: N * a, v: N * a * (1 - a), N: N };
+  };
+  // the rest of the week for the players active in Fantrax this period (weekly lock: the lineup can't change)
+  E.restWeek = function (team, wi, d0, activeIds) {
+    var only = {}; (activeIds || []).forEach(function (id) { only[id] = 1; });
+    var ros = E.rosters[team] || [], lu = E.lineup(ros, wi, activeIds && activeIds.length ? { only: only } : null), agg = emptyAgg();
+    lu.F.concat(lu.D).forEach(function (x) { addSkater(agg, x.p, E.gamesFrom(x.p, wi, d0)); });
+    lu.G.forEach(function (x) { addGoalie(agg, x.p, E.gamesFrom(x.p, wi, d0)); });
+    agg.r = ratios(agg); agg.lu = lu;
+    return agg;
+  };
+  var CUR_KEYS = ['PtD', 'G', 'A', 'GA2', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor', 'W', null, null, 'SHO'];
+  E.curRatios = function (t) {
+    return { GAA: t.GTOI > 0 ? t.GA * 60 / t.GTOI : null, SV: t.SA > 0 ? 1 - t.GA / t.SA : null };
+  };
+  // current totals + a Monte Carlo of the rest of the week -> projected finals, per-category and matchup win odds
+  E.liveOdds = function (a, b, sc, n) {
+    var wi = sc.week - 1, d0 = sc.to ? E.dayIndex(sc.to) + 1 : E.weeks[wi].d0;
+    var TA = sc.teams[a] || { tot: {}, active: [] }, TB = sc.teams[b] || { tot: {}, active: [] };
+    var zero = { PtD: 0, G: 0, A: 0, GA2: 0, PIM: 0, SOG: 0, STP: 0, Hit: 0, Blk: 0, Tk: 0, Cor: 0, W: 0, GA: 0, SA: 0, SHO: 0, GGP: 0, GTOI: 0 };
+    var ca = Object.assign({}, zero, TA.tot), cb = Object.assign({}, zero, TB.tot);
+    var ra = E.restWeek(a, wi, d0, TA.active), rb = E.restWeek(b, wi, d0, TB.active);
+    var rand = E.rng(sc.week * 1009 + 17), nrm = E.normalSampler(rand), minGP = E.RULES.goalieMinGP;
+    n = n || 4000;
+    var cdf = function (pm) { var acc = 0; return pm.map(function (x) { acc += x; return acc; }); };
+    var cda = cdf(ra.gpmf), cdb = cdf(rb.gpmf);
+    var draw = function (cur, rest, cd) {
+      var m = rest.m, v = rest.v, out = [], u = rand(), g = 0;
+      while (g < cd.length - 1 && u > cd[g]) g++;
+      var G = cur.G + Math.max(0, Math.round(m.G + Math.sqrt(v.G) * nrm())), A = cur.A + Math.max(0, Math.round(m.A + Math.sqrt(v.A) * nrm()));
+      out[1] = G; out[2] = A; out[3] = cur.GA2 - 2 * cur.G - cur.A + 2 * G + A;
+      out[0] = cur.PtD + Math.max(0, Math.round(m.PtD + Math.sqrt(v.PtD) * nrm()));
+      ['PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor'].forEach(function (k, i) {
+        var x = m[k] + Math.sqrt(v[k]) * nrm(); out[4 + i] = cur[k] + (k === 'Cor' ? x : Math.max(0, Math.round(x)));
+      });
+      var sc2 = m.GGP > 0 ? g / m.GGP : 0, ggp = cur.GGP + g;
+      out[11] = cur.W + (g ? Math.max(0, Math.round(m.W * sc2 + Math.sqrt(v.W * sc2) * nrm())) : 0);
+      var ga = cur.GA + (g ? Math.max(0, m.GA * sc2 + Math.sqrt(v.GA * sc2) * nrm()) : 0), sa = cur.SA + (g ? Math.max(1, m.SA * sc2 + Math.sqrt(v.SA * sc2) * nrm()) : 0);
+      var mins = cur.GTOI / 60 + g;
+      out[12] = mins > 0 ? ga / mins : null; out[13] = sa > 0 ? 1 - ga / sa : null;
+      out[14] = cur.SHO + (g ? Math.max(0, Math.round(m.SHO * sc2 + Math.sqrt(v.SHO * sc2) * nrm())) : 0);
+      out.ggp = ggp;
+      return out;
+    };
+    var catW = new Array(E.NC).fill(0), catT = new Array(E.NC).fill(0), sumA = new Array(E.NC).fill(0), sumB = new Array(E.NC).fill(0), cntA = new Array(E.NC).fill(0), cntB = new Array(E.NC).fill(0);
+    var win = 0, loss = 0, tie = 0;
+    for (var s = 0; s < n; s++) {
+      var x = draw(ca, ra, cda), y = draw(cb, rb, cdb), wa = 0, wb = 0, fa = x.ggp < minGP, fb = y.ggp < minGP;
+      for (var c = 0; c < E.NC; c++) {
+        if (x[c] !== null) { sumA[c] += x[c]; cntA[c]++; }
+        if (y[c] !== null) { sumB[c] += y[c]; cntB[c]++; }
+        if (E.CATS[c].grp === 'G' && (fa || fb)) { if (!(fa && fb)) { if (fa) wb++; else { wa++; catW[c]++; } } continue; }
+        if (x[c] === y[c] || x[c] === null || y[c] === null) { catT[c]++; continue; }
+        if (E.CATS[c].low ? x[c] < y[c] : x[c] > y[c]) { wa++; catW[c]++; } else wb++;
+      }
+      if (wa > wb) win++; else if (wb > wa) loss++; else tie++;
+    }
+    var rA = E.curRatios(ca), rB = E.curRatios(cb);
+    var now = function (t, r, c) { return c === 12 ? r.GAA : c === 13 ? r.SV : t[CUR_KEYS[c]]; };
+    return {
+      cats: E.CATS.map(function (cat, c) {
+        return { a: now(ca, rA, c), b: now(cb, rB, c), pa: cntA[c] ? sumA[c] / cntA[c] : null, pb: cntB[c] ? sumB[c] / cntB[c] : null, pw: catW[c] / n, pt: catT[c] / n };
+      }),
+      win: win / n, loss: loss / n, tie: tie / n, ggpA: ca.GGP, ggpB: cb.GGP, restA: ra, restB: rb
+    };
+  };
+  E.liveScore = function (odds) { // current category score (who leads each category right now)
+    var wa = 0, wb = 0, t = 0;
+    odds.cats.forEach(function (x, c) {
+      if (x.a === null || x.b === null || x.a === x.b) { t++; return; }
+      if (E.CATS[c].low ? x.a < x.b : x.a > x.b) wa++; else wb++;
+    });
+    return [wa, wb, t];
+  };
+
   // single-week Monte Carlo for the matchup page: P(win matchup), distribution of category score
   E.simWeek = function (A, B, n, seed) {
     var rand = E.rng(seed || 7), nrm = E.normalSampler(rand), minGP = E.RULES.goalieMinGP;
