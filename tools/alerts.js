@@ -2,9 +2,10 @@
 /* Dynasty Puck HQ opt-in alerts. Run every hour by .github/workflows/alerts.yml (GitHub Actions, no Claude involved).
  *  lock   - a few hours before every lineup lock: each team's Fantrax lineup check -> that team's ntfy topic
  *  daily  - once a day (after the nightly data refresh): roster moves and new injuries -> team topics; trades -> league topic
+ *  deadline - the day before the trade deadline: a reminder to every team topic and the league topic
  *  weekly - Monday morning: writes tools/out/digest.{txt,html} + subject.txt for tools/alerts_email.py to email
  * Topics: <alerts.ntfyPrefix>-<team code letters> (e.g. dynastypuck-7q2-MM) and <prefix>-league.
- * Usage: node tools/alerts.js [--dry] [--force lock|daily|weekly] [--now 2026-10-05T20:30:00Z]
+ * Usage: node tools/alerts.js [--dry] [--force lock|daily|deadline|weekly] [--now 2026-10-05T20:30:00Z]
  */
 'use strict';
 const fs = require('fs'), path = require('path'), vm = require('vm');
@@ -108,6 +109,22 @@ async function doDaily() {
   console.log('daily done', today);
 }
 
+// ------------------------------------------------------------------ trade-deadline reminder (the day before)
+async function doDeadline() {
+  const dl = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
+  if (!dl || isNaN(dl)) return;
+  const hrs = (dl - now()) / 36e5;
+  if (FORCE !== 'deadline' && !(hrs <= 24 && hrs > 22.5)) return;
+  const title = 'Trade deadline tomorrow ' + et(dl, { hour: 'numeric', minute: '2-digit' }) + ' ET';
+  const msg = 'Last day to trade this season (' + E.deadlineText() + '). Players you hold from the deadline to the end of the season get the ' +
+    Math.round((E.RULES.htdPct || 0.1) * 100) + '% hometown discount at the auction. Trade Finder and Trade Machine: ' + SITE + '#/finder';
+  for (const t of E.teams.concat(['league'])) {
+    const topic = topicOf(t);
+    if (FORCE !== 'deadline' && await alreadySent(topic, title, '24h')) continue;
+    await ntfy(topic, title, msg, SITE + '#/finder');
+  }
+}
+
 // ------------------------------------------------------------------ weekly digest (emailed by tools/alerts_email.py)
 async function doWeekly() {
   const d = now(), day = et(d, { weekday: 'long' }), hour = +et(d, { hour: 'numeric', hour12: false });
@@ -169,8 +186,8 @@ async function doWeekly() {
 
 (async () => {
   E.init();
-  const which = FORCE ? [FORCE] : ['lock', 'daily', 'weekly'];
+  const which = FORCE ? [FORCE] : ['lock', 'daily', 'deadline', 'weekly'];
   for (const k of which) {
-    try { await ({ lock: doLock, daily: doDaily, weekly: doWeekly })[k](); } catch (e) { console.error(k, 'failed:', e); process.exitCode = 1; }
+    try { await ({ lock: doLock, daily: doDaily, deadline: doDeadline, weekly: doWeekly })[k](); } catch (e) { console.error(k, 'failed:', e); process.exitCode = 1; }
   }
 })();

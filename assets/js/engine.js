@@ -721,13 +721,20 @@
   // the bid still sets the term. Without a deadline date in the settings, today's owner is assumed eligible.
   E.htdTeam = function (p) {
     if (!p.gm) return null;
-    var dl = E.RULES.tradeDeadline;
-    if (dl) {
-      var moved = (DP.league.moves || []).some(function (m) { return m.id === p.id && m.d >= dl && (m.type === 'move' || m.type === 'add'); }) ||
-        (DP.league.trades || []).some(function (t) { return t.date >= dl && t.moves.some(function (m) { return m.id === p.id; }); });
+    var dl = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
+    if (dl && !isNaN(dl)) {
+      var day = dl.toISOString().slice(0, 10), after = new Date(dl.getTime() + 864e5).toISOString().slice(0, 10);
+      // the nightly Fantrax log dates a move the morning after it happened, so anything logged the day after the
+      // deadline is still counted as before it; trades in the Fantrax trade export carry their real date
+      var moved = (DP.league.moves || []).some(function (m) { return m.id === p.id && m.d > after && (m.type === 'move' || m.type === 'add'); }) ||
+        (DP.league.trades || []).some(function (t) { return t.date > day && t.moves.some(function (m) { return m.id === p.id; }); });
       if (moved) return null;
     }
     return p.gm;
+  };
+  E.deadlineText = function () {
+    var d = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
+    return d && !isNaN(d) ? d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET' : null;
   };
   E.htdPrice = function (bid) { return bid * (1 - (E.RULES.htdPct || 0)); };
   // projected price at the 2027 auction (y = 1), or what he'd have gone for in the 2026 auction (y = 0)

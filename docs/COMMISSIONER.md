@@ -33,7 +33,7 @@ The site rebuilds itself about 3 minutes later.
 | `playoffs` | Teams, weeks, and whether division winners take seeds 1-2. |
 | `teams`, `oldTeamNames` | Team codes and Fantrax names (codes must match Fantrax's short names). |
 | `alerts` | Phone-topic prefix, the league email address, reminder timing. |
-| `hometownDiscount` | Share off the winning bid for the player's own team, and the trade-deadline date (`"2027-03-05"` style) that decides who qualifies. |
+| `hometownDiscount` | Share off the winning bid for the player's own team, and the trade deadline (`"2027-01-29T23:59:00-05:00"`) that decides who qualifies. Update the deadline every season. |
 
 Cap hit penalties: `raw/2026-27/league/cap_penalties.csv` (one row per player, $M per season). The build starts it from
 the contract sheet; edit it to match Fantrax's "Cap hit penalties". Drops seen in Fantrax are added automatically.
@@ -43,19 +43,23 @@ rebuild starts on its own.
 
 ## Turning on the weekly email (5 minutes, once)
 
-1. Create a new Gmail account just for the league (for example `dynastypuckhq@gmail.com`). Don't use your personal one.
-   Google asks for a name and birthday on every new account; they're only an age check and aren't shown to anyone, so
-   "Dynasty Puck" and any adult birthday are fine (an under-18 birthday limits the account). Google may also ask for a
-   phone number to verify; that stays private too.
-2. In that account: **Google Account → Security → 2-Step Verification** → turn it on.
-3. **Google Account → Security → App passwords** → create one named "Dynasty Puck". Copy the 16-character password.
-4. On GitHub: repo **Settings → Secrets and variables → Actions → New repository secret**. Name `DP_EMAIL_APP_PASSWORD`,
-   value = the app password.
-5. Put the league address in `config/league.json` → `alerts.emailAddress` and commit.
+The league inbox is **dynastypucknotifications@gmail.com** (already set in `config/league.json` → `alerts.emailAddress`,
+so the sign-up button is live on the Alerts page). What's left happens in that Gmail account and on GitHub:
 
-The sign-up button then appears on the site's Alerts page. GMs sign up by sending a pre-filled email to that address, and
-they leave by replying "unsubscribe". The list lives only in that mailbox, so nobody's address is ever published. Emails come
-from the league address, and new sign-ups get a confirmation within the hour.
+1. Sign in to dynastypucknotifications@gmail.com → **Google Account → Security → 2-Step Verification** → turn it on
+   (a phone number or the Google Authenticator app works).
+2. Go to **https://myaccount.google.com/apppasswords** (same account), create an app password named "Dynasty Puck", and copy
+   the 16-character password it shows (spaces don't matter).
+3. On GitHub: repo **Settings → Secrets and variables → Actions → New repository secret**. Name: `DP_EMAIL_APP_PASSWORD`,
+   value: the app password. **Don't paste it anywhere else** (not in chat, not in a file); GitHub keeps it encrypted.
+4. Test it: from your personal email, send a message to dynastypucknotifications@gmail.com with the subject
+   `subscribe M.M`. Then GitHub → **Actions → Alerts → Run workflow** (leave the mode empty). Within a minute you should get a
+   "You're on the Dynasty Puck HQ list" email. To see a digest right away, run it again with mode `weekly`.
+
+How it works: GMs sign up by sending a pre-filled email from the Alerts page and leave by replying "unsubscribe". The list
+lives only in that mailbox, so nobody's address is ever published. Sign-ups sent before step 3 wait in the inbox and are
+picked up on the first run after the secret is added. If Gmail ever asks, IMAP access must be on (Gmail settings →
+Forwarding and POP/IMAP).
 
 ## Phone push and calendar
 

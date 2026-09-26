@@ -439,4 +439,19 @@ DESCRIPTION:Lineup lock: Playoffs round 3
 TRIGGER:-PT3H
 END:VALARM
 END:VEVENT
+BEGIN:VEVENT
+UID:dp-20262027-nbracken-deadline@dynastypuck
+DTSTAMP:20260701T000000Z
+DTSTART:20270130T045900Z
+DTEND:20270130T050000Z
+SUMMARY:Dynasty Puck trade deadline (11:59 PM ET)
+DESCRIPTION:Last chance to trade this season. Players you hold from now to
+  the end of the season get the 10% hometown discount at the auction. Trad
+ e tools: https://gavinpastreich.github.io/dynasty-puck/#/finder
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dynasty Puck trade deadline (11:59 PM ET)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
 END:VCALENDAR

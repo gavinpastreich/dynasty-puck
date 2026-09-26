@@ -25,7 +25,7 @@
       var webcal = ics.replace(/^https?:/, 'webcal:');
       h += '<div class="grid g3">';
       // push
-      h += '<div class="card"><h2>📱 Phone push</h2><div class="hint">Free <a href="https://ntfy.sh" target="_blank" rel="noopener">ntfy</a> app, no sign-up. You get: your Fantrax lineup check before every lock (who to start or sit, injured starters, goalie-minimum risk), plus a morning note when your roster changes, a player gets hurt, or a prospect is about to graduate.</div>' +
+      h += '<div class="card"><h2>📱 Phone push</h2><div class="hint">Free <a href="https://ntfy.sh" target="_blank" rel="noopener">ntfy</a> app, no sign-up. You get: your Fantrax lineup check before every lock (who to start or sit, injured starters, goalie-minimum risk), plus a morning note when your roster changes, a player gets hurt, or a prospect is about to graduate, and a heads-up the day before the trade deadline.</div>' +
         '<ol class="small" style="padding-left:18px"><li>Install ntfy: <a href="https://apps.apple.com/app/ntfy/id1625396347" target="_blank" rel="noopener">iPhone</a> · <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener">Android</a> (or use the <a href="https://ntfy.sh/app" target="_blank" rel="noopener">web app</a> on a computer)</li>' +
         '<li>Tap <b>Subscribe</b> below on your phone, or add this topic in the app: <code id="al-topic">' + esc(topic) + '</code> <button class="btn sm ghost" data-copy="' + esc(topic) + '">Copy</button></li>' +
         '<li>Send yourself a test to check it works.</li></ol>' +

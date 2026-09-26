@@ -1567,6 +1567,14 @@ def write_calendars(weeks, h2h):
                   f"DTSTART:{start}", f"DTEND:{end}", f"SUMMARY:{esc(summary)}", f"DESCRIPTION:{esc(desc)}", f"URL:{link}",
                   "BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{esc(summary)}", f"TRIGGER:-PT{hours}H", "END:VALARM",
                   "END:VEVENT"]
+        dl = (CFG.get("hometownDiscount") or {}).get("tradeDeadline")
+        if dl:
+            t0 = dt.datetime.fromisoformat(dl).astimezone(dt.timezone.utc)
+            s_ = "Dynasty Puck trade deadline (11:59 PM ET)"
+            L += ["BEGIN:VEVENT", f"UID:dp-{SEASON_ID}-{team_slug(code) if code else 'league'}-deadline@dynastypuck", f"DTSTAMP:{stamp}",
+                  f"DTSTART:{t0.strftime('%Y%m%dT%H%M%SZ')}", f"DTEND:{(t0 + dt.timedelta(minutes=1)).strftime('%Y%m%dT%H%M%SZ')}",
+                  f"SUMMARY:{esc(s_)}", f"DESCRIPTION:{esc('Last chance to trade this season. Players you hold from now to the end of the season get the 10% hometown discount at the auction. Trade tools: ' + site + '#/finder')}",
+                  "BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{esc(s_)}", "TRIGGER:-P1D", "END:VALARM", "END:VEVENT"]
         L.append("END:VCALENDAR")
         return "\r\n".join(fold(x) for x in L) + "\r\n"
 

@@ -53,9 +53,9 @@
   },
 
   "hometownDiscount": {
-    "_what": "Auction: a team that had the player on its roster continuously from the trade deadline to the end of the season pays this share less than its winning bid; the bid still sets the term (e.g. a $3.1M bid = 2-yr band, paid $2.79M).",
+    "_what": "Auction: a team that had the player on its roster continuously from the trade deadline to the end of the season pays this share less than its winning bid; the bid still sets the term (e.g. a $3.1M bid = 2-yr band, paid $2.79M). tradeDeadline: date and time with the ET offset, e.g. 2027-01-29T23:59:00-05:00; update it each season.",
     "pct": 0.10,
-    "tradeDeadline": null
+    "tradeDeadline": "2027-01-29T23:59:00-05:00"
   },
 
   "auctionBands": {
@@ -96,7 +96,7 @@
     "_what": "Opt-in alerts sent by GitHub Actions (.github/workflows/alerts.yml). Phone push topics are '<ntfyPrefix>-<team code letters>'. Email needs the league Gmail address below plus the repository secret DP_EMAIL_APP_PASSWORD (see docs/COMMISSIONER.md); leave emailAddress empty to hide email sign-up.",
     "ntfyPrefix": "dynastypuck-7q2",
     "siteUrl": "https://gavinpastreich.github.io/dynasty-puck/",
-    "emailAddress": "",
+    "emailAddress": "dynastypucknotifications@gmail.com",
     "lockReminderHours": 3,
     "weeklyDigestDay": "Monday",
     "weeklyDigestHourET": 9

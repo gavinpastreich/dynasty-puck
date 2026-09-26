@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Send now instead of waiting: lock, daily or weekly (leave empty for the normal schedule check)"
+        description: "Send now instead of waiting: lock, daily, deadline or weekly (leave empty for the normal schedule check)"
         required: false
         default: ""
 permissions:
