@@ -178,6 +178,8 @@
       h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '">' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
       h += '<div class="card"><h2>Cap by season</h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = $' + E.CAP + 'M cap (2026-27; future caps assumed flat).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
+      h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes all 24 weeks with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
+      h += '<div class="card"><h2>Lineup usage by week</h2><div class="hint">How often each player makes the optimal weekly lineup (24 regular-season weeks). Part-time starters are your streaming and trade chips.</div><div id="t-usage"></div></div>';
       h += '<div class="card span2"><h2>Full roster</h2><div id="t-roster"></div></div>';
       h += '</div>';
       el.innerHTML = h;
@@ -226,6 +228,27 @@
 
       // recommendations (async: exact FA fits take a moment)
       setTimeout(function () { recs(t, s, U.qs('#recs', el)); }, 30);
+      // usage
+      var starts = {}, benchW = {};
+      for (var wi2 = 0; wi2 < E.REG_WEEKS; wi2++) {
+        var lu2 = E.baseline[t][wi2].lu, on = {};
+        lu2.F.concat(lu2.D, lu2.G).forEach(function (x) { starts[x.p.id] = (starts[x.p.id] || 0) + 1; on[x.p.id] = 1; });
+        ros.forEach(function (p) { if (p.r && !on[p.id]) (benchW[p.id] = benchW[p.id] || []).push(wi2 + 1); });
+      }
+      var usage = ros.filter(function (p) { return p.r && starts[p.id]; }).sort(function (a, b) { return (starts[b.id] || 0) - (starts[a.id] || 0); });
+      U.qs('#t-usage', el).innerHTML = '<div class="tbl-wrap" style="max-height:360px;overflow:auto"><table class="t"><thead><tr><th>Player</th><th class="num">Starts</th><th>Sits in weeks</th></tr></thead><tbody>' + usage.map(function (p) {
+        var n = starts[p.id], bw = benchW[p.id] || [];
+        return '<tr><td>' + ui.pos(p) + ' ' + ui.plink(p) + '</td><td class="num">' + n + '/' + E.REG_WEEKS + '</td><td class="small muted">' + (n === E.REG_WEEKS ? 'every week' : bw.length > 10 ? bw.length + ' weeks' : bw.join(', ')) + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+      setTimeout(function () {
+        var box = U.qs('#t-punt', el); if (!box) return;
+        var pa = E.puntAnalysis(t).sort(function (a, b) { return b.total - a.total; });
+        var good = pa.filter(function (x) { return x.total > 0.25; });
+        box.innerHTML = (good.length ? '<p class="small"><b>Worth considering:</b> ' + good.slice(0, 3).map(function (x) { return 'ignore <b>' + esc(E.CATS[x.c].l) + '</b> (' + U.sgn(x.total, 1) + ' cat W)'; }).join(', ') + '.</p>' : '<p class="small">No single-category punt helps at the lineup level. Your best lineups already balance the categories. A real punt means trading those assets for help elsewhere.</p>') +
+          '<div class="tbl-wrap"><table class="t"><thead><tr><th>Ignore</th><th class="num">That cat</th><th class="num">Other cats</th><th class="num">Net</th></tr></thead><tbody>' + pa.map(function (x) {
+            return '<tr><td><b>' + esc(E.CATS[x.c].l) + '</b></td><td class="num">' + ui.delta(x.own, 1) + '</td><td class="num">' + ui.delta(x.others, 1) + '</td><td class="num"><b>' + ui.delta(x.total, 1) + '</b></td></tr>';
+          }).join('') + '</tbody></table></div>';
+      }, 60);
     }
   };
 

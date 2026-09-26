@@ -9,7 +9,7 @@
     ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub']]],
     ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
-    ['League', [['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['League', [['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', '2027 Offseason']]],
     ['Prospects', [['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center']]],
     ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],

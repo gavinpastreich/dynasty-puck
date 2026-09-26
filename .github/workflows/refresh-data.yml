@@ -1,0 +1,54 @@
+name: Nightly data refresh
+# Rebuilds data/*.js from the NHL APIs + Daily Faceoff depth/injuries every night during the season,
+# commits the result, and redeploys the site. (Pushes made with GITHUB_TOKEN don't trigger other
+# workflows, so this job deploys Pages itself.)
+on:
+  schedule:
+    - cron: "17 10 * * *"   # 10:17 UTC daily = early morning in North America
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install openpyxl
+      - name: Refresh research (injuries, depth charts) and rebuild data
+        run: |
+          python tools/research/scrape_dfo.py || echo "depth/injury scrape failed; keeping previous"
+          python tools/build_data.py --refresh
+      - name: Commit if data changed
+        id: commit
+        run: |
+          git config user.name "dynasty-puck-bot"
+          git config user.email "dynasty-puck-bot@users.noreply.github.com"
+          git add data tools/research/injuries.json tools/research/depth.json tools/build_report.txt
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
+            git commit -m "Nightly data refresh $(date -u +%Y-%m-%d)"; git push; echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Assemble site
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          mkdir -p _site
+          cp -r index.html manifest.json shinylive-sw.js assets data fa prospects _site/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+        if: steps.commit.outputs.changed == 'true'
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.commit.outputs.changed == 'true'
+        with:
+          path: _site
+      - id: deployment
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4

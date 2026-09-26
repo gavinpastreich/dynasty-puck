@@ -136,6 +136,31 @@
     return '<div class="chart lines">' + legend + s + '</div>';
   };
 
+  // Scatter: pts [{x, y, label, hl, tip}], optional reference line y = a + b x
+  C.scatter = function (pts, o) {
+    o = o || {};
+    var W = o.width || 760, H = o.height || 360, padL = 46, padB = 34, padT = 12, padR = 14;
+    var xs = pts.map(function (p) { return p.x; }), ys = pts.map(function (p) { return p.y; });
+    var xt = niceTicks(Math.min(0, Math.min.apply(null, xs)), Math.max.apply(null, xs), 6), yt = niceTicks(Math.min(0, Math.min.apply(null, ys)), Math.max.apply(null, ys), 5);
+    var x0 = xt[0], x1 = xt[xt.length - 1], y0 = yt[0], y1 = yt[yt.length - 1];
+    var px = function (v) { return padL + (v - x0) / (x1 - x0) * (W - padL - padR); }, py = function (v) { return padT + (1 - (v - y0) / (y1 - y0)) * (H - padT - padB); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="max-width:' + W + 'px" role="img" aria-label="' + esc(o.title || 'scatter') + '">';
+    xt.forEach(function (t) { s += '<line class="gridl" x1="' + px(t) + '" x2="' + px(t) + '" y1="' + padT + '" y2="' + (H - padB) + '"/><text class="axis" x="' + px(t) + '" y="' + (H - padB + 16) + '" text-anchor="middle">' + esc(o.xFmt ? o.xFmt(t) : U.fmt(t)) + '</text>'; });
+    yt.forEach(function (t) { s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(t) + '" y2="' + py(t) + '"/><text class="axis" x="' + (padL - 6) + '" y="' + (py(t) + 4) + '" text-anchor="end">' + esc(o.yFmt ? o.yFmt(t) : U.fmt(t)) + '</text>'; });
+    if (o.xLabel) s += '<text class="axis" x="' + (W - padR) + '" y="' + (H - 4) + '" text-anchor="end">' + esc(o.xLabel) + '</text>';
+    if (o.yLabel) s += '<text class="axis" x="' + padL + '" y="' + (padT - 2) + '">' + esc(o.yLabel) + '</text>';
+    if (o.line) {
+      var la = o.line.a, lb = o.line.b, xa = x0, xb = x1;
+      s += '<line x1="' + px(xa) + '" y1="' + py(la + lb * xa) + '" x2="' + px(xb) + '" y2="' + py(la + lb * xb) + '" stroke="var(--s2)" stroke-width="2" stroke-dasharray="6 4"/>';
+      if (o.line.label) s += '<text x="' + (W - padR - 4) + '" y="' + (py(la + lb * xb) - 6) + '" text-anchor="end" style="fill:var(--muted);font-size:11px">' + esc(o.line.label) + '</text>';
+    }
+    pts.slice().sort(function (a, b) { return (a.hl ? 1 : 0) - (b.hl ? 1 : 0); }).forEach(function (p) {
+      var col = p.hl ? 'var(--accent)' : 'var(--s1)';
+      s += '<g data-tip="' + esc(p.tip || ('<div class="tv">' + esc(p.label) + '</div>')) + '"' + (p.pid ? ' data-pid="' + esc(p.pid) + '" style="cursor:pointer"' : '') + '><circle cx="' + px(p.x) + '" cy="' + py(p.y) + '" r="12" fill="transparent"/><circle class="mark" cx="' + px(p.x) + '" cy="' + py(p.y) + '" r="' + (p.hl ? 5 : 4) + '" fill="' + col + '" fill-opacity="' + (p.hl ? 1 : 0.7) + '" stroke="var(--card)" stroke-width="1.5"/></g>';
+    });
+    return '<div class="chart">' + (o.legend ? '<div class="legend">' + o.legend + '</div>' : '') + s + '</svg></div>';
+  };
+
   // sequential heat colour for a value in [0,1] (single blue hue)
   C.heat = function (t) {
     t = U.clamp(t, 0, 1);

@@ -265,7 +265,7 @@
   E.injuredOut = function (p, wi) {
     if (!p.inj) return false;
     var st = p.inj[0], ret = p.inj[2], hold = p.inj[4];
-    if (!/OUT|IR|Injured/i.test(st) && !hold) return false;
+    if (!/OUT|IR|Injured/i.test(st) && !hold && !/Week-to-week|Months|Season|Misses opener/.test(ret)) return false;
     var weeks = ret === 'Season' ? 99 : ret === 'Months' ? 8 : ret === 'Week-to-week' ? 2 : ret === 'Misses opener' || ret === 'Not in camp' ? 1 : hold ? 1 : 1;
     return wi < weeks;
   };
@@ -677,11 +677,13 @@
     var need = p.gradThr - (p.cgp || 0), res = { need: need, thr: p.gradThr, cgp: p.cgp || 0, week: null, date: null, prob: 0 };
     if (need <= 0) { res.status = 'graduated'; res.prob = 1; return res; }
     if (!p.r || !p.nt26 || p.projGP <= 0) { res.status = 'not projected'; return res; }
-    var cum = 0;
+    var cum = 0, skipped = 0;
     for (var wi = 0; wi < E.REG_WEEKS + 3; wi++) {
+      if (E.injuredOut && E.injuredOut(p, wi)) { skipped++; continue; } // injured / holding out: no games that week
       cum += E.games(p, wi).m;
       if (cum >= need - 1e-9) { res.week = wi; break; }
     }
+    res.delayed = skipped;
     // P(projected GP >= need): projected GP ~ Normal(proj, sd = 0.3 * proj + 4)
     var sd = 0.3 * p.projGP + 4;
     res.prob = 1 - E.Phi((need - 0.5 - p.projGP) / sd);
@@ -690,6 +692,7 @@
       // date of the game that crosses the threshold (expected-value approximation)
       var games = DP.nhl.sched[p.nt26] || [], c2 = 0;
       for (var i = 0; i < games.length; i++) {
+        if (skipped && E.dayWeek[games[i][0]] < skipped) continue;
         c2 += p.avail;
         if (c2 >= need - 1e-9) { res.date = E.dateOfDay(games[i][0]); break; }
       }
@@ -836,6 +839,39 @@
       val = games * (r.PtD * g[0] + r.G * (g[1] + 2 * g[3]) + r.A * (g[2] + g[3]) + r.PIM * g[4] + r.SOG * g[5] + r.STP * g[6] + r.Hit * g[7] + r.Blk * g[8] + r.Tk * g[9] + r.Cor * g[10]);
     }
     return val;
+  };
+
+  // run fn with temporarily modified category weights (e.g. a punt): mult = {catKey: factor}
+  E.withWeights = function (mult, fn) {
+    var saved = E.W8, w = {};
+    Object.keys(saved).forEach(function (k) { w[k] = saved[k] * (mult[k] === undefined ? 1 : mult[k]); });
+    E.W8 = w;
+    try { return fn(); } finally { E.W8 = saved; }
+  };
+  // punt analysis: expected season cat wins if the lineup optimizer ignores one category
+  E.puntAnalysis = function (team) {
+    var base = E.baseWins(team), out = [];
+    E.CATS.forEach(function (cat, c) {
+      var m = {}; m[cat.k] = 0;
+      var res = E.withWeights(m, function () { return E.seasonCatWins(team, E.rosters[team]); });
+      out.push({ c: c, total: res.total - base.total, own: res.byCat[c] - base.byCat[c], others: (res.total - res.byCat[c]) - (base.total - base.byCat[c]) });
+    });
+    return out;
+  };
+  // projected team strength by season: sum of the best 12F/6D/2G projected WAR from the current roster
+  E.windowStrength = function (team, roster) {
+    roster = roster || E.rosters[team];
+    return E.YEARS.map(function (_, y) {
+      var f = [], d = [], g = [];
+      roster.forEach(function (p) {
+        if (!p.yWar) return;
+        if (p.gm && p.yCost && p.yCost[y] === null) return; // rights expire (UFA)
+        var w = p.yWar[y];
+        (p.slot === 'G' ? g : p.slot === 'D' ? d : f).push(w);
+      });
+      var top = function (a, n) { return a.sort(function (x, z) { return z - x; }).slice(0, n).reduce(function (s, v) { return s + Math.max(0, v); }, 0); };
+      return top(f, 12) + top(d, 6) + top(g, 2);
+    });
   };
 
   // ---------------------------------------------------------------- cap

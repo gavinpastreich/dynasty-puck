@@ -71,3 +71,16 @@ as you ship them, and add any new ideas you come up with.
 - [x] League **trade history** valuations: 17 trades loaded (Trade History page, league-implied valuation lens fitted to them, pick ownership replayed).
 - [x] Asked and answered (2026-09-25): 8-team playoffs, no byes (weeks 25-27); real Fantrax H2H schedule pasted;
       goalie minimum 2 GP/week (miss = lose all 4 goalie cats); dropped contracts keep 50% dead cap.
+
+## D. Built beyond the checklist (2026-09-26)
+- [x] League-implied valuation lens fitted to the league's 17 real trades; Trade History page scoring every deal.
+- [x] Draft-pick ownership replayed from the trade log (commissioner-confirmed for M.M); pick values from the real
+      2026 rookie draft; 2027 draft slots simulated with the league's draft-order rule.
+- [x] League drafts (2025 initial minors, 2026 rookie) with draft grades and steals/reaches.
+- [x] Dynasty Trade Value Chart (players + picks, tiers), Contention Windows, Weekly Preview generator (copy for chat).
+- [x] Team Hub punt check and lineup-usage table; Trade Machine "balance it" suggestions; salary-vs-WAR bargain chart.
+- [x] Daily Faceoff lines / PP units / goalie tandems / injuries on every player; injured and holdout players delay
+      MNR graduation projections; matchup sim can auto-bench injured players.
+- [x] Nightly GitHub Action to refresh NHL data + injuries/depth and redeploy.
+- [ ] Next ideas: see docs/IDEAS.md (Fantrax auto-sync needs the league ID; live weekly scoreboard; rest-of-season
+      projections; prospect stock watch; league-draft war room; chat bot).

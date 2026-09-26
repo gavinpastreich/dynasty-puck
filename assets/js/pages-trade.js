@@ -143,7 +143,7 @@
       var verdict = Math.abs(bal) < 0.1 ? 'Fair' : Math.abs(bal) < 0.3 ? 'Leans ' + (bal > 0 ? a : b) : 'Lopsided toward ' + (bal > 0 ? a : b);
       h += '<div class="card"><h2>Fairness <span class="badge ' + (Math.abs(bal) < 0.1 ? 'good' : Math.abs(bal) < 0.3 ? 'warn' : 'bad') + '">' + esc(verdict) + '</span></h2><div class="hint">Value each side receives under the selected lens (' + esc(L.name || 'custom') + '). Needle left = ' + esc(b) + ' wins, right = ' + esc(a) + ' wins.</div>' +
         '<div style="display:flex;justify-content:space-between" class="small"><span>' + esc(U.teamName(b)) + ' gets more</span><span>' + esc(U.teamName(a)) + ' gets more</span></div><div class="fair" role="meter" aria-valuemin="-1" aria-valuemax="1" aria-valuenow="' + bal.toFixed(2) + '" aria-label="Trade balance"><div class="needle" style="left:' + (50 + U.clamp(bal, -1, 1) * 50).toFixed(1) + '%"></div></div>' +
-        '<p class="small muted" style="margin-top:8px">Under the other lenses: model ' + balTxt(valM, a, b) + ' · league-implied ' + balTxt(valL, a, b) + '.</p></div>';
+        '<p class="small muted" style="margin-top:8px">Under the other lenses: model ' + balTxt(valM, a, b) + ' · league-implied ' + balTxt(valL, a, b) + '.</p>' + balancer(teams, moves, L, ia, ib) + '</div>';
     }
     // per-team impact table
     h += '<div class="card" style="margin-top:14px"><h2>Impact by team</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Value in</th><th class="num">Value out</th><th class="num">Net</th><th class="num">Δ exp. cat wins (2026-27)</th><th class="num">Proj. finish</th><th class="num">Cap 26-27 after</th><th class="num">Cap 27-28 after</th><th class="num">Roster</th><th>Biggest category changes</th></tr></thead><tbody>';
@@ -197,6 +197,23 @@
         }).join(' · ');
       }, 30);
     });
+  }
+  // suggest single assets that even out a 2-team trade
+  function balancer(teams, moves, L, ia, ib) {
+    var E = DP.E, gap = Math.abs(ia - ib), tot = ia + ib;
+    if (!tot || gap / tot < 0.1) return '';
+    var giver = ia > ib ? teams[0] : teams[1], getter = giver === teams[0] ? teams[1] : teams[0];
+    var used = {}; moves.forEach(function (m) { used[key(m)] = 1; });
+    var cands = E.rosters[giver].map(function (p) { return { a: { kind: 'player', p: p }, k: 'p:' + p.id, v: E.dvWith(p, L), lab: p.n }; })
+      .concat(E.picksOf(giver).map(function (pk) { return { a: { kind: 'pick', pk: pk }, k: 'k:' + E.pickKey(pk), v: E.pickValue(pk, L), lab: E.pickLabel(pk) + ' pick' }; }))
+      .filter(function (c) { return !used[c.k] && c.v >= gap * 0.5 && c.v <= gap * 1.5; })
+      .sort(function (x, y) { return Math.abs(x.v - gap) - Math.abs(y.v - gap); }).slice(0, 5);
+    if (!cands.length) return '<p class="small muted">No single ' + esc(giver) + ' asset closes the gap of ' + U.fmt(gap, 1) + '. Try two smaller pieces.</p>';
+    var cur = U.parseHash().q;
+    return '<p class="small"><b>Balance it:</b> ' + esc(giver) + ' could add one of ' + cands.map(function (c) {
+      var a2 = (cur.a ? cur.a + '|' : '') + c.k + '>' + getter;
+      return '<a href="' + U.hash('trade', null, Object.assign({}, cur, { a: a2, p: '' })) + '">' + esc(c.lab) + ' (' + U.fmt(c.v, 1) + ')</a>';
+    }).join(', ') + ' to cover the ' + U.fmt(gap, 1) + ' gap.</p>';
   }
   function balTxt(v, a, b) {
     var ia = (v[a] || {}).in || 0, ib = (v[b] || {}).in || 0, tot = ia + ib || 1, bal = (ia - ib) / tot;

@@ -4,7 +4,7 @@ const path = require('path');
 const { chromium } = require(process.env.PW_PATH || 'playwright');
 const ROOT = path.join(__dirname, '..', '..');
 const OUT = process.env.SHOTS || path.join(ROOT, 'tools', 'test', 'shots');
-const routes = process.argv.slice(2).length ? process.argv.slice(2) : ['home', 'team/ROO', 'players', 'fa', 'compare', 'leaders', 'matchup', 'season', 'trade', 'finder', 'signing', 'cap', 'offseason', 'prospects', 'draft', 'schedule', 'injuries', 'rules', 'data', 'history', 'picks', 'draft?tab=league', 'draft?tab=b2027', 'prospects?tab=rank', 'prospects?tab=pipes', 'schedule?tab=sos', 'schedule?tab=goalie', 'schedule?tab=stream', 'trade?t=M.M,ROO&a=p:*04lc0*>M.M', 'finder?mode=get', 'player/*04lc0*'];
+const routes = process.argv.slice(2).length ? process.argv.slice(2) : ['home', 'team/ROO', 'players', 'fa', 'compare', 'leaders', 'matchup', 'season', 'trade', 'finder', 'signing', 'cap', 'offseason', 'prospects', 'draft', 'schedule', 'injuries', 'rules', 'data', 'history', 'picks', 'values', 'windows', 'preview', 'draft?tab=league', 'draft?tab=b2027', 'prospects?tab=rank', 'prospects?tab=pipes', 'schedule?tab=sos', 'schedule?tab=goalie', 'schedule?tab=stream', 'trade?t=M.M,ROO&a=p:*04lc0*>M.M', 'finder?mode=get', 'player/*04lc0*'];
 (async () => {
   require('fs').mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch();
