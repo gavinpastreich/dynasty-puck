@@ -1655,7 +1655,7 @@ def rules_from_config():
         "deadCapPct": C.get("deadCapPct", 0.5), "deadCapNote": C.get("deadCapNote", ""),
         "deadCapContracts": C.get("deadCapContracts", ["BID", "ELC1", "RFA1"]),
         "irCapExempt": C.get("irCapExempt", True), "irNote": C.get("irNote", ""),
-        "gradSkater": g.get("skaterGP", 82), "gradGoalie": g.get("goalieGP", 41), "gradNote": C.get("gradNote", ""),
+        "gradSkater": g.get("skaterGP", 84), "gradGoalie": g.get("goalieGP", 42), "gradNote": C.get("gradNote", ""),
         "elcSalary": e.get("salary", 1.5), "elcYears": e.get("years", 2), "elcNote": e.get("note", ""),
         "minSalary": C.get("minSalary", 1.0), "lineup": C.get("lineup", {"F": 12, "D": 6, "G": 2, "bench": 3}),
         "ext2027": sheet27, "ext2026": formula, "initFormula": formula,

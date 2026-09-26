@@ -29,7 +29,7 @@ list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
 - Lineups lock **weekly**: 12F / 6D / 2G starters + 3 bench. MNR-contract players can be started.
 - Cap follows the NHL cap: $104M (2026-27), $113.5M (2027-28), $127.5M projected (2028-29).
   Contracts: BID, RFA1, ELC1 ($1.5M), MNR ($0), FA.
-- MNR graduation uses **career** NHL GP: 82 skaters / 41 goalies. A player who graduates mid-season stays at $0
+- MNR graduation uses **career** NHL GP: 84 skaters / 42 goalies (commissioner, 2026-09-26; was 82/41). A player who graduates mid-season stays at $0
   and signs his ELC (or is dropped) in the offseason; if he's on the active roster when he graduates he can't be
   moved back down to the minors. One not graduated by the end of the regular season can stay at $0.
 - Auction: winning bid sets the term (2026/2027 bands: $1-2.9M 1y, $3-4.4M 2y, $4.5-7.4M 3y, $7.5-9.9M 4y,

@@ -21,7 +21,7 @@ as you ship them, and add any new ideas you come up with.
       separate dropdown for the selected team's own MNR/ELC players, a custom salary for each add
       (e.g. $1.5M for a graduated player, $0 for a non-graduated one), and before/after cap, roster, and
       category ranks.
-- [x] **Graduation logic uses CAREER NHL GP** (82 skaters / 41 goalies) from the NHL API, covering
+- [x] **Graduation logic uses CAREER NHL GP** (84 skaters / 42 goalies; was 82 / 41 until 2026-09-26) from the NHL API, covering
       skaters AND goalies (goalies are in a separate file; that bug once hid Yaroslav Askarov).
       Explain the thresholds clearly in the UI.
 - [x] **Every rostered MNR prospect**: career GP vs threshold, projected graduation week this season,

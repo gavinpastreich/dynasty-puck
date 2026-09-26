@@ -15,7 +15,7 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
    feeds) with "heating up / cooling off" flags and NHLe trend.
 5. ~~2027 league-draft war room~~ **mock draft done 2026-09-26** (live draft-day board still open). Live board with the real pick order, best available by model and by consensus,
    a mock-draft simulator (AI teams pick by need + value), and pick-trade calculator during the draft.
-6. ~~Discord/GroupMe bot~~ **opt-in alerts done 2026-09-26** (ntfy push, calendar, email digest; no group chat). Post the weekly preview, graduation alerts ("X just hit 82 GP: sign or drop"),
+6. ~~Discord/GroupMe bot~~ **opt-in alerts done 2026-09-26** (ntfy push, calendar, email digest; no group chat). Post the weekly preview, graduation alerts ("X just hit 84 GP: sign or drop"),
    and a Monday recap automatically (GitHub Action + webhook secret).
 7. ~~Auction planner~~ **Auction War Room done 2026-09-26.** Expected price for every UFA given league-wide cap space
    (supply vs demand inflation), max-bid calculator per team, and "nominate to drain rivals' cap" hints.

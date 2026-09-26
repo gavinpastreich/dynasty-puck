@@ -34,7 +34,7 @@
   "goalieMinGP": 2,
   "goalieMinNote": "Commissioner 2026-09-25: a team with fewer than 2 goalie GP in a week loses all four goalie categories.",
 
-  "graduation": { "skaterGP": 82, "goalieGP": 41 },
+  "graduation": { "skaterGP": 84, "goalieGP": 42 },
   "gradNote": "An MNR player who reaches the career-GP line stays at $0 for the rest of the season. If he's on the active roster he has to stay there; if he's in the minors he can stay there, but once he's promoted he can't be sent back down. In the offseason the team signs him to an ELC or releases him.",
   "elc": { "salary": 1.5, "years": 2, "note": "ELCs are $1.5M for 1 or 2 years (team's choice; most sign 2)." },
 

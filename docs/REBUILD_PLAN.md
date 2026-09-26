@@ -103,7 +103,7 @@ not all 8,700.
 - Dynasty value: project future seasons with position age curves (F peak 24-28, D 26-29, G 27-31,
   steeper decline after 31-33), discount ~0.85/yr, count contract surplus through expiry, add RFA
   control value using the extension formulas, UFA = 0.
-- MNR: career NHL GP vs 82/41. Project the graduation week from projected GP and the schedule. A player
+- MNR: career NHL GP vs 84/42 (82/41 before 2026-09-26; set in config/league.json). Project the graduation week from projected GP and the schedule. A player
   not graduated by season end stays at $0; one who graduates must sign an ELC ($1.5M) or be dropped.
   Prospect value comes from draft slot, age-adjusted NHLe (AHL .389, KHL .77, SHL .57, Liiga .44,
   NCAA .19, OHL .14, WHL .14, QMJHL .11, USHL .09, J20 ~.05), and NHL rate if any.

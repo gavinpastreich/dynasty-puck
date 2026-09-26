@@ -10,7 +10,7 @@ One fast static app (plain HTML/JS, no server, no R) with:
 - **Players, Free Agents (fit for your team), Compare, Leaderboards**, plus a player card for everyone (headshot, projections, NHL history, NHLe, dynasty curve, contract path).
 - **Simulators**: weekly matchup (per-category win probabilities, goalie minimum), season (8-team playoff), trade machine (2–4 teams, picks, league-implied valuation lens, cap, playoff odds, share link), trade finder, offseason signing sim.
 - **Cap & contracts**: league cap table 2026-27 → 2032-33, expiries, dead cap, extension calculator, 2027 offseason planner.
-- **Prospects**: MNR graduation tracker (career NHL GP: 82 skaters / 41 goalies), prospect rankings, pipelines; Draft Center with the 2026 NHL draft, the league's own drafts, and 2027–2029 boards.
+- **Prospects**: MNR graduation tracker (career NHL GP: 84 skaters / 42 goalies), prospect rankings, pipelines; Draft Center with the 2026 NHL draft, the league's own drafts, and 2027–2029 boards.
 - **League history**: every trade judged with today's values, draft-pick ownership replayed from the trade log.
 
 ## Updating the data
