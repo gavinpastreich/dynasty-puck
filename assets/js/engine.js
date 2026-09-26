@@ -602,15 +602,13 @@
     if (p.dob) return ageOn(p.dob, (2026 + y) + '-06-30');
     return (p.age || 27) - 0.21 + y;
   };
-  // auction salary bands (winning bid sets the term). 2026 and 2027 auctions: the $104M bands; later ones are
-  // assumed to scale with the cap (not a league rule yet)
-  E.bands = function (y) {
-    var B = (E.RULES.bands || {})['2026'];
-    if (!B) return [[1, null, 1]];
-    if (y <= 1) return B.bands;
-    var f = E.capY(y) / B.cap;
-    return B.bands.map(function (r) { return [Math.round(r[0] * f * 10) / 10, r[1] === null ? null : Math.round(r[1] * f * 10) / 10, r[2]]; });
+  // auction salary bands (winning bid sets the term). Each set applies from its offseason until a newer one is added
+  // (commissioner: the $104M bands stay in place through at least the summer-2028 auction; no scaling)
+  E.bandsFor = function (year) {
+    var B = E.RULES.bands || {}, ks = Object.keys(B).map(Number).filter(function (k) { return k <= year; }).sort();
+    return ks.length ? B[ks[ks.length - 1]].bands : [[1, null, 1]];
   };
+  E.bands = function (y) { return E.bandsFor(2026 + Math.max(0, y)); };
   E.bandTerm = function (price, y) {
     var b = E.bands(y), term = 1;
     b.forEach(function (r) { if (price >= r[0] - 1e-9) term = r[2]; });
@@ -619,18 +617,23 @@
   function r3(x) { return Math.round(x * 1000) / 1000; }
   // re-sign options when a deal ends. kinds:
   //  elcUp   - ELC is up: 2y $2.5M, 3y $4.0M, 4y $5.5M, 5y $7.0M, 6y $9.0M, or 1 more ELC year at $1.75M (then UFA)
-  //  rfaElc  - an RFA deal signed off an ELC is up (under 27): base can't drop; 1.5x premium for 2-4 yrs, 1.75x for 5-6
-  //  rfaInit - initial-auction lineage (contract sheet formula): premium x current salary + add-on by length
+  //  rfa     - an RFA contract is up (under 27 on June 30): 2-6 yrs at base x 1.5 (2-4 yrs) / 1.75 (5-6); base can't drop
+  //  rfaInit - first RFA deal of a 2025 initial-auction player: contract-sheet formula (mult x salary + add-on); the
+  //            deal after that follows the 'rfa' rule (commissioner, 2026-09-26)
+  E.initFormula = function (year) {
+    var R = E.RULES, ia = R.initialAuctionRfa || {}, ks = Object.keys(ia).map(Number).filter(function (k) { return k <= year; }).sort();
+    return ks.length ? ia[ks[ks.length - 1]] : R.ext2027;
+  };
   E.resignOptions = function (st) {
     var R = E.RULES, out = [], menu = R.elcMenu || { 2: 2.5, 3: 4, 4: 5.5, 5: 7, 6: 9 }, prem = R.rfaPrem || [1, 1.5, 1.5, 1.5, 1.75, 1.75];
     if (st.kind === 'elcUp') {
       out.push({ L: 1, price: R.elcExt || 1.75, next: 'ufa', label: '1-yr ELC extension, then UFA' });
-      [2, 3, 4, 5, 6].forEach(function (L) { out.push({ L: L, price: menu[L], base: menu[L], next: 'rfa', lineage: 'elc', label: L + ' yrs (post-ELC)' }); });
-    } else if (st.kind === 'rfaElc') {
-      [2, 3, 4, 5, 6].forEach(function (L) { var b = Math.max(st.base, menu[L]); out.push({ L: L, price: r3(b * prem[L - 1]), base: b, next: 'rfa', lineage: 'elc', label: L + ' yrs RFA' }); });
+      [2, 3, 4, 5, 6].forEach(function (L) { out.push({ L: L, price: menu[L], base: menu[L], next: 'rfa', label: L + ' yrs (post-ELC)' }); });
+    } else if (st.kind === 'rfa') {
+      [2, 3, 4, 5, 6].forEach(function (L) { var b = Math.max(st.base, menu[L]); out.push({ L: L, price: r3(b * prem[L - 1]), base: b, next: 'rfa', label: L + ' yrs RFA' }); });
     } else {
-      var sc = R.ext2027;
-      for (var L = 1; L <= 6; L++) out.push({ L: L, price: r3(sc.mult[L - 1] * st.sal + sc.base[L - 1]), next: 'rfa', lineage: 'init', label: L + ' yr' + (L > 1 ? 's' : '') + ' RFA' });
+      var sc = E.initFormula(st.year || 2027);
+      for (var L = 1; L <= 6; L++) { var pr = r3(sc.mult[L - 1] * st.sal + sc.base[L - 1]); out.push({ L: L, price: pr, base: pr, next: 'rfa', label: L + ' yr' + (L > 1 ? 's' : '') + ' RFA' }); }
     }
     return out;
   };
@@ -660,7 +663,7 @@
       while (y < 7 && typeof p.cy[y] === 'number') push(p.cy[y], y === 0 ? p.ct : 'contract');
       var mark = y < 7 ? p.cy[y] : null, last = y > 0 && typeof p.cy[y - 1] === 'number' ? p.cy[y - 1] : (p.sal26 || R.minSalary);
       if (p.ct === 'ELC1') st = { kind: 'elcUp' };
-      else if (mark === 'RFA') st = { kind: 'rfaInit', sal: last };
+      else if (mark === 'RFA') st = p.ct === 'BID' && p.c && p.c.signed === 2025 ? { kind: 'rfaInit', sal: last, year: 2026 + y } : { kind: 'rfa', base: last };
     }
     while (y < 7) {
       if (st && st.kind !== 'elcUp' && E.ageJune30(p, y) >= (R.rfaAge || 27)) { dec.push({ y: y, kind: st.kind, pick: null, why: 'age' }); st = null; }
@@ -671,7 +674,7 @@
       dec.push({ y: y, kind: st.kind, opts: opts, pick: pick });
       if (!pick) { st = null; continue; }
       for (var k2 = 0; k2 < pick.L && y < 7; k2++) push(pick.price, st.kind === 'elcUp' && pick.L === 1 ? 'ELC ext' : 'RFA ' + pick.L + 'yr');
-      st = pick.next !== 'rfa' ? null : pick.lineage === 'elc' ? { kind: 'rfaElc', base: pick.base } : { kind: 'rfaInit', sal: pick.price };
+      st = pick.next !== 'rfa' ? null : { kind: 'rfa', base: pick.base };
     }
     return { cost: cost, status: status, grad: grad, dec: dec };
   };
@@ -759,8 +762,8 @@
         var cap = Math.max(0, c - minS) / E.dpwY(y);                  // cap cost in win units (a $ buys less as the cap rises)
         val = w - lam * cap;
         if (/^(RFA|ELC ext)/.test(cp.status[y]) && val < 0) val = 0;   // team simply declines the RFA
-        if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {
-          val = Math.max(val, -lam * 0.5 * c / E.dpwY(y));            // can drop: 50% dead cap
+        if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {  // can drop: 50% dead cap (free for FA contracts)
+          val = Math.max(val, E.deadCapCounts(p) ? -lam * E.RULES.deadCapPct * c / E.dpwY(y) : 0);
         }
         p.yVal.push(val);
         dv += Math.pow(d, y) * val;
@@ -1053,15 +1056,20 @@
         yrs[y].byType[ty] = (yrs[y].byType[ty] || 0) + v;
       });
     });
-    (dead || []).forEach(function (d) {
+    (dead || []).concat(E.penaltiesOf(team)).forEach(function (d) {
       d.amt.forEach(function (a, y) { if (a) { yrs[y].total += a; yrs[y].byType.Dead = (yrs[y].byType.Dead || 0) + a; } });
     });
     yrs.forEach(function (x) { x.space = x.cap - x.total; });
     return yrs;
   };
-  E.deadCap = function (p) { // 50% of each remaining contract year's salary
-    var pct = E.RULES.deadCapPct;
-    return p.cy.map(function (v) { return typeof v === 'number' && v > 0 ? v * pct : 0; });
+  // existing cap hit penalties from dropped contracts (DP.league.penalties: contract sheet + commissioner CSV + drops seen in Fantrax)
+  E.penaltiesOf = function (team) {
+    return ((DP.league && DP.league.penalties) || []).filter(function (x) { return x.gm === team; });
+  };
+  E.deadCapCounts = function (p) { return (E.RULES.deadCapContracts || ['BID', 'ELC1', 'RFA1']).indexOf(p.ct) >= 0; };
+  E.deadCap = function (p) { // 50% of each remaining contract year's salary (BID/ELC/RFA1 only; dropping an FA contract is free)
+    var pct = E.RULES.deadCapPct, counts = E.deadCapCounts(p);
+    return p.cy.map(function (v) { return counts && typeof v === 'number' && v > 0 ? v * pct : 0; });
   };
   E.extPrices = function (sal, scale) {
     var s = scale || E.RULES.ext2027;
@@ -1083,7 +1091,7 @@
       if (c === null) c = minS;
       var dy = E.dpwY(y), val = w - L.lam * Math.max(0, c - minS) / dy;
       if (/^(RFA|ELC ext)/.test(p.yStatus[y]) && val < 0) val = 0;
-      if (p.yStatus[y] === 'contract' || p.yStatus[y] === p.ct) val = Math.max(val, -L.lam * 0.5 * c / dy);
+      if (p.yStatus[y] === 'contract' || p.yStatus[y] === p.ct) val = Math.max(val, E.deadCapCounts(p) ? -L.lam * E.RULES.deadCapPct * c / dy : 0);
       void dpw;
       v += Math.pow(L.disc, y) * val * (y === 0 ? L.now : 1);
     }
@@ -1291,6 +1299,16 @@
       }
       return [wa, wb, ti];
     };
+    // playoff seeding: division winners take the top seeds when the league says so, then everyone else by record
+    var divOf = teams.map(function (t) { return ((DP.league.fantrax || {}).divisions || {})[t] || ''; });
+    var divSeed = (DP.meta.playoffs || {}).divisionWinnersTopSeeds && divOf.some(Boolean);
+    var seedTeams = function (order) {
+      if (!divSeed) return order;
+      var seen = {}, winners = [];
+      order.forEach(function (ti) { if (divOf[ti] && !seen[divOf[ti]]) { seen[divOf[ti]] = 1; winners.push(ti); } });
+      return winners.concat(order.filter(function (ti) { return winners.indexOf(ti) < 0; }));
+    };
+    E.seedTeams = function (codes) { return seedTeams(codes.map(function (c) { return idx[c]; })).map(function (i) { return teams[i]; }); };
     var eps = new Array(nt);
     for (var s = 0; s < N; s++) {
       for (var t = 0; t < nt; t++) eps[t] = noise * nrm();
@@ -1306,11 +1324,13 @@
       for (t = 0; t < nt; t++) order.push(t);
       var pct = order.map(function (i) { return (W[i] + 0.5 * T[i]) / Math.max(1, W[i] + L[i] + T[i]) + rand() * 1e-9; });
       order.sort(function (x, y) { return pct[y] - pct[x]; });
-      order.forEach(function (ti, rk) { res[ti].seed[rk]++; res[ti].W += W[ti]; res[ti].L += L[ti]; res[ti].T += T[ti]; });
+      var seedOrder = seedTeams(order);
+      seedOrder.forEach(function (ti, rk) { res[ti].seed[rk]++; });
+      order.forEach(function (ti) { res[ti].W += W[ti]; res[ti].L += L[ti]; res[ti].T += T[ti]; });
       res[order[0]].first++; res[order[nt - 1]].last++;
       // playoffs: 1v8, 4v5, 3v6, 2v7 in week 25; winners meet in week 26; final week 27
       if (nPO >= 2) {
-        var seeds = order.slice(0, nPO);
+        var seeds = seedOrder.slice(0, nPO);
         seeds.forEach(function (ti) { res[ti].po++; });
         var play = function (x, y, wi) { // x = higher seed
           var a2 = sample(P[x][wi], x, eps), b2 = sample(P[y][wi], y, eps), r2 = compare(a2, b2);
@@ -1331,7 +1351,7 @@
         var round = br.map(function (m) { return [seeds[m[0]], seeds[m[1]]]; }), wk = w0, elim = [];
         // league draft order: non-playoff teams 1..(n-nPO) worst first, then playoff teams by round of elimination
         // (earlier exit picks earlier; ties by worse regular-season record first), champion picks last
-        var nonPO = order.slice(nPO).reverse();
+        var nonPO = order.filter(function (ti) { return seeds.indexOf(ti) < 0; }).reverse();
         nonPO.forEach(function (ti, k) { res[ti].slot[k]++; });
         var slotNext = nonPO.length;
         while (round.length >= 1) {

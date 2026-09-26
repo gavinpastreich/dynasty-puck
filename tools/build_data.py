@@ -23,47 +23,52 @@ import fantrax_api as FX
 import nhl_api as API
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RAW = os.path.join(ROOT, "raw", "2026-27")
+# Commissioner settings (config/league.json, editable on GitHub). Everything league-specific lives there.
+with open(os.path.join(ROOT, "config", "league.json"), encoding="utf-8") as _f:
+    CFG = json.load(_f)
+RAW = os.path.join(ROOT, *CFG.get("rawFolder", "raw/2026-27").split("/"))
 OUT = os.path.join(ROOT, "data")
 RESEARCH = os.path.join(ROOT, "tools", "research")
 REPORT = []
 
-SEASON_ID = 20262027
-SEASON_LABEL = "2026-27"
-YEARS = ["2026-27", "2027-28", "2028-29", "2029-30", "2030-31", "2031-32", "2032-33"]
-CAP = 104_000_000
-# League cap follows the NHL cap. 2026-27 $104.0M and 2027-28 $113.5M are set by the NHL/NHLPA agreement; 2028-29
-# $127.5M is the NHL's projection shared with the Board of Governors (reported by Elliotte Friedman, Sportsnet).
-# No published number after that, so later seasons are held at $127.5M (an assumption, labeled in the app).
-CAP_BY_YEAR = [104.0, 113.5, 127.5, 127.5, 127.5, 127.5, 127.5]
-# Auction: the winning bid sets the contract length (commissioner, 2026-09-26). [low $M, high $M or None, years]
-BANDS_2025 = [[1.0, 2.49, 1], [2.5, 3.99, 2], [4.0, 6.49, 3], [6.5, 8.99, 4], [9.0, 12.5, 5], [12.5, None, 6]]   # $95.5M cap
-BANDS_2026 = [[1.0, 2.9, 1], [3.0, 4.4, 2], [4.5, 7.4, 3], [7.5, 9.9, 4], [10.0, 13.9, 5], [14.0, None, 6]]     # $104M cap
+SEASON_LABEL = CFG.get("season", "2026-27")
+_y0 = int(SEASON_LABEL[:4])
+SEASON_ID = _y0 * 10000 + _y0 + 1
+YEARS = [f"{_y0 + i}-{str(_y0 + i + 1)[2:]}" for i in range(7)]
+# League cap follows the NHL cap (see config capNote for sources); missing later seasons repeat the last known value
+_caps = CFG.get("capByYear", {})
+CAP_BY_YEAR = []
+for _yr in YEARS:
+    CAP_BY_YEAR.append(float(_caps.get(_yr, CAP_BY_YEAR[-1] if CAP_BY_YEAR else 104.0)))
+CAP = int(round(CAP_BY_YEAR[0] * 1e6))
+# Auction: the winning bid sets the contract length. Each band set applies from its offseason until a newer one.
+BAND_SETS = {int(k): v for k, v in CFG.get("auctionBands", {}).items() if k.isdigit()}
+BANDS_2026 = BAND_SETS.get(2026, {}).get("bands") or [[1.0, 2.9, 1], [3.0, 4.4, 2], [4.5, 7.4, 3], [7.5, 9.9, 4], [10.0, 13.9, 5], [14.0, None, 6]]
 
 
-def band_term(price, bands=BANDS_2026):
+def bands_for(offseason_year):
+    ks = [k for k in sorted(BAND_SETS) if k <= offseason_year]
+    return BAND_SETS[ks[-1]]["bands"] if ks else BANDS_2026
+
+
+def band_term(price, bands=None):
     term = 1
-    for lo, hi, yrs in bands:
+    for lo, hi, yrs in bands or bands_for(_y0):
         if price >= lo - 1e-9:
             term = yrs
     return term
-HIST_SEASONS = [20222023, 20232024, 20242025, 20252026]
+
+
+HIST_SEASONS = [SEASON_ID - 40004, SEASON_ID - 30003, SEASON_ID - 20002, SEASON_ID - 10001]
 NHL_GAMES = 84  # 2026-27 is the first 84-game NHL season (verified from the club schedules)
 
-# GM code -> Fantrax team name (from the Fantrax H2H schedule; mapping confirmed by the commissioner)
-GMS = [
-    ("ROO", "Kalamazoo Kangaroo"), ("TommyG10", "TommyG1095"), ("Wags8210", "Wags8210"),
-    ("BULLIES", "Bethesda Bullies"), ("nbracken", "Cake Eaters"), ("SPG", "South Philly Gravy"),
-    ("BHHC", "Book Hockey HC"), ("nebsnave", "nebsnave"), ("M.M", "Milwaukee Musketeers"),
-    ("mcianfra", "mcianfrani"), ("btsay45", "Worcester Gators"), ("PuckLuck", "Beginner's Luck"),
-    ("CGN", "Colganites"), ("mertin", "Upper Darby Rats"),
-]
+# GM code -> Fantrax team name (mapping confirmed by the commissioner)
+GMS = [(t["code"], t["name"]) for t in CFG["teams"]]
 SCHED_NAME_TO_GM = {name: code for code, name in GMS}
-# Earlier Fantrax team names seen in the trade history -> current GM (inferred from roster continuity, 2026-09-25)
-OLD_TEAM_NAMES = {"Cawlidge Hockey": "ROO", "Gavitron": "M.M", "Lsleeves": "BULLIES", "btsay45": "btsay45",
-                  "mertin": "mertin", "nbracken": "nbracken"}
-PICK_YEARS = [2026, 2027, 2028, 2029]   # league draft: 3 rounds; one new year is added after each draft
-PICK_ROUNDS = 3
+# Earlier Fantrax team names seen in the trade history -> current GM
+OLD_TEAM_NAMES = CFG.get("oldTeamNames", {})
+PICK_YEARS = CFG.get("leagueDraft", {}).get("pickYears", [2026, 2027, 2028, 2029])
+PICK_ROUNDS = CFG.get("leagueDraft", {}).get("rounds", 3)
 
 
 def team_code(name):
@@ -278,7 +283,7 @@ def load_contracts():
     import openpyxl
     import warnings
     warnings.filterwarnings("ignore")
-    wb = openpyxl.load_workbook(os.path.join(RAW, "Contract Sheet 2026-27.xlsx"), data_only=True)
+    wb = openpyxl.load_workbook(os.path.join(RAW, CFG.get("contractSheet", "Contract Sheet 2026-27.xlsx")), data_only=True)
     rows = [r for r in wb["Contract Sheet"].iter_rows(values_only=True)]
     hdr = [str(h) if h else "" for h in rows[0]]
     idx = {h: i for i, h in enumerate(hdr)}
@@ -773,6 +778,78 @@ def load_trades(players):
             "note": "Pick ownership replayed from the Fantrax trade history (each team starts with its own picks)."}
 
 
+def cap_penalties(players, sheet, moves):
+    """Cap hit penalties (dead cap): a dropped contract keeps deadCapPct of every remaining season.
+    Sources, in order: (1) contract-sheet deals whose player is no longer on that team (and wasn't traded with the
+    same contract), (2) drops seen in the nightly Fantrax log, (3) raw/<season>/league/cap_penalties.csv, which the
+    commissioner can edit to match Fantrax's 'Cap hit penalties' (its rows replace the derived ones)."""
+    pct = CFG.get("deadCapPct", 0.5)
+    counts = set(CFG.get("deadCapContracts", ["BID", "ELC1", "RFA1"]))  # FA-contract drops cost nothing
+    out = {}
+    on_team = {(norm_name(p["n"]), p["gm"]) for p in players.values() if p["gm"]}
+    by_name = defaultdict(list)
+    for p in players.values():
+        if p["gm"]:
+            by_name[norm_name(p["n"])].append(p)
+    for r in sheet:
+        gm = team_code(r["gm"]) if r["gm"] else None
+        if not gm or r["ct"] not in counts:
+            continue
+        amt = [round(v * pct, 3) if isinstance(v, (int, float)) and v > 0 else 0 for v in r["yrs"]]
+        key = norm_name(r["name"])
+        if not any(amt) or (key, gm) in on_team:
+            continue
+        cur = r["yrs"][0] if isinstance(r["yrs"][0], (int, float)) else None
+        if any(q["ct"] == r["ct"] and cur is not None and abs(q["sal"] / 1e6 - cur) < 0.001 for q in by_name.get(key, [])):
+            continue  # traded with his contract
+        out[(gm, key)] = {"gm": gm, "n": r["name"], "amt": amt, "src": "contract sheet",
+                          "note": f"{r['ct']} ${cur or 0:.2f}M, no longer on the {gm} roster"}
+    for e in moves or []:
+        if e.get("type") != "drop" or e.get("ct") not in counts or not e.get("sal"):
+            continue
+        d = dt.date.fromisoformat(e["d"])
+        yi = (d.year if d.month >= 7 else d.year - 1) - _y0
+        if yi < 0 or yi > 6:
+            continue
+        p = players.get(f"*{e['id']}*")
+        yrs = (p.get("c") or {}).get("y") if p else None
+        amt = [0.0] * 7
+        for y in range(yi, 7):
+            v = yrs[y] if yrs and y < len(yrs) else (e["sal"] / 1e6 if y == yi else None)
+            if isinstance(v, (int, float)) and v > 0:
+                amt[y] = round(v * pct, 3)
+            elif y > yi:
+                break
+        name = p["n"] if p else e.get("n", e["id"])
+        key = (e["from"], norm_name(name))
+        if key not in out and any(amt):
+            out[key] = {"gm": e["from"], "n": name, "amt": amt, "src": "Fantrax drop " + e["d"], "note": f"{e.get('ct')} ${e['sal'] / 1e6:.2f}M dropped"}
+    path = os.path.join(RAW, "league", "cap_penalties.csv")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                if not (r.get("team") and r.get("player")):
+                    continue
+                gm = team_code(r["team"]) or r["team"].strip()
+                amt = [round(num(r.get(y)), 3) for y in YEARS]
+                key = (gm, norm_name(r["player"]))
+                if any(amt):
+                    out[key] = {"gm": gm, "n": r["player"].strip(), "amt": amt, "src": "commissioner", "note": (r.get("note") or "").strip()}
+                else:
+                    out.pop(key, None)
+    else:  # first run: write the derived list so the commissioner has a file to correct
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["team", "player"] + YEARS + ["note"])
+            for v in sorted(out.values(), key=lambda v: (v["gm"], v["n"])):
+                w.writerow([v["gm"], v["n"]] + [x or "" for x in v["amt"]] + [v["src"] + ": " + v["note"]])
+    pen = sorted(out.values(), key=lambda v: (v["gm"], -v["amt"][0]))
+    for v in pen:
+        log(f"  $ cap penalty {v['gm']}: {v['n']} {[x for x in v['amt'] if x]} ({v['src']})")
+    return pen
+
+
 def apply_fantrax_league(league, weeks, players, snap, moves):
     """Fantrax is the source of truth for future pick ownership, standings, divisions and lineup-lock times."""
     if not snap:
@@ -1164,6 +1241,7 @@ def main():
     attach_depth(players)
     league = load_trades(players)
     apply_fantrax_league(league, weeks, players, fx_snap, fx_moves)
+    league["penalties"] = cap_penalties(players, sheet, fx_moves)
     league["drafts"] = load_drafts(players)
     build_prospects(players, act27, hist26, bios, leagues)
     write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_cor, league)
@@ -1277,6 +1355,25 @@ def build_prospects(players, act27, hist26, bios, leagues):
 
 
 # ----------------------------------------------------------------------------- league file
+def rules_from_config():
+    C = CFG
+    g, e, x, r = C.get("graduation", {}), C.get("elc", {}), C.get("elcExpiry", {}), C.get("rfa", {})
+    ia = {k: v for k, v in C.get("initialAuctionRfa", {}).items() if k.isdigit()}
+    last_ia = ia[max(ia)] if ia else {"base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]}
+    return {
+        "goalieMinGP": C.get("goalieMinGP", 2), "goalieMinCats": ["W", "GAA", "SV%", "SHO"], "goalieMinNote": C.get("goalieMinNote", ""),
+        "deadCapPct": C.get("deadCapPct", 0.5), "deadCapNote": C.get("deadCapNote", ""),
+        "deadCapContracts": C.get("deadCapContracts", ["BID", "ELC1", "RFA1"]),
+        "gradSkater": g.get("skaterGP", 82), "gradGoalie": g.get("goalieGP", 41), "gradNote": C.get("gradNote", ""),
+        "elcSalary": e.get("salary", 1.5), "elcYears": e.get("years", 2), "elcNote": e.get("note", ""),
+        "minSalary": C.get("minSalary", 1.0), "lineup": C.get("lineup", {"F": 12, "D": 6, "G": 2, "bench": 3}),
+        "ext2027": last_ia, "ext2026": ia.get("2026", last_ia), "initialAuctionRfa": ia,
+        "elcMenu": x.get("options", {"2": 2.5, "3": 4.0, "4": 5.5, "5": 7.0, "6": 9.0}), "elcExt": x.get("extension1yr", 1.75),
+        "rfaPrem": r.get("premium", [1, 1.5, 1.5, 1.5, 1.75, 1.75]), "rfaAge": r.get("ageLimit", 27),
+        "bands": {str(k): {"cap": v.get("cap"), "bands": v["bands"]} for k, v in BAND_SETS.items()},
+    }
+
+
 def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_cor, league):
     plist = []
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
@@ -1291,30 +1388,11 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     meta = {
         "built": dt.datetime.now().isoformat(timespec="minutes"), "season": SEASON_LABEL, "seasonId": SEASON_ID,
         "cap": CAP, "capByYear": CAP_BY_YEAR, "years": YEARS, "nhlGames": NHL_GAMES,
-        "capNote": "2026-27 $104.0M and 2027-28 $113.5M: NHL/NHLPA agreement. 2028-29 $127.5M: NHL projection to the Board "
-                   "of Governors (Elliotte Friedman, Sportsnet). Later seasons held at $127.5M (assumption; no published figure).",
+        "capNote": CFG.get("capNote", ""), "alerts": CFG.get("alerts", {}),
         "gms": [{"code": c, "name": n} for c, n in GMS],
         "weeks": weeks, "h2h": h2h,
-        "playoffs": {"teams": 8, "weeks": [25, 26, 27], "bracket": [[1, 8], [4, 5], [3, 6], [2, 7]],
-                     "source": "Fantrax schedule pasted by the commissioner 2026-09-25"},
-        "rules": {
-            "goalieMinGP": 2, "goalieMinCats": ["W", "GAA", "SV%", "SHO"],
-            "goalieMinNote": "Commissioner 2026-09-25: a team with fewer than 2 goalie GP in a week loses all four goalie categories.",
-            "deadCapPct": 0.5, "deadCapNote": "Commissioner 2026-09-25: 50% salary retention on dropped contracts "
-                                              "(applied here to every remaining contract year).",
-            "gradSkater": 82, "gradGoalie": 41, "elcSalary": 1.5, "minSalary": 1.0,
-            "lineup": {"F": 12, "D": 6, "G": 2, "bench": 3},
-            "ext2027": {"base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]},
-            # commissioner 2026-09-26 (league constitution): when an ELC is up
-            "elcMenu": {"2": 2.5, "3": 4.0, "4": 5.5, "5": 7.0, "6": 9.0}, "elcExt": 1.75, "elcYears": 2,
-            # when an RFA contract is up and the player is under 27 on June 30: base can't decrease, premium by term
-            "rfaPrem": [1, 1.5, 1.5, 1.5, 1.75, 1.75], "rfaAge": 27,
-            "bands": {"2025": {"cap": 95.5, "bands": BANDS_2025}, "2026": {"cap": 104.0, "bands": BANDS_2026}},
-            "gradNote": "An MNR player who reaches the career-GP line during the season stays at $0 for the rest of it and signs "
-                        "his ELC in the offseason. If he is on the active roster when he graduates, he has to stay there "
-                        "(can't be moved back down to the minors).",
-            "ext2026": {"base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]},
-        },
+        "playoffs": dict(CFG.get("playoffs", {}), source="config/league.json (Fantrax schedule pasted by the commissioner 2026-09-25)"),
+        "rules": rules_from_config(),
         "corModel": [round(b, 4) for b in beta_cor],
         "sources": [
             {"name": "Fantrax exports (2025-26 official, 2026-27 projected)", "file": "raw/2026-27/*.csv"},

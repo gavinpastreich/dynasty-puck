@@ -6,7 +6,7 @@
 
   function lastYear(p) { var i = p.cy.map(function (x) { return typeof x === 'number'; }).lastIndexOf(true); return i; }
   function nextStatus(p) { var i = lastYear(p); return i >= 0 && i < 6 ? p.cy[i + 1] : null; }
-  var KIND = { elcUp: 'ELC up', rfaInit: 'RFA (sheet formula)', rfaElc: 'RFA (post-ELC)' };
+  var KIND = { elcUp: 'ELC up', rfaInit: 'RFA (initial auction)', rfa: 'RFA' };
   DP.KIND = KIND;
   // what happens when a player's current deal ends, per league rules + the model's choice
   DP.nextLabel = function (p) {
@@ -30,8 +30,8 @@
       h += '<p class="small">Turns 27 before June 30, ' + (2026 + d.y) + ', so there are no RFA rights: he goes to the UFA auction.</p>';
     } else {
       h += '<div class="hint">' + (d.kind === 'elcUp' ? 'ELC expires. League options: 2y $2.5M, 3y $4.0M, 4y $5.5M, 5y $7.0M, 6y $9.0M, one more ELC year at $1.75M (then UFA), or release.'
-        : d.kind === 'rfaElc' ? 'RFA contract (signed off an ELC) is up and he is under 27 on June 30: re-sign 2-6 years at 1.5x (2-4 yrs) or 1.75x (5-6 yrs) of the base; the base can\'t drop.'
-          : 'Initial-auction RFA, priced with the contract-sheet formula (premium × current salary + add-on by length).') + ' Surplus = projected market value − AAV over the term, discounted.</div>';
+        : d.kind === 'rfa' ? 'RFA contract is up and he is under 27 on June 30: re-sign 2-6 years at 1.5x (2-4 yrs) or 1.75x (5-6 yrs) of the base; the base can\'t drop. Other teams can make offer sheets (offers or trade packages for his rights; no set compensation).'
+          : 'First RFA deal of a 2025 initial-auction player, priced with the contract-sheet formula (premium × current salary + add-on by length). His next RFA deal follows the regular RFA rule.') + ' Surplus = projected market value − AAV over the term, discounted.</div>';
       h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Option</th><th class="num">AAV</th><th class="num">Total</th><th class="num">Surplus</th></tr></thead><tbody>' + d.opts.map(function (o) {
         var on = d.pick && d.pick === o;
         return '<tr class="' + (on ? 'mine' : '') + '"><td>' + esc(o.label) + (on ? ' <span class="badge good">model pick</span>' : '') + '</td><td class="num">' + U.m(o.price) + '</td><td class="num">' + U.m(o.price * o.L, 1) + '</td><td class="num">' + ui.delta(o.v, 1) + '</td></tr>';
@@ -66,7 +66,8 @@
       h += '<div class="card"><h2>2027 auction market</h2><div class="hint">Projected price model, calibrated on the 2026 offseason auction.</div><div id="cap-mkt"></div></div>';
       h += '<div class="card span2"><h2>Expiring contracts & RFA / UFA timeline</h2><div class="hint">Last season of each current deal and what happens next under league rules: <b>ELC up</b> (ELC menu), <b>RFA</b> (under 27 on June 30: re-sign at formula prices), <b>UFA</b> (back to the auction; 27+ lose RFA rights). The model call is the option with the best projected surplus.</div><div id="cap-exp"></div></div>';
       h += '<div class="card span2"><h2>2027 offseason action list</h2><div class="hint">From the contract sheet ("27 Offseason Action Required"). Decide to re-sign (at the price for the chosen term) or drop. <a href="#/offseason">Open the 2027 planner →</a></div><div id="cap-act"></div></div>';
-      h += '<div class="card span2"><h2>Dead-cap calculator</h2><div class="controls"><label>Player <select id="dc-p"><option value="">Choose a contract…</option>' + E.P.filter(function (p) { return p.gm && p.sal26 > 0; }).sort(U.by(function (p) { return p.sal26; }, true)).map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.n + ' (' + p.gm + ') ' + U.m(p.sal26)) + '</option>'; }).join('') + '</select></label></div><div id="dc-out" class="small muted">Dropping a player keeps 50% of each remaining season\'s salary on your cap (commissioner, 2026-09-25).</div></div>';
+      h += '<div class="card span2"><h2>Cap hit penalties</h2><div class="hint">Dead cap already on the books: dropped BID/ELC contracts keep ' + Math.round(E.RULES.deadCapPct * 100) + '% of each remaining season (dropping an FA contract is free). From the contract sheet (deals no longer on that roster), drops seen in Fantrax, and the commissioner\'s <code>cap_penalties.csv</code> (edit it to match Fantrax\'s "Cap hit penalties"). Included in every cap-space number.</div><div id="cap-pen"></div></div>';
+      h += '<div class="card span2"><h2>Dead-cap calculator</h2><div class="controls"><label>Player <select id="dc-p"><option value="">Choose a contract…</option>' + E.P.filter(function (p) { return p.gm && p.sal26 > 0; }).sort(U.by(function (p) { return p.sal26; }, true)).map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.n + ' (' + p.gm + ') ' + U.m(p.sal26)) + '</option>'; }).join('') + '</select></label></div><div id="dc-out" class="small muted">Dropping a BID (or ELC) contract keeps 50% of each remaining season\'s salary on your cap; dropping an FA contract costs nothing (commissioner, 2026-09-25/26).</div></div>';
       h += '</div>';
       el.innerHTML = h;
 
@@ -86,7 +87,7 @@
         legend: me ? '<span><span class="k" style="background:var(--accent);border-radius:50%"></span>' + esc(U.teamName(me)) + '</span><span><span class="k" style="background:var(--s1);border-radius:50%"></span>other teams</span>' : '' });
       // team chart
       function chart(tm) {
-        var cap = E.teamCap(tm), types = ['BID', 'RFA1', 'ELC1', 'FA', 'MNR'];
+        var cap = E.teamCap(tm), types = ['BID', 'RFA1', 'ELC1', 'FA', 'MNR', 'Dead'];
         var series = types.map(function (ty, k) { return { name: ty, values: cap.map(function (y) { return y.byType[ty] || 0; }), color: C.SERIES[k] }; }).filter(function (s) { return s.values.some(function (v) { return v > 0; }); });
         U.qs('#cap-chart', el).innerHTML = C.stacked(E.YEARS.map(function (y) { return y.slice(2); }), series, { refLine: cap.map(function (y) { return y.cap; }), refLabel: 'cap', fmt: function (v) { return U.m(v); }, tickFmt: function (v) { return '$' + v + 'M'; }, title: 'Committed cap' }) +
           '<p class="small muted">' + esc(U.teamName(tm)) + ': ' + U.m(cap[0].total) + ' committed in 2026-27, ' + U.m(cap[1].total) + ' of $' + cap[1].cap + 'M in 2027-28 before re-signings and ELC graduations.</p>';
@@ -134,6 +135,10 @@
           { k: 'WAR', l: 'WAR', cls: 'num', v: function (p) { return p.WAR; }, f: function (p) { return ui.warCell(p.WAR); } },
           { k: 'DV', l: 'Dynasty', cls: 'num', v: function (p) { return p.DV; }, f: function (p) { return U.fmt(p.DV, 1); } }]
       });
+      var pen = (DP.league.penalties || []).filter(function (x) { return !me || true; });
+      U.qs('#cap-pen', el).innerHTML = pen.length ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Player</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '<th>Source</th></tr></thead><tbody>' + pen.map(function (x) {
+        return '<tr class="' + (x.gm === me ? 'mine' : '') + '"><td><b>' + esc(x.gm) + '</b></td><td>' + esc(x.n) + '</td>' + x.amt.map(function (a) { return '<td class="num bad">' + (a ? U.m(a) : '<span class="faint">–</span>') + '</td>'; }).join('') + '<td class="small muted">' + esc(x.src) + (x.note ? ': ' + esc(x.note) : '') + '</td></tr>';
+      }).join('') + '</tbody></table></div>' : '<p class="small muted">No cap hit penalties on record.</p>';
       // action list
       DP.actionTable(U.qs('#cap-act', el));
       U.qs('#cap-mkt', el).innerHTML = DP.marketHtml();
@@ -195,8 +200,8 @@
       var E = DP.E, me = DP.state.team, t = hsh.q.team || me;
       var h = '<div class="page-head"><h1>2027 Offseason Planner</h1><p class="sub">Every contract decision coming next summer under the league rules (ELC menu, RFA formulas, the 27-and-over UFA cutoff), the model\'s call on each, MNR graduations and ELCs, the 2027-28 cap ($' + E.capY(1) + 'M), and a priced preview of the 2027 UFA auction.</p></div>';
       h += '<div class="controls"><label>Team ' + ui.teamSelect('os-team', t, 'All teams') + '</label></div>';
-      h += '<div class="card"><h2>Decisions for summer 2027</h2><div class="hint">Players whose current deal ends after 2026-27. <b>ELC up</b>: 2y $2.5M · 3y $4.0M · 4y $5.5M · 5y $7.0M · 6y $9.0M · 1 more ELC year at $1.75M (then UFA) · release. <b>RFA (sheet formula)</b>: initial-auction players, priced like the contract sheet\'s 2027 tab. <b>UFA (27+)</b>: 27 or older on June 30, 2027, so no RFA rights. Model call = the option with the best projected surplus (market value − AAV, discounted); click a player for the full option table.</div><div id="os-dec"></div></div>';
-      h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>MNR graduations & ELCs</h2><div class="hint">Players who have reached, or are projected to reach, 82 career NHL GP (41 for goalies) this season. They stay at $0 for the rest of 2026-27 and sign a $1.5M ELC this coming offseason (or are dropped). 🔒 = in an Active slot in Fantrax now: if he graduates there, he can\'t be moved back down to the minors.</div><div id="os-elc"></div></div>';
+      h += '<div class="card"><h2>Decisions for summer 2027</h2><div class="hint">Players whose current deal ends after 2026-27. <b>ELC up</b>: 2y $2.5M · 3y $4.0M · 4y $5.5M · 5y $7.0M · 6y $9.0M · 1 more ELC year at $1.75M (then UFA) · release. <b>RFA (initial auction)</b>: first RFA deal of a 2025 auction player, priced like the contract sheet\'s 2027 tab. <b>RFA</b>: any later RFA deal (incl. this year\'s RFA1 players): 2-6 yrs at 1.5x/1.75x of a base that can\'t drop. <b>UFA (27+)</b>: 27 or older on June 30, 2027, so no RFA rights. Model call = the option with the best projected surplus (market value − AAV, discounted); click a player for the full option table.</div><div id="os-dec"></div></div>';
+      h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>MNR graduations & ELCs</h2><div class="hint">Players who have reached, or are projected to reach, 82 career NHL GP (41 for goalies) this season. They stay at $0 for the rest of 2026-27 and sign a $1.5M ELC this coming offseason (or are dropped). 🔒 = in an Active slot in Fantrax now: if he graduates there he can\'t be sent back to the minors (graduating in the minors he can stay down, but once promoted he can\'t return).</div><div id="os-elc"></div></div>';
       h += '<div class="card"><h2>2027-28 cap outlook</h2><div class="hint">Committed deals + new ELCs + the model\'s re-sign calls, against the $' + E.capY(1) + 'M cap.</div><div id="os-cap"></div></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>2027 UFA auction preview</h2><div class="hint">Rostered players whose rights end after this season (contract up, 27+, or projected to be let go), with a projected auction price and the band term that price implies. Plus the ' + E.P.filter(function (p) { return !p.gm && p.r; }).length + ' players unowned today, who are also in the pool.</div>' + DP.marketHtml() + '<div id="os-ufa"></div></div>';
       el.innerHTML = h;

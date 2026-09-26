@@ -137,7 +137,7 @@
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
           .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
         h += DP.lineupCheckHtml(me, true);
-        if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) next offseason; one on your active roster when he graduates is locked there (no more moving him down to the minors).</div>';
+        if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) or are released next offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can\'t go back.</div>';
       } else {
         h += '<div class="callout">👋 Welcome! <button class="btn sm primary" data-act="pick-team">Pick your team</button> to get your matchup, needs and targets. Everything else works without it.</div>';
       }
@@ -267,7 +267,7 @@
       U.qs('#t-week', el).addEventListener('change', function (e) { lineup(+e.target.value); });
 
       // cap chart
-      var types = ['BID', 'RFA1', 'ELC1', 'FA', 'MNR'];
+      var types = ['BID', 'RFA1', 'ELC1', 'FA', 'MNR', 'Dead'];
       var series = types.map(function (ty, k) { return { name: ty, values: s.cap.map(function (y) { return y.byType[ty] || 0; }), color: C.SERIES[k] }; }).filter(function (sr) { return sr.values.some(function (v) { return v > 0; }); });
       U.qs('#t-cap', el).innerHTML = C.stacked(E.YEARS.map(function (y) { return y.slice(2); }), series, { refLine: s.cap.map(function (y) { return y.cap; }), refLabel: 'cap', fmt: function (v) { return U.m(v); }, tickFmt: function (v) { return '$' + v + 'M'; }, title: 'Committed cap by season' }) +
         '<div class="tbl-wrap"><table class="t"><thead><tr><th></th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody><tr><td>Committed</td>' + s.cap.map(function (y) { return '<td class="num">' + U.m(y.total, 1) + '</td>'; }).join('') + '</tr><tr><td>Space</td>' + s.cap.map(function (y) { return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.space, 1) + '</td>'; }).join('') + '</tr><tr><td>Players</td>' + s.cap.map(function (y) { return '<td class="num">' + y.n + '</td>'; }).join('') + '</tr></tbody></table></div>';

@@ -103,7 +103,7 @@
           return '<div class="card"><h2>' + esc(d) + ' division</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">W-L-T</th><th class="num">Proj final</th><th class="num">Playoffs</th></tr></thead><tbody>' + rs.map(function (r) {
             return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + esc(U.teamName(r.t)) + '</td><td class="num">' + (r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0') + '</td><td class="num">' + U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) + '</td><td class="num">' + U.pct(r.sim.po) + '</td></tr>';
           }).join('') + '</tbody></table></div></div>';
-        }).join('') + (divs.length ? '<p class="small muted span2">Divisions come from Fantrax. Playoff seeding here is by overall category win% (8 teams, no byes); tell the commissioner if divisions affect seeding.</p>' : '');
+        }).join('') + (divs.length ? '<p class="small muted span2">Divisions come from Fantrax. Playoffs: 8 teams, no byes; the two division winners are seeds 1-2, everyone else by category win%.</p>' : '');
       }, 1500);
     }
   };

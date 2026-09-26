@@ -1,0 +1,94 @@
+{
+  "_README": [
+    "Dynasty Puck HQ commissioner settings. Edit this file on GitHub (pencil icon), then 'Commit changes'.",
+    "The site rebuilds itself about 3 minutes after you commit (GitHub Actions > 'Nightly data refresh').",
+    "Money is in $ millions. Seasons are written like '2026-27'. Keep the quotes, commas and brackets as they are;",
+    "if a commit breaks the file, the rebuild fails and the site keeps the last good version (you'll get an email).",
+    "See docs/COMMISSIONER.md for what every setting does and the once-a-year checklist."
+  ],
+
+  "season": "2026-27",
+  "fantraxLeagueId": "cbufqc8umo5xrjzu",
+  "rawFolder": "raw/2026-27",
+  "contractSheet": "Contract Sheet 2026-27.xlsx",
+
+  "capByYear": {
+    "2026-27": 104.0,
+    "2027-28": 113.5,
+    "2028-29": 127.5,
+    "2029-30": 127.5,
+    "2030-31": 127.5,
+    "2031-32": 127.5,
+    "2032-33": 127.5
+  },
+  "capNote": "2026-27 $104.0M and 2027-28 $113.5M: NHL/NHLPA agreement. 2028-29 $127.5M: NHL projection to the Board of Governors (Elliotte Friedman, Sportsnet). Later seasons held at $127.5M (assumption; no published figure).",
+
+  "minSalary": 1.0,
+  "deadCapPct": 0.5,
+  "deadCapContracts": ["BID", "ELC1", "RFA1"],
+  "deadCapNote": "Commissioner 2026-09-25/26: dropping a BID (or ELC) contract keeps 50% of its salary on the cap for every remaining contract year; dropping an FA contract costs nothing. RFA1 deals are assumed to count like BID (to confirm). Current penalties: raw/<season>/league/cap_penalties.csv.",
+
+  "lineup": { "F": 12, "D": 6, "G": 2, "bench": 3 },
+  "goalieMinGP": 2,
+  "goalieMinNote": "Commissioner 2026-09-25: a team with fewer than 2 goalie GP in a week loses all four goalie categories.",
+
+  "graduation": { "skaterGP": 82, "goalieGP": 41 },
+  "gradNote": "An MNR player who reaches the career-GP line stays at $0 for the rest of the season. If he's on the active roster he has to stay there; if he's in the minors he can stay there, but once he's promoted he can't be sent back down. In the offseason the team signs him to an ELC or releases him.",
+  "elc": { "salary": 1.5, "years": 2, "note": "Most ELCs are 2 years at $1.5M; a 1-year ELC has also been used." },
+
+  "elcExpiry": {
+    "_what": "When an ELC is up: re-sign for N years at this AAV, or 1 more ELC year at 'extension1yr' (then UFA), or release.",
+    "options": { "2": 2.5, "3": 4.0, "4": 5.5, "5": 7.0, "6": 9.0 },
+    "extension1yr": 1.75
+  },
+  "rfa": {
+    "_what": "When an RFA contract is up and the player is under 'ageLimit' on June 30: re-sign 2-6 years at base x premium (index = years - 1). The base can't go down.",
+    "ageLimit": 27,
+    "premium": [1, 1.5, 1.5, 1.5, 1.75, 1.75]
+  },
+  "initialAuctionRfa": {
+    "_what": "First RFA deal for players from the 2025 initial auction (contract sheet 'Offseason Action' formula): AAV = mult x salary + base, by length 1-6 years. Their next RFA deal follows the 'rfa' rule above.",
+    "2026": { "base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] },
+    "2027": { "base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75] }
+  },
+
+  "auctionBands": {
+    "_what": "Winning bid ($M) -> contract years. Each set applies from that offseason until a newer set is added. [low, high or null, years]",
+    "2025": { "cap": 95.5, "bands": [[1.0, 2.49, 1], [2.5, 3.99, 2], [4.0, 6.49, 3], [6.5, 8.99, 4], [9.0, 12.5, 5], [12.5, null, 6]] },
+    "2026": { "cap": 104.0, "bands": [[1.0, 2.9, 1], [3.0, 4.4, 2], [4.5, 7.4, 3], [7.5, 9.9, 4], [10.0, 13.9, 5], [14.0, null, 6]] }
+  },
+
+  "playoffs": {
+    "teams": 8,
+    "weeks": [25, 26, 27],
+    "divisionWinnersTopSeeds": true,
+    "bracket": [[1, 8], [4, 5], [3, 6], [2, 7]],
+    "note": "8 teams, no byes. Division winners are seeds 1-2 (commissioner 2026-09-26); everyone else by category win%."
+  },
+
+  "leagueDraft": { "rounds": 3, "pickYears": [2026, 2027, 2028, 2029], "order": "Reverse standings: worst record picks 1st, champion 14th." },
+
+  "teams": [
+    { "code": "ROO", "name": "Kalamazoo Kangaroo" },
+    { "code": "TommyG10", "name": "TommyG1095" },
+    { "code": "Wags8210", "name": "Wags8210" },
+    { "code": "BULLIES", "name": "Bethesda Bullies" },
+    { "code": "nbracken", "name": "Cake Eaters" },
+    { "code": "SPG", "name": "South Philly Gravy" },
+    { "code": "BHHC", "name": "Book Hockey HC" },
+    { "code": "nebsnave", "name": "nebsnave" },
+    { "code": "M.M", "name": "Milwaukee Musketeers" },
+    { "code": "mcianfra", "name": "mcianfrani" },
+    { "code": "btsay45", "name": "Worcester Gators" },
+    { "code": "PuckLuck", "name": "Beginner's Luck" },
+    { "code": "CGN", "name": "Colganites" },
+    { "code": "mertin", "name": "Upper Darby Rats" }
+  ],
+  "oldTeamNames": { "Cawlidge Hockey": "ROO", "Gavitron": "M.M", "Lsleeves": "BULLIES", "btsay45": "btsay45", "mertin": "mertin", "nbracken": "nbracken" },
+
+  "alerts": {
+    "_what": "Opt-in alerts sent by GitHub Actions. ntfy topics are '<ntfyPrefix>-<team code>'. Email needs repository secrets (see docs/COMMISSIONER.md).",
+    "ntfyPrefix": "dynastypuck-7q2",
+    "siteUrl": "https://gavinpastreich.github.io/dynasty-puck/"
+  }
+}

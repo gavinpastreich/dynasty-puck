@@ -17,11 +17,13 @@ import urllib.request
 
 import nhl_api as API
 
-LEAGUE_ID = "cbufqc8umo5xrjzu"
+HERE = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(os.path.dirname(HERE), "config", "league.json"), encoding="utf-8") as _f:
+    _CFG = json.load(_f)
+LEAGUE_ID = _CFG.get("fantraxLeagueId", "cbufqc8umo5xrjzu")
 BASE = "https://www.fantrax.com/fxea/general/"
 LEAGUE_URL = f"https://www.fantrax.com/fantasy/league/{LEAGUE_ID}/home"
-HERE = os.path.dirname(os.path.abspath(__file__))
-DIR = os.path.join(os.path.dirname(HERE), "raw", "2026-27", "fantrax")
+DIR = os.path.join(os.path.dirname(HERE), *_CFG.get("rawFolder", "raw/2026-27").split("/"), "fantrax")
 SNAP = os.path.join(DIR, "snapshot.json")
 MOVES = os.path.join(DIR, "moves.json")
 SLOT = {"ACTIVE": "A", "RESERVE": "R", "MINORS": "M", "INJURED_RESERVE": "IR"}
