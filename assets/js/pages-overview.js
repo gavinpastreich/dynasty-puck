@@ -132,7 +132,7 @@
         .filter(function (x) { return x[1].week !== null; }).sort(function (a, b) { return a[1].week - b[1].week || a[1].need - b[1].need; }).slice(0, 8);
       U.qs('#grads', el).innerHTML = list(grads, function (x) {
         var p = x[0], g = x[1];
-        return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + esc(p.gm) + ' · ' + g.cgp + '/' + g.thr + ' career GP · needs ' + g.need + '</span></span><span style="margin-left:auto" class="num"><b>Wk ' + (g.week + 1) + '</b><br><span class="small muted">' + U.date(g.date) + '</span></span></li>';
+        return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + esc(p.gm) + ' · ' + g.cgp + '/' + g.thr + ' career GP · needs ' + g.need + (p.inj ? ' · <span class="warn">' + (p.inj[4] ? 'holdout' : 'injured') + ': may slide</span>' : '') + '</span></span><span style="margin-left:auto" class="num"><b>Wk ' + (g.week + 1) + '</b><br><span class="small muted">' + U.date(g.date) + '</span></span></li>';
       });
       var fas = E.P.filter(function (p) { return !p.gm && p.r; }).sort(U.by(function (p) { return p.WAR; }, true)).slice(0, 8);
       U.qs('#topfa', el).innerHTML = list(fas, function (p) { return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">proj ' + p.projGP + ' GP' + (p.wv ? ' · on waivers' : '') + '</span></span><span style="margin-left:auto" class="num"><b>' + U.fmt(p.WAR, 1) + '</b> WAR</span></li>'; });

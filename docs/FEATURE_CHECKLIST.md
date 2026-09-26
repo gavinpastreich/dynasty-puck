@@ -30,10 +30,13 @@ as you ship them, and add any new ideas you come up with.
 - [x] **2026 NHL Draft results** (NHL API), merged with the pre-draft scouting notes, styles,
       category profiles, and risers/fallers in `prospect-app/draft_2026.csv`. Show which draftees are
       on league rosters.
-- [ ] **Draft boards for 2027 (~64), 2028 (~32), and 2029 (~20)**, researched from EliteProspects,
+- [x] **Draft boards for 2027 (~64), 2028 (~32), and 2029 (~20)**, researched from EliteProspects,
       McKeen's, Smaht Scouting, FCHockey, Recrutes, Daily Faceoff, The Hockey Writers,
       TSN/McKenzie, and Dobber. Each prospect gets a style, the categories they'll help, a ceiling,
       an NHL comparison, a fantasy-focused note, and their sources. No invented stats.
+      *Done 2026-09-26:* 2027 = consensus of Tankathon (stats), Daily Faceoff, The Hockey Writers, The Hockey News
+      (72 players). 2028 (32) and 2029 (20) from DFO/NHL.com/THW/THN and the WHL/OHL/QMJHL drafts. EliteProspects,
+      McKeen's, Smaht, FCHockey, Recrutes, TSN and Dobber lists were blocked or not published yet.
 - [x] Multi-year contracts and cap tools: a team cap chart by year, league cap table, expiring and
       RFA/UFA timelines, the 2027 offseason action list, and an extension price calculator.
 - [ ] Commit and push to `main` when work is verified.
@@ -51,7 +54,7 @@ as you ship them, and add any new ideas you come up with.
 - [x] **Free agent finder** ranked by fit for the selected team's weak categories.
 - [x] **Schedule tools**: games-per-week heat map for all 32 NHL teams, strength-of-schedule for each
       fantasy team, goalie start planner, best streaming weeks.
-- [ ] **Preseason injury report and depth notes** from public sources (sourced and dated).
+- [x] **Preseason injury report and depth notes** from public sources (sourced and dated).
 - [x] **2027 offseason planner**: re-sign/drop helper using the extension formulas and projected value.
 - [x] **Leaderboards**: contract value, dynasty value, prospect pools, youngest/oldest rosters,
       cap efficiency (value per $).

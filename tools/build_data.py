@@ -557,6 +557,55 @@ def nhle_factor(lg):
     return None
 
 
+# ----------------------------------------------------------------------------- depth charts & injuries (research)
+def attach_depth(players):
+    """Tag players with their Daily Faceoff line / PP unit / goalie slot and current injury status."""
+    dpath, ipath = os.path.join(RESEARCH, "depth.json"), os.path.join(RESEARCH, "injuries.json")
+    if not os.path.exists(dpath):
+        return
+    depth = json.load(open(dpath, encoding="utf-8"))
+    inj = json.load(open(ipath, encoding="utf-8")) if os.path.exists(ipath) else {"items": []}
+    by_team_name = {}
+    for p in players.values():
+        for t in {p.get("t"), p.get("nt")}:
+            if t:
+                by_team_name[(t, norm_name(p["n"]))] = p
+    by_name = defaultdict(list)
+    for p in players.values():
+        by_name[norm_name(p["n"])].append(p)
+
+    def find(team, name):
+        p = by_team_name.get((team, norm_name(name)))
+        if p:
+            return p
+        c = by_name.get(norm_name(name), [])
+        return c[0] if len(c) == 1 else None
+    tagged = 0
+    for team, d in depth.get("teams", {}).items():
+        for key in ("f1", "f2", "f3", "f4", "d1", "d2", "d3", "pp1", "pp2", "pk1", "pk2", "goalies"):
+            for i, nm in enumerate(d.get(key, [])):
+                p = find(team, nm)
+                if not p:
+                    continue
+                dep = p.setdefault("dep", {})
+                if key.startswith("pp"):
+                    dep["pp"] = int(key[2])
+                elif key.startswith("pk"):
+                    dep["pk"] = int(key[2])
+                elif key == "goalies":
+                    dep["g"] = i + 1
+                else:
+                    dep["ln"] = key.upper()
+                tagged += 1
+    n_inj = 0
+    for it in inj.get("items", []):
+        p = find(it["team"], it["name"])
+        if p:
+            p["inj"] = [it["status"], it.get("injury", ""), it.get("ret", ""), it.get("date", ""), 1 if it.get("holdout") else 0]
+            n_inj += 1
+    log(f"Depth (Daily Faceoff, {depth.get('updated')}): {tagged} line/PP/goalie tags; injuries matched {n_inj}/{len(inj.get('items', []))}")
+
+
 # ----------------------------------------------------------------------------- league trades & draft picks
 def load_trades(players):
     """Fantrax trade history -> trades (grouped) + current draft-pick ownership (replayed from pick trades)."""
@@ -996,6 +1045,7 @@ def main():
     except Exception as e:
         log(f"  ! team strength fetch failed: {e}")
 
+    attach_depth(players)
     league = load_trades(players)
     league["drafts"] = load_drafts(players)
     build_prospects(players, act27, hist26, bios, leagues)
@@ -1115,7 +1165,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
         o = {k: p[k] for k in ("id", "n", "t", "pos", "gm", "ct", "sal", "fxage", "s25", "p26", "fx", "fxp", "cgp") if k in p}
         for k in ("nhl", "fd", "wv", "rk", "dob", "sh", "ht", "wt", "nat", "hs", "nt", "slug", "dr", "car", "h", "tkc",
-                  "c", "act27", "cgps"):
+                  "c", "act27", "cgps", "dep", "inj"):
             if p.get(k) not in (None, 0, [], ""):
                 o[k] = p[k]
         o["s25"] = [round(x, 3) for x in o["s25"]]

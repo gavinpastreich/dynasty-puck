@@ -261,10 +261,18 @@
       r.STP * w.STP + r.Hit * w.Hit + r.Blk * w.Blk + r.Tk * w.Tk + r.Cor * w.Cor);
   };
 
+  // Is a player expected to miss fantasy week wi, per the Daily Faceoff injury list? (used only when asked)
+  E.injuredOut = function (p, wi) {
+    if (!p.inj) return false;
+    var st = p.inj[0], ret = p.inj[2], hold = p.inj[4];
+    if (!/OUT|IR|Injured/i.test(st) && !hold) return false;
+    var weeks = ret === 'Season' ? 99 : ret === 'Months' ? 8 : ret === 'Week-to-week' ? 2 : ret === 'Misses opener' || ret === 'Not in camp' ? 1 : hold ? 1 : 1;
+    return wi < weeks;
+  };
   // weekly-lock optimizer: best 12F / 6D / 2G from every owned player (MNR included)
   E.lineup = function (roster, wi, opts) {
-    var L = E.RULES.lineup, excl = (opts && opts.exclude) || null;
-    var pool = roster.filter(function (p) { return p.r && (!excl || !excl[p.id]); })
+    var L = E.RULES.lineup, excl = (opts && opts.exclude) || null, inj = opts && opts.injuries;
+    var pool = roster.filter(function (p) { return p.r && (!excl || !excl[p.id]) && (!inj || !E.injuredOut(p, wi)); })
       .map(function (p) { return { p: p, v: E.weeklyValue(p, wi) }; })
       .sort(function (a, b) { return b.v - a.v; });
     var G = [], D = [], F = [], used = {};

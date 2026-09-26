@@ -1,0 +1,866 @@
+{
+ "year": 2028,
+ "updated": "2026-09-26",
+ "note": "Early 2028 tiers (two years out). Built from Daily Faceoff's 15 players to know, NHL.com and THW coverage of Maddox Schultz, and the first rounds of the 2025 WHL (2010-born), 2026 OHL and 2026 QMJHL drafts. Order past the top ~15 is approximate.",
+ "sources": [
+  {
+   "name": "Daily Faceoff: 15 players to know (2028)",
+   "url": "https://www.dailyfaceoff.com/news/2028-nhl-draft-maddox-schultz-among-15-players-you-need-to-know",
+   "date": "2026-07"
+  },
+  {
+   "name": "NHL.com: Schultz ahead of 2028 draft",
+   "url": "https://www.nhl.com/news/topic/nhl-draft/maddox-schultz-has-big-footsteps-to-follow-ahead-of-2028-nhl-draft",
+   "date": "2026-08-09"
+  },
+  {
+   "name": "The Hockey Writers: Schultz on his way to 1st overall",
+   "url": "https://thehockeywriters.com/maddox-schultz-is-on-his-way-to-1st-overall-in-the-2028-nhl-draft/",
+   "date": "2026-08-08"
+  },
+  {
+   "name": "WHL: 2025 Prospects Draft first round (2010-born)",
+   "url": "https://chl.ca/whl/article/western-hockey-league-completes-first-round-of-2025-whl-prospects-draft/",
+   "date": "2025-05"
+  },
+  {
+   "name": "OHL: 2026 Priority Selection first round",
+   "url": "https://chl.ca/ohl/article/2026-ohl-priority-selection-first-round-recap/",
+   "date": "2026-06-13"
+  },
+  {
+   "name": "QMJHL: 2026 draft first-round recap",
+   "url": "https://chl.ca/lhjmq/en/article/2026-qmjhl-draft-recap-of-an-eventful-first-round/",
+   "date": "2026-06"
+  }
+ ],
+ "players": [
+  {
+   "rank": 1,
+   "name": "Maddox Schultz",
+   "pos": "C",
+   "team": "Regina Pats",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "gp": 34,
+    "g": 15,
+    "a": 14,
+    "pts": 29
+   },
+   "style": "Complete 200-ft C: shoots, passes, hits",
+   "cats": [
+    "G",
+    "A",
+    "Hit",
+    "2G+A"
+   ],
+   "ceiling": "Franchise C",
+   "comp": "Crosby (DuPont quote, NHL.com)",
+   "note": "Born Mar 15 2010. First overall in the 2025 WHL draft. 29 points in 34 WHL games at 15, the best by a 15-year-old forward in the 2000s (DFO), plus 60 points in 21 U18 AAA games. Led the 2026 Hlinka Gretzky Cup with 10 points in 5 games. Consensus early No. 1.",
+   "tags": [
+    "early #1"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    },
+    {
+     "name": "NHL.com"
+    },
+    {
+     "name": "THW"
+    },
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "name": "Liam Pue",
+   "pos": "RW",
+   "team": "Regina Pats",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "gp": 34,
+    "g": 6,
+    "a": 10,
+    "pts": 16
+   },
+   "style": "Elite-hands playmaker",
+   "cats": [
+    "A",
+    "STP",
+    "G"
+   ],
+   "ceiling": "1st-line W",
+   "comp": "",
+   "note": "No. 3 in the 2025 WHL draft. Schultz's linemate in Regina and at the Hlinka, with 9 points in 5 games there. Some of the best hands in the class (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    },
+    {
+     "name": "NHL.com"
+    },
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "name": "Matyáš Michálek",
+   "pos": "LD",
+   "team": "Oshawa Generals",
+   "league": "OHL",
+   "last_season": null,
+   "style": "Mature 6'3\" two-way D",
+   "cats": [
+    "Blk",
+    "Pt-D",
+    "Cor"
+   ],
+   "ceiling": "Top-pair D",
+   "comp": "",
+   "note": "First pick in the 2026 CHL Import Draft. Star for Czechia at the U16 and U18 levels (DFO). Rarely makes mistakes under pressure.",
+   "tags": [
+    "import"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "name": "Joey Cullen",
+   "pos": "LW",
+   "team": "USNTDP",
+   "league": null,
+   "last_season": null,
+   "style": "Fast, smart play-driving W",
+   "cats": [
+    "G",
+    "A",
+    "SOG"
+   ],
+   "ceiling": "1st/2nd-line W",
+   "comp": "",
+   "note": "Younger brother of Wyatt Cullen, the 2026 10th overall pick. 'Might be better' (DFO). Top NTDP U17 recruit.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "name": "Paavo Fugleberg",
+   "pos": "RW",
+   "team": "TPS U20",
+   "league": "Finland",
+   "last_season": null,
+   "style": "Dynamic 1-on-1 skill W, reliable defensively",
+   "cats": [
+    "G",
+    "A",
+    "Tk"
+   ],
+   "ceiling": "1st/2nd-line W",
+   "comp": "",
+   "note": "Standout at the U17 World Challenge and the U18s, with excellent numbers against older U20 players (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "name": "Kane Cloutier",
+   "pos": "C",
+   "team": "Oshawa Generals",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "GTHL U16",
+    "gp": 33,
+    "pts": 58
+   },
+   "style": "Pace C, shooter + passer",
+   "cats": [
+    "G",
+    "A",
+    "SOG"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "First overall in the 2026 OHL draft (Jack Ferguson Award). Son of Dan Cloutier. 58 points in 33 GTHL games plus 11 in 4 at the OHL Cup (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    },
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "name": "Wilson Boumedienne",
+   "pos": "C",
+   "team": "Fargo Force",
+   "league": "USHL",
+   "last_season": null,
+   "style": "High-end offensive instincts",
+   "cats": [
+    "G",
+    "A",
+    "SOG"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "Brother of Jets prospect Sascha Boumedienne. Dominated the Swedish U16 team and saw U18 action (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "name": "Drew Daley",
+   "pos": "RHD",
+   "team": "USNTDP",
+   "league": null,
+   "last_season": null,
+   "style": "Poised puck-moving D",
+   "cats": [
+    "Pt-D",
+    "A",
+    "Cor"
+   ],
+   "ceiling": "Top-pair D",
+   "comp": "",
+   "note": "One of Shattuck's top 18U players a year after playing 14U. \"Everything screams top-pairing D\" (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "name": "Isak Alvudd",
+   "pos": "LW",
+   "team": "HV71",
+   "league": "Sweden U18",
+   "last_season": null,
+   "style": "Skilled, quick puck thief",
+   "cats": [
+    "Tk",
+    "A",
+    "G"
+   ],
+   "ceiling": "2nd-line W",
+   "comp": "",
+   "note": "Highlight moments at the April 4 Nations tournament. Equally good against older players (DFO).",
+   "tags": [
+    "Tk profile"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "name": "Zaac Charbonneau",
+   "pos": "C",
+   "team": "Muskegon Lumberjacks",
+   "league": "USHL",
+   "last_season": null,
+   "style": "Goal-scoring two-way C, 6'1\" 185",
+   "cats": [
+    "G",
+    "SOG",
+    "Hit"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "Over a goal per game for Mount St. Charles 15U, with advanced hockey sense. Nephew of Danny Brière (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "name": "Milo Spelkvist",
+   "pos": "RW",
+   "team": "Örebro HK",
+   "league": "Sweden U18",
+   "last_season": null,
+   "style": "Shot-generation machine",
+   "cats": [
+    "SOG",
+    "G"
+   ],
+   "ceiling": "2nd-line W",
+   "comp": "",
+   "note": "Electric at the 4 Nations tournament. Could be one of the first off the board (DFO).",
+   "tags": [
+    "SOG"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "name": "Adrian Sgro",
+   "pos": "LHD",
+   "team": "Sarnia Sting",
+   "league": "OHL",
+   "last_season": null,
+   "style": "Physical, dynamic D",
+   "cats": [
+    "Hit",
+    "Blk",
+    "Pt-D"
+   ],
+   "ceiling": "2nd-pair D",
+   "comp": "",
+   "note": "No. 4 in the 2026 OHL draft. \"Hits everyone in sight\" while still rushing the puck (DFO). A banger-D fantasy profile.",
+   "tags": [
+    "banger"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    },
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "name": "Louis-Oscar Holowaychuk",
+   "pos": "C",
+   "team": "Vancouver Giants",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15/Giants program",
+    "gp": 34,
+    "g": 50,
+    "a": 33,
+    "pts": 83
+   },
+   "style": "High-IQ middle-of-the-ice C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "No. 6 in the 2025 WHL draft; stats are from the WHL draft release. Impressive in limited WHL action (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    },
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "name": "Gordei Khotkov",
+   "pos": "LHD",
+   "team": "Saginaw Spirit",
+   "league": "OHL",
+   "last_season": null,
+   "style": "6'4\" mobile puck-moving D",
+   "cats": [
+    "Pt-D",
+    "Blk"
+   ],
+   "ceiling": "2nd-pair D",
+   "comp": "",
+   "note": "CHL import selection. Productive at every Russian junior level (DFO).",
+   "tags": [
+    "import"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "name": "Lionel Dedial",
+   "pos": "RW",
+   "team": "GCK Lions",
+   "league": "Switzerland U21",
+   "last_season": null,
+   "style": "Skill + muscle scorer",
+   "cats": [
+    "G",
+    "SOG",
+    "Hit"
+   ],
+   "ceiling": "2nd-line W",
+   "comp": "",
+   "note": "About 1.5 goals per game for the Swiss U16 team and well over 50 points across U18/U21. A late-2010 birthday (DFO).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "name": "Holden Wouters",
+   "pos": "D",
+   "team": "Edmonton Oil Kings",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15 Prep",
+    "gp": 29,
+    "g": 12,
+    "a": 29,
+    "pts": 41
+   },
+   "style": "Puck-moving D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "2nd-pair D",
+   "comp": "",
+   "note": "No. 2 in the 2025 WHL draft (stats from the WHL draft release).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "name": "Colin Kennedy",
+   "pos": "C",
+   "team": "Erie Otters",
+   "league": "OHL",
+   "last_season": null,
+   "style": "Skilled C (5'9\")",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 2 in the 2026 OHL draft (Detroit Little Caesars).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "name": "Tanner Adams",
+   "pos": "C",
+   "team": "Brampton Steelheads",
+   "league": "OHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 3 in the 2026 OHL draft (Hill Academy).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "name": "Thomas Boisvert",
+   "pos": "C",
+   "team": "Rouyn-Noranda Huskies",
+   "league": "QMJHL",
+   "last_season": null,
+   "style": "Dynamic distributing C",
+   "cats": [
+    "A",
+    "STP"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "First overall in the 2026 QMJHL draft. Top prospect per QMJHL Central Scouting (Mount St. Charles).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "QMJHL"
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "name": "Benjamin Veitch",
+   "pos": "F",
+   "team": "Canada U18",
+   "league": "Hlinka",
+   "last_season": null,
+   "style": "Physical third-line energy",
+   "cats": [
+    "Hit",
+    "Tk"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "2028-eligible forward on Canada's dominant Hlinka third line (THW).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "THW"
+    }
+   ]
+  },
+  {
+   "rank": 21,
+   "name": "Thor Liffiton",
+   "pos": "D",
+   "team": "WHL",
+   "league": "Penticton pick",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15 AAA",
+    "gp": 32,
+    "g": 7,
+    "a": 31,
+    "pts": 38
+   },
+   "style": "Puck-moving D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "Middle-pair D",
+   "comp": "",
+   "note": "No. 4 in the 2025 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 22,
+   "name": "Reid Nicol",
+   "pos": "C",
+   "team": "Everett Silvertips",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U18 AAA",
+    "gp": 48,
+    "g": 35,
+    "a": 23,
+    "pts": 58
+   },
+   "style": "Scoring C",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 5 in the 2025 WHL draft; 35 goals in U18 AAA at 14-15.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 23,
+   "name": "Vincent Boutet",
+   "pos": "D",
+   "team": "Victoriaville Tigres",
+   "league": "QMJHL",
+   "last_season": null,
+   "style": "Physical, composed 6'1\" D",
+   "cats": [
+    "Hit",
+    "Blk"
+   ],
+   "ceiling": "Middle-pair D",
+   "comp": "",
+   "note": "No. 2 in the 2026 QMJHL draft; top blueliner available.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "QMJHL"
+    }
+   ]
+  },
+  {
+   "rank": 24,
+   "name": "Jacob McKinnon",
+   "pos": "F",
+   "team": "Blainville-Boisbriand Armada",
+   "league": "QMJHL",
+   "last_season": null,
+   "style": "Shooter-passer with hockey sense",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "No. 3 in the 2026 QMJHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "QMJHL"
+    }
+   ]
+  },
+  {
+   "rank": 25,
+   "name": "Kash Kwajah",
+   "pos": "C",
+   "team": "Sudbury Wolves",
+   "league": "OHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "No. 5 in the 2026 OHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 26,
+   "name": "Drew Bate",
+   "pos": "C",
+   "team": "Saginaw Spirit",
+   "league": "OHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "No. 6 in the 2026 OHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 27,
+   "name": "Declan McNally",
+   "pos": "LD",
+   "team": "Guelph Storm",
+   "league": "OHL",
+   "last_season": null,
+   "style": "6'6\" D",
+   "cats": [
+    "Blk",
+    "Hit"
+   ],
+   "ceiling": "Shutdown D",
+   "comp": "",
+   "note": "No. 7 in the 2026 OHL draft.",
+   "tags": [
+    "size"
+   ],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 28,
+   "name": "Nolan Wolitski",
+   "pos": "D",
+   "team": "Red Deer Rebels",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15 Prep",
+    "gp": 29,
+    "g": 8,
+    "a": 40,
+    "pts": 48
+   },
+   "style": "Playmaking D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "Middle-pair D",
+   "comp": "",
+   "note": "No. 7 in the 2025 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 29,
+   "name": "Ben Oliverio",
+   "pos": "C",
+   "team": "Tri-City Americans",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15 AAA",
+    "gp": 28,
+    "g": 37,
+    "a": 40,
+    "pts": 77
+   },
+   "style": "Scoring C",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 9 in the 2025 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 30,
+   "name": "Logan Prud'homme",
+   "pos": "C",
+   "team": "Kingston Frontenacs",
+   "league": "OHL",
+   "last_season": null,
+   "style": "6'7\" C",
+   "cats": [
+    "Hit",
+    "G"
+   ],
+   "ceiling": "Project",
+   "comp": "",
+   "note": "No. 10 in the 2026 OHL draft.",
+   "tags": [
+    "size"
+   ],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  },
+  {
+   "rank": 31,
+   "name": "Matteo Ferreira",
+   "pos": "D",
+   "team": "Kamloops Blazers",
+   "league": "WHL",
+   "last_season": {
+    "season": "2024-25",
+    "league": "U15 AAA",
+    "gp": 32,
+    "g": 21,
+    "a": 49,
+    "pts": 70
+   },
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "Offensive D",
+   "comp": "",
+   "note": "No. 11 in the 2025 WHL draft; 70 points as a U15 D.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 32,
+   "name": "Owen Loftus",
+   "pos": "G",
+   "team": "North Bay Battalion",
+   "league": "OHL",
+   "last_season": null,
+   "style": "Goalie",
+   "cats": [
+    "SV%",
+    "W"
+   ],
+   "ceiling": "Starter candidate",
+   "comp": "",
+   "note": "First goalie taken in the 2026 OHL draft (11th overall).",
+   "tags": [
+    "goalie"
+   ],
+   "sources": [
+    {
+     "name": "OHL"
+    }
+   ]
+  }
+ ]
+}

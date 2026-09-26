@@ -1,0 +1,492 @@
+{
+ "year": 2029,
+ "updated": "2026-09-26",
+ "note": "Very early 2029 watch list (three years out). Led by 2026 WHL first-overall pick Madden Daneault and OHL exceptional-status D Kade O'Rourke, then the 2026 WHL Prospects Draft first round (2011-born). The OHL's 2011-born draft happens in spring 2027.",
+ "sources": [
+  {
+   "name": "WHL: 2026 Prospects Draft first round (2011-born)",
+   "url": "https://chl.ca/whl/article/western-hockey-league-completes-first-round-of-2026-whl-prospects-draft/",
+   "date": "2026-05-07"
+  },
+  {
+   "name": "The Hockey News: Next In Line (Daneault)",
+   "url": "https://thehockeynews.com/news/latest-news/next-in-line-a-sneak-peak-at-one-of-the-top-2029-draft-eligible-prospects",
+   "date": "2026-07-05"
+  },
+  {
+   "name": "Black Stitch Hockey: Who is Madden Daneault?",
+   "url": "https://blackstitchhockey.com/2026/07/20/prospects-to-know-who-is-madden-daneault/",
+   "date": "2026-07-20"
+  },
+  {
+   "name": "Daily Faceoff: Kade O'Rourke exceptional status",
+   "url": "https://www.dailyfaceoff.com/news/kade-o-rourke-scouting-report-ohl-exceptional-status-2029-nhl-draft",
+   "date": "2026-04"
+  }
+ ],
+ "players": [
+  {
+   "rank": 1,
+   "name": "Madden Daneault",
+   "pos": "C",
+   "team": "Kelowna Rockets (WHL) / Red Deer U18",
+   "league": null,
+   "last_season": {
+    "season": "2025-26",
+    "league": "U15 AAA",
+    "gp": 34,
+    "g": 65,
+    "a": 84,
+    "pts": 149
+   },
+   "style": "Franchise-type C who runs the offense",
+   "cats": [
+    "G",
+    "A",
+    "2G+A",
+    "STP"
+   ],
+   "ceiling": "Franchise C",
+   "comp": "",
+   "note": "Born May 7 2011. First overall in the 2026 WHL draft. 149 points in 34 U15 AAA games; the next-best teammate had 65 (THN). Two-time John Reid Memorial MVP. EliteProspects' Cam Robinson reportedly projects him as the 2029 No. 1.",
+   "tags": [
+    "early #1"
+   ],
+   "sources": [
+    {
+     "name": "WHL"
+    },
+    {
+     "name": "THN"
+    },
+    {
+     "name": "Black Stitch"
+    },
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "name": "Kade O'Rourke",
+   "pos": "RHD",
+   "team": "OHL",
+   "league": "exceptional status",
+   "last_season": null,
+   "style": "Mobile PP quarterback D, 6'1\"",
+   "cats": [
+    "Pt-D",
+    "A",
+    "STP",
+    "Cor"
+   ],
+   "ceiling": "Top-pair D",
+   "comp": "",
+   "note": "Born Jan 31 2011. Granted OHL exceptional status, the first American and the first since Michael Misa. 10 points in 6 OHL Cup games. \"Most dangerous on the power play\" (DFO). Ideal fantasy-D traits.",
+   "tags": [
+    "exceptional status"
+   ],
+   "sources": [
+    {
+     "name": "DFO"
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "name": "Parker McMillan",
+   "pos": "RW",
+   "team": "Wenatchee Wild",
+   "league": "WHL",
+   "last_season": null,
+   "style": "Scoring W",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Top-six W",
+   "comp": "",
+   "note": "No. 2 in the 2026 WHL draft (Wenatchee traded up for him).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "name": "Brayden Jugnauth",
+   "pos": "C",
+   "team": "Vancouver Giants",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Top-six C",
+   "comp": "",
+   "note": "No. 4 in the 2026 WHL draft; already at the U18 AAA level (Okanagan Rockets).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "name": "Eli Vickers",
+   "pos": "D",
+   "team": "Vancouver Giants",
+   "league": "WHL",
+   "last_season": null,
+   "style": "D",
+   "cats": [
+    "Pt-D",
+    "Blk"
+   ],
+   "ceiling": "Top-four D",
+   "comp": "",
+   "note": "No. 3 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "name": "Jevin Morrison",
+   "pos": "D",
+   "team": "Wenatchee Wild",
+   "league": "WHL",
+   "last_season": null,
+   "style": "D",
+   "cats": [
+    "Pt-D",
+    "Blk"
+   ],
+   "ceiling": "Top-four D",
+   "comp": "",
+   "note": "No. 5 in the 2026 WHL draft; Daneault's Red Deer teammate.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "name": "Kenzo Gibson",
+   "pos": "C",
+   "team": "Tri-City Americans",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 6 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "name": "Wyatt Jolleys",
+   "pos": "C",
+   "team": "Seattle Thunderbirds",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 7 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "name": "Micah Montgomery",
+   "pos": "C",
+   "team": "Kamloops Blazers",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 8 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "name": "Fletcher MacDonald",
+   "pos": "G",
+   "team": "Regina Pats",
+   "league": "WHL",
+   "last_season": null,
+   "style": "Goalie",
+   "cats": [
+    "SV%",
+    "W"
+   ],
+   "ceiling": "Starter candidate",
+   "comp": "",
+   "note": "No. 9 in the 2026 WHL draft; the first goalie taken.",
+   "tags": [
+    "goalie"
+   ],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "name": "Cullen Stephenson",
+   "pos": "RW",
+   "team": "Portland Winterhawks",
+   "league": "WHL",
+   "last_season": null,
+   "style": "W",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "No. 10 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "name": "Jax Bubnick",
+   "pos": "D",
+   "team": "Seattle Thunderbirds",
+   "league": "WHL",
+   "last_season": null,
+   "style": "D",
+   "cats": [
+    "Blk",
+    "Pt-D"
+   ],
+   "ceiling": "Middle-pair D",
+   "comp": "",
+   "note": "No. 11 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "name": "Brody Antignani",
+   "pos": "RW",
+   "team": "Spokane Chiefs",
+   "league": "WHL",
+   "last_season": null,
+   "style": "W",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "No. 12 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "name": "Wyatt Bitz",
+   "pos": "D",
+   "team": "Everett Silvertips",
+   "league": "WHL",
+   "last_season": null,
+   "style": "D",
+   "cats": [
+    "Blk",
+    "Pt-D"
+   ],
+   "ceiling": "Middle-pair D",
+   "comp": "",
+   "note": "No. 13 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "name": "Artello Forestal",
+   "pos": "C",
+   "team": "Lethbridge Hurricanes",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 14 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "name": "Teagan Dernisky",
+   "pos": "C",
+   "team": "Saskatoon Blades",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 15 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "name": "Jack Arnold",
+   "pos": "RW",
+   "team": "Spokane Chiefs",
+   "league": "WHL",
+   "last_season": null,
+   "style": "W",
+   "cats": [
+    "G"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "No. 16 in the 2026 WHL draft (Dallas Stars Elite, Texas).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "name": "Danny Ramazanov",
+   "pos": "LW",
+   "team": "Red Deer Rebels",
+   "league": "WHL",
+   "last_season": null,
+   "style": "W",
+   "cats": [
+    "G"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "No. 17 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "name": "Rylan Edwards",
+   "pos": "C",
+   "team": "Brandon Wheat Kings",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 18 in the 2026 WHL draft.",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "name": "Max Osgood",
+   "pos": "C",
+   "team": "Medicine Hat Tigers",
+   "league": "WHL",
+   "last_season": null,
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "No. 21 in the 2026 WHL draft (Detroit Little Caesars 14U).",
+   "tags": [],
+   "sources": [
+    {
+     "name": "WHL"
+    }
+   ]
+  }
+ ]
+}

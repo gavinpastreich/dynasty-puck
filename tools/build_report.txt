@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-09-26T00:01:25
+Dynasty Puck HQ build 2026-09-26T00:15:36
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1258 players (596 rostered)
 NHL id match: {'index': 1150, 'search': 106, None: 2}; unmatched 2 (rostered: 0)
@@ -44,6 +44,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
   Tk   Fantrax 2025-26 == NHL: 935/935
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
+Depth (Daily Faceoff, 2026-09-26): 1205 line/PP/goalie tags; injuries matched 65/65
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 2026 rookie draft: 42 picks; unmatched players: []
@@ -54,4 +55,4 @@ Leagues seen in player histories (top 40): NHL:7504, AHL:3316, OHL:842, WHL:822,
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'USHS-Prep', 'AMBHL', 'USHS-MN', 'Russia U16', '4 Nations', 'TV-Pucken', 'USA-S15', 'Russia U17', 'WSI U12', 'Memorial Cup', 'WJAC-19', 'J18 Nationell', 'WSI U13', 'USA-S17', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'USA-S16', 'QMAAA', 'AMHL', 'U-17', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
-wrote data/league.js (1.66 MB, 1258 players)
+wrote data/league.js (1.68 MB, 1258 players)

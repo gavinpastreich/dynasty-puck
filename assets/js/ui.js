@@ -18,7 +18,21 @@
     if (opts.team !== false) sub.push(esc(p.t || ''));
     if (opts.age !== false && p.age) sub.push(Math.floor(p.age) + 'y');
     if (p.wv) sub.push('<span class="pill W" title="On waivers">W</span>');
-    return ui.plink(p) + ' <span class="faint small">' + sub.join(' · ') + '</span>';
+    return ui.plink(p) + ui.injBadge(p) + ' <span class="faint small">' + sub.join(' · ') + '</span>';
+  };
+  ui.injBadge = function (p) {
+    if (!p.inj) return '';
+    var st = p.inj[0], hold = p.inj[4], bad = /OUT|IR|Injured/i.test(st);
+    var t = (hold ? 'Contract holdout' : st) + (p.inj[1] ? ' · ' + p.inj[1] : '') + (p.inj[2] ? ' · ' + p.inj[2] : '') + ' (Daily Faceoff, ' + p.inj[3] + ')';
+    return ' <span class="badge ' + (bad ? 'bad' : 'warn') + '" title="' + esc(t) + '" aria-label="' + esc(t) + '">' + (hold ? 'HOLD' : bad ? 'OUT' : 'DTD') + '</span>';
+  };
+  ui.depBadge = function (p) {
+    if (!p.dep) return '';
+    var d = p.dep, parts = [];
+    if (d.ln) parts.push(d.ln.replace('F', 'L').replace(/^D/, 'D'));
+    if (d.pp) parts.push('PP' + d.pp);
+    if (d.g) parts.push(d.g === 1 ? 'G1' : 'G2');
+    return parts.length ? ' <span class="chip" title="Daily Faceoff projected deployment">' + esc(parts.join(' · ')) + '</span>' : '';
   };
   ui.owner = function (p) { return p.gm ? U.teamLabel(p.gm) : (p.wv ? '<span class="pill W">Waivers</span>' : '<span class="muted">FA</span>'); };
   ui.warCell = function (x) {

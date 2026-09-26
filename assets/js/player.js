@@ -55,7 +55,8 @@
     h += '<div class="phead">' + DP.headshot(p) + '<div style="flex:1;min-width:220px"><h2>' + esc(p.n) + ' ' + ui.pos(p) + '</h2>' +
       '<div class="muted">' + esc(p.t || '') + (p.nt && p.nt !== p.t ? ' (NHL: ' + esc(p.nt) + ')' : '') + ' · ' + esc(bio.join(' · ')) + '</div>' +
       '<div style="margin-top:6px">' + (p.gm ? 'Owned by <b>' + esc(U.teamName(p.gm)) + '</b> (' + esc(p.gm) + ') ' : (p.wv ? '<span class="pill W">On waivers</span> ' : '<span class="badge info">Free agent</span> ')) +
-      ui.pill(p.ct) + ' ' + (p.gm ? U.m(p.sal26) : '') + (p.act27 ? ' <span class="badge warn" title="On the 2027 offseason action list">2027 decision</span>' : '') + '</div></div>' +
+      ui.pill(p.ct) + ' ' + (p.gm ? U.m(p.sal26) : '') + (p.act27 ? ' <span class="badge warn" title="On the 2027 offseason action list">2027 decision</span>' : '') + ui.depBadge(p) + '</div>' +
+      (p.inj ? '<div class="small" style="margin-top:6px">' + ui.injBadge(p) + ' ' + esc((p.inj[4] ? 'Contract holdout' : p.inj[0]) + (p.inj[1] ? ' (' + p.inj[1] + ')' : '') + (p.inj[2] ? ' · ' + p.inj[2] : '')) + ' <span class="faint">Daily Faceoff, ' + esc(p.inj[3]) + '</span></div>' : '') + '</div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
       '<button class="btn sm" data-cmp="' + esc(p.id) + '">＋ Compare</button>' +
       (p.gm ? '<a class="btn sm" href="' + U.hash('trade', null, { p: p.id }) + '">🔁 Trade for</a><a class="btn sm" href="' + U.hash('finder', null, { p: p.id }) + '">🔎 Trade finder</a>' : '') +
@@ -71,6 +72,7 @@
     if (grad) h += stat('Career NHL GP', (p.cgp || 0) + ' / ' + grad.thr, grad.status === 'graduated' ? 'already graduated' : grad.week !== null ? 'projected to graduate wk ' + (grad.week + 1) + (grad.date ? ' (' + U.date(grad.date) + ')' : '') : 'not projected to graduate in 2026-27', 'MNR graduation uses career NHL regular-season GP: 82 skaters / 41 goalies.');
     else h += stat('Career NHL GP', U.fmt(p.cgp || 0), p.cgps === 'est' ? 'estimate (2025-26 only)' : 'regular season, NHL API', '');
     h += '</div>';
+    if (grad && p.inj && grad.week !== null && grad.week < 8) h += '<div class="callout warn">Injury/absence flag: projected to graduate around week ' + (grad.week + 1) + ', but currently listed ' + esc(p.inj[4] ? 'as a contract holdout' : p.inj[0] + (p.inj[2] ? ' (' + p.inj[2] + ')' : '')) + '. Missed games push graduation back, which keeps him at $0 longer.</div>';
     if (grad && grad.status === 'graduated') h += '<div class="callout warn">Has ' + p.cgp + ' career NHL games, past the ' + grad.thr + '-game line. Under league rules a graduated player must sign an ELC ($1.5M) or be dropped.</div>';
 
     // categories: 2025-26 actual vs 2026-27 projection

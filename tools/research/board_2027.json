@@ -1,0 +1,3309 @@
+{
+ "year": 2027,
+ "updated": "2026-09-26",
+ "note": "Consensus of four public boards: Tankathon (updated 2026-09-10), Daily Faceoff (July), The Hockey Writers (Sep 7) and The Hockey News tiers (Sep 18). Score = average rank across sources; missing lists count as 40. EliteProspects blocks automated access, so its lists aren't included.",
+ "sources": [
+  {
+   "name": "Tankathon big board",
+   "url": "https://www.tankathon.com/nhl/big-board",
+   "date": "2026-09-10"
+  },
+  {
+   "name": "Daily Faceoff (S. Ellis) top 32",
+   "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports",
+   "date": "2026-07"
+  },
+  {
+   "name": "The Hockey Writers (P. Baracchini) top 32",
+   "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/",
+   "date": "2026-09-07"
+  },
+  {
+   "name": "The Hockey News (T. Ferrari) tiers",
+   "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop",
+   "date": "2026-09-18"
+  },
+  {
+   "name": "The Hockey News projected top 10",
+   "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-projected-top-10-landon-dupont-alexis-joseph-and-carter-meyer-highlight-exciting-class",
+   "date": "2026-06-28"
+  },
+  {
+   "name": "THW Hlinka Gretzky standouts",
+   "url": "https://thehockeywriters.com/2027-draft-eligible-standouts-hlinka-gretzky-cup/",
+   "date": "2026-08-09"
+  }
+ ],
+ "players": [
+  {
+   "name": "Landon DuPont",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-05",
+   "nat": "Canada",
+   "height": "6'0\"",
+   "weight": 190,
+   "team": "Michigan",
+   "league": "NCAA",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Everett",
+    "gp": 63,
+    "g": 18,
+    "a": 55,
+    "pts": 73
+   },
+   "score": 1.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 1,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 1,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 1,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 1",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Elite puck-moving D / PP quarterback",
+   "cats": [
+    "Pt-D",
+    "A",
+    "STP",
+    "Cor"
+   ],
+   "ceiling": "Franchise No. 1 D",
+   "comp": "",
+   "note": "Former WHL exceptional-status D who jumped from 60 to 73 points and won the WHL title, now at Michigan. Every source has him No. 1. He runs a power play, blocks shots and competes. The dream fantasy D: elite Pt-D and STP with strong Corsi.",
+   "tags": [
+    "consensus #1",
+    "NCAA"
+   ],
+   "rank": 1
+  },
+  {
+   "name": "Nazar Privalov",
+   "pos": "C/LW",
+   "shoots": "L",
+   "dob": "2009-05",
+   "nat": "Russia",
+   "height": "6'4\"",
+   "weight": 227,
+   "team": "CSKA Moskva",
+   "league": "KHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "Krasnaya Armiya",
+    "gp": 51,
+    "g": 30,
+    "a": 19,
+    "pts": 49
+   },
+   "score": 2.38,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 2,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 2,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 2,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 2",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Power forward, shooter-playmaker",
+   "cats": [
+    "G",
+    "SOG",
+    "Hit",
+    "PIM"
+   ],
+   "ceiling": "1st-line power C/W",
+   "comp": "Malkin (THW)",
+   "note": "6'4\" 227 lb MHL rookie of the year (30 goals). Physical and skilled, a rare banger with a scorer's touch. That's a perfect fit for our Hit/PIM + G/SOG mix. The KHL contract could delay his arrival.",
+   "tags": [
+    "KHL contract",
+    "power forward"
+   ],
+   "rank": 2
+  },
+  {
+   "name": "Sergei Skvortsov",
+   "pos": "LW",
+   "shoots": "R",
+   "dob": "2009-03",
+   "nat": "Russia",
+   "height": "6'0\"",
+   "weight": 154,
+   "team": "Torpedo NN",
+   "league": "KHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "Chaika NN",
+    "gp": 52,
+    "g": 19,
+    "a": 24,
+    "pts": 43
+   },
+   "score": 3.88,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 5,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 4,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 3,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 2",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Skilled two-way winger, high hockey IQ",
+   "cats": [
+    "A",
+    "G",
+    "Tk",
+    "Cor"
+   ],
+   "ceiling": "1st-line winger",
+   "comp": "",
+   "note": "43 points in 52 MHL games, and he scored his first KHL goal at 17 in September 2026. Elite hands and reads, relentless motor. Needs to add strength. Projects as a points-and-possession winger.",
+   "tags": [
+    "KHL"
+   ],
+   "rank": 3
+  },
+  {
+   "name": "Carter Meyer",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "USA",
+   "height": "6'1\"",
+   "weight": 179,
+   "team": "Quebec",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 42,
+    "g": 15,
+    "a": 22,
+    "pts": 37
+   },
+   "score": 5.12,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 6,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 5,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 6,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 2",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Physical two-way C, heavy shot",
+   "cats": [
+    "Hit",
+    "G",
+    "SOG",
+    "Tk"
+   ],
+   "ceiling": "2nd-line two-way C",
+   "comp": "MacKinnon-inspired (THN feature)",
+   "note": "Left the NTDP for the QMJHL's Quebec Remparts, with Boston University expected in 2028-29. He hits everything and has a wicked release. A rare multi-category forward (Hit + G + Tk).",
+   "tags": [
+    "multi-cat"
+   ],
+   "rank": 4
+  },
+  {
+   "name": "Alexis Joseph",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-06",
+   "nat": "Canada",
+   "height": "6'5\"",
+   "weight": 203,
+   "team": "Saint John",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "QMJHL",
+    "team": "Saint John",
+    "gp": 54,
+    "g": 24,
+    "a": 36,
+    "pts": 60
+   },
+   "score": 6.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 3,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 3,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 4,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "6'5\" all-situations power C",
+   "cats": [
+    "G",
+    "SOG",
+    "Hit",
+    "2G+A"
+   ],
+   "ceiling": "1st/2nd-line power C",
+   "comp": "",
+   "note": "60 points as a QMJHL rookie, plus 13 in 5 games at the U17 World Challenge. Big-body net-front scorer with physicality. The skating isn't explosive, but he projects for category volume (SOG, Hit, goals).",
+   "tags": [
+    "power forward"
+   ],
+   "rank": 5
+  },
+  {
+   "name": "Dima Zhilkin",
+   "pos": "RW",
+   "shoots": "R",
+   "dob": "2008-10",
+   "nat": "Canada",
+   "height": "5'11\"",
+   "weight": 196,
+   "team": "Saginaw",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Saginaw",
+    "gp": 59,
+    "g": 36,
+    "a": 39,
+    "pts": 75
+   },
+   "score": 6.88,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 8,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 9,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 7,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 2",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Agitator-scorer (\"next superpest\")",
+   "cats": [
+    "PIM",
+    "Hit",
+    "G",
+    "A"
+   ],
+   "ceiling": "1st-line agitator W",
+   "comp": "Superpest archetype (THN)",
+   "note": "75 points and 100 PIM as Saginaw's 17-year-old captain, and dominated the U18 Worlds. PIM + Hit + points is gold in our format, so a fantasy riser.",
+   "tags": [
+    "fantasy riser",
+    "PIM"
+   ],
+   "rank": 6
+  },
+  {
+   "name": "Sammy Nelson",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2008-09",
+   "nat": "USA",
+   "height": "6'2\"",
+   "weight": 192,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 21,
+    "g": 9,
+    "a": 10,
+    "pts": 19
+   },
+   "score": 7.5,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 7,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 6,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 9,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 3",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Play-driving dual-threat F",
+   "cats": [
+    "A",
+    "G",
+    "SOG",
+    "Cor"
+   ],
+   "ceiling": "2nd-line F",
+   "comp": "",
+   "note": "54 points in 58 games for the NTDP; missed the 2026 cutoff by four days. Now at Notre Dame. High shot generator with strong details, so good SOG and Corsi.",
+   "tags": [
+    "NCAA",
+    "late birthday"
+   ],
+   "rank": 7
+  },
+  {
+   "name": "Brock England",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-08",
+   "nat": "Canada",
+   "height": "5'11\"",
+   "weight": 174,
+   "team": "Seattle",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Seattle",
+    "gp": 64,
+    "g": 21,
+    "a": 30,
+    "pts": 51
+   },
+   "score": 8.5,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 11,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 7,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 8,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 3",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Speed C, shooter-playmaker",
+   "cats": [
+    "G",
+    "A",
+    "SOG",
+    "Tk"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "20+ goals and 50+ points as a WHL rookie. The best skater among his peers (THW), with two goals in the Hlinka final. Turnover-forcing speed suggests Tk upside.",
+   "tags": [],
+   "rank": 8
+  },
+  {
+   "name": "Jonah Neuenschwander",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-03",
+   "nat": "Switzerland",
+   "height": "6'3\"",
+   "weight": 187,
+   "team": "EHC Biel-Bienne",
+   "league": "NL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "NL",
+    "team": "EHC Biel-Bienne",
+    "gp": 32,
+    "g": 5,
+    "a": 7,
+    "pts": 12
+   },
+   "score": 9.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 9,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 14,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 5,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 3",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Big two-way power C",
+   "cats": [
+    "G",
+    "SOG",
+    "Hit",
+    "Cor"
+   ],
+   "ceiling": "2nd-line power C",
+   "comp": "",
+   "note": "Swiss World Junior player at 15. 12 points in 32 NL games is the best by a Swiss draft-1 player in 60 years. Dominant at the Hlinka. Size + shot suits category leagues.",
+   "tags": [
+    "pro league",
+    "power forward"
+   ],
+   "rank": 9
+  },
+  {
+   "name": "Milan Sundström",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-05",
+   "nat": "Sweden",
+   "height": "6'2\"",
+   "weight": 198,
+   "team": "MoDo Hockey",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "MoDo Hockey",
+    "gp": 16,
+    "g": 8,
+    "a": 24,
+    "pts": 32
+   },
+   "score": 9.75,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 4,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 15,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 12,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 3",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Cerebral two-way C",
+   "cats": [
+    "A",
+    "G",
+    "Tk"
+   ],
+   "ceiling": "2nd-line C",
+   "comp": "",
+   "note": "Son of Niklas Sundström. Point per game in Swedish U18 and U20. Classic Swedish two-way center, strong in Tk and Cor.",
+   "tags": [],
+   "rank": 10
+  },
+  {
+   "name": "Jaxon Jacobson",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2008-12",
+   "nat": "Canada",
+   "height": "5'10\"",
+   "weight": 183,
+   "team": "Brandon",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Brandon",
+    "gp": 63,
+    "g": 25,
+    "a": 60,
+    "pts": 85
+   },
+   "score": 10.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 12,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 10,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 10,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Undersized elite playmaking C",
+   "cats": [
+    "A",
+    "STP",
+    "2G+A"
+   ],
+   "ceiling": "2nd-line playmaker",
+   "comp": "",
+   "note": "85 points (60 assists) in 63 WHL games; missed the 2026 cutoff by three months. Assist machine who could anchor a PP.",
+   "tags": [
+    "late birthday"
+   ],
+   "rank": 11
+  },
+  {
+   "name": "Brock Cripps",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-07",
+   "nat": "Canada",
+   "height": "5'11\"",
+   "weight": 168,
+   "team": "Prince Albert",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Prince Albert",
+    "gp": 62,
+    "g": 6,
+    "a": 31,
+    "pts": 37
+   },
+   "score": 13.5,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 13,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 16,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 11,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Undersized offensive D",
+   "cats": [
+    "Pt-D",
+    "A",
+    "STP"
+   ],
+   "ceiling": "2nd-pair offensive D",
+   "comp": "",
+   "note": "37 points as a WHL rookie plus 21 in 20 playoff games, and a shorthanded goal at the Hlinka. Mostly Pt-D value. Size may push him down draft boards.",
+   "tags": [],
+   "rank": 12
+  },
+  {
+   "name": "Andrei Pustovoy",
+   "pos": "RW/C",
+   "shoots": "L",
+   "dob": "2008-12",
+   "nat": "Russia",
+   "height": "6'3\"",
+   "weight": 201,
+   "team": "Loko Yaroslavl",
+   "league": "MHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "Loko Yaroslavl",
+    "gp": 52,
+    "g": 32,
+    "a": 30,
+    "pts": 62
+   },
+   "score": 13.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 10,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 18,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 13,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Power scorer, one-timer",
+   "cats": [
+    "G",
+    "SOG",
+    "STP"
+   ],
+   "ceiling": "Middle-six scoring W",
+   "comp": "",
+   "note": "32 goals and 62 points in the MHL; a late-2008 birthday. Heavy shot and a PP one-timer.",
+   "tags": [
+    "late birthday"
+   ],
+   "rank": 13
+  },
+  {
+   "name": "Timothy Kazda",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2008-10",
+   "nat": "Slovakia",
+   "height": "6'1\"",
+   "weight": 194,
+   "team": "Guelph",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "Chicago",
+    "gp": 59,
+    "g": 22,
+    "a": 19,
+    "pts": 41
+   },
+   "score": 14.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 14,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 11,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 18,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "1-on-1 skill winger",
+   "cats": [
+    "G",
+    "A",
+    "SOG"
+   ],
+   "ceiling": "2nd-line W",
+   "comp": "",
+   "note": "41 points in 59 USHL games, and tied for the U18 Worlds scoring lead with 12 points. Moved to the OHL's Guelph Storm. Dangerous skill, mostly offense.",
+   "tags": [],
+   "rank": 14
+  },
+  {
+   "name": "Luca Santala",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-07",
+   "nat": "Finland",
+   "height": "6'2\"",
+   "weight": 190,
+   "team": "London",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 SM‑sarja",
+    "team": "Kiekko-Espoo",
+    "gp": 17,
+    "g": 12,
+    "a": 10,
+    "pts": 22
+   },
+   "score": 15.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 19,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 12,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 14,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Shooter with vision",
+   "cats": [
+    "G",
+    "SOG",
+    "A"
+   ],
+   "ceiling": "2nd-line scoring W",
+   "comp": "",
+   "note": "Nearly a goal per game internationally for Finland U18, now with the OHL's London Knights. Excellent shot, not physical.",
+   "tags": [],
+   "rank": 15
+  },
+  {
+   "name": "Bosse Meijer",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2008-12",
+   "nat": "Sweden",
+   "height": "5'10\"",
+   "weight": 168,
+   "team": "Frölunda HC",
+   "league": "SHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Frölunda HC",
+    "gp": 4,
+    "g": 3,
+    "a": 2,
+    "pts": 5,
+    "small": true
+   },
+   "score": 15.25,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 16,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 21,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 16,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 3",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Small speedy playmaking C",
+   "cats": [
+    "A",
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "25 points in 13 U20 playoff games led the league. Viggo Björck-like profile. Could push up draft boards with SHL time.",
+   "tags": [
+    "riser"
+   ],
+   "rank": 16
+  },
+  {
+   "name": "Yevgeni Yakunin",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-02",
+   "nat": "Russia",
+   "height": "6'3\"",
+   "weight": 194,
+   "team": "MHK Spartak Moskva",
+   "league": "MHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "MHK Spartak Moskva",
+    "gp": 58,
+    "g": 13,
+    "a": 34,
+    "pts": 47
+   },
+   "score": 19.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 17,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 17,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 23,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Big playmaking C",
+   "cats": [
+    "A",
+    "Tk",
+    "Cor"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "About 50 points in the MHL. KHL contract with Spartak through 2031, so a long wait. Dynasty stash only.",
+   "tags": [
+    "KHL contract to 2031"
+   ],
+   "rank": 17
+  },
+  {
+   "name": "Petr Tomek",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2008-10",
+   "nat": "Czechia",
+   "height": "5'10\"",
+   "weight": 165,
+   "team": "Karlovy Vary",
+   "league": "Czechia",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Czechia U20",
+    "team": "Karlovy Vary",
+    "gp": 4,
+    "g": 1,
+    "a": 3,
+    "pts": 4,
+    "small": true
+   },
+   "score": 20.5,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 20,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 8,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Smart two-way C (pro experience)",
+   "cats": [
+    "A",
+    "Tk",
+    "Cor"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "20 points in 51 games in Czechia's top league at 16; the other seven Czech D-1 players combined for one point. Excellent skater and thinker. A floor-first profile.",
+   "tags": [
+    "pro league"
+   ],
+   "rank": 18
+  },
+  {
+   "name": "Jaakko Wycisk",
+   "pos": "RW/C",
+   "shoots": "R",
+   "dob": "2009-03",
+   "nat": "Canada",
+   "height": "6'1\"",
+   "weight": 190,
+   "team": "Guelph",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Guelph",
+    "gp": 60,
+    "g": 17,
+    "a": 26,
+    "pts": 43
+   },
+   "score": 21.75,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 18,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 15,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Physical forechecking C/W",
+   "cats": [
+    "Hit",
+    "A",
+    "Tk"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "43 points in 60 OHL games; one of Canada's most consistent players at the Hlinka.",
+   "tags": [],
+   "rank": 19
+  },
+  {
+   "name": "Noah Davidson",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2008-11",
+   "nat": "USA",
+   "height": "6'3\"",
+   "weight": 216,
+   "team": "Medicine Hat",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Medicine Hat",
+    "gp": 67,
+    "g": 30,
+    "a": 22,
+    "pts": 52
+   },
+   "score": 23.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 15,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 28,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 26,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "6'3\" 216 lb power forward",
+   "cats": [
+    "G",
+    "Hit",
+    "SOG",
+    "PIM"
+   ],
+   "ceiling": "Middle-six power F",
+   "comp": "",
+   "note": "30 goals and 52 points as a WHL rookie. Big, physical scorer with a heavy shot and a Boston College commit. Strong Hit + G fantasy blend.",
+   "tags": [
+    "power forward"
+   ],
+   "rank": 20
+  },
+  {
+   "name": "Levi Harper",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2008-10",
+   "nat": "USA",
+   "height": "5'11\"",
+   "weight": 174,
+   "team": "Saginaw",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Saginaw",
+    "gp": 68,
+    "g": 12,
+    "a": 45,
+    "pts": 57
+   },
+   "score": 23.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 30,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 19,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 20,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Offensive D, lethal shot",
+   "cats": [
+    "Pt-D",
+    "SOG",
+    "STP"
+   ],
+   "ceiling": "PP specialist D",
+   "comp": "",
+   "note": "57 points as an OHL rookie D. Shoots a lot, and the defense is still raw. A classic fantasy-over-real D.",
+   "tags": [],
+   "rank": 21
+  },
+  {
+   "name": "Kohyn Eshkawkogan",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2008-11",
+   "nat": "Canada",
+   "height": "5'11\"",
+   "weight": 183,
+   "team": "Ottawa",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Ottawa",
+    "gp": 68,
+    "g": 8,
+    "a": 45,
+    "pts": 53
+   },
+   "score": 24.5,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 35,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 30,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 19,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Dynamic rush D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "2nd-pair D",
+   "comp": "",
+   "note": "53 points in 68 OHL games; Penn State commit. Undersized.",
+   "tags": [
+    "NCAA commit"
+   ],
+   "rank": 22
+  },
+  {
+   "name": "Boston Tait",
+   "pos": "LD",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "Canada",
+   "height": "6'2\"",
+   "weight": 183,
+   "team": "Wenatchee",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Wenatchee",
+    "gp": 62,
+    "g": 5,
+    "a": 18,
+    "pts": 23
+   },
+   "score": 24.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 32,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 20,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 22,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Two-way D with physical edge",
+   "cats": [
+    "Blk",
+    "Hit",
+    "PIM",
+    "Pt-D"
+   ],
+   "ceiling": "2nd/3rd-pair D",
+   "comp": "",
+   "note": "23 points and 55 PIM on a bad Wenatchee team. Physical and gets pucks to the net. A banger-D profile that suits Hit/Blk/PIM.",
+   "tags": [
+    "banger"
+   ],
+   "rank": 23
+  },
+  {
+   "name": "Vladimir Shtyrkhunov",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-01",
+   "nat": "Russia",
+   "height": "6'0\"",
+   "weight": 157,
+   "team": "Shawinigan",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "Krasnaya Armiya",
+    "gp": 55,
+    "g": 4,
+    "a": 28,
+    "pts": 32
+   },
+   "score": 26.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 28,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 23,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 27,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "3rd-pair/PP D",
+   "comp": "",
+   "note": "32 MHL points at 16, now in the QMJHL (Shawinigan). Needs size.",
+   "tags": [],
+   "rank": 24
+  },
+  {
+   "name": "Malik L'Italien",
+   "pos": "LD",
+   "shoots": "L",
+   "dob": "2009-06",
+   "nat": "Canada",
+   "height": "6'4\"",
+   "weight": 198,
+   "team": "Halifax",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "QMJHL",
+    "team": "Halifax",
+    "gp": 64,
+    "g": 4,
+    "a": 20,
+    "pts": 24
+   },
+   "score": 26.75,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 29,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 24,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Two-way D, gap control",
+   "cats": [
+    "Blk",
+    "Pt-D"
+   ],
+   "ceiling": "2nd/3rd-pair D",
+   "comp": "",
+   "note": "QMJHL All-Rookie. Defensive-first with a good first pass.",
+   "tags": [],
+   "rank": 25
+  },
+  {
+   "name": "Max Calce",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-06",
+   "nat": "Germany",
+   "height": "5'11\"",
+   "weight": 181,
+   "team": "Adler Mannheim",
+   "league": "DEL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "DNL U20",
+    "team": "Adler Mannheim",
+    "gp": 17,
+    "g": 12,
+    "a": 11,
+    "pts": 23
+   },
+   "score": 28.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 31,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 13,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Energetic skilled C (formerly Max Penkin)",
+   "cats": [
+    "G",
+    "A",
+    "SOG"
+   ],
+   "ceiling": "Middle-six C",
+   "comp": "",
+   "note": "Top young German forward, already playing DEL minutes with Mannheim.",
+   "tags": [
+    "pro league"
+   ],
+   "rank": 26
+  },
+  {
+   "name": "Douglas Johnsson",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-07",
+   "nat": "Sweden",
+   "height": "5'10\"",
+   "weight": 170,
+   "team": "Skellefteå AIK",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Skellefteå AIK",
+    "gp": 15,
+    "g": 7,
+    "a": 18,
+    "pts": 25
+   },
+   "score": 28.25,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 27,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 32,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey News tier 4",
+     "url": "https://thehockeynews.com/news/latest-news/2027-nhl-draft-ranking-pre-season-tier-list-sees-landon-dupont-alone-atop"
+    }
+   ],
+   "style": "Small elite-skating puck D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "Offensive 2nd-pair D",
+   "comp": "",
+   "note": "Superb numbers at every Swedish level. Size is the question.",
+   "tags": [],
+   "rank": 27
+  },
+  {
+   "name": "Diego Gutierrez",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-05",
+   "nat": "USA",
+   "height": "6'2\"",
+   "weight": 192,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 39,
+    "g": 2,
+    "a": 10,
+    "pts": 12
+   },
+   "score": 28.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 24,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 22,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Mobile puck-rushing D",
+   "cats": [
+    "Pt-D",
+    "A",
+    "Cor"
+   ],
+   "ceiling": "2nd-pair D",
+   "comp": "",
+   "note": "NTDP defender built for the modern game: gap control and rushes. Pt-D and Corsi type.",
+   "tags": [],
+   "rank": 28
+  },
+  {
+   "name": "Nolan Fitzhenry",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-02",
+   "nat": "USA",
+   "height": "5'11\"",
+   "weight": 172,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 44,
+    "g": 13,
+    "a": 20,
+    "pts": 33
+   },
+   "score": 29.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 23,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 24,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Chaos-thriving scoring C",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "Electric with the NTDP U17 team and has a great shot.",
+   "tags": [],
+   "rank": 29
+  },
+  {
+   "name": "Jamie Glance",
+   "pos": "RW/C",
+   "shoots": "R",
+   "dob": "2008-09",
+   "nat": "USA",
+   "height": "5'11\"",
+   "weight": 185,
+   "team": "Saint John",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 25,
+    "g": 12,
+    "a": 14,
+    "pts": 26
+   },
+   "score": 29.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 21,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 27,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Detail/forecheck winger, draws penalties",
+   "cats": [
+    "Tk",
+    "Hit",
+    "Cor"
+   ],
+   "ceiling": "3rd-line W",
+   "comp": "",
+   "note": "Much of what he does doesn't show on the scoresheet: forces giveaways and draws penalties. THW calls him a sleeper. Tk-leaning fantasy fit.",
+   "tags": [
+    "sleeper"
+   ],
+   "rank": 30
+  },
+  {
+   "name": "Ryerson Edgar",
+   "pos": "C",
+   "shoots": "R",
+   "dob": "2009-07",
+   "nat": "Canada",
+   "height": "5'10\"",
+   "weight": 161,
+   "team": "Niagara",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Niagara",
+    "gp": 64,
+    "g": 23,
+    "a": 26,
+    "pts": 49
+   },
+   "score": 30.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 33,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 26,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 31,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Speedy, reliable two-way C",
+   "cats": [
+    "A",
+    "Tk"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "Just under 50 points as an OHL rookie. Strong defensively for his age.",
+   "tags": [],
+   "rank": 31
+  },
+  {
+   "name": "Roberts Naudins",
+   "pos": "C/LW",
+   "shoots": "L",
+   "dob": "2008-11",
+   "nat": "Latvia",
+   "height": "6'7\"",
+   "weight": 212,
+   "team": "Penticton",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHS‑Prep",
+    "team": "Shattuck-St. Mary's",
+    "gp": 51,
+    "g": 24,
+    "a": 50,
+    "pts": 74
+   },
+   "score": 30.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 25,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": null,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 30,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "6'7\" C/LW",
+   "cats": [
+    "Hit",
+    "G"
+   ],
+   "ceiling": "Project",
+   "comp": "",
+   "note": "Huge frame; moved to the WHL's Penticton Vees.",
+   "tags": [
+    "project"
+   ],
+   "rank": 32
+  },
+  {
+   "name": "Tomas Selic",
+   "pos": "RW",
+   "shoots": "L",
+   "dob": "2009-05",
+   "nat": "Slovakia",
+   "height": "6'3\"",
+   "weight": 198,
+   "team": "HC Kometa Brno",
+   "league": "Czechia U20",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Czechia U20",
+    "team": "HC Kometa Brno",
+    "gp": 45,
+    "g": 21,
+    "a": 29,
+    "pts": 50
+   },
+   "score": 30.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 26,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 25,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Big workhorse W",
+   "cats": [
+    "G",
+    "Hit",
+    "SOG"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "Slovakia's standout at the U18s and the Hlinka.",
+   "tags": [],
+   "rank": 33
+  },
+  {
+   "name": "Shaeffer Gordon-Carroll",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2008-11",
+   "nat": "USA",
+   "height": "6'0\"",
+   "weight": 190,
+   "team": "Medicine Hat",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Medicine Hat",
+    "gp": 41,
+    "g": 12,
+    "a": 25,
+    "pts": 37
+   },
+   "score": 31.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 22,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 31,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Hard-working two-way W",
+   "cats": [
+    "Hit",
+    "SOG"
+   ],
+   "ceiling": "Depth-plus W",
+   "comp": "",
+   "note": "Role expanding with the Ruck twins in Medicine Hat.",
+   "tags": [],
+   "rank": 34
+  },
+  {
+   "name": "Gavin Burcar",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-01",
+   "nat": "USA",
+   "height": "6'2\"",
+   "weight": 181,
+   "team": "Spokane",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Spokane",
+    "gp": 63,
+    "g": 7,
+    "a": 10,
+    "pts": 17
+   },
+   "score": 32.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 36,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 21,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Shot-volume C",
+   "cats": [
+    "SOG",
+    "G"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "Consistent shot generator at the Hlinka. 7 goals and 17 points last season, so a big jump is expected.",
+   "tags": [],
+   "rank": 35
+  },
+  {
+   "name": "Dorian Eklund Aspe",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-02",
+   "nat": "Sweden",
+   "height": "6'4\"",
+   "weight": 209,
+   "team": "Djurgårdens IF",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Nationell",
+    "team": "Djurgårdens IF",
+    "gp": 19,
+    "g": 14,
+    "a": 15,
+    "pts": 29
+   },
+   "score": 35.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 37,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 28,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "6'4\" heavy skill F",
+   "cats": [
+    "Hit",
+    "G"
+   ],
+   "ceiling": "Middle-six power F",
+   "comp": "",
+   "note": "Imposing frame with skill and a burst of speed.",
+   "tags": [],
+   "rank": 36
+  },
+  {
+   "name": "Gunnar Conboy",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "USA",
+   "height": "6'4\"",
+   "weight": 201,
+   "team": "Green Bay",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "Green Bay",
+    "gp": 37,
+    "g": 12,
+    "a": 9,
+    "pts": 21
+   },
+   "score": 38.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 34,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 21 pts in 37 USHL GP (0.57/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 37
+  },
+  {
+   "name": "Lenni Kokkonen",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-03",
+   "nat": "Finland",
+   "height": "6'2\"",
+   "weight": 194,
+   "team": "Kärpät",
+   "league": "U20 SM‑sarja",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 SM‑sarja",
+    "team": "Kärpät",
+    "gp": 1,
+    "g": 1,
+    "a": 2,
+    "pts": 3,
+    "small": true
+   },
+   "score": 38.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 39,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": null,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Puck-moving D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "3rd-pair D",
+   "comp": "",
+   "note": "Kärpät D, on DFO's also-considered list.",
+   "tags": [],
+   "rank": 38
+  },
+  {
+   "name": "Kayden Stroeder",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-03",
+   "nat": "Canada",
+   "height": "5'10\"",
+   "weight": 150,
+   "team": "Edmonton",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Edmonton",
+    "gp": 55,
+    "g": 13,
+    "a": 19,
+    "pts": 32
+   },
+   "score": 38.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 45,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 17,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Tenacious all-round C",
+   "cats": [
+    "Tk",
+    "Hit",
+    "A"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "\"5-foot-10, 150 but played like 6-foot-2, 200\" (THW). A Hlinka x-factor.",
+   "tags": [],
+   "rank": 39
+  },
+  {
+   "name": "Lukas Kachlir",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-09",
+   "nat": "Czechia",
+   "height": "5'8\"",
+   "weight": 150,
+   "team": "Liberec",
+   "league": "Czechia U20",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Czechia U20",
+    "team": "Liberec",
+    "gp": 29,
+    "g": 6,
+    "a": 21,
+    "pts": 27
+   },
+   "score": 38.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 51,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": null,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 29,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "3rd-pair/PP D",
+   "comp": "",
+   "note": "27 points in 29 Czech U20 games at 16.",
+   "tags": [],
+   "rank": 40
+  },
+  {
+   "name": "Aleks Kulemin",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-03",
+   "nat": "Canada",
+   "height": "6'2\"",
+   "weight": 183,
+   "team": "Kingston",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Kingston",
+    "gp": 57,
+    "g": 11,
+    "a": 20,
+    "pts": 31
+   },
+   "score": 39.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 38,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 31 pts in 57 OHL GP (0.54/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 41
+  },
+  {
+   "name": "Daniil Yermolov",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-02",
+   "nat": "Russia",
+   "height": "6'2\"",
+   "weight": 183,
+   "team": "Krasnaya Armiya",
+   "league": "MHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "Krasnaya Armiya",
+    "gp": 4,
+    "g": 1,
+    "a": 1,
+    "pts": 2,
+    "small": true
+   },
+   "score": 40.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 40,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 2 pts in 4 MHL GP (0.50/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 42
+  },
+  {
+   "name": "James Scantlebury",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-01",
+   "nat": "Canada",
+   "height": "5'10\"",
+   "weight": 174,
+   "team": "Quebec",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "Chicago",
+    "gp": 62,
+    "g": 16,
+    "a": 23,
+    "pts": 39
+   },
+   "score": 41.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 44,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 29,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Pure playmaker",
+   "cats": [
+    "A",
+    "STP"
+   ],
+   "ceiling": "Middle-six playmaker",
+   "comp": "",
+   "note": "Some of the best playmaking in the class; joins QMJHL Quebec.",
+   "tags": [],
+   "rank": 43
+  },
+  {
+   "name": "Johnny McLaughlin",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-08",
+   "nat": "Canada",
+   "height": "6'0\"",
+   "weight": 172,
+   "team": "Windsor",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Windsor",
+    "gp": 50,
+    "g": 9,
+    "a": 7,
+    "pts": 16
+   },
+   "score": 44.67,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 47,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "The Hockey Writers",
+     "rank": 32,
+     "url": "https://thehockeywriters.com/2027-nhl-draft-baracchinis-rankings-preseason-top-32/"
+    }
+   ],
+   "style": "C",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "Windsor Spitfires center on THW's top 32.",
+   "tags": [],
+   "rank": 44
+  },
+  {
+   "name": "Cooper McAslan",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-03",
+   "nat": "Canada",
+   "height": "6'3\"",
+   "weight": 201,
+   "team": "London",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "London",
+    "gp": 4,
+    "g": 0,
+    "a": 2,
+    "pts": 2,
+    "small": true
+   },
+   "score": 46.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 41,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 2 pts in 4 OHL GP (0.50/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 45
+  },
+  {
+   "name": "David Huk",
+   "pos": "C",
+   "shoots": "R",
+   "dob": "2008-11",
+   "nat": "Czechia",
+   "height": "6'2\"",
+   "weight": 198,
+   "team": "Tri-City",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Linköping HC",
+    "gp": 8,
+    "g": 4,
+    "a": 2,
+    "pts": 6,
+    "small": true
+   },
+   "score": 47.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 42,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 6 pts in 8 U18 Region GP (0.75/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 46
+  },
+  {
+   "name": "Michal Hartl",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-06",
+   "nat": "Czechia",
+   "height": "6'0\"",
+   "weight": 190,
+   "team": "HC Kometa Brno",
+   "league": "Czechia U20",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Czechia U20",
+    "team": "HC Kometa Brno",
+    "gp": 31,
+    "g": 21,
+    "a": 14,
+    "pts": 35
+   },
+   "score": 48.0,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 50,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": null,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Scoring W",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "Kometa Brno U20, on DFO's also-considered list.",
+   "tags": [],
+   "rank": 47
+  },
+  {
+   "name": "Maxmilian Mares",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "Czechia",
+   "height": "6'6\"",
+   "weight": 231,
+   "team": "Rimouski",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Czechia U20",
+    "team": "Liberec",
+    "gp": 47,
+    "g": 20,
+    "a": 15,
+    "pts": 35
+   },
+   "score": 48.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 43,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 35 pts in 47 Czechia U20 GP (0.74/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 48
+  },
+  {
+   "name": "Rocco Pelosi",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-01",
+   "nat": "USA",
+   "height": "5'11\"",
+   "weight": 183,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 35,
+    "g": 6,
+    "a": 5,
+    "pts": 11
+   },
+   "score": 48.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 56,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": 25,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Speed C with a deadly release",
+   "cats": [
+    "G",
+    "SOG"
+   ],
+   "ceiling": "Middle-six F",
+   "comp": "",
+   "note": "Younger brother of Chris Pelosi. Streaky but dangerous.",
+   "tags": [],
+   "rank": 49
+  },
+  {
+   "name": "Oliver Botka",
+   "pos": "LD",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "Slovakia",
+   "height": "6'2\"",
+   "weight": 172,
+   "team": "HK Nitra",
+   "league": "Slovak",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Slovak U20",
+    "team": "HK Nitra",
+    "gp": 44,
+    "g": 9,
+    "a": 27,
+    "pts": 36
+   },
+   "score": 51.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 46,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 36 pts in 44 Slovak U20 GP (0.82/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 50
+  },
+  {
+   "name": "Filip Kovalcik",
+   "pos": "LD",
+   "shoots": "L",
+   "dob": "2008-12",
+   "nat": "Slovakia",
+   "height": "6'2\"",
+   "weight": 187,
+   "team": "Drummondville",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "QMJHL",
+    "team": "Drummondville",
+    "gp": 57,
+    "g": 1,
+    "a": 17,
+    "pts": 18
+   },
+   "score": 53.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 48,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 18 pts in 57 QMJHL GP (0.32/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 51
+  },
+  {
+   "name": "Oskars Lūks",
+   "pos": "LD",
+   "shoots": "L",
+   "dob": "2008-10",
+   "nat": "Latvia",
+   "height": "6'5\"",
+   "weight": 214,
+   "team": "Prince Albert",
+   "league": "WHL",
+   "last_season": null,
+   "score": 54.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 49,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. ",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 52
+  },
+  {
+   "name": "Roni Kuukasjärvi",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-04",
+   "nat": "Finland",
+   "height": "6'2\"",
+   "weight": 172,
+   "team": "Ilves",
+   "league": "U20 SM‑sarja",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 SM‑sarja",
+    "team": "Ilves",
+    "gp": 4,
+    "g": 1,
+    "a": 4,
+    "pts": 5,
+    "small": true
+   },
+   "score": 57.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 52,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 5 pts in 4 U18 SM‑sarja GP (1.25/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 53
+  },
+  {
+   "name": "Trevor Daley Jr.",
+   "pos": "LW",
+   "shoots": "L",
+   "dob": "2009-07",
+   "nat": "USA",
+   "height": "5'9\"",
+   "weight": 185,
+   "team": "Soo",
+   "league": "OHL",
+   "last_season": null,
+   "score": 57.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 64,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    },
+    {
+     "name": "Daily Faceoff",
+     "rank": null,
+     "url": "https://www.dailyfaceoff.com/news/2027-nhl-draft-rankings-top-32-july-dupont-privalov-joseph-skvortsov-meyer-scouting-reports"
+    }
+   ],
+   "style": "Skilled W",
+   "cats": [
+    "A",
+    "G"
+   ],
+   "ceiling": "Middle-six W",
+   "comp": "",
+   "note": "Son of Trevor Daley, Soo Greyhounds. On DFO's also-considered list.",
+   "tags": [],
+   "rank": 54
+  },
+  {
+   "name": "Eric Tu",
+   "pos": "G",
+   "shoots": "L",
+   "dob": "2008-10",
+   "nat": "China",
+   "height": "6'3\"",
+   "weight": 198,
+   "team": "Calgary",
+   "league": "WHL",
+   "last_season": null,
+   "score": 58.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 53,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Goalie",
+   "cats": [
+    "SV%",
+    "W"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. ",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 55
+  },
+  {
+   "name": "Cam Warren",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-05",
+   "nat": "Canada",
+   "height": "5'10\"",
+   "weight": 159,
+   "team": "North Bay",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "North Bay",
+    "gp": 58,
+    "g": 7,
+    "a": 22,
+    "pts": 29
+   },
+   "score": 59.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 54,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 29 pts in 58 OHL GP (0.50/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 56
+  },
+  {
+   "name": "Daniil Savin",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-02",
+   "nat": "Russia",
+   "height": "6'2\"",
+   "weight": 194,
+   "team": "SKA-1946",
+   "league": "MHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "MHL",
+    "team": "SKA-1946",
+    "gp": 5,
+    "g": 2,
+    "a": 2,
+    "pts": 4,
+    "small": true
+   },
+   "score": 60.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 55,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 4 pts in 5 MHL GP (0.80/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 57
+  },
+  {
+   "name": "Jonas Schwarz",
+   "pos": "RW/C",
+   "shoots": "L",
+   "dob": "2009-04",
+   "nat": "Germany",
+   "height": "6'0\"",
+   "weight": 172,
+   "team": "Lukko",
+   "league": "U20 SM‑sarja",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 SM‑sarja",
+    "team": "Lukko",
+    "gp": 38,
+    "g": 19,
+    "a": 28,
+    "pts": 47
+   },
+   "score": 62.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 57,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 47 pts in 38 U18 SM‑sarja GP (1.24/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 58
+  },
+  {
+   "name": "Ilya Kolmakov",
+   "pos": "LW",
+   "shoots": "L",
+   "dob": "2008-09",
+   "nat": "Russia",
+   "height": "6'1\"",
+   "weight": 165,
+   "team": "Sherbrooke",
+   "league": "QMJHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "QMJHL",
+    "team": "Sherbrooke",
+    "gp": 62,
+    "g": 13,
+    "a": 35,
+    "pts": 48
+   },
+   "score": 63.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 58,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 48 pts in 62 QMJHL GP (0.77/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 59
+  },
+  {
+   "name": "Loui Karlsson",
+   "pos": "RW",
+   "shoots": "L",
+   "dob": "2009-09",
+   "nat": "Sweden",
+   "height": "5'10\"",
+   "weight": 176,
+   "team": "Leksands IF",
+   "league": "U18 Region",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Leksands IF",
+    "gp": 19,
+    "g": 7,
+    "a": 20,
+    "pts": 27
+   },
+   "score": 64.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 59,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 27 pts in 19 U18 Region GP (1.42/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 60
+  },
+  {
+   "name": "Oliver Sundberg",
+   "pos": "RW",
+   "shoots": "R",
+   "dob": "2009-01",
+   "nat": "Sweden",
+   "height": "6'0\"",
+   "weight": 176,
+   "team": "Djurgårdens IF",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Djurgårdens IF",
+    "gp": 18,
+    "g": 10,
+    "a": 19,
+    "pts": 29
+   },
+   "score": 65.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 60,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 29 pts in 18 U18 Region GP (1.61/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 61
+  },
+  {
+   "name": "Benjamin Nyström",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-03",
+   "nat": "Sweden",
+   "height": "6'3\"",
+   "weight": 198,
+   "team": "Luleå HF",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Luleå HF",
+    "gp": 17,
+    "g": 12,
+    "a": 14,
+    "pts": 26
+   },
+   "score": 66.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 61,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 26 pts in 17 U18 Region GP (1.53/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 62
+  },
+  {
+   "name": "Jake Prunty",
+   "pos": "RD",
+   "shoots": "R",
+   "dob": "2009-03",
+   "nat": "USA",
+   "height": "5'10\"",
+   "weight": 165,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "Sioux Falls",
+    "gp": 44,
+    "g": 4,
+    "a": 33,
+    "pts": 37
+   },
+   "score": 67.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 62,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Offensive D",
+   "cats": [
+    "Pt-D",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 37 pts in 44 USHL GP (0.84/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 63
+  },
+  {
+   "name": "Brenner Lammens",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2009-09",
+   "nat": "Canada",
+   "height": "6'0\"",
+   "weight": 190,
+   "team": "Sarnia",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Sarnia",
+    "gp": 59,
+    "g": 9,
+    "a": 9,
+    "pts": 18
+   },
+   "score": 68.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 63,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 18 pts in 59 OHL GP (0.31/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 64
+  },
+  {
+   "name": "Wiggo Forsberg",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-06",
+   "nat": "Sweden",
+   "height": "6'1\"",
+   "weight": 170,
+   "team": "Frölunda HC",
+   "league": "U20 Nationell",
+   "last_season": {
+    "season": "2025-26",
+    "league": "U18 Region",
+    "team": "Frölunda HC",
+    "gp": 16,
+    "g": 7,
+    "a": 21,
+    "pts": 28
+   },
+   "score": 70.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 65,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 28 pts in 16 U18 Region GP (1.75/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 65
+  },
+  {
+   "name": "Kaden McGregor",
+   "pos": "C",
+   "shoots": "R",
+   "dob": "2009-01",
+   "nat": "Canada",
+   "height": "5'11\"",
+   "weight": 181,
+   "team": "Brantford",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Peterborough",
+    "gp": 39,
+    "g": 7,
+    "a": 13,
+    "pts": 20
+   },
+   "score": 71.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 66,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 20 pts in 39 OHL GP (0.51/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 66
+  },
+  {
+   "name": "Keaton Ardagh",
+   "pos": "RW",
+   "shoots": "R",
+   "dob": "2009-07",
+   "nat": "Canada",
+   "height": "6'0\"",
+   "weight": 163,
+   "team": "Brampton",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Brampton",
+    "gp": 64,
+    "g": 14,
+    "a": 11,
+    "pts": 25
+   },
+   "score": 72.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 67,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 25 pts in 64 OHL GP (0.39/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 67
+  },
+  {
+   "name": "Maxim Simko",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2008-11",
+   "nat": "Slovakia",
+   "height": "6'0\"",
+   "weight": 172,
+   "team": "Muskegon",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "Slovak U20",
+    "team": "HK Nitra",
+    "gp": 33,
+    "g": 27,
+    "a": 38,
+    "pts": 65
+   },
+   "score": 73.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 68,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 65 pts in 33 Slovak U20 GP (1.97/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 68
+  },
+  {
+   "name": "Charlie Murata",
+   "pos": "F",
+   "shoots": "R",
+   "dob": "2009-02",
+   "nat": "Canada",
+   "height": "6'0\"",
+   "weight": 183,
+   "team": "Flint",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Flint",
+    "gp": 59,
+    "g": 5,
+    "a": 13,
+    "pts": 18
+   },
+   "score": 74.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 69,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 18 pts in 59 OHL GP (0.31/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 69
+  },
+  {
+   "name": "Easton Walos",
+   "pos": "C",
+   "shoots": "L",
+   "dob": "2008-12",
+   "nat": "USA",
+   "height": "5'11\"",
+   "weight": 174,
+   "team": "Sarnia",
+   "league": "OHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "OHL",
+    "team": "Sarnia",
+    "gp": 68,
+    "g": 25,
+    "a": 23,
+    "pts": 48
+   },
+   "score": 75.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 70,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 48 pts in 68 OHL GP (0.71/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 70
+  },
+  {
+   "name": "Prabh Bhathal",
+   "pos": "F",
+   "shoots": "L",
+   "dob": "2009-05",
+   "nat": "Canada",
+   "height": "6'2\"",
+   "weight": 201,
+   "team": "Brandon",
+   "league": "WHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "WHL",
+    "team": "Brandon",
+    "gp": 63,
+    "g": 8,
+    "a": 23,
+    "pts": 31
+   },
+   "score": 76.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 71,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 31 pts in 63 WHL GP (0.49/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 71
+  },
+  {
+   "name": "Finnegan Sears",
+   "pos": "LW",
+   "shoots": "L",
+   "dob": "2009-05",
+   "nat": "USA",
+   "height": "6'0\"",
+   "weight": 201,
+   "team": "USDP",
+   "league": "USHL",
+   "last_season": {
+    "season": "2025-26",
+    "league": "USHL",
+    "team": "USDP",
+    "gp": 38,
+    "g": 12,
+    "a": 6,
+    "pts": 18
+   },
+   "score": 77.33,
+   "sources": [
+    {
+     "name": "Tankathon",
+     "rank": 72,
+     "url": "https://www.tankathon.com/nhl/big-board"
+    }
+   ],
+   "style": "Forward",
+   "cats": [
+    "G",
+    "A"
+   ],
+   "ceiling": "TBD",
+   "comp": "",
+   "note": "Tankathon-ranked; no scouting write-up collected yet. 18 pts in 38 USHL GP (0.47/gm) in 2025-26.",
+   "tags": [
+    "stats-only"
+   ],
+   "rank": 72
+  }
+ ]
+}

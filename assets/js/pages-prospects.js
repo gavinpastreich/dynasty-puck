@@ -59,7 +59,7 @@
             { k: 'cgp', l: 'Career GP', v: function (x) { return x.g.cgp / x.g.thr; }, f: function (x) { var fr = x.g.cgp / x.g.thr; return '<div class="pbar" title="' + x.g.cgp + ' of ' + x.g.thr + '">' + ui.meter(fr, fr >= 0.9 ? 'bad' : fr >= 0.6 ? 'warn' : '') + '<span class="num small" style="width:52px">' + x.g.cgp + '/' + x.g.thr + '</span></div>'; } },
             { k: 'need', l: 'Needs', cls: 'num', v: function (x) { return x.g.need; } },
             { k: 'proj', l: 'Proj GP 26-27', cls: 'num', v: function (x) { return x.p.projGP; } },
-            { k: 'wk', l: 'Proj. graduation', cls: 'num', v: function (x) { return x.g.week === null ? 99 : x.g.week; }, f: function (x) { return x.g.week === null ? '<span class="faint">' + esc(x.g.status) + '</span>' : '<b>Wk ' + (x.g.week + 1) + '</b> <span class="small muted">' + U.date(x.g.date) + '</span>'; } },
+            { k: 'wk', l: 'Proj. graduation', cls: 'num', v: function (x) { return x.g.week === null ? 99 : x.g.week; }, f: function (x) { return x.g.week === null ? '<span class="faint">' + esc(x.g.status) + '</span>' : '<b>Wk ' + (x.g.week + 1) + '</b> <span class="small muted">' + U.date(x.g.date) + '</span>' + (x.p.inj ? ' <span class="badge warn" title="Currently injured or holding out: graduation likely delayed">delay?</span>' : ''); } },
             { k: 'prob', l: 'P(grad 26-27)', cls: 'num', v: function (x) { return x.g.prob; }, f: function (x) { return U.pct(x.g.prob); } },
             { k: 'war', l: 'WAR', cls: 'num', v: function (x) { return x.p.r ? x.p.WAR : null; }, f: function (x) { return x.p.r ? ui.warCell(x.p.WAR) : '–'; } },
             { k: 'dv', l: 'Dynasty', cls: 'num', v: function (x) { return x.p.DV; }, f: function (x) { return U.fmt(x.p.DV, 1); } }]
@@ -137,16 +137,17 @@
           rows: b.players, sort: 'rank', desc: false, csv: 'draft-board-' + y + '.csv', page: 80, search: function (r) { return r.name + ' ' + (r.team || '') + ' ' + (r.league || ''); },
           filters: [{ l: 'Pos', opts: [['', 'All'], ['F', 'Forwards'], ['D', 'Defense'], ['G', 'Goalies']], fn: function (r, v) { var ps = (r.pos || '').toUpperCase(); return v === 'G' ? ps === 'G' : v === 'D' ? /D/.test(ps) && ps.length <= 2 : !/^(G|LD|RD|D)$/.test(ps); } }],
           cols: [{ k: 'rank', l: '#', cls: 'num', v: function (r) { return r.rank; } },
-            { k: 'name', l: 'Player', v: function (r) { return r.name; }, f: function (r) { return '<b>' + esc(r.name) + '</b> <span class="faint small">' + esc([r.pos, r.shoots ? 'shoots ' + r.shoots : '', r.nat].filter(Boolean).join(' · ')) + '</span>' + (r.gm ? ' <span class="badge info">' + esc(r.gm) + '</span>' : ''); } },
-            { k: 'bio', l: 'Born / size', v: function (r) { return r.dob || ''; }, f: function (r) { return '<span class="small">' + esc([r.dob, r.height, r.weight ? r.weight + ' lb' : ''].filter(Boolean).join(' · ')) + '</span>'; } },
-            { k: 'team', l: 'Team', v: function (r) { return (r.team || '') + ' ' + (r.league || ''); }, f: function (r) { return '<span class="small">' + esc((r.team || '') + (r.league ? ' (' + r.league + ')' : '')) + '</span>'; } },
-            { k: 'ls', l: 'Last season', v: function (r) { return r.last_season && r.last_season.pts; }, f: function (r) { var s = r.last_season; return s && s.gp ? '<span class="small">' + esc((s.season || '') + ' ' + (s.league || '')) + ' ' + s.gp + 'GP ' + (s.g !== undefined && s.g !== null ? s.g + '-' + s.a + '-' + s.pts : (s.sv ? s.sv : '')) + '</span>' : '<span class="faint">–</span>'; } },
-            { k: 'style', l: 'Style', v: function (r) { return r.style || ''; }, f: function (r) { return '<span class="small">' + esc(r.style || '') + '</span>'; } },
-            { k: 'cats', l: 'Our cats', v: function (r) { return (r.cats || []).join(', '); }, f: function (r) { return '<span class="small">' + esc((r.cats || []).join(', ')) + '</span>'; } },
-            { k: 'ceiling', l: 'Ceiling', v: function (r) { return r.ceiling || ''; }, f: function (r) { return '<span class="small">' + esc(r.ceiling || '') + '</span>'; } },
-            { k: 'comp', l: 'NHL comp', v: function (r) { return r.comp || ''; }, f: function (r) { return '<span class="small">' + esc(r.comp || '') + '</span>'; } },
-            { k: 'note', l: 'Fantasy note', v: null, f: function (r) { return '<span class="small">' + esc(r.note || '') + '</span>' + (r.tags && r.tags.length ? ' ' + r.tags.map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join(' ') : ''); } },
-            { k: 'src', l: 'Sources', v: null, f: function (r) { return '<span class="small">' + (r.sources || []).map(function (s) { return typeof s === 'string' ? esc(s) : '<a target="_blank" rel="noopener" href="' + esc(s.url || '#') + '">' + esc(s.name + (s.rank ? ' #' + s.rank : '')) + '</a>'; }).join(', ') + '</span>'; } }]
+            { k: 'name', l: 'Player', v: function (r) { return r.name; }, f: function (r) {
+              return '<b>' + esc(r.name) + '</b>' + (r.gm ? ' <span class="badge info" title="Already owned in the league">' + esc(r.gm) + '</span>' : '') +
+                '<br><span class="faint small">' + esc([r.pos, r.shoots ? 'shoots ' + r.shoots : '', r.nat, r.dob ? 'b. ' + r.dob : '', r.height, r.weight ? r.weight + ' lb' : ''].filter(Boolean).join(' · ')) + '</span>' +
+                (r.tags && r.tags.length ? '<br>' + r.tags.map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join(' ') : ''); } },
+            { k: 'team', l: 'Team · last season', v: function (r) { return (r.team || '') + ' ' + (r.league || ''); }, f: function (r) {
+              var s2 = r.last_season;
+              return '<span class="small">' + esc((r.team || '') + (r.league ? ' (' + r.league + ')' : '')) + '</span>' + (s2 && (s2.gp || s2.pts) ? '<br><span class="small muted">' + esc((s2.season || '') + ' ' + (s2.league || '')) + ' ' + (s2.gp ? s2.gp + 'GP ' : '') + (s2.g !== undefined && s2.g !== null ? s2.g + '-' + s2.a + '-' + s2.pts : (s2.pts !== undefined ? s2.pts + ' pts' : '')) + (s2.small ? ' (small sample)' : '') + '</span>' : ''); } },
+            { k: 'style', l: 'Profile', v: function (r) { return r.ceiling || ''; }, f: function (r) {
+              return '<span class="small"><b>' + esc(r.style || '') + '</b><br>Helps: ' + esc((r.cats || []).join(', ')) + '<br>Ceiling: ' + esc(r.ceiling || '–') + (r.comp ? '<br>Comp: ' + esc(r.comp) : '') + '</span>'; } },
+            { k: 'note', l: 'Fantasy note', v: null, f: function (r) { return '<div class="small" style="min-width:260px;max-width:460px">' + esc(r.note || '') + '</div>'; } },
+            { k: 'src', l: 'Sources', v: function (r) { return (r.sources || []).length; }, f: function (r) { return '<span class="small">' + (r.sources || []).map(function (s3) { if (typeof s3 === 'string') return esc(s3); var ab = s3.name.replace('Tankathon', 'TK').replace('Daily Faceoff', 'DFO').replace('The Hockey Writers', 'THW').replace('The Hockey News tier ', 'THN T').replace('NHL.com', 'NHL'); return s3.url ? '<a target="_blank" rel="noopener" title="' + esc(s3.name) + '" href="' + esc(s3.url) + '">' + esc(ab + (s3.rank ? ' #' + s3.rank : '')) + '</a>' : esc(ab); }).join(' · ') + '</span>'; } }]
         });
       }
     }
