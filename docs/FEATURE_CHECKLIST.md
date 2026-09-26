@@ -39,7 +39,7 @@ as you ship them, and add any new ideas you come up with.
       McKeen's, Smaht, FCHockey, Recrutes, TSN and Dobber lists were blocked or not published yet.
 - [x] Multi-year contracts and cap tools: a team cap chart by year, league cap table, expiring and
       RFA/UFA timelines, the 2027 offseason action list, and an extension price calculator.
-- [ ] Commit and push to `main` when work is verified.
+- [x] Commit and push to `main` when work is verified. Live at https://gavinpastreich.github.io/dynasty-puck/
 
 ## B. Extra mile (do these without being asked)
 - [x] **Dashboard**: power rankings, projected standings and playoff odds, best bargains, worst
