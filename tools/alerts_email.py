@@ -77,12 +77,25 @@ def send(smtp, to_list, subject, text, html=None, bcc=True):
 def main():
     if not ADDR or not PW:
         print("email alerts: not set up (config alerts.emailAddress + secret DP_EMAIL_APP_PASSWORD); skipping")
+        if os.environ.get("DP_ALERTS_MODE") == "emailtest":
+            sys.exit("email test: the address or the DP_EMAIL_APP_PASSWORD secret is missing")
         return
     imap = imaplib.IMAP4_SSL("imap.gmail.com")
     imap.login(ADDR, PW)
+    print("email alerts: signed in to", ADDR)
     subs, new = read_list(imap)
     imap.logout()
     print(f"email alerts: {len(subs)} subscribers, {len(new)} new")
+    if os.environ.get("DP_ALERTS_MODE") == "emailtest":  # send this week's digest to the league inbox only
+        digest = os.path.join(OUT, "digest.txt")
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(ADDR, PW)
+            text = open(digest, encoding="utf-8").read() if os.path.exists(digest) else "Test from Dynasty Puck HQ."
+            html = open(os.path.join(OUT, "digest.html"), encoding="utf-8").read() if os.path.exists(digest) else None
+            subject = open(os.path.join(OUT, "subject.txt"), encoding="utf-8").read().strip() if os.path.exists(digest) else "Dynasty Puck HQ"
+            send(smtp, [ADDR], "[Test] " + subject, text, html, bcc=False)
+        print(f"email alerts: TEST digest sent to {ADDR} only ({len(subs)} subscribers were not emailed)")
+        return
     digest = os.path.join(OUT, "digest.txt")
     if not new and not os.path.exists(digest):
         return
@@ -103,5 +116,7 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:  # never fail the whole alerts job over email
+    except Exception as e:  # never fail the whole alerts job over email (but a test run should show red)
         print("email alerts failed:", e, file=sys.stderr)
+        if os.environ.get("DP_ALERTS_MODE") == "emailtest":
+            sys.exit(1)

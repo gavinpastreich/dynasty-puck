@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Send now instead of waiting: lock, daily, deadline or weekly (leave empty for the normal schedule check)"
+        description: "Send now instead of waiting: lock, daily, deadline or weekly. emailtest = send this week's digest only to the league inbox itself. Leave empty for the normal schedule check."
         required: false
         default: ""
 permissions:
@@ -26,9 +26,10 @@ jobs:
         with:
           node-version: "20"
       - name: Push alerts (ntfy) and weekly digest
-        run: node tools/alerts.js ${{ inputs.mode && format('--force {0}', inputs.mode) || '' }}
+        run: node tools/alerts.js ${{ inputs.mode == 'emailtest' && '--force weekly' || inputs.mode && format('--force {0}', inputs.mode) || '' }}
       - name: Email (league Gmail)
         if: always()
         env:
           DP_EMAIL_APP_PASSWORD: ${{ secrets.DP_EMAIL_APP_PASSWORD }}
+          DP_ALERTS_MODE: ${{ inputs.mode }}
         run: python3 tools/alerts_email.py
