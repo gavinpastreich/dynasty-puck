@@ -22,7 +22,7 @@
       return '<div class="grp">' + esc(g[0]) + '</div>' + g[1].map(function (it) {
         return '<a href="#/' + it[0] + '" class="' + (cur === it[0] ? 'on' : '') + '"' + (cur === it[0] ? ' aria-current="page"' : '') + '><span class="i" aria-hidden="true">' + it[1] + '</span>' + esc(it[2]) + '</a>';
       }).join('');
-    }).join('') + '<div class="grp">Season</div><div class="small muted" style="padding:0 10px">' + esc(DP.meta.season) + ' · data built ' + esc(DP.meta.built.replace('T', ' ')) + '</div>';
+    }).join('') + '<a href="assets/Dynasty-Puck-HQ-Guide.pdf" target="_blank" rel="noopener"><span class="i" aria-hidden="true">📘</span>League guide (PDF)</a><div class="grp">Season</div><div class="small muted" style="padding:0 10px">' + esc(DP.meta.season) + ' · data built ' + esc(DP.meta.built.replace('T', ' ')) + '</div>';
   }
 
   function teamBtn() {

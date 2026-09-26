@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynasty Puck HQ: League Guide 2026-27</title>
+<style>
+@font-face { font-family: "Inter"; src: url("Inter-latin.woff2") format("woff2"); font-weight: 100 900; }
+@page { size: Letter; margin: 0; }
+:root { --navy: #0d1117; --navy2: #161b22; --ink: #1f2328; --ink2: #3b4250; --muted: #59636e; --line: #e3e7ec;
+  --orange: #f0883e; --orange2: #bc4c00; --purple: #8250df; --blue: #0969da; --green: #1a7f37; --soft: #f6f8fa; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: "Inter", "Liberation Sans", "DejaVu Sans", sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.45;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; padding: 0.55in 0.6in 0.5in; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
+.page:last-child { page-break-after: auto; }
+.foot { position: absolute; left: 0.6in; right: 0.6in; bottom: 0.28in; display: flex; justify-content: space-between; font-size: 7.5pt; color: #8c959f; }
+h1 { font-size: 30pt; line-height: 1.05; margin: 0 0 6px; letter-spacing: -0.02em; font-weight: 800; }
+h2 { font-size: 19pt; margin: 0 0 2px; letter-spacing: -0.015em; font-weight: 800; }
+h3 { font-size: 11.5pt; margin: 14px 0 4px; font-weight: 700; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 7.5pt; font-weight: 700; color: var(--orange2); margin-bottom: 4px; }
+.lede { color: var(--ink2); font-size: 10.5pt; margin: 4px 0 12px; }
+p { margin: 0 0 7px; }
+ul { margin: 4px 0 8px; padding-left: 16px; } li { margin: 2px 0; }
+.shot { display: block; width: 100%; border-radius: 9px; border: 1px solid #d0d7de; box-shadow: 0 6px 18px rgba(13,17,23,.18); background: #0d1117; }
+.cap { font-size: 7.8pt; color: var(--muted); margin: 5px 2px 10px; }
+.row { display: flex; gap: 16px; align-items: flex-start; } .row > * { flex: 1; min-width: 0; }
+.col2 { columns: 2; column-gap: 20px; }
+.tip { background: #fff8f1; border: 1px solid #ffd8b5; border-left: 4px solid var(--orange); border-radius: 8px; padding: 8px 11px; font-size: 9pt; margin: 8px 0; }
+.note { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 8.8pt; color: var(--ink2); }
+.pill { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 7.6pt; font-weight: 700; background: #eef1f5; color: var(--ink2); margin-right: 3px; }
+.pill.o { background: #fff1e5; color: var(--orange2); } .pill.g { background: #e7f5ec; color: var(--green); } .pill.b { background: #e8f1fd; color: var(--blue); } .pill.p { background: #f1ebfd; color: var(--purple); }
+b.o { color: var(--orange2); }
+.feat { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px 16px; }
+.feat div { font-size: 8.9pt; } .feat b { display: block; font-size: 9.6pt; }
+.grp { font-size: 7.3pt; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 700; margin: 10px 0 4px; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+table.rules { width: 100%; border-collapse: collapse; font-size: 8.6pt; }
+table.rules td { padding: 5px 7px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.rules td:first-child { width: 27%; font-weight: 700; color: var(--ink); }
+table.rules tr:nth-child(odd) td { background: #fafbfc; }
+.steps { counter-reset: s; list-style: none; padding: 0; }
+.steps li { counter-increment: s; position: relative; padding: 0 0 7px 30px; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: -1px; width: 21px; height: 21px; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 800; font-size: 9pt; display: flex; align-items: center; justify-content: center; }
+/* cover */
+.cover { background: radial-gradient(1200px 600px at 110% -10%, rgba(240,136,62,.35), transparent 60%), radial-gradient(900px 500px at -20% 110%, rgba(163,113,247,.28), transparent 60%), var(--navy); color: #e6edf3; }
+.cover .kicker { color: #ffb77a; }
+.cover h1 { font-size: 44pt; color: #fff; margin-top: 10px; }
+.cover .sub { font-size: 13pt; color: #b1bac4; max-width: 6.2in; margin: 6px 0 16px; }
+.cover .url { display: inline-block; font-size: 13pt; font-weight: 800; color: #fff; background: linear-gradient(90deg, #f0883e, #d9632a); padding: 9px 16px; border-radius: 10px; }
+.cover .chips { margin: 16px 0 18px; } .cover .chip { display: inline-block; border: 1px solid #30363d; background: rgba(255,255,255,.04); border-radius: 99px; padding: 4px 11px; font-size: 8.8pt; margin: 0 5px 6px 0; color: #e6edf3; }
+.cover .shot { border-color: #30363d; box-shadow: 0 20px 60px rgba(0,0,0,.55); }
+.cover .foot { color: #6e7681; }
+.logo { font-size: 30pt; }
+.qr { width: 1.45in; height: 1.45in; background: #fff; border-radius: 10px; padding: 7px; }
+.phones { display: flex; gap: 22px; justify-content: center; } .phones img { width: 2.45in; border-radius: 22px; border: 6px solid #1f2328; box-shadow: 0 10px 28px rgba(0,0,0,.25); }
+.back { background: var(--navy); color: #e6edf3; }
+.back h2 { color: #fff; } .back .note { background: #161b22; border-color: #30363d; color: #b1bac4; }
+.back a, .cover a { color: #fff; text-decoration: none; }
+.small { font-size: 8.3pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ============================ COVER -->
+<section class="page cover">
+  <div class="kicker">Dynasty Puck · 2026-27 league guide</div>
+  <div class="logo">🏒</div>
+  <h1>Dynasty Puck HQ</h1>
+  <div class="sub">One website for our league: live Fantrax rosters, weekly lineup checks, matchup odds, trade and contract tools, prospects, drafts and a lot more. Free, no login, works on your phone.</div>
+  <a class="url" href="{{site}}">gavinpastreich.github.io/dynasty-puck</a>
+  <div class="chips"><span class="chip">🔒 Lineup check before every lock</span><span class="chip">📺 Live scoreboard</span><span class="chip">🔁 Trade machine</span><span class="chip">💰 Cap & contract planner</span><span class="chip">🔨 Auction war room</span><span class="chip">🌱 Prospects & mock draft</span><span class="chip">🔔 Opt-in alerts</span></div>
+  <img class="shot" src="{{img:dashboard}}">
+  <div class="foot"><span>Built for the Dynasty Puck league · {{date}}</span><span>Projections are model estimates; Fantrax is the official record.</span></div>
+</section>
+
+<!-- ============================ START + CONTENTS -->
+<section class="page">
+  <div class="kicker">Start here</div>
+  <h2>Get set up in 60 seconds</h2>
+  <div class="row" style="margin-top:10px">
+    <div>
+      <ol class="steps">
+        <li><b>Open the link</b> on your phone or computer: <b class="o">gavinpastreich.github.io/dynasty-puck</b></li>
+        <li><b>Pick your team</b> (🧢 button, top right). The dashboard, Team Hub, matchups, trade ideas and cap tools tailor themselves to you. It's remembered on your device only.</li>
+        <li><b>Add it to your home screen</b> (Share → Add to Home Screen on iPhone, ⋮ → Add to Home screen on Android) so it opens like an app.</li>
+        <li><b>Turn on alerts</b> (🔔 Alerts) if you want a lineup reminder before every lock. Totally optional.</li>
+      </ol>
+      <div class="tip"><b>Tip:</b> press <b>/</b> anywhere to search any player. Click a player's name anywhere in the app to open his card.</div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Always up to date</h3>
+      <p><span class="pill g">Live</span> Every time you open the site it pulls rosters, contracts, salaries, lineup slots and standings straight from our Fantrax league. The green <b>Live</b> dot in the header means you're looking at Fantrax as of right now.</p>
+      <p><span class="pill b">Nightly</span> Every night (1 AM and 6 AM ET) the site refreshes NHL stats and schedules, injuries and line combos (Daily Faceoff), projections and the live scoreboard, all automatically.</p>
+      <p><span class="pill o">Rules</span> Our cap, contract, playoff and draft rules are built in, so every number follows league rules.</p>
+    </div>
+  </div>
+  <div class="grp" style="margin-top:14px">Everything in the app</div>
+  <div class="feat">
+    <div><b>🏠 Dashboard</b>Your team's power rank, playoff odds, cap space, this week's opponent and lineup check.</div>
+    <div><b>🧢 Team Hub</b>Lineup check, category strengths, needs, trade partners, cap by season, prospects.</div>
+    <div><b>📺 Live Scoreboard</b>This week's category score for every matchup, projected finals and win odds.</div>
+    <div><b>🔔 Alerts</b>Opt-in lineup reminders on your phone, calendar or email.</div>
+    <div><b>📋 Players · 🛒 Free Agents</b>Every player with projections, value, contract; best FA fits for your team.</div>
+    <div><b>⚖️ Compare · 🏆 Leaderboards</b>Up to four players side by side; league-wide leader boards.</div>
+    <div><b>🥊 Weekly Matchup · 🎲 Season Sim</b>Category-by-category odds; full-season Monte Carlo with playoffs.</div>
+    <div><b>🔁 Trade Machine · 🔎 Trade Finder</b>2-4 team trades with picks; "what would it take to get X?"</div>
+    <div><b>✍️ Signing Sim</b>Plan signings and drops, see the cap and category impact.</div>
+    <div><b>📊 Standings · 🏅 Awards & Wrapped</b>Real standings with divisions and odds; award races; team recap.</div>
+    <div><b>💎 Trade Value Chart · 📈 Contention Windows</b>Every player and pick on one scale; who's built for now vs later.</div>
+    <div><b>📰 Weekly Preview · 📜 Trade History · 🎟️ Draft Picks</b>Matchup write-ups for the chat; every trade graded; who owns which pick.</div>
+    <div><b>💰 Contracts & Cap · 📅 2027 Offseason</b>Cap by season, penalties, RFA/ELC decisions with prices.</div>
+    <div><b>🔨 Auction War Room</b>Next summer's budgets, prices, targets and a live sale tracker.</div>
+    <div><b>🌱 Prospects & MNR · 🎯 Draft Center · 🧪 Mock Draft</b>Graduation tracker, draft boards to 2029, mock the 2027 league draft.</div>
+    <div><b>🗓️ Schedule Tools · 🩹 Injuries & Depth</b>Games per week, streaming and goalie planners; injuries and lines.</div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>2</span></div>
+</section>
+
+<!-- ============================ YOUR TEAM -->
+<section class="page">
+  <div class="kicker">Every week</div>
+  <h2>Your team, and your lineup, at a glance</h2>
+  <p class="lede">Lineups lock weekly, so one bad lineup costs a whole week. The app checks the lineup you've actually set in Fantrax against the best possible one, before the lock.</p>
+  <img class="shot" src="{{img:lineupcheck}}">
+  <div class="cap">🔒 Fantrax lineup check (Team Hub; also on the dashboard): expected categories as set vs optimal, who to start or sit, injured or idle starters, and goalie-minimum risk, with a countdown to the lock.</div>
+  <div class="row">
+    <div><img class="shot" src="{{img:teamhub}}"><div class="cap">Team Hub: category profile vs the league, what your team should do (FA targets, complementary trade partners, cap notes), lineup by week.</div></div>
+    <div>
+      <h3 style="margin-top:0">What you can do</h3>
+      <ul>
+        <li>See where you rank in each of the <b>15 categories</b> and which ones to fix.</li>
+        <li>Get <b>free-agent targets</b> ranked by how many category wins they add to <i>your</i> lineup.</li>
+        <li>Find <b>trade partners</b> whose strengths match your needs (and vice versa).</li>
+        <li><b>Punt check</b>: would ignoring a category win you more overall?</li>
+        <li>Plan around <b>graduations</b>: MNR players close to 82 career GP (41 for goalies).</li>
+        <li>See your <b>cap by season</b> with the rising cap line ($104M → $113.5M → $127.5M projected).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip" style="margin-top:12px"><b>A 2-minute weekly routine:</b> (1) open the <b>Dashboard</b> and fix anything the lineup check flags before the lock; (2) glance at <b>Free Agents</b> for adds that fit your categories; (3) check the <b>Weekly Preview</b> for your matchup's swing categories; (4) during the week, follow it on the <b>Live Scoreboard</b>.</div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>3</span></div>
+</section>
+
+<!-- ============================ GAME WEEK -->
+<section class="page">
+  <div class="kicker">Game week</div>
+  <h2>Live scoreboard, matchups and standings</h2>
+  <div class="row" style="margin-top:8px">
+    <div style="flex:1.25"><img class="shot" src="{{img:live}}"><div class="cap">📺 Live Scoreboard: where every category stands, the projected final and each side's chance to win it, with the rest of the week simulated from remaining NHL games. <i>Pictured: an illustration made from real NHL stats of a past week on current lineups; the live board starts the morning after opening night and updates overnight.</i></div></div>
+    <div>
+      <h3 style="margin-top:0">During the week</h3>
+      <ul>
+        <li><b>Live Scoreboard</b>: current score (who leads each category), projected finals, win odds, and each player's line for the week.</li>
+        <li><b>Weekly Matchup</b>: any two teams, any week. Use the <b>"lineups as set in Fantrax"</b> switch, or take players out to test injury what-ifs.</li>
+        <li><b>Weekly Preview</b>: an auto-written preview of every matchup plus a <b>lineup watch</b> for all 14 teams. One tap copies it for the group chat.</li>
+        <li><b>Standings</b>: the real Fantrax W-L-T with East/West divisions, projected final record, playoff and title odds, and #1-pick odds.</li>
+      </ul>
+      <div class="note">The season sim starts from the real standings and only simulates the weeks left. Division winners are seeds 1-2.</div>
+      <img class="shot" src="{{img:lineupwatch}}" style="margin-top:10px"><div class="cap">📰 Lineup watch (Weekly Preview): every team's Fantrax lineup vs its best lineup.</div>
+    </div>
+  </div>
+  <div class="row">
+    <div><img class="shot" src="{{img:matchup}}"><div class="cap">🥊 Weekly Matchup: category win probabilities, locked lineups and games per player.</div></div>
+    <div><img class="shot" src="{{img:standings}}"><div class="cap">📊 Standings with divisions, projected finish and odds.</div></div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>4</span></div>
+</section>
+
+<!-- ============================ ALERTS -->
+<section class="page">
+  <div class="kicker">Optional</div>
+  <h2>Alerts: only if you want them</h2>
+  <p class="lede">Nothing gets posted in the league chat. Each person opts in for their own team, picks how, and can stop any time.</p>
+  <img class="shot" src="{{img:alerts}}" style="width:90%;margin:0 auto">
+  <div class="cap" style="text-align:center">🔔 Alerts page: pick your team, then tap to subscribe.</div>
+  <div class="row">
+    <div><h3>📱 Phone push</h3><p>Free <b>ntfy</b> app, no account. Tap <b>Subscribe</b> and <b>Send a test</b>. You get your lineup check a few hours before every lock, plus a morning note when your roster changes, a player gets hurt, or a prospect is about to graduate.</p></div>
+    <div><h3>🗓️ Calendar</h3><p><b>Add to Google Calendar</b> or subscribe on Apple/Outlook: every lineup lock of the season with your opponent and a reminder. It keeps itself up to date.</p></div>
+    <div><h3>✉️ Weekly email</h3><p>A Monday-morning digest: matchups and odds, lineup watch, standings, graduations and roster moves. Sign up with one tap from the Alerts page once the league inbox is switched on.</p></div>
+  </div>
+  <div class="row" style="margin-top:8px">
+    <div>
+      <div class="kicker">Example lineup reminder</div>
+      <div style="background:#0d1117;color:#e6edf3;border-radius:14px;padding:11px 14px;font-size:8.8pt;box-shadow:0 6px 18px rgba(13,17,23,.25)">
+        <div style="display:flex;justify-content:space-between;color:#8b949e;font-size:7.6pt;margin-bottom:3px"><span>🏒 ntfy · dynastypuck</span><span>2:00 PM</span></div>
+        <b style="font-size:9.6pt">Week 1 locks Tue 5:00 PM ET</b><br>
+        vs TommyG1095 · your Fantrax lineup projects 8.4 of 15 cats (optimal 8.8).<br>
+        Start: Artyom Levshunov (Bench), Easton Cowan (Minors), John Gibson (Bench).<br>
+        Sit: Yaroslav Askarov, Dylan Cozens, Simon Edvinsson.
+      </div>
+      <div class="cap">Built from the lineup actually set in Fantrax a few hours before the lock (this example: Milwaukee Musketeers, week 1).</div>
+    </div>
+    <div>
+      <div class="note" style="margin-top:18px"><b>Privacy:</b> phone topics only carry lineup and roster notes that are already on the site. Email addresses stay private in the league inbox and are never published; reply "unsubscribe" to stop. Calendar feeds hold only lock times and opponents.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>5</span></div>
+</section>
+
+<!-- ============================ PLAYERS -->
+<section class="page">
+  <div class="kicker">Players</div>
+  <h2>Every player, valued for our categories</h2>
+  <p class="lede">Values are built for our 15 categories and weekly lock, not generic points. <b>WAR</b> = category wins above a replacement player; <b>Dynasty value</b> = wins over 7 seasons net of cap cost, with our contract rules applied.</p>
+  <img class="shot" src="{{img:player}}">
+  <div class="cap">Player card: 2025-26 vs 2026-27 projection by category (with percentiles), dynasty outlook by season with the contract path, career by league, NHL history, injuries and line/PP role. Once games start it shows this season's stats and a rest-of-season projection.</div>
+  <div class="row">
+    <div><img class="shot" src="{{img:fa}}"><div class="cap">🛒 Free Agents: every unowned player ranked by fit for your team.</div></div>
+    <div>
+      <ul>
+        <li><b>Players</b>: search, sort and filter all ~1,250 players; export CSV.</li>
+        <li><b>Free Agents</b>: best adds for <i>your</i> categories, waivers flagged.</li>
+        <li><b>Compare</b>: up to four players side by side (＋ Compare on any card).</li>
+        <li><b>Leaderboards</b>: best contracts, dynasty value, prospect pools, roster ages.</li>
+        <li>Tk and Cor (Fantrax projects them as 0) are projected by the app from NHL data.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>6</span></div>
+</section>
+
+<!-- ============================ TRADES -->
+<section class="page">
+  <div class="kicker">Trades</div>
+  <h2>Build, balance and grade trades</h2>
+  <div class="row" style="margin-top:8px">
+    <div style="flex:1.3"><img class="shot" src="{{img:trade}}"><div class="cap">🔁 Trade Machine: 2-4 teams, players and draft picks. Shows value under different "lenses" (the model, the league's own trading tendencies, or your own weights for cap, patience, picks and win-now), the category impact this season, playoff odds before and after, cap after the trade, and a "balance it" suggestion. Share a link to any trade.</div></div>
+    <div>
+      <ul>
+        <li><b>League lens</b>: fitted to our 17 real trades, so you can see how <i>this league</i> tends to value picks, youth and cap.</li>
+        <li><b>Trade Finder</b>: "who could I get for X?" and "what would it take to get Y?"</li>
+        <li><b>Trade Value Chart</b>: every player and future pick on one 0-100 scale, in tiers.</li>
+        <li><b>Trade History</b>: every league trade graded with today's projections, a scoreboard, and GM trade personas.</li>
+        <li><b>Draft Picks</b>: who owns every 2027-2029 pick (straight from Fantrax) and what each is worth.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div><img class="shot" src="{{img:values}}"><div class="cap">💎 Trade Value Chart.</div></div>
+    <div><img class="shot" src="{{img:personas}}"><div class="cap">🧠 GM trade personas (Trade History).</div>
+      <img class="shot" src="{{img:picks}}" style="margin-top:8px"><div class="cap">🎟️ Draft Picks: every future pick, its owner and projected value.</div></div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>7</span></div>
+</section>
+
+<!-- ============================ CAP -->
+<section class="page">
+  <div class="kicker">Contracts & cap</div>
+  <h2>Cap, penalties and every contract decision</h2>
+  <img class="shot" src="{{img:cap}}">
+  <div class="cap">💰 Contracts & Cap: committed salary by season against each season's cap, bargains vs overpays, expiring deals with what happens next (ELC up, RFA, or UFA), a contract option calculator and a dead-cap calculator.</div>
+  <div class="row">
+    <div><img class="shot" src="{{img:decision}}"><div class="cap">Next contract decision (on every player card): every league option priced, with the model's pick, and the projected auction price if he's let go.</div></div>
+    <div>
+      <img class="shot" src="{{img:penalties}}"><div class="cap">Cap hit penalties, included in everyone's cap space.</div>
+      <h3>📅 2027 Offseason planner</h3>
+      <p>Every decision coming next summer: ELCs, RFAs (with the right formula for each player), who turns 27 and hits the auction, the model's call, 2027-28 cap outlook at $113.5M, and a priced preview of the UFA auction.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>8</span></div>
+</section>
+
+<!-- ============================ AUCTION -->
+<section class="page">
+  <div class="kicker">Next summer</div>
+  <h2>🔨 Auction War Room</h2>
+  <p class="lede">Get ready for the 2027 UFA auction: every team's budget, the whole player pool with projected prices, and a plan for your team.</p>
+  <img class="shot" src="{{img:auction}}">
+  <div class="cap">Budgets and max bids for all 14 teams, targets that fit your team and your budget, "nominate early" ideas to drain rivals' cap, your hometown-discount players, and the pool with prices and the contract length each price implies.</div>
+  <div class="row">
+    <div><h3>How prices are projected</h3><p>Calibrated on this summer's auction (62 signings, $147.9M spent). Owners paid about 3-4× more per projected win for players under 27, so prices follow each player's next three seasons. They also scale with how much cap space the league will have next summer. Treat them as a guide; the 2026 auction had no true stars.</p></div>
+    <div><h3>During the auction</h3><p>Tap <b>Mark sold</b> as players go: budgets update and the remaining prices re-adjust to the money and talent left. The <b>hometown discount</b> (10% off for the team that held a player from the trade deadline to season's end) is shown for every player.</p></div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>9</span></div>
+</section>
+
+<!-- ============================ PROSPECTS -->
+<section class="page">
+  <div class="kicker">Prospects & drafts</div>
+  <h2>Graduations, boards and a mock draft</h2>
+  <div class="row" style="margin-top:8px">
+    <div><img class="shot" src="{{img:prospects}}"><div class="cap">🌱 Prospects & MNR: every MNR player's career GP, projected graduation week and date, prospect rankings and team pipelines.</div></div>
+    <div><img class="shot" src="{{img:board2027}}"><div class="cap">🎯 Draft Center: the 2026 NHL draft with scouting notes, our league drafts, and 2027-2029 boards from public rankings.</div></div>
+  </div>
+  <img class="shot" src="{{img:mock}}">
+  <div class="cap">🧪 Mock Draft: the 2027 league draft in projected order (traded picks go to their owners). You pick for your team; the other GMs pick by value and need. Hit "New mock" for a different outcome.</div>
+  <div class="note"><b>Graduation rule refresher:</b> an MNR player graduates at 82 career NHL games (41 for goalies). He stays at $0 for the rest of that season and signs a $1.5M ELC (or is released) in the offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can't go back.</div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>10</span></div>
+</section>
+
+<!-- ============================ FUN -->
+<section class="page">
+  <div class="kicker">Just for fun</div>
+  <h2>Awards race, Team Wrapped and contention windows</h2>
+  <p class="lede">Bragging rights, backed by numbers. Everything here fills in with real results as the season goes.</p>
+  <img class="shot" src="{{img:awards}}">
+  <div class="cap">🏅 Awards race: MVP, contract of the year, rookie of the year, trade of the year, pickup of the year and a luck meter (category wins vs what was expected), plus 🎁 Team Wrapped, a season recap card for any team.</div>
+  <div class="row">
+    <div><img class="shot" src="{{img:windows}}"><div class="cap">📈 Contention windows: projected strength of every roster, season by season. Who's built for now, who's built for 2029?</div></div>
+    <div><img class="shot" src="{{img:wrapped}}"><div class="cap">🎁 Team Wrapped for one team: record, MVP, best bargain, top prospect, trades, moves, cap and luck.</div>
+      <div class="tip">Share a team's Wrapped card or any trade idea with a link: the address bar always holds the exact view.</div></div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>11</span></div>
+</section>
+
+<!-- ============================ RULES -->
+<section class="page">
+  <div class="kicker">Cheat sheet</div>
+  <h2>League rules, as the app uses them</h2>
+  <p class="lede">Every number in the app follows these. The commissioner keeps them in one settings file, so they stay current.</p>
+  <table class="rules">
+    <tr><td>Scoring</td><td>15 weekly head-to-head categories. Skaters: Pt-D (points by defensemen), G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor. Goalies: W, GAA (lower wins), SV%, SHO. Standings = total category W-L-T.</td></tr>
+    <tr><td>Lineups</td><td>Lock weekly when the Fantrax scoring period starts. 12 F / 6 D / 2 G starters + 3 bench. MNR players can be started.</td></tr>
+    <tr><td>Goalie minimum</td><td>Fewer than 2 goalie games in a week loses all four goalie categories.</td></tr>
+    <tr><td>Playoffs</td><td>8 teams, no byes, weeks 25-27 (Mar 22 - Apr 10, 2027). Division winners are seeds 1-2, then by record. 1v8, 4v5, 3v6, 2v7.</td></tr>
+    <tr><td>Salary cap</td><td>$104M (2026-27), $113.5M (2027-28), $127.5M projected for 2028-29 (NHL's estimate). Contracts: BID, RFA1, ELC1 ($1.5M), MNR ($0), FA.</td></tr>
+    <tr><td>MNR graduation</td><td>82 career NHL GP (skaters) / 41 (goalies). Stays $0 the rest of that season; ELC ($1.5M, 1 or 2 years) or release in the offseason. Active-roster graduates can't be sent down.</td></tr>
+    <tr><td>When an ELC is up</td><td>Release, or re-sign: 2 yrs $2.5M · 3 yrs $4.0M · 4 yrs $5.5M · 5 yrs $7.0M · 6 yrs $9.0M · or one more ELC year at $1.75M (then UFA).</td></tr>
+    <tr><td>Post-ELC RFA</td><td>Under 27 on June 30: re-sign 2-6 years at 1.5× (2-4 yrs) or 1.75× (5-6 yrs) of the base; the base can't go down. Offer sheets allowed (offers or trade packages for his rights). 27+: UFA auction.</td></tr>
+    <tr><td>RFA on an auction contract</td><td>BID and RFA1 players use the league formula (S = salary): 1 yr S+1 · 2 yrs 1.5S+1 · 3 yrs 1.5S+2 · 4 yrs 1.5S+3 · 5 yrs 1.75S+4 · 6 yrs 1.75S+5 ($M; 2027 numbers not final).</td></tr>
+    <tr><td>UFA auction</td><td>The winning bid sets the term: $1-2.9M 1 yr · $3-4.4M 2 · $4.5-7.4M 3 · $7.5-9.9M 4 · $10-13.9M 5 · $14M+ 6.</td></tr>
+    <tr><td>Hometown discount</td><td>The team that had the player from the trade deadline to season's end pays 10% less than its winning bid (the bid still sets the term).</td></tr>
+    <tr><td>Dead cap</td><td>Dropping a BID, RFA1 or ELC contract keeps 50% of the salary for every remaining year. Dropping an FA contract is free.</td></tr>
+    <tr><td>League draft</td><td>3 rounds. Reverse standings: worst record picks 1st, champion 14th. Picks exist through 2029; a year is added after each draft.</td></tr>
+  </table>
+  <div class="grp" style="margin-top:14px">Key dates</div>
+  <div class="row" style="font-size:9pt">
+    <div><b>Tue Sep 29, 5:00 PM ET</b><br>Week 1 lineups lock</div>
+    <div><b>Weeks 1-24</b><br>Regular season (week 19 is two weeks, Feb 1-14)</div>
+    <div><b>Mar 22 - Apr 10, 2027</b><br>Playoffs (3 rounds)</div>
+    <div><b>Summer 2027</b><br>ELC/RFA decisions, UFA auction, league draft</div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>12</span></div>
+</section>
+
+<!-- ============================ BACK -->
+<section class="page back">
+  <div class="kicker" style="color:#ffb77a">How it works</div>
+  <h2>Where the numbers come from</h2>
+  <div class="row" style="margin-top:10px">
+    <div>
+      <p><b>Fantrax</b> (live): rosters, contracts, salaries, lineup slots, standings, divisions, draft picks. Fantrax is always the official record.</p>
+      <p><b>NHL public data</b> (nightly): stats, career games, schedules (84 games, real games per fantasy week), and this season's box scores for the live scoreboard.</p>
+      <p><b>Projections</b>: Fantrax's 2026-27 projections, with Takeaways and Corsi projected by the app, blended with real stats once games start.</p>
+      <p><b>Research</b>: injuries and line combinations from Daily Faceoff; draft boards from public rankings; the league's contract sheet and trade history.</p>
+    </div>
+    <div>
+      <p><b>Values</b>: WAR = expected category wins above a replacement player. Dynasty value adds up to 7 seasons with age curves, our contract rules and cap cost.</p>
+      <p><b>Simulations</b>: every weekly matchup is simulated category by category (goalie minimum included) on the real schedule, thousands of times.</p>
+      <div class="note">Projections and odds are estimates, not facts. The <b>Rules & Methods</b> page in the app explains every formula, and <b>Data & Updates</b> shows the sync status and lets you export anything to CSV.</div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:22px; align-items:center">
+    <div class="phones" style="flex:0 0 auto; justify-content:flex-start"><img src="{{img:phone_home}}" style="width:1.75in;border-color:#30363d"><img src="{{img:phone_team}}" style="width:1.75in;border-color:#30363d"></div>
+    <div>
+      <div class="kicker" style="color:#ffb77a">Made for your phone</div>
+      <p style="color:#b1bac4">Every page works on a phone. Add it to your home screen and it opens like an app.</p>
+      <img class="qr" src="{{qr}}" style="margin:8px 0 10px">
+      <div class="kicker" style="color:#ffb77a">Scan or tap</div>
+      <a class="url" style="display:inline-block;white-space:nowrap;font-size:12pt;font-weight:800;background:linear-gradient(90deg,#f0883e,#d9632a);padding:9px 16px;border-radius:10px" href="{{site}}">gavinpastreich.github.io/dynasty-puck</a>
+      <p style="margin-top:12px;color:#b1bac4">Free, no login, no ads. Your team pick and settings stay on your device. Questions or ideas? Ask the commissioner.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Dynasty Puck HQ · league guide · {{date}}</span><span>13</span></div>
+</section>
+</body>
+</html>

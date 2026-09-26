@@ -78,3 +78,8 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
 - Zacha's "RFA" cell in the contract sheet is wrong (he's 29); the age rule already sends him to the auction.
 - RFAs on auction contracts (BID -> RFA1 -> ...) keep the sheet formula; the constitution premium rule is only for
   post-ELC players. Numbers for 2027 not final; commissioner: base them on this past summer's (+$1M) formula.
+
+## League guide PDF (assets/Dynasty-Puck-HQ-Guide.pdf)
+Regenerate after big changes: `node tools/guide/shoot.js <work>/shots` (the 'live' shot needs a temporary
+`DP_SCORE_TEST=2026-03-02:2026-03-05:7` build, restored afterwards), then `python3 tools/guide/build_guide.py <work> --font Inter-latin.woff2`.
+Text lives in tools/guide/guide.html. Linked from the site menu.
