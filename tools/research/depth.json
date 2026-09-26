@@ -573,7 +573,7 @@
    ],
    "pk2": [
     "Sam Steel",
-    "Joel Kiviranta",
+    "Colin Blackwell",
     "Thomas Harley",
     "Tyler Myers"
    ],
@@ -595,7 +595,7 @@
    "f4": [
     "Oskar Back",
     "Radek Faksa",
-    "Joel Kiviranta"
+    "Colin Blackwell"
    ],
    "d1": [
     "Thomas Harley",
@@ -892,18 +892,18 @@
    "source": "Training Camp 2026",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "pp1": [
-    "Ryan Hartman",
-    "Joel Eriksson Ek",
     "Matt Boldy",
+    "Joel Eriksson Ek",
+    "Maxim Shabanov",
     "Quinn Hughes",
     "Kirill Kaprizov"
    ],
    "pp2": [
     "Blake Coleman",
     "Danila Yurov",
-    "Bobby Brink",
+    "Ryan Hartman",
     "Brock Faber",
-    "Maxim Shabanov"
+    "Bobby Brink"
    ],
    "pk1": [
     "Michael McCarron",
@@ -918,14 +918,14 @@
     "Jared Spurgeon"
    ],
    "f1": [
-    "Kirill Kaprizov",
-    "Danila Yurov",
-    "Maxim Shabanov"
-   ],
-   "f2": [
     "Blake Coleman",
     "Joel Eriksson Ek",
     "Matt Boldy"
+   ],
+   "f2": [
+    "Kirill Kaprizov",
+    "Danila Yurov",
+    "Maxim Shabanov"
    ],
    "f3": [
     "Yakov Trenin",
@@ -1092,7 +1092,7 @@
   },
   "NJD": {
    "team": "New Jersey Devils",
-   "updated": "2026-09-17",
+   "updated": "2026-09-26",
    "source": "Training Camp 2026",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "pp1": [
@@ -1119,7 +1119,7 @@
     "Dawson Mercer",
     "Jesper Bratt",
     "Jonas Siegenthaler",
-    "Johnathan Kovacevic"
+    "Dougie Hamilton"
    ],
    "f1": [
     "Anthony Mantha",
@@ -1151,7 +1151,7 @@
    ],
    "d3": [
     "Brenden Dillon",
-    "Johnathan Kovacevic"
+    "Declan Chisholm"
    ],
    "goalies": [
     "Jake Allen",
@@ -1263,9 +1263,9 @@
     "Alexis Lafrenière"
    ],
    "f2": [
-    "Oliver Bjorkstrand",
+    "Pavel Dorofeyev",
     "J.T. Miller",
-    "Pavel Dorofeyev"
+    "Oliver Bjorkstrand"
    ],
    "f3": [
     "Will Cuylle",

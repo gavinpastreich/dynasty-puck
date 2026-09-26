@@ -219,18 +219,6 @@
    "holdout": false
   },
   {
-   "name": "Colin Blackwell",
-   "team": "DAL",
-   "status": "DTD",
-   "injury": "",
-   "ret": "Day-to-day",
-   "detail": "Blackwell is day-to-day with a lower-body injury.",
-   "date": "2026-09-21",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Jake Oettinger",
    "team": "DAL",
    "status": "DTD",
@@ -250,18 +238,6 @@
    "ret": "",
    "detail": "Duchene (undisclosed) is expected to miss the first two days of training camp for maintenance.",
    "date": "2026-09-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Tyler Seguin",
-   "team": "DAL",
-   "status": "DTD",
-   "injury": "knee",
-   "ret": "",
-   "detail": "Seguin (knee) has been cleared for contact.",
-   "date": "2026-09-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false

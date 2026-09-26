@@ -1,6 +1,6 @@
-Dynasty Puck HQ build 2026-09-26T01:15:56
+Dynasty Puck HQ build 2026-09-26T01:34:16
 Fantrax: synced 596 rostered players, 126 future picks, 14 teams in standings
-Fantrax sync (2026-09-26T01:15:57+00:00): 596 rostered; changes vs CSV: none
+Fantrax sync (2026-09-26T01:34:18+00:00): 596 rostered; changes vs CSV: none
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1258 players (596 rostered)
 NHL id match: {'index': 1150, 'search': 106, None: 2}; unmatched 2 (rostered: 0)
@@ -46,7 +46,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
   Tk   Fantrax 2025-26 == NHL: 935/935
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
-Depth (Daily Faceoff, 2026-09-26): 1205 line/PP/goalie tags; injuries matched 65/65
+Depth (Daily Faceoff, 2026-09-26): 1205 line/PP/goalie tags; injuries matched 63/63
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay
