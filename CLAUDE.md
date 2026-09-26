@@ -27,7 +27,14 @@ list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
 - 15 weekly H2H categories. Skaters: Pt-D, G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor.
   Goalies: W, GAA (lower wins), SV%, SHO. Season standings = total category W-L-T.
 - Lineups lock **weekly**: 12F / 6D / 2G starters + 3 bench. MNR-contract players can be started.
-- Cap $104M (2026-27). Contracts: BID, RFA1, ELC1 ($1.5M), MNR ($0), FA.
-- MNR graduation uses **career** NHL GP: 82 skaters / 41 goalies. A graduated player must sign an ELC
-  or be dropped. One not graduated by the end of the regular season can stay at $0.
+- Cap follows the NHL cap: $104M (2026-27), $113.5M (2027-28), $127.5M projected (2028-29).
+  Contracts: BID, RFA1, ELC1 ($1.5M), MNR ($0), FA.
+- MNR graduation uses **career** NHL GP: 82 skaters / 41 goalies. A player who graduates mid-season stays at $0
+  and signs his ELC (or is dropped) in the offseason; if he's on the active roster when he graduates he can't be
+  moved back down to the minors. One not graduated by the end of the regular season can stay at $0.
+- Auction: winning bid sets the term (2026/2027 bands: $1-2.9M 1y, $3-4.4M 2y, $4.5-7.4M 3y, $7.5-9.9M 4y,
+  $10-13.9M 5y, $14M+ 6y). ELC up: 2y $2.5M / 3y $4M / 4y $5.5M / 5y $7M / 6y $9M / 1-yr ELC ext $1.75M then UFA.
+  RFA up (under 27 on June 30): 1.5x (2-4y) or 1.75x (5-6y) premium on a base that can't drop; 27+ = UFA.
+  Initial-auction RFAs use the contract-sheet formula (see docs/BUILD_NOTES.md).
+- Fantrax league `cbufqc8umo5xrjzu`: public API at `https://www.fantrax.com/fxea/general/` (tools/fantrax_api.py).
 - Raw data: `raw/2026-27/`. Fantrax's "+/-" column is roster-% change, not plus-minus.

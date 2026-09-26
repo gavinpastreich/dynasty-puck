@@ -158,15 +158,15 @@
       capRows.push({ t: t, b: capB, a: capA });
       var top = g.byCat.map(function (x, c) { return [c, x]; }).filter(function (x) { return Math.abs(x[1]) > 0.15; }).sort(function (x, y) { return Math.abs(y[1]) - Math.abs(x[1]); }).slice(0, 4);
       h += '<tr><td><b>' + esc(U.teamName(t)) + '</b></td><td class="num">' + U.fmt(v.in, 1) + '</td><td class="num">' + U.fmt(v.out, 1) + '</td><td class="num">' + ui.delta(v.net, 1) + '</td><td class="num">' + ui.delta(g.total, 1) + '</td><td class="num">' + U.ord(rb.rank) + ' → <b>' + U.ord(ra.rank) + '</b></td>' +
-        '<td class="num ' + (capA[0].total > E.CAP ? 'bad' : '') + '">' + U.m(capA[0].total) + ' <span class="faint small">(' + U.sm(capA[0].total - capB[0].total) + ')</span></td><td class="num">' + U.m(capA[1].total) + '</td><td class="num">' + rosters[t].length + '</td><td class="small">' + top.map(function (x) { return ui.delta(x[1], 1) + ' ' + esc(E.CATS[x[0]].l); }).join(' · ') + '</td></tr>';
+        '<td class="num ' + (capA[0].space < 0 ? 'bad' : '') + '">' + U.m(capA[0].total) + ' <span class="faint small">(' + U.sm(capA[0].total - capB[0].total) + ')</span></td><td class="num">' + U.m(capA[1].total) + '</td><td class="num">' + rosters[t].length + '</td><td class="small">' + top.map(function (x) { return ui.delta(x[1], 1) + ' ' + esc(E.CATS[x[0]].l); }).join(' · ') + '</td></tr>';
     });
     h += '</tbody></table></div><p class="small muted">Value = dynasty value under the lens (discounted category wins). Δ exp. cat wins re-optimizes each team\'s weekly lineups over all 24 weeks against its real schedule. Over-cap cells in red.</p>' +
       '<div class="controls"><button class="btn" id="tr-odds">🎲 Playoff odds before/after</button><button class="btn" id="tr-share">🔗 Copy share link</button><span id="tr-odds-out" class="small"></span></div></div>';
     // multi-year cap
     h += '<div class="card" style="margin-top:14px"><h2>Multi-year cap impact</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y + '</th>'; }).join('') + '</tr></thead><tbody>' +
       capRows.map(function (r) {
-        return '<tr><td><b>' + esc(r.t) + '</b></td>' + r.a.map(function (y, i) { var d = y.total - r.b[i].total; return '<td class="num ' + (y.total > E.CAP ? 'bad' : '') + '">' + U.m(y.total, 1) + (Math.abs(d) > 0.001 ? '<br><span class="small ' + (d > 0 ? 'bad' : 'good') + '">' + U.sm(d, 1) + '</span>' : '') + '</td>'; }).join('') + '</tr>';
-      }).join('') + '</tbody></table></div><p class="small muted">Committed salary after the trade (future caps assumed $' + E.CAP + 'M). Expiring RFA/UFA seasons are not counted.</p></div>';
+        return '<tr><td><b>' + esc(r.t) + '</b></td>' + r.a.map(function (y, i) { var d = y.total - r.b[i].total; return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.total, 1) + (Math.abs(d) > 0.001 ? '<br><span class="small ' + (d > 0 ? 'bad' : 'good') + '">' + U.sm(d, 1) + '</span>' : '') + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</tbody></table></div><p class="small muted">Committed salary after the trade (cap $' + E.capY(0) + 'M, $' + E.capY(1) + 'M next season, $' + E.capY(2) + 'M projected after). Expiring RFA/UFA seasons are not counted.</p></div>';
     // dynasty value by year
     var yearsVal = teams.map(function (t) {
       return E.YEARS.map(function (_, y) {

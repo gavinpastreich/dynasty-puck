@@ -73,7 +73,7 @@
     else h += stat('Career NHL GP', U.fmt(p.cgp || 0), p.cgps === 'est' ? 'estimate (2025-26 only)' : 'regular season, NHL API', '');
     h += '</div>';
     if (grad && p.inj && grad.week !== null && grad.week < 8) h += '<div class="callout warn">Injury/absence flag: projected to graduate around week ' + (grad.week + 1) + ', but currently listed ' + esc(p.inj[4] ? 'as a contract holdout' : p.inj[0] + (p.inj[2] ? ' (' + p.inj[2] + ')' : '')) + '. Missed games push graduation back, which keeps him at $0 longer.</div>';
-    if (grad && grad.status === 'graduated') h += '<div class="callout warn">Has ' + p.cgp + ' career NHL games, past the ' + grad.thr + '-game line. Under league rules a graduated player must sign an ELC ($1.5M) or be dropped.</div>';
+    if (grad && grad.status === 'graduated') h += '<div class="callout warn">Has ' + p.cgp + ' career NHL games, past the ' + grad.thr + '-game line. He stays at $0 for the rest of the season and signs an ELC ($1.5M) in the offseason (or is dropped). If he\'s on the active roster he can\'t be moved back down to the minors.</div>';
 
     // categories: 2025-26 actual vs 2026-27 projection
     var labels = p.G ? GKL : SKL;
@@ -108,6 +108,7 @@
     h += '<tr><td>Cap hit</td>' + p.yCost.map(function (c) { return '<td class="num">' + (c === null ? '<span class="faint">–</span>' : U.m(c, c < 10 ? 2 : 1)) + '</td>'; }).join('') + '</tr>';
     h += '<tr><td>Status</td>' + p.yStatus.map(function (s) { return '<td class="num small">' + esc(s === 'contract' ? '' : s) + '</td>'; }).join('') + '</tr>';
     h += '<tr><td>WAR</td>' + p.yWar.map(function (w) { return '<td class="num">' + U.fmt(w, 1) + '</td>'; }).join('') + '</tr></tbody></table></div>';
+    if (DP.decisionHtml) h += DP.decisionHtml(p);
     if (p._pros) {
       var pr = p._pros;
       h += '<p class="note">Prospect model: ' + esc(pr.basis) + (pr.line ? ' · best recent line ' + esc(U.season(pr.line.season)) + ' ' + esc(pr.line.lg) + ' ' + pr.line.pts + ' pts in ' + pr.line.gp + ' GP (NHLe pace ' + U.fmt(pr.line.pace, 0) + ' pts/82)' : '') +

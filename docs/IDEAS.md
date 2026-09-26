@@ -5,9 +5,8 @@ lineup-usage table, trade balancer, salary-vs-WAR bargain chart, league-implied 
 draft grades, graduation delay from injuries/holdouts, nightly auto-refresh workflow.
 
 ## Next up (high value, feasible)
-1. **Fantrax auto-sync.** Fantrax exposes public league endpoints (`/fxea/general/getTeamRosters?leagueId=…`,
-   `getStandings`, `getLeagueInfo`). With the league ID, the nightly job could pull rosters, contracts and standings,
-   so no more manual CSV exports. *Needs: the Fantrax league ID.*
+1. ~~Fantrax auto-sync~~ **done 2026-09-26** (nightly + live). Next on top of it: Fantrax ADP (`getAdp`) as a
+   market signal next to our values, and a transactions timeline with dead-cap bookkeeping from the moves log.
 2. **Live weekly scoreboard.** During the season, pull NHL game logs for every starter each night and show the
    current category score of every matchup plus the projected final (the rest of the week simulated).
 3. **Rest-of-season projections.** Blend each player's 2026-27 stats-to-date with the preseason projection

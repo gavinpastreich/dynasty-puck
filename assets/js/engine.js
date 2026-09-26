@@ -97,6 +97,7 @@
     calibrate();
     computeValues();
     computeDynasty();
+    calibrateAuction();
     E.baseline = E.leagueWeeks();
     E.expStandings = E.expectedStandings(E.baseline);
     E.initMs = Date.now() - t0;
@@ -592,32 +593,135 @@
     return { war: years, pros: pros };
   };
 
-  // contract cost by year ($M) with MNR graduation, ELC, RFA extension, UFA exit
-  E.costPath = function (p, war) {
-    var R = E.RULES, out = [], status = [], ext = R.ext2027;
-    var cy = p.cy.slice(), lastSal = p.sal26 || R.minSalary, mode = null, extLeft = 0, extCost = 0;
-    var grad = E.gradYear(p);
-    for (var y = 0; y < 7; y++) {
-      var v = cy[y];
-      if (!p.gm && p.ct === 'FA') { out.push(null); status.push('FA'); continue; }
-      if (p.ct === 'MNR' && mode === null) {
-        if (grad === null || y < grad) { out.push(0); status.push('MNR'); continue; }
-        mode = 'ELC'; extLeft = 2; lastSal = R.elcSalary;
-      }
-      if (mode === 'ELC') {
-        if (extLeft > 0) { out.push(R.elcSalary); status.push('ELC'); extLeft--; continue; }
-        mode = 'RFA-ext'; extLeft = 3; extCost = ext.mult[2] * lastSal + ext.base[2];
-      }
-      if (mode === null && typeof v === 'number') { out.push(v); status.push(y === 0 ? p.ct : 'contract'); lastSal = v; continue; }
-      if (mode === null && v === 'RFA') { mode = 'RFA-ext'; extLeft = 3; extCost = ext.mult[2] * lastSal + ext.base[2]; }
-      if (mode === 'RFA-ext') {
-        if (extLeft > 0) { out.push(extCost); status.push('RFA ext'); extLeft--; continue; }
-        mode = 'UFA';
-      }
-      out.push(null); status.push('UFA');
-      mode = 'UFA';
+  // ---------------------------------------------------------------- contract rules (commissioner, 2026-09-26)
+  // cap by season (index 0 = 2026-27); market $/win scales with the cap
+  E.capY = function (y) { var c = DP.meta.capByYear || []; return c.length ? c[Math.max(0, Math.min(y, c.length - 1))] : E.CAP; };
+  E.dpwY = function (y) { return E.dollarPerWAR * E.capY(y) / E.capY(0); };
+  // age on June 30 of the offseason before season y (y = 1 -> June 30, 2027): RFA rights need age < 27
+  E.ageJune30 = function (p, y) {
+    if (p.dob) return ageOn(p.dob, (2026 + y) + '-06-30');
+    return (p.age || 27) - 0.21 + y;
+  };
+  // auction salary bands (winning bid sets the term). 2026 and 2027 auctions: the $104M bands; later ones are
+  // assumed to scale with the cap (not a league rule yet)
+  E.bands = function (y) {
+    var B = (E.RULES.bands || {})['2026'];
+    if (!B) return [[1, null, 1]];
+    if (y <= 1) return B.bands;
+    var f = E.capY(y) / B.cap;
+    return B.bands.map(function (r) { return [Math.round(r[0] * f * 10) / 10, r[1] === null ? null : Math.round(r[1] * f * 10) / 10, r[2]]; });
+  };
+  E.bandTerm = function (price, y) {
+    var b = E.bands(y), term = 1;
+    b.forEach(function (r) { if (price >= r[0] - 1e-9) term = r[2]; });
+    return term;
+  };
+  function r3(x) { return Math.round(x * 1000) / 1000; }
+  // re-sign options when a deal ends. kinds:
+  //  elcUp   - ELC is up: 2y $2.5M, 3y $4.0M, 4y $5.5M, 5y $7.0M, 6y $9.0M, or 1 more ELC year at $1.75M (then UFA)
+  //  rfaElc  - an RFA deal signed off an ELC is up (under 27): base can't drop; 1.5x premium for 2-4 yrs, 1.75x for 5-6
+  //  rfaInit - initial-auction lineage (contract sheet formula): premium x current salary + add-on by length
+  E.resignOptions = function (st) {
+    var R = E.RULES, out = [], menu = R.elcMenu || { 2: 2.5, 3: 4, 4: 5.5, 5: 7, 6: 9 }, prem = R.rfaPrem || [1, 1.5, 1.5, 1.5, 1.75, 1.75];
+    if (st.kind === 'elcUp') {
+      out.push({ L: 1, price: R.elcExt || 1.75, next: 'ufa', label: '1-yr ELC extension, then UFA' });
+      [2, 3, 4, 5, 6].forEach(function (L) { out.push({ L: L, price: menu[L], base: menu[L], next: 'rfa', lineage: 'elc', label: L + ' yrs (post-ELC)' }); });
+    } else if (st.kind === 'rfaElc') {
+      [2, 3, 4, 5, 6].forEach(function (L) { var b = Math.max(st.base, menu[L]); out.push({ L: L, price: r3(b * prem[L - 1]), base: b, next: 'rfa', lineage: 'elc', label: L + ' yrs RFA' }); });
+    } else {
+      var sc = R.ext2027;
+      for (var L = 1; L <= 6; L++) out.push({ L: L, price: r3(sc.mult[L - 1] * st.sal + sc.base[L - 1]), next: 'rfa', lineage: 'init', label: L + ' yr' + (L > 1 ? 's' : '') + ' RFA' });
     }
-    return { cost: out, status: status, grad: grad };
+    return out;
+  };
+  // surplus of an option starting in season y: projected market value minus price, discounted, over its term (within 7 seasons)
+  E.optionValue = function (p, o, y, war) {
+    war = war || p.yWar; var v = 0, mn = E.RULES.minSalary;
+    for (var k = 0; k < o.L; k++) { // years past 2032-33 reuse the last projected season so long deals aren't cut short
+      var yy = Math.min(6, y + k);
+      v += Math.pow(E.DISCOUNT, k) * (mn + Math.max(0, war[yy]) * E.dpwY(yy) - o.price);
+    }
+    return v;
+  };
+
+  // contract cost by year ($M): current deal, MNR -> ELC (the offseason after graduating), ELC/RFA decisions, UFA exit.
+  // At each decision the model takes the option with the best surplus, or lets him walk if none is positive.
+  E.costPath = function (p, war) {
+    var R = E.RULES, cost = [], status = [], dec = [], y = 0, grad = E.gradYear(p);
+    var push = function (c, s) { cost.push(c); status.push(s); y++; };
+    if (!p.gm) { while (y < 7) push(null, 'FA'); return { cost: cost, status: status, grad: grad, dec: dec }; }
+    var st = null;
+    if (p.ct === 'MNR') {
+      var elcStart = grad === null ? 7 : grad + 1; // stays $0 through the season he graduates; ELC signed that offseason
+      while (y < 7 && y < elcStart) push(0, 'MNR');
+      for (var k = 0; k < (R.elcYears || 2) && y < 7; k++) push(R.elcSalary, 'ELC');
+      st = { kind: 'elcUp' };
+    } else {
+      while (y < 7 && typeof p.cy[y] === 'number') push(p.cy[y], y === 0 ? p.ct : 'contract');
+      var mark = y < 7 ? p.cy[y] : null, last = y > 0 && typeof p.cy[y - 1] === 'number' ? p.cy[y - 1] : (p.sal26 || R.minSalary);
+      if (p.ct === 'ELC1') st = { kind: 'elcUp' };
+      else if (mark === 'RFA') st = { kind: 'rfaInit', sal: last };
+    }
+    while (y < 7) {
+      if (st && st.kind !== 'elcUp' && E.ageJune30(p, y) >= (R.rfaAge || 27)) { dec.push({ y: y, kind: st.kind, pick: null, why: 'age' }); st = null; }
+      if (!st) { while (y < 7) push(null, 'UFA'); break; }
+      var opts = E.resignOptions(st), best = null;
+      opts.forEach(function (o) { o.v = E.optionValue(p, o, y, war); if (!best || o.v > best.v) best = o; });
+      var pick = best && best.v > 0 ? best : null;
+      dec.push({ y: y, kind: st.kind, opts: opts, pick: pick });
+      if (!pick) { st = null; continue; }
+      for (var k2 = 0; k2 < pick.L && y < 7; k2++) push(pick.price, st.kind === 'elcUp' && pick.L === 1 ? 'ELC ext' : 'RFA ' + pick.L + 'yr');
+      st = pick.next !== 'rfa' ? null : pick.lineage === 'elc' ? { kind: 'rfaElc', base: pick.base } : { kind: 'rfaInit', sal: pick.price };
+    }
+    return { cost: cost, status: status, grad: grad, dec: dec };
+  };
+  // the decision a team faces when a player's current deal ends (first one in the window), with every option priced
+  E.nextDecision = function (p) { return p.yDec && p.yDec.length ? p.yDec[0] : null; };
+
+  // UFA auction price model, calibrated on the 2026 offseason auction (62 BID contracts signed in 2026):
+  // price = $1M + k x (value over the next 3 seasons) x (league cap space at that auction / space at the 2026 auction).
+  // The 2026 market paid far more per win for young players, which the 3-season value captures.
+  E.auctionValue = function (p, y) {
+    var w = p.yWar || [], v = 0;
+    for (var k = 0; k < 3 && y + k < 7; k++) v += Math.pow(E.DISCOUNT, k) * Math.max(0, w[y + k] || 0);
+    return v;
+  };
+  function calibrateAuction() {
+    var sold = E.P.filter(function (p) { return p.gm && p.ct === 'BID' && p.c && p.c.signed === 2026; });
+    var sv = 0, svv = 0, spent = 0;
+    sold.forEach(function (p) { var v = E.auctionValue(p, 0); sv += v * (p.sal26 - 1); svv += v * v; spent += p.sal26; });
+    var k = svv ? sv / svv : 0.3;
+    // spread: actual price / modeled price among the 2026 sales (middle half)
+    var ratios = sold.map(function (p) { return p.sal26 / (1 + k * E.auctionValue(p, 0)); }).sort(function (a, b) { return a - b; });
+    var q = function (f) { return ratios.length ? ratios[Math.floor(f * (ratios.length - 1))] : 1; };
+    var pay = sum(E.P.filter(function (p) { return p.gm; }).map(function (p) { return p.sal26; }));
+    var faCt = sum(E.P.filter(function (p) { return p.gm && p.ct === 'FA'; }).map(function (p) { return p.sal26; }));
+    var space26 = E.teams.length * E.capY(0) - (pay - spent - faCt);
+    // supply: value of what was on the market (sold players + everyone still unowned)
+    var unowned = function (y) { return sum(E.P.filter(function (p) { return !p.gm && p.r; }).map(function (p) { return E.auctionValue(p, y); })); };
+    var supply26 = sum(sold.map(function (p) { return E.auctionValue(p, 0); })) + unowned(0);
+    // 2027: rostered players whose rights end entering 2027-28 (contract up, released or aged out) + the unowned pool
+    var hit27 = E.P.filter(function (p) { return p.gm && p.yStatus && p.yStatus[1] === 'UFA'; });
+    var supply27 = sum(hit27.map(function (p) { return E.auctionValue(p, 1); })) + unowned(1);
+    var sp = E.leagueSpace(1), raw = (sp.total / Math.max(1, space26)) / (supply27 / Math.max(1, supply26));
+    E.auction = { n: sold.length, spent: spent, k: k, space26: space26, lo: q(0.25), hi: q(0.75), space27: sp.total, spaceByTeam27: sp.byTeam,
+      supply26: supply26, supply27: supply27, n27: hit27.length, scale27: Math.max(0.6, Math.min(2, raw)), scaleRaw: raw };
+  }
+  // projected league cap space entering the auction before season y (committed + modeled ELC/RFA costs)
+  E.leagueSpace = function (y) {
+    var out = {}, tot = 0;
+    E.teams.forEach(function (t) {
+      var c = sum(E.rosters[t].map(function (p) { return p.yCost && typeof p.yCost[y] === 'number' ? p.yCost[y] : 0; }));
+      out[t] = E.capY(y) - c; tot += Math.max(0, out[t]);
+    });
+    return { byTeam: out, total: tot };
+  };
+  // projected price at the 2027 auction (y = 1), or what he'd have gone for in the 2026 auction (y = 0)
+  E.auctionPrice = function (p, y) {
+    var A = E.auction; if (!A) return null;
+    y = y === undefined ? 1 : Math.min(1, y);
+    var scale = y === 0 ? 1 : A.scale27, mid = Math.max(1, 1 + A.k * E.auctionValue(p, y) * scale);
+    return { mid: mid, lo: Math.max(1, mid * A.lo), hi: Math.max(1, mid * A.hi), term: E.bandTerm(mid, y), scale: scale };
   };
 
   // season index (0 = 2026-27) in which an MNR player reaches the career-GP threshold; null if not in the window
@@ -644,7 +748,7 @@
       p._pros = pr.pros;
       p.yWar = pr.war;
       var cp = E.costPath(p, pr.war);
-      p.yCost = cp.cost; p.yStatus = cp.status; p.grad = cp.grad;
+      p.yCost = cp.cost; p.yStatus = cp.status; p.grad = cp.grad; p.yDec = cp.dec;
       var dv = 0, sur = 0, tal = 0;
       p.yVal = [];
       for (var y = 0; y < 7; y++) {
@@ -652,16 +756,16 @@
         if (c === null && p.gm) { p.yVal.push(0); continue; }           // UFA: rights end
         if (!p.gm && y > 0) { p.yVal.push(0); continue; }             // free agent: only this season is controllable
         if (c === null) c = minS;                                     // free agent: signable near the minimum
-        var cap = Math.max(0, c - minS) / dpw;                        // cap cost in win units
+        var cap = Math.max(0, c - minS) / E.dpwY(y);                  // cap cost in win units (a $ buys less as the cap rises)
         val = w - lam * cap;
-        if (cp.status[y] === 'RFA ext' && val < 0) val = 0;            // team simply declines the RFA
+        if (/^(RFA|ELC ext)/.test(cp.status[y]) && val < 0) val = 0;   // team simply declines the RFA
         if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {
-          val = Math.max(val, -lam * 0.5 * c / dpw);                  // can drop: 50% dead cap
+          val = Math.max(val, -lam * 0.5 * c / E.dpwY(y));            // can drop: 50% dead cap
         }
         p.yVal.push(val);
         dv += Math.pow(d, y) * val;
         tal += Math.pow(d, y) * w;
-        sur += Math.pow(d, y) * (w * dpw + minS - (c || 0));
+        sur += Math.pow(d, y) * (w * E.dpwY(y) + minS - (c || 0));
       }
       p.DV = dv; p.talent = tal; p.dSurplus = sur;
       p.pv = pr.pros ? pr.pros.peak : 0;
@@ -940,7 +1044,7 @@
   // committed cap by team and year ($M), plus dead cap entries (added by what-if tools)
   E.teamCap = function (team, roster, dead) {
     roster = roster || E.rosters[team];
-    var yrs = E.YEARS.map(function () { return { total: 0, byType: {}, n: 0 }; });
+    var yrs = E.YEARS.map(function (_, y) { return { total: 0, byType: {}, n: 0, cap: E.capY(y) }; });
     roster.forEach(function (p) {
       p.cy.forEach(function (v, y) {
         if (typeof v !== 'number') return;
@@ -952,6 +1056,7 @@
     (dead || []).forEach(function (d) {
       d.amt.forEach(function (a, y) { if (a) { yrs[y].total += a; yrs[y].byType.Dead = (yrs[y].byType.Dead || 0) + a; } });
     });
+    yrs.forEach(function (x) { x.space = x.cap - x.total; });
     return yrs;
   };
   E.deadCap = function (p) { // 50% of each remaining contract year's salary
@@ -976,9 +1081,10 @@
       if (c === null && p.gm) continue;
       if (!p.gm && y > 0) continue;
       if (c === null) c = minS;
-      var val = w - L.lam * Math.max(0, c - minS) / dpw;
-      if (p.yStatus[y] === 'RFA ext' && val < 0) val = 0;
-      if (p.yStatus[y] === 'contract' || p.yStatus[y] === p.ct) val = Math.max(val, -L.lam * 0.5 * c / dpw);
+      var dy = E.dpwY(y), val = w - L.lam * Math.max(0, c - minS) / dy;
+      if (/^(RFA|ELC ext)/.test(p.yStatus[y]) && val < 0) val = 0;
+      if (p.yStatus[y] === 'contract' || p.yStatus[y] === p.ct) val = Math.max(val, -L.lam * 0.5 * c / dy);
+      void dpw;
       v += Math.pow(L.disc, y) * val * (y === 0 ? L.now : 1);
     }
     return v;

@@ -62,7 +62,8 @@
     o = o || {};
     var W = o.width || 560, H = o.height || 240, padL = 44, padB = 26, padT = 10;
     var totals = cats.map(function (_, i) { return series.reduce(function (a, s) { return a + Math.max(0, s.values[i] || 0); }, 0); });
-    var max = Math.max(o.max || 0, Math.max.apply(null, totals), o.refLine || 0) * 1.05;
+    var refArr = Array.isArray(o.refLine) ? o.refLine : null;
+    var max = Math.max(o.max || 0, Math.max.apply(null, totals), refArr ? Math.max.apply(null, refArr) : (o.refLine || 0)) * 1.05;
     var ticks = niceTicks(0, max, 4), hi = ticks[ticks.length - 1];
     var py = function (v) { return padT + (1 - v / hi) * (H - padT - padB); };
     var band = (W - padL) / cats.length, bw = Math.min(o.barW || 30, band * 0.62);
@@ -85,7 +86,11 @@
       s += '</g><text class="axis" x="' + (x + bw / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + esc(c) + '</text>';
     });
     s += '<line class="base" x1="' + padL + '" x2="' + W + '" y1="' + py(0) + '" y2="' + py(0) + '"/>';
-    if (o.refLine) {
+    if (refArr) { // one cap per column (step line)
+      var d = '';
+      refArr.forEach(function (v, i) { var x0 = padL + i * band, x1 = x0 + band; d += (i ? 'L' : 'M') + x0 + ' ' + py(v) + 'L' + x1 + ' ' + py(v); });
+      s += '<path d="' + d + '" fill="none" stroke="var(--bad)" stroke-width="1.5"/><text x="' + (W - 2) + '" y="' + (py(refArr[refArr.length - 1]) - 5) + '" text-anchor="end" style="fill:var(--bad);font-size:11px">' + esc(o.refLabel || '') + '</text>';
+    } else if (o.refLine) {
       s += '<line x1="' + padL + '" x2="' + W + '" y1="' + py(o.refLine) + '" y2="' + py(o.refLine) + '" stroke="var(--bad)" stroke-width="1.5"/>' +
         '<text x="' + (W - 2) + '" y="' + (py(o.refLine) - 5) + '" text-anchor="end" style="fill:var(--bad);font-size:11px">' + esc(o.refLabel || '') + '</text>';
     }

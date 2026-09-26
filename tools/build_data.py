@@ -32,6 +32,21 @@ SEASON_ID = 20262027
 SEASON_LABEL = "2026-27"
 YEARS = ["2026-27", "2027-28", "2028-29", "2029-30", "2030-31", "2031-32", "2032-33"]
 CAP = 104_000_000
+# League cap follows the NHL cap. 2026-27 $104.0M and 2027-28 $113.5M are set by the NHL/NHLPA agreement; 2028-29
+# $127.5M is the NHL's projection shared with the Board of Governors (reported by Elliotte Friedman, Sportsnet).
+# No published number after that, so later seasons are held at $127.5M (an assumption, labeled in the app).
+CAP_BY_YEAR = [104.0, 113.5, 127.5, 127.5, 127.5, 127.5, 127.5]
+# Auction: the winning bid sets the contract length (commissioner, 2026-09-26). [low $M, high $M or None, years]
+BANDS_2025 = [[1.0, 2.49, 1], [2.5, 3.99, 2], [4.0, 6.49, 3], [6.5, 8.99, 4], [9.0, 12.5, 5], [12.5, None, 6]]   # $95.5M cap
+BANDS_2026 = [[1.0, 2.9, 1], [3.0, 4.4, 2], [4.5, 7.4, 3], [7.5, 9.9, 4], [10.0, 13.9, 5], [14.0, None, 6]]     # $104M cap
+
+
+def band_term(price, bands=BANDS_2026):
+    term = 1
+    for lo, hi, yrs in bands:
+        if price >= lo - 1e-9:
+            term = yrs
+    return term
 HIST_SEASONS = [20222023, 20232024, 20242025, 20252026]
 NHL_GAMES = 84  # 2026-27 is the first 84-game NHL season (verified from the club schedules)
 
@@ -1040,22 +1055,25 @@ def main():
         elif p["gm"]:
             # not on the contract sheet (signed/claimed after the sheet was made): derive from Fantrax
             cur = round(p["sal"] / 1e6, 3)
+            term = 1
             if p["ct"] == "MNR":
                 yrs = [0.0] + [None] * 6
             elif p["ct"] == "ELC1":
                 yrs = [1.5, 1.5, "RFA"] + [None] * 4
             elif p["ct"] == "FA":
                 yrs = [cur, "UFA | BID"] + [None] * 5
-            else:  # BID / RFA1 with no sheet row: term unknown, assume 1 year
-                yrs = [cur, "UFA | BID" if p["ct"] == "BID" else "RFA"] + [None] * 5
-                no_term.append(p)
-            p["c"] = {"y": yrs, "signed": 2026, "term": 1 if p["ct"] not in ("ELC1",) else 2, "src": "fantrax"}
+            else:  # BID / RFA1 with no sheet row: a 2026 auction BID's term follows the $104M bands
+                term = band_term(cur) if p["ct"] == "BID" else 1
+                yrs = ([cur] * term + ["UFA | BID" if p["ct"] == "BID" else "RFA"] + [None] * 7)[:7]
+                no_term.append((p, term))
+            p["c"] = {"y": yrs, "signed": 2026, "term": term if p["ct"] not in ("MNR", "ELC1", "FA") else (2 if p["ct"] == "ELC1" else 1),
+                      "src": "fantrax"}
         else:
             p["c"] = None
         if p.get("c") and p["gm"] and p["ct"] != "MNR" and isinstance(p["c"]["y"][0], (int, float)):
             p["c"]["y"][0] = round(p["sal"] / 1e6, 3)
-    for p in no_term:
-        log(f"  ~ term unknown (not on contract sheet), assumed 1 year: {p['n']} {p['gm']} {p['ct']} ${p['sal'] / 1e6:.2f}M")
+    for p, term in no_term:
+        log(f"  ~ not on contract sheet; term {term} yr from the 2026 auction bands: {p['n']} {p['gm']} {p['ct']} ${p['sal'] / 1e6:.2f}M")
 
     # ---- sanity: payrolls, rosters
     log("Payroll check (2026-27): Fantrax salary vs contract sheet column")
@@ -1272,7 +1290,9 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
         plist.append(o)
     meta = {
         "built": dt.datetime.now().isoformat(timespec="minutes"), "season": SEASON_LABEL, "seasonId": SEASON_ID,
-        "cap": CAP, "years": YEARS, "nhlGames": NHL_GAMES,
+        "cap": CAP, "capByYear": CAP_BY_YEAR, "years": YEARS, "nhlGames": NHL_GAMES,
+        "capNote": "2026-27 $104.0M and 2027-28 $113.5M: NHL/NHLPA agreement. 2028-29 $127.5M: NHL projection to the Board "
+                   "of Governors (Elliotte Friedman, Sportsnet). Later seasons held at $127.5M (assumption; no published figure).",
         "gms": [{"code": c, "name": n} for c, n in GMS],
         "weeks": weeks, "h2h": h2h,
         "playoffs": {"teams": 8, "weeks": [25, 26, 27], "bracket": [[1, 8], [4, 5], [3, 6], [2, 7]],
@@ -1285,6 +1305,14 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
             "gradSkater": 82, "gradGoalie": 41, "elcSalary": 1.5, "minSalary": 1.0,
             "lineup": {"F": 12, "D": 6, "G": 2, "bench": 3},
             "ext2027": {"base": [1.5, 1.5, 3, 4, 5, 6], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]},
+            # commissioner 2026-09-26 (league constitution): when an ELC is up
+            "elcMenu": {"2": 2.5, "3": 4.0, "4": 5.5, "5": 7.0, "6": 9.0}, "elcExt": 1.75, "elcYears": 2,
+            # when an RFA contract is up and the player is under 27 on June 30: base can't decrease, premium by term
+            "rfaPrem": [1, 1.5, 1.5, 1.5, 1.75, 1.75], "rfaAge": 27,
+            "bands": {"2025": {"cap": 95.5, "bands": BANDS_2025}, "2026": {"cap": 104.0, "bands": BANDS_2026}},
+            "gradNote": "An MNR player who reaches the career-GP line during the season stays at $0 for the rest of it and signs "
+                        "his ELC in the offseason. If he is on the active roster when he graduates, he has to stay there "
+                        "(can't be moved back down to the minors).",
             "ext2026": {"base": [1, 1, 2, 3, 4, 5], "mult": [1, 1.5, 1.5, 1.5, 1.75, 1.75]},
         },
         "corModel": [round(b, 4) for b in beta_cor],

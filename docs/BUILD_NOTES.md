@@ -28,3 +28,32 @@ Trade history (uploaded 2026-09-25): raw/2026-27/league/trades_*.csv -> 17 trade
 - Told the commissioner M.M's picks: 2027 R1, R2, R2(ROO), R2(SPG), R3(BULLIES); 2028 R3; 2029 R1-R3.
   Awaiting confirmation + draft-order rule (assumed reverse standings, no lottery).
 - Commissioner confirmed M.M picks are correct (2026-09-25). Draft order: reverse standings, worst = 1, champion = 14 (playoff teams by result). All 2026 picks used. Offered: intro minor-league draft + 2026 rookie draft records (requested).
+
+## 2026-09-26: Fantrax sync + contract rules v2
+Fantrax: the league's public read-only API works without login (and sends `Access-Control-Allow-Origin: *`):
+getLeagueInfo (teams, divisions East/West, matchups, lock times, roster rules), getTeamRosters (`&period=N` gives the
+lineup set for that period), getDraftPicks (future picks with original owner), getStandings, getPlayerIds, getAdp.
+- tools/fantrax_api.py writes raw/2026-27/fantrax/snapshot.json and appends night-to-night roster changes to moves.json.
+- Build: Fantrax overrides CSV owner/contract/salary and adds lineup slot (A/R/M/IR); future pick ownership from Fantrax
+  (all 126 picks for 2027-29 matched the trade-history replay exactly).
+- Browser: assets/js/live.js pulls rosters (next lock period) + standings on every visit and applies changes.
+- Headless Chromium in the cloud sandbox doesn't trust the proxy CA; tools/test/browser_check.js relays Fantrax
+  requests through curl instead of loosening TLS.
+
+Contract rules from the commissioner (2026-09-26, with screenshots of the constitution):
+- Cap: $104M 2026-27, $113.5M 2027-28 (NHL/NHLPA agreement), $127.5M 2028-29 (NHL projection to the Board of
+  Governors, reported by Elliotte Friedman; commissioner had heard ~$129M). Held flat after that (assumption).
+- Auction bands: 2025 initial ($95.5M) $1-2.49 1y, 2.5-3.99 2y, 4-6.49 3y, 6.5-8.99 4y, 9-12.5 5y, 12.5+ 6y.
+  2026 and 2027 offseasons ($104M): 1-2.9 1y, 3-4.4 2y, 4.5-7.4 3y, 7.5-9.9 4y, 10-13.9 5y, 14+ 6y. The six $1M
+  2026 BIDs missing from the sheet are therefore 1-year deals.
+- ELC up: release, 2y $2.5M, 3y $4.0M, 4y $5.5M, 5y $7.0M, 6y $9.0M, or one more ELC year at $1.75M then UFA.
+- RFA up (under 27 on June 30): 2-6 yrs at 1.5x (2-4) / 1.75x (5-6) premium; base can't decrease; offer sheets exist.
+- Initial-auction RFAs follow the contract sheet's Offseason Action formula: price = mult x salary + add-on,
+  mult [1, 1.5, 1.5, 1.5, 1.75, 1.75]; add-on 2026 [1,1,2,3,4,5], 2027 [1.5,1.5,3,4,5,6].
+- MNR graduation mid-season: stays $0, ELC in the offseason; graduated on the active roster = locked to active.
+- Open questions sent to the commissioner: 1-yr ELC option (Savoie/Silovs signed 1-yr ELCs in 2026 and the sheet's
+  2027 tab prices them with the initial-auction formula, not the ELC menu), offer-sheet rules, bands for 2028+,
+  whether divisions matter for playoff seeding, in-season FA pickup contract terms.
+
+2026 auction calibration: 62 BID signings, $147.9M spent out of ~$247M league space. Paid $/projected win: under-27
+1.10, 27-31 0.39, 31+ 0.26, so price is modeled on 3-season value. 2027 price level = space ratio / supply ratio.

@@ -1,6 +1,6 @@
-Dynasty Puck HQ build 2026-09-26T00:55:57
+Dynasty Puck HQ build 2026-09-26T01:15:56
 Fantrax: synced 596 rostered players, 126 future picks, 14 teams in standings
-Fantrax sync (2026-09-26T00:56:00+00:00): 596 rostered; changes vs CSV: none
+Fantrax sync (2026-09-26T01:15:57+00:00): 596 rostered; changes vs CSV: none
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1258 players (596 rostered)
 NHL id match: {'index': 1150, 'search': 106, None: 2}; unmatched 2 (rostered: 0)
@@ -9,12 +9,12 @@ Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.02
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 773/773 matched skaters
 Role prior F (n=473): Tk/GP R^2=0.44, Cor/GP R^2=0.30
 Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
-  ~ term unknown (not on contract sheet), assumed 1 year: Mattias Ekholm CGN BID $1.00M
-  ~ term unknown (not on contract sheet), assumed 1 year: Blake Coleman TommyG10 BID $1.00M
-  ~ term unknown (not on contract sheet), assumed 1 year: Ivan Barbashev PuckLuck BID $1.00M
-  ~ term unknown (not on contract sheet), assumed 1 year: Kris Letang TommyG10 BID $1.00M
-  ~ term unknown (not on contract sheet), assumed 1 year: Mason Marchment PuckLuck BID $1.00M
-  ~ term unknown (not on contract sheet), assumed 1 year: Connor McMichael TommyG10 BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Mattias Ekholm CGN BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Blake Coleman TommyG10 BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Ivan Barbashev PuckLuck BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Kris Letang TommyG10 BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Mason Marchment PuckLuck BID $1.00M
+  ~ not on contract sheet; term 1 yr from the 2026 auction bands: Connor McMichael TommyG10 BID $1.00M
 Payroll check (2026-27): Fantrax salary vs contract sheet column
   ROO       Fantrax $100.90M  sheet $ 99.90M  {'BID': 16, 'FA': 1, 'ELC1': 1, 'MNR': 29}   <- differs by +1.00M (Fantrax is current)
   TommyG10  Fantrax $ 99.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 2, 'RFA1': 2, 'MNR': 22}   <- differs by +2.50M (Fantrax is current)

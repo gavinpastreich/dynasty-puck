@@ -82,5 +82,10 @@ as you ship them, and add any new ideas you come up with.
 - [x] Daily Faceoff lines / PP units / goalie tandems / injuries on every player; injured and holdout players delay
       MNR graduation projections; matchup sim can auto-bench injured players.
 - [x] Nightly GitHub Action to refresh NHL data + injuries/depth and redeploy.
-- [ ] Next ideas: see docs/IDEAS.md (Fantrax auto-sync needs the league ID; live weekly scoreboard; rest-of-season
-      projections; prospect stock watch; league-draft war room; chat bot).
+- [x] Fantrax auto-sync (nightly + live in the browser): rosters, contracts, salaries, lineup slots, standings,
+      divisions, lock times, future picks; roster-move log; Standings page; season sim starts from real standings.
+- [x] Fantrax lineup check (Team Hub, dashboard, lineup watch on the preview) and "lineups as set" in the matchup sim.
+- [x] Contract rules v2: cap by season, auction bands, ELC menu, RFA premiums, 27+ UFA cutoff, graduation timing,
+      model decisions at every expiry, 2027 auction price model, rewritten 2027 Offseason planner.
+- [ ] Next ideas: see docs/IDEAS.md (live weekly scoreboard; rest-of-season projections; prospect stock watch;
+      league-draft war room; chat bot).
