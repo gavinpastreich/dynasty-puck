@@ -7,21 +7,21 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
 ## Next up (high value, feasible)
 1. ~~Fantrax auto-sync~~ **done 2026-09-26** (nightly + live). Next on top of it: Fantrax ADP (`getAdp`) as a
    market signal next to our values, and a transactions timeline with dead-cap bookkeeping from the moves log.
-2. **Live weekly scoreboard.** During the season, pull NHL game logs for every starter each night and show the
+2. ~~Live weekly scoreboard~~ **done 2026-09-26.** During the season, pull NHL game logs for every starter each night and show the
    current category score of every matchup plus the projected final (the rest of the week simulated).
-3. **Rest-of-season projections.** Blend each player's 2026-27 stats-to-date with the preseason projection
+3. ~~Rest-of-season projections~~ **done 2026-09-26.** Blend each player's 2026-27 stats-to-date with the preseason projection
    (Marcel-style), so values react to breakouts and slumps.
 4. **Prospect stock watch.** Nightly AHL/CHL/NCAA/Europe lines for every MNR prospect (NHL landing + CHL HockeyTech
    feeds) with "heating up / cooling off" flags and NHLe trend.
-5. **2027 league-draft war room.** Live board with the real pick order, best available by model and by consensus,
+5. ~~2027 league-draft war room~~ **mock draft done 2026-09-26** (live draft-day board still open). Live board with the real pick order, best available by model and by consensus,
    a mock-draft simulator (AI teams pick by need + value), and pick-trade calculator during the draft.
-6. **Discord/GroupMe bot.** Post the weekly preview, graduation alerts ("X just hit 82 GP: sign or drop"),
+6. ~~Discord/GroupMe bot~~ **opt-in alerts done 2026-09-26** (ntfy push, calendar, email digest; no group chat). Post the weekly preview, graduation alerts ("X just hit 82 GP: sign or drop"),
    and a Monday recap automatically (GitHub Action + webhook secret).
-7. **Auction planner for the 2027 UFA auction.** Expected price for every UFA given league-wide cap space
+7. ~~Auction planner~~ **Auction War Room done 2026-09-26.** Expected price for every UFA given league-wide cap space
    (supply vs demand inflation), max-bid calculator per team, and "nominate to drain rivals' cap" hints.
-8. **Luck and awards.** Actual vs expected category wins each week, "unluckiest team", best trade of the year,
+8. ~~Luck and awards~~ **Awards race & Team Wrapped done 2026-09-26.** Actual vs expected category wins each week, "unluckiest team", best trade of the year,
    best waiver pickup, most valuable MNR, season-end Wrapped page.
-9. **Trade block & wish lists.** Each GM marks players available or wanted (stored in a small shared DB), and
+9. **Trade block & wish lists** (skipped for now by the commissioner; needs a shared-storage choice). Each GM marks players available or wanted (stored in a small shared DB), and
    the trade finder matches them automatically.
 10. **Keeper-league history.** Once several seasons exist: franchise history, champions, all-time trade ledger,
     draft hit rates by GM.

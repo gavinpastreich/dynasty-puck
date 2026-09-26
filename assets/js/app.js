@@ -9,9 +9,9 @@
     ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['alerts', '🔔', 'Alerts']]],
     ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
-    ['League', [['standings', '🏅', 'Standings'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
-    ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', '2027 Offseason']]],
-    ['Prospects', [['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center']]],
+    ['League', [['standings', '📊', 'Standings'], ['awards', '🏅', 'Awards & Wrapped'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', '2027 Offseason'], ['auction', '🔨', 'Auction War Room']]],
+    ['Prospects', [['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
     ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],
     ['About', [['rules', '📖', 'Rules & Methods'], ['data', '🗂️', 'Data & Updates']]]
   ];

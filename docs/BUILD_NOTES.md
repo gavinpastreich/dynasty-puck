@@ -57,3 +57,14 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
 
 2026 auction calibration: 62 BID signings, $147.9M spent out of ~$247M league space. Paid $/projected win: under-27
 1.10, 27-31 0.39, 31+ 0.26, so price is modeled on 3-season value. 2027 price level = space ratio / supply ratio.
+
+## 2026-09-26 (later): commissioner answers round 3 + upkeep
+- ELCs: most are 2 yrs at $1.5M (a 1-yr ELC has been used). Initial-auction players: first RFA deal = sheet formula,
+  the next one = constitution premium rule. Auction bands stay at the $104M set (no scaling) until changed.
+- Hometown discount exists (a bid can keep a player below band, e.g. Evangelista's 1-yr-band salary on 2 yrs); the app
+  trusts the contract sheet's terms. Offer sheets: offers/trade packages for post-ELC RFAs, no set compensation.
+- Graduating in the minors: can stay down; promoted after graduating = can't go back. Offseason: ELC or release.
+- Division winners are playoff seeds 1-2. Dead cap: only BID (and ELC) drops count; FA-contract drops are free
+  (RFA1 assumed to count, to confirm). Penalties: raw/2026-27/league/cap_penalties.csv (Olivier $1.4M confirmed).
+- Upkeep: everything automatic on GitHub (nightly + 1 AM ET refresh, hourly alerts) + config/league.json settings file.
+- Fantrax's internal API (live scoring, trading block, cap penalties) needs a login, so those are computed instead.

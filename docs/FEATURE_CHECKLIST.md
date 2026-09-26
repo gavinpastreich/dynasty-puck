@@ -87,5 +87,8 @@ as you ship them, and add any new ideas you come up with.
 - [x] Fantrax lineup check (Team Hub, dashboard, lineup watch on the preview) and "lineups as set" in the matchup sim.
 - [x] Contract rules v2: cap by season, auction bands, ELC menu, RFA premiums, 27+ UFA cutoff, graduation timing,
       model decisions at every expiry, 2027 auction price model, rewritten 2027 Offseason planner.
-- [ ] Next ideas: see docs/IDEAS.md (live weekly scoreboard; rest-of-season projections; prospect stock watch;
-      league-draft war room; chat bot).
+- [x] Commissioner settings file (config/league.json) + rebuild on edit; cap hit penalties; division seeding.
+- [x] Opt-in alerts run by GitHub Actions: ntfy phone push, per-team calendar feeds, weekly email digest (Alerts page).
+- [x] Live Scoreboard (week-to-date totals + simulated rest of week) and rest-of-season projections.
+- [x] 2027 Auction War Room, league Mock Draft, Awards race & Team Wrapped, GM trade personas.
+- [ ] Next ideas: see docs/IDEAS.md (prospect stock watch; trade block when a storage option is chosen).
