@@ -1286,7 +1286,7 @@
   // the few real contenders, close to zero for everyone else. A floor keeps some credit for this-season production
   // (it can be flipped at the deadline). Later seasons: the same curve on each roster's projected strength, shrunk
   // toward 1 (rosters change a lot), so future value counts about the same for every team.
-  E.CONTEND = { floor: 0.2, shrink: 0.5, contender: 1.5, bubble: 0.6 };
+  E.CONTEND = { floor: 0.2, shrink: 0.4, contender: 1.5, bubble: 0.6 };
   E.contention = function () {
     if (E._cont && E._cont.v === E.version) return E._cont.d;
     var K = E.CONTEND, teams = E.teams, n = teams.length, sim = E.baseSim(), by = {};

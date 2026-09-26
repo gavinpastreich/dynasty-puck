@@ -16,11 +16,11 @@
       // tiers: new tier when value drops more than 12% below the tier's first asset
       var tier = 1, head = assets.length ? assets[0].v : 0;
       assets.forEach(function (a, i) { if (a.v < head * 0.88 && i > 0) { tier++; head = a.v; } a.tier = tier; a.pts = Math.round(a.v / top * 1000) / 10; a.rank = i + 1; });
-      var h = '<div class="page-head"><h1>Dynasty Trade Value Chart</h1><p class="sub">Every player and future pick on one scale (100 = most valuable asset). Tiers break when value falls 12% below the top of the tier. Default lens: <b>league-implied</b>, fitted to the league\'s real trades; switch to the model lens to compare.</p></div>';
+      var h = '<div class="page-head"><h1>Dynasty Trade Value Chart</h1><p class="sub">Every player and future pick on one scale (100 = most valuable asset). Tiers break when value falls 12% below the top of the tier. Default lens: <b>league-implied</b>, fitted to the league\'s real trades; switch to the model lens to compare.' + (me ? ' <b>Worth to ' + esc(me) + '</b> puts the same assets on the same scale for your roster and window; green = fits you better than most assets do (relative to market), red = worth more to other teams.' : '') + '</p></div>';
       h += '<div class="controls"><label>Lens <select id="v-lens">' + ['league', 'model'].map(function (k) { return '<option value="' + k + '"' + (k === lensKey ? ' selected' : '') + '>' + esc(LS[k].name) + '</option>'; }).join('') + '</select></label><span class="small muted">' + esc(DP.lensText(L)) + '</span></div><div id="v-t"></div>';
       el.innerHTML = h;
       U.qs('#v-lens', el).addEventListener('change', function (e) { DP.go('values', null, { lens: e.target.value }); });
-      ui.table(U.qs('#v-t', el), {
+      var tbl = ui.table(U.qs('#v-t', el), {
         rows: assets, sort: 'rank', desc: false, page: 100, csv: 'trade-value-chart.csv',
         search: function (a) { return a.kind === 'player' ? a.p.n + ' ' + (a.p.gm || 'FA') : E.pickLabel(a.pk) + ' pick ' + a.pk.owner; },
         filters: [{ l: 'Type', opts: [['', 'All'], ['F', 'Forwards'], ['D', 'Defense'], ['G', 'Goalies'], ['pick', 'Picks'], ['mnr', 'MNR prospects']], fn: function (a, v) { return v === 'pick' ? a.kind === 'pick' : a.kind === 'player' && (v === 'mnr' ? a.p.ct === 'MNR' : a.p.slot === v); } },
@@ -32,8 +32,32 @@
           { k: 'owner', l: 'Owner', v: function (a) { return a.kind === 'pick' ? a.pk.owner : (a.p.gm || 'zz'); }, f: function (a) { return a.kind === 'pick' ? U.teamLabel(a.pk.owner) : ui.owner(a.p); } },
           { k: 'ct', l: 'Contract', v: function (a) { return a.kind === 'player' ? a.p.ct : 'pick'; }, f: function (a) { return a.kind === 'player' ? ui.pill(a.p.ct) + ' ' + (a.p.gm ? U.m(a.p.sal26) : '') : ''; } },
           { k: 'age', l: 'Age', cls: 'num', v: function (a) { return a.kind === 'player' ? a.p.age : null; }, f: function (a) { return a.kind === 'player' && a.p.age ? U.fmt(a.p.age, 1) : ''; } },
-          { k: 'pts', l: 'Value (100 = top)', cls: 'num', v: function (a) { return a.pts; }, f: function (a) { return '<div class="pbar">' + ui.meter(a.pts / 100) + '<b class="num" style="width:40px">' + U.fmt(a.pts, 1) + '</b></div>'; } }]
+          { k: 'pts', l: 'Value (100 = top)', cls: 'num', v: function (a) { return a.pts; }, f: function (a) { return '<div class="pbar">' + ui.meter(a.pts / 100) + '<b class="num" style="width:40px">' + U.fmt(a.pts, 1) + '</b></div>'; } },
+          me ? { k: 'you', l: 'Worth to ' + me, cls: 'num', title: 'Use value for your team on the same 100 scale: roster fit x your win-now weight (what you would lose, for your own players). Colored against how you value assets overall.', v: function (a) { return a.you === undefined ? null : a.you; }, f: function (a) {
+            if (a.you === undefined) return '<span class="faint">…</span>';
+            var r = rel && a.pts > 2 ? a.you / (a.pts * rel) : 1; // vs how this team values assets in general
+            return '<b class="' + (r > 1.12 ? 'good' : r < 0.88 ? 'bad' : '') + '">' + U.fmt(a.you, 1) + '</b>';
+          } } : null]
       });
+      // "worth to you": exact roster-fit use value, filled in small batches so the page stays responsive
+      var rel = null; // this team's median (worth to you / market) ratio, set when every asset is priced
+      if (me) {
+        var i = 0, step = function () {
+          if (!document.body.contains(el)) return; // navigated away
+          for (var end = Math.min(assets.length, i + 40); i < end; i++) {
+            var a = assets[i], u = a.kind === 'pick' ? E.pickValue(a.pk, L) : a.p.gm === me ? -E.useValue(me, [], [a.p], L).total : E.useValue(me, [a.p], [], L).total;
+            a.you = Math.round(u / top * 1000) / 10;
+          }
+          if (i < assets.length) setTimeout(step, 0);
+          else {
+            var rs = assets.filter(function (a) { return a.pts > 2; }).map(function (a) { return a.you / a.pts; }).sort(function (x, y) { return x - y; });
+            rel = rs.length ? rs[Math.floor(rs.length / 2)] : 1;
+            tbl.update();
+          }
+          if (i % 200 === 0) tbl.update();
+        };
+        setTimeout(step, 30);
+      }
     }
   };
 
@@ -62,7 +86,7 @@
           return '<td class="hc" style="background:' + C.heat(t) + ';color:' + C.heatInk(t) + '" data-tip="' + esc('<div class="tv">' + U.fmt(v, 0) + ' WAR</div><div class="tl">' + U.teamName(r.t) + ' · ' + E.YEARS[y] + (y ? ' · projected title share on this roster ' + U.pct(c.share[y], 0) : '') + '</div>') + '">' + U.fmt(v, 0) + '</td>';
         }).join('') + '<td class="small" style="min-width:150px">' + esc(label) + '</td><td class="small" style="min-width:120px"><b>' + esc(DP.strategy(r.t).short) + '</b></td></tr>';
       });
-      h += '</tbody></table></div><p class="small muted">More intense shading = stronger roster that season. <b>Win-now weight</b>: title odds rise steeply with strength only near the top, so an extra 2026-27 category win is worth several times more to a contender than to the league average, and little to a team out of the race (floor ×' + E.CONTEND.floor + ': that production can still be flipped at the deadline). Contender = weight ≥ ×' + E.CONTEND.contender + ', bubble ≥ ×' + E.CONTEND.bubble + '. Later seasons use the same curve on each roster\'s projected strength, pulled halfway toward average per year because rosters change. The Trade Machine and Trade Finder use these weights.</p></div>';
+      h += '</tbody></table></div><p class="small muted">More intense shading = stronger roster that season. <b>Win-now weight</b>: title odds rise steeply with strength only near the top, so an extra 2026-27 category win is worth several times more to a contender than to the league average, and little to a team out of the race (floor ×' + E.CONTEND.floor + ': that production can still be flipped at the deadline). Contender = weight ≥ ×' + E.CONTEND.contender + ', bubble ≥ ×' + E.CONTEND.bubble + '. Later seasons use the same curve on each roster\'s projected strength, pulled most of the way back toward average (rosters change a lot in a year). The Trade Machine and Trade Finder use these weights.</p></div>';
       if (me) {
         var mine = rows.find(function (r) { return r.t === me; }), avg = avgY;
         h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>' + esc(U.teamName(me)) + ': ' + esc(DP.strategy(me).short) + '</h2><p>' + esc(DP.strategy(me).text) + '</p><p class="small"><a href="#/team/' + encodeURIComponent(me) + '">Buy and sell targets on your Team Hub →</a></p></div>' +
