@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-26",
+ "updated": "2026-09-27",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -1568,7 +1568,7 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-09-25",
+   "updated": "2026-09-27",
    "source": "Training Camp 2026",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
@@ -1636,7 +1636,7 @@
   },
   "STL": {
    "team": "St Louis Blues",
-   "updated": "2026-09-17",
+   "updated": "2026-09-27",
    "source": "Training Camp 2026",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "pp1": [

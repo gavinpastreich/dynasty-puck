@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-26",
+ "updated": "2026-09-27",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -130,6 +130,18 @@
    "ret": "",
    "detail": "Zellweger (concussion) is expected to be ready for Sabres' opening night.",
    "date": "2026-09-25",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Ukko-Pekka Luukkonen",
+   "team": "BUF",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Luukkonen (lower-body) left Saturday’s preaseason game vs. Pittsburgh and did not return.",
+   "date": "2026-09-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -636,6 +648,30 @@
    "date": "2026-09-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Mackie Samoskevich",
+   "team": "SEA",
+   "status": "DTD",
+   "injury": "",
+   "ret": "Day-to-day",
+   "detail": "Samoskevich missed Saturday’s preseason game due to an upper-body injury and is considered day-to-day.",
+   "date": "2026-09-26",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Logan Mailloux",
+   "team": "STL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Mailloux (lower-body) left Saturday’s preseason game vs. Chicago and did not return.",
+   "date": "2026-09-26",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
   },
   {
