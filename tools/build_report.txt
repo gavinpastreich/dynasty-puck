@@ -1,13 +1,17 @@
-Dynasty Puck HQ build 2026-09-28T11:42:16
-Fantrax: 4 roster changes since 2026-09-27T15:09:29+00:00
-Fantrax: synced 600 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-09-28T18:10:00
+Fantrax: 4 roster changes since 2026-09-28T11:42:19+00:00
+Fantrax: synced 604 rostered players, 126 future picks, 14 teams in standings
+  > Charle-Edouard D'Astous: FA -> mertin (Fantrax)
+  > Vitali Pinchuk: FA -> mertin (Fantrax)
   > Jake DeBrusk: FA -> BHHC (Fantrax)
   > Sean Durzi: FA -> BHHC (Fantrax)
+  > Devon Toews: FA -> CGN (Fantrax)
+  > Esa Lindell: FA -> CGN (Fantrax)
   > Pyotr Kochetkov: FA -> Wags8210 (Fantrax)
   > Egor Chinakhov: FA -> Wags8210 (Fantrax)
-Fantrax sync (2026-09-28T11:42:19+00:00): 600 rostered; changes vs CSV: {'owner': 4}
+Fantrax sync (2026-09-28T18:10:02+00:00): 604 rostered; changes vs CSV: {'owner': 8}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1254 players (600 rostered)
+Universe: 1254 players (604 rostered)
 NHL id match: {'index': 1144, 'search': 109, None: 1}; unmatched 1 (rostered: 0)
 Landing pages: 1246/1246
 Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
@@ -29,12 +33,12 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   SPG       Fantrax $103.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 3, 'MNR': 21}   <- differs by +3.00M (Fantrax is current)  (IR relief $6.40M)
   BHHC      Fantrax $ 98.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 2, 'ELC1': 1}   <- differs by +2.00M (Fantrax is current)
   nebsnave  Fantrax $102.81M  sheet $ 98.81M  {'BID': 17, 'FA': 4, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)
-  M.M       Fantrax $102.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 2, 'ELC1': 3, 'MNR': 16}   <- differs by -0.80M (Fantrax is current)  (IR relief $8.60M)
+  M.M       Fantrax $102.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 2, 'ELC1': 3, 'MNR': 16}   <- differs by -0.80M (Fantrax is current)  (IR relief $7.80M)
   mcianfra  Fantrax $ 98.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 3, 'MNR': 22}   <- differs by +3.00M (Fantrax is current)
   btsay45   Fantrax $ 93.10M  sheet $ 93.10M  {'BID': 15, 'ELC1': 4, 'RFA1': 1, 'MNR': 18}
   PuckLuck  Fantrax $ 93.50M  sheet $ 89.50M  {'BID': 16, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +4.00M (Fantrax is current)
-  CGN       Fantrax $ 97.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 2, 'MNR': 22}   <- differs by +3.00M (Fantrax is current)
-  mertin    Fantrax $101.60M  sheet $ 99.60M  {'BID': 13, 'FA': 2, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +2.00M (Fantrax is current)  (IR relief $2.50M)
+  CGN       Fantrax $ 99.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 4, 'MNR': 22}   <- differs by +5.00M (Fantrax is current)  (IR relief $3.20M)
+  mertin    Fantrax $103.60M  sheet $ 99.60M  {'BID': 13, 'FA': 4, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +4.00M (Fantrax is current)  (IR relief $2.50M)
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist
   ~ on contract sheet (mcianfra) but not on a Fantrax roster: Danil Gushchin
@@ -52,7 +56,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date: no games yet, projections are preseason
-Depth (Daily Faceoff, 2026-09-28): 1205 line/PP/goalie tags; injuries matched 66/66
+Depth (Daily Faceoff, 2026-09-28): 1205 line/PP/goalie tags; injuries matched 65/65
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay

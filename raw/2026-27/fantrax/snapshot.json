@@ -18,7 +18,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-09-28T11:42:19+00:00",
+"fetched": "2026-09-28T18:10:02+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -366,6 +366,11 @@
 "pos": "G",
 "t": "TOR"
 },
+"02npz": {
+"n": "Lindell, Esa",
+"pos": "D",
+"t": "DAL"
+},
 "02nq3": {
 "n": "Gostisbehere, Shayne",
 "pos": "D",
@@ -580,6 +585,11 @@
 "n": "Sanheim, Travis",
 "pos": "D",
 "t": "PHI"
+},
+"03ec6": {
+"n": "Toews, Devon",
+"pos": "D",
+"t": "COL"
 },
 "03ece": {
 "n": "Shesterkin, Igor",
@@ -1175,6 +1185,11 @@
 "n": "Drysdale, Jamie",
 "pos": "D",
 "t": "PHI"
+},
+"04z51": {
+"n": "DAstous, Charle-Edouard",
+"pos": "D",
+"t": "TBL"
 },
 "04zb4": {
 "n": "Seider, Moritz",
@@ -2425,6 +2440,11 @@
 "n": "George, Carter",
 "pos": "G",
 "t": "LAK"
+},
+"06hk9": {
+"n": "Pinchuk, Vitali",
+"pos": "C",
+"t": "NSH"
 },
 "06hri": {
 "n": "Beaudoin, Cole",
@@ -3989,7 +4009,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 4400000,
-"slot": "IR"
+"slot": "A"
 },
 "004jl": {
 "ct": "BID",
@@ -4185,7 +4205,7 @@
 "gm": "mertin",
 "pos": "G",
 "sal": 4100000,
-"slot": "A"
+"slot": "R"
 },
 "02422": {
 "ct": "BID",
@@ -4389,6 +4409,13 @@
 "pos": "G",
 "sal": 4600000,
 "slot": "R"
+},
+"02npz": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
 },
 "02nq3": {
 "ct": "BID",
@@ -4691,6 +4718,13 @@
 "sal": 6200000,
 "slot": "A"
 },
+"03ec6": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "03ece": {
 "ct": "BID",
 "gm": "PuckLuck",
@@ -4969,7 +5003,7 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 9200000,
-"slot": "A"
+"slot": "R"
 },
 "03wpn": {
 "ct": "FA",
@@ -5333,7 +5367,7 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 3200000,
-"slot": "A"
+"slot": "IR"
 },
 "04n90": {
 "ct": "MNR",
@@ -5480,7 +5514,7 @@
 "gm": "mertin",
 "pos": "G",
 "sal": 2200000,
-"slot": "M"
+"slot": "A"
 },
 "04ymn": {
 "ct": "BID",
@@ -5522,6 +5556,13 @@
 "gm": "SPG",
 "pos": "D",
 "sal": 2500000,
+"slot": "A"
+},
+"04z51": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "D",
+"sal": 1000000,
 "slot": "A"
 },
 "04zb4": {
@@ -5921,7 +5962,7 @@
 "gm": "M.M",
 "pos": "D",
 "sal": 3600000,
-"slot": "R"
+"slot": "IR"
 },
 "05o01": {
 "ct": "MNR",
@@ -6187,7 +6228,7 @@
 "gm": "mertin",
 "pos": "D",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "05tl5": {
 "ct": "MNR",
@@ -7146,7 +7187,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "06cug": {
 "ct": "MNR",
@@ -7272,6 +7313,13 @@
 "gm": "nebsnave",
 "pos": "G",
 "sal": 0,
+"slot": "M"
+},
+"06hk9": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "F",
+"sal": 1000000,
 "slot": "M"
 },
 "06hri": {
@@ -8158,7 +8206,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 1,
-"t": "M.M"
+"t": "PuckLuck"
 },
 {
 "L": 0,
@@ -8167,7 +8215,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 2,
-"t": "nbracken"
+"t": "TommyG10"
 },
 {
 "L": 0,
@@ -8176,7 +8224,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 3,
-"t": "mcianfra"
+"t": "nbracken"
 },
 {
 "L": 0,
@@ -8185,7 +8233,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 4,
-"t": "mertin"
+"t": "M.M"
 },
 {
 "L": 0,
@@ -8203,7 +8251,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 6,
-"t": "nebsnave"
+"t": "mertin"
 },
 {
 "L": 0,
@@ -8212,60 +8260,6 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 7,
-"t": "btsay45"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 8,
-"t": "SPG"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 9,
-"t": "TommyG10"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 10,
-"t": "BHHC"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 11,
-"t": "ROO"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 12,
-"t": "PuckLuck"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 13,
 "t": "Wags8210"
 },
 {
@@ -8274,8 +8268,62 @@
 "W": 0,
 "gb": 0.0,
 "pct": 0.0,
-"rank": 14,
+"rank": 8,
+"t": "btsay45"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 9,
+"t": "BHHC"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 10,
+"t": "mcianfra"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 11,
 "t": "CGN"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 12,
+"t": "SPG"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 13,
+"t": "ROO"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
+"rank": 14,
+"t": "nebsnave"
 }
 ],
 "teams": {
