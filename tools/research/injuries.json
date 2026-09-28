@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-27",
+ "updated": "2026-09-28",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -57,7 +57,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-22",
+   "date": "2026-09-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
@@ -101,7 +101,7 @@
   {
    "name": "Mattias Samuelsson",
    "team": "BUF",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "lower body",
    "ret": "Misses opener",
    "detail": "Samuelsson (lower body) is out week-to-week.",

@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-27",
+ "updated": "2026-09-28",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -72,8 +72,8 @@
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-09-22",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-27",
+   "source": "Scott McLaughlin",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "JJ Peterka",
@@ -117,7 +117,7 @@
     "Marat Khusnutdinov"
    ],
    "f4": [
-    "Alexander Steeves",
+    "Tanner Jeannot",
     "Sean Kuraly",
     "Mark Kastelic"
    ],
@@ -130,8 +130,8 @@
     "Connor Clifton"
    ],
    "d3": [
-    "Mason Lohrei",
-    "Henri Jokiharju"
+    "Jonathan Aspirot",
+    "Mason Lohrei"
    ],
    "goalies": [
     "Jeremy Swayman",
@@ -175,9 +175,9 @@
     "Josh Doan"
    ],
    "f2": [
-    "Konsta Helenius",
+    "Ryan McLeod",
     "Josh Norris",
-    "Ryan McLeod"
+    "Konsta Helenius"
    ],
    "f3": [
     "Zach Benson",
@@ -195,11 +195,11 @@
    ],
    "d2": [
     "Owen Power",
-    "Conor Timmins"
+    "Zach Metsa"
    ],
    "d3": [
-    "Dennis Gilbert",
-    "Zach Metsa"
+    "Conor Timmins",
+    "Matt Grzelcyk"
    ],
    "goalies": [
     "Ukko-Pekka Luukkonen",
@@ -208,7 +208,7 @@
   },
   "CGY": {
    "team": "Calgary Flames",
-   "updated": "2026-09-18",
+   "updated": "2026-09-28",
    "source": "Training Camp 2026",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "pp1": [
@@ -321,9 +321,9 @@
     "Jordan Martinook"
    ],
    "f4": [
-    "Nicolas Deslauriers",
+    "William Carrier",
     "Mark Jankowski",
-    "William Carrier"
+    "Nicolas Deslauriers"
    ],
    "d1": [
     "Jaccob Slavin",
