@@ -89,5 +89,29 @@
 "ct": "MNR",
 "sal": 0,
 "n": "Bourgault, Xavier"
+},
+{
+"d": "2026-09-29",
+"id": "02yjw",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-09-29",
+"id": "03daz",
+"type": "add",
+"to": "nebsnave",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-09-29",
+"id": "03yuf",
+"type": "add",
+"to": "nebsnave",
+"ct": "FA",
+"sal": 1000000
 }
 ]

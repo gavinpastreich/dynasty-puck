@@ -57,7 +57,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-28",
+   "date": "2026-09-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
@@ -99,18 +99,6 @@
    "holdout": false
   },
   {
-   "name": "Jiri Kulich",
-   "team": "BUF",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Kulich (undisclosed) is expected to return to Buffalo's practice on Saturday.",
-   "date": "2026-09-25",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Mattias Samuelsson",
    "team": "BUF",
    "status": "IR",
@@ -118,18 +106,6 @@
    "ret": "Misses opener",
    "detail": "Samuelsson (lower body) is out week-to-week.",
    "date": "2026-09-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Ukko-Pekka Luukkonen",
-   "team": "BUF",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Luukkonen (lower-body) left Saturday’s preaseason game vs. Pittsburgh and did not return.",
-   "date": "2026-09-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -339,6 +315,18 @@
    "holdout": false
   },
   {
+   "name": "Ryan Nugent-Hopkins",
+   "team": "EDM",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Nugent-Hopkins (lower-body) will not play Tuesday vs. the Canucks.",
+   "date": "2026-09-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Brad Marchand",
    "team": "FLA",
    "status": "OUT",
@@ -531,6 +519,18 @@
    "holdout": false
   },
   {
+   "name": "Jake Sanderson",
+   "team": "OTT",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-09-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Kurtis MacDermid",
    "team": "OTT",
    "status": "IR",
@@ -585,7 +585,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-25",
+   "date": "2026-09-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -682,6 +682,18 @@
    "ret": "Week-to-week",
    "detail": "Joshua is week-to-week with a core injury.",
    "date": "2026-09-28",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Kirill Marchenko",
+   "team": "TOR",
+   "status": "DTD",
+   "injury": "work visa",
+   "ret": "",
+   "detail": "Marchenko (work visa) is questionable for Tuesday's game vs. Montreal.",
+   "date": "2026-09-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false

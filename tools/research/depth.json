@@ -72,8 +72,8 @@
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-09-28",
-   "source": "Scott McLaughlin",
+   "updated": "2026-09-29",
+   "source": "Jack Studley",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "Morgan Geekie",
@@ -140,8 +140,8 @@
   },
   "BUF": {
    "team": "Buffalo Sabres",
-   "updated": "2026-09-25",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Matthew Fairburn",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "pp1": [
     "Jack Quinn",
@@ -170,19 +170,19 @@
     "Louis Crevier"
    ],
    "f1": [
-    "Peyton Krebs",
+    "Josh Norris",
     "Tage Thompson",
     "Josh Doan"
    ],
    "f2": [
-    "Ryan McLeod",
-    "Josh Norris",
-    "Konsta Helenius"
-   ],
-   "f3": [
     "Zach Benson",
     "Noah Ostlund",
     "Jack Quinn"
+   ],
+   "f3": [
+    "Peyton Krebs",
+    "Ryan McLeod",
+    "Konsta Helenius"
    ],
    "f4": [
     "Jiri Kulich",
@@ -683,43 +683,43 @@
   },
   "EDM": {
    "team": "Edmonton Oilers",
-   "updated": "2026-09-28",
-   "source": "Bob Stauffer",
+   "updated": "2026-09-29",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "pp1": [
     "Zach Hyman",
-    "Ryan Nugent-Hopkins",
+    "Vasily Podkolzin",
     "Leon Draisaitl",
     "Evan Bouchard",
     "Connor McDavid"
    ],
    "pp2": [
-    "Vasily Podkolzin",
+    "Trent Frederic",
     "Kasperi Kapanen",
     "Isaac Howard",
     "Mattias Ekholm",
     "Jake Walman"
    ],
    "pk1": [
-    "Ryan Nugent-Hopkins",
+    "Connor McDavid",
     "Kasperi Kapanen",
     "Mattias Ekholm",
     "Connor Murphy"
    ],
    "pk2": [
-    "Connor McDavid",
+    "Leon Draisaitl",
     "Vasily Podkolzin",
     "Ryan Shea",
     "Evan Bouchard"
    ],
    "f1": [
-    "Vasily Podkolzin",
+    "Isaac Howard",
     "Connor McDavid",
-    "Leon Draisaitl"
+    "Zach Hyman"
    ],
    "f2": [
-    "Zach Hyman",
-    "Ryan Nugent-Hopkins",
+    "Vasily Podkolzin",
+    "Leon Draisaitl",
     "Kasperi Kapanen"
    ],
    "f3": [
@@ -728,7 +728,7 @@
     "Mathieu Joseph"
    ],
    "f4": [
-    "Isaac Howard",
+    "Max Jones",
     "Owen Michaels",
     "Trent Frederic"
    ],
@@ -1023,8 +1023,8 @@
   },
   "NSH": {
    "team": "Nashville Predators",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Nick Kieser",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
    "pp1": [
     "Matthew Wood",
@@ -1049,8 +1049,8 @@
    "pk2": [
     "Jack Drury",
     "Alex Kerfoot",
-    "Adam Wilsby",
-    "Ilya Lyubushkin"
+    "Roman Josi",
+    "Adam Wilsby"
    ],
    "f1": [
     "Steven Stamkos",
@@ -1063,26 +1063,26 @@
     "Nils Hoglander"
    ],
    "f3": [
-    "Vitali Pinchuk",
+    "Ross Colton",
     "Mavrik Bourque",
     "Jonathan Marchessault"
    ],
    "f4": [
-    "Ross Colton",
+    "Adam Edstrom",
     "Jack Drury",
-    "Adam Edstrom"
+    "Reid Schaefer"
    ],
    "d1": [
-    "Brady Skjei",
-    "Roman Josi"
-   ],
-   "d2": [
-    "Nicolas Hague",
+    "Roman Josi",
     "Ryan Ufko"
    ],
+   "d2": [
+    "Brady Skjei",
+    "Nick Perbix"
+   ],
    "d3": [
-    "Adam Wilsby",
-    "Ilya Lyubushkin"
+    "Nicolas Hague",
+    "Adam Wilsby"
    ],
    "goalies": [
     "Juuse Saros",
@@ -1159,8 +1159,8 @@
   },
   "NYI": {
    "team": "New York Islanders",
-   "updated": "2026-09-17",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Andrew Gross",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
     "Kyle Palmieri",
@@ -1170,7 +1170,7 @@
     "Matthew Schaefer"
    ],
    "pp2": [
-    "Emil Heineman",
+    "Victor Eklund",
     "Anthony Duclair",
     "Simon Holmstrom",
     "Calum Ritchie",
@@ -1185,8 +1185,8 @@
    "pk2": [
     "Bo Horvat",
     "Kyle Palmieri",
-    "Alexander Romanov",
-    "Scott Mayfield"
+    "Logan Stanley",
+    "Alexander Romanov"
    ],
    "f1": [
     "Simon Holmstrom",
@@ -1217,7 +1217,7 @@
     "Ryan Pulock"
    ],
    "d3": [
-    "Scott Mayfield",
+    "Logan Stanley",
     "Tony DeAngelo"
    ],
    "goalies": [
@@ -1227,8 +1227,8 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-09-28",
-   "source": "Colin Stephenson",
+   "updated": "2026-09-29",
+   "source": "Mollie Walker",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1295,7 +1295,7 @@
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-09-28",
+   "updated": "2026-09-29",
    "source": "Andrew Wilimek",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
@@ -1303,29 +1303,29 @@
     "Tim Stützle",
     "Dylan Cozens",
     "Drake Batherson",
-    "Jake Sanderson"
+    "Thomas Chabot"
    ],
    "pp2": [
-    "Andre Burakovsky",
+    "Stephen Halliday",
+    "Shane Pinto",
     "Claude Giroux",
-    "Fabian Zetterlund",
     "Carter Yakemchuk",
-    "Thomas Chabot"
+    "Fabian Zetterlund"
    ],
    "pk1": [
     "Shane Pinto",
     "Claude Giroux",
-    "Jake Sanderson",
+    "Tyler Kleven",
     "Jordan Spence"
    ],
    "pk2": [
     "Tim Stützle",
     "Michael Amadio",
-    "Tyler Kleven",
+    "Nikolas Matinpalo",
     "Thomas Chabot"
    ],
    "f1": [
-    "Andre Burakovsky",
+    "Warren Foegele",
     "Tim Stützle",
     "Drake Batherson"
    ],
@@ -1345,16 +1345,16 @@
     "Hayden Hodgson"
    ],
    "d1": [
-    "Jake Sanderson",
-    "Hoyt Stanley"
-   ],
-   "d2": [
     "Thomas Chabot",
     "Jordan Spence"
    ],
-   "d3": [
+   "d2": [
     "Tyler Kleven",
     "Carter Yakemchuk"
+   ],
+   "d3": [
+    "Nikolas Matinpalo",
+    "Cameron Crotty"
    ],
    "goalies": [
     "Linus Ullmark",
@@ -1363,8 +1363,8 @@
   },
   "PHI": {
    "team": "Philadelphia Flyers",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Charlie O'Connor",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "pp1": [
     "Porter Martone",
@@ -1378,7 +1378,7 @@
     "Noah Cates",
     "Alex Bump",
     "Owen Tippett",
-    "David Jiricek"
+    "Cam York"
    ],
    "pk1": [
     "Sean Couturier",
@@ -1398,12 +1398,12 @@
     "Porter Martone"
    ],
    "f2": [
-    "Alex Bump",
+    "Tyson Foerster",
     "Christian Dvorak",
     "Travis Konecny"
    ],
    "f3": [
-    "Tyson Foerster",
+    "Alex Bump",
     "Noah Cates",
     "Matvei Michkov"
    ],
@@ -1422,7 +1422,7 @@
    ],
    "d3": [
     "Nick Seeler",
-    "David Jiricek"
+    "Simon Benoit"
    ],
    "goalies": [
     "Dan Vladar",
@@ -1431,11 +1431,11 @@
   },
   "PIT": {
    "team": "Pittsburgh Penguins",
-   "updated": "2026-09-25",
-   "source": "Training Camp 2025",
+   "updated": "2026-09-29",
+   "source": "@PensInsideScoop",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "pp1": [
-    "Nicholas Robertson",
+    "Egor Chinakhov",
     "Tommy Novak",
     "Rickard Rakell",
     "Erik Karlsson",
@@ -1444,9 +1444,9 @@
    "pp2": [
     "Ville Koivunen",
     "Hendrix Lapierre",
-    "Egor Chinakhov",
+    "Evgeni Malkin",
     "Kris Letang",
-    "Evgeni Malkin"
+    "Samuel Girard"
    ],
    "pk1": [
     "Blake Lizotte",
@@ -2174,7 +2174,7 @@
    ],
    "goalies": [
     "Stuart Skinner",
-    "Domenic DiVincentiis"
+    "Clay Stevenson"
    ]
   }
  }
