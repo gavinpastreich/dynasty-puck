@@ -1,6 +1,6 @@
-Dynasty Puck HQ build 2026-09-28T18:10:00
-Fantrax: 4 roster changes since 2026-09-28T11:42:19+00:00
-Fantrax: synced 604 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-09-29T11:22:46
+Fantrax: 3 roster changes since 2026-09-28T18:10:02+00:00
+Fantrax: synced 601 rostered players, 126 future picks, 14 teams in standings
   > Charle-Edouard D'Astous: FA -> mertin (Fantrax)
   > Vitali Pinchuk: FA -> mertin (Fantrax)
   > Jake DeBrusk: FA -> BHHC (Fantrax)
@@ -9,10 +9,13 @@ Fantrax: synced 604 rostered players, 126 future picks, 14 teams in standings
   > Esa Lindell: FA -> CGN (Fantrax)
   > Pyotr Kochetkov: FA -> Wags8210 (Fantrax)
   > Egor Chinakhov: FA -> Wags8210 (Fantrax)
-Fantrax sync (2026-09-28T18:10:02+00:00): 604 rostered; changes vs CSV: {'owner': 8}
+  < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
+  < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
+  < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
+Fantrax sync (2026-09-29T11:22:47+00:00): 601 rostered; changes vs CSV: {'owner': 8, 'dropped': 3}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1254 players (604 rostered)
-NHL id match: {'index': 1144, 'search': 109, None: 1}; unmatched 1 (rostered: 0)
+Universe: 1254 players (601 rostered)
+NHL id match: {'index': 1146, 'search': 107, None: 1}; unmatched 1 (rostered: 0)
 Landing pages: 1246/1246
 Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 773/773 matched skaters
@@ -28,7 +31,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   ROO       Fantrax $100.90M  sheet $ 99.90M  {'BID': 16, 'FA': 1, 'ELC1': 1, 'MNR': 29}   <- differs by +1.00M (Fantrax is current)
   TommyG10  Fantrax $ 99.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 2, 'RFA1': 2, 'MNR': 22}   <- differs by +2.50M (Fantrax is current)
   Wags8210  Fantrax $102.84M  sheet $ 98.84M  {'BID': 20, 'FA': 4, 'RFA1': 1, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)  (IR relief $8.74M)
-  BULLIES   Fantrax $ 89.85M  sheet $ 88.85M  {'BID': 17, 'ELC1': 2, 'RFA1': 2, 'MNR': 24, 'FA': 1}   <- differs by +1.00M (Fantrax is current)  (IR relief $6.80M)
+  BULLIES   Fantrax $ 89.85M  sheet $ 88.85M  {'BID': 17, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 1}   <- differs by +1.00M (Fantrax is current)  (IR relief $6.80M)
   nbracken  Fantrax $101.42M  sheet $ 99.42M  {'BID': 16, 'RFA1': 3, 'ELC1': 1, 'MNR': 22, 'FA': 2}   <- differs by +2.00M (Fantrax is current)
   SPG       Fantrax $103.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 3, 'MNR': 21}   <- differs by +3.00M (Fantrax is current)  (IR relief $6.40M)
   BHHC      Fantrax $ 98.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 2, 'ELC1': 1}   <- differs by +2.00M (Fantrax is current)
@@ -41,7 +44,10 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   mertin    Fantrax $103.60M  sheet $ 99.60M  {'BID': 13, 'FA': 4, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +4.00M (Fantrax is current)  (IR relief $2.50M)
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist
+  ~ on contract sheet (BULLIES) but not on a Fantrax roster: Victor Soderstrom
   ~ on contract sheet (mcianfra) but not on a Fantrax roster: Danil Gushchin
+  ~ on contract sheet (BULLIES) but not on a Fantrax roster: Xavier Bourgault
+  ~ on contract sheet (BULLIES) but not on a Fantrax roster: Sasha Pastujov
   ! forwards with Pt-D > 0 (dual F,D?): ['Kurtis MacDermid', 'Maxim Groshev']
 Category reconcile: D-men whose Pt-D != G+A (2025-26): 0 []
 Goalie reconcile: 2025-26 GP & W match NHL for 96/96
@@ -56,7 +62,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date: no games yet, projections are preseason
-Depth (Daily Faceoff, 2026-09-28): 1205 line/PP/goalie tags; injuries matched 65/65
+Depth (Daily Faceoff, 2026-09-29): 1203 line/PP/goalie tags; injuries matched 65/65
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay

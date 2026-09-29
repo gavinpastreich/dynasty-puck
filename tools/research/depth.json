@@ -1,11 +1,11 @@
 {
- "updated": "2026-09-28",
+ "updated": "2026-09-29",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
    "team": "Anaheim Ducks",
-   "updated": "2026-09-22",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Derek Lee",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "pp1": [
     "Beckett Sennecke",
@@ -17,7 +17,7 @@
    "pp2": [
     "Alex Killorn",
     "Ryan Poehling",
-    "Frank Vatrano",
+    "Roger McQueen",
     "Pavel Mintyukov",
     "Nikita Klepov"
    ],
@@ -34,36 +34,36 @@
     "Tyson Hinds"
    ],
    "f1": [
-    "Alex Killorn",
+    "Beckett Sennecke",
     "Leo Carlsson",
-    "Cutter Gauthier"
+    "Mikael Granlund"
    ],
    "f2": [
-    "Beckett Sennecke",
-    "Mikael Granlund",
-    "Nikita Klepov"
+    "Nikita Nesterenko",
+    "Ryan Poehling",
+    "Cutter Gauthier"
    ],
    "f3": [
-    "A.J. Greer",
-    "Ryan Poehling",
-    "Frank Vatrano"
+    "Alex Killorn",
+    "Roger McQueen",
+    "Nikita Klepov"
    ],
    "f4": [
-    "Nikita Nesterenko",
+    "Jeff Malott",
     "Tim Washe",
     "Judd Caulfield"
    ],
    "d1": [
     "Jackson Lacombe",
-    "Tyson Hinds"
+    "Tristan Luneau"
    ],
    "d2": [
     "Pavel Mintyukov",
-    "Tristan Luneau"
+    "Nick Jensen"
    ],
    "d3": [
     "Travis Mitchell",
-    "Nick Jensen"
+    "Tyson Hinds"
    ],
    "goalies": [
     "Lukas Dostal",
@@ -161,7 +161,7 @@
     "Ryan McLeod",
     "Beck Malenstyn",
     "Owen Power",
-    "Conor Timmins"
+    "Olen Zellweger"
    ],
    "pk2": [
     "Josh Norris",
@@ -198,7 +198,7 @@
     "Zach Metsa"
    ],
    "d3": [
-    "Conor Timmins",
+    "Olen Zellweger",
     "Matt Grzelcyk"
    ],
    "goalies": [
@@ -479,14 +479,14 @@
   },
   "CBJ": {
    "team": "Columbus Blue Jackets",
-   "updated": "2026-09-28",
-   "source": "Dylan Tyrer",
+   "updated": "2026-09-29",
+   "source": "DFO Projections",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
-    "Charlie Coyle",
+    "Matthew Knies",
     "Adam Fantilli",
+    "Charlie Coyle",
     "Kent Johnson",
-    "Kirill Marchenko",
     "Zach Werenski"
    ],
    "pp2": [
@@ -509,7 +509,7 @@
     "Erik Gudbranson"
    ],
    "f1": [
-    "Kirill Marchenko",
+    "Matthew Knies",
     "Adam Fantilli",
     "Kent Johnson"
    ],
@@ -530,14 +530,14 @@
    ],
    "d1": [
     "Zach Werenski",
-    "Damon Severson"
+    "Denton Mateychuk"
    ],
    "d2": [
     "Ivan Provorov",
-    "Denton Mateychuk"
+    "Jake Christiansen"
    ],
    "d3": [
-    "Jake Christiansen",
+    "Emil Andrae",
     "Erik Gudbranson"
    ],
    "goalies": [
@@ -547,8 +547,8 @@
   },
   "DAL": {
    "team": "Dallas Stars",
-   "updated": "2026-09-23",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Sam Nestler",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "pp1": [
     "Mikko Rantanen",
@@ -572,7 +572,7 @@
    ],
    "pk2": [
     "Sam Steel",
-    "Colin Blackwell",
+    "Joel Kiviranta",
     "Thomas Harley",
     "Tyler Myers"
    ],
@@ -594,7 +594,7 @@
    "f4": [
     "Oskar Back",
     "Radek Faksa",
-    "Colin Blackwell"
+    "Joel Kiviranta"
    ],
    "d1": [
     "Thomas Harley",
@@ -615,8 +615,8 @@
   },
   "DET": {
    "team": "Detroit Red Wings",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Max Bultman",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "pp1": [
     "Viktor Arvidsson",
@@ -651,18 +651,18 @@
    ],
    "f2": [
     "Emmitt Finnie",
-    "Marco Kasper",
+    "J.T. Compher",
     "Viktor Arvidsson"
    ],
    "f3": [
-    "Carter Mazur",
-    "Nate Danielson",
-    "Michael Brandsegg-Nygård"
+    "Michael Rasmussen",
+    "Marco Kasper",
+    "Keegan Kolesar"
    ],
    "f4": [
-    "Michael Rasmussen",
-    "J.T. Compher",
-    "Keegan Kolesar"
+    "Mason Appleton",
+    "Nate Danielson",
+    "Michael Brandsegg-Nygård"
    ],
    "d1": [
     "Albert Johansson",
@@ -683,8 +683,8 @@
   },
   "EDM": {
    "team": "Edmonton Oilers",
-   "updated": "2026-09-22",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Bob Stauffer",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "pp1": [
     "Zach Hyman",
@@ -713,24 +713,24 @@
     "Evan Bouchard"
    ],
    "f1": [
-    "Leon Draisaitl",
+    "Vasily Podkolzin",
     "Connor McDavid",
-    "Vasily Podkolzin"
+    "Leon Draisaitl"
    ],
    "f2": [
-    "Isaac Howard",
+    "Zach Hyman",
     "Ryan Nugent-Hopkins",
-    "Zach Hyman"
-   ],
-   "f3": [
-    "Max Jones",
-    "Trent Frederic",
     "Kasperi Kapanen"
    ],
-   "f4": [
+   "f3": [
     "Alex Formenton",
     "Colton Dach",
     "Mathieu Joseph"
+   ],
+   "f4": [
+    "Isaac Howard",
+    "Owen Michaels",
+    "Trent Frederic"
    ],
    "d1": [
     "Mattias Ekholm",
@@ -819,8 +819,8 @@
   },
   "LAK": {
    "team": "Los Angeles Kings",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Alexander Legget",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "pp1": [
     "Mats Zuccarello",
@@ -839,14 +839,14 @@
    "pk1": [
     "Erik Haula",
     "Joel Armia",
-    "Joel Edmundson",
-    "Cody Ceci"
+    "Mikey Anderson",
+    "Drew Doughty"
    ],
    "pk2": [
     "Scott Laughton",
     "Trevor Moore",
-    "Mikey Anderson",
-    "Drew Doughty"
+    "Brian Dumoulin",
+    "Cody Ceci"
    ],
    "f1": [
     "Artemi Panarin",
@@ -854,14 +854,14 @@
     "Adrian Kempe"
    ],
    "f2": [
-    "Alex Laferriere",
+    "Mats Zuccarello",
     "Alex Turcotte",
-    "Mats Zuccarello"
+    "Alex Laferriere"
    ],
    "f3": [
     "Trevor Moore",
-    "Erik Haula",
-    "Scott Laughton"
+    "Scott Laughton",
+    "Erik Haula"
    ],
    "f4": [
     "Andre Lee",
@@ -869,7 +869,7 @@
     "Joel Armia"
    ],
    "d1": [
-    "Joel Edmundson",
+    "Erik Gustafsson",
     "Brandt Clarke"
    ],
    "d2": [
@@ -980,7 +980,7 @@
    ],
    "pk2": [
     "Jake Evans",
-    "Oliver Kapanen",
+    "Alex Newhook",
     "Lane Hutson",
     "Noah Dobson"
    ],
@@ -991,16 +991,16 @@
    ],
    "f2": [
     "Juraj Slafkovsky",
-    "Oliver Kapanen",
+    "Alex Newhook",
     "Ivan Demidov"
    ],
    "f3": [
-    "Zack Bolduc",
-    "Alex Newhook",
-    "Alexandre Texier"
+    "Alexandre Texier",
+    "Phillip Danault",
+    "Kirby Dach"
    ],
    "f4": [
-    "Phillip Danault",
+    "Zack Bolduc",
     "Jake Evans",
     "Josh Anderson"
    ],
@@ -1316,7 +1316,7 @@
     "Shane Pinto",
     "Claude Giroux",
     "Jake Sanderson",
-    "Artem Zub"
+    "Jordan Spence"
    ],
    "pk2": [
     "Tim Stützle",
@@ -1346,7 +1346,7 @@
    ],
    "d1": [
     "Jake Sanderson",
-    "Artem Zub"
+    "Hoyt Stanley"
    ],
    "d2": [
     "Thomas Chabot",
@@ -1567,8 +1567,8 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-09-27",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "@sound_hockey",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1580,8 +1580,8 @@
    "pp2": [
     "Kaapo Kakko",
     "Shane Wright",
-    "Matty Beniers",
     "Berkly Catton",
+    "Matty Beniers",
     "Brandon Montour"
    ],
    "pk1": [
@@ -1599,7 +1599,7 @@
    "f1": [
     "Jared McCann",
     "Matty Beniers",
-    "Mackie Samoskevich"
+    "Kaapo Kakko"
    ],
    "f2": [
     "Jordan Eberle",
@@ -1607,14 +1607,14 @@
     "Bobby McMann"
    ],
    "f3": [
-    "Kaapo Kakko",
+    "Ryan Winterton",
     "Berkly Catton",
     "Shane Wright"
    ],
    "f4": [
-    "Jacob Melanson",
+    "Ben Meyers",
     "Frederick Gaudreau",
-    "Ryan Winterton"
+    "Jacob Melanson"
    ],
    "d1": [
     "Vince Dunn",
@@ -1771,21 +1771,21 @@
   },
   "TOR": {
    "team": "Toronto Maple Leafs",
-   "updated": "2026-09-28",
-   "source": "David Alter",
+   "updated": "2026-09-29",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
-    "Jack Roslovic",
+    "Kirill Marchenko",
     "John Tavares",
     "William Nylander",
     "Darren Raddysh",
     "Auston Matthews"
    ],
    "pp2": [
-    "Matthew Knies",
+    "Easton Cowan",
     "Nick Paul",
     "Gavin McKenna",
-    "Easton Cowan",
+    "Jack Roslovic",
     "Morgan Rielly"
    ],
    "pk1": [
@@ -1801,14 +1801,14 @@
     "Darren Raddysh"
    ],
    "f1": [
-    "Matthew Knies",
+    "Jack Roslovic",
     "Auston Matthews",
-    "Jack Roslovic"
+    "William Nylander"
    ],
    "f2": [
     "Gavin McKenna",
     "John Tavares",
-    "William Nylander"
+    "Kirill Marchenko"
    ],
    "f3": [
     "Easton Cowan",
@@ -1839,8 +1839,8 @@
   },
   "UTA": {
    "team": "Utah Mammoth",
-   "updated": "2026-09-17",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Brogan Houston",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "pp1": [
     "Dylan Guenther",
@@ -1863,15 +1863,15 @@
     "MacKenzie Weegar"
    ],
    "pk2": [
+    "Kevin Stenlund",
     "Jack McBain",
-    "Michael Carcone",
     "Nate Schmidt",
     "John Marino"
    ],
    "f1": [
     "Clayton Keller",
     "Nick Schmaltz",
-    "Daniil But"
+    "Vincent Trocheck"
    ],
    "f2": [
     "Anders Lee",
@@ -1880,13 +1880,13 @@
    ],
    "f3": [
     "Lawson Crouse",
-    "Vincent Trocheck",
-    "Kailer Yamamoto"
+    "Barrett Hayton",
+    "Jack McBain"
    ],
    "f4": [
-    "Jack McBain",
-    "Barrett Hayton",
-    "Michael Carcone"
+    "Liam O'Brien",
+    "Kevin Stenlund",
+    "Kailer Yamamoto"
    ],
    "d1": [
     "Mikhail Sergachev",
@@ -1907,8 +1907,8 @@
   },
   "VAN": {
    "team": "Vancouver Canucks",
-   "updated": "2026-09-25",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Brendan Batchelor",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "pp1": [
     "Jake DeBrusk",
@@ -1918,11 +1918,11 @@
     "Elias Pettersson"
    ],
    "pp2": [
-    "Liam Ohgren",
-    "Linus Karlsson",
     "Jonathan Lekkerimaki",
-    "Tom Willander",
-    "Zeev Buium"
+    "Linus Karlsson",
+    "Liam Ohgren",
+    "Zeev Buium",
+    "Tom Willander"
    ],
    "pk1": [
     "Elias Pettersson",
@@ -1952,8 +1952,8 @@
     "Linus Karlsson"
    ],
    "f4": [
-    "Arshdeep Bains",
     "Paul Cotter",
+    "Aatu Raty",
     "Brendan Gallagher"
    ],
    "d1": [
@@ -1975,22 +1975,22 @@
   },
   "VGK": {
    "team": "Vegas Golden Knights",
-   "updated": "2026-07-04",
-   "source": "2026 Offseason (Projected)",
+   "updated": "2026-09-28",
+   "source": "Hannah Kirkell",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "pp1": [
     "Mark Stone",
     "Tomas Hertl",
-    "Mitch Marner",
+    "Victor Olofsson",
     "Jack Eichel",
-    "Shea Theodore"
+    "Mitch Marner"
    ],
    "pp2": [
     "Braeden Bowman",
     "William Karlsson",
     "Ivan Barbashev",
     "Rasmus Andersson",
-    "Victor Olofsson"
+    "Shea Theodore"
    ],
    "pk1": [
     "William Karlsson",
@@ -2020,9 +2020,9 @@
     "Victor Olofsson"
    ],
    "f4": [
-    "Braeden Bowman",
+    "Marc Gatcomb",
     "Nic Dowd",
-    "Marc Gatcomb"
+    "Braeden Bowman"
    ],
    "d1": [
     "Brayden McNabb",
@@ -2043,8 +2043,8 @@
   },
   "WSH": {
    "team": "Washington Capitals",
-   "updated": "2026-09-24",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-28",
+   "source": "Tom Gulitti",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "pp1": [
     "Tom Wilson",
@@ -2097,12 +2097,12 @@
     "Matt Roy"
    ],
    "d2": [
-    "Martin Fehervary",
-    "Timothy Liljegren"
-   ],
-   "d3": [
     "Cole Hutson",
     "Vincent Desharnais"
+   ],
+   "d3": [
+    "Martin Fehervary",
+    "Timothy Liljegren"
    ],
    "goalies": [
     "Logan Thompson",

@@ -62,5 +62,32 @@
 "to": "mertin",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-09-29",
+"id": "04zom",
+"type": "drop",
+"from": "BULLIES",
+"ct": "MNR",
+"sal": 0,
+"n": "Soderstrom, Victor"
+},
+{
+"d": "2026-09-29",
+"id": "05oyv",
+"type": "drop",
+"from": "BULLIES",
+"ct": "MNR",
+"sal": 0,
+"n": "Pastujov, Sasha"
+},
+{
+"d": "2026-09-29",
+"id": "05r1j",
+"type": "drop",
+"from": "BULLIES",
+"ct": "MNR",
+"sal": 0,
+"n": "Bourgault, Xavier"
 }
 ]
