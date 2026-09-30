@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-29",
+ "updated": "2026-09-30",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -73,7 +73,7 @@
   "BOS": {
    "team": "Boston Bruins",
    "updated": "2026-09-29",
-   "source": "Jack Studley",
+   "source": "Warmups (Belle Fraser)",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "Morgan Geekie",
@@ -208,8 +208,8 @@
   },
   "CGY": {
    "team": "Calgary Flames",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Pat Steinberg",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "pp1": [
     "Joel Farabee",
@@ -276,7 +276,7 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-09-28",
+   "updated": "2026-09-29",
    "source": "Ryan Henkel",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
@@ -321,9 +321,9 @@
     "Jordan Martinook"
    ],
    "f4": [
-    "Nicolas Deslauriers",
+    "William Carrier",
     "Mark Jankowski",
-    "William Carrier"
+    "Nicolas Deslauriers"
    ],
    "d1": [
     "Jaccob Slavin",
@@ -344,8 +344,8 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-30",
+   "source": "Warmups (Mark Lazerus)",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Tyler Bertuzzi",
@@ -412,8 +412,8 @@
   },
   "COL": {
    "team": "Colorado Avalanche",
-   "updated": "2026-09-28",
-   "source": "Aarif Deen",
+   "updated": "2026-09-29",
+   "source": "Evan Rawal",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "pp1": [
     "T.J. Hughes",
@@ -683,8 +683,8 @@
   },
   "EDM": {
    "team": "Edmonton Oilers",
-   "updated": "2026-09-29",
-   "source": "Projected",
+   "updated": "2026-09-30",
+   "source": "Warmups (Jack Michaels)",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "pp1": [
     "Zach Hyman",
@@ -713,7 +713,7 @@
     "Evan Bouchard"
    ],
    "f1": [
-    "Isaac Howard",
+    "Alex Formenton",
     "Connor McDavid",
     "Zach Hyman"
    ],
@@ -723,12 +723,12 @@
     "Kasperi Kapanen"
    ],
    "f3": [
-    "Alex Formenton",
+    "Max Jones",
     "Colton Dach",
     "Mathieu Joseph"
    ],
    "f4": [
-    "Max Jones",
+    "Isaac Howard",
     "Owen Michaels",
     "Trent Frederic"
    ],
@@ -751,7 +751,7 @@
   },
   "FLA": {
    "team": "Florida Panthers",
-   "updated": "2026-09-28",
+   "updated": "2026-09-29",
    "source": "Jameson Olive",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "pp1": [
@@ -796,9 +796,9 @@
     "Sandis Vilmanis"
    ],
    "f4": [
-    "Bokondji Imama",
+    "Garnet Hathaway",
     "Lars Eller",
-    "Garnet Hathaway"
+    "Bokondji Imama"
    ],
    "d1": [
     "Gustav Forsling",
@@ -955,8 +955,8 @@
   },
   "MTL": {
    "team": "Montreal Canadiens",
-   "updated": "2026-09-28",
-   "source": "Training Camp 2026",
+   "updated": "2026-09-29",
+   "source": "Arpon Basu",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "pp1": [
     "Juraj Slafkovsky",
@@ -1027,18 +1027,18 @@
    "source": "Nick Kieser",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
    "pp1": [
-    "Matthew Wood",
-    "Ryan O'Reilly",
-    "Filip Forsberg",
     "Steven Stamkos",
+    "Ryan O'Reilly",
+    "Matthew Wood",
+    "Filip Forsberg",
     "Roman Josi"
    ],
    "pp2": [
-    "Alex Kerfoot",
     "Ross Colton",
-    "Jonathan Marchessault",
+    "Alex Kerfoot",
     "Mavrik Bourque",
-    "Ryan Ufko"
+    "Ryan Ufko",
+    "Jonathan Marchessault"
    ],
    "pk1": [
     "Ryan O'Reilly",
@@ -1228,7 +1228,7 @@
   "NYR": {
    "team": "New York Rangers",
    "updated": "2026-09-29",
-   "source": "Mollie Walker",
+   "source": "Warmups (Mollie Walker)",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1772,7 +1772,7 @@
   "TOR": {
    "team": "Toronto Maple Leafs",
    "updated": "2026-09-29",
-   "source": "Projected",
+   "source": "Mark Masters",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
     "Kirill Marchenko",
@@ -1801,14 +1801,14 @@
     "Darren Raddysh"
    ],
    "f1": [
-    "Jack Roslovic",
+    "Kirill Marchenko",
     "Auston Matthews",
-    "William Nylander"
+    "Jack Roslovic"
    ],
    "f2": [
     "Gavin McKenna",
     "John Tavares",
-    "Kirill Marchenko"
+    "William Nylander"
    ],
    "f3": [
     "Easton Cowan",
@@ -1907,8 +1907,8 @@
   },
   "VAN": {
    "team": "Vancouver Canucks",
-   "updated": "2026-09-28",
-   "source": "Brendan Batchelor",
+   "updated": "2026-09-30",
+   "source": "Warmups (Brendan Batchelor)",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "pp1": [
     "Jake DeBrusk",
@@ -1952,8 +1952,8 @@
     "Linus Karlsson"
    ],
    "f4": [
+    "Arshdeep Bains",
     "Paul Cotter",
-    "Aatu Raty",
     "Brendan Gallagher"
    ],
    "d1": [
@@ -1975,22 +1975,22 @@
   },
   "VGK": {
    "team": "Vegas Golden Knights",
-   "updated": "2026-09-28",
-   "source": "Hannah Kirkell",
+   "updated": "2026-09-30",
+   "source": "Warmups (Hannah Kirkell)",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "pp1": [
     "Mark Stone",
     "Tomas Hertl",
-    "Victor Olofsson",
+    "Mitch Marner",
     "Jack Eichel",
-    "Mitch Marner"
+    "Shea Theodore"
    ],
    "pp2": [
     "Braeden Bowman",
     "William Karlsson",
     "Ivan Barbashev",
     "Rasmus Andersson",
-    "Shea Theodore"
+    "Victor Olofsson"
    ],
    "pk1": [
     "William Karlsson",
