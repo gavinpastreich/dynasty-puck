@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30",
+ "updated": "2026-10-01",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -17,11 +17,11 @@
   {
    "name": "Drew Helleson",
    "team": "ANA",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Helleson (lower-body) is hopeful to return for Anaheim’s season opener vs. Vegas.",
-   "date": "2026-09-22",
+   "detail": "Helleson (lower-body) has been placed on IR.",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -29,7 +29,7 @@
   {
    "name": "Ian Moore",
    "team": "ANA",
-   "status": "OUT",
+   "status": "IR",
    "injury": "lower body",
    "ret": "",
    "detail": "Moore (lower body) will miss the next 2-4 weeks.",
@@ -41,11 +41,11 @@
   {
    "name": "Troy Terry",
    "team": "ANA",
-   "status": "OUT",
-   "injury": "",
-   "ret": "Months",
-   "detail": "Terry underwent surgery on June 9 to address hip impingement and a labral tear.",
-   "date": "2026-08-13",
+   "status": "IR",
+   "injury": "hip",
+   "ret": "",
+   "detail": "Terry (hip) has been placed to LTIR.",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -103,7 +103,7 @@
    "team": "BUF",
    "status": "IR",
    "injury": "lower-body",
-   "ret": "",
+   "ret": "Week-to-week",
    "detail": "Samuelsson (lower-body) has a chance to play in Buffalo's season opener vs. Columbus on Thursday.",
    "date": "2026-09-30",
    "source": "Daily Faceoff",
@@ -255,6 +255,18 @@
    "holdout": false
   },
   {
+   "name": "Matt Duchene",
+   "team": "DAL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-09-30",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Dylan Larkin",
    "team": "DET",
    "status": "DTD",
@@ -387,18 +399,6 @@
    "holdout": false
   },
   {
-   "name": "Joel Edmundson",
-   "team": "LAK",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "Day-to-day",
-   "detail": "Edmundson (undisclosed) is day-to-day.",
-   "date": "2026-09-28",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Kevin Fiala",
    "team": "LAK",
    "status": "OUT",
@@ -522,10 +522,10 @@
    "name": "Andre Burakovsky",
    "team": "OTT",
    "status": "DTD",
-   "injury": "undisclosed",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Burakovsky (undisclosed) did not practice on Monday.",
-   "date": "2026-09-28",
+   "detail": "Burakovsky (upper-body) is not expected to play in Ottawa's upcoming game this weekend.",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -546,9 +546,9 @@
    "name": "Jake Sanderson",
    "team": "OTT",
    "status": "DTD",
-   "injury": "",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "detail": "Sanderson (undisclosed) skated on Wednesday and is hopeful to return on Saturday vs. Toronto.",
    "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
@@ -579,18 +579,6 @@
    "holdout": false
   },
   {
-   "name": "Dan Vladar",
-   "team": "PHI",
-   "status": "Game-time decision",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Denver Barkey",
    "team": "PHI",
    "status": "IR",
@@ -609,7 +597,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-29",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -660,6 +648,18 @@
    "date": "2026-09-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Alex Nedeljkovic",
+   "team": "SJS",
+   "status": "DTD",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Nedeljkovic (illness) missed practice on Wednesday but is expected to be available for Thursday.",
+   "date": "2026-09-30",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
   },
   {
@@ -728,8 +728,8 @@
    "status": "OUT",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Domi (lower-body) failed his physical and is out indefinitely.",
-   "date": "2026-09-16",
+   "detail": "Domi (lower-body) has been added to LTIR.",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -765,7 +765,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-17",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -777,7 +777,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-17",
+   "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
