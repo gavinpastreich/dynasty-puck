@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-01",
+ "updated": "2026-10-02",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -99,18 +99,6 @@
    "holdout": false
   },
   {
-   "name": "Mattias Samuelsson",
-   "team": "BUF",
-   "status": "IR",
-   "injury": "lower-body",
-   "ret": "Week-to-week",
-   "detail": "Samuelsson (lower-body) will dress for Buffalo's season opener in Columbus on Thursday.",
-   "date": "2026-10-01",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Alexander Nikishin",
    "team": "CAR",
    "status": "OUT",
@@ -162,10 +150,10 @@
    "name": "Isac Lundestrom",
    "team": "CBJ",
    "status": "IR",
-   "injury": "",
-   "ret": "",
-   "detail": "Lundestrom had surgery on his Achilles and is expected to be sidelined until early-November.",
-   "date": "2026-07-20",
+   "injury": "achilles",
+   "ret": "Months",
+   "detail": "Lundestrom (achilles) is considered month-to-month.",
+   "date": "2026-10-01",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -173,7 +161,7 @@
   {
    "name": "Ivan Provorov",
    "team": "CBJ",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "Week-to-week",
    "detail": "Provorov (lower-body) is out for Columbus' season opener vs. Buffalo and is considered week-to-week.",
@@ -363,6 +351,18 @@
    "holdout": false
   },
   {
+   "name": "Zach Hyman",
+   "team": "EDM",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Hyman (undisclosed) is out vs. Vancouver on Thursday.",
+   "date": "2026-10-01",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Brad Marchand",
    "team": "FLA",
    "status": "OUT",
@@ -507,6 +507,18 @@
    "holdout": false
   },
   {
+   "name": "Joonas Korpisalo",
+   "team": "NYR",
+   "status": "OUT",
+   "injury": "",
+   "ret": "Week-to-week",
+   "detail": "Korpisalo is week-to-week with a lower-body injury.",
+   "date": "2026-10-01",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Andre Burakovsky",
    "team": "OTT",
    "status": "DTD",
@@ -594,10 +606,22 @@
    "name": "Ben Kindel",
    "team": "PIT",
    "status": "DTD",
-   "injury": "lower body",
-   "ret": "Week-to-week",
-   "detail": "Kindel (lower body) is week-to-week and continues to be evaluated.",
-   "date": "2026-09-24",
+   "injury": "lower-body",
+   "ret": "In camp",
+   "detail": "Kindel (lower-body) returned to Pittsburgh's practice in a regular jersey on Thursday.",
+   "date": "2026-10-01",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Blake Lizotte",
+   "team": "PIT",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "In camp",
+   "detail": "Lizotte (lower-body) is being further evaluated and will not practice on Thursday.",
+   "date": "2026-10-01",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -630,24 +654,12 @@
    "name": "Mackie Samoskevich",
    "team": "SEA",
    "status": "DTD",
-   "injury": "",
-   "ret": "Day-to-day",
-   "detail": "Samoskevich missed Saturday’s preseason game due to an upper-body injury and is considered day-to-day.",
-   "date": "2026-09-26",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Samoskevich (upper-body) returned to Seattle's practice on Thursday in a non-contact jersey.",
+   "date": "2026-10-01",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Alex Nedeljkovic",
-   "team": "SJS",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Nedeljkovic (illness) missed practice on Wednesday but is expected to be available for Thursday.",
-   "date": "2026-09-30",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
   },
   {
