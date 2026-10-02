@@ -213,7 +213,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-09-30",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -360,6 +360,18 @@
    "date": "2026-10-01",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Aleksander Barkov",
+   "team": "FLA",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Barkov left Thursday's game with a lower-body injury and did not return.",
+   "date": "2026-10-02",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
   },
   {
@@ -548,8 +560,8 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Sanderson (undisclosed) skated on Wednesday and is hopeful to return on Saturday vs. Toronto.",
-   "date": "2026-09-30",
+   "detail": "Sanderson (undisclosed) practiced on Friday but remains questionable to play Saturday.",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -572,8 +584,8 @@
    "status": "IR",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Foegele (undisclosed) will begin the season as an injured/non-roster player.",
-   "date": "2026-09-28",
+   "detail": "Foegele (undisclosed) will play in the Senators season opener on Saturday.",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -597,7 +609,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -777,7 +789,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -789,7 +801,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
