@@ -1,19 +1,7 @@
 {
- "updated": "2026-10-02",
+ "updated": "2026-10-03",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
-  {
-   "name": "A.J. Greer",
-   "team": "ANA",
-   "status": "DTD",
-   "injury": "",
-   "ret": "Day-to-day",
-   "detail": "Greer is day-to-day with an upper-body injury and is questionable for Anaheim’s season opener vs. Vegas.",
-   "date": "2026-09-22",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
   {
    "name": "Drew Helleson",
    "team": "ANA",
@@ -57,7 +45,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
@@ -94,6 +82,18 @@
    "ret": "",
    "detail": "Zucker (sports hernia) will not be ready for the start of the regular season and is considered out indefinitely.",
    "date": "2026-09-16",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Olen Zellweger",
+   "team": "BUF",
+   "status": "Game-time decision",
+   "injury": "concussion",
+   "ret": "",
+   "detail": "Zellweger (concussion) has been cleared to make his Sabres debut on Saturday.",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -258,10 +258,10 @@
    "name": "Dylan Larkin",
    "team": "DET",
    "status": "DTD",
-   "injury": "upper-body",
+   "injury": "",
    "ret": "",
-   "detail": "Larkin (upper-body) will miss both of Detroit's games on Friday and Saturday.",
-   "date": "2026-10-01",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
