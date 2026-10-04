@@ -270,14 +270,14 @@
     "Zayne Parekh"
    ],
    "goalies": [
-    "Devin Cooley",
-    "Dustin Wolf"
+    "Dustin Wolf",
+    "Devin Cooley"
    ]
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-10-03",
-   "source": "Walt Ruff",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
     "Andrei Svechnikov",
@@ -479,8 +479,8 @@
   },
   "CBJ": {
    "team": "Columbus Blue Jackets",
-   "updated": "2026-10-03",
-   "source": "Brian Hedger",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
     "Matthew Knies",
@@ -516,7 +516,7 @@
    "f2": [
     "Valeri Nichushkin",
     "Sean Monahan",
-    "Dmitri Voronkov"
+    "Conor Garland"
    ],
    "f3": [
     "Cole Sillinger",
@@ -526,7 +526,7 @@
    "f4": [
     "Ryan Lomberg",
     "Danton Heinen",
-    "Conor Garland"
+    "Dmitri Voronkov"
    ],
    "d1": [
     "Zach Werenski",
@@ -813,8 +813,8 @@
     "Radko Gudas"
    ],
    "goalies": [
-    "Akira Schmid",
-    "Jacob Markstrom"
+    "Jacob Markstrom",
+    "Akira Schmid"
    ]
   },
   "LAK": {
@@ -955,7 +955,7 @@
   "MTL": {
    "team": "Montreal Canadiens",
    "updated": "2026-10-04",
-   "source": "Montreal Canadiens",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "pp1": [
     "Juraj Slafkovsky",
@@ -1225,8 +1225,8 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-10-03",
-   "source": "Last Game (2026-10-02)",
+   "updated": "2026-10-04",
+   "source": "Peter Baugh",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1260,7 +1260,7 @@
     "Alexis Lafrenière"
    ],
    "f2": [
-    "Oliver Bjorkstrand",
+    "Tye Kartye",
     "J.T. Miller",
     "Pavel Dorofeyev"
    ],
@@ -1270,7 +1270,7 @@
     "Eeli Tolvanen"
    ],
    "f4": [
-    "Tye Kartye",
+    "Oliver Bjorkstrand",
     "Joe Veleno",
     "Jaroslav Chmelar"
    ],
@@ -1293,8 +1293,8 @@
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-10-03",
-   "source": "Jackson Starr",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
     "William Eklund",
@@ -1362,17 +1362,17 @@
   "PHI": {
    "team": "Philadelphia Flyers",
    "updated": "2026-10-04",
-   "source": "Jordan Hall",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "pp1": [
-    "Porter Martone",
+    "Travis Konecny",
     "Trevor Zegras",
     "Matvei Michkov",
     "Tyson Foerster",
     "Jamie Drysdale"
    ],
    "pp2": [
-    "Travis Konecny",
+    "Porter Martone",
     "Noah Cates",
     "Alex Bump",
     "Owen Tippett",
@@ -1429,8 +1429,8 @@
   },
   "PIT": {
    "team": "Pittsburgh Penguins",
-   "updated": "2026-10-03",
-   "source": "@penguins",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "pp1": [
     "Ben Kindel",
@@ -1768,8 +1768,8 @@
   },
   "TOR": {
    "team": "Toronto Maple Leafs",
-   "updated": "2026-10-03",
-   "source": "David Alter",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
     "Kirill Marchenko",
@@ -1836,8 +1836,8 @@
   },
   "UTA": {
    "team": "Utah Mammoth",
-   "updated": "2026-10-03",
-   "source": "Utah Mammoth",
+   "updated": "2026-10-04",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "pp1": [
     "Nick Schmaltz",
@@ -1966,8 +1966,8 @@
     "Luke Schenn"
    ],
    "goalies": [
-    "Leevi Merilainen",
-    "Kevin Lankinen"
+    "Kevin Lankinen",
+    "Leevi Merilainen"
    ]
   },
   "VGK": {
@@ -2041,7 +2041,7 @@
   "WSH": {
    "team": "Washington Capitals",
    "updated": "2026-10-04",
-   "source": "Mike Vogel",
+   "source": "Last Game (2026-10-03)",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "pp1": [
     "Tom Wilson",
