@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-03T14:43:38+00:00",
+"fetched": "2026-10-04T11:07:29+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -372,6 +372,11 @@
 "n": "Burns, Brent",
 "pos": "D",
 "t": "COL"
+},
+"0042t": {
+"n": "Giroux, Claude",
+"pos": "RW",
+"t": "OTT"
 },
 "00454": {
 "n": "Crosby, Sidney",
@@ -648,6 +653,11 @@
 "pos": "D",
 "t": "TOR"
 },
+"02nof": {
+"n": "Lindholm, Hampus",
+"pos": "D",
+"t": "BOS"
+},
 "02noj": {
 "n": "Wilson, Tom",
 "pos": "RW",
@@ -762,11 +772,6 @@
 "n": "Barbashev, Ivan",
 "pos": "LW",
 "t": "VGK"
-},
-"02yjw": {
-"n": "Jarry, Tristan",
-"pos": "G",
-"t": "EDM"
 },
 "02ytx": {
 "n": "Hartman, Ryan",
@@ -1068,6 +1073,11 @@
 "pos": "G",
 "t": "MTL"
 },
+"03rgq": {
+"n": "Shea, Ryan",
+"pos": "D",
+"t": "EDM"
+},
 "03rh3": {
 "n": "Kaprizov, Kirill",
 "pos": "LW",
@@ -1162,6 +1172,11 @@
 "n": "Hronek, Filip",
 "pos": "D",
 "t": "VAN"
+},
+"042w1": {
+"n": "Woll, Joseph",
+"pos": "G",
+"t": "PHI"
 },
 "042w4": {
 "n": "Fox, Adam",
@@ -1623,11 +1638,6 @@
 "pos": "D",
 "t": "NJD"
 },
-"05962": {
-"n": "Moser, J.J.",
-"pos": "D",
-"t": "TBL"
-},
 "059db": {
 "n": "Poirier, Jeremie",
 "pos": "D",
@@ -1672,6 +1682,11 @@
 "n": "Wallinder, William",
 "pos": "D",
 "t": "DET"
+},
+"05g42": {
+"n": "Quinn, Jack",
+"pos": "RW",
+"t": "BUF"
 },
 "05gcv": {
 "n": "Lambos, Carson",
@@ -4300,6 +4315,13 @@
 "sal": 1000000,
 "slot": "A"
 },
+"0042t": {
+"ct": "FA",
+"gm": "BHHC",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "00454": {
 "ct": "BID",
 "gm": "M.M",
@@ -4685,6 +4707,13 @@
 "sal": 1500000,
 "slot": "A"
 },
+"02nof": {
+"ct": "FA",
+"gm": "M.M",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "02noj": {
 "ct": "BID",
 "gm": "mertin",
@@ -4845,13 +4874,6 @@
 "pos": "F",
 "sal": 1000000,
 "slot": "A"
-},
-"02yjw": {
-"ct": "FA",
-"gm": "ROO",
-"pos": "G",
-"sal": 1000000,
-"slot": "R"
 },
 "02ytx": {
 "ct": "FA",
@@ -5068,7 +5090,7 @@
 "gm": "M.M",
 "pos": "D",
 "sal": 1100000,
-"slot": "A"
+"slot": "R"
 },
 "03ekl": {
 "ct": "FA",
@@ -5273,6 +5295,13 @@
 "sal": 4100000,
 "slot": "A"
 },
+"03rgq": {
+"ct": "FA",
+"gm": "SPG",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "03rh3": {
 "ct": "BID",
 "gm": "PuckLuck",
@@ -5405,6 +5434,13 @@
 "pos": "D",
 "sal": 2700000,
 "slot": "A"
+},
+"042w1": {
+"ct": "FA",
+"gm": "ROO",
+"pos": "G",
+"sal": 1000000,
+"slot": "R"
 },
 "042w4": {
 "ct": "BID",
@@ -5677,7 +5713,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 4000000,
-"slot": "R"
+"slot": "A"
 },
 "04mv1": {
 "ct": "MNR",
@@ -6050,13 +6086,6 @@
 "sal": 0,
 "slot": "M"
 },
-"05962": {
-"ct": "FA",
-"gm": "SPG",
-"pos": "D",
-"sal": 1000000,
-"slot": "A"
-},
 "059db": {
 "ct": "MNR",
 "gm": "TommyG10",
@@ -6119,6 +6148,13 @@
 "pos": "D",
 "sal": 0,
 "slot": "M"
+},
+"05g42": {
+"ct": "FA",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
 },
 "05gcv": {
 "ct": "MNR",
@@ -6748,7 +6784,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 3100000,
-"slot": "A"
+"slot": "IR"
 },
 "05y3a": {
 "ct": "RFA1",
@@ -7413,7 +7449,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06bde": {
 "ct": "MNR",
@@ -8530,7 +8566,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 1,
-"t": "Wags8210"
+"t": "SPG"
 },
 {
 "L": 0,
@@ -8539,7 +8575,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 2,
-"t": "mertin"
+"t": "TommyG10"
 },
 {
 "L": 0,
@@ -8548,7 +8584,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 3,
-"t": "BHHC"
+"t": "mertin"
 },
 {
 "L": 0,
@@ -8557,7 +8593,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 4,
-"t": "mcianfra"
+"t": "ROO"
 },
 {
 "L": 0,
@@ -8566,7 +8602,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 5,
-"t": "BULLIES"
+"t": "Wags8210"
 },
 {
 "L": 0,
@@ -8575,7 +8611,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 6,
-"t": "CGN"
+"t": "nbracken"
 },
 {
 "L": 0,
@@ -8593,7 +8629,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 8,
-"t": "TommyG10"
+"t": "mcianfra"
 },
 {
 "L": 0,
@@ -8611,15 +8647,6 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 10,
-"t": "nbracken"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 11,
 "t": "btsay45"
 },
 {
@@ -8628,7 +8655,7 @@
 "W": 0,
 "gb": 0.0,
 "pct": 0.0,
-"rank": 12,
+"rank": 11,
 "t": "nebsnave"
 },
 {
@@ -8637,8 +8664,17 @@
 "W": 0,
 "gb": 0.0,
 "pct": 0.0,
+"rank": 12,
+"t": "BULLIES"
+},
+{
+"L": 0,
+"T": 0,
+"W": 0,
+"gb": 0.0,
+"pct": 0.0,
 "rank": 13,
-"t": "SPG"
+"t": "BHHC"
 },
 {
 "L": 0,
@@ -8647,7 +8683,7 @@
 "gb": 0.0,
 "pct": 0.0,
 "rank": 14,
-"t": "ROO"
+"t": "CGN"
 }
 ],
 "teams": {
