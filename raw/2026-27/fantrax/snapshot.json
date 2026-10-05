@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-05T12:17:24+00:00",
+"fetched": "2026-10-05T19:17:18+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -698,6 +698,11 @@
 "pos": "D",
 "t": "STL"
 },
+"02o7l": {
+"n": "Slavin, Jaccob",
+"pos": "D",
+"t": "CAR"
+},
 "02o7s": {
 "n": "Hellebuyck, Connor",
 "pos": "G",
@@ -837,6 +842,11 @@
 "n": "Bennett, Sam",
 "pos": "C",
 "t": "FLA"
+},
+"039ch": {
+"n": "Kapanen, Kasperi",
+"pos": "RW",
+"t": "EDM"
 },
 "03as6": {
 "n": "McCann, Jared",
@@ -4491,7 +4501,7 @@
 "gm": "M.M",
 "pos": "G",
 "sal": 9600000,
-"slot": "A"
+"slot": "R"
 },
 "01yj6": {
 "ct": "BID",
@@ -4526,7 +4536,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 3000000,
-"slot": "A"
+"slot": "IR"
 },
 "01zu5": {
 "ct": "BID",
@@ -4561,7 +4571,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 3600000,
-"slot": "R"
+"slot": "IR"
 },
 "0243f": {
 "ct": "BID",
@@ -4624,7 +4634,7 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 2610000,
-"slot": "A"
+"slot": "R"
 },
 "02b3o": {
 "ct": "BID",
@@ -4779,6 +4789,13 @@
 "pos": "D",
 "sal": 1000000,
 "slot": "R"
+},
+"02o7l": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
 },
 "02o7s": {
 "ct": "BID",
@@ -4974,6 +4991,13 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 6600000,
+"slot": "R"
+},
+"039ch": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "03as6": {
@@ -5618,7 +5642,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 4000000,
-"slot": "R"
+"slot": "A"
 },
 "04gek": {
 "ct": "FA",
@@ -5912,7 +5936,7 @@
 "gm": "mertin",
 "pos": "G",
 "sal": 2200000,
-"slot": "M"
+"slot": "A"
 },
 "04ymn": {
 "ct": "BID",
@@ -6087,7 +6111,7 @@
 "gm": "M.M",
 "pos": "G",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "0570x": {
 "ct": "MNR",
@@ -6199,14 +6223,14 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 2700000,
-"slot": "A"
+"slot": "R"
 },
 "05gdo": {
 "ct": "BID",
 "gm": "M.M",
 "pos": "F",
 "sal": 2790000,
-"slot": "A"
+"slot": "R"
 },
 "05gvo": {
 "ct": "BID",
@@ -6430,7 +6454,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "05r2y": {
 "ct": "MNR",
@@ -6458,7 +6482,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "05ra8": {
 "ct": "MNR",
@@ -6605,7 +6629,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "05td4": {
 "ct": "MNR",
@@ -7270,7 +7294,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "067yd": {
 "ct": "MNR",
@@ -7571,7 +7595,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "06cug": {
 "ct": "MNR",
@@ -7739,7 +7763,7 @@
 "gm": "mertin",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06ims": {
 "ct": "MNR",
@@ -8635,7 +8659,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 6,
-"t": "mcianfra"
+"t": "SPG"
 },
 {
 "L": 7,
@@ -8644,7 +8668,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 7,
-"t": "SPG"
+"t": "mcianfra"
 },
 {
 "L": 8,
@@ -8653,7 +8677,7 @@
 "gb": 4.5,
 "pct": 0.467,
 "rank": 8,
-"t": "ROO"
+"t": "PuckLuck"
 },
 {
 "L": 8,
@@ -8662,7 +8686,7 @@
 "gb": 4.5,
 "pct": 0.467,
 "rank": 9,
-"t": "PuckLuck"
+"t": "ROO"
 },
 {
 "L": 9,

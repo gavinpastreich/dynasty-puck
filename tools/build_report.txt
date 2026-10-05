@@ -1,10 +1,11 @@
-Dynasty Puck HQ build 2026-10-05T12:17:23
-Fantrax: 4 roster changes since 2026-10-04T15:20:57+00:00
-Fantrax: synced 610 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-10-05T19:17:16
+Fantrax: 2 roster changes since 2026-10-05T12:17:24+00:00
+Fantrax: synced 612 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
   > Charle-Edouard D'Astous: FA -> mertin (Fantrax)
   > Vitali Pinchuk: FA -> mertin (Fantrax)
+  > Kasperi Kapanen: FA -> mertin (Fantrax)
   > Jake DeBrusk: FA -> BHHC (Fantrax)
   > Sean Durzi: FA -> BHHC (Fantrax)
   > Cole Perfetti: FA -> BHHC (Fantrax)
@@ -12,6 +13,7 @@ Fantrax: synced 610 rostered players, 126 future picks, 14 teams in standings
   > Paul Cotter: FA -> nebsnave (Fantrax)
   > Eeli Tolvanen: FA -> nebsnave (Fantrax)
   > Marcus Pettersson: FA -> nebsnave (Fantrax)
+  > Jaccob Slavin: FA -> nebsnave (Fantrax)
   > Jack Quinn: FA -> btsay45 (Fantrax)
   > Devon Toews: FA -> CGN (Fantrax)
   > Esa Lindell: FA -> CGN (Fantrax)
@@ -25,9 +27,9 @@ Fantrax: synced 610 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-05T12:17:24+00:00): 610 rostered; changes vs CSV: {'owner': 19, 'dropped': 5}
+Fantrax sync (2026-10-05T19:17:18+00:00): 612 rostered; changes vs CSV: {'owner': 21, 'dropped': 5}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1267 players (610 rostered)
+Universe: 1267 players (612 rostered)
 NHL id match: {'index': 1151, 'search': 114, None: 2}; unmatched 2 (rostered: 0)
 Landing pages: 1245/1245
 Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
@@ -43,18 +45,18 @@ Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
 Payroll check (2026-27): Fantrax salary vs contract sheet column
   ROO       Fantrax $101.90M  sheet $ 99.90M  {'BID': 16, 'FA': 2, 'ELC1': 1, 'MNR': 29}   <- differs by +2.00M (Fantrax is current)  (IR relief $13.30M)
   TommyG10  Fantrax $100.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 3, 'RFA1': 2, 'MNR': 22}   <- differs by +3.50M (Fantrax is current)  (IR relief $6.50M)
-  Wags8210  Fantrax $102.84M  sheet $ 98.84M  {'BID': 20, 'FA': 4, 'RFA1': 1, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)  (IR relief $8.74M)
+  Wags8210  Fantrax $102.84M  sheet $ 98.84M  {'BID': 20, 'FA': 4, 'RFA1': 1, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)  (IR relief $11.74M)
   BULLIES   Fantrax $ 89.85M  sheet $ 88.85M  {'BID': 17, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 1}   <- differs by +1.00M (Fantrax is current)  (IR relief $6.80M)
   nbracken  Fantrax $101.42M  sheet $ 99.42M  {'BID': 16, 'RFA1': 3, 'ELC1': 1, 'MNR': 22, 'FA': 2}   <- differs by +2.00M (Fantrax is current)
   SPG       Fantrax $103.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 3, 'MNR': 21}   <- differs by +3.00M (Fantrax is current)  (IR relief $6.40M)
   BHHC      Fantrax $100.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 4, 'ELC1': 1}   <- differs by +4.00M (Fantrax is current)  (IR relief $4.10M)
-  nebsnave  Fantrax $104.81M  sheet $ 98.81M  {'BID': 17, 'FA': 6, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +6.00M (Fantrax is current)  (IR relief $4.60M)
+  nebsnave  Fantrax $105.81M  sheet $ 98.81M  {'BID': 17, 'FA': 7, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +7.00M (Fantrax is current)  (IR relief $7.20M)
   M.M       Fantrax $103.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 16}   <- differs by +0.20M (Fantrax is current)  (IR relief $7.80M)
   mcianfra  Fantrax $ 99.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 4, 'MNR': 22}   <- differs by +4.00M (Fantrax is current)
   btsay45   Fantrax $ 94.10M  sheet $ 93.10M  {'BID': 15, 'ELC1': 4, 'RFA1': 1, 'FA': 1, 'MNR': 18}   <- differs by +1.00M (Fantrax is current)
   PuckLuck  Fantrax $ 93.50M  sheet $ 89.50M  {'BID': 16, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +4.00M (Fantrax is current)
   CGN       Fantrax $ 99.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 4, 'MNR': 22}   <- differs by +5.00M (Fantrax is current)  (IR relief $3.20M)
-  mertin    Fantrax $103.60M  sheet $ 99.60M  {'BID': 13, 'FA': 4, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +4.00M (Fantrax is current)
+  mertin    Fantrax $104.60M  sheet $ 99.60M  {'BID': 13, 'FA': 5, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +5.00M (Fantrax is current)  OVER CAP
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist
   ~ on contract sheet (BULLIES) but not on a Fantrax roster: Victor Soderstrom
@@ -75,7 +77,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 657 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-05): 1205 line/PP/goalie tags; injuries matched 73/73
+Depth (Daily Faceoff, 2026-10-05): 1205 line/PP/goalie tags; injuries matched 75/75
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay
