@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-04",
+ "updated": "2026-10-05",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -223,9 +223,9 @@
    "team": "COL",
    "status": "DTD",
    "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "O'Connor (lower-body) will miss Colorado's season opener vs. Los Angeles on Wednesday and is considered day-to-day.",
-   "date": "2026-09-29",
+   "ret": "",
+   "detail": "O'Connor (lower-body) practiced in a regular jersey on Sunday.",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -235,9 +235,9 @@
    "team": "COL",
    "status": "DTD",
    "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "L'Heureux (lower-body) will miss Colorado's season opener vs. Los Angeles and is considere day-to-day.",
-   "date": "2026-09-29",
+   "ret": "In camp",
+   "detail": "L'Heureux (lower-body) was a full participant in Colorado's practice on Sunday.",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -245,7 +245,7 @@
   {
    "name": "Matt Duchene",
    "team": "DAL",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "In camp",
    "detail": "Duchene (lower-body) has been placed on LTIR.",
@@ -293,7 +293,7 @@
   {
    "name": "Alec Regula",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "Months",
    "detail": "Regula (undisclosed) has been placed on LTIR.",
@@ -305,7 +305,7 @@
   {
    "name": "Frederik Andersen",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Andersen (undisclosed) is expected to be out until December.",
@@ -317,7 +317,7 @@
   {
    "name": "Jason Dickinson",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Dickinson (undisclosed) experienced a setback and will not be ready for the Oilers' season opener.",
@@ -329,7 +329,7 @@
   {
    "name": "Matthew Savoie",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "In camp",
    "detail": "Savoie (undisclosed) has been placed on LTIR.",
@@ -341,7 +341,7 @@
   {
    "name": "Mattias Janmark",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Janmark (undisclosed) has no timeline to return.",
@@ -353,7 +353,7 @@
   {
    "name": "Ryan Nugent-Hopkins",
    "team": "EDM",
-   "status": "OUT",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
    "detail": "Nugent-Hopkins (lower-body) has been placed on IR.",
@@ -375,36 +375,24 @@
    "holdout": false
   },
   {
+   "name": "Aaron Ekblad",
+   "team": "FLA",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Ekblad (undisclosed) is out vs. Anaheim on Sunday.",
+   "date": "2026-10-04",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Aleksander Barkov",
    "team": "FLA",
    "status": "IR",
    "injury": "lower body",
    "ret": "",
    "detail": "Barkov (lower body) has been placed on LTIR.",
-   "date": "2026-10-03",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Brad Marchand",
-   "team": "FLA",
-   "status": "OUT",
-   "injury": "undisclosed",
-   "ret": "Misses opener",
-   "detail": "Marchand (undisclosed) will miss the start of the regular season.",
-   "date": "2026-09-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Gustav Forsling",
-   "team": "FLA",
-   "status": "DTD",
-   "injury": "upper body",
-   "ret": "",
-   "detail": "Forsling (upper body) will be a game-time decision on Sunday.",
    "date": "2026-10-03",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
@@ -497,7 +485,7 @@
   {
    "name": "Connor Brown",
    "team": "NJD",
-   "status": "OUT",
+   "status": "DTD",
    "injury": "lower-body",
    "ret": "",
    "detail": "Brown (lower-body) will miss New Jersey's first two games of the season.",
@@ -509,7 +497,7 @@
   {
    "name": "Johnathan Kovacevic",
    "team": "NJD",
-   "status": "DTD",
+   "status": "IR",
    "injury": "",
    "ret": "",
    "detail": "Kovacevic will be a limited participant in training camp as he rehabs from a minor off-season procedure in his right knee.",
@@ -521,11 +509,23 @@
   {
    "name": "Nick Bjugstad",
    "team": "NJD",
-   "status": "OUT",
+   "status": "IR",
    "injury": "",
    "ret": "Months",
    "detail": "Bjugstad underwent successful surgery to repair a torn left pectoral muscle and is expected to miss 4-to-6 months.",
    "date": "2026-09-17",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Seamus Casey",
+   "team": "NJD",
+   "status": "IR",
+   "injury": "",
+   "ret": "",
+   "detail": "Casey underwent knee surgery and is expected to be out for 8-to-10 weeks.",
+   "date": "2026-10-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -552,6 +552,18 @@
    "date": "2026-10-03",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Joe Veleno",
+   "team": "NYR",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Veleno (lower-body) left Sunday's game vs. Utah and will not return.",
+   "date": "2026-10-04",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
   },
   {
@@ -678,10 +690,10 @@
    "name": "Alexey Toropchenko",
    "team": "STL",
    "status": "OUT",
-   "injury": "upper body",
+   "injury": "",
    "ret": "",
-   "detail": "Toropchenko (upper body) will not play on Saturday and will be re-evaluated.",
-   "date": "2026-10-03",
+   "detail": "Toropchenko will be re-evaluated in six weeks for an upper-body injury.",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
@@ -718,6 +730,18 @@
    "ret": "",
    "detail": "James (broken hand) is expected to miss the first two weeks of the regular season.",
    "date": "2026-09-16",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Emil Lilleberg",
+   "team": "TBL",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Lilleberg (undisclosed) left Saturday's game vs. Washington and is being further evaluated.",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -813,7 +837,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-03",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -825,7 +849,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-03",
+   "date": "2026-10-04",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false

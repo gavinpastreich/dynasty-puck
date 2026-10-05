@@ -179,5 +179,38 @@
 "to": "btsay45",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-05",
+"id": "0243e",
+"type": "drop",
+"from": "nebsnave",
+"ct": "FA",
+"sal": 1000000,
+"n": "Landeskog, Gabriel"
+},
+{
+"d": "2026-10-05",
+"id": "02ybk",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-05",
+"id": "04qzk",
+"type": "add",
+"to": "nebsnave",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-05",
+"id": "04uql",
+"type": "add",
+"to": "BHHC",
+"ct": "FA",
+"sal": 1000000
 }
 ]

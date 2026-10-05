@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-04T15:20:57+00:00",
+"fetched": "2026-10-05T12:17:24+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -543,11 +543,6 @@
 "pos": "LW",
 "t": "EDM"
 },
-"0243e": {
-"n": "Landeskog, Gabriel",
-"pos": "LW",
-"t": "COL"
-},
 "0243f": {
 "n": "Jones, Seth",
 "pos": "D",
@@ -747,6 +742,11 @@
 "n": "Buchnevich, Pavel",
 "pos": "RW",
 "t": "STL"
+},
+"02ybk": {
+"n": "Lehkonen, Artturi",
+"pos": "LW",
+"t": "COL"
 },
 "02ybl": {
 "n": "Nichushkin, Valeri",
@@ -1438,6 +1438,11 @@
 "pos": "G",
 "t": "STL"
 },
+"04qzk": {
+"n": "Cotter, Paul",
+"pos": "LW",
+"t": "VAN"
+},
 "04r0j": {
 "n": "Kesselring, Michael",
 "pos": "D",
@@ -1447,6 +1452,11 @@
 "n": "Podkolzin, Vasily",
 "pos": "LW",
 "t": "EDM"
+},
+"04uql": {
+"n": "Perfetti, Cole",
+"pos": "RW",
+"t": "WPG"
 },
 "04xec": {
 "n": "Boldy, Matt",
@@ -4553,13 +4563,6 @@
 "sal": 3600000,
 "slot": "R"
 },
-"0243e": {
-"ct": "FA",
-"gm": "nebsnave",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
 "0243f": {
 "ct": "BID",
 "gm": "mcianfra",
@@ -4839,6 +4842,13 @@
 "pos": "F",
 "sal": 1000000,
 "slot": "A"
+},
+"02ybk": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
 },
 "02ybl": {
 "ct": "FA",
@@ -5230,7 +5240,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "03rad": {
 "ct": "BID",
@@ -5293,14 +5303,14 @@
 "gm": "Wags8210",
 "pos": "G",
 "sal": 4100000,
-"slot": "A"
+"slot": "R"
 },
 "03rgq": {
 "ct": "FA",
 "gm": "SPG",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "03rh3": {
 "ct": "BID",
@@ -5806,6 +5816,13 @@
 "sal": 3600000,
 "slot": "A"
 },
+"04qzk": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "04r0j": {
 "ct": "FA",
 "gm": "BULLIES",
@@ -5818,6 +5835,13 @@
 "gm": "TommyG10",
 "pos": "F",
 "sal": 900000,
+"slot": "A"
+},
+"04uql": {
+"ct": "FA",
+"gm": "BHHC",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "04xec": {
@@ -5867,7 +5891,7 @@
 "gm": "SPG",
 "pos": "D",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "04yg5": {
 "ct": "MNR",
@@ -5881,14 +5905,14 @@
 "gm": "Wags8210",
 "pos": "G",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "04yla": {
 "ct": "BID",
 "gm": "mertin",
 "pos": "G",
 "sal": 2200000,
-"slot": "A"
+"slot": "M"
 },
 "04ymn": {
 "ct": "BID",
@@ -6154,7 +6178,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "05gcv": {
 "ct": "MNR",
@@ -6392,7 +6416,7 @@
 "gm": "ROO",
 "pos": "F",
 "sal": 4900000,
-"slot": "R"
+"slot": "A"
 },
 "05r2j": {
 "ct": "MNR",
@@ -6581,7 +6605,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "05td4": {
 "ct": "MNR",
@@ -7029,7 +7053,7 @@
 "gm": "ROO",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "062sh": {
 "ct": "MNR",
@@ -8560,130 +8584,130 @@
 },
 "standings": [
 {
-"L": 0,
-"T": 0,
-"W": 0,
+"L": 3,
+"T": 1,
+"W": 11,
 "gb": 0.0,
-"pct": 0.0,
+"pct": 0.767,
 "rank": 1,
-"t": "BULLIES"
+"t": "BHHC"
 },
 {
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
+"L": 3,
+"T": 2,
+"W": 10,
+"gb": 0.5,
+"pct": 0.733,
 "rank": 2,
+"t": "nbracken"
+},
+{
+"L": 3,
+"T": 2,
+"W": 10,
+"gb": 0.5,
+"pct": 0.733,
+"rank": 3,
 "t": "Wags8210"
 },
 {
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 3,
-"t": "PuckLuck"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
+"L": 2,
+"T": 4,
+"W": 9,
+"gb": 0.5,
+"pct": 0.733,
 "rank": 4,
 "t": "nebsnave"
 },
 {
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
+"L": 5,
+"T": 1,
+"W": 9,
+"gb": 2.0,
+"pct": 0.633,
 "rank": 5,
-"t": "ROO"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 6,
-"t": "M.M"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 7,
-"t": "mertin"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 8,
-"t": "CGN"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 9,
-"t": "SPG"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 10,
-"t": "BHHC"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 11,
-"t": "mcianfra"
-},
-{
-"L": 0,
-"T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 12,
 "t": "TommyG10"
 },
 {
-"L": 0,
+"L": 7,
 "T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 13,
-"t": "nbracken"
+"W": 8,
+"gb": 3.5,
+"pct": 0.533,
+"rank": 6,
+"t": "mcianfra"
 },
 {
-"L": 0,
+"L": 7,
 "T": 0,
-"W": 0,
-"gb": 0.0,
-"pct": 0.0,
-"rank": 14,
+"W": 8,
+"gb": 3.5,
+"pct": 0.533,
+"rank": 7,
+"t": "SPG"
+},
+{
+"L": 8,
+"T": 0,
+"W": 7,
+"gb": 4.5,
+"pct": 0.467,
+"rank": 8,
+"t": "ROO"
+},
+{
+"L": 8,
+"T": 0,
+"W": 7,
+"gb": 4.5,
+"pct": 0.467,
+"rank": 9,
+"t": "PuckLuck"
+},
+{
+"L": 9,
+"T": 1,
+"W": 5,
+"gb": 6.0,
+"pct": 0.367,
+"rank": 10,
+"t": "M.M"
+},
+{
+"L": 10,
+"T": 2,
+"W": 3,
+"gb": 7.5,
+"pct": 0.267,
+"rank": 11,
+"t": "mertin"
+},
+{
+"L": 10,
+"T": 2,
+"W": 3,
+"gb": 7.5,
+"pct": 0.267,
+"rank": 12,
+"t": "BULLIES"
+},
+{
+"L": 9,
+"T": 4,
+"W": 2,
+"gb": 7.5,
+"pct": 0.267,
+"rank": 13,
 "t": "btsay45"
+},
+{
+"L": 11,
+"T": 1,
+"W": 3,
+"gb": 8.0,
+"pct": 0.233,
+"rank": 14,
+"t": "CGN"
 }
 ],
 "teams": {
@@ -8758,5 +8782,9 @@
 "name": "mcianfrani"
 }
 },
-"waivers": []
+"waivers": [
+"0243e",
+"02yjw",
+"05962"
+]
 }
