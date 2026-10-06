@@ -58,9 +58,9 @@
 "04bdb",
 "04mto",
 "04mv2",
+"04n4n",
 "04y8g",
 "04zp9",
-"05gcv",
 "05x9g",
 "05ylt",
 "05ymj",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-06T12:02:27+00:00",
+"fetched": "2026-10-06T16:47:48+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1817,6 +1817,11 @@
 "n": "Levi, Devon",
 "pos": "G",
 "t": "EDM"
+},
+"05mx8": {
+"n": "Carlile, Declan",
+"pos": "D",
+"t": "PIT"
 },
 "05nik": {
 "n": "Akhtyamov, Artur",
@@ -5248,7 +5253,7 @@
 "gm": "nbracken",
 "pos": "G",
 "sal": 1000000,
-"slot": "R"
+"slot": "IR"
 },
 "03pax": {
 "ct": "FA",
@@ -6221,7 +6226,7 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "05gd8": {
 "ct": "BID",
@@ -6362,6 +6367,13 @@
 "pos": "G",
 "sal": 1000000,
 "slot": "M"
+},
+"05mx8": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
 },
 "05nik": {
 "ct": "MNR",
@@ -8671,7 +8683,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 6,
-"t": "SPG"
+"t": "mcianfra"
 },
 {
 "L": 7,
@@ -8680,7 +8692,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 7,
-"t": "mcianfra"
+"t": "SPG"
 },
 {
 "L": 8,
@@ -8716,7 +8728,7 @@
 "gb": 7.5,
 "pct": 0.267,
 "rank": 11,
-"t": "mertin"
+"t": "BULLIES"
 },
 {
 "L": 10,
@@ -8725,7 +8737,7 @@
 "gb": 7.5,
 "pct": 0.267,
 "rank": 12,
-"t": "BULLIES"
+"t": "mertin"
 },
 {
 "L": 9,
