@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-06",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -45,18 +45,6 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-03",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Matthew Poitras",
-   "team": "BOS",
-   "status": "Game-time decision",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Poitras (lower-body) will make his season debut vs. Ottawa on Monday.",
    "date": "2026-10-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
@@ -402,10 +390,10 @@
    "name": "Aleksander Barkov",
    "team": "FLA",
    "status": "IR",
-   "injury": "lower-body",
+   "injury": "lower body",
    "ret": "",
-   "detail": "Barkov (lower-body) is expected to miss the next 10-12 weeks.",
-   "date": "2026-10-05",
+   "detail": "Barkov (lower body) has been placed on LTIR.",
+   "date": "2026-10-03",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -651,13 +639,25 @@
    "holdout": false
   },
   {
-   "name": "Denver Barkey",
+   "name": "Linus Ullmark",
+   "team": "OTT",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Ullmark (undisclosed) did not return to the crease for the third period.",
+   "date": "2026-10-05",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Nikita Grebenkin",
    "team": "PHI",
-   "status": "Game-time decision",
-   "injury": "lower body",
-   "ret": "Day-to-day",
-   "detail": "Barkey (lower body) skated in a non-contact jersey at Wednesday's practice.",
-   "date": "2026-09-23",
+   "status": "IR",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Grebenkin (upper-body) has been placed on injured reserve.",
+   "date": "2026-10-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -668,7 +668,7 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Ristolainen (undisclosed) will be a game-time decision in Tampa Bay on Monday.",
+   "detail": "Ristolainen (undisclosed) is not on the ice for warmups and will not play Monday in Tampa.",
    "date": "2026-10-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
@@ -708,6 +708,18 @@
    "date": "2026-10-03",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Macklin Celebrini",
+   "team": "SJS",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Celebrini was a late scratch on Monday due to a lower-body injury.",
+   "date": "2026-10-05",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
   },
   {

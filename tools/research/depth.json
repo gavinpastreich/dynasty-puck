@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-06",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -72,7 +72,7 @@
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-10-03",
+   "updated": "2026-10-05",
    "source": "Belle Fraser",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
@@ -548,7 +548,7 @@
   "DAL": {
    "team": "Dallas Stars",
    "updated": "2026-10-05",
-   "source": "Owen Newkirk",
+   "source": "Robert Tiffin",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "pp1": [
     "Wyatt Johnston",
@@ -1082,8 +1082,8 @@
     "Adam Wilsby"
    ],
    "goalies": [
-    "Juuse Saros",
-    "Justus Annunen"
+    "Justus Annunen",
+    "Juuse Saros"
    ]
   },
   "NJD": {
@@ -1292,7 +1292,7 @@
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-10-05",
+   "updated": "2026-10-06",
    "source": "Jackson Starr",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
@@ -1350,12 +1350,12 @@
     "Carter Yakemchuk"
    ],
    "d3": [
-    "Cameron Crotty",
-    "Nikolas Matinpalo"
+    "Nikolas Matinpalo",
+    "Cameron Crotty"
    ],
    "goalies": [
-    "Linus Ullmark",
-    "Samuel Ersson"
+    "Samuel Ersson",
+    "Linus Ullmark"
    ]
   },
   "PHI": {
@@ -1429,7 +1429,7 @@
   "PIT": {
    "team": "Pittsburgh Penguins",
    "updated": "2026-10-05",
-   "source": "@PensInsideScoop",
+   "source": "@penguins",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "pp1": [
     "Ben Kindel",
@@ -1496,20 +1496,20 @@
   },
   "SJS": {
    "team": "San Jose Sharks",
-   "updated": "2026-10-05",
-   "source": "Max Miller",
+   "updated": "2026-10-06",
+   "source": "Sheng Peng",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
-    "Igor Chernyshov",
+    "Tyler Toffoli",
     "Alexander Wennberg",
     "Will Smith",
-    "Macklin Celebrini",
+    "Igor Chernyshov",
     "Luca Cagnoni"
    ],
    "pp2": [
-    "Mason Marchment",
+    "Kiefer Sherwood",
     "Michael Misa",
-    "Tyler Toffoli",
+    "Mason Marchment",
     "Dmitry Orlov",
     "Ivar Stenberg"
    ],
@@ -1527,18 +1527,18 @@
    ],
    "f1": [
     "Mason Marchment",
-    "Macklin Celebrini",
+    "Alexander Wennberg",
     "Will Smith"
    ],
    "f2": [
-    "Ivar Stenberg",
-    "Alexander Wennberg",
-    "Collin Graf"
-   ],
-   "f3": [
     "Igor Chernyshov",
     "Michael Misa",
     "Tyler Toffoli"
+   ],
+   "f3": [
+    "Ivar Stenberg",
+    "Ty Dellandrea",
+    "Collin Graf"
    ],
    "f4": [
     "Barclay Goodrow",
@@ -1694,8 +1694,8 @@
     "Adam  Jiříček"
    ],
    "goalies": [
-    "Jordan Binnington",
-    "Joel Hofer"
+    "Joel Hofer",
+    "Jordan Binnington"
    ]
   },
   "TBL": {
@@ -2033,8 +2033,8 @@
     "Noah Hanifin"
    ],
    "goalies": [
-    "Adin Hill",
-    "Carter Hart"
+    "Carter Hart",
+    "Adin Hill"
    ]
   },
   "WSH": {
@@ -2108,7 +2108,7 @@
   "WPG": {
    "team": "Winnipeg Jets",
    "updated": "2026-10-05",
-   "source": "Last Game (2026-10-04)",
+   "source": "Ken Wiebe",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "pp1": [
     "Gabriel Vilardi",
@@ -2118,7 +2118,7 @@
     "Kyle Connor"
    ],
    "pp2": [
-    "Nino Niederreiter",
+    "Brad Lambert",
     "Viggo Björck",
     "Vladislav Namestnikov",
     "Neal Pionk",
@@ -2152,7 +2152,7 @@
     "Brad Lambert"
    ],
    "f4": [
-    "Nino Niederreiter",
+    "Cole Koepke",
     "Vladislav Namestnikov",
     "Alex Iafallo"
    ],
@@ -2166,7 +2166,7 @@
    ],
    "d3": [
     "Mario Ferraro",
-    "Tyrel Bauer"
+    "Jack St. Ivany"
    ],
    "goalies": [
     "Stuart Skinner",
