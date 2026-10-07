@@ -45,7 +45,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
@@ -82,6 +82,18 @@
    "ret": "",
    "detail": "Zucker (sports hernia) will not be ready for the start of the regular season and is considered out indefinitely.",
    "date": "2026-09-16",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Josh Doan",
+   "team": "BUF",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Doan is dealing with a lower-body injury after being limited in Tuesday's game vs. Minnesota.",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -207,24 +219,24 @@
    "holdout": false
   },
   {
+   "name": "Teuvo Teravainen",
+   "team": "CHI",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Teravainen (lower-body) is out vs. the Islanders on Thursday.",
+   "date": "2026-10-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Logan O'Connor",
    "team": "COL",
    "status": "DTD",
    "injury": "lower body",
    "ret": "",
    "detail": "O'Connor (lower body) is expected to play on the upcoming road trip.",
-   "date": "2026-10-06",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Zachary L'Heureux",
-   "team": "COL",
-   "status": "DTD",
-   "injury": "lower body",
-   "ret": "In camp",
-   "detail": "L'Heureux (lower body) is expected to play on the upcoming road trip.",
    "date": "2026-10-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
@@ -435,18 +447,6 @@
    "holdout": false
   },
   {
-   "name": "Danila Yurov",
-   "team": "MIN",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Yurov (upper-body) will play in Buffalo on Tuesday after originally being a game-time decision.",
-   "date": "2026-10-06",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Filip Gustavsson",
    "team": "MIN",
    "status": "OUT",
@@ -490,6 +490,18 @@
    "ret": "Day-to-day",
    "detail": "Kapanen (lower body) will not play on opening night and is out day-to-day.",
    "date": "2026-09-28",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Sam Montembeault",
+   "team": "MTL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Montembeault left Wednesday's practice with a lower-body injury and did not return.",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -564,6 +576,18 @@
    "date": "2026-10-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Alexander Romanov",
+   "team": "NYI",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Romanov missed practice on Wednesday after exiting Tuesday's game with an undisclosed injury.",
+   "date": "2026-10-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
   },
   {
@@ -657,7 +681,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -691,9 +715,9 @@
    "team": "PIT",
    "status": "OUT",
    "injury": "upper-body",
-   "ret": "In camp",
-   "detail": "Rust (upper-body) was a full participant in Tuesday's practice.",
-   "date": "2026-10-06",
+   "ret": "",
+   "detail": "Rust (upper-body) will be a game-time decision vs. Washington on Wednesday.",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -788,8 +812,8 @@
    "status": "OUT",
    "injury": "hand",
    "ret": "",
-   "detail": "James (hand) will be an option on Thursday vs. Minnesota.",
-   "date": "2026-10-05",
+   "detail": "James (hand) is expected to return on Thursday vs. Minnesota.",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -855,6 +879,18 @@
    "holdout": false
   },
   {
+   "name": "Mikhail Sergachev",
+   "team": "UTA",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Sergachev left Tuesday's game with an upper-body injury and did not return.",
+   "date": "2026-10-06",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Filip Chytil",
    "team": "VAN",
    "status": "IR",
@@ -909,7 +945,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -921,7 +957,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-06",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -932,8 +968,8 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "Day-to-day",
-   "detail": "Roy (lower-body) is considered day-to-day.",
-   "date": "2026-10-05",
+   "detail": "Roy (lower-body) is out vs. Pittsburgh and is considered day-to-day.",
+   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
