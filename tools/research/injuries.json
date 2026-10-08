@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-07",
+ "updated": "2026-10-08",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -174,10 +174,10 @@
    "name": "Mikael Pyyhtia",
    "team": "CBJ",
    "status": "OUT",
-   "injury": "lower-body",
+   "injury": "",
    "ret": "",
-   "detail": "Pyyhtia (lower-body) left Tuesday's preseason game vs. Buffalo and did not return.",
-   "date": "2026-09-22",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -303,6 +303,18 @@
    "holdout": false
   },
   {
+   "name": "Colton Dach",
+   "team": "EDM",
+   "status": "IR",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Dach (undisclosed) has been placed on IR.",
+   "date": "2026-10-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Frederik Andersen",
    "team": "EDM",
    "status": "IR",
@@ -310,18 +322,6 @@
    "ret": "",
    "detail": "Andersen (undisclosed) is expected to be out until December.",
    "date": "2026-09-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jason Dickinson",
-   "team": "EDM",
-   "status": "IR",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Dickinson (undisclosed) experienced a setback and will not be ready for the Oilers' season opener.",
-   "date": "2026-09-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -583,8 +583,8 @@
    "team": "NYI",
    "status": "DTD",
    "injury": "",
-   "ret": "",
-   "detail": "Romanov missed practice on Wednesday after exiting Tuesday's game with an undisclosed injury.",
+   "ret": "Months",
+   "detail": "Romanov will undergo surgery to repair an ACL tear and miss 6-8 months.",
    "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
@@ -716,7 +716,7 @@
    "status": "OUT",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Rust (upper-body) will be a game-time decision vs. Washington on Wednesday.",
+   "detail": "Rust (upper-body) will make his season debut on Wednesday.",
    "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
@@ -898,18 +898,6 @@
    "ret": "",
    "detail": "Chytil (upper-body) has been placed on IR.",
    "date": "2026-09-25",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jake DeBrusk",
-   "team": "VAN",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "DeBrusk (illness) returned to Vancouver's practice on Tuesday.",
-   "date": "2026-10-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "holdout": false
