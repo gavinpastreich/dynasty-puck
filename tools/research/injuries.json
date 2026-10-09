@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-08",
+ "updated": "2026-10-09",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -45,7 +45,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-08",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
@@ -82,18 +82,6 @@
    "ret": "",
    "detail": "Zucker (sports hernia) will not be ready for the start of the regular season and is considered out indefinitely.",
    "date": "2026-09-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Josh Doan",
-   "team": "BUF",
-   "status": "DTD",
-   "injury": "",
-   "ret": "",
-   "detail": "Doan is dealing with a lower-body injury after being limited in Tuesday's game vs. Minnesota.",
-   "date": "2026-10-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -243,13 +231,13 @@
    "holdout": false
   },
   {
-   "name": "Jacob Bernard-Docker",
+   "name": "J.T. Compher",
    "team": "DET",
    "status": "IR",
    "injury": "",
    "ret": "Day-to-day",
-   "detail": "Bernard-Docker is considered day-to-day with an upper-body injury.",
-   "date": "2026-09-25",
+   "detail": "Compher is day-to-day with an undisclosed injury.",
+   "date": "2026-10-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -392,8 +380,8 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Marchand (lower-body) left Tuesday’s game vs. Los Angeles.",
-   "date": "2026-10-07",
+   "detail": "Marchand (lower-body) is reportedly expected to miss a \"few weeks.\"",
+   "date": "2026-10-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -534,10 +522,10 @@
    "name": "Jonas Siegenthaler",
    "team": "NJD",
    "status": "DTD",
-   "injury": "",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Siegenthaler left Tuesday’s game vs. Utah with an undisclosed injury and did not return.",
-   "date": "2026-10-06",
+   "detail": "Siegenthaler (undisclosed) has a chance to return on Saturday vs. Vancouver.",
+   "date": "2026-10-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -574,6 +562,30 @@
    "ret": "",
    "detail": "Annunen (undisclosed) has been placed on IR.",
    "date": "2026-10-06",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Mavrik Bourque",
+   "team": "NSH",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "William Trudeau",
+   "team": "NSH",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
    "holdout": false
@@ -675,6 +687,18 @@
    "holdout": false
   },
   {
+   "name": "William Eklund",
+   "team": "OTT",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Eklund suffered a lower-body injury and had to be helped off the ice vs. Philadelphia.",
+   "date": "2026-10-08",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Nikita Grebenkin",
    "team": "PHI",
    "status": "IR",
@@ -740,7 +764,7 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Celebrini (lower-body) will be a game-time decision in St. Louis on Thursday.",
+   "detail": "Celebrini (lower-body) is not on the ice for warmups; will not play Thursday in St. Louis.",
    "date": "2026-10-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
@@ -855,18 +879,6 @@
    "holdout": false
   },
   {
-   "name": "Mikhail Sergachev",
-   "team": "UTA",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Sergachev (upper-body) will play in Boston on Thursday.",
-   "date": "2026-10-08",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Filip Chytil",
    "team": "VAN",
    "status": "IR",
@@ -893,11 +905,11 @@
   {
    "name": "Victor Olofsson",
    "team": "VGK",
-   "status": "DTD",
-   "injury": "",
-   "ret": "",
-   "detail": "Olofsson left Tuesday’s game vs. Seattle with an undisclosed injury and did not return.",
-   "date": "2026-10-07",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "Week-to-week",
+   "detail": "Olofsson (undisclosed) is considered week-to-week.",
+   "date": "2026-10-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false

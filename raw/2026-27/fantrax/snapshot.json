@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-08T17:24:24+00:00",
+"fetched": "2026-10-09T11:54:30+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1147,6 +1147,11 @@
 "n": "Sergachev, Mikhail",
 "pos": "D",
 "t": "UTA"
+},
+"03yg4": {
+"n": "Girard, Samuel",
+"pos": "D",
+"t": "PIT"
 },
 "03yh8": {
 "n": "Tippett, Owen",
@@ -5430,6 +5435,13 @@
 "sal": 8000000,
 "slot": "A"
 },
+"03yg4": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "03yh8": {
 "ct": "BID",
 "gm": "M.M",
@@ -5827,7 +5839,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "04qy3": {
 "ct": "BID",
@@ -8647,7 +8659,7 @@
 "gb": 0.5,
 "pct": 0.733,
 "rank": 2,
-"t": "nbracken"
+"t": "Wags8210"
 },
 {
 "L": 3,
@@ -8656,7 +8668,7 @@
 "gb": 0.5,
 "pct": 0.733,
 "rank": 3,
-"t": "Wags8210"
+"t": "nbracken"
 },
 {
 "L": 2,
@@ -8683,7 +8695,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 6,
-"t": "mcianfra"
+"t": "SPG"
 },
 {
 "L": 7,
@@ -8692,7 +8704,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 7,
-"t": "SPG"
+"t": "mcianfra"
 },
 {
 "L": 8,
@@ -8701,7 +8713,7 @@
 "gb": 4.5,
 "pct": 0.467,
 "rank": 8,
-"t": "PuckLuck"
+"t": "ROO"
 },
 {
 "L": 8,
@@ -8710,7 +8722,7 @@
 "gb": 4.5,
 "pct": 0.467,
 "rank": 9,
-"t": "ROO"
+"t": "PuckLuck"
 },
 {
 "L": 9,
