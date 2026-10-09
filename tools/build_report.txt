@@ -1,5 +1,4 @@
-Dynasty Puck HQ build 2026-10-09T11:54:29
-Fantrax: 1 roster changes since 2026-10-08T17:24:24+00:00
+Dynasty Puck HQ build 2026-10-09T16:59:21
 Fantrax: synced 615 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -30,10 +29,10 @@ Fantrax: synced 615 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-09T11:54:30+00:00): 615 rostered; changes vs CSV: {'owner': 24, 'dropped': 5}
+Fantrax sync (2026-10-09T16:59:23+00:00): 615 rostered; changes vs CSV: {'owner': 24, 'dropped': 5}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1270 players (615 rostered)
-NHL id match: {'index': 1154, 'search': 114, None: 2}; unmatched 2 (rostered: 0)
+NHL id match: {'index': 1157, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
 Landing pages: 1245/1245
 Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 773/773 matched skaters
@@ -80,7 +79,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 701 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-09): 1207 line/PP/goalie tags; injuries matched 81/81
+Depth (Daily Faceoff, 2026-10-09): 1208 line/PP/goalie tags; injuries matched 80/80
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay
