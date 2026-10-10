@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09",
+ "updated": "2026-10-10",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -154,6 +154,18 @@
    "ret": "",
    "detail": "Huberdeau (hip) is not expected to be ready for the start of Calgary’s training camp.",
    "date": "2026-09-04",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Samuel Honzek",
+   "team": "CGY",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Honzek (upper-body) will remain out for the remainder of the 2025-26 season.",
+   "date": "2026-03-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -330,10 +342,10 @@
    "name": "Zach Hyman",
    "team": "EDM",
    "status": "OUT",
-   "injury": "undisclosed",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Hyman (undisclosed) is out vs. Vancouver on Thursday.",
-   "date": "2026-10-01",
+   "detail": "Hyman (upper-body) returned to Oilers’ practice on Friday.",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -387,6 +399,18 @@
    "holdout": false
   },
   {
+   "name": "Mats Zuccarello",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "Week-to-week",
+   "detail": "Zuccarello (upper-body) is considered week-to-week.",
+   "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Brock Faber",
    "team": "MIN",
    "status": "IR",
@@ -402,10 +426,10 @@
    "name": "Filip Gustavsson",
    "team": "MIN",
    "status": "OUT",
-   "injury": "",
+   "injury": "hip",
    "ret": "",
-   "detail": "Gustavsson is having offseason hip surgery and is unsure if he’ll be ready for the start of the 2026-27 season.",
-   "date": "2026-05-18",
+   "detail": "Gustavsson (hip) has been placed on LTIR.",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -511,9 +535,9 @@
    "team": "NJD",
    "status": "IR",
    "injury": "",
-   "ret": "Months",
-   "detail": "Bjugstad underwent successful surgery to repair a torn left pectoral muscle and is expected to miss 4-to-6 months.",
-   "date": "2026-09-17",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -546,9 +570,9 @@
    "name": "Mavrik Bourque",
    "team": "NSH",
    "status": "DTD",
-   "injury": "upper body",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Bourque (upper body) left Thursday's game and did not return.",
+   "detail": "Bourque (upper-body) is not expected to play Saturday in Ottawa.",
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
@@ -557,10 +581,10 @@
   {
    "name": "William Trudeau",
    "team": "NSH",
-   "status": "DTD",
+   "status": "IR",
    "injury": "",
-   "ret": "",
-   "detail": "Trudeau has been placed on IR with an upper-body injury.",
+   "ret": "Week-to-week",
+   "detail": "Trudeau has been placed on IR with an upper-body injury and is considered week-to-week.",
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
@@ -677,7 +701,7 @@
   {
    "name": "William Eklund",
    "team": "OTT",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "ankle",
    "ret": "",
    "detail": "Eklund (ankle) is out for an extended period of time.",
@@ -737,7 +761,7 @@
   {
    "name": "Ryan Lindgren",
    "team": "SEA",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "upper-body",
    "ret": "",
    "detail": "Lindgren (upper-body) is expected to miss the next 4-6 weeks after being placed on IR on Thursday.",
@@ -747,13 +771,25 @@
    "holdout": false
   },
   {
+   "name": "Kiefer Sherwood",
+   "team": "SJS",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Sherwood (upper-body) will be a game-time decision vs. Edmonton on Saturday.",
+   "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Macklin Celebrini",
    "team": "SJS",
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Celebrini (lower-body) is not on the ice for warmups; will not play Thursday in St. Louis.",
-   "date": "2026-10-08",
+   "detail": "Celebrini (lower-body) is a game-time decision on Saturday vs. Edmonton.",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
@@ -766,6 +802,18 @@
    "ret": "",
    "detail": "Toropchenko will be re-evaluated in six weeks for an upper-body injury.",
    "date": "2026-10-04",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Dillon Dube",
+   "team": "STL",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Dube (upper-body) is doubtful for Saturday's game vs. Columbus.",
+   "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
@@ -843,6 +891,18 @@
    "holdout": false
   },
   {
+   "name": "John Tavares",
+   "team": "TOR",
+   "status": "DTD",
+   "injury": "personal",
+   "ret": "",
+   "detail": "Tavares (personal) missed practice on Friday.",
+   "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Max Domi",
    "team": "TOR",
    "status": "OUT",
@@ -864,6 +924,18 @@
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Michael Carcone",
+   "team": "UTA",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Carcone (undisclosed) is a game-time decision for Saturday vs. Buffalo.",
+   "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
   },
   {
