@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-10T11:11:43+00:00",
+"fetched": "2026-10-10T15:52:16+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -4852,7 +4852,7 @@
 "gm": "PuckLuck",
 "pos": "F",
 "sal": 4300000,
-"slot": "A"
+"slot": "IR"
 },
 "02unz": {
 "ct": "BID",
@@ -8324,7 +8324,7 @@
 "gm": "PuckLuck",
 "pos": "F",
 "sal": 0,
-"slot": "IR"
+"slot": "A"
 },
 "06snc": {
 "ct": "MNR",
@@ -8695,7 +8695,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 6,
-"t": "SPG"
+"t": "mcianfra"
 },
 {
 "L": 7,
@@ -8704,7 +8704,7 @@
 "gb": 3.5,
 "pct": 0.533,
 "rank": 7,
-"t": "mcianfra"
+"t": "SPG"
 },
 {
 "L": 8,

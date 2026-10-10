@@ -195,13 +195,13 @@
    "holdout": false
   },
   {
-   "name": "Teuvo Teravainen",
+   "name": "Frank Nazar",
    "team": "CHI",
-   "status": "DTD",
-   "injury": "lower-body",
+   "status": "OUT",
+   "injury": "",
    "ret": "",
-   "detail": "Teravainen (lower-body) is out vs. the Islanders on Thursday.",
-   "date": "2026-10-07",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -459,18 +459,6 @@
    "holdout": false
   },
   {
-   "name": "Kaiden Guhle",
-   "team": "MTL",
-   "status": "OUT",
-   "injury": "",
-   "ret": "",
-   "detail": "Guhle underwent surgery on his adductor muscle this summer and is expected to return in four to five weeks.",
-   "date": "2026-09-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Oliver Kapanen",
    "team": "MTL",
    "status": "DTD",
@@ -606,10 +594,10 @@
    "name": "Bo Horvat",
    "team": "NYI",
    "status": "DTD",
-   "injury": "undisclosed",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Horvat (undisclosed) is being further evaluated after leaving Thursday's game vs. Chicago.",
-   "date": "2026-10-09",
+   "detail": "Horvat (upper-body) will play Saturday vs. the Lightning.",
+   "date": "2026-10-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -651,18 +639,6 @@
    "holdout": false
   },
   {
-   "name": "Andre Burakovsky",
-   "team": "OTT",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Burakovsky (upper-body) has a chance to return vs. Nashville on Saturday.",
-   "date": "2026-10-09",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Artem Zub",
    "team": "OTT",
    "status": "IR",
@@ -701,11 +677,11 @@
   {
    "name": "William Eklund",
    "team": "OTT",
-   "status": "OUT",
-   "injury": "ankle",
+   "status": "IR",
+   "injury": "",
    "ret": "",
-   "detail": "Eklund (ankle) is out for an extended period of time.",
-   "date": "2026-10-09",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false

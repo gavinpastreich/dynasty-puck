@@ -140,8 +140,8 @@
   },
   "BUF": {
    "team": "Buffalo Sabres",
-   "updated": "2026-10-09",
-   "source": "Last Game (2026-10-08)",
+   "updated": "2026-10-10",
+   "source": "Heather Engel",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "pp1": [
     "Jack Quinn",
@@ -151,11 +151,11 @@
     "Rasmus Dahlin"
    ],
    "pp2": [
-    "Konsta Helenius",
-    "Ryan McLeod",
     "Josh Doan",
+    "Ryan McLeod",
+    "Josh Norris",
     "Owen Power",
-    "Josh Norris"
+    "Olen Zellweger"
    ],
    "pk1": [
     "Ryan McLeod",
@@ -170,28 +170,28 @@
     "Louis Crevier"
    ],
    "f1": [
-    "Peyton Krebs",
-    "Jiri Kulich",
-    "Tage Thompson"
+    "Josh Norris",
+    "Tage Thompson",
+    "Jack Quinn"
    ],
    "f2": [
     "Zach Benson",
     "Noah Ostlund",
-    "Jack Quinn"
-   ],
-   "f3": [
-    "Ryan McLeod",
-    "Josh Norris",
-    "Konsta Helenius"
-   ],
-   "f4": [
-    "Beck Malenstyn",
-    "Justin Danforth",
     "Josh Doan"
    ],
+   "f3": [
+    "Peyton Krebs",
+    "Ryan McLeod",
+    "Justin Danforth"
+   ],
+   "f4": [
+    "Tyson Kozak",
+    "Sam Carrick",
+    "Beck Malenstyn"
+   ],
    "d1": [
-    "Rasmus Dahlin",
-    "Mattias Samuelsson"
+    "Mattias Samuelsson",
+    "Rasmus Dahlin"
    ],
    "d2": [
     "Olen Zellweger",
@@ -344,8 +344,8 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-10-09",
-   "source": "Last Game (2026-10-08)",
+   "updated": "2026-10-10",
+   "source": "Charlie Roumeliotis",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Tyler Bertuzzi",
@@ -355,9 +355,9 @@
     "Bowen Byram"
    ],
    "pp2": [
-    "Nick Lardis",
     "Ryan Donato",
-    "Frank Nazar",
+    "Ryan Greene",
+    "Nick Lardis",
     "Oliver Moore",
     "Sam Rinzel"
    ],
@@ -368,29 +368,29 @@
     "Ian Cole"
    ],
    "pk2": [
-    "Frank Nazar",
+    "Dominic Toninato",
     "Jordan Greenway",
     "Wyatt Kaiser",
     "Artyom Levshunov"
    ],
    "f1": [
-    "Oliver Moore",
-    "Frank Nazar",
+    "Nick Lardis",
+    "Ryan Greene",
     "Patrick Kane"
    ],
    "f2": [
-    "Tyler Bertuzzi",
+    "Roman Kantserov",
     "Anton Frondell",
-    "Roman Kantserov"
+    "Tyler Bertuzzi"
    ],
    "f3": [
     "Ryan Donato",
     "Dominic Toninato",
-    "Nick Lardis"
+    "Teuvo Teravainen"
    ],
    "f4": [
     "Cole Smith",
-    "Ryan Greene",
+    "Oliver Moore",
     "Jordan Greenway"
    ],
    "d1": [
@@ -954,8 +954,8 @@
   },
   "MTL": {
    "team": "Montreal Canadiens",
-   "updated": "2026-10-09",
-   "source": "Last Game (2026-10-08)",
+   "updated": "2026-10-10",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "pp1": [
     "Chris Kreider",
@@ -975,13 +975,13 @@
     "Phillip Danault",
     "Josh Anderson",
     "Mike Matheson",
-    "Alexandre Carrier"
+    "Kaiden Guhle"
    ],
    "pk2": [
     "Jake Evans",
     "Alex Newhook",
-    "Lane Hutson",
-    "Noah Dobson"
+    "Noah Dobson",
+    "Alexandre Carrier"
    ],
    "f1": [
     "Cole Caufield",
@@ -999,7 +999,6 @@
     "Alexandre Texier"
    ],
    "f4": [
-    "Florian Xhekaj",
     "Jake Evans",
     "Kirby Dach"
    ],
@@ -1009,15 +1008,15 @@
    ],
    "d2": [
     "Mike Matheson",
-    "Alexandre Carrier"
+    "Kaiden Guhle"
    ],
    "d3": [
     "Arber Xhekaj",
-    "Adam Engstrom"
+    "Alexandre Carrier"
    ],
    "goalies": [
-    "Jakub Dobes",
-    "Jacob Fowler"
+    "Jacob Fowler",
+    "Jakub Dobes"
    ]
   },
   "NSH": {
@@ -1080,7 +1079,7 @@
     "Nick Perbix"
    ],
    "d3": [
-    "Jack Ahcan",
+    "Jayden Struble",
     "Adam Wilsby"
    ],
    "goalies": [
@@ -1158,8 +1157,8 @@
   },
   "NYI": {
    "team": "New York Islanders",
-   "updated": "2026-10-09",
-   "source": "Last Game (2026-10-08)",
+   "updated": "2026-10-10",
+   "source": "Stefen Rosner",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
     "Kyle Palmieri",
@@ -1295,19 +1294,19 @@
   "OTT": {
    "team": "Ottawa Senators",
    "updated": "2026-10-10",
-   "source": "Projected",
+   "source": "Graeme Nichols",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
-    "Stephen Halliday",
-    "Tim Stützle",
+    "Andre Burakovsky",
     "Dylan Cozens",
+    "Tim Stützle",
     "Drake Batherson",
     "Thomas Chabot"
    ],
    "pp2": [
-    "Claude Giroux",
+    "Ridly Greig",
     "Shane Pinto",
-    "Andre Burakovsky",
+    "Claude Giroux",
     "Fabian Zetterlund",
     "Carter Yakemchuk"
    ],
