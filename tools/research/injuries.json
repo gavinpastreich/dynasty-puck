@@ -39,6 +39,18 @@
    "holdout": false
   },
   {
+   "name": "Ryan Poehling",
+   "team": "ANA",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "Day-to-day",
+   "detail": "Poehling (lower-body) missed practice on Friday and is considered day-to-day.",
+   "date": "2026-09-18",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Troy Terry",
    "team": "ANA",
    "status": "IR",
@@ -694,6 +706,18 @@
    "ret": "Misses opener",
    "detail": "Zub (knee) is expected to miss the start of the season.",
    "date": "2026-09-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Cameron Crotty",
+   "team": "OTT",
+   "status": "IR",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Crotty (undisclosed) has been placed on IR.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
