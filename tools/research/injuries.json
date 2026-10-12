@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11",
+ "updated": "2026-10-12",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -43,9 +43,9 @@
    "team": "ANA",
    "status": "DTD",
    "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "Poehling (lower-body) missed practice on Friday and is considered day-to-day.",
-   "date": "2026-09-18",
+   "ret": "",
+   "detail": "Poehling (lower-body) left Saturday's game vs. Calgary and did not return.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -121,6 +121,18 @@
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "holdout": true
+  },
+  {
+   "name": "Jordan Staal",
+   "team": "CAR",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Staal (lower-body) will not play Sunday in Philadelphia.",
+   "date": "2026-10-11",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
+   "holdout": false
   },
   {
    "name": "Seth Jarvis",
@@ -211,9 +223,9 @@
    "team": "CHI",
    "status": "OUT",
    "injury": "shoulder",
-   "ret": "Months",
-   "detail": "Bedard (shoulder) is participating in Chicago's practice on Monday in a non-contact jersey.",
-   "date": "2026-10-05",
+   "ret": "In camp",
+   "detail": "Bedard (shoulder) was a full participant in Chicago's practice on Sunday.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -380,8 +392,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Hyman (upper-body) returned to Oilers’ practice on Friday.",
-   "date": "2026-10-09",
+   "detail": "Hyman (upper-body) is expected to return on Tuesday in Los Angeles.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -789,7 +801,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-10",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -798,10 +810,10 @@
    "name": "Travis Konecny",
    "team": "PHI",
    "status": "DTD",
-   "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "Konecny (lower-body) is day-to-day and will not play this weekend.",
-   "date": "2026-10-10",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -1014,10 +1026,10 @@
    "name": "Victor Olofsson",
    "team": "VGK",
    "status": "OUT",
-   "injury": "undisclosed",
-   "ret": "Week-to-week",
-   "detail": "Olofsson (undisclosed) is considered week-to-week.",
-   "date": "2026-10-08",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
@@ -1066,6 +1078,18 @@
    "ret": "Day-to-day",
    "detail": "Roy (lower-body) is out vs. Pittsburgh and is considered day-to-day.",
    "date": "2026-10-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Pierre-Luc Dubois",
+   "team": "WSH",
+   "status": "DTD",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Dubois (illness) will not play Sunday vs. the Kraken.",
+   "date": "2026-10-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false

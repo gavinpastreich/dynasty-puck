@@ -252,5 +252,31 @@
 "to": "nbracken",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-12",
+"id": "023wa",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-12",
+"id": "02ybl",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Nichushkin, Valeri"
+},
+{
+"d": "2026-10-12",
+"id": "04gek",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "Durzi, Sean"
 }
 ]
