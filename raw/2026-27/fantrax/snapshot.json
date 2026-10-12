@@ -8,26 +8,27 @@
 "02b70",
 "02b76",
 "03as8",
-"03e1n",
 "03mqg",
 "03rae",
 "03rf2",
 "03rmx",
 "03w5m",
 "049ph",
-"04gek",
 "04kyn",
 "04uql",
 "04zb4",
+"051um",
 "051v4",
 "051yz",
-"05rjg"
+"05rjg",
+"060hp"
 ],
 "BULLIES": [
 "003kg",
 "01yj6",
 "02440",
 "02fda",
+"02g00",
 "03ne3",
 "042yb",
 "04lo0",
@@ -39,7 +40,6 @@
 "05gvo",
 "05r1i",
 "05ran",
-"05ub3",
 "05ui2",
 "05ui4",
 "05yli",
@@ -47,21 +47,21 @@
 ],
 "CGN": [
 "01587",
-"01ex7",
 "024lv",
 "02np7",
 "02npz",
 "03ec6",
 "03wpi",
+"03wpm",
 "03ynu",
 "048x9",
 "04bdb",
 "04mto",
 "04mv2",
-"04n4n",
+"04y4m",
 "04y8g",
 "04zp9",
-"05x9g",
+"05mx8",
 "05ylt",
 "05ymj",
 "05yms",
@@ -84,15 +84,14 @@
 "04mtp",
 "051m4",
 "0529k",
-"05rjd",
+"05gdo",
 "05y3a",
 "06axy",
-"06cl1"
+"06bap"
 ],
 "PuckLuck": [
 "016kv",
 "025by",
-"02un7",
 "02unz",
 "02wy7",
 "02yjp",
@@ -109,7 +108,8 @@
 "05ltj",
 "05oy1",
 "060v8",
-"061im"
+"061im",
+"06snb"
 ],
 "ROO": [
 "003tz",
@@ -122,12 +122,12 @@
 "02yjj",
 "02yjl",
 "03as9",
+"042w1",
 "042w4",
 "04yg5",
-"051wf",
 "05gd8",
-"05r1l",
 "0644f",
+"065d1",
 "06ag2",
 "06age",
 "06axe",
@@ -136,11 +136,13 @@
 "SPG": [
 "01c12",
 "01fx3",
+"01zto",
 "02azb",
 "02nq3",
+"031pl",
 "03d09",
 "03mn8",
-"03rfo",
+"03rgq",
 "03rih",
 "03wpn",
 "049k7",
@@ -149,14 +151,12 @@
 "04qve",
 "04ye8",
 "04ymt",
-"04yu6",
 "05k8c",
 "05w9c",
-"0644b",
-"06hj9"
+"0644b"
 ],
 "TommyG10": [
-"01f3d",
+"0045j",
 "02fzj",
 "03167",
 "0322w",
@@ -178,14 +178,14 @@
 "06gk0"
 ],
 "Wags8210": [
-"01c32",
 "01f5z",
+"01lkz",
 "01zql",
+"01zvp",
 "02f9l",
-"02ni5",
 "031p3",
 "031v6",
-"03j8l",
+"03duf",
 "03klz",
 "03mm6",
 "03rad",
@@ -197,14 +197,13 @@
 "04yi4",
 "050rc",
 "051xf",
-"05r2l"
+"06fzv"
 ],
 "btsay45": [
 "01mz5",
 "01zu5",
 "02noe",
 "031og",
-"038vb",
 "03d12",
 "03jxy",
 "03ra7",
@@ -213,6 +212,7 @@
 "04mdc",
 "04ye7",
 "05g42",
+"05gda",
 "05rf2",
 "05tcz",
 "05tur",
@@ -223,6 +223,7 @@
 ],
 "mcianfra": [
 "01d6c",
+"023wa",
 "0243f",
 "02dq3",
 "02ybk",
@@ -236,11 +237,10 @@
 "04apb",
 "051z0",
 "05ltt",
-"05m17",
 "05r1c",
 "05tv0",
+"05xcm",
 "05y7m",
-"06hco",
 "06mb0"
 ],
 "mertin": [
@@ -250,17 +250,17 @@
 "02noj",
 "02nok",
 "02un4",
-"02ytx",
 "03161",
+"031of",
 "039ch",
 "03c0c",
 "03kra",
 "03mbn",
 "03mn9",
+"042t2",
 "04xec",
 "04xjf",
 "04yla",
-"04z51",
 "06ay2",
 "06hcr",
 "06jhd"
@@ -271,29 +271,30 @@
 "02oar",
 "02wy5",
 "031p0",
+"039cg",
 "03rfl",
 "03uzr",
 "03v70",
 "03yg3",
+"03yg4",
 "04dwk",
 "04f2d",
-"04qxy",
 "04qzc",
 "04yu5",
-"04znw",
-"051tx",
+"059e0",
 "059e5",
 "05r3d",
 "05yn2",
 "06bmb"
 ],
 "nebsnave": [
+"02azf",
 "02nom",
 "02noq",
 "02o7l",
 "02un5",
+"02zpp",
 "03as6",
-"03daz",
 "03jvu",
 "03rf8",
 "03yuf",
@@ -301,7 +302,6 @@
 "04kyh",
 "04lc0",
 "04lcs",
-"04qzk",
 "04zj5",
 "04zo0",
 "05kbn",
@@ -310,7 +310,7 @@
 "05r50"
 ]
 },
-"period": 2
+"period": 3
 },
 "elig": {
 "003ic": "D,F",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-12T13:10:40+00:00",
+"fetched": "2026-10-12T19:48:16+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -482,6 +482,11 @@
 "n": "Josi, Roman",
 "pos": "D",
 "t": "NSH"
+},
+"01lkz": {
+"n": "Hall, Taylor",
+"pos": "LW",
+"t": "CAR"
 },
 "01mz5": {
 "n": "Orlov, Dmitry",
@@ -783,10 +788,10 @@
 "pos": "LW",
 "t": "VGK"
 },
-"02ytx": {
-"n": "Hartman, Ryan",
-"pos": "C",
-"t": "MIN"
+"02zpp": {
+"n": "Arvidsson, Viktor",
+"pos": "RW",
+"t": "DET"
 },
 "03161": {
 "n": "Nurse, Darnell",
@@ -802,6 +807,11 @@
 "n": "Theodore, Shea",
 "pos": "D",
 "t": "VGK"
+},
+"031of": {
+"n": "Carrier, William",
+"pos": "LW",
+"t": "CAR"
 },
 "031og": {
 "n": "Bertuzzi, Tyler",
@@ -1178,6 +1188,11 @@
 "pos": "G",
 "t": "MIN"
 },
+"042t2": {
+"n": "Stanley, Logan",
+"pos": "D",
+"t": "NYI"
+},
 "042t5": {
 "n": "Thompson, Tage",
 "pos": "C",
@@ -1277,6 +1292,11 @@
 "n": "Lafreniere, Alexis",
 "pos": "RW",
 "t": "NYR"
+},
+"04an1": {
+"n": "Tarasov, Daniil",
+"pos": "G",
+"t": "DET"
 },
 "04an5": {
 "n": "Heiskanen, Miro",
@@ -1452,11 +1472,6 @@
 "n": "Hofer, Joel",
 "pos": "G",
 "t": "STL"
-},
-"04qzk": {
-"n": "Cotter, Paul",
-"pos": "LW",
-"t": "VAN"
 },
 "04r0j": {
 "n": "Kesselring, Michael",
@@ -3434,7 +3449,7 @@
 "t": "CGY"
 }
 },
-"period": 3,
+"period": 4,
 "periods": [
 {
 "end": "2026-10-05T18:59:59.0-0400",
@@ -4364,7 +4379,7 @@
 "gm": "TommyG10",
 "pos": "D",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "0045k": {
 "ct": "BID",
@@ -4448,7 +4463,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "01d6c": {
 "ct": "BID",
@@ -4462,14 +4477,14 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "01f3d": {
 "ct": "FA",
 "gm": "TommyG10",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "01f3e": {
 "ct": "BID",
@@ -4499,6 +4514,13 @@
 "sal": 3400000,
 "slot": "A"
 },
+"01lkz": {
+"ct": "FA",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "01mz5": {
 "ct": "BID",
 "gm": "btsay45",
@@ -4511,7 +4533,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 1000000,
-"slot": "R"
+"slot": "IR"
 },
 "01ud1": {
 "ct": "BID",
@@ -4658,7 +4680,7 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 2610000,
-"slot": "R"
+"slot": "A"
 },
 "02b3o": {
 "ct": "BID",
@@ -4728,7 +4750,7 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 2600000,
-"slot": "R"
+"slot": "A"
 },
 "02ni5": {
 "ct": "FA",
@@ -4919,9 +4941,9 @@
 "sal": 1000000,
 "slot": "A"
 },
-"02ytx": {
+"02zpp": {
 "ct": "FA",
-"gm": "mertin",
+"gm": "nebsnave",
 "pos": "F",
 "sal": 1000000,
 "slot": "A"
@@ -4945,6 +4967,13 @@
 "gm": "PuckLuck",
 "pos": "D",
 "sal": 7300000,
+"slot": "A"
+},
+"031of": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "031og": {
@@ -4994,7 +5023,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 9600000,
-"slot": "A"
+"slot": "R"
 },
 "03924": {
 "ct": "BID",
@@ -5008,7 +5037,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 6600000,
-"slot": "R"
+"slot": "A"
 },
 "039ch": {
 "ct": "FA",
@@ -5071,14 +5100,14 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "03dde": {
 "ct": "BID",
 "gm": "Wags8210",
 "pos": "D",
 "sal": 6600000,
-"slot": "R"
+"slot": "IR"
 },
 "03de2": {
 "ct": "BID",
@@ -5414,7 +5443,7 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 9200000,
-"slot": "R"
+"slot": "A"
 },
 "03wpn": {
 "ct": "FA",
@@ -5472,6 +5501,13 @@
 "sal": 6500000,
 "slot": "IR"
 },
+"042t2": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "042t5": {
 "ct": "BID",
 "gm": "nebsnave",
@@ -5498,7 +5534,7 @@
 "gm": "ROO",
 "pos": "G",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "042w4": {
 "ct": "BID",
@@ -5611,6 +5647,13 @@
 "pos": "F",
 "sal": 2700000,
 "slot": "A"
+},
+"04an1": {
+"ct": "FA",
+"gm": "btsay45",
+"pos": "G",
+"sal": 1000000,
+"slot": "R"
 },
 "04an5": {
 "ct": "BID",
@@ -5857,13 +5900,6 @@
 "sal": 3600000,
 "slot": "A"
 },
-"04qzk": {
-"ct": "FA",
-"gm": "nebsnave",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
 "04r0j": {
 "ct": "FA",
 "gm": "BULLIES",
@@ -5911,7 +5947,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 14700000,
-"slot": "IR"
+"slot": "A"
 },
 "04y8g": {
 "ct": "RFA1",
@@ -6002,7 +6038,7 @@
 "gm": "mertin",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "M"
 },
 "04zb4": {
 "ct": "BID",
@@ -6023,7 +6059,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 6000000,
-"slot": "A"
+"slot": "R"
 },
 "04zo0": {
 "ct": "BID",
@@ -6079,7 +6115,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "A"
+"slot": "R"
 },
 "051um": {
 "ct": "MNR",
@@ -6100,7 +6136,7 @@
 "gm": "ROO",
 "pos": "G",
 "sal": 10100000,
-"slot": "A"
+"slot": "R"
 },
 "051xf": {
 "ct": "FA",
@@ -6170,7 +6206,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 10000000,
-"slot": "R"
+"slot": "A"
 },
 "059e1": {
 "ct": "RFA1",
@@ -6184,7 +6220,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1500000,
-"slot": "M"
+"slot": "R"
 },
 "059e5": {
 "ct": "RFA1",
@@ -6240,7 +6276,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 2700000,
-"slot": "R"
+"slot": "A"
 },
 "05gdo": {
 "ct": "BID",
@@ -6464,7 +6500,7 @@
 "gm": "ROO",
 "pos": "F",
 "sal": 4900000,
-"slot": "A"
+"slot": "IR"
 },
 "05r2j": {
 "ct": "MNR",
@@ -6737,7 +6773,7 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "05uh3": {
 "ct": "MNR",
@@ -6835,7 +6871,7 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 2500000,
-"slot": "A"
+"slot": "R"
 },
 "05xcm": {
 "ct": "MNR",
@@ -7220,7 +7256,7 @@
 "gm": "ROO",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "065nx": {
 "ct": "MNR",
@@ -8832,6 +8868,8 @@
 },
 "waivers": [
 "02ybl",
-"04gek"
+"02ytx",
+"04gek",
+"04qzk"
 ]
 }
