@@ -336,5 +336,14 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Cotter, Paul"
+},
+{
+"d": "2026-10-13",
+"id": "02np6",
+"type": "drop",
+"from": "ROO",
+"ct": "FA",
+"sal": 1000000,
+"n": "McCabe, Jake"
 }
 ]

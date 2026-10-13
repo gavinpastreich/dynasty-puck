@@ -118,7 +118,7 @@
 "01f3e",
 "027i6",
 "02aez",
-"02np6",
+"02nqb",
 "02yjj",
 "02yjl",
 "03as9",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-12T19:48:16+00:00",
+"fetched": "2026-10-13T12:43:19+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -687,11 +687,6 @@
 "n": "Matheson, Mike",
 "pos": "D",
 "t": "MTL"
-},
-"02np6": {
-"n": "McCabe, Jake",
-"pos": "D",
-"t": "TOR"
 },
 "02np7": {
 "n": "Stolarz, Anthony",
@@ -4801,13 +4796,6 @@
 "sal": 2500000,
 "slot": "A"
 },
-"02np6": {
-"ct": "FA",
-"gm": "ROO",
-"pos": "D",
-"sal": 1000000,
-"slot": "A"
-},
 "02np7": {
 "ct": "BID",
 "gm": "CGN",
@@ -4834,7 +4822,7 @@
 "gm": "ROO",
 "pos": "D",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "02o7l": {
 "ct": "FA",
@@ -7445,7 +7433,7 @@
 "gm": "ROO",
 "pos": "D",
 "sal": 0,
-"slot": "M"
+"slot": "R"
 },
 "06axs": {
 "ct": "MNR",
@@ -8867,6 +8855,7 @@
 }
 },
 "waivers": [
+"02np6",
 "02ybl",
 "02ytx",
 "04gek",

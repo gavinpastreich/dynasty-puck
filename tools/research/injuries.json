@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12",
+ "updated": "2026-10-13",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -60,18 +60,6 @@
    "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Charlie McAvoy",
-   "team": "BOS",
-   "status": "OUT",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-10",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
   },
   {
@@ -425,7 +413,7 @@
   {
    "name": "Brad Marchand",
    "team": "FLA",
-   "status": "OUT",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
    "detail": "Marchand (lower-body) is expected to miss the next six weeks.",
@@ -531,6 +519,18 @@
    "holdout": false
   },
   {
+   "name": "Nico Sturm",
+   "team": "MIN",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Sturm (upper-body) left Monday’s game vs. Vegas and will not return.",
+   "date": "2026-10-12",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Ivan Demidov",
    "team": "MTL",
    "status": "OUT",
@@ -573,18 +573,6 @@
    "injury": "lower-body",
    "ret": "",
    "detail": "Brown (lower-body) has been placed on IR retroactive to September 28th.",
-   "date": "2026-10-12",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Luke Evangelista",
-   "team": "NJD",
-   "status": "Game-time decision",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Evangelista (illness) will be a game-time decision vs. Ottawa on Monday.",
    "date": "2026-10-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
@@ -801,7 +789,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-12",
+   "date": "2026-10-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -813,7 +801,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-12",
+   "date": "2026-10-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -941,7 +929,7 @@
   {
    "name": "Dakota Joshua",
    "team": "TOR",
-   "status": "OUT",
+   "status": "IR",
    "injury": "",
    "ret": "Week-to-week",
    "detail": "Joshua is week-to-week with a core injury.",
@@ -963,21 +951,9 @@
    "holdout": false
   },
   {
-   "name": "John Tavares",
-   "team": "TOR",
-   "status": "DTD",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Tavares (personal) will rejoin the Maple Leafs in Utah on Tuesday.",
-   "date": "2026-10-12",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Max Domi",
    "team": "TOR",
-   "status": "OUT",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
    "detail": "Domi (lower-body) has been added to LTIR.",
@@ -1020,6 +996,18 @@
    "date": "2026-09-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Parker Wotherspoon",
+   "team": "VGK",
+   "status": "OUT",
+   "injury": "",
+   "ret": "Week-to-week",
+   "detail": "Wotherspoon will be out week-to-week with an upper-body injury.",
+   "date": "2026-10-12",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
   },
   {
