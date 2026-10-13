@@ -290,11 +290,11 @@
 "nebsnave": [
 "02azf",
 "02nom",
-"02noq",
 "02o7l",
 "02un5",
 "02zpp",
 "03as6",
+"03daz",
 "03jvu",
 "03rf8",
 "03yuf",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-13T12:43:19+00:00",
+"fetched": "2026-10-13T17:35:38+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -492,6 +492,11 @@
 "n": "Orlov, Dmitry",
 "pos": "D",
 "t": "SJS"
+},
+"01mzc": {
+"n": "McNabb, Brayden",
+"pos": "D",
+"t": "VGK"
 },
 "01sio": {
 "n": "Zuccarello, Mats",
@@ -892,11 +897,6 @@
 "n": "Pastrnak, David",
 "pos": "RW",
 "t": "BOS"
-},
-"03daz": {
-"n": "Pettersson, Marcus",
-"pos": "D",
-"t": "NYR"
 },
 "03dde": {
 "n": "Walman, Jake",
@@ -4523,6 +4523,13 @@
 "sal": 2000000,
 "slot": "A"
 },
+"01mzc": {
+"ct": "FA",
+"gm": "nebsnave",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "01sio": {
 "ct": "FA",
 "gm": "CGN",
@@ -4794,7 +4801,7 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 2500000,
-"slot": "A"
+"slot": "R"
 },
 "02np7": {
 "ct": "BID",
@@ -5082,13 +5089,6 @@
 "pos": "F",
 "sal": 12500000,
 "slot": "A"
-},
-"03daz": {
-"ct": "FA",
-"gm": "nebsnave",
-"pos": "D",
-"sal": 1000000,
-"slot": "R"
 },
 "03dde": {
 "ct": "BID",

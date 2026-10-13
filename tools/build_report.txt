@@ -1,5 +1,5 @@
-Dynasty Puck HQ build 2026-10-13T12:43:18
-Fantrax: 1 roster changes since 2026-10-12T19:48:16+00:00
+Dynasty Puck HQ build 2026-10-13T17:35:37
+Fantrax: 2 roster changes since 2026-10-13T12:43:19+00:00
 Fantrax: synced 616 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -11,8 +11,8 @@ Fantrax: synced 616 rostered players, 126 future picks, 14 teams in standings
   > Jake DeBrusk: FA -> BHHC (Fantrax)
   > Cole Perfetti: FA -> BHHC (Fantrax)
   > Claude Giroux: FA -> BHHC (Fantrax)
+  > Brayden McNabb: FA -> nebsnave (Fantrax)
   > Eeli Tolvanen: FA -> nebsnave (Fantrax)
-  > Marcus Pettersson: FA -> nebsnave (Fantrax)
   > Jaccob Slavin: FA -> nebsnave (Fantrax)
   > Viktor Arvidsson: FA -> nebsnave (Fantrax)
   > Jack Quinn: FA -> btsay45 (Fantrax)
@@ -37,7 +37,7 @@ Fantrax: synced 616 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-13T12:43:19+00:00): 616 rostered; changes vs CSV: {'owner': 28, 'dropped': 8}
+Fantrax sync (2026-10-13T17:35:38+00:00): 616 rostered; changes vs CSV: {'owner': 28, 'dropped': 8}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1274 players (616 rostered)
 NHL id match: {'index': 1161, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
@@ -87,7 +87,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 724 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-13): 1207 line/PP/goalie tags; injuries matched 92/92
+Depth (Daily Faceoff, 2026-10-13): 1209 line/PP/goalie tags; injuries matched 96/96
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
 Picks: Fantrax lists 126 future picks; 0 differ from the trade-history replay
