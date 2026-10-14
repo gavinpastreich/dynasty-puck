@@ -93,7 +93,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -142,6 +142,18 @@
    "ret": "In camp",
    "detail": "Jarvis (shoulder) took part in Thursday's morning skate in a regular jersey.",
    "date": "2026-10-08",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Taylor Hall",
+   "team": "CAR",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Hall suffered an upper-body injury vs. Washington and will not return.",
+   "date": "2026-10-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "holdout": false
@@ -225,7 +237,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -429,7 +441,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -657,7 +669,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -825,7 +837,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -861,7 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -873,7 +885,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -969,7 +981,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -1101,7 +1113,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-12",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
@@ -1113,7 +1125,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -1125,7 +1137,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-13",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -1140,18 +1152,6 @@
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Alex Tuch",
-   "team": "WSH",
-   "status": "Game-time decision",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Tuch (undisclosed) is on the ice for warmups; he's expected to play Tuesday.",
-   "date": "2026-10-13",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
   },
   {

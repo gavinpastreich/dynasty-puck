@@ -1,5 +1,4 @@
-Dynasty Puck HQ build 2026-10-14T10:13:32
-Fantrax: 3 roster changes since 2026-10-13T17:35:38+00:00
+Dynasty Puck HQ build 2026-10-14T15:06:52
 Fantrax: synced 617 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -39,7 +38,7 @@ Fantrax: synced 617 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-14T10:13:34+00:00): 617 rostered; changes vs CSV: {'owner': 30, 'dropped': 8}
+Fantrax sync (2026-10-14T15:06:55+00:00): 617 rostered; changes vs CSV: {'owner': 30, 'dropped': 8}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1275 players (617 rostered)
 NHL id match: {'index': 1162, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
@@ -66,7 +65,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   M.M       Fantrax $103.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 16}   <- differs by +0.20M (Fantrax is current)  (IR relief $10.70M)
   mcianfra  Fantrax $ 99.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 4, 'MNR': 22}   <- differs by +4.00M (Fantrax is current)  (IR relief $1.00M)
   btsay45   Fantrax $ 92.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 3, 'MNR': 18}   <- differs by -0.30M (Fantrax is current)  (IR relief $9.60M)
-  PuckLuck  Fantrax $ 96.80M  sheet $ 89.50M  {'BID': 17, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +7.30M (Fantrax is current)  (IR relief $4.30M)
+  PuckLuck  Fantrax $ 96.80M  sheet $ 89.50M  {'BID': 17, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +7.30M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $101.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 6, 'MNR': 22}   <- differs by +7.00M (Fantrax is current)  (IR relief $5.20M)
   mertin    Fantrax $105.60M  sheet $ 99.60M  {'BID': 13, 'FA': 6, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  OVER CAP
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
@@ -89,7 +88,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 740 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-14): 1205 line/PP/goalie tags; injuries matched 99/99
+Depth (Daily Faceoff, 2026-10-14): 1203 line/PP/goalie tags; injuries matched 99/99
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)

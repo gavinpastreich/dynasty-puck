@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-14T10:13:34+00:00",
+"fetched": "2026-10-14T15:06:55+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -5156,7 +5156,7 @@
 "gm": "PuckLuck",
 "pos": "G",
 "sal": 12200000,
-"slot": "A"
+"slot": "IR"
 },
 "03ecl": {
 "ct": "BID",
@@ -5492,7 +5492,7 @@
 "gm": "PuckLuck",
 "pos": "G",
 "sal": 3300000,
-"slot": "R"
+"slot": "A"
 },
 "03zul": {
 "ct": "BID",
