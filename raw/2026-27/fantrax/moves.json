@@ -362,5 +362,32 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Pettersson, Marcus"
+},
+{
+"d": "2026-10-14",
+"id": "03klu",
+"type": "add",
+"to": "btsay45",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-14",
+"id": "03yxp",
+"type": "move",
+"from": "btsay45",
+"to": "PuckLuck",
+"ct": "BID",
+"sal": 3300000
+},
+{
+"d": "2026-10-14",
+"id": "pick-2028-2-PuckLuck",
+"type": "pick",
+"year": 2028,
+"round": 2,
+"orig": "PuckLuck",
+"from": "PuckLuck",
+"to": "btsay45"
 }
 ]

@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-13T17:35:38+00:00",
+"fetched": "2026-10-14T10:13:34+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -972,6 +972,11 @@
 "n": "Matthews, Auston",
 "pos": "C",
 "t": "TOR"
+},
+"03klu": {
+"n": "Hathaway, Garnet",
+"pos": "RW",
+"t": "FLA"
 },
 "03klz": {
 "n": "Raddysh, Darren",
@@ -3945,7 +3950,7 @@
 },
 {
 "orig": "PuckLuck",
-"owner": "PuckLuck",
+"owner": "btsay45",
 "round": 2,
 "year": 2028
 },
@@ -5018,7 +5023,7 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 9600000,
-"slot": "R"
+"slot": "IR"
 },
 "03924": {
 "ct": "BID",
@@ -5193,6 +5198,13 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 12900000,
+"slot": "A"
+},
+"03klu": {
+"ct": "FA",
+"gm": "btsay45",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "03klz": {
@@ -5477,7 +5489,7 @@
 },
 "03yxp": {
 "ct": "BID",
-"gm": "btsay45",
+"gm": "PuckLuck",
 "pos": "G",
 "sal": 3300000,
 "slot": "R"
@@ -8859,6 +8871,16 @@
 "02ybl",
 "02ytx",
 "04gek",
-"04qzk"
+"04qzk",
+"07ary",
+"07arz",
+"07as0",
+"07as1",
+"07as2",
+"07as3",
+"07as4",
+"07as5",
+"07as7",
+"07as8"
 ]
 }
