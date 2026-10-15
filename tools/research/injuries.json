@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14",
+ "updated": "2026-10-15",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -104,8 +104,8 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "Day-to-day",
-   "detail": "Dahlin (lower-body) did not travel to Montreal and will be out Tuesday.",
-   "date": "2026-10-13",
+   "detail": "Dahlin (lower-body) is doubtful for Thursday in Toronto.",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -243,18 +243,6 @@
    "holdout": false
   },
   {
-   "name": "Cale Makar",
-   "team": "COL",
-   "status": "DTD",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Makar (personal) is out vs. Dallas on Tuesday.",
-   "date": "2026-10-13",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Logan O'Connor",
    "team": "COL",
    "status": "DTD",
@@ -262,6 +250,18 @@
    "ret": "",
    "detail": "O'Connor (lower-body) will be a game-time decision in Calgary on Thursday.",
    "date": "2026-10-08",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Nicolas Roy",
+   "team": "COL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Roy (lower-body) will not play on Wednesday.",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -284,8 +284,8 @@
    "status": "DTD",
    "injury": "illness",
    "ret": "",
-   "detail": "Johnston (illness) will not travel to Colorado for Wednesday's game.",
-   "date": "2026-10-13",
+   "detail": "Johnston (illness) is hopeful to return to the lineup on Saturday.",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -607,9 +607,9 @@
    "team": "MTL",
    "status": "DTD",
    "injury": "lower-body",
-   "ret": "",
-   "detail": "Matheson (lower-body) is out vs. Buffalo on Tuesday.",
-   "date": "2026-10-13",
+   "ret": "Day-to-day",
+   "detail": "Matheson (lower-body) is out on Thursday and considered day-to-day.",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -749,7 +749,7 @@
   {
    "name": "Igor Shesterkin",
    "team": "NYR",
-   "status": "OUT",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
    "detail": "Shesterkin (lower-body) will miss the rest of the 2026-27 season.",
@@ -1172,8 +1172,8 @@
    "status": "DTD",
    "injury": "illness",
    "ret": "",
-   "detail": "Dubois (illness) will not travel with Washington to Carolina.",
-   "date": "2026-10-12",
+   "detail": "Dubois (illness) will remain out vs. Montreal on Wednesday.",
+   "date": "2026-10-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false

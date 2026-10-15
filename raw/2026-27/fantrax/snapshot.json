@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-14T15:06:55+00:00",
+"fetched": "2026-10-15T09:55:06+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1872,6 +1872,11 @@
 "n": "Halliday, Stephen",
 "pos": "LW",
 "t": "OTT"
+},
+"05oxl": {
+"n": "Merilainen, Leevi",
+"pos": "G",
+"t": "VAN"
 },
 "05oxs": {
 "n": "Dobes, Jakub",
@@ -6460,6 +6465,13 @@
 "sal": 0,
 "slot": "M"
 },
+"05oxl": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 1000000,
+"slot": "M"
+},
 "05oxs": {
 "ct": "BID",
 "gm": "nebsnave",
@@ -8868,9 +8880,7 @@
 },
 "waivers": [
 "02np6",
-"02ybl",
 "02ytx",
-"04gek",
 "04qzk",
 "07ary",
 "07arz",
