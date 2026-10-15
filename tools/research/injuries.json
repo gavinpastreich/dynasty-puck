@@ -279,6 +279,18 @@
    "holdout": false
   },
   {
+   "name": "Oskar Back",
+   "team": "DAL",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Back (upper-body) will return to Dallas' lineup on Saturday in Florida.",
+   "date": "2025-11-01",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Wyatt Johnston",
    "team": "DAL",
    "status": "DTD",
@@ -669,7 +681,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-14",
+   "date": "2026-10-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -783,30 +795,6 @@
    "holdout": false
   },
   {
-   "name": "Artem Zub",
-   "team": "OTT",
-   "status": "IR",
-   "injury": "knee",
-   "ret": "Misses opener",
-   "detail": "Zub (knee) is expected to miss the start of the season.",
-   "date": "2026-09-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Cameron Crotty",
-   "team": "OTT",
-   "status": "IR",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Crotty (undisclosed) has been placed on IR.",
-   "date": "2026-10-11",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Jake Sanderson",
    "team": "OTT",
    "status": "DTD",
@@ -837,7 +825,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-14",
+   "date": "2026-10-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -975,25 +963,13 @@
    "holdout": false
   },
   {
-   "name": "Dennis Hildeby",
+   "name": "Dominic James",
    "team": "TBL",
-   "status": "DTD",
+   "status": "Game-time decision",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-14",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Emil Lilleberg",
-   "team": "TBL",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Lilleberg (undisclosed) has potential to return vs. New York on Tuesday.",
-   "date": "2026-10-10",
+   "date": "2026-10-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -1014,10 +990,10 @@
    "name": "Chris Tanev",
    "team": "TOR",
    "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Tanev (upper-body) has been placed on IR retroactive to October 10th.",
-   "date": "2026-10-12",
+   "injury": "",
+   "ret": "Week-to-week",
+   "detail": "Tanev is week-to-week with an upper-body injury.",
+   "date": "2026-10-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
