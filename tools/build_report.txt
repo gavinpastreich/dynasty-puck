@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-10-16T09:49:48
+Dynasty Puck HQ build 2026-10-16T14:50:14
 Fantrax: synced 618 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -39,7 +39,7 @@ Fantrax: synced 618 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-16T09:49:49+00:00): 618 rostered; changes vs CSV: {'owner': 31, 'dropped': 8}
+Fantrax sync (2026-10-16T14:50:16+00:00): 618 rostered; changes vs CSV: {'owner': 31, 'dropped': 8}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1275 players (618 rostered)
 NHL id match: {'index': 1162, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
