@@ -1,5 +1,6 @@
-Dynasty Puck HQ build 2026-10-17T09:21:35
-Fantrax: synced 618 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-10-17T13:42:51
+Fantrax: 1 roster changes since 2026-10-17T09:21:36+00:00
+Fantrax: synced 619 rostered players, 126 future picks, 14 teams in standings
   > Joseph Woll: FA -> ROO (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
   > Charle-Edouard D'Astous: FA -> mertin (Fantrax)
@@ -24,6 +25,7 @@ Fantrax: synced 618 rostered players, 126 future picks, 14 teams in standings
   > Mats Zuccarello: FA -> CGN (Fantrax)
   > Leevi Merilainen: FA -> mcianfra (Fantrax)
   > Jared Spurgeon: FA -> mcianfra (Fantrax)
+  > John Marino: FA -> mcianfra (Fantrax)
   > Artturi Lehkonen: FA -> mcianfra (Fantrax)
   > Pyotr Kochetkov: FA -> Wags8210 (Fantrax)
   > Taylor Hall: FA -> Wags8210 (Fantrax)
@@ -39,9 +41,9 @@ Fantrax: synced 618 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-17T09:21:36+00:00): 618 rostered; changes vs CSV: {'owner': 31, 'dropped': 8}
+Fantrax sync (2026-10-17T13:42:53+00:00): 619 rostered; changes vs CSV: {'owner': 32, 'dropped': 8}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1275 players (618 rostered)
+Universe: 1275 players (619 rostered)
 NHL id match: {'index': 1162, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
 Landing pages: 1245/1245
 Cor translation (n=773): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
@@ -64,7 +66,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   BHHC      Fantrax $ 99.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 3, 'ELC1': 1}   <- differs by +3.00M (Fantrax is current)  (IR relief $3.10M)
   nebsnave  Fantrax $105.81M  sheet $ 98.81M  {'BID': 17, 'FA': 7, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +7.00M (Fantrax is current)  (IR relief $7.20M)
   M.M       Fantrax $103.52M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 16}   <- differs by +0.20M (Fantrax is current)  (IR relief $11.30M)
-  mcianfra  Fantrax $100.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 5, 'MNR': 22}   <- differs by +5.00M (Fantrax is current)  (IR relief $1.00M)
+  mcianfra  Fantrax $101.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 6, 'MNR': 22}   <- differs by +6.00M (Fantrax is current)  (IR relief $3.80M)
   btsay45   Fantrax $ 92.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 3, 'MNR': 18}   <- differs by -0.30M (Fantrax is current)  (IR relief $9.60M)
   PuckLuck  Fantrax $ 96.80M  sheet $ 89.50M  {'BID': 17, 'FA': 2, 'MNR': 22, 'RFA1': 3}   <- differs by +7.30M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $101.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 6, 'MNR': 22}   <- differs by +7.00M (Fantrax is current)  (IR relief $5.20M)

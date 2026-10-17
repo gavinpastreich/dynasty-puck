@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-17T09:21:36+00:00",
+"fetched": "2026-10-17T13:42:53+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1111,6 +1111,11 @@
 "03rih": {
 "n": "Vejmelka, Karel",
 "pos": "G",
+"t": "UTA"
+},
+"03rip": {
+"n": "Marino, John",
+"pos": "D",
 "t": "UTA"
 },
 "03rmx": {
@@ -4475,7 +4480,7 @@
 "gm": "mcianfra",
 "pos": "G",
 "sal": 2800000,
-"slot": "A"
+"slot": "IR"
 },
 "01ex7": {
 "ct": "FA",
@@ -5401,6 +5406,13 @@
 "sal": 3600000,
 "slot": "A"
 },
+"03rip": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
+},
 "03rmx": {
 "ct": "BID",
 "gm": "BHHC",
@@ -5574,7 +5586,7 @@
 "gm": "mcianfra",
 "pos": "G",
 "sal": 1200000,
-"slot": "R"
+"slot": "A"
 },
 "0457k": {
 "ct": "BID",
