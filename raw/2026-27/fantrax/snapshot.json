@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-18T09:38:28+00:00",
+"fetched": "2026-10-18T14:00:20+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1098,11 +1098,6 @@
 "pos": "G",
 "t": "MTL"
 },
-"03rgq": {
-"n": "Shea, Ryan",
-"pos": "D",
-"t": "EDM"
-},
 "03rh3": {
 "n": "Kaprizov, Kirill",
 "pos": "LW",
@@ -1642,6 +1637,11 @@
 "n": "Silovs, Arturs",
 "pos": "G",
 "t": "PIT"
+},
+"051v9": {
+"n": "Edstrom, Adam",
+"pos": "LW",
+"t": "NSH"
 },
 "051wf": {
 "n": "Wolf, Dustin",
@@ -4585,7 +4585,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "01ztp": {
 "ct": "BID",
@@ -5385,13 +5385,6 @@
 "sal": 4100000,
 "slot": "IR"
 },
-"03rgq": {
-"ct": "FA",
-"gm": "SPG",
-"pos": "D",
-"sal": 1000000,
-"slot": "A"
-},
 "03rh3": {
 "ct": "BID",
 "gm": "PuckLuck",
@@ -5845,7 +5838,7 @@
 "gm": "SPG",
 "pos": "D",
 "sal": 2800000,
-"slot": "R"
+"slot": "A"
 },
 "04n4n": {
 "ct": "BID",
@@ -5985,7 +5978,7 @@
 "gm": "SPG",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "04yg5": {
 "ct": "MNR",
@@ -6048,7 +6041,7 @@
 "gm": "SPG",
 "pos": "D",
 "sal": 2500000,
-"slot": "R"
+"slot": "A"
 },
 "04z51": {
 "ct": "FA",
@@ -6146,6 +6139,13 @@
 "gm": "BHHC",
 "pos": "G",
 "sal": 1500000,
+"slot": "A"
+},
+"051v9": {
+"ct": "FA",
+"gm": "SPG",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "051wf": {

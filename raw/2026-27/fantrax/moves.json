@@ -405,5 +405,22 @@
 "to": "mcianfra",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-18",
+"id": "03rgq",
+"type": "drop",
+"from": "SPG",
+"ct": "FA",
+"sal": 1000000,
+"n": "Shea, Ryan"
+},
+{
+"d": "2026-10-18",
+"id": "051v9",
+"type": "add",
+"to": "SPG",
+"ct": "FA",
+"sal": 1000000
 }
 ]
