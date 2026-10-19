@@ -455,5 +455,30 @@
 "to": "BHHC",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-19",
+"id": "01skq",
+"type": "add",
+"to": "nbracken",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-19",
+"id": "04gek",
+"type": "add",
+"to": "PuckLuck",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-19",
+"id": "04qxy",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Romanov, Alexander"
 }
 ]

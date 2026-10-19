@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-19T10:46:59+00:00",
+"fetched": "2026-10-19T16:58:46+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -497,6 +497,11 @@
 "n": "Zuccarello, Mats",
 "pos": "RW",
 "t": "LAK"
+},
+"01skq": {
+"n": "Fowler, Cam",
+"pos": "D",
+"t": "STL"
 },
 "01ud1": {
 "n": "Bobrovsky, Sergei",
@@ -1343,6 +1348,11 @@
 "pos": "RW",
 "t": "OTT"
 },
+"04gek": {
+"n": "Durzi, Sean",
+"pos": "D",
+"t": "NYR"
+},
 "04kyh": {
 "n": "Tkachuk, Brady",
 "pos": "LW",
@@ -1452,11 +1462,6 @@
 "n": "Miller, KAndre",
 "pos": "D",
 "t": "CAR"
-},
-"04qxy": {
-"n": "Romanov, Alexander",
-"pos": "D",
-"t": "NYI"
 },
 "04qy3": {
 "n": "Fehervary, Martin",
@@ -4483,7 +4488,7 @@
 "gm": "mcianfra",
 "pos": "G",
 "sal": 2800000,
-"slot": "IR"
+"slot": "A"
 },
 "01ex7": {
 "ct": "FA",
@@ -4554,6 +4559,13 @@
 "pos": "F",
 "sal": 1000000,
 "slot": "IR"
+},
+"01skq": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
 },
 "01ud1": {
 "ct": "BID",
@@ -4630,7 +4642,7 @@
 "gm": "mcianfra",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "02422": {
 "ct": "BID",
@@ -5491,7 +5503,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "03yh8": {
 "ct": "BID",
@@ -5596,7 +5608,7 @@
 "gm": "mcianfra",
 "pos": "G",
 "sal": 1200000,
-"slot": "A"
+"slot": "R"
 },
 "0457k": {
 "ct": "BID",
@@ -5736,6 +5748,13 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 4000000,
+"slot": "A"
+},
+"04gek": {
+"ct": "FA",
+"gm": "PuckLuck",
+"pos": "D",
+"sal": 1000000,
 "slot": "A"
 },
 "04kyh": {
@@ -5891,13 +5910,6 @@
 "pos": "D",
 "sal": 4500000,
 "slot": "A"
-},
-"04qxy": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "D",
-"sal": 1000000,
-"slot": "IR"
 },
 "04qy3": {
 "ct": "BID",
@@ -6086,7 +6098,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 6000000,
-"slot": "R"
+"slot": "A"
 },
 "04zo0": {
 "ct": "BID",
@@ -6394,7 +6406,7 @@
 "gm": "PuckLuck",
 "pos": "D",
 "sal": 6500000,
-"slot": "A"
+"slot": "R"
 },
 "05ltq": {
 "ct": "MNR",
@@ -6723,7 +6735,7 @@
 "gm": "mertin",
 "pos": "D",
 "sal": 2500000,
-"slot": "R"
+"slot": "A"
 },
 "05tcz": {
 "ct": "ELC1",
@@ -7542,7 +7554,7 @@
 "gm": "mertin",
 "pos": "D",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "06b7a": {
 "ct": "MNR",
@@ -7633,7 +7645,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "06bui": {
 "ct": "MNR",
@@ -7759,7 +7771,7 @@
 "gm": "mcianfra",
 "pos": "D",
 "sal": 0,
-"slot": "R"
+"slot": "A"
 },
 "06hcp": {
 "ct": "MNR",
@@ -8916,6 +8928,7 @@
 },
 "waivers": [
 "0042t",
-"03rgq"
+"03rgq",
+"04qxy"
 ]
 }
