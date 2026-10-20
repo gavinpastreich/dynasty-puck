@@ -480,5 +480,48 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Romanov, Alexander"
+},
+{
+"d": "2026-10-20",
+"id": "02ni5",
+"type": "drop",
+"from": "Wags8210",
+"ct": "FA",
+"sal": 1000000,
+"n": "Marchessault, Jonathan"
+},
+{
+"d": "2026-10-20",
+"id": "02o70",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-20",
+"id": "03pax",
+"type": "drop",
+"from": "nebsnave",
+"ct": "FA",
+"sal": 1000000,
+"n": "Provorov, Ivan"
+},
+{
+"d": "2026-10-20",
+"id": "03pim",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-20",
+"id": "03rab",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "DeBrusk, Jake"
 }
 ]

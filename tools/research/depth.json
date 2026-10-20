@@ -1,18 +1,18 @@
 {
- "updated": "2026-10-19",
+ "updated": "2026-10-20",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
    "team": "Anaheim Ducks",
-   "updated": "2026-10-17",
-   "source": "Zach Cavanagh",
+   "updated": "2026-10-19",
+   "source": "@AnaheimDucks",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "pp1": [
-    "Mikael Granlund",
-    "Leo Carlsson",
-    "Cutter Gauthier",
     "Beckett Sennecke",
-    "Jackson Lacombe"
+    "Leo Carlsson",
+    "Mikael Granlund",
+    "Jackson Lacombe",
+    "Cutter Gauthier"
    ],
    "pp2": [
     "Alex Killorn",
@@ -49,31 +49,31 @@
     "Cutter Gauthier"
    ],
    "f4": [
-    "Judd Caulfield",
+    "Jeff Malott",
     "Tim Washe",
-    "Jeff Malott"
+    "Judd Caulfield"
    ],
    "d1": [
     "Jackson Lacombe",
     "Noah Warren"
    ],
    "d2": [
-    "Pavel Mintyukov",
-    "Drew Helleson"
-   ],
-   "d3": [
     "Tyson Hinds",
     "Tristan Luneau"
    ],
+   "d3": [
+    "Pavel Mintyukov",
+    "Nick Jensen"
+   ],
    "goalies": [
-    "Lukas Dostal",
-    "Ville Husso"
+    "Ville Husso",
+    "Lukas Dostal"
    ]
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-10-18",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-19",
+   "source": "Belle Fraser",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "Morgan Geekie",
@@ -102,19 +102,19 @@
     "Charlie McAvoy"
    ],
    "f1": [
-    "Morgan Geekie",
+    "JJ Peterka",
     "Fraser Minten",
     "David Pastrnak"
    ],
    "f2": [
+    "Marat Khusnutdinov",
+    "Matthew Poitras",
+    "Morgan Geekie"
+   ],
+   "f3": [
     "Casey Mittelstadt",
     "Elias Lindholm",
     "James Hagens"
-   ],
-   "f3": [
-    "Marat Khusnutdinov",
-    "Matthew Poitras",
-    "JJ Peterka"
    ],
    "f4": [
     "Tanner Jeannot",
@@ -126,12 +126,12 @@
     "Charlie McAvoy"
    ],
    "d2": [
-    "Frederic Brunet",
-    "Mason Lohrei"
-   ],
-   "d3": [
     "Jonathan Aspirot",
     "Will Borgen"
+   ],
+   "d3": [
+    "Frederic Brunet",
+    "Mason Lohrei"
    ],
    "goalies": [
     "Jeremy Swayman",
@@ -344,8 +344,8 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-10-18",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-19",
+   "source": "Ben Pope",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Tyler Bertuzzi",
@@ -389,17 +389,17 @@
     "Ryan Donato"
    ],
    "f4": [
-    "Jordan Greenway",
+    "Cole Smith",
     "Ryan Greene",
-    "Cole Smith"
+    "Jordan Greenway"
    ],
    "d1": [
-    "Wyatt Kaiser",
-    "Artyom Levshunov"
-   ],
-   "d2": [
     "Alex Vlasic",
     "Ian Cole"
+   ],
+   "d2": [
+    "Wyatt Kaiser",
+    "Artyom Levshunov"
    ],
    "d3": [
     "Ethan Del Mastro",
@@ -412,8 +412,8 @@
   },
   "COL": {
    "team": "Colorado Avalanche",
-   "updated": "2026-10-17",
-   "source": "Bailey Curtis",
+   "updated": "2026-10-19",
+   "source": "Aarif Deen",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "pp1": [
     "T.J. Hughes",
@@ -457,7 +457,6 @@
     "T.J. Hughes"
    ],
    "f4": [
-    "Logan O'Connor",
     "Parker Kelly",
     "Gavin Brindley"
    ],
@@ -474,8 +473,8 @@
     "Brent Burns"
    ],
    "goalies": [
-    "Mackenzie Blackwood",
-    "Scott Wedgewood"
+    "Scott Wedgewood",
+    "Mackenzie Blackwood"
    ]
   },
   "CBJ": {
@@ -542,14 +541,14 @@
     "Erik Gudbranson"
    ],
    "goalies": [
-    "Cam Talbot",
-    "Jet Greaves"
+    "Jet Greaves",
+    "Cam Talbot"
    ]
   },
   "DAL": {
    "team": "Dallas Stars",
-   "updated": "2026-10-18",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-19",
+   "source": "Robert Tiffin",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "pp1": [
     "Wyatt Johnston",
@@ -578,14 +577,14 @@
     "Thomas Harley"
    ],
    "f1": [
-    "Jason Robertson",
-    "Roope Hintz",
-    "Tyler Seguin"
-   ],
-   "f2": [
     "Sam Steel",
     "Wyatt Johnston",
     "Mikko Rantanen"
+   ],
+   "f2": [
+    "Jason Robertson",
+    "Roope Hintz",
+    "Tyler Seguin"
    ],
    "f3": [
     "Justin Hryckowian",
@@ -683,8 +682,8 @@
   },
   "EDM": {
    "team": "Edmonton Oilers",
-   "updated": "2026-10-18",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-19",
+   "source": "Bob Stauffer",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "pp1": [
     "Vasily Podkolzin",
@@ -728,8 +727,8 @@
     "Mathieu Joseph"
    ],
    "f4": [
-    "Trent Frederic",
     "Filip Hallander",
+    "Trent Frederic",
     "Isaac Howard"
    ],
    "d1": [
@@ -1023,7 +1022,7 @@
   "NSH": {
    "team": "Nashville Predators",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "Nick Kieser",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
    "pp1": [
     "Filip Forsberg",
@@ -1057,14 +1056,14 @@
     "Steven Stamkos"
    ],
    "f2": [
-    "Alex Kerfoot",
     "Ross Colton",
+    "Alex Kerfoot",
     "Jonathan Marchessault"
    ],
    "f3": [
     "Nils Hoglander",
-    "Vitali Pinchuk",
-    "Matthew Wood"
+    "Matthew Wood",
+    "Vitali Pinchuk"
    ],
    "f4": [
     "Reid Schaefer",
@@ -1072,8 +1071,8 @@
     "Adam Edstrom"
    ],
    "d1": [
-    "Adam Wilsby",
-    "Roman Josi"
+    "Roman Josi",
+    "Adam Wilsby"
    ],
    "d2": [
     "Brady Skjei",
@@ -1152,8 +1151,8 @@
     "Johnathan Kovacevic"
    ],
    "goalies": [
-    "Jake Allen",
-    "Nico Daws"
+    "Nico Daws",
+    "Jake Allen"
    ]
   },
   "NYI": {
@@ -1169,10 +1168,10 @@
     "Matthew Schaefer"
    ],
    "pp2": [
-    "Victor Eklund",
-    "Jean-Gabriel Pageau",
+    "Ondrej Palat",
+    "Emil Heineman",
     "Anthony Duclair",
-    "Matthew Kessel",
+    "Victor Eklund",
     "Tony DeAngelo"
    ],
    "pk1": [
@@ -1227,7 +1226,7 @@
   "NYR": {
    "team": "New York Rangers",
    "updated": "2026-10-19",
-   "source": "Colin Stephenson",
+   "source": "Mollie Walker",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1295,13 +1294,13 @@
   "OTT": {
    "team": "Ottawa Senators",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "Andrew Wilimek",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
     "Dylan Cozens",
     "Stephen Halliday",
     "Drake Batherson",
-    "Carter Yakemchuk",
+    "Jake Sanderson",
     "Tim Stützle"
    ],
    "pp2": [
@@ -1309,29 +1308,29 @@
     "Shane Pinto",
     "Claude Giroux",
     "Fabian Zetterlund",
-    "Thomas Chabot"
+    "Carter Yakemchuk"
    ],
    "pk1": [
     "Shane Pinto",
     "Ridly Greig",
-    "Tyler Kleven",
-    "Nikolas Matinpalo"
+    "Jake Sanderson",
+    "Artem Zub"
    ],
    "pk2": [
     "Tim Stützle",
     "Michael Amadio",
-    "Thomas Chabot",
-    "Artem Zub"
+    "Tyler Kleven",
+    "Jordan Spence"
    ],
    "f1": [
-    "Stephen Halliday",
+    "Warren Foegele",
     "Tim Stützle",
-    "Drake Batherson"
+    "Claude Giroux"
    ],
    "f2": [
     "Andre Burakovsky",
     "Dylan Cozens",
-    "Claude Giroux"
+    "Drake Batherson"
    ],
    "f3": [
     "Nick Cousins",
@@ -1339,21 +1338,21 @@
     "Michael Amadio"
    ],
    "f4": [
-    "Warren Foegele",
     "Ridly Greig",
+    "Stephen Halliday",
     "Fabian Zetterlund"
    ],
    "d1": [
-    "Thomas Chabot",
+    "Jake Sanderson",
     "Artem Zub"
    ],
    "d2": [
-    "Tyler Kleven",
-    "Jordan Spence"
+    "Jordan Spence",
+    "Carter Yakemchuk"
    ],
    "d3": [
-    "Nikolas Matinpalo",
-    "Carter Yakemchuk"
+    "Tyler Kleven",
+    "Cameron Crotty"
    ],
    "goalies": [
     "Linus Ullmark",
@@ -1363,10 +1362,10 @@
   "PHI": {
    "team": "Philadelphia Flyers",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "Will James",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "pp1": [
-    "Tyson Foerster",
+    "Alex Bump",
     "Denver Barkey",
     "Matvei Michkov",
     "Trevor Zegras",
@@ -1387,14 +1386,14 @@
    ],
    "pk2": [
     "Noah Cates",
-    "Tyson Foerster",
+    "Christian Dvorak",
     "Simon Benoit",
     "Jamie Drysdale"
    ],
    "f1": [
     "Trevor Zegras",
     "Christian Dvorak",
-    "Tyson Foerster"
+    "Noel Acciari"
    ],
    "f2": [
     "Porter Martone",
@@ -1402,14 +1401,14 @@
     "Matvei Michkov"
    ],
    "f3": [
-    "Denver Barkey",
+    "Jacob Gaucher",
     "Sean Couturier",
     "Michael Bunting"
    ],
    "f4": [
-    "Garrett Wilson",
-    "Jack Studnicka",
-    "Noel Acciari"
+    "Alex Bump",
+    "Denver Barkey",
+    "Cole Knuble"
    ],
    "d1": [
     "Travis Sanheim",
@@ -1430,8 +1429,8 @@
   },
   "PIT": {
    "team": "Pittsburgh Penguins",
-   "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-20",
+   "source": "@penguins",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "pp1": [
     "Bryan Rust",
@@ -1443,7 +1442,7 @@
    "pp2": [
     "Andrei Kuzmenko",
     "Ben Kindel",
-    "Ville Koivunen",
+    "Egor Chinakhov",
     "Kris Letang",
     "Evgeni Malkin"
    ],
@@ -1456,11 +1455,11 @@
    "pk2": [
     "Bryan Rust",
     "Nicholas Robertson",
-    "Samuel Girard",
+    "Spencer Stastney",
     "Erik Karlsson"
    ],
    "f1": [
-    "Rickard Rakell",
+    "Egor Chinakhov",
     "Sidney Crosby",
     "Bryan Rust"
    ],
@@ -1472,23 +1471,23 @@
    "f3": [
     "Andrei Kuzmenko",
     "Ben Kindel",
-    "Nicholas Robertson"
+    "Rickard Rakell"
    ],
    "f4": [
     "Connor Dewar",
     "Blake Lizotte",
-    "Elmer Soderblom"
+    "Nicholas Robertson"
    ],
    "d1": [
-    "Declan Carlile",
+    "Spencer Stastney",
     "Erik Karlsson"
    ],
    "d2": [
-    "Samuel Girard",
+    "Declan Carlile",
     "Kaedan Korczak"
    ],
    "d3": [
-    "Spencer Stastney",
+    "Ilya Solovyov",
     "Kris Letang"
    ],
    "goalies": [
@@ -1498,8 +1497,8 @@
   },
   "SJS": {
    "team": "San Jose Sharks",
-   "updated": "2026-10-19",
-   "source": "Max Miller",
+   "updated": "2026-10-20",
+   "source": "Sheng Peng",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Ivar Stenberg",
@@ -1567,7 +1566,7 @@
   "SEA": {
    "team": "Seattle Kraken",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "@sound_hockey",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1598,12 +1597,12 @@
    "f1": [
     "Jared McCann",
     "Matty Beniers",
-    "Mackie Samoskevich"
+    "Jordan Eberle"
    ],
    "f2": [
     "Bobby McMann",
     "Chandler Stephenson",
-    "Jordan Eberle"
+    "Mackie Samoskevich"
    ],
    "f3": [
     "Kaapo Kakko",
@@ -1621,21 +1620,21 @@
    ],
    "d2": [
     "Ryker Evans",
-    "Cale Fleury"
+    "Ty Nelson"
    ],
    "d3": [
     "Joshua Mahura",
     "Ville Ottavainen"
    ],
    "goalies": [
-    "Joey Daccord",
-    "Philipp Grubauer"
+    "Philipp Grubauer",
+    "Joey Daccord"
    ]
   },
   "STL": {
    "team": "St Louis Blues",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "Lou Korac",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "pp1": [
     "Jake Neighbours",
@@ -1664,7 +1663,7 @@
     "Brandon Carlo"
    ],
    "f1": [
-    "Pavel Buchnevich",
+    "Dylan Holloway",
     "Robert Thomas",
     "Jimmy Snuggerud"
    ],
@@ -1674,20 +1673,21 @@
     "Jonatan Berggren"
    ],
    "f3": [
-    "Dylan Holloway",
-    "Pius Suter",
-    "Jake Neighbours"
+    "Jake Neighbours",
+    "Dalibor Dvorsky",
+    "Pavel Buchnevich"
    ],
    "f4": [
-    "Dalibor Dvorsky",
-    "Dylan Peterson"
+    "Aleksanteri Kaskimaki",
+    "Pius Suter",
+    "Otto Stenberg"
    ],
    "d1": [
     "Philip Broberg",
-    "Adam Jiříček"
+    "Justin Barron"
    ],
    "d2": [
-    "Theo Lindstein",
+    "Adam Jiříček",
     "Colton Parayko"
    ],
    "d3": [
@@ -1695,8 +1695,8 @@
     "Brandon Carlo"
    ],
    "goalies": [
-    "Jordan Binnington",
-    "Joel Hofer"
+    "Joel Hofer",
+    "Jordan Binnington"
    ]
   },
   "TBL": {
@@ -1769,7 +1769,7 @@
   "TOR": {
    "team": "Toronto Maple Leafs",
    "updated": "2026-10-19",
-   "source": "Mark Masters",
+   "source": "David Alter",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
     "Kirill Marchenko",
@@ -1798,14 +1798,14 @@
     "Darren Raddysh"
    ],
    "f1": [
-    "William Nylander",
+    "Easton Cowan",
     "Auston Matthews",
     "Jack Roslovic"
    ],
    "f2": [
-    "Easton Cowan",
+    "Kirill Marchenko",
     "Nick Paul",
-    "Kirill Marchenko"
+    "William Nylander"
    ],
    "f3": [
     "Gavin McKenna",
@@ -1836,8 +1836,8 @@
   },
   "UTA": {
    "team": "Utah Mammoth",
-   "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-20",
+   "source": "Utah Mammoth",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "pp1": [
     "Nick Schmaltz",
@@ -1851,7 +1851,7 @@
     "Vincent Trocheck",
     "Kailer Yamamoto",
     "Barrett Hayton",
-    "John Marino"
+    "MacKenzie Weegar"
    ],
    "pk1": [
     "Nick Schmaltz",
@@ -1863,7 +1863,7 @@
     "Kevin Stenlund",
     "Jack McBain",
     "Nate Schmidt",
-    "John Marino"
+    "Andrew Peeke"
    ],
    "f1": [
     "Clayton Keller",
@@ -1891,11 +1891,11 @@
    ],
    "d2": [
     "Nate Schmidt",
-    "John Marino"
+    "Andrew Peeke"
    ],
    "d3": [
     "Dmitri Simashev",
-    "Andrew Peeke"
+    "Nick DeSimone"
    ],
    "goalies": [
     "Sebastian Cossa",
@@ -1904,8 +1904,8 @@
   },
   "VAN": {
    "team": "Vancouver Canucks",
-   "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "updated": "2026-10-20",
+   "source": "Thomas Drance",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "pp1": [
     "Jake DeBrusk",
@@ -1931,12 +1931,12 @@
     "Max Sasson",
     "Paul Cotter",
     "Elias Nils Pettersson",
-    "Victor Mancini"
+    "Luke Schenn"
    ],
    "f1": [
     "Jake DeBrusk",
     "Elias Pettersson",
-    "Jonathan Lekkerimaki"
+    "Linus Karlsson"
    ],
    "f2": [
     "Paul Cotter",
@@ -1946,7 +1946,7 @@
    "f3": [
     "Liam Ohgren",
     "Drew O'Connor",
-    "Linus Karlsson"
+    "Jonathan Lekkerimaki"
    ],
    "f4": [
     "Arshdeep Bains",
@@ -1963,7 +1963,7 @@
    ],
    "d3": [
     "Zeev Buium",
-    "Victor Mancini"
+    "Luke Schenn"
    ],
    "goalies": [
     "Leevi Merilainen",
@@ -2109,7 +2109,7 @@
   "WPG": {
    "team": "Winnipeg Jets",
    "updated": "2026-10-19",
-   "source": "Last Game (2026-10-17)",
+   "source": "Ken Wiebe",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "pp1": [
     "Gabriel Vilardi",
@@ -2143,14 +2143,14 @@
     "Cole Perfetti"
    ],
    "f2": [
-    "Nino Niederreiter",
+    "Alex Iafallo",
     "Viggo Björck",
     "Gabriel Vilardi"
    ],
    "f3": [
-    "Isak Rosen",
+    "Nino Niederreiter",
     "Adam Lowry",
-    "Alex Iafallo"
+    "Isak Rosen"
    ],
    "f4": [
     "Cole Koepke",
@@ -2167,7 +2167,7 @@
    ],
    "d3": [
     "Haydn Fleury",
-    "Jack St. Ivany"
+    "Tyrel Bauer"
    ],
    "goalies": [
     "Stuart Skinner",
