@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-10-21T10:08:48
+Dynasty Puck HQ build 2026-10-21T15:13:07
 Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -47,7 +47,7 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
-Fantrax sync (2026-10-21T10:08:49+00:00): 621 rostered; changes vs CSV: {'owner': 37, 'dropped': 10}
+Fantrax sync (2026-10-21T15:13:10+00:00): 621 rostered; changes vs CSV: {'owner': 37, 'dropped': 10}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1278 players (621 rostered)
 NHL id match: {'index': 1165, 'search': 111, None: 2}; unmatched 2 (rostered: 0)
@@ -97,7 +97,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 768 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-21): 1208 line/PP/goalie tags; injuries matched 108/108
+Depth (Daily Faceoff, 2026-10-21): 1208 line/PP/goalie tags; injuries matched 107/107
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)
