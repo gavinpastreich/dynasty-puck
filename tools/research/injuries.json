@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -10,6 +10,18 @@
    "ret": "",
    "detail": "Moore (lower body) will miss the next 2-4 weeks.",
    "date": "2026-09-18",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Judd Caulfield",
+   "team": "ANA",
+   "status": "DTD",
+   "injury": "personal",
+   "ret": "",
+   "detail": "Caulfield (personal) returned to Anaheim for the birth of his child and will not play Tuesday.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -36,18 +48,6 @@
    "date": "2026-10-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Pavel Zacha",
-   "team": "BOS",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Zacha (upper-body) will be a game-time decision vs. Dallas on Tuesday.",
-   "date": "2026-10-19",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "holdout": false
   },
   {
@@ -93,7 +93,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-19",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -291,6 +291,18 @@
    "holdout": false
   },
   {
+   "name": "Esa Lindell",
+   "team": "DAL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "Day-to-day",
+   "detail": "Lindell (lower-body) will be out vs. Boston on Tuesday and is considered day-to-day.",
+   "date": "2026-10-20",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Matt Duchene",
    "team": "DAL",
    "status": "IR",
@@ -453,7 +465,19 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-19",
+   "date": "2026-10-20",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Jacob Markstrom",
+   "team": "FLA",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -477,7 +501,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -495,13 +519,13 @@
    "holdout": false
   },
   {
-   "name": "Mats Zuccarello",
+   "name": "Quinton Byfield",
    "team": "LAK",
-   "status": "IR",
-   "injury": "undisclosed",
+   "status": "DTD",
+   "injury": "",
    "ret": "",
-   "detail": "Zuccarello (undisclosed) practiced on Monday and is trending toward returning on Tuesday vs. Washington.",
-   "date": "2026-10-19",
+   "detail": "Byfield left Tuesday's game in Washington with an upper-body injury and will not return.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -537,7 +561,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-19",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -562,18 +586,6 @@
    "ret": "",
    "detail": "Foligno has been placed on IR with an upper-body injury.",
    "date": "2026-10-09",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Nico Sturm",
-   "team": "MIN",
-   "status": "OUT",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Sturm (upper-body) left Monday’s game vs. Vegas and will not return.",
-   "date": "2026-10-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -903,6 +915,18 @@
    "holdout": false
   },
   {
+   "name": "Ben Kindel",
+   "team": "PIT",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Kindel (undisclosed) is out indefinitely.",
+   "date": "2026-10-20",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Bryan Rust",
    "team": "PIT",
    "status": "DTD",
@@ -963,18 +987,6 @@
    "holdout": false
   },
   {
-   "name": "Brandon Montour",
-   "team": "SEA",
-   "status": "DTD",
-   "injury": "lower body",
-   "ret": "Day-to-day",
-   "detail": "Montour (lower body) will not play on Saturday and is day-to-day.",
-   "date": "2026-10-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Jacob Melanson",
    "team": "SEA",
    "status": "IR",
@@ -1003,9 +1015,9 @@
    "team": "SJS",
    "status": "DTD",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Wennberg (upper-body) left Monday’s game and is questionable for Tuesday in Montreal.",
-   "date": "2026-10-19",
+   "ret": "Day-to-day",
+   "detail": "Wennberg (upper-body) is out vs. Montreal on Tuesday and considered day-to-day.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
@@ -1050,10 +1062,10 @@
    "name": "Ross Johnston",
    "team": "STL",
    "status": "DTD",
-   "injury": "undisclosed",
+   "injury": "",
    "ret": "",
-   "detail": "Johnston (undisclosed) is not expected to play on Saturday.",
-   "date": "2026-10-17",
+   "detail": "Johnston has been placed on IR with a lower-body injury.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
@@ -1157,11 +1169,11 @@
   {
    "name": "Michael Carcone",
    "team": "UTA",
-   "status": "OUT",
-   "injury": "upper-body",
+   "status": "IR",
+   "injury": "",
    "ret": "Week-to-week",
-   "detail": "Carcone (upper-body) will be out Saturday vs. Buffalo and is considered week-to-week.",
-   "date": "2026-10-10",
+   "detail": "Carone (upper-body) has been placed on IR and remains week-to-week.",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
@@ -1221,7 +1233,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-19",
+   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -1258,18 +1270,6 @@
    "ret": "",
    "detail": "Sourdif (illness) will not play on Saturday.",
    "date": "2026-10-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Matt Roy",
-   "team": "WSH",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "In camp",
-   "detail": "Roy (lower-body) is expected to return vs. Los Angeles on Tuesday.",
-   "date": "2026-10-19",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
