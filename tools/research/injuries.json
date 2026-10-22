@@ -81,7 +81,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -441,7 +441,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -453,7 +453,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -825,7 +825,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -861,7 +861,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -873,7 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-21",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -881,11 +881,11 @@
   {
    "name": "Ben Kindel",
    "team": "PIT",
-   "status": "OUT",
+   "status": "IR",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Kindel (undisclosed) is out indefinitely.",
-   "date": "2026-10-20",
+   "detail": "Kindel (undisclosed) has been placed on IR.",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -893,11 +893,11 @@
   {
    "name": "Bryan Rust",
    "team": "PIT",
-   "status": "DTD",
-   "injury": "",
+   "status": "IR",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Rust left Monday's game with a lower-body injury and will not return.",
-   "date": "2026-10-19",
+   "detail": "Rust (lower-body) has been placed on IR.",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -921,7 +921,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -945,7 +945,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1102,18 +1102,6 @@
    "ret": "Months",
    "detail": "Merzlikins (shoulder) is expected to be out for another 3-to-5 months.",
    "date": "2026-09-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jake McCabe",
-   "team": "TOR",
-   "status": "DTD",
-   "injury": "",
-   "ret": "",
-   "detail": "McCabe left Tuesday's game with an undisclosed injury and will not return.",
-   "date": "2026-10-20",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
