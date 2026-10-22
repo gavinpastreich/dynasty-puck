@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-21T15:13:10+00:00",
+"fetched": "2026-10-22T10:11:11+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1027,11 +1027,6 @@
 "n": "Chychrun, Jakob",
 "pos": "D",
 "t": "WSH"
-},
-"03ne3": {
-"n": "Vatrano, Frank",
-"pos": "LW",
-"t": "ANA"
 },
 "03nqi": {
 "n": "Lyon, Alex",
@@ -2337,6 +2332,11 @@
 "n": "Pickering, Owen",
 "pos": "D",
 "t": "PIT"
+},
+"0618g": {
+"n": "Knuble, Cole",
+"pos": "RW",
+"t": "PHI"
 },
 "0618l": {
 "n": "Sidorov, Yegor",
@@ -4574,7 +4574,7 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 3100000,
-"slot": "R"
+"slot": "A"
 },
 "01zql": {
 "ct": "BID",
@@ -5295,13 +5295,6 @@
 "gm": "BHHC",
 "pos": "D",
 "sal": 5700000,
-"slot": "A"
-},
-"03ne3": {
-"ct": "BID",
-"gm": "BULLIES",
-"pos": "F",
-"sal": 4000000,
 "slot": "A"
 },
 "03nqi": {
@@ -6331,7 +6324,7 @@
 "gm": "BULLIES",
 "pos": "F",
 "sal": 5300000,
-"slot": "IR"
+"slot": "A"
 },
 "05j3d": {
 "ct": "BID",
@@ -6814,7 +6807,7 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "05uh3": {
 "ct": "MNR",
@@ -7131,6 +7124,13 @@
 "sal": 0,
 "slot": "M"
 },
+"0618g": {
+"ct": "FA",
+"gm": "BULLIES",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "0618l": {
 "ct": "MNR",
 "gm": "nebsnave",
@@ -7360,7 +7360,7 @@
 "gm": "BULLIES",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "066q5": {
 "ct": "MNR",
@@ -8915,7 +8915,6 @@
 }
 },
 "waivers": [
-"0042t",
 "02ni5",
 "03pax",
 "03rab",

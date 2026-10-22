@@ -523,5 +523,22 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "DeBrusk, Jake"
+},
+{
+"d": "2026-10-22",
+"id": "03ne3",
+"type": "drop",
+"from": "BULLIES",
+"ct": "BID",
+"sal": 4000000,
+"n": "Vatrano, Frank"
+},
+{
+"d": "2026-10-22",
+"id": "0618g",
+"type": "add",
+"to": "BULLIES",
+"ct": "FA",
+"sal": 1000000
 }
 ]

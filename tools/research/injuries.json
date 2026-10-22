@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -127,9 +127,9 @@
    "team": "CAR",
    "status": "IR",
    "injury": "shoulder",
-   "ret": "Months",
-   "detail": "Jarvis (shoulder) is travelling with Carolina on their upcoming road trip.",
-   "date": "2026-10-16",
+   "ret": "",
+   "detail": "Jarvis (shoulder) has been activated from the injured non-roster list.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "holdout": false
@@ -151,9 +151,9 @@
    "team": "CBJ",
    "status": "IR",
    "injury": "hand",
-   "ret": "Months",
-   "detail": "Fabbro (hand) is expected to miss at least one month.",
-   "date": "2026-09-28",
+   "ret": "",
+   "detail": "Fabbro (hand) has a chance to return on Saturday vs. Vegas.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -308,8 +308,8 @@
    "status": "IR",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Compher (undisclosed) practiced on Monday and has a chance to return vs. New Jersey on Tuesday.",
-   "date": "2026-10-12",
+   "detail": "Compher (undisclosed) has a good chance to return in Vancouver on Thursday.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -416,8 +416,8 @@
    "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Nugent-Hopkins (lower-body) has been placed on IR.",
-   "date": "2026-10-01",
+   "detail": "Nugent-Hopkins (lower-body) will make his season debut on Thursday vs. Carolina.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -498,10 +498,10 @@
    "name": "Quinton Byfield",
    "team": "LAK",
    "status": "DTD",
-   "injury": "",
-   "ret": "",
-   "detail": "Byfield left Tuesday's game in Washington with an upper-body injury and will not return.",
-   "date": "2026-10-20",
+   "injury": "upper-body",
+   "ret": "Day-to-day",
+   "detail": "Byfield (upper-body) is considered day-to-day.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -656,8 +656,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Bourque (upper-body) will remain out vs. St. Louis on Saturday.",
-   "date": "2026-10-17",
+   "detail": "Bourque (upper-body) practice in full on Wednesday.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/nashville-predators/line-combinations",
    "holdout": false
@@ -771,18 +771,6 @@
    "holdout": false
   },
   {
-   "name": "Jake Sanderson",
-   "team": "OTT",
-   "status": "DTD",
-   "injury": "lower body",
-   "ret": "",
-   "detail": "Sanderson (lower body) is getting closer, but will not play on Saturday.",
-   "date": "2026-10-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Kurtis MacDermid",
    "team": "OTT",
    "status": "IR",
@@ -790,6 +778,18 @@
    "ret": "",
    "detail": "Kurtis MacDermid (upper-body) will begin the 2026-27 season as an injured/non-roster player.",
    "date": "2026-09-28",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Linus Ullmark",
+   "team": "OTT",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -825,7 +825,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -861,7 +861,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -873,19 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-20",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Tyson Foerster",
-   "team": "PHI",
-   "status": "DTD",
-   "injury": "hand",
-   "ret": "",
-   "detail": "Foerster (hand) will not play Monday vs. Colorado.",
-   "date": "2026-10-19",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -893,7 +881,7 @@
   {
    "name": "Ben Kindel",
    "team": "PIT",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Kindel (undisclosed) is out indefinitely.",
@@ -1059,6 +1047,18 @@
    "holdout": false
   },
   {
+   "name": "Anthony Cirelli",
+   "team": "TBL",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Cirelli (undisclosed) left Tuesday's game vs. Vegas and did not return.",
+   "date": "2026-10-21",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Yanni Gourde",
    "team": "TBL",
    "status": "OUT",
@@ -1172,8 +1172,8 @@
    "status": "DTD",
    "injury": "illness",
    "ret": "",
-   "detail": "Rossi (illness) will not play on Saturday.",
-   "date": "2026-10-17",
+   "detail": "Rossi (illness) returned to Canucks' practice on Wednesday.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "holdout": false
@@ -1193,11 +1193,11 @@
   {
    "name": "Parker Wotherspoon",
    "team": "VGK",
-   "status": "OUT",
-   "injury": "",
-   "ret": "Week-to-week",
-   "detail": "Wotherspoon will be out week-to-week with an upper-body injury.",
-   "date": "2026-10-12",
+   "status": "IR",
+   "injury": "upper body",
+   "ret": "",
+   "detail": "Wotherspoon (upper body) has been placed on IR.",
+   "date": "2026-10-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
