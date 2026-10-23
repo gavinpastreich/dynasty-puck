@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-22T15:18:32+00:00",
+"fetched": "2026-10-23T10:04:53+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -498,11 +498,6 @@
 "pos": "RW",
 "t": "LAK"
 },
-"01skq": {
-"n": "Fowler, Cam",
-"pos": "D",
-"t": "STL"
-},
 "01ud1": {
 "n": "Bobrovsky, Sergei",
 "pos": "G",
@@ -522,6 +517,11 @@
 "n": "Wedgewood, Scott",
 "pos": "G",
 "t": "COL"
+},
+"01zs7": {
+"n": "Grubauer, Philipp",
+"pos": "G",
+"t": "SEA"
 },
 "01zto": {
 "n": "Coyle, Charlie",
@@ -4385,7 +4385,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 6000000,
-"slot": "A"
+"slot": "R"
 },
 "0045j": {
 "ct": "BID",
@@ -4406,7 +4406,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 4400000,
-"slot": "R"
+"slot": "A"
 },
 "004jl": {
 "ct": "BID",
@@ -4427,7 +4427,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 3500000,
-"slot": "A"
+"slot": "R"
 },
 "01587": {
 "ct": "FA",
@@ -4555,13 +4555,6 @@
 "sal": 1000000,
 "slot": "IR"
 },
-"01skq": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "D",
-"sal": 1000000,
-"slot": "A"
-},
 "01ud1": {
 "ct": "BID",
 "gm": "M.M",
@@ -4588,6 +4581,13 @@
 "gm": "BHHC",
 "pos": "G",
 "sal": 2700000,
+"slot": "A"
+},
+"01zs7": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "G",
+"sal": 1000000,
 "slot": "A"
 },
 "01zto": {
@@ -4882,7 +4882,7 @@
 "gm": "nbracken",
 "pos": "G",
 "sal": 8100000,
-"slot": "A"
+"slot": "IR"
 },
 "02un4": {
 "ct": "BID",
@@ -5379,7 +5379,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "03rfo": {
 "ct": "BID",
@@ -5484,7 +5484,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 1000000,
-"slot": "IR"
+"slot": "R"
 },
 "03yh8": {
 "ct": "BID",
@@ -6135,7 +6135,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "R"
+"slot": "A"
 },
 "051um": {
 "ct": "MNR",
@@ -7605,7 +7605,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06bde": {
 "ct": "MNR",
@@ -7633,7 +7633,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 0,
-"slot": "R"
+"slot": "A"
 },
 "06bui": {
 "ct": "MNR",
@@ -8914,9 +8914,5 @@
 "name": "mcianfrani"
 }
 },
-"waivers": [
-"02ni5",
-"03pax",
-"03rab"
-]
+"waivers": []
 }
