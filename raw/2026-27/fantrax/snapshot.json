@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-23T15:02:49+00:00",
+"fetched": "2026-10-24T09:32:39+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -726,7 +726,7 @@
 "02o7s": {
 "n": "Hellebuyck, Connor",
 "pos": "G",
-"t": "WPG"
+"t": "NJD"
 },
 "02oar": {
 "n": "Ullmark, Linus",
@@ -1473,11 +1473,6 @@
 "pos": "G",
 "t": "STL"
 },
-"04r0j": {
-"n": "Kesselring, Michael",
-"pos": "D",
-"t": "SJS"
-},
 "04uqa": {
 "n": "Podkolzin, Vasily",
 "pos": "LW",
@@ -2107,6 +2102,11 @@
 "n": "Hinds, Tyson",
 "pos": "D",
 "t": "ANA"
+},
+"05ubx": {
+"n": "Evans, Ryker",
+"pos": "D",
+"t": "SEA"
 },
 "05uh3": {
 "n": "Buchelnikov, Dmitri",
@@ -3441,7 +3441,7 @@
 "075u7": {
 "n": "Command, Alexander",
 "pos": "C",
-"t": "NJD"
+"t": "WPG"
 },
 "075w6": {
 "n": "Gustafsson, Malte",
@@ -4144,7 +4144,7 @@
 },
 {
 "orig": "ROO",
-"owner": "ROO",
+"owner": "M.M",
 "round": 1,
 "year": 2029
 },
@@ -4300,7 +4300,7 @@
 },
 {
 "orig": "M.M",
-"owner": "M.M",
+"owner": "ROO",
 "round": 3,
 "year": 2029
 },
@@ -4382,10 +4382,10 @@
 },
 "00454": {
 "ct": "BID",
-"gm": "M.M",
+"gm": "ROO",
 "pos": "F",
 "sal": 6000000,
-"slot": "R"
+"slot": "A"
 },
 "0045j": {
 "ct": "BID",
@@ -4424,7 +4424,7 @@
 },
 "00qru": {
 "ct": "BID",
-"gm": "M.M",
+"gm": "ROO",
 "pos": "F",
 "sal": 3500000,
 "slot": "R"
@@ -4501,10 +4501,10 @@
 },
 "01f3e": {
 "ct": "BID",
-"gm": "ROO",
+"gm": "M.M",
 "pos": "F",
 "sal": 2700000,
-"slot": "A"
+"slot": "R"
 },
 "01f5z": {
 "ct": "FA",
@@ -5920,13 +5920,6 @@
 "sal": 3600000,
 "slot": "A"
 },
-"04r0j": {
-"ct": "FA",
-"gm": "BULLIES",
-"pos": "D",
-"sal": 1000000,
-"slot": "A"
-},
 "04uqa": {
 "ct": "BID",
 "gm": "TommyG10",
@@ -6160,7 +6153,7 @@
 },
 "051wf": {
 "ct": "BID",
-"gm": "ROO",
+"gm": "M.M",
 "pos": "G",
 "sal": 10100000,
 "slot": "R"
@@ -6807,7 +6800,14 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
+},
+"05ubx": {
+"ct": "FA",
+"gm": "BULLIES",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
 },
 "05uh3": {
 "ct": "MNR",
@@ -6954,7 +6954,7 @@
 "gm": "BULLIES",
 "pos": "D",
 "sal": 1500000,
-"slot": "A"
+"slot": "IR"
 },
 "05ylt": {
 "ct": "RFA1",
@@ -7161,7 +7161,7 @@
 },
 "061za": {
 "ct": "MNR",
-"gm": "ROO",
+"gm": "M.M",
 "pos": "D",
 "sal": 0,
 "slot": "M"
@@ -7259,7 +7259,7 @@
 },
 "0644l": {
 "ct": "MNR",
-"gm": "ROO",
+"gm": "M.M",
 "pos": "G",
 "sal": 0,
 "slot": "M"

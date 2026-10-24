@@ -557,5 +557,96 @@
 "to": "nbracken",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-24",
+"id": "00454",
+"type": "move",
+"from": "M.M",
+"to": "ROO",
+"ct": "BID",
+"sal": 6000000
+},
+{
+"d": "2026-10-24",
+"id": "00qru",
+"type": "move",
+"from": "M.M",
+"to": "ROO",
+"ct": "BID",
+"sal": 3500000
+},
+{
+"d": "2026-10-24",
+"id": "01f3e",
+"type": "move",
+"from": "ROO",
+"to": "M.M",
+"ct": "BID",
+"sal": 2700000
+},
+{
+"d": "2026-10-24",
+"id": "04r0j",
+"type": "drop",
+"from": "BULLIES",
+"ct": "FA",
+"sal": 1000000,
+"n": "Kesselring, Michael"
+},
+{
+"d": "2026-10-24",
+"id": "051wf",
+"type": "move",
+"from": "ROO",
+"to": "M.M",
+"ct": "BID",
+"sal": 10100000
+},
+{
+"d": "2026-10-24",
+"id": "05ubx",
+"type": "add",
+"to": "BULLIES",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-24",
+"id": "061za",
+"type": "move",
+"from": "ROO",
+"to": "M.M",
+"ct": "MNR",
+"sal": 0
+},
+{
+"d": "2026-10-24",
+"id": "0644l",
+"type": "move",
+"from": "ROO",
+"to": "M.M",
+"ct": "MNR",
+"sal": 0
+},
+{
+"d": "2026-10-24",
+"id": "pick-2029-1-ROO",
+"type": "pick",
+"year": 2029,
+"round": 1,
+"orig": "ROO",
+"from": "ROO",
+"to": "M.M"
+},
+{
+"d": "2026-10-24",
+"id": "pick-2029-3-M.M",
+"type": "pick",
+"year": 2029,
+"round": 3,
+"orig": "M.M",
+"from": "M.M",
+"to": "ROO"
 }
 ]
