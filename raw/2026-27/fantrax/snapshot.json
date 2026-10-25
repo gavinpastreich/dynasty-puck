@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-24T13:59:51+00:00",
+"fetched": "2026-10-25T09:49:13+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -618,11 +618,6 @@
 "pos": "LW",
 "t": "PIT"
 },
-"02b3y": {
-"n": "Gibson, John",
-"pos": "G",
-"t": "DET"
-},
 "02b70": {
 "n": "Kucherov, Nikita",
 "pos": "RW",
@@ -702,6 +697,11 @@
 "n": "Lindell, Esa",
 "pos": "D",
 "t": "DAL"
+},
+"02nq2": {
+"n": "Stephenson, Chandler",
+"pos": "C",
+"t": "SEA"
 },
 "02nq3": {
 "n": "Gostisbehere, Shayne",
@@ -4469,7 +4469,7 @@
 "gm": "BHHC",
 "pos": "D",
 "sal": 5900000,
-"slot": "A"
+"slot": "R"
 },
 "01c32": {
 "ct": "BID",
@@ -4723,13 +4723,6 @@
 "sal": 2800000,
 "slot": "A"
 },
-"02b3y": {
-"ct": "FA",
-"gm": "M.M",
-"pos": "G",
-"sal": 1000000,
-"slot": "R"
-},
 "02b70": {
 "ct": "BID",
 "gm": "BHHC",
@@ -4839,6 +4832,13 @@
 "ct": "FA",
 "gm": "CGN",
 "pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
+"02nq2": {
+"ct": "FA",
+"gm": "M.M",
+"pos": "F",
 "sal": 1000000,
 "slot": "A"
 },
@@ -5442,7 +5442,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 3300000,
-"slot": "R"
+"slot": "A"
 },
 "03wor": {
 "ct": "BID",
@@ -5491,7 +5491,7 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 4900000,
-"slot": "R"
+"slot": "IR"
 },
 "03ynu": {
 "ct": "BID",
@@ -5792,7 +5792,7 @@
 "gm": "M.M",
 "pos": "D",
 "sal": 3500000,
-"slot": "IR"
+"slot": "R"
 },
 "04ln4": {
 "ct": "BID",
@@ -6156,7 +6156,7 @@
 "gm": "M.M",
 "pos": "G",
 "sal": 10100000,
-"slot": "R"
+"slot": "A"
 },
 "051xf": {
 "ct": "FA",
@@ -6184,7 +6184,7 @@
 "gm": "M.M",
 "pos": "G",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "0570x": {
 "ct": "MNR",
@@ -6667,7 +6667,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "05rjh": {
 "ct": "MNR",
@@ -7038,7 +7038,7 @@
 "gm": "BHHC",
 "pos": "D",
 "sal": 2700000,
-"slot": "R"
+"slot": "A"
 },
 "060hq": {
 "ct": "MNR",

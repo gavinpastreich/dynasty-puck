@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -15,13 +15,13 @@
    "holdout": false
   },
   {
-   "name": "Judd Caulfield",
+   "name": "Pavel Mintyukov",
    "team": "ANA",
    "status": "DTD",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Caulfield (personal) returned to Anaheim for the birth of his child and will not play Tuesday.",
-   "date": "2026-10-20",
+   "injury": "",
+   "ret": "Day-to-day",
+   "detail": "Mintyukov has been placed on IR with a lower-body injury.",
+   "date": "2026-10-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -80,8 +80,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Kulich (upper-body) left practice on Friday and is unsure if he will travel on Buffalo's road trip.",
-   "date": "2026-10-23",
+   "detail": "Kulich (upper-body) has travelled back to Buffalo and is out vs. Washington on Saturday.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -93,7 +93,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -219,25 +219,13 @@
    "holdout": false
   },
   {
-   "name": "Andrew Mangiapane",
-   "team": "CHI",
-   "status": "IR",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Mangiapane (lower-body) is cleared but expected to be a healthy scratch vs. Montreal on Friday.",
-   "date": "2026-10-22",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Bowen Byram",
    "team": "CHI",
    "status": "DTD",
    "injury": "upper-body",
-   "ret": "Day-to-day",
-   "detail": "Byram (upper-body) is still considered day-to-day but is trending towards returning.",
-   "date": "2026-10-22",
+   "ret": "",
+   "detail": "Byram (upper-body) practiced in a non-contact jersey but will remain out on Sunday vs. Florida.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -246,10 +234,10 @@
    "name": "Nicolas Roy",
    "team": "COL",
    "status": "OUT",
-   "injury": "lower body",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Roy (lower body) will miss at least two more games.",
-   "date": "2026-10-17",
+   "detail": "Roy (lower-body) will travel but is questionable for Sunday's game vs. Nashville.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -264,6 +252,18 @@
    "date": "2026-10-17",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "David Perron",
+   "team": "DAL",
+   "status": "Game-time decision",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
   },
   {
@@ -315,6 +315,18 @@
    "holdout": false
   },
   {
+   "name": "Sam Steel",
+   "team": "DAL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Daniil Tarasov",
    "team": "DET",
    "status": "DTD",
@@ -322,18 +334,6 @@
    "ret": "Day-to-day",
    "detail": "Tarasov is day-to-day with an undisclosed injury.",
    "date": "2026-10-22",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "John Gibson",
-   "team": "DET",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Gibson (upper-body) left Thursday’s game vs. Vancouver and did not return.",
-   "date": "2026-10-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -391,9 +391,9 @@
    "team": "EDM",
    "status": "IR",
    "injury": "undisclosed",
-   "ret": "",
-   "detail": "Levi (undisclosed) has been placed on IR.",
-   "date": "2026-10-23",
+   "ret": "Week-to-week",
+   "detail": "Levi (undisclosed) is considered week-to-week.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -440,8 +440,8 @@
    "status": "OUT",
    "injury": "concussion",
    "ret": "",
-   "detail": "Ekholm (concussion) will not play on Saturday.",
-   "date": "2026-10-23",
+   "detail": "Ekholm (concussion) is expected to miss Edmonton's next three games.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -477,7 +477,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -489,7 +489,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -513,7 +513,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -579,18 +579,6 @@
    "holdout": false
   },
   {
-   "name": "Maxim Shabanov",
-   "team": "MIN",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Shabanov (upper-body) will not play Thursday in Calgary.",
-   "date": "2026-10-22",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Nick Foligno",
    "team": "MIN",
    "status": "OUT",
@@ -636,6 +624,18 @@
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Connor Hellebuyck",
+   "team": "NJD",
+   "status": "OUT",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
   },
   {
@@ -723,18 +723,6 @@
    "holdout": false
   },
   {
-   "name": "Eeli Tolvanen",
-   "team": "NYR",
-   "status": "OUT",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Tolvanen (personal) missed New York's practice on Friday.",
-   "date": "2026-10-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Igor Shesterkin",
    "team": "NYR",
    "status": "IR",
@@ -798,10 +786,10 @@
    "name": "Thomas Chabot",
    "team": "OTT",
    "status": "OUT",
-   "injury": "",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Chabot is expected to miss the next 1-2 weeks with an upper-body injury.",
-   "date": "2026-10-19",
+   "detail": "Chabot (upper-body) will travel with and is expected to return during Ottawa's upcoming road trip.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -825,7 +813,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-22",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -855,25 +843,13 @@
    "holdout": false
   },
   {
-   "name": "Rasmus Ristolainen",
-   "team": "PHI",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Ristolainen (upper-body) has a chance to return vs. Anaheim on Saturday.",
-   "date": "2026-10-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Travis Konecny",
    "team": "PHI",
    "status": "IR",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-22",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -915,6 +891,18 @@
    "holdout": false
   },
   {
+   "name": "Evgeni Malkin",
+   "team": "PIT",
+   "status": "OUT",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Malkin (illness) is out vs. Nashville on Saturday.",
+   "date": "2026-10-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Justin Brazeau",
    "team": "PIT",
    "status": "IR",
@@ -933,7 +921,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -957,7 +945,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -970,6 +958,18 @@
    "ret": "",
    "detail": "Melanson will be out indefinitely after suffering an upper-body injury.",
    "date": "2026-10-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Jared McCann",
+   "team": "SEA",
+   "status": "IR",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "McCann (lower-body) has been placed on IR.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false
@@ -1003,9 +1003,9 @@
    "team": "SJS",
    "status": "OUT",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Chernyshov (upper-body) left Thursday's game vs. Ottawa and will be out for a while.",
-   "date": "2026-10-22",
+   "ret": "Week-to-week",
+   "detail": "Chernyshov (upper-body) is considered week-to-week.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
@@ -1068,6 +1068,18 @@
    "date": "2026-09-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Victor Hedman",
+   "team": "TBL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "Day-to-day",
+   "detail": "Hedman (lower-body) is out vs. Utah and is considered day-to-day.",
+   "date": "2026-10-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
   },
   {
@@ -1159,9 +1171,9 @@
    "team": "UTA",
    "status": "DTD",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Marino (upper-body) will not play Monday vs. the Penguins.",
-   "date": "2026-10-19",
+   "ret": "Week-to-week",
+   "detail": "Marino (upper-body) is considered week-to-week.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
@@ -1221,7 +1233,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-23",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
@@ -1251,37 +1263,13 @@
    "holdout": false
   },
   {
-   "name": "Justin Sourdif",
-   "team": "WSH",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Sourdif (illness) will not play on Saturday.",
-   "date": "2026-10-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Logan Thompson",
    "team": "WSH",
-   "status": "Game-time decision",
-   "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "Thompson (lower-body) missed practice again on Friday and is considered day-to-day.",
-   "date": "2026-10-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Pierre-Luc Dubois",
-   "team": "WSH",
    "status": "DTD",
-   "injury": "illness",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Dubois (illness) returned to Washington's practice in a non-contact jersey on Monday.",
-   "date": "2026-10-19",
+   "detail": "Thompson (lower-body) has been placed on IR retroactive to October 20th.",
+   "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false

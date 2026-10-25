@@ -648,5 +648,22 @@
 "orig": "M.M",
 "from": "M.M",
 "to": "ROO"
+},
+{
+"d": "2026-10-25",
+"id": "02b3y",
+"type": "drop",
+"from": "M.M",
+"ct": "FA",
+"sal": 1000000,
+"n": "Gibson, John"
+},
+{
+"d": "2026-10-25",
+"id": "02nq2",
+"type": "add",
+"to": "M.M",
+"ct": "FA",
+"sal": 1000000
 }
 ]
