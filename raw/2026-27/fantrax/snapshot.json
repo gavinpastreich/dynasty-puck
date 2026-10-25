@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-25T09:49:13+00:00",
+"fetched": "2026-10-25T14:21:26+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -7598,7 +7598,7 @@
 "gm": "mertin",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "06bap": {
 "ct": "MNR",
@@ -7780,7 +7780,7 @@
 "gm": "mertin",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06hcs": {
 "ct": "MNR",

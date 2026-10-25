@@ -260,8 +260,8 @@
    "status": "Game-time decision",
    "injury": "",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "detail": "Perron will skate on Sunday and could play vs. the Islanders.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -308,8 +308,8 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Faksa (undisclosed) left Thursday's game and did not return.",
-   "date": "2026-10-23",
+   "detail": "Faksa (undisclosed) will skate on Sunday and could play vs. the Islanders.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -318,10 +318,10 @@
    "name": "Sam Steel",
    "team": "DAL",
    "status": "DTD",
-   "injury": "",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "detail": "Steel (undisclosed) will not play on Sunday.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -513,7 +513,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -633,7 +633,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -813,7 +813,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -849,7 +849,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
