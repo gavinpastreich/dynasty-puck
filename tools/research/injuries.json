@@ -105,7 +105,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-25",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "holdout": false
@@ -139,9 +139,9 @@
    "team": "CAR",
    "status": "IR",
    "injury": "upper-body",
-   "ret": "Week-to-week",
-   "detail": "Hall (upper-body) is considered week-to-week.",
-   "date": "2026-10-16",
+   "ret": "",
+   "detail": "Hall (upper-body) returned to Carolina's practice in a regular jersey on Monday.",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "holdout": false
@@ -175,9 +175,9 @@
    "team": "CBJ",
    "status": "IR",
    "injury": "lower-body",
-   "ret": "Week-to-week",
-   "detail": "Provorov (lower-body) is out for Columbus' season opener vs. Buffalo and is considered week-to-week.",
-   "date": "2026-10-01",
+   "ret": "",
+   "detail": "Provorov (lower-body) returned to practice on Monday.",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -465,7 +465,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-25",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -477,7 +477,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-25",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -501,7 +501,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-25",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -519,13 +519,25 @@
    "holdout": false
   },
   {
+   "name": "Mats Zuccarello",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Zuccarello (upper-body) will be out vs. New York on Monday.",
+   "date": "2026-10-26",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Quinton Byfield",
    "team": "LAK",
    "status": "DTD",
-   "injury": "upper body",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Byfield (upper body) returned to practice on Sunday.",
-   "date": "2026-10-25",
+   "detail": "Byfield (upper-body) is a game-time decision in New York on Monday.",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -609,7 +621,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-25",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -1241,11 +1253,11 @@
   {
    "name": "Logan Thompson",
    "team": "WSH",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Thompson (lower-body) has been placed on IR retroactive to October 20th.",
-   "date": "2026-10-24",
+   "detail": "Thompson (lower-body) returned to practice on Monday.",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
