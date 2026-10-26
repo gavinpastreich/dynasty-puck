@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -93,7 +93,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -102,13 +102,13 @@
    "name": "Alexander Nikishin",
    "team": "CAR",
    "status": "OUT",
-   "injury": "contract",
-   "ret": "Not in camp",
-   "detail": "Nikishin (contract) will not be at training camp on Thursday.",
-   "date": "2026-09-16",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
-   "holdout": true
+   "holdout": false
   },
   {
    "name": "Jordan Staal",
@@ -255,18 +255,6 @@
    "holdout": false
   },
   {
-   "name": "David Perron",
-   "team": "DAL",
-   "status": "Game-time decision",
-   "injury": "",
-   "ret": "",
-   "detail": "Perron will skate on Sunday and could play vs. the Islanders.",
-   "date": "2026-10-25",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Esa Lindell",
    "team": "DAL",
    "status": "DTD",
@@ -308,7 +296,7 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Faksa (undisclosed) will skate on Sunday and could play vs. the Islanders.",
+   "detail": "Faksa (undisclosed) will not play on Sunday.",
    "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
@@ -477,7 +465,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -489,7 +477,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -534,10 +522,10 @@
    "name": "Quinton Byfield",
    "team": "LAK",
    "status": "DTD",
-   "injury": "upper-body",
+   "injury": "upper body",
    "ret": "",
-   "detail": "Byfield (upper-body) will not play Thursday.",
-   "date": "2026-10-22",
+   "detail": "Byfield (upper body) returned to practice on Sunday.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -588,18 +576,6 @@
    "date": "2026-10-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Florian Xhekaj",
-   "team": "MTL",
-   "status": "IR",
-   "injury": "",
-   "ret": "",
-   "detail": "Xhekaj is expected to miss the next two weeks with a lower-body injruy.",
-   "date": "2026-10-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
   },
   {
@@ -764,8 +740,8 @@
    "status": "IR",
    "injury": "",
    "ret": "",
-   "detail": "Kurtis MacDermid (upper-body) will begin the 2026-27 season as an injured/non-roster player.",
-   "date": "2026-09-28",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -882,10 +858,10 @@
    "name": "Egor Chinakhov",
    "team": "PIT",
    "status": "DTD",
-   "injury": "lower-body",
+   "injury": "lower body",
    "ret": "",
-   "detail": "Chinakhov (lower-body) will not play on Thursday.",
-   "date": "2026-10-22",
+   "detail": "Chinakhov (lower body) was at practice on Sunday.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -896,8 +872,8 @@
    "status": "OUT",
    "injury": "illness",
    "ret": "",
-   "detail": "Malkin (illness) is out vs. Nashville on Saturday.",
-   "date": "2026-10-24",
+   "detail": "Malkin (illness) was at practice on Sunday.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -906,10 +882,10 @@
    "name": "Justin Brazeau",
    "team": "PIT",
    "status": "IR",
-   "injury": "",
+   "injury": "lower body",
    "ret": "",
-   "detail": "Brazeau left Friday's practice with a lower-body injury.",
-   "date": "2026-09-25",
+   "detail": "Brazeau (lower body) was at practice on Sunday.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -921,7 +897,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -945,7 +921,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -966,10 +942,10 @@
    "name": "Jared McCann",
    "team": "SEA",
    "status": "IR",
-   "injury": "lower-body",
+   "injury": "lower body",
    "ret": "",
-   "detail": "McCann (lower-body) has been placed on IR.",
-   "date": "2026-10-24",
+   "detail": "McCann (lower body) has been placed on IR and will be out for 10 weeks.",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false
@@ -1233,7 +1209,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-24",
+   "date": "2026-10-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
