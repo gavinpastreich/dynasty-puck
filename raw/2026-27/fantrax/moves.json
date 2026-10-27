@@ -759,5 +759,30 @@
 "to": "nbracken",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-27",
+"id": "02o70",
+"type": "drop",
+"from": "ROO",
+"ct": "FA",
+"sal": 1000000,
+"n": "Anderson, Josh"
+},
+{
+"d": "2026-10-27",
+"id": "031oq",
+"type": "add",
+"to": "btsay45",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-10-27",
+"id": "05x9t",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
 }
 ]

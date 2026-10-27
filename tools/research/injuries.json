@@ -99,18 +99,6 @@
    "holdout": false
   },
   {
-   "name": "Alexander Nikishin",
-   "team": "CAR",
-   "status": "OUT",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-26",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Jordan Staal",
    "team": "CAR",
    "status": "IR",
@@ -125,7 +113,7 @@
   {
    "name": "Mark Jankowski",
    "team": "CAR",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "lower-body",
    "ret": "",
    "detail": "Jankowski (lower-body) will not play Sunday in Calgary.",
@@ -137,7 +125,7 @@
   {
    "name": "Taylor Hall",
    "team": "CAR",
-   "status": "IR",
+   "status": "DTD",
    "injury": "upper-body",
    "ret": "",
    "detail": "Hall (upper-body) is expected to return vs. Boston on Tuesday.",
@@ -501,7 +489,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-26",
+   "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -774,10 +762,10 @@
    "name": "Cam York",
    "team": "PHI",
    "status": "IR",
-   "injury": "",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-26",
+   "detail": "York (upper-body) has been activated from IR and will return vs. Columbus.",
+   "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -812,8 +800,8 @@
    "status": "OUT",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Ristolainen (upper-body) is expected to be out for approximately two weeks.",
-   "date": "2026-10-26",
+   "detail": "Ristolainen (upper-body) has been placed on IR.",
+   "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -834,10 +822,10 @@
    "name": "Ben Kindel",
    "team": "PIT",
    "status": "IR",
-   "injury": "undisclosed",
+   "injury": "medical",
    "ret": "",
-   "detail": "Kindel (undisclosed) has been placed on IR.",
-   "date": "2026-10-22",
+   "detail": "Kindel (medical) returned to Pittsburgh's practice on Tuesday.",
+   "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1114,6 +1102,18 @@
    "ret": "",
    "detail": "Tavares (lower body) is out week to week.",
    "date": "2026-10-17",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Kirill Marchenko",
+   "team": "TOR",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Marchenko (lower-body) left Monday's game vs. Calgary and will not return.",
+   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false

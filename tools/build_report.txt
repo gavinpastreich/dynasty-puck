@@ -1,10 +1,11 @@
-Dynasty Puck HQ build 2026-10-27T10:34:30
-Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-10-27T15:52:44
+Fantrax: 3 roster changes since 2026-10-27T10:34:31+00:00
+Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
+  > Tye Kartye: FA -> ROO (Fantrax)
   > Steven Stamkos: M.M -> ROO (Fantrax)
   > Sidney Crosby: M.M -> ROO (Fantrax)
-  > Josh Anderson: FA -> ROO (Fantrax)
   > Dustin Wolf: ROO -> M.M (Fantrax)
   > Chandler Stephenson: FA -> M.M (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -24,6 +25,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Eeli Tolvanen: FA -> nebsnave (Fantrax)
   > Viktor Arvidsson: FA -> nebsnave (Fantrax)
   > Devin Cooley: FA -> nebsnave (Fantrax)
+  > Brett Pesce: FA -> btsay45 (Fantrax)
   > Jack Quinn: FA -> btsay45 (Fantrax)
   > Garnet Hathaway: FA -> btsay45 (Fantrax)
   > Daniil Tarasov: FA -> btsay45 (Fantrax)
@@ -65,10 +67,10 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
-Fantrax sync (2026-10-27T10:34:31+00:00): 620 rostered; changes vs CSV: {'owner': 48, 'dropped': 17}
+Fantrax sync (2026-10-27T15:52:45+00:00): 621 rostered; changes vs CSV: {'owner': 49, 'dropped': 17}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1283 players (620 rostered)
-NHL id match: {'index': 1169, 'search': 111, None: 3}; unmatched 3 (rostered: 0)
+Universe: 1283 players (621 rostered)
+NHL id match: {'index': 1168, 'search': 112, None: 3}; unmatched 3 (rostered: 0)
 Landing pages: 1246/1246
 Cor translation (n=772): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 772/772 matched skaters
@@ -91,7 +93,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   nebsnave  Fantrax $104.81M  sheet $ 98.81M  {'BID': 17, 'FA': 6, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +6.00M (Fantrax is current)  (IR relief $5.70M)
   M.M       Fantrax $106.82M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 18}   <- differs by +3.50M (Fantrax is current)  (IR relief $12.70M)
   mcianfra  Fantrax $101.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 6, 'MNR': 22}   <- differs by +6.00M (Fantrax is current)  (IR relief $3.80M)
-  btsay45   Fantrax $ 92.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 3, 'MNR': 18}   <- differs by -0.30M (Fantrax is current)  (IR relief $9.60M)
+  btsay45   Fantrax $ 93.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 4, 'MNR': 18}   <- differs by +0.70M (Fantrax is current)  (IR relief $9.60M)
   PuckLuck  Fantrax $ 97.80M  sheet $ 89.50M  {'BID': 17, 'FA': 3, 'MNR': 22, 'RFA1': 3}   <- differs by +8.30M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $101.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 6, 'MNR': 22}   <- differs by +7.00M (Fantrax is current)  (IR relief $4.20M)
   mertin    Fantrax $105.60M  sheet $ 99.60M  {'BID': 13, 'FA': 6, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  OVER CAP
@@ -118,7 +120,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 793 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-27): 1206 line/PP/goalie tags; injuries matched 105/105
+Depth (Daily Faceoff, 2026-10-27): 1207 line/PP/goalie tags; injuries matched 105/105
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)

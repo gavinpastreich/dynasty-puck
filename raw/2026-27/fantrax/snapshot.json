@@ -204,6 +204,7 @@
 "01zu5",
 "02noe",
 "031og",
+"031oq",
 "03d12",
 "03jxy",
 "03klu",
@@ -211,7 +212,6 @@
 "03raf",
 "03rf5",
 "04mdc",
-"04ye7",
 "05gda",
 "05rf2",
 "05tcz",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-27T10:34:31+00:00",
+"fetched": "2026-10-27T15:52:45+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -703,11 +703,6 @@
 "pos": "D",
 "t": "STL"
 },
-"02o70": {
-"n": "Anderson, Josh",
-"pos": "LW",
-"t": "MTL"
-},
 "02o7s": {
 "n": "Hellebuyck, Connor",
 "pos": "G",
@@ -807,6 +802,11 @@
 "n": "Bertuzzi, Tyler",
 "pos": "RW",
 "t": "CHI"
+},
+"031oq": {
+"n": "Pesce, Brett",
+"pos": "D",
+"t": "NJD"
 },
 "031p0": {
 "n": "Guentzel, Jake",
@@ -2177,6 +2177,11 @@
 "n": "Xhekaj, Arber",
 "pos": "D",
 "t": "MTL"
+},
+"05x9t": {
+"n": "Kartye, Tye",
+"pos": "LW",
+"t": "NYR"
 },
 "05xcm": {
 "n": "Lekkerimaki, Jonathan",
@@ -4837,13 +4842,6 @@
 "sal": 1000000,
 "slot": "A"
 },
-"02o70": {
-"ct": "FA",
-"gm": "ROO",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
 "02o7s": {
 "ct": "BID",
 "gm": "ROO",
@@ -4982,6 +4980,13 @@
 "gm": "btsay45",
 "pos": "F",
 "sal": 1300000,
+"slot": "A"
+},
+"031oq": {
+"ct": "FA",
+"gm": "btsay45",
+"pos": "D",
+"sal": 1000000,
 "slot": "A"
 },
 "031p0": {
@@ -5955,7 +5960,7 @@
 "gm": "btsay45",
 "pos": "D",
 "sal": 1200000,
-"slot": "A"
+"slot": "R"
 },
 "04ye8": {
 "ct": "BID",
@@ -6900,6 +6905,13 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 2500000,
+"slot": "A"
+},
+"05x9t": {
+"ct": "FA",
+"gm": "ROO",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "05xcm": {
@@ -8906,7 +8918,6 @@
 "00qnu",
 "01sio",
 "0243e",
-"02b3y",
 "02o7l",
 "03nqi",
 "062k9"
