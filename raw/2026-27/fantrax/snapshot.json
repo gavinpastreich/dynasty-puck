@@ -60,12 +60,12 @@
 "04mv2",
 "04y4m",
 "04y8g",
-"04zp9",
 "05mx8",
 "05x9g",
 "05ylt",
 "05ymj",
-"05yms"
+"05yms",
+"06h8h"
 ],
 "M.M": [
 "004cq",
@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-27T15:52:45+00:00",
+"fetched": "2026-10-28T11:20:54+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1132,6 +1132,11 @@
 "n": "Howden, Brett",
 "pos": "LW",
 "t": "VGK"
+},
+"03y7l": {
+"n": "DiPietro, Michael",
+"pos": "G",
+"t": "BOS"
 },
 "03yg3": {
 "n": "Sergachev, Mikhail",
@@ -5444,6 +5449,13 @@
 "sal": 1000000,
 "slot": "R"
 },
+"03y7l": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "G",
+"sal": 1000000,
+"slot": "M"
+},
 "03yg3": {
 "ct": "BID",
 "gm": "nbracken",
@@ -6093,7 +6105,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "050rc": {
 "ct": "RFA1",
@@ -7752,7 +7764,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "06hco": {
 "ct": "MNR",
