@@ -81,7 +81,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -93,7 +93,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -120,18 +120,6 @@
    "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Dante Fabbro",
-   "team": "CBJ",
-   "status": "IR",
-   "injury": "hand",
-   "ret": "",
-   "detail": "Fabbro (hand) has been activated from IR and will make his season debut on Tuesday vs. Philadelphia.",
-   "date": "2026-10-27",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
   },
   {
@@ -425,11 +413,11 @@
   {
    "name": "Zach Hyman",
    "team": "EDM",
-   "status": "OUT",
-   "injury": "concussion",
+   "status": "IR",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Hyman (concussion) left Monday’s game and is expected to miss at least a week.",
-   "date": "2026-10-27",
+   "detail": "Hyman (upper-body) has been placed on IR.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -453,7 +441,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -465,7 +453,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -489,7 +477,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -813,7 +801,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -972,18 +960,6 @@
    "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Alexey Toropchenko",
-   "team": "STL",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Toropchenko (upper-body) will return vs. Montreal on Tuesday.",
-   "date": "2026-10-27",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
   },
   {
@@ -1233,7 +1209,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
@@ -1256,8 +1232,8 @@
    "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Thompson (lower-body) took full part in practice on Tuesday.",
-   "date": "2026-10-27",
+   "detail": "Thompson (lower-body) skated on Tuesday morning but remains a game-time decision to start Tuesday.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
