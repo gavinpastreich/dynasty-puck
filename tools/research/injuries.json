@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -18,10 +18,10 @@
    "name": "Pavel Mintyukov",
    "team": "ANA",
    "status": "DTD",
-   "injury": "",
-   "ret": "Day-to-day",
-   "detail": "Mintyukov has been placed on IR with a lower-body injury.",
-   "date": "2026-10-23",
+   "injury": "lower body",
+   "ret": "",
+   "detail": "Mintyukov (lower body) returned to practice on Wednesday.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -147,6 +147,30 @@
    "holdout": false
   },
   {
+   "name": "Brennan Othmann",
+   "team": "CGY",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Othmann (upper-body) left Wednesday's game vs. Edmonton and will not return.",
+   "date": "2026-10-28",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Devin Cooley",
+   "team": "CGY",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Cooley (lower-body) left Wednesday's game vs. Edmonton and will not return.",
+   "date": "2026-10-28",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Jonathan Huberdeau",
    "team": "CGY",
    "status": "IR",
@@ -183,13 +207,13 @@
    "holdout": false
   },
   {
-   "name": "Nicolas Roy",
+   "name": "Josh Manson",
    "team": "COL",
    "status": "DTD",
-   "injury": "lower body",
-   "ret": "In camp",
-   "detail": "Roy (lower body) was a full participant in Tuesday's practice.",
-   "date": "2026-10-27",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Manson (lower-body) left Wednesday's game vs. New Jersey and will not return.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -224,7 +248,7 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Capobianco (lower-body) left Tuesday’s game vs. New Jersey and did not return.",
+   "detail": "Capobianco (lower-body) will be out for at least a week.",
    "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
@@ -272,8 +296,8 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Steel (undisclosed) could be an option to play on Thursday vs. Montreal.",
-   "date": "2026-10-27",
+   "detail": "Steel (undisclosed) is expected to return vs. Montreal on Wednesday.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -363,18 +387,6 @@
    "holdout": false
   },
   {
-   "name": "Jason Dickinson",
-   "team": "EDM",
-   "status": "IR",
-   "injury": "lower body",
-   "ret": "",
-   "detail": "Dickinson (lower body) will return vs. Calgary on Wednesday.",
-   "date": "2026-10-27",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Matthew Savoie",
    "team": "EDM",
    "status": "IR",
@@ -382,18 +394,6 @@
    "ret": "In camp",
    "detail": "Savoie (undisclosed) has been placed on LTIR.",
    "date": "2026-10-01",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Mattias Ekholm",
-   "team": "EDM",
-   "status": "DTD",
-   "injury": "concussion",
-   "ret": "",
-   "detail": "Ekholm (concussion) has a chance to return on Wednesday vs. Calgary.",
-   "date": "2026-10-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -738,10 +738,10 @@
    "name": "Thomas Chabot",
    "team": "OTT",
    "status": "OUT",
-   "injury": "upper-body",
+   "injury": "upper body",
    "ret": "",
-   "detail": "Chabot (upper-body) returned to Ottawa's practice in a regular jersey on Monday.",
-   "date": "2026-10-26",
+   "detail": "Chabot (upper body) is expected to return on Thursday.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -858,10 +858,10 @@
    "name": "Justin Brazeau",
    "team": "PIT",
    "status": "IR",
-   "injury": "lower body",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Brazeau (lower body) was at practice on Sunday.",
-   "date": "2026-10-25",
+   "detail": "Brazeau (lower-body) has been activated from IR and assigned to Wilkes-Barre/Scranton (AHL) on a conditioning loan.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -873,7 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -897,7 +897,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-27",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -941,7 +941,7 @@
   {
    "name": "Alexander Wennberg",
    "team": "SJS",
-   "status": "DTD",
+   "status": "IR",
    "injury": "upper-body",
    "ret": "Week-to-week",
    "detail": "Wennberg (upper-body) is considered week-to-week.",
@@ -953,7 +953,7 @@
   {
    "name": "Igor Chernyshov",
    "team": "SJS",
-   "status": "OUT",
+   "status": "IR",
    "injury": "upper-body",
    "ret": "Week-to-week",
    "detail": "Chernyshov (upper-body) is considered week-to-week.",
@@ -1011,6 +1011,18 @@
    "holdout": false
   },
   {
+   "name": "Brandon Hagel",
+   "team": "TBL",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Hagel (undisclosed) will return vs. Detroit on Wednesday.",
+   "date": "2026-04-15",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Victor Hedman",
    "team": "TBL",
    "status": "DTD",
@@ -1035,13 +1047,25 @@
    "holdout": false
   },
   {
+   "name": "Zemgus Girgensons",
+   "team": "TBL",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Girgensons (undisclosed) will return to the Lightning lineup on Monday.",
+   "date": "2026-04-13",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Chris Tanev",
    "team": "TOR",
    "status": "IR",
-   "injury": "upper-body",
+   "injury": "upper body",
    "ret": "Week-to-week",
-   "detail": "Tanev (upper-body) will travel with the team, but is still considered week-to-week.",
-   "date": "2026-10-23",
+   "detail": "Tanev (upper body) returned to practice and has been upgraded to day-to-day.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1050,10 +1074,10 @@
    "name": "Dakota Joshua",
    "team": "TOR",
    "status": "IR",
-   "injury": "",
-   "ret": "Week-to-week",
-   "detail": "Joshua is week-to-week with a core injury.",
-   "date": "2026-09-28",
+   "injury": "core",
+   "ret": "",
+   "detail": "Joshua (core) will be a game-time decision vs. Seattle on Wednesday.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1075,9 +1099,9 @@
    "team": "TOR",
    "status": "OUT",
    "injury": "lower body",
-   "ret": "",
-   "detail": "Tavares (lower body) is out week to week.",
-   "date": "2026-10-17",
+   "ret": "Week-to-week",
+   "detail": "Tavares (lower body) remains week-to-week.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1085,11 +1109,11 @@
   {
    "name": "Kirill Marchenko",
    "team": "TOR",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Marchenko (lower-body) left Monday's game vs. Calgary and will not return.",
-   "date": "2026-10-26",
+   "status": "OUT",
+   "injury": "lower body",
+   "ret": "Week-to-week",
+   "detail": "Marchenko (lower body) is out week-to-week.",
+   "date": "2026-10-28",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1224,18 +1248,6 @@
    "date": "2026-10-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Logan Thompson",
-   "team": "WSH",
-   "status": "IR",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Thompson (lower-body) skated on Tuesday morning but remains a game-time decision to start Tuesday.",
-   "date": "2026-10-28",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
   },
   {
