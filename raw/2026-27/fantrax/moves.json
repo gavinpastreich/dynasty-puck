@@ -792,5 +792,22 @@
 "to": "CGN",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-29",
+"id": "02nqb",
+"type": "drop",
+"from": "ROO",
+"ct": "BID",
+"sal": 1000000,
+"n": "Parayko, Colton"
+},
+{
+"d": "2026-10-29",
+"id": "02o7l",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
 }
 ]

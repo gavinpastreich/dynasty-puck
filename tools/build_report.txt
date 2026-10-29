@@ -1,7 +1,9 @@
-Dynasty Puck HQ build 2026-10-29T11:31:13
+Dynasty Puck HQ build 2026-10-29T16:55:00
+Fantrax: 2 roster changes since 2026-10-29T11:31:14+00:00
 Fantrax: synced 622 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
+  > Jaccob Slavin: FA -> ROO (Fantrax)
   > Tye Kartye: FA -> ROO (Fantrax)
   > Steven Stamkos: M.M -> ROO (Fantrax)
   > Sidney Crosby: M.M -> ROO (Fantrax)
@@ -57,6 +59,7 @@ Fantrax: synced 622 rostered players, 126 future picks, 14 teams in standings
   < Jake McCabe: dropped by ROO since the CSV export (Fantrax)
   < Gabriel Landeskog: dropped by nebsnave since the CSV export (Fantrax)
   < Drew Doughty: dropped by ROO since the CSV export (Fantrax)
+  < Colton Parayko: dropped by ROO since the CSV export (Fantrax)
   < Jonathan Marchessault: dropped by Wags8210 since the CSV export (Fantrax)
   < Noah Laba: dropped by ROO since the CSV export (Fantrax)
   < Frank Vatrano: dropped by BULLIES since the CSV export (Fantrax)
@@ -67,7 +70,7 @@ Fantrax: synced 622 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
-Fantrax sync (2026-10-29T11:31:14+00:00): 622 rostered; changes vs CSV: {'owner': 50, 'dropped': 17}
+Fantrax sync (2026-10-29T16:55:01+00:00): 622 rostered; changes vs CSV: {'owner': 51, 'dropped': 18}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1283 players (622 rostered)
 NHL id match: {'index': 1168, 'search': 112, None: 3}; unmatched 3 (rostered: 0)
@@ -83,7 +86,7 @@ Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
   ~ not on contract sheet; term 1 yr from the 2026 auction bands: Mason Marchment PuckLuck BID $1.00M
   ~ not on contract sheet; term 1 yr from the 2026 auction bands: Connor McMichael TommyG10 BID $1.00M
 Payroll check (2026-27): Fantrax salary vs contract sheet column
-  ROO       Fantrax $ 98.70M  sheet $ 99.90M  {'BID': 15, 'ELC1': 1, 'FA': 3, 'MNR': 26}   <- differs by -1.20M (Fantrax is current)  (IR relief $4.90M)
+  ROO       Fantrax $ 98.70M  sheet $ 99.90M  {'BID': 14, 'ELC1': 1, 'FA': 4, 'MNR': 26}   <- differs by -1.20M (Fantrax is current)  (IR relief $4.90M)
   TommyG10  Fantrax $100.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 3, 'RFA1': 2, 'MNR': 22}   <- differs by +3.50M (Fantrax is current)  (IR relief $6.50M)
   Wags8210  Fantrax $102.84M  sheet $ 98.84M  {'BID': 20, 'FA': 4, 'RFA1': 1, 'MNR': 20}   <- differs by +4.00M (Fantrax is current)  (IR relief $8.00M)
   BULLIES   Fantrax $ 86.85M  sheet $ 88.85M  {'BID': 16, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 2}   <- differs by -2.00M (Fantrax is current)  (IR relief $3.00M)
@@ -100,6 +103,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   ~ on contract sheet (BULLIES) but not on a Fantrax roster: Frank Vatrano
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist
+  ~ on contract sheet (ROO) but not on a Fantrax roster: Colton Parayko
   ~ on contract sheet (ROO) but not on a Fantrax roster: Drew Doughty
   ~ on contract sheet (BULLIES) but not on a Fantrax roster: Victor Soderstrom
   ~ on contract sheet (mcianfra) but not on a Fantrax roster: Danil Gushchin
@@ -120,7 +124,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 798 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-10-29): 1205 line/PP/goalie tags; injuries matched 106/106
+Depth (Daily Faceoff, 2026-10-29): 1204 line/PP/goalie tags; injuries matched 104/104
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)
@@ -130,6 +134,7 @@ Picks: Fantrax lists 126 future picks; 3 differ from the trade-history replay
 Trades: 2 new trade(s) picked up from the Fantrax nightly log
   $ cap penalty BULLIES: Frank Vatrano [2.0, 2.0] (contract sheet)
   $ cap penalty M.M: Mathieu Olivier [1.4] (commissioner)
+  $ cap penalty ROO: Colton Parayko [0.5] (contract sheet)
   $ cap penalty ROO: Drew Doughty [0.45] (contract sheet)
   $ cap penalty TommyG10: Nils Lundkvist [0.7] (commissioner)
   $ cap penalty TommyG10: Pavel Buchnevich [0.55] (commissioner)
@@ -137,7 +142,7 @@ Trades: 2 new trade(s) picked up from the Fantrax nightly log
 2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
 2025 draft: a departed owner's picks credited to CGN (inferred from where their picks are today)
 2025 initial draft: 280 picks; matched to current player file: 279
-Leagues seen in player histories (top 40): NHL:8281, AHL:3643, OHL:850, NCAA:847, WHL:828, WC:718, WJC-20:686, USHL:625, QMJHL:410, WJC-18:403, KHL:326, SHL:307, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:174, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:110, U16 SM:107, J18 Allsvenskan:107, AMBHL:102, USHS-Prep:102, USHS-MN:101
+Leagues seen in player histories (top 40): NHL:8281, AHL:3644, OHL:850, NCAA:847, WHL:828, WC:718, WJC-20:686, USHL:625, QMJHL:410, WJC-18:403, KHL:326, SHL:307, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:174, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:110, U16 SM:107, J18 Allsvenskan:107, AMBHL:102, USHS-Prep:102, USHS-MN:101
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'AMBHL', 'USHS-Prep', 'USHS-MN', 'Russia U16', '4 Nations', 'TV-Pucken', 'Russia U17', 'WSI U12', 'USA-S15', 'Memorial Cup', 'WJAC-19', 'J18 Nationell', 'WSI U13', 'USA-S17', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'QMAAA', 'AMHL', 'U-17', 'USA-S16', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
