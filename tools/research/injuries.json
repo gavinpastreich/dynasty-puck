@@ -81,7 +81,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -105,7 +105,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -204,18 +204,6 @@
    "date": "2026-10-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Alex Vlasic",
-   "team": "CHI",
-   "status": "Game-time decision",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Vlasic (illness) is on the ice for warmups and is expected to play Thursday in Detroit.",
-   "date": "2026-10-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
   },
   {
@@ -699,6 +687,18 @@
    "holdout": false
   },
   {
+   "name": "Ryan Pulock",
+   "team": "NYI",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Pulock (upper-body) left Thursday's game vs. Minnesota and did not return.",
+   "date": "2026-10-30",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Adam Sykora",
    "team": "NYR",
    "status": "IR",
@@ -739,9 +739,9 @@
    "team": "NYR",
    "status": "IR",
    "injury": "lower-body",
-   "ret": "",
-   "detail": "Korpisalo (lower-body) is expected to be out for four more weeks.",
-   "date": "2026-10-10",
+   "ret": "Season",
+   "detail": "Korpisalo (lower-body) returned to practice on Friday.",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
@@ -812,8 +812,8 @@
    "status": "IR",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Tippett (upper-body) has been placed on IR.",
-   "date": "2026-10-19",
+   "detail": "Tippett (upper-body) returned to practice on Friday.",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -834,10 +834,10 @@
    "name": "Travis Konecny",
    "team": "PHI",
    "status": "IR",
-   "injury": "",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "detail": "Konecny (lower-body) returned to practice in a non-contact jersey on Friday.",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "holdout": false
@@ -861,7 +861,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -873,7 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1185,7 +1185,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
