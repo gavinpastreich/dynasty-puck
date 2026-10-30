@@ -809,5 +809,23 @@
 "to": "ROO",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-10-30",
+"id": "04f17",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Zetterlund, Fabian"
+},
+{
+"d": "2026-10-30",
+"id": "05kuc",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Kleven, Tyler"
 }
 ]

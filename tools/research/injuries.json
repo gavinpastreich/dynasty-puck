@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -81,7 +81,19 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Konsta Helenius",
+   "team": "BUF",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Helenius (upper-body) it out vs. Anaheim on Thursday.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -93,7 +105,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -200,7 +212,7 @@
    "status": "Game-time decision",
    "injury": "illness",
    "ret": "",
-   "detail": "Vlasic (illness) is questionable to play in Detroit on Thursday.",
+   "detail": "Vlasic (illness) is on the ice for warmups and is expected to play Thursday in Detroit.",
    "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
@@ -306,10 +318,10 @@
    "name": "Dylan Larkin",
    "team": "DET",
    "status": "OUT",
-   "injury": "team decision",
+   "injury": "",
    "ret": "",
-   "detail": "Larkin (team decision) will not play vs. Chicago on Thursday.",
-   "date": "2026-10-29",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -477,31 +489,19 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
   },
   {
-   "name": "Corey Perry",
+   "name": "Brandt Clarke",
    "team": "LAK",
    "status": "DTD",
-   "injury": "undisclosed",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Perry (undisclosed) will not play on Tuesday.",
-   "date": "2026-10-27",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Drew Doughty",
-   "team": "LAK",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Doughty (undisclosed) will not play Tuesday.",
-   "date": "2026-10-27",
+   "detail": "Clarke (upper-body) left Thursday’s game vs. Ottawa and will not return.",
+   "date": "2026-10-30",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -510,10 +510,10 @@
    "name": "Kevin Fiala",
    "team": "LAK",
    "status": "IR",
-   "injury": "",
-   "ret": "",
-   "detail": "Kevin Fiala (leg) could rejoin his teammates on the ice in three weeks.",
-   "date": "2026-09-17",
+   "injury": "lower-body",
+   "ret": "Week-to-week",
+   "detail": "Fiala (lower-body) returned to practice in a non-contact jersey on Thursday but is still considered week-to-week.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -555,6 +555,18 @@
    "holdout": false
   },
   {
+   "name": "Jared Spurgeon",
+   "team": "MIN",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "Week-to-week",
+   "detail": "Spurgeon (undisclosed) is considered week-to-week.",
+   "date": "2026-10-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Marcus Foligno",
    "team": "MIN",
    "status": "OUT",
@@ -586,6 +598,18 @@
    "ret": "",
    "detail": "Demidov (lower-body) will be out for the next two to four weeks.",
    "date": "2026-10-06",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Mike Matheson",
+   "team": "MTL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Matheson (lower-body) will not play on Thursday and will be evaluated when the team returns to Montreal.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -723,6 +747,18 @@
    "holdout": false
   },
   {
+   "name": "Andre Burakovsky",
+   "team": "OTT",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Burakovsky (lower-body) left Thursday’s game vs. Los Angeles and did not return.",
+   "date": "2026-10-30",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Linus Ullmark",
    "team": "OTT",
    "status": "IR",
@@ -735,13 +771,13 @@
    "holdout": false
   },
   {
-   "name": "Thomas Chabot",
+   "name": "Warren Foegele",
    "team": "OTT",
    "status": "OUT",
-   "injury": "upper body",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Chabot (upper body) is expected to return on Thursday.",
-   "date": "2026-10-28",
+   "detail": "Foegele (undisclosed) is out on Thursday and is expected to miss an extended period of time.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -807,18 +843,6 @@
    "holdout": false
   },
   {
-   "name": "Ben Kindel",
-   "team": "PIT",
-   "status": "IR",
-   "injury": "vasovagal episode",
-   "ret": "",
-   "detail": "Kindel (vasovagal episode) will return to the lineup vs. Utah on Thursday.",
-   "date": "2026-10-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Bryan Rust",
    "team": "PIT",
    "status": "IR",
@@ -831,60 +855,12 @@
    "holdout": false
   },
   {
-   "name": "Egor Chinakhov",
-   "team": "PIT",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Chinakhov (lower-body) will return vs. Utah on Thursday.",
-   "date": "2026-10-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Evgeni Malkin",
-   "team": "PIT",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Malkin (illness) was at practice on Sunday.",
-   "date": "2026-10-25",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Justin Brazeau",
-   "team": "PIT",
-   "status": "IR",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Brazeau (lower-body) has been activated from IR and assigned to Wilkes-Barre/Scranton (AHL) on a conditioning loan.",
-   "date": "2026-10-28",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Ryan Graves",
    "team": "PIT",
    "status": "IR",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Samuel Girard",
-   "team": "PIT",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Girard (undisclosed) will be a game-time decision vs. Utah on Thursday.",
    "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
@@ -897,7 +873,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1085,11 +1061,11 @@
   {
    "name": "Kirill Marchenko",
    "team": "TOR",
-   "status": "OUT",
-   "injury": "lower body",
+   "status": "IR",
+   "injury": "lower-body",
    "ret": "Week-to-week",
-   "detail": "Marchenko (lower body) is out week-to-week.",
-   "date": "2026-10-28",
+   "detail": "Marchenko (lower-body) has been placed on IR and is still considered week-to-week.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1160,8 +1136,8 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Hart (lower-body) left Vegas' morning skate on Tuesday and did not return.",
-   "date": "2026-10-27",
+   "detail": "Hart (lower-body) has a chance to return on Friday vs. New Jersey.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
@@ -1182,10 +1158,10 @@
    "name": "Victor Olofsson",
    "team": "VGK",
    "status": "OUT",
-   "injury": "",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-10-28",
+   "detail": "Olofsson (undisclosed) returned to practice in a non-contact jersey on Thursday.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false

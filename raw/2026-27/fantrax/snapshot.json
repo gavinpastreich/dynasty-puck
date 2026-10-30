@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-10-29T16:55:01+00:00",
+"fetched": "2026-10-30T11:24:36+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1313,11 +1313,6 @@
 "pos": "C",
 "t": "BUF"
 },
-"04f17": {
-"n": "Zetterlund, Fabian",
-"pos": "LW",
-"t": "OTT"
-},
 "04f24": {
 "n": "Swayman, Jeremy",
 "pos": "G",
@@ -1797,11 +1792,6 @@
 "n": "Heineman, Emil",
 "pos": "LW",
 "t": "NYI"
-},
-"05kuc": {
-"n": "Kleven, Tyler",
-"pos": "D",
-"t": "OTT"
 },
 "05ltj": {
 "n": "Faber, Brock",
@@ -4404,7 +4394,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1100000,
-"slot": "IR"
+"slot": "A"
 },
 "004cq": {
 "ct": "BID",
@@ -4628,7 +4618,7 @@
 "gm": "mcianfra",
 "pos": "D",
 "sal": 1000000,
-"slot": "R"
+"slot": "IR"
 },
 "02422": {
 "ct": "BID",
@@ -5356,7 +5346,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "03rfo": {
 "ct": "BID",
@@ -5468,7 +5458,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "03yh8": {
 "ct": "BID",
@@ -5699,13 +5689,6 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2800000,
-"slot": "A"
-},
-"04f17": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "F",
-"sal": 1000000,
 "slot": "A"
 },
 "04f24": {
@@ -6133,7 +6116,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "A"
+"slot": "R"
 },
 "051um": {
 "ct": "MNR",
@@ -6377,13 +6360,6 @@
 "ct": "BID",
 "gm": "nebsnave",
 "pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
-"05kuc": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "D",
 "sal": 1000000,
 "slot": "A"
 },
@@ -8926,5 +8902,8 @@
 "name": "mcianfrani"
 }
 },
-"waivers": []
+"waivers": [
+"07awd",
+"07awe"
+]
 }
