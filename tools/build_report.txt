@@ -1,5 +1,4 @@
-Dynasty Puck HQ build 2026-11-01T11:50:49
-Fantrax: 1 roster changes since 2026-10-31T15:43:26+00:00
+Dynasty Puck HQ build 2026-11-01T16:48:09
 Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -69,7 +68,7 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
-Fantrax sync (2026-11-01T11:50:50+00:00): 621 rostered; changes vs CSV: {'owner': 50, 'dropped': 18}
+Fantrax sync (2026-11-01T16:48:10+00:00): 621 rostered; changes vs CSV: {'owner': 50, 'dropped': 18}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1285 players (621 rostered)
 NHL id match: {'index': 1169, 'search': 113, None: 3}; unmatched 3 (rostered: 0)
@@ -98,7 +97,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   btsay45   Fantrax $ 93.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 4, 'MNR': 18}   <- differs by +0.70M (Fantrax is current)  (IR relief $9.60M)
   PuckLuck  Fantrax $ 97.80M  sheet $ 89.50M  {'BID': 17, 'FA': 3, 'MNR': 22, 'RFA1': 3}   <- differs by +8.30M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $102.95M  sheet $ 94.95M  {'BID': 12, 'RFA1': 4, 'FA': 7, 'MNR': 22}   <- differs by +8.00M (Fantrax is current)  (IR relief $4.20M)
-  mertin    Fantrax $105.60M  sheet $ 99.60M  {'BID': 13, 'FA': 6, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  OVER CAP
+  mertin    Fantrax $105.60M  sheet $ 99.60M  {'BID': 13, 'FA': 6, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  OVER CAP  (IR relief $1.00M)
   ~ on contract sheet (BULLIES) but not on a Fantrax roster: Frank Vatrano
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (TommyG10) but not on a Fantrax roster: Nils Lundkvist

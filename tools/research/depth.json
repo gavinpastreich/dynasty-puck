@@ -683,8 +683,8 @@
   },
   "EDM": {
    "team": "Edmonton Oilers",
-   "updated": "2026-10-30",
-   "source": "Bob Stauffer",
+   "updated": "2026-11-01",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "pp1": [
     "Kasperi Kapanen",
@@ -698,17 +698,17 @@
     "Trent Frederic",
     "Colton Dach",
     "Ryan Shea",
-    "Isaac Howard"
+    "Mattias Ekholm"
    ],
    "pk1": [
-    "Mathieu Joseph",
-    "Kasperi Kapanen",
+    "Connor McDavid",
+    "Owen Michaels",
     "Ryan Shea",
     "Connor Murphy"
    ],
    "pk2": [
-    "Owen Michaels",
-    "Jason Dickinson",
+    "Kasperi Kapanen",
+    "Mathieu Joseph",
     "Mattias Ekholm",
     "Shakir Mukhamadullin"
    ],
@@ -730,7 +730,7 @@
    "f4": [
     "Trent Frederic",
     "Owen Michaels",
-    "Isaac Howard"
+    "Filip Hallander"
    ],
    "d1": [
     "Mattias Ekholm",
@@ -745,8 +745,8 @@
     "Ty Emberson"
    ],
    "goalies": [
-    "Tristan Jarry",
-    "Matt Tomkins"
+    "Matt Tomkins",
+    "Tristan Jarry"
    ]
   },
   "FLA": {
@@ -1295,8 +1295,8 @@
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-10-31",
-   "source": "Ottawa Senators",
+   "updated": "2026-11-01",
+   "source": "Last Game (2026-10-31)",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
     "Drake Batherson",
@@ -1322,7 +1322,7 @@
     "Tim Stützle",
     "Michael Amadio",
     "Tyler Kleven",
-    "Thomas Chabot"
+    "Nikolas Matinpalo"
    ],
    "f1": [
     "Fabian Zetterlund",
@@ -2111,34 +2111,34 @@
   },
   "WPG": {
    "team": "Winnipeg Jets",
-   "updated": "2026-10-30",
-   "source": "Mitchell Clinton",
+   "updated": "2026-11-01",
+   "source": "Last Game (2026-10-30)",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "pp1": [
     "Gabriel Vilardi",
     "Mark Scheifele",
     "Cole Perfetti",
-    "Elias Salomonsson",
+    "Neal Pionk",
     "Kyle Connor"
    ],
    "pp2": [
-    "Isak Rosen",
+    "Alex Iafallo",
     "Viggo Björck",
     "Dawson Mercer",
-    "Neal Pionk",
-    "Haydn Fleury"
+    "Isak Rosen",
+    "Elias Salomonsson"
    ],
    "pk1": [
-    "Viggo Björck",
-    "Alex Iafallo",
+    "Morgan Barron",
+    "Cole Koepke",
     "Dylan Samberg",
     "Neal Pionk"
    ],
    "pk2": [
     "Adam Lowry",
-    "Kyle Connor",
+    "Dawson Mercer",
     "Mario Ferraro",
-    "Dylan DeMelo"
+    "Elias Salomonsson"
    ],
    "f1": [
     "Cole Perfetti",
