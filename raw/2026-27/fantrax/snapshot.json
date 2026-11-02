@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-02T13:29:57+00:00",
+"fetched": "2026-11-02T20:20:38+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -507,11 +507,6 @@
 "n": "Wedgewood, Scott",
 "pos": "G",
 "t": "COL"
-},
-"01zs7": {
-"n": "Grubauer, Philipp",
-"pos": "G",
-"t": "SEA"
 },
 "01zto": {
 "n": "Coyle, Charlie",
@@ -857,6 +852,11 @@
 "n": "Kapanen, Kasperi",
 "pos": "RW",
 "t": "EDM"
+},
+"039sy": {
+"n": "Nedeljkovic, Alex",
+"pos": "G",
+"t": "SJS"
 },
 "03as6": {
 "n": "McCann, Jared",
@@ -4574,13 +4574,6 @@
 "sal": 2700000,
 "slot": "A"
 },
-"01zs7": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "G",
-"sal": 1000000,
-"slot": "A"
-},
 "01zto": {
 "ct": "FA",
 "gm": "SPG",
@@ -5061,6 +5054,13 @@
 "ct": "FA",
 "gm": "mertin",
 "pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
+"039sy": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "G",
 "sal": 1000000,
 "slot": "A"
 },
@@ -8779,7 +8779,7 @@
 "gb": 9.5,
 "pct": 0.52,
 "rank": 6,
-"t": "SPG"
+"t": "Wags8210"
 },
 {
 "L": 33,
@@ -8788,7 +8788,7 @@
 "gb": 9.5,
 "pct": 0.52,
 "rank": 7,
-"t": "Wags8210"
+"t": "SPG"
 },
 {
 "L": 35,
@@ -8927,6 +8927,7 @@
 }
 },
 "waivers": [
+"01zs7",
 "05x9g",
 "07awn"
 ]

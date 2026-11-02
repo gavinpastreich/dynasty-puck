@@ -860,5 +860,22 @@
 "ct": "RFA1",
 "sal": 2500000,
 "n": "Xhekaj, Arber"
+},
+{
+"d": "2026-11-02",
+"id": "01zs7",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Grubauer, Philipp"
+},
+{
+"d": "2026-11-02",
+"id": "039sy",
+"type": "add",
+"to": "nbracken",
+"ct": "FA",
+"sal": 1000000
 }
 ]
