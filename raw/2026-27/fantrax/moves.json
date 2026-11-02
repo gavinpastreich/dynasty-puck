@@ -835,5 +835,30 @@
 "to": "Wags8210",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-02",
+"id": "02yjw",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-02",
+"id": "04qza",
+"type": "add",
+"to": "BHHC",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-02",
+"id": "05x9g",
+"type": "drop",
+"from": "CGN",
+"ct": "RFA1",
+"sal": 2500000,
+"n": "Xhekaj, Arber"
 }
 ]
