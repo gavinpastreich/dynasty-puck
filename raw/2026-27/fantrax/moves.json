@@ -903,5 +903,14 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Quinn, Jack"
+},
+{
+"d": "2026-11-03",
+"id": "05x9t",
+"type": "drop",
+"from": "ROO",
+"ct": "FA",
+"sal": 1000000,
+"n": "Kartye, Tye"
 }
 ]

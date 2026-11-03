@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-03T12:48:16+00:00",
+"fetched": "2026-11-03T17:49:34+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -2177,11 +2177,6 @@
 "n": "Goyette, David",
 "pos": "C",
 "t": "PHI"
-},
-"05x9t": {
-"n": "Kartye, Tye",
-"pos": "LW",
-"t": "NYR"
 },
 "05xcm": {
 "n": "Lekkerimaki, Jonathan",
@@ -6907,13 +6902,6 @@
 "sal": 0,
 "slot": "M"
 },
-"05x9t": {
-"ct": "FA",
-"gm": "ROO",
-"pos": "F",
-"sal": 1000000,
-"slot": "R"
-},
 "05xcm": {
 "ct": "MNR",
 "gm": "mcianfra",
@@ -7493,7 +7481,7 @@
 "gm": "ROO",
 "pos": "D",
 "sal": 0,
-"slot": "M"
+"slot": "R"
 },
 "06axs": {
 "ct": "MNR",
