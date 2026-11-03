@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -201,6 +201,18 @@
    "injury": "upper-body",
    "ret": "",
    "detail": "Byram (upper-body) has yet to be cleared to return to Chicago's practices.",
+   "date": "2026-11-02",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Patrick Kane",
+   "team": "CHI",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Kane (undisclosed) left Monday’s game vs. Colorado and will not return.",
    "date": "2026-11-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
@@ -465,6 +477,18 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-02",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Brandt Clarke",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Clarke (upper-body) left practice on Monday and did not return.",
    "date": "2026-11-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
@@ -978,10 +1002,10 @@
    "name": "Logan Mailloux",
    "team": "STL",
    "status": "IR",
-   "injury": "right hand",
+   "injury": "hand",
    "ret": "",
-   "detail": "Mailloux (right hand) underwent surgery and will be re-evaluated in eight weeks.",
-   "date": "2026-09-28",
+   "detail": "Mailloux (hand) has been assigned to Springfield (AHL) on a conditioning loan.",
+   "date": "2026-11-02",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false

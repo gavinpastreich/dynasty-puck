@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -66,8 +66,8 @@
     "Tristan Luneau"
    ],
    "goalies": [
-    "Laurent Brossoit",
-    "Lukas Dostal"
+    "Lukas Dostal",
+    "Laurent Brossoit"
    ]
   },
   "BOS": {
@@ -344,7 +344,7 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-11-02",
+   "updated": "2026-11-03",
    "source": "Kalen Lumpkins",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
@@ -412,8 +412,8 @@
   },
   "COL": {
    "team": "Colorado Avalanche",
-   "updated": "2026-11-02",
-   "source": "Aarif Deen",
+   "updated": "2026-11-03",
+   "source": "Corey Masisak",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "pp1": [
     "T.J. Hughes",
@@ -448,12 +448,12 @@
    ],
    "f2": [
     "Gabriel Landeskog",
-    "Brock Nelson",
+    "Nazem Kadri",
     "Nicolas Roy"
    ],
    "f3": [
     "Jaden Schwartz",
-    "Nazem Kadri",
+    "Brock Nelson",
     "T.J. Hughes"
    ],
    "f4": [
@@ -474,8 +474,8 @@
     "Noah Juulsen"
    ],
    "goalies": [
-    "Scott Wedgewood",
-    "Mackenzie Blackwood"
+    "Mackenzie Blackwood",
+    "Scott Wedgewood"
    ]
   },
   "CBJ": {
@@ -678,8 +678,8 @@
     "Anton Johansson"
    ],
    "goalies": [
-    "Daniil Tarasov",
-    "John Gibson"
+    "John Gibson",
+    "Daniil Tarasov"
    ]
   },
   "EDM": {
@@ -746,8 +746,8 @@
     "Ty Emberson"
    ],
    "goalies": [
-    "Matt Tomkins",
-    "Tristan Jarry"
+    "Tristan Jarry",
+    "Matt Tomkins"
    ]
   },
   "FLA": {
@@ -1426,8 +1426,8 @@
     "Simon Benoit"
    ],
    "goalies": [
-    "Dan Vladar",
-    "Joseph Woll"
+    "Joseph Woll",
+    "Dan Vladar"
    ]
   },
   "PIT": {
@@ -1505,16 +1505,16 @@
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Mason Marchment",
-    "Will Smith",
-    "Macklin Celebrini",
     "Ivar Stenberg",
-    "Dmitry Orlov"
+    "Tyler Toffoli",
+    "Macklin Celebrini",
+    "Will Smith"
    ],
    "pp2": [
-    "Filip Bystedt",
+    "Kiefer Sherwood",
     "Michael Misa",
-    "Tyler Toffoli",
-    "Michael Kesselring",
+    "Adam Gaudette",
+    "Dmitry Orlov",
     "Jacob Trouba"
    ],
    "pk1": [
@@ -1524,7 +1524,7 @@
     "Jacob Trouba"
    ],
    "pk2": [
-    "Ty Dellandrea",
+    "Zack Ostapchuk",
     "Kiefer Sherwood",
     "Darnell Nurse",
     "Michael Kesselring"
@@ -1547,7 +1547,7 @@
    "f4": [
     "Barclay Goodrow",
     "Zack Ostapchuk",
-    "Ty Dellandrea"
+    "Adam Gaudette"
    ],
    "d1": [
     "Sam Dickinson",
@@ -1901,8 +1901,8 @@
     "Artem Duda"
    ],
    "goalies": [
-    "Karel Vejmelka",
-    "Sebastian Cossa"
+    "Sebastian Cossa",
+    "Karel Vejmelka"
    ]
   },
   "VAN": {
@@ -1969,14 +1969,14 @@
     "Victor Mancini"
    ],
    "goalies": [
-    "Leevi Merilainen",
-    "Kevin Lankinen"
+    "Kevin Lankinen",
+    "Leevi Merilainen"
    ]
   },
   "VGK": {
    "team": "Vegas Golden Knights",
    "updated": "2026-11-02",
-   "source": "Last Game (2026-10-30)",
+   "source": "Danny Webster",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "pp1": [
     "Mark Stone",
@@ -2010,12 +2010,12 @@
     "Mark Stone"
    ],
    "f2": [
-    "Trevor Connelly",
+    "Brett Howden",
     "William Karlsson",
     "Mitch Marner"
    ],
    "f3": [
-    "Brett Howden",
+    "Trevor Connelly",
     "Tomas Hertl",
     "Braeden Bowman"
    ],
@@ -2030,15 +2030,15 @@
    ],
    "d2": [
     "Jeremy Lauzon",
-    "Noah Hanifin"
-   ],
-   "d3": [
-    "Dylan Coghlan",
     "Rasmus Andersson"
    ],
+   "d3": [
+    "Noah Hanifin",
+    "Dylan Coghlan"
+   ],
    "goalies": [
-    "Carter Hart",
-    "Adin Hill"
+    "Adin Hill",
+    "Carter Hart"
    ]
   },
   "WSH": {
@@ -2173,8 +2173,8 @@
     "Dylan DeMelo"
    ],
    "goalies": [
-    "Stuart Skinner",
-    "Clay Stevenson"
+    "Nico Daws",
+    "Stuart Skinner"
    ]
   }
  }
