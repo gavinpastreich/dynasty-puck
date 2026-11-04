@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-03T17:49:34+00:00",
+"fetched": "2026-11-04T12:59:32+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1233,6 +1233,11 @@
 "pos": "G",
 "t": "DAL"
 },
+"048t9": {
+"n": "Jeannot, Tanner",
+"pos": "LW",
+"t": "BOS"
+},
 "048vf": {
 "n": "Svechnikov, Andrei",
 "pos": "LW",
@@ -1887,11 +1892,6 @@
 "n": "Dobes, Jakub",
 "pos": "G",
 "t": "MTL"
-},
-"05oy1": {
-"n": "Rempe, Matt",
-"pos": "RW",
-"t": "NYR"
 },
 "05r1b": {
 "n": "McGroarty, Rutger",
@@ -5579,6 +5579,13 @@
 "sal": 11000000,
 "slot": "A"
 },
+"048t9": {
+"ct": "FA",
+"gm": "PuckLuck",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "048vf": {
 "ct": "BID",
 "gm": "mcianfra",
@@ -6496,13 +6503,6 @@
 "sal": 2300000,
 "slot": "A"
 },
-"05oy1": {
-"ct": "RFA1",
-"gm": "PuckLuck",
-"pos": "F",
-"sal": 2100000,
-"slot": "A"
-},
 "05r1b": {
 "ct": "MNR",
 "gm": "Wags8210",
@@ -7173,7 +7173,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 0,
-"slot": "R"
+"slot": "A"
 },
 "062sh": {
 "ct": "MNR",
@@ -7740,7 +7740,7 @@
 "gm": "CGN",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06hco": {
 "ct": "MNR",
