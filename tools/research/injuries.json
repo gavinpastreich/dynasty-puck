@@ -105,7 +105,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -309,7 +309,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -318,10 +318,10 @@
    "name": "John Gibson",
    "team": "DET",
    "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Gibson (lower-body) left Tuesday's game vs. Tampa Bay and will not return.",
-   "date": "2026-11-03",
+   "injury": "",
+   "ret": "Day-to-day",
+   "detail": "Gibson is day-to-day with a lower-body injury.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -489,7 +489,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -522,10 +522,10 @@
    "name": "Brock Faber",
    "team": "MIN",
    "status": "IR",
-   "injury": "head",
+   "injury": "skull fracture",
    "ret": "",
-   "detail": "Faber (head) has begun working out and is close to returning to practice with Minnesota.",
-   "date": "2026-11-03",
+   "detail": "Faber (skull fracture) returned to practice on Thursday.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -550,6 +550,18 @@
    "ret": "Week-to-week",
    "detail": "Spurgeon (undisclosed) is considered week-to-week.",
    "date": "2026-10-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Joel Eriksson Ek",
+   "team": "MIN",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -593,23 +605,11 @@
   {
    "name": "Mike Matheson",
    "team": "MTL",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "",
    "ret": "",
    "detail": "Matheson will miss two weeks with a lower-body injury.",
    "date": "2026-10-31",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Nick Suzuki",
-   "team": "MTL",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Suzuki (upper-body) will remain out vs. Winnipeg on Tuesday.",
-   "date": "2026-11-03",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -759,25 +759,13 @@
    "holdout": false
   },
   {
-   "name": "Joonas Korpisalo",
-   "team": "NYR",
-   "status": "IR",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Sean Durzi",
    "team": "NYR",
    "status": "DTD",
-   "injury": "undisclosed",
+   "injury": "",
    "ret": "",
-   "detail": "Durzi (undisclosed) will not play Sunday vs. the Oilers.",
-   "date": "2026-11-01",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
@@ -879,25 +867,13 @@
    "holdout": false
   },
   {
-   "name": "Evgeni Malkin",
-   "team": "PIT",
-   "status": "DTD",
-   "injury": "lower body",
-   "ret": "",
-   "detail": "Malkin (lower body) returned to practice on Wednesday.",
-   "date": "2026-11-04",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Ryan Graves",
    "team": "PIT",
    "status": "IR",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -909,7 +885,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -972,18 +948,6 @@
    "date": "2026-10-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Colton Parayko",
-   "team": "STL",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Parayko (upper-body) will not play Saturday in Detroit.",
-   "date": "2026-10-31",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false
   },
   {
@@ -1197,7 +1161,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
