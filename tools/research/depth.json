@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -202,8 +202,8 @@
     "Louis Crevier"
    ],
    "goalies": [
-    "Colten Ellis",
-    "Ukko-Pekka Luukkonen"
+    "Ukko-Pekka Luukkonen",
+    "Colten Ellis"
    ]
   },
   "CGY": {
@@ -276,8 +276,8 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Walt Ruff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
     "Andrei Svechnikov",
@@ -287,7 +287,7 @@
     "Shayne Gostisbehere"
    ],
    "pp2": [
-    "Jesperi Kotkaniemi",
+    "Taylor Hall",
     "Mark Jankowski",
     "Seth Jarvis",
     "Logan Stankoven",
@@ -316,14 +316,14 @@
     "Jackson Blake"
    ],
    "f3": [
-    "Jordan Martinook",
+    "Taylor Hall",
     "Mark Jankowski",
     "Seth Jarvis"
    ],
    "f4": [
     "Eric Robinson",
     "Jesperi Kotkaniemi",
-    "Nicolas Deslauriers"
+    "Jordan Martinook"
    ],
    "d1": [
     "Jaccob Slavin",
@@ -345,7 +345,7 @@
   "CHI": {
    "team": "Chicago Blackhawks",
    "updated": "2026-11-05",
-   "source": "Last Game (2026-11-04)",
+   "source": "Kalen Lumpkins",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Frank Nazar",
@@ -368,15 +368,15 @@
     "Ian Cole"
    ],
    "pk2": [
-    "Jordan Greenway",
     "Frank Nazar",
+    "Teuvo Teravainen",
     "Wyatt Kaiser",
     "Artyom Levshunov"
    ],
    "f1": [
-    "Roman Kantserov",
+    "Tyler Bertuzzi",
     "Connor Bedard",
-    "Tyler Bertuzzi"
+    "Roman Kantserov"
    ],
    "f2": [
     "Oliver Moore",
@@ -384,14 +384,14 @@
     "Ryan Donato"
    ],
    "f3": [
-    "Cole Smith",
+    "Andrew Mangiapane",
     "Anton Frondell",
     "Teuvo Teravainen"
    ],
    "f4": [
-    "Dillon Boucher",
+    "Cole Smith",
     "Ryan Greene",
-    "Jordan Greenway"
+    "Dillon Boucher"
    ],
    "d1": [
     "Wyatt Kaiser",
@@ -412,19 +412,19 @@
   },
   "COL": {
    "team": "Colorado Avalanche",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-06",
+   "source": "Evan Rawal",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "pp1": [
-    "Artturi Lehkonen",
-    "Nathan MacKinnon",
     "T.J. Hughes",
-    "Cale Makar",
-    "Martin Necas"
+    "Nazem Kadri",
+    "Martin Necas",
+    "Nathan MacKinnon",
+    "Cale Makar"
    ],
    "pp2": [
+    "Artturi Lehkonen",
     "Gabriel Landeskog",
-    "Nazem Kadri",
     "Jaden Schwartz",
     "Devon Toews",
     "Brock Nelson"
@@ -462,16 +462,16 @@
     "Logan O'Connor"
    ],
    "d1": [
-    "Devon Toews",
+    "Brett Kulak",
     "Cale Makar"
    ],
    "d2": [
-    "Sam Malinski",
-    "Brent Burns"
+    "Devon Toews",
+    "Sam Malinski"
    ],
    "d3": [
-    "Brett Kulak",
-    "Noah Juulsen"
+    "Noah Juulsen",
+    "Brent Burns"
    ],
    "goalies": [
     "Mackenzie Blackwood",
@@ -480,8 +480,8 @@
   },
   "CBJ": {
    "team": "Columbus Blue Jackets",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Aaron Portzline",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
     "Matthew Knies",
@@ -527,7 +527,7 @@
    "f4": [
     "Ryan Lomberg",
     "Luca Del Bel Belluz",
-    "Danton Heinen"
+    "Dmitri Voronkov"
    ],
    "d1": [
     "Zach Werenski",
@@ -542,34 +542,34 @@
     "Dante Fabbro"
    ],
    "goalies": [
-    "Cam Talbot",
-    "Jet Greaves"
+    "Jet Greaves",
+    "Cam Talbot"
    ]
   },
   "DAL": {
    "team": "Dallas Stars",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Owen Newkirk",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "pp1": [
     "Wyatt Johnston",
     "Roope Hintz",
     "Mikko Rantanen",
-    "Miro Heiskanen",
+    "Thomas Harley",
     "Jason Robertson"
    ],
    "pp2": [
     "Justin Hryckowian",
     "Tyler Seguin",
     "Jamie Benn",
-    "Thomas Harley",
+    "Nils Lundkvist",
     "Mikko Rantanen"
    ],
    "pk1": [
     "Arttu Hyry",
     "Joel Kiviranta",
-    "Thomas Harley",
-    "Miro Heiskanen"
+    "Esa Lindell",
+    "Thomas Harley"
    ],
    "pk2": [
     "Radek Faksa",
@@ -588,30 +588,30 @@
     "Arttu Hyry"
    ],
    "f3": [
-    "Sam Steel",
+    "Joel Kiviranta",
     "Justin Hryckowian",
     "Tyler Seguin"
    ],
    "f4": [
-    "Joel Kiviranta",
+    "David Perron",
     "Radek Faksa",
-    "David Perron"
+    "Colin Blackwell"
    ],
    "d1": [
-    "Esa Lindell",
-    "Miro Heiskanen"
+    "Thomas Harley",
+    "Esa Lindell"
    ],
    "d2": [
-    "Thomas Harley",
+    "Lian Bichsel",
     "Nils Lundkvist"
    ],
    "d3": [
-    "Lian Bichsel",
+    "Trey Taylor",
     "Tyler Myers"
    ],
    "goalies": [
-    "Jake Oettinger",
-    "Casey DeSmith"
+    "Casey DeSmith",
+    "Jake Oettinger"
    ]
   },
   "DET": {
@@ -1637,7 +1637,7 @@
   "STL": {
    "team": "St Louis Blues",
    "updated": "2026-11-05",
-   "source": "Jeremy Rutherford",
+   "source": "Lou Korac",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "pp1": [
     "Jimmy Snuggerud",
@@ -1687,14 +1687,14 @@
    ],
    "d1": [
     "Philip Broberg",
-    "Colton Parayko"
-   ],
-   "d2": [
-    "Cam Fowler",
     "Brandon Carlo"
    ],
-   "d3": [
+   "d2": [
     "Justin Barron",
+    "Colton Parayko"
+   ],
+   "d3": [
+    "Cam Fowler",
     "Adam Jiříček"
    ],
    "goalies": [
@@ -1704,8 +1704,8 @@
   },
   "TBL": {
    "team": "Tampa Bay Lightning",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Benjamin Pierce",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "pp1": [
     "Jake Guentzel",
@@ -1728,7 +1728,7 @@
     "Maxwell Crozier"
    ],
    "pk2": [
-    "Dominic James",
+    "Zemgus Girgensons",
     "Ilya Mikheyev",
     "Victor Hedman",
     "J.J. Moser"
@@ -1740,17 +1740,17 @@
    ],
    "f2": [
     "Brandon Hagel",
-    "Anthony Cirelli"
+    "Anthony Cirelli",
+    "Gage Goncalves"
    ],
    "f3": [
     "Ilya Mikheyev",
-    "Dominic James",
+    "Zemgus Girgensons",
     "Pontus Holmberg"
    ],
    "f4": [
     "Jeffrey Viel",
-    "Conor Geekie",
-    "Gage Goncalves"
+    "Conor Geekie"
    ],
    "d1": [
     "J.J. Moser",
@@ -1839,8 +1839,8 @@
   },
   "UTA": {
    "team": "Utah Mammoth",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Utah Mammoth",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "pp1": [
     "Nick Schmaltz",
@@ -1869,19 +1869,19 @@
     "Andrew Peeke"
    ],
    "f1": [
-    "Clayton Keller",
+    "Anders Lee",
     "Barrett Hayton",
-    "Anders Lee"
+    "Clayton Keller"
    ],
    "f2": [
+    "Jack McBain",
+    "Nick Schmaltz",
+    "Dylan Guenther"
+   ],
+   "f3": [
     "Logan Cooley",
     "Vincent Trocheck",
     "Lawson Crouse"
-   ],
-   "f3": [
-    "Nick Schmaltz",
-    "Jack McBain",
-    "Dylan Guenther"
    ],
    "f4": [
     "Michael Carcone",
@@ -1975,20 +1975,20 @@
   },
   "VGK": {
    "team": "Vegas Golden Knights",
-   "updated": "2026-11-04",
-   "source": "Last Game (2026-11-03)",
+   "updated": "2026-11-05",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "pp1": [
     "Mark Stone",
     "Tomas Hertl",
-    "Trevor Connelly",
+    "Victor Olofsson",
     "Jack Eichel",
     "Mitch Marner"
    ],
    "pp2": [
     "Ivan Barbashev",
     "William Karlsson",
-    "Braeden Bowman",
+    "Trevor Connelly",
     "Rasmus Andersson",
     "Shea Theodore"
    ],
@@ -2017,10 +2017,10 @@
    "f3": [
     "Trevor Connelly",
     "Tomas Hertl",
-    "Braeden Bowman"
+    "Victor Olofsson"
    ],
    "f4": [
-    "Raphael Lavoie",
+    "Braeden Bowman",
     "Nic Dowd",
     "Marc Gatcomb"
    ],

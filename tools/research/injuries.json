@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -123,18 +123,6 @@
    "holdout": false
   },
   {
-   "name": "Taylor Hall",
-   "team": "CAR",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "In camp",
-   "detail": "Hall (upper-body) is unlikely to return in Nashville on Tuesday.",
-   "date": "2026-11-03",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Isac Lundestrom",
    "team": "CBJ",
    "status": "IR",
@@ -163,9 +151,9 @@
    "team": "CGY",
    "status": "DTD",
    "injury": "lower-body",
-   "ret": "Week-to-week",
-   "detail": "Cooley (lower-body) has been placed on IR and is considered week-to-week.",
-   "date": "2026-10-30",
+   "ret": "",
+   "detail": "Cooley (lower-body) has been activated off IR.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -270,10 +258,10 @@
    "name": "Miro Heiskanen",
    "team": "DAL",
    "status": "DTD",
-   "injury": "upper body",
+   "injury": "upper-body",
    "ret": "Day-to-day",
-   "detail": "Heiskanen (upper body) did not practice on Wednesday and is day-to-day.",
-   "date": "2026-11-04",
+   "detail": "Heiskanen (upper-body) will be out vs. Columbus on Thursday and is considered day-to-day.",
+   "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -761,10 +749,10 @@
   {
    "name": "Sean Durzi",
    "team": "NYR",
-   "status": "DTD",
-   "injury": "",
+   "status": "IR",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "detail": "Durzi (undisclosed) will remain out on Thursday and is not expected to travel to start the Rangers' upcoming road trip.",
    "date": "2026-11-05",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
@@ -987,18 +975,6 @@
    "holdout": false
   },
   {
-   "name": "Zemgus Girgensons",
-   "team": "TBL",
-   "status": "OUT",
-   "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "Girgensons (lower-body) will remain out vs. Detroit on Tuesday and is considered day-to-day.",
-   "date": "2026-11-02",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Elvis Merzlikins",
    "team": "TOR",
    "status": "IR",
@@ -1126,18 +1102,6 @@
    "ret": "",
    "detail": "Wotherspoon (upper body) has been placed on IR.",
    "date": "2026-10-21",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Victor Olofsson",
-   "team": "VGK",
-   "status": "OUT",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Olofsson (undisclosed) will travel with Vegas on its upcoming road trip.",
-   "date": "2026-10-31",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false

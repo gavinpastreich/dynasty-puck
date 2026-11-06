@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-05T17:59:57+00:00",
+"fetched": "2026-11-06T12:57:34+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1737,6 +1737,11 @@
 "n": "Wallinder, William",
 "pos": "D",
 "t": "DET"
+},
+"05g42": {
+"n": "Quinn, Jack",
+"pos": "RW",
+"t": "BUF"
 },
 "05gcv": {
 "n": "Lambos, Carson",
@@ -6286,6 +6291,13 @@
 "sal": 0,
 "slot": "M"
 },
+"05g42": {
+"ct": "FA",
+"gm": "CGN",
+"pos": "F",
+"sal": 1000000,
+"slot": "R"
+},
 "05gcv": {
 "ct": "MNR",
 "gm": "CGN",
@@ -8755,7 +8767,7 @@
 "gb": 9.5,
 "pct": 0.52,
 "rank": 6,
-"t": "Wags8210"
+"t": "SPG"
 },
 {
 "L": 33,
@@ -8764,7 +8776,7 @@
 "gb": 9.5,
 "pct": 0.52,
 "rank": 7,
-"t": "SPG"
+"t": "Wags8210"
 },
 {
 "L": 35,
@@ -8902,8 +8914,5 @@
 "name": "mcianfrani"
 }
 },
-"waivers": [
-"03yuf",
-"05g42"
-]
+"waivers": []
 }
