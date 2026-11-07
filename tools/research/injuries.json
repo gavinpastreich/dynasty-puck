@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -58,30 +58,6 @@
    "ret": "",
    "detail": "Lyon (upper-body) is days away from return to Buffalo's lineup.",
    "date": "2026-11-03",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Conor Timmins",
-   "team": "BUF",
-   "status": "IR",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Timmins (lower-body) will make his season debut vs. Columbus on Friday.",
-   "date": "2026-11-06",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jiri Kulich",
-   "team": "BUF",
-   "status": "DTD",
-   "injury": "concussion",
-   "ret": "",
-   "detail": "Kulich (concussion) is expected to return vs. Columbus on Friday.",
-   "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -147,18 +123,6 @@
    "holdout": false
   },
   {
-   "name": "Devin Cooley",
-   "team": "CGY",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Cooley (lower-body) has been activated off IR.",
-   "date": "2026-11-05",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Jonathan Huberdeau",
    "team": "CGY",
    "status": "IR",
@@ -166,6 +130,18 @@
    "ret": "",
    "detail": "Huberdeau (hip) is not expected to be ready for the start of Calgary’s training camp.",
    "date": "2026-09-04",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Kevin Bahl",
+   "team": "CGY",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Bahl (lower-body) is out vs. Anaheim on Friday.",
+   "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -258,10 +234,10 @@
    "name": "Miro Heiskanen",
    "team": "DAL",
    "status": "DTD",
-   "injury": "upper-body",
-   "ret": "Day-to-day",
-   "detail": "Heiskanen (upper-body) will be out vs. Columbus on Thursday and is considered day-to-day.",
-   "date": "2026-11-05",
+   "injury": "upper body",
+   "ret": "",
+   "detail": "Heiskanen (upper body) is doubtful for Saturday vs. San Jose.",
+   "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -776,8 +752,8 @@
    "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Ullmark (lower-body) travelled on Ottawa's road trip but will not return in Buffalo on Wednesday.",
-   "date": "2026-11-04",
+   "detail": "Ullmark (lower-body) has a chance to return vs. Utah on Saturday.",
+   "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -987,21 +963,9 @@
    "holdout": false
   },
   {
-   "name": "Jack Roslovic",
-   "team": "TOR",
-   "status": "DTD",
-   "injury": "maintenance",
-   "ret": "",
-   "detail": "Roslovic (maintenance) missed practice on Wednesday.",
-   "date": "2026-11-04",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "John Tavares",
    "team": "TOR",
-   "status": "OUT",
+   "status": "DTD",
    "injury": "lower-body",
    "ret": "",
    "detail": "Tavares (lower-body) has a good chance to return vs. Montreal on Saturday.",

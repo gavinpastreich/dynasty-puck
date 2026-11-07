@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
    "team": "Anaheim Ducks",
-   "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "updated": "2026-11-07",
+   "source": "Anaheim Ducks",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "pp1": [
     "Beckett Sennecke",
@@ -198,8 +198,8 @@
     "Owen Power"
    ],
    "d3": [
-    "Zach Metsa",
-    "Louis Crevier"
+    "Conor Timmins",
+    "Zach Metsa"
    ],
    "goalies": [
     "Ukko-Pekka Luukkonen",
@@ -208,8 +208,8 @@
   },
   "CGY": {
    "team": "Calgary Flames",
-   "updated": "2026-11-05",
-   "source": "Last Game (2026-11-04)",
+   "updated": "2026-11-07",
+   "source": "Ryan Pike",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "pp1": [
     "Joel Farabee",
@@ -235,7 +235,7 @@
     "Joel Farabee",
     "Jonathan Castagna",
     "Yan Kuznetsov",
-    "Kevin Bahl"
+    "Joel Hanley"
    ],
    "f1": [
     "Joel Farabee",
@@ -258,7 +258,7 @@
     "Adam Klapka"
    ],
    "d1": [
-    "Kevin Bahl",
+    "Joel Hanley",
     "Simon Nemec"
    ],
    "d2": [
@@ -271,7 +271,7 @@
    ],
    "goalies": [
     "Dustin Wolf",
-    "Arsenii Sergeev"
+    "Devin Cooley"
    ]
   },
   "CAR": {
@@ -481,7 +481,7 @@
   "CBJ": {
    "team": "Columbus Blue Jackets",
    "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "source": "Mark Scheig",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
     "Matthew Knies",
@@ -511,12 +511,12 @@
    ],
    "f1": [
     "Matthew Knies",
-    "Adam Fantilli",
+    "Sean Monahan",
     "Kent Johnson"
    ],
    "f2": [
     "Valeri Nichushkin",
-    "Sean Monahan",
+    "Adam Fantilli",
     "Conor Garland"
    ],
    "f3": [
@@ -525,9 +525,9 @@
     "Mathieu Olivier"
    ],
    "f4": [
-    "Ryan Lomberg",
-    "Luca Del Bel Belluz",
-    "Dmitri Voronkov"
+    "Dmitri Voronkov",
+    "Jack Williams",
+    "Steven Lorentz"
    ],
    "d1": [
     "Zach Werenski",
@@ -617,7 +617,7 @@
   "DET": {
    "team": "Detroit Red Wings",
    "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "source": "Ansar Khan",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "pp1": [
     "Viktor Arvidsson",
@@ -1161,20 +1161,20 @@
   "NYI": {
    "team": "New York Islanders",
    "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "source": "Stefen Rosner",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
-    "Kyle Palmieri",
+    "Simon Holmstrom",
     "Bo Horvat",
     "Brayden Schenn",
-    "Simon Holmstrom",
+    "Victor Eklund",
     "Matthew Schaefer"
    ],
    "pp2": [
+    "Kyle Palmieri",
     "Ondrej Palat",
-    "Emil Heineman",
     "Anthony Duclair",
-    "Victor Eklund",
+    "Emil Heineman",
     "Tony DeAngelo"
    ],
    "pk1": [
@@ -1187,20 +1187,20 @@
     "Jean-Gabriel Pageau",
     "Simon Holmstrom",
     "Logan Stanley",
-    "Scott Mayfield"
+    "Matthew Schaefer"
    ],
    "f1": [
-    "Simon Holmstrom",
+    "Emil Heineman",
     "Bo Horvat",
     "Kyle Palmieri"
    ],
    "f2": [
-    "Emil Heineman",
+    "Ondrej Palat",
     "Brayden Schenn",
     "Victor Eklund"
    ],
    "f3": [
-    "Ondrej Palat",
+    "Simon Holmstrom",
     "Jean-Gabriel Pageau",
     "Anthony Duclair"
    ],
@@ -1218,8 +1218,8 @@
     "Tony DeAngelo"
    ],
    "d3": [
-    "Matthew Kessel",
-    "Scott Mayfield"
+    "Ben Hutton",
+    "Matthew Kessel"
    ],
    "goalies": [
     "Ilya Sorokin",
@@ -1291,7 +1291,7 @@
    ],
    "goalies": [
     "Dylan Garand",
-    "James Reimer"
+    "Joonas Korpisalo"
    ]
   },
   "OTT": {
@@ -1500,8 +1500,8 @@
   },
   "SJS": {
    "team": "San Jose Sharks",
-   "updated": "2026-11-05",
-   "source": "Last Game (2026-11-04)",
+   "updated": "2026-11-07",
+   "source": "Sheng Peng",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Mason Marchment",
@@ -1541,13 +1541,13 @@
    ],
    "f3": [
     "Ivar Stenberg",
-    "Filip Bystedt",
+    "Ty Dellandrea",
     "Tyler Toffoli"
    ],
    "f4": [
     "Barclay Goodrow",
     "Zack Ostapchuk",
-    "Ty Dellandrea"
+    "Adam Gaudette"
    ],
    "d1": [
     "Sam Dickinson",
@@ -1568,8 +1568,8 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-11-05",
-   "source": "Last Game (2026-11-04)",
+   "updated": "2026-11-06",
+   "source": "@sound_hockey",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1771,7 +1771,7 @@
   },
   "TOR": {
    "team": "Toronto Maple Leafs",
-   "updated": "2026-11-04",
+   "updated": "2026-11-06",
    "source": "David Alter",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
@@ -2043,8 +2043,8 @@
   },
   "WSH": {
    "team": "Washington Capitals",
-   "updated": "2026-11-05",
-   "source": "Tom Gulitti",
+   "updated": "2026-11-06",
+   "source": "Sammi Silber",
    "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "pp1": [
     "Tom Wilson",
