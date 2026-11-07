@@ -72,8 +72,8 @@
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "updated": "2026-11-07",
+   "source": "Adam Pellerin",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "Morgan Geekie",
@@ -83,7 +83,7 @@
     "Charlie McAvoy"
    ],
    "pp2": [
-    "James Hagens",
+    "Matthew Poitras",
     "Fraser Minten",
     "Casey Mittelstadt",
     "Mason Lohrei",
@@ -107,14 +107,14 @@
     "David Pastrnak"
    ],
    "f2": [
-    "Marat Khusnutdinov",
+    "Matthew Poitras",
     "Fraser Minten",
     "Morgan Geekie"
    ],
    "f3": [
     "Casey Mittelstadt",
     "Elias Lindholm",
-    "James Hagens"
+    "Marat Khusnutdinov"
    ],
    "f4": [
     "Tanner Jeannot",
@@ -276,8 +276,8 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "updated": "2026-11-07",
+   "source": "Walt Ruff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
     "Andrei Svechnikov",
@@ -291,7 +291,7 @@
     "Mark Jankowski",
     "Seth Jarvis",
     "Logan Stankoven",
-    "Juuso Valimaki"
+    "Alexander Nikishin"
    ],
    "pk1": [
     "Sebastian Aho",
@@ -335,7 +335,7 @@
    ],
    "d3": [
     "Shayne Gostisbehere",
-    "Juuso Valimaki"
+    "Alexander Nikishin"
    ],
    "goalies": [
     "Pyotr Kochetkov",
@@ -344,8 +344,8 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-11-06",
-   "source": "Last Game (2026-11-05)",
+   "updated": "2026-11-07",
+   "source": "Ben Pope",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Frank Nazar",
@@ -380,17 +380,17 @@
    ],
    "f2": [
     "Oliver Moore",
-    "Frank Nazar",
-    "Ryan Donato"
+    "Anton Frondell",
+    "Frank Nazar"
    ],
    "f3": [
-    "Andrew Mangiapane",
-    "Anton Frondell",
-    "Teuvo Teravainen"
+    "Teuvo Teravainen",
+    "Ryan Greene",
+    "Ryan Donato"
    ],
    "f4": [
     "Cole Smith",
-    "Ryan Greene",
+    "Jordan Greenway",
     "Dillon Boucher"
    ],
    "d1": [
@@ -402,7 +402,7 @@
     "Ian Cole"
    ],
    "d3": [
-    "Ethan Del Mastro",
+    "Kevin Korchinski",
     "Sam Rinzel"
    ],
    "goalies": [
@@ -480,7 +480,7 @@
   },
   "CBJ": {
    "team": "Columbus Blue Jackets",
-   "updated": "2026-11-06",
+   "updated": "2026-11-07",
    "source": "Mark Scheig",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
@@ -814,8 +814,8 @@
     "Dmitry Kulikov"
    ],
    "goalies": [
-    "Jacob Markstrom",
-    "Akira Schmid"
+    "Akira Schmid",
+    "Jacob Markstrom"
    ]
   },
   "LAK": {
@@ -1154,13 +1154,13 @@
     "Johnathan Kovacevic"
    ],
    "goalies": [
-    "Connor Hellebuyck",
-    "Jake Allen"
+    "Jake Allen",
+    "Connor Hellebuyck"
    ]
   },
   "NYI": {
    "team": "New York Islanders",
-   "updated": "2026-11-06",
+   "updated": "2026-11-07",
    "source": "Stefen Rosner",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
@@ -1296,7 +1296,7 @@
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-11-05",
+   "updated": "2026-11-07",
    "source": "Last Game (2026-11-04)",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
@@ -1359,7 +1359,7 @@
    ],
    "goalies": [
     "Samuel Ersson",
-    "Jonas Johansson"
+    "Linus Ullmark"
    ]
   },
   "PHI": {
@@ -1494,8 +1494,8 @@
     "Kris Letang"
    ],
    "goalies": [
-    "Arturs Silovs",
-    "Sergei Murashov"
+    "Sergei Murashov",
+    "Arturs Silovs"
    ]
   },
   "SJS": {
@@ -1562,8 +1562,8 @@
     "Eric Pohlkamp"
    ],
    "goalies": [
-    "Yaroslav Askarov",
-    "Alex Nedeljkovic"
+    "Alex Nedeljkovic",
+    "Yaroslav Askarov"
    ]
   },
   "SEA": {
@@ -1969,8 +1969,8 @@
     "Victor Mancini"
    ],
    "goalies": [
-    "Leevi Merilainen",
-    "Kevin Lankinen"
+    "Kevin Lankinen",
+    "Leevi Merilainen"
    ]
   },
   "VGK": {

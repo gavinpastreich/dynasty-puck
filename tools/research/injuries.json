@@ -51,6 +51,18 @@
    "holdout": false
   },
   {
+   "name": "James Hagens",
+   "team": "BOS",
+   "status": "IR",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Hagens (undisclosed) has been placed on IR retroactive to November 5th.",
+   "date": "2026-11-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Alex Lyon",
    "team": "BUF",
    "status": "IR",
@@ -87,6 +99,18 @@
    "holdout": false
   },
   {
+   "name": "Alexander Nikishin",
+   "team": "CAR",
+   "status": "Game-time decision",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Jordan Staal",
    "team": "CAR",
    "status": "IR",
@@ -99,6 +123,18 @@
    "holdout": false
   },
   {
+   "name": "Dmitri Voronkov",
+   "team": "CBJ",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Voronkov (upper-body) left Friday's game vs. Buffalo and did not return.",
+   "date": "2026-11-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Isac Lundestrom",
    "team": "CBJ",
    "status": "IR",
@@ -106,6 +142,18 @@
    "ret": "Months",
    "detail": "Lundestrom (achilles) is considered month-to-month.",
    "date": "2026-10-01",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Sean Monahan",
+   "team": "CBJ",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Monahan (lower-body) left Friday's game vs. Buffalo and did not return.",
+   "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -655,9 +703,9 @@
    "team": "NYI",
    "status": "IR",
    "injury": "lower-body",
-   "ret": "Months",
-   "detail": "Barzal (lower-body) returned to practice in a non-contact jersey on Wednesday.",
-   "date": "2026-11-04",
+   "ret": "In camp",
+   "detail": "Barzal (lower-body) was a full participant in New York's practice on Saturday.",
+   "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -666,10 +714,10 @@
    "name": "Matias Maccelli",
    "team": "NYI",
    "status": "IR",
-   "injury": "lower body",
+   "injury": "lower-body",
    "ret": "",
-   "detail": "Maccelli (lower body) practiced in a non-contact jersey and is 2-4 weeks away.",
-   "date": "2026-11-04",
+   "detail": "Maccelli (lower-body) practiced in full on Saturday but will not return vs. New Jersey.",
+   "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -741,7 +789,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-05",
+   "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -1075,9 +1123,9 @@
    "team": "WPG",
    "status": "IR",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Morrissey (upper-body) is hopeful to return by the weekend.",
-   "date": "2026-11-02",
+   "ret": "In camp",
+   "detail": "Morrissey (upper-body) is a full participant in Winnipeg's practice on Saturday.",
+   "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
