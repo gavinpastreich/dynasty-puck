@@ -173,11 +173,11 @@
   {
    "name": "Kevin Bahl",
    "team": "CGY",
-   "status": "DTD",
-   "injury": "lower-body",
+   "status": "IR",
+   "injury": "lower body",
    "ret": "",
-   "detail": "Bahl (lower-body) is out vs. Anaheim on Friday.",
-   "date": "2026-11-06",
+   "detail": "Bahl (lower body) has been placed on IR.",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -439,9 +439,9 @@
    "team": "FLA",
    "status": "DTD",
    "injury": "undisclosed",
-   "ret": "Day-to-day",
-   "detail": "Lundell (undisclosed) is out vs. Washington and considered day-to-day.",
-   "date": "2026-11-07",
+   "ret": "",
+   "detail": "Lundell (undisclosed) will be a game-time decision on Sunday.",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -473,7 +473,7 @@
   {
    "name": "Sandis Vilmanis",
    "team": "FLA",
-   "status": "Game-time decision",
+   "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Vilmanis (undisclosed) left Saturday's game vs. Washington and will not return.",
@@ -765,7 +765,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-07",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -777,18 +777,6 @@
    "injury": "lower-body",
    "ret": "",
    "detail": "Ullmark (lower-body) has a chance to return vs. Utah on Saturday.",
-   "date": "2026-11-06",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Tyler Kleven",
-   "team": "OTT",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Kleven (illness) returned to practice on Friday.",
    "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
@@ -861,7 +849,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-06",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -873,7 +861,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-06",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1023,6 +1011,18 @@
    "holdout": false
   },
   {
+   "name": "Morgan Rielly",
+   "team": "TOR",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Rielly (lower-body) will return in Boston on Tuesday.",
+   "date": "2026-03-24",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "John Marino",
    "team": "UTA",
    "status": "IR",
@@ -1110,10 +1110,10 @@
    "name": "Josh Morrissey",
    "team": "WPG",
    "status": "IR",
-   "injury": "upper-body",
-   "ret": "In camp",
-   "detail": "Morrissey (upper-body) is a full participant in Winnipeg's practice on Saturday.",
-   "date": "2026-11-07",
+   "injury": "upper body",
+   "ret": "",
+   "detail": "Morrissey (upper body) will remain out of the lineup on Sunday.",
+   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false

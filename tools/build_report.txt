@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-08T11:56:21
+Dynasty Puck HQ build 2026-11-08T16:39:17
 Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -72,10 +72,10 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
-Fantrax sync (2026-11-08T11:56:23+00:00): 621 rostered; changes vs CSV: {'owner': 52, 'dropped': 20}
+Fantrax sync (2026-11-08T16:39:18+00:00): 621 rostered; changes vs CSV: {'owner': 52, 'dropped': 20}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1290 players (621 rostered)
-NHL id match: {'index': 1173, 'search': 114, None: 3}; unmatched 3 (rostered: 0)
+NHL id match: {'index': 1171, 'search': 116, None: 3}; unmatched 3 (rostered: 0)
 Landing pages: 1246/1246
 Cor translation (n=772): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 772/772 matched skaters
@@ -128,7 +128,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 828 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-11-08): 1211 line/PP/goalie tags; injuries matched 97/97
+Depth (Daily Faceoff, 2026-11-08): 1210 line/PP/goalie tags; injuries matched 97/97
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)
