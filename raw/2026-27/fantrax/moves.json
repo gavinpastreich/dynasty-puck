@@ -1031,5 +1031,56 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Kulich, Jiri"
+},
+{
+"d": "2026-11-09",
+"id": "03rew",
+"type": "add",
+"to": "nbracken",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "03rgv",
+"type": "drop",
+"from": "nebsnave",
+"ct": "FA",
+"sal": 1000000,
+"n": "Mikkola, Niko"
+},
+{
+"d": "2026-11-09",
+"id": "03yg4",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Girard, Samuel"
+},
+{
+"d": "2026-11-09",
+"id": "051uw",
+"type": "add",
+"to": "mertin",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "05oxs",
+"type": "drop",
+"from": "nebsnave",
+"ct": "BID",
+"sal": 2300000,
+"n": "Dobes, Jakub"
+},
+{
+"d": "2026-11-09",
+"id": "068a6",
+"type": "add",
+"to": "mertin",
+"ct": "FA",
+"sal": 1000000
 }
 ]

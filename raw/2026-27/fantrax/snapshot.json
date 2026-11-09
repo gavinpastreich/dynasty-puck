@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-09T13:54:16+00:00",
+"fetched": "2026-11-09T20:42:37+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1053,6 +1053,11 @@
 "pos": "RW",
 "t": "TOR"
 },
+"03rew": {
+"n": "Cernak, Erik",
+"pos": "D",
+"t": "TBL"
+},
 "03rf2": {
 "n": "Hintz, Roope",
 "pos": "C",
@@ -1087,11 +1092,6 @@
 "n": "Novak, Tommy",
 "pos": "C",
 "t": "PIT"
-},
-"03rgv": {
-"n": "Mikkola, Niko",
-"pos": "D",
-"t": "FLA"
 },
 "03rh3": {
 "n": "Kaprizov, Kirill",
@@ -1157,11 +1157,6 @@
 "n": "Sergachev, Mikhail",
 "pos": "D",
 "t": "UTA"
-},
-"03yg4": {
-"n": "Girard, Samuel",
-"pos": "D",
-"t": "PIT"
 },
 "03yh8": {
 "n": "Tippett, Owen",
@@ -1648,6 +1643,11 @@
 "pos": "RW",
 "t": "NJD"
 },
+"051uw": {
+"n": "Caulfield, Judd",
+"pos": "RW",
+"t": "ANA"
+},
 "051v4": {
 "n": "Silovs, Arturs",
 "pos": "G",
@@ -1887,11 +1887,6 @@
 "n": "Halliday, Stephen",
 "pos": "LW",
 "t": "OTT"
-},
-"05oxs": {
-"n": "Dobes, Jakub",
-"pos": "G",
-"t": "MTL"
 },
 "05r1b": {
 "n": "McGroarty, Rutger",
@@ -2537,6 +2532,11 @@
 "n": "Gajan, Adam",
 "pos": "G",
 "t": "CHI"
+},
+"068a6": {
+"n": "Pohlkamp, Eric",
+"pos": "D",
+"t": "SJS"
 },
 "068yu": {
 "n": "Augustine, Trey",
@@ -4394,7 +4394,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1100000,
-"slot": "A"
+"slot": "R"
 },
 "004cq": {
 "ct": "BID",
@@ -4800,7 +4800,7 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 2500000,
-"slot": "R"
+"slot": "IR"
 },
 "02np7": {
 "ct": "BID",
@@ -4849,7 +4849,7 @@
 "gm": "nbracken",
 "pos": "G",
 "sal": 8100000,
-"slot": "IR"
+"slot": "R"
 },
 "02un4": {
 "ct": "BID",
@@ -4968,7 +4968,7 @@
 "gm": "mertin",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "031og": {
 "ct": "BID",
@@ -5327,6 +5327,13 @@
 "sal": 1000000,
 "slot": "IR"
 },
+"03rew": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "03rf2": {
 "ct": "BID",
 "gm": "BHHC",
@@ -5373,13 +5380,6 @@
 "ct": "FA",
 "gm": "ROO",
 "pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
-"03rgv": {
-"ct": "FA",
-"gm": "nebsnave",
-"pos": "D",
 "sal": 1000000,
 "slot": "A"
 },
@@ -5472,13 +5472,6 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 8000000,
-"slot": "A"
-},
-"03yg4": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "D",
-"sal": 1000000,
 "slot": "A"
 },
 "03yh8": {
@@ -6151,13 +6144,20 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "R"
+"slot": "A"
 },
 "051um": {
 "ct": "MNR",
 "gm": "BHHC",
 "pos": "F",
 "sal": 0,
+"slot": "A"
+},
+"051uw": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "051v4": {
@@ -6263,7 +6263,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "059e5": {
 "ct": "RFA1",
@@ -6438,7 +6438,7 @@
 "gm": "nebsnave",
 "pos": "G",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "05mx8": {
 "ct": "FA",
@@ -6495,13 +6495,6 @@
 "pos": "F",
 "sal": 0,
 "slot": "M"
-},
-"05oxs": {
-"ct": "BID",
-"gm": "nebsnave",
-"pos": "G",
-"sal": 2300000,
-"slot": "A"
 },
 "05r1b": {
 "ct": "MNR",
@@ -6571,7 +6564,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "05ra8": {
 "ct": "MNR",
@@ -6676,7 +6669,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "05rji": {
 "ct": "MNR",
@@ -7390,7 +7383,7 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 1500000,
-"slot": "A"
+"slot": "R"
 },
 "067yd": {
 "ct": "MNR",
@@ -7404,6 +7397,13 @@
 "gm": "PuckLuck",
 "pos": "G",
 "sal": 0,
+"slot": "M"
+},
+"068a6": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "D",
+"sal": 1000000,
 "slot": "M"
 },
 "068yu": {
@@ -7446,7 +7446,7 @@
 "gm": "nebsnave",
 "pos": "D",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "06axb": {
 "ct": "MNR",
@@ -8904,10 +8904,13 @@
 },
 "waivers": [
 "02yjw",
+"03rgv",
 "03wpn",
+"03yg4",
 "04qza",
 "05m17",
 "05oxl",
+"05oxs",
 "060jl"
 ]
 }
