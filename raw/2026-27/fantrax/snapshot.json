@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-08T16:39:18+00:00",
+"fetched": "2026-11-09T13:54:16+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -487,6 +487,11 @@
 "n": "McNabb, Brayden",
 "pos": "D",
 "t": "VGK"
+},
+"01skr": {
+"n": "Granlund, Mikael",
+"pos": "C",
+"t": "ANA"
 },
 "01ud1": {
 "n": "Bobrovsky, Sergei",
@@ -767,11 +772,6 @@
 "n": "Barbashev, Ivan",
 "pos": "LW",
 "t": "VGK"
-},
-"02yjw": {
-"n": "Jarry, Tristan",
-"pos": "G",
-"t": "EDM"
 },
 "02zpp": {
 "n": "Arvidsson, Viktor",
@@ -1083,6 +1083,11 @@
 "pos": "G",
 "t": "MTL"
 },
+"03rfx": {
+"n": "Novak, Tommy",
+"pos": "C",
+"t": "PIT"
+},
 "03rgv": {
 "n": "Mikkola, Niko",
 "pos": "D",
@@ -1097,6 +1102,11 @@
 "n": "Vejmelka, Karel",
 "pos": "G",
 "t": "UTA"
+},
+"03rik": {
+"n": "Terry, Troy",
+"pos": "RW",
+"t": "ANA"
 },
 "03rip": {
 "n": "Marino, John",
@@ -1137,11 +1147,6 @@
 "n": "McAvoy, Charlie",
 "pos": "D",
 "t": "BOS"
-},
-"03wpn": {
-"n": "Howden, Brett",
-"pos": "LW",
-"t": "VGK"
 },
 "03y7l": {
 "n": "DiPietro, Michael",
@@ -1398,6 +1403,11 @@
 "pos": "G",
 "t": "WSH"
 },
+"04mjq": {
+"n": "Ellis, Colten",
+"pos": "G",
+"t": "BUF"
+},
 "04mq0": {
 "n": "Savoie, Matt",
 "pos": "C",
@@ -1472,11 +1482,6 @@
 "n": "Dostal, Lukas",
 "pos": "G",
 "t": "ANA"
-},
-"04qza": {
-"n": "Pospisil, Martin",
-"pos": "RW",
-"t": "CGY"
 },
 "04qzc": {
 "n": "Hofer, Joel",
@@ -1838,11 +1843,6 @@
 "pos": "G",
 "t": "NYR"
 },
-"05m17": {
-"n": "Nazar, Frank",
-"pos": "C",
-"t": "CHI"
-},
 "05mwh": {
 "n": "Levi, Devon",
 "pos": "G",
@@ -1887,11 +1887,6 @@
 "n": "Halliday, Stephen",
 "pos": "LW",
 "t": "OTT"
-},
-"05oxl": {
-"n": "Merilainen, Leevi",
-"pos": "G",
-"t": "VAN"
 },
 "05oxs": {
 "n": "Dobes, Jakub",
@@ -2183,6 +2178,11 @@
 "pos": "C",
 "t": "PHI"
 },
+"05x9t": {
+"n": "Kartye, Tye",
+"pos": "LW",
+"t": "NYR"
+},
 "05xcm": {
 "n": "Lekkerimaki, Jonathan",
 "pos": "RW",
@@ -2292,11 +2292,6 @@
 "n": "Nyman, Jani",
 "pos": "LW",
 "t": "SEA"
-},
-"060jl": {
-"n": "Kulich, Jiri",
-"pos": "C",
-"t": "BUF"
 },
 "060jm": {
 "n": "Duda, Artyom",
@@ -4455,7 +4450,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 3800000,
-"slot": "IR"
+"slot": "A"
 },
 "01c13": {
 "ct": "BID",
@@ -4476,7 +4471,7 @@
 "gm": "mcianfra",
 "pos": "G",
 "sal": 2800000,
-"slot": "IR"
+"slot": "A"
 },
 "01ex7": {
 "ct": "FA",
@@ -4541,6 +4536,13 @@
 "sal": 1000000,
 "slot": "A"
 },
+"01skr": {
+"ct": "FA",
+"gm": "BHHC",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "01ud1": {
 "ct": "BID",
 "gm": "M.M",
@@ -4574,7 +4576,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 1000000,
-"slot": "R"
+"slot": "A"
 },
 "01ztp": {
 "ct": "BID",
@@ -4933,13 +4935,6 @@
 "sal": 1000000,
 "slot": "A"
 },
-"02yjw": {
-"ct": "FA",
-"gm": "mcianfra",
-"pos": "G",
-"sal": 1000000,
-"slot": "A"
-},
 "02zpp": {
 "ct": "FA",
 "gm": "nebsnave",
@@ -5008,7 +5003,7 @@
 "gm": "SPG",
 "pos": "G",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "031v6": {
 "ct": "BID",
@@ -5148,7 +5143,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 8900000,
-"slot": "IR"
+"slot": "A"
 },
 "03e7p": {
 "ct": "BID",
@@ -5330,7 +5325,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "03rf2": {
 "ct": "BID",
@@ -5365,7 +5360,7 @@
 "gm": "SPG",
 "pos": "G",
 "sal": 4050000,
-"slot": "A"
+"slot": "R"
 },
 "03rfp": {
 "ct": "BID",
@@ -5373,6 +5368,13 @@
 "pos": "G",
 "sal": 4100000,
 "slot": "IR"
+},
+"03rfx": {
+"ct": "FA",
+"gm": "ROO",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
 },
 "03rgv": {
 "ct": "FA",
@@ -5394,6 +5396,13 @@
 "pos": "G",
 "sal": 3600000,
 "slot": "A"
+},
+"03rik": {
+"ct": "FA",
+"gm": "BHHC",
+"pos": "F",
+"sal": 1000000,
+"slot": "IR"
 },
 "03rip": {
 "ct": "FA",
@@ -5449,13 +5458,6 @@
 "gm": "CGN",
 "pos": "D",
 "sal": 9200000,
-"slot": "A"
-},
-"03wpn": {
-"ct": "FA",
-"gm": "SPG",
-"pos": "F",
-"sal": 1000000,
 "slot": "A"
 },
 "03y7l": {
@@ -5631,7 +5633,7 @@
 "gm": "mcianfra",
 "pos": "F",
 "sal": 2800000,
-"slot": "A"
+"slot": "R"
 },
 "04ad7": {
 "ct": "BID",
@@ -5815,6 +5817,13 @@
 "sal": 4700000,
 "slot": "A"
 },
+"04mjq": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "G",
+"sal": 1000000,
+"slot": "M"
+},
 "04mq0": {
 "ct": "ELC1",
 "gm": "BULLIES",
@@ -5919,13 +5928,6 @@
 "pos": "G",
 "sal": 4200000,
 "slot": "A"
-},
-"04qza": {
-"ct": "FA",
-"gm": "BHHC",
-"pos": "F",
-"sal": 1000000,
-"slot": "R"
 },
 "04qzc": {
 "ct": "BID",
@@ -6359,7 +6361,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 3000000,
-"slot": "A"
+"slot": "R"
 },
 "05k9b": {
 "ct": "MNR",
@@ -6415,7 +6417,7 @@
 "gm": "mcianfra",
 "pos": "F",
 "sal": 3550000,
-"slot": "R"
+"slot": "A"
 },
 "05lu8": {
 "ct": "MNR",
@@ -6430,13 +6432,6 @@
 "pos": "G",
 "sal": 0,
 "slot": "M"
-},
-"05m17": {
-"ct": "FA",
-"gm": "mcianfra",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
 },
 "05mwh": {
 "ct": "FA",
@@ -6499,13 +6494,6 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 0,
-"slot": "M"
-},
-"05oxl": {
-"ct": "FA",
-"gm": "mcianfra",
-"pos": "G",
-"sal": 1000000,
 "slot": "M"
 },
 "05oxs": {
@@ -6681,7 +6669,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "05rjh": {
 "ct": "MNR",
@@ -6914,6 +6902,13 @@
 "sal": 0,
 "slot": "M"
 },
+"05x9t": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
+},
 "05xcm": {
 "ct": "MNR",
 "gm": "mcianfra",
@@ -7066,13 +7061,6 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 0,
-"slot": "M"
-},
-"060jl": {
-"ct": "FA",
-"gm": "mcianfra",
-"pos": "F",
-"sal": 1000000,
 "slot": "M"
 },
 "060jm": {
@@ -7444,7 +7432,7 @@
 "gm": "ROO",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "IR"
 },
 "06age": {
 "ct": "BID",
@@ -8716,128 +8704,128 @@
 },
 "standings": [
 {
-"L": 22,
-"T": 9,
-"W": 44,
+"L": 26,
+"T": 11,
+"W": 53,
 "gb": 0.0,
-"pct": 0.647,
+"pct": 0.65,
 "rank": 1,
 "t": "nbracken"
 },
 {
-"L": 24,
-"T": 6,
-"W": 45,
-"gb": 0.5,
-"pct": 0.64,
+"L": 30,
+"T": 7,
+"W": 53,
+"gb": 2.0,
+"pct": 0.628,
 "rank": 2,
 "t": "mcianfra"
 },
 {
-"L": 24,
-"T": 7,
-"W": 44,
-"gb": 1.0,
-"pct": 0.633,
+"L": 32,
+"T": 8,
+"W": 50,
+"gb": 4.5,
+"pct": 0.6,
 "rank": 3,
 "t": "TommyG10"
 },
 {
-"L": 25,
-"T": 6,
-"W": 44,
-"gb": 1.5,
-"pct": 0.627,
+"L": 32,
+"T": 10,
+"W": 48,
+"gb": 5.5,
+"pct": 0.589,
 "rank": 4,
-"t": "BHHC"
-},
-{
-"L": 24,
-"T": 9,
-"W": 42,
-"gb": 2.0,
-"pct": 0.62,
-"rank": 5,
 "t": "nebsnave"
 },
 {
-"L": 33,
-"T": 6,
-"W": 36,
-"gb": 9.5,
-"pct": 0.52,
-"rank": 6,
-"t": "Wags8210"
+"L": 34,
+"T": 8,
+"W": 48,
+"gb": 6.5,
+"pct": 0.578,
+"rank": 5,
+"t": "BHHC"
 },
 {
-"L": 33,
-"T": 6,
-"W": 36,
-"gb": 9.5,
-"pct": 0.52,
-"rank": 7,
+"L": 39,
+"T": 7,
+"W": 44,
+"gb": 11.0,
+"pct": 0.528,
+"rank": 6,
 "t": "SPG"
 },
 {
-"L": 35,
-"T": 7,
-"W": 33,
-"gb": 12.0,
-"pct": 0.487,
-"rank": 8,
+"L": 40,
+"T": 8,
+"W": 42,
+"gb": 12.5,
+"pct": 0.511,
+"rank": 7,
 "t": "M.M"
 },
 {
-"L": 38,
-"T": 6,
-"W": 31,
-"gb": 14.5,
-"pct": 0.453,
+"L": 41,
+"T": 7,
+"W": 42,
+"gb": 13.0,
+"pct": 0.506,
+"rank": 8,
+"t": "Wags8210"
+},
+{
+"L": 45,
+"T": 7,
+"W": 38,
+"gb": 17.0,
+"pct": 0.461,
 "rank": 9,
 "t": "ROO"
 },
 {
-"L": 37,
-"T": 8,
-"W": 30,
-"gb": 14.5,
-"pct": 0.453,
-"rank": 10,
-"t": "PuckLuck"
-},
-{
-"L": 42,
-"T": 9,
-"W": 24,
-"gb": 20.0,
-"pct": 0.38,
-"rank": 11,
-"t": "btsay45"
-},
-{
-"L": 42,
+"L": 44,
 "T": 10,
-"W": 23,
-"gb": 20.5,
-"pct": 0.373,
-"rank": 12,
+"W": 36,
+"gb": 17.5,
+"pct": 0.456,
+"rank": 10,
 "t": "mertin"
 },
 {
-"L": 44,
-"T": 8,
-"W": 23,
+"L": 46,
+"T": 9,
+"W": 35,
+"gb": 19.0,
+"pct": 0.439,
+"rank": 11,
+"t": "PuckLuck"
+},
+{
+"L": 48,
+"T": 10,
+"W": 32,
 "gb": 21.5,
-"pct": 0.36,
+"pct": 0.411,
+"rank": 12,
+"t": "btsay45"
+},
+{
+"L": 51,
+"T": 9,
+"W": 30,
+"gb": 24.0,
+"pct": 0.383,
 "rank": 13,
 "t": "CGN"
 },
 {
-"L": 50,
+"L": 63,
 "T": 7,
-"W": 18,
-"gb": 27.0,
-"pct": 0.287,
+"W": 20,
+"gb": 35.0,
+"pct": 0.261,
 "rank": 14,
 "t": "BULLIES"
 }
@@ -8914,5 +8902,12 @@
 "name": "mcianfrani"
 }
 },
-"waivers": []
+"waivers": [
+"02yjw",
+"03wpn",
+"04qza",
+"05m17",
+"05oxl",
+"060jl"
+]
 }

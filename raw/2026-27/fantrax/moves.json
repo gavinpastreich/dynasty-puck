@@ -937,5 +937,99 @@
 "to": "CGN",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "01skr",
+"type": "add",
+"to": "BHHC",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "02yjw",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Jarry, Tristan"
+},
+{
+"d": "2026-11-09",
+"id": "03rfx",
+"type": "add",
+"to": "ROO",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "03rik",
+"type": "add",
+"to": "BHHC",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "03wpn",
+"type": "drop",
+"from": "SPG",
+"ct": "FA",
+"sal": 1000000,
+"n": "Howden, Brett"
+},
+{
+"d": "2026-11-09",
+"id": "04mjq",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "04qza",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "Pospisil, Martin"
+},
+{
+"d": "2026-11-09",
+"id": "05m17",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Nazar, Frank"
+},
+{
+"d": "2026-11-09",
+"id": "05oxl",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Merilainen, Leevi"
+},
+{
+"d": "2026-11-09",
+"id": "05x9t",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-09",
+"id": "060jl",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Kulich, Jiri"
 }
 ]

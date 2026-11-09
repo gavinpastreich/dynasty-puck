@@ -1,10 +1,12 @@
-Dynasty Puck HQ build 2026-11-08T16:39:17
-Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-11-09T13:54:15
+Fantrax: 11 roster changes since 2026-11-08T16:39:18+00:00
+Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
   > Jaccob Slavin: FA -> ROO (Fantrax)
   > Steven Stamkos: M.M -> ROO (Fantrax)
   > Sidney Crosby: M.M -> ROO (Fantrax)
+  > Tommy Novak: FA -> ROO (Fantrax)
   > Dustin Wolf: ROO -> M.M (Fantrax)
   > Chandler Stephenson: FA -> M.M (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
@@ -17,8 +19,9 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Logan Stanley: FA -> mertin (Fantrax)
   > William Carrier: FA -> mertin (Fantrax)
   > Jack Roslovic: FA -> BHHC (Fantrax)
+  > Troy Terry: FA -> BHHC (Fantrax)
   > Noah Warren: FA -> BHHC (Fantrax)
-  > Martin Pospisil: FA -> BHHC (Fantrax)
+  > Mikael Granlund: FA -> BHHC (Fantrax)
   > Connor Murphy: FA -> BHHC (Fantrax)
   > Cole Perfetti: FA -> BHHC (Fantrax)
   > Brayden McNabb: FA -> nebsnave (Fantrax)
@@ -39,9 +42,9 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Esa Lindell: FA -> CGN (Fantrax)
   > Joel Farabee: FA -> CGN (Fantrax)
   > Declan Carlile: FA -> CGN (Fantrax)
-  > Tristan Jarry: FA -> mcianfra (Fantrax)
-  > Leevi Merilainen: FA -> mcianfra (Fantrax)
   > Jared Spurgeon: FA -> mcianfra (Fantrax)
+  > Colten Ellis: FA -> mcianfra (Fantrax)
+  > Tye Kartye: FA -> mcianfra (Fantrax)
   > John Marino: FA -> mcianfra (Fantrax)
   > Artturi Lehkonen: FA -> mcianfra (Fantrax)
   > Barrett Hayton: FA -> Wags8210 (Fantrax)
@@ -60,21 +63,24 @@ Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   < Gabriel Landeskog: dropped by nebsnave since the CSV export (Fantrax)
   < Drew Doughty: dropped by ROO since the CSV export (Fantrax)
   < Colton Parayko: dropped by ROO since the CSV export (Fantrax)
+  < Frank Nazar: dropped by mcianfra since the CSV export (Fantrax)
   < Jonathan Marchessault: dropped by Wags8210 since the CSV export (Fantrax)
+  < Brett Howden: dropped by SPG since the CSV export (Fantrax)
   < Arber Xhekaj: dropped by CGN since the CSV export (Fantrax)
   < Noah Laba: dropped by ROO since the CSV export (Fantrax)
   < Frank Vatrano: dropped by BULLIES since the CSV export (Fantrax)
   < Michael Kesselring: dropped by BULLIES since the CSV export (Fantrax)
   < Matt Rempe: dropped by PuckLuck since the CSV export (Fantrax)
   < Alexander Romanov: dropped by nbracken since the CSV export (Fantrax)
+  < Jiri Kulich: dropped by mcianfra since the CSV export (Fantrax)
   < Victor Soderstrom: dropped by BULLIES since the CSV export (Fantrax)
   < Xavier Bourgault: dropped by BULLIES since the CSV export (Fantrax)
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
-Fantrax sync (2026-11-08T16:39:18+00:00): 621 rostered; changes vs CSV: {'owner': 52, 'dropped': 20}
+Fantrax sync (2026-11-09T13:54:16+00:00): 620 rostered; changes vs CSV: {'owner': 54, 'dropped': 23}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1290 players (621 rostered)
+Universe: 1290 players (620 rostered)
 NHL id match: {'index': 1171, 'search': 116, None: 3}; unmatched 3 (rostered: 0)
 Landing pages: 1246/1246
 Cor translation (n=772): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
@@ -88,16 +94,16 @@ Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
   ~ not on contract sheet; term 1 yr from the 2026 auction bands: Mason Marchment PuckLuck BID $1.00M
   ~ not on contract sheet; term 1 yr from the 2026 auction bands: Connor McMichael TommyG10 BID $1.00M
 Payroll check (2026-27): Fantrax salary vs contract sheet column
-  ROO       Fantrax $ 97.70M  sheet $ 99.90M  {'BID': 14, 'ELC1': 1, 'FA': 3, 'MNR': 26}   <- differs by -2.20M (Fantrax is current)  (IR relief $4.90M)
+  ROO       Fantrax $ 98.70M  sheet $ 99.90M  {'BID': 14, 'ELC1': 1, 'FA': 4, 'MNR': 26}   <- differs by -1.20M (Fantrax is current)  (IR relief $4.90M)
   TommyG10  Fantrax $100.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 3, 'RFA1': 2, 'MNR': 22}   <- differs by +3.50M (Fantrax is current)  (IR relief $6.50M)
   Wags8210  Fantrax $103.84M  sheet $ 98.84M  {'BID': 20, 'FA': 5, 'RFA1': 1, 'MNR': 20}   <- differs by +5.00M (Fantrax is current)  (IR relief $13.50M)
   BULLIES   Fantrax $ 86.85M  sheet $ 88.85M  {'BID': 16, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 2}   <- differs by -2.00M (Fantrax is current)  (IR relief $1.50M)
   nbracken  Fantrax $101.42M  sheet $ 99.42M  {'BID': 16, 'RFA1': 3, 'ELC1': 1, 'MNR': 22, 'FA': 2}   <- differs by +2.00M (Fantrax is current)  (IR relief $8.10M)
-  SPG       Fantrax $103.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 3, 'MNR': 21}   <- differs by +3.00M (Fantrax is current)  (IR relief $7.40M)
-  BHHC      Fantrax $101.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 5, 'ELC1': 1}   <- differs by +5.00M (Fantrax is current)  (IR relief $12.00M)
+  SPG       Fantrax $102.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 2, 'MNR': 21}   <- differs by +2.00M (Fantrax is current)  (IR relief $3.60M)
+  BHHC      Fantrax $102.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 6, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  (IR relief $5.10M)
   nebsnave  Fantrax $104.81M  sheet $ 98.81M  {'BID': 17, 'FA': 6, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +6.00M (Fantrax is current)  (IR relief $5.70M)
   M.M       Fantrax $106.82M  sheet $103.32M  {'BID': 18, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 18}   <- differs by +3.50M (Fantrax is current)  (IR relief $11.30M)
-  mcianfra  Fantrax $102.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 7, 'MNR': 22}   <- differs by +7.00M (Fantrax is current)  (IR relief $4.80M)
+  mcianfra  Fantrax $100.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 5, 'MNR': 22}   <- differs by +5.00M (Fantrax is current)  (IR relief $2.00M)
   btsay45   Fantrax $ 92.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 3, 'MNR': 18}   <- differs by -0.30M (Fantrax is current)
   PuckLuck  Fantrax $ 96.70M  sheet $ 89.50M  {'BID': 17, 'FA': 4, 'MNR': 22, 'RFA1': 2}   <- differs by +7.20M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $101.45M  sheet $ 94.95M  {'BID': 12, 'RFA1': 3, 'FA': 8, 'MNR': 22}   <- differs by +6.50M (Fantrax is current)  (IR relief $4.20M)
@@ -127,8 +133,8 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
   Tk   Fantrax 2025-26 == NHL: 934/934
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
-Season to date (20262027): 828 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Depth (Daily Faceoff, 2026-11-08): 1210 line/PP/goalie tags; injuries matched 97/97
+Season to date (20262027): 831 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
+Depth (Daily Faceoff, 2026-11-09): 1207 line/PP/goalie tags; injuries matched 98/98
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2028 R2 (PuckLuck): trade replay says PuckLuck, Fantrax says btsay45 (using Fantrax)
@@ -148,7 +154,7 @@ Trades: 2 new trade(s) picked up from the Fantrax nightly log
 2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
 2025 draft: a departed owner's picks credited to CGN (inferred from where their picks are today)
 2025 initial draft: 280 picks; matched to current player file: 279
-Leagues seen in player histories (top 40): NHL:8307, AHL:3661, OHL:851, NCAA:847, WHL:829, WC:719, WJC-20:687, USHL:625, QMJHL:410, WJC-18:403, KHL:326, SHL:307, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:174, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:111, U16 SM:107, J18 Allsvenskan:107, AMBHL:102, USHS-Prep:102, USHS-MN:101
+Leagues seen in player histories (top 40): NHL:8310, AHL:3661, OHL:851, NCAA:847, WHL:829, WC:719, WJC-20:687, USHL:625, QMJHL:410, WJC-18:403, KHL:326, SHL:307, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:174, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, J18 Region:112, VHL:111, U16 SM:107, J18 Allsvenskan:107, AMBHL:102, USHS-Prep:102, USHS-MN:101
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'AMBHL', 'USHS-Prep', 'USHS-MN', 'Russia U16', '4 Nations', 'TV-Pucken', 'Russia U17', 'WSI U12', 'USA-S15', 'Memorial Cup', 'WJAC-19', 'J18 Nationell', 'WSI U13', 'USA-S17', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'QMAAA', 'AMHL', 'U-17', 'USA-S16', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
