@@ -1769,8 +1769,8 @@
   },
   "TOR": {
    "team": "Toronto Maple Leafs",
-   "updated": "2026-11-09",
-   "source": "Last Game (2026-11-08)",
+   "updated": "2026-11-10",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
     "John Tavares",
@@ -1790,13 +1790,13 @@
     "Teddy Blueger",
     "Brandon Duhaime",
     "Jake McCabe",
-    "Troy Stecher"
+    "Chris Tanev"
    ],
    "pk2": [
     "Nick Paul",
     "Easton Cowan",
     "Oliver Ekman-Larsson",
-    "Darren Raddysh"
+    "Troy Stecher"
    ],
    "f1": [
     "Easton Cowan",
@@ -1824,11 +1824,11 @@
    ],
    "d2": [
     "Oliver Ekman-Larsson",
-    "Troy Stecher"
+    "Chris Tanev"
    ],
    "d3": [
     "Dakota Mermis",
-    "Cole McWard"
+    "Troy Stecher"
    ],
    "goalies": [
     "Sergei Bobrovsky",

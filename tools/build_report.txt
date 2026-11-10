@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-10T13:28:30
+Dynasty Puck HQ build 2026-11-10T14:40:36
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -79,7 +79,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-10T13:28:31+00:00): 620 rostered; changes vs CSV: {'owner': 55, 'dropped': 24}
+Fantrax sync (2026-11-10T14:40:37+00:00): 620 rostered; changes vs CSV: {'owner': 55, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1290 players (620 rostered)
 NHL id match: {'index': 1171, 'search': 116, None: 3}; unmatched 3 (rostered: 0)

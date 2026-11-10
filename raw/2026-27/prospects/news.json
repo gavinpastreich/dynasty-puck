@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-10T14:24+00:00",
+"fetched": "2026-11-10T14:43+00:00",
 "items": {
 "n8482100": [
 {
@@ -1145,7 +1145,7 @@
 {
 "n": 10,
 "name": "Second City Hockey (CHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.secondcityhockey.com/rss/index.xml"
 },
@@ -1381,7 +1381,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 11,
+"n": 0,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
