@@ -6,7 +6,7 @@ Everything below runs on GitHub. None of it uses Claude, and all of it is free o
 
 | Job | When | What it does |
 | --- | --- | --- |
-| **Nightly data refresh** (`.github/workflows/refresh-data.yml`) | 10:17 UTC daily, when you edit `config/` or `raw/`, or on demand | Syncs Fantrax (rosters, contracts, salaries, lineup slots, standings, future picks), pulls NHL stats/schedules, Daily Faceoff injuries and lines, rebuilds `data/`, commits, redeploys the site |
+| **Nightly data refresh** (`.github/workflows/refresh-data.yml`) | 10:17 UTC daily, when you edit `config/` or `raw/`, or on demand | Syncs Fantrax (rosters, contracts, salaries, lineup slots, standings, future picks), pulls NHL stats/schedules, Daily Faceoff injuries and lines, rebuilds `data/`, then collects prospect headlines (NHL.com plus the RSS feeds in `tools/research/feeds.json`) and re-scores every prospect for the Prospect Radar, commits, redeploys the site |
 | **Live scoreboard** (`.github/workflows/live-score.yml`) | One run covers a game night: it waits for the next puck drop (up to `live.waitHours`, default 9), re-scores every 3 minutes while NHL games are on, and stops when the night is over | Scores the week in progress (locked Fantrax lineups × NHL stats and live game feeds) and publishes one small file, `score.json`, to the `live-data` branch. The Live Scoreboard page reads it. Nothing is committed to `main` and the site isn't redeployed |
 | **Alerts** (`.github/workflows/alerts.yml`) | Whenever GitHub starts it (see the note on timing below); sends only when it's time, never twice | Lineup-lock reminders to each team's phone topic, a morning note when something happens to a team, the Monday email digest |
 | **Deploy** (`.github/workflows/deploy.yml`) | Every push to `main` | Publishes the site to GitHub Pages |
@@ -24,6 +24,11 @@ about once an hour while it is up, lock reminders go out on the first run inside
 "last call" in the final 90 minutes to teams whose lineup still has a problem), and the weekly email goes out on the
 first run on digest day after the configured hour (the mailbox's Sent folder is checked so it never goes twice).
 If a game night isn't being followed, start it by hand: **Actions** → **Live scoreboard** → **Run workflow**.
+
+**Prospect Radar.** The nightly job keeps two small files in `raw/2026-27/prospects/`: `news.json` (headlines from
+the last 45 days) and `history.json` (every prospect's model value each night). To follow another news site, add its
+RSS feed to `tools/research/feeds.json`; a feed that stops working is skipped and shown as unreachable under
+Prospect Radar → News wire → Sources. Nothing else needs upkeep.
 
 The `live-data` branch holds only `score.json` (one commit, overwritten each time). Leave it alone. To pause live
 updates in the offseason: **Actions** → **Live scoreboard** → **⋯** → **Disable workflow**; to turn them off for good,

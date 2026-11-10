@@ -11,7 +11,7 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
    current category score of every matchup plus the projected final (the rest of the week simulated).
 3. ~~Rest-of-season projections~~ **done 2026-09-26.** Blend each player's 2026-27 stats-to-date with the preseason projection
    (Marcel-style), so values react to breakouts and slumps.
-4. **Prospect stock watch.** Nightly AHL/CHL/NCAA/Europe lines for every MNR prospect (NHL landing + CHL HockeyTech
+4. **Prospect stock watch.** BUILT 2026-11-10 as the Prospect Radar (see docs/BUILD_NOTES.md). Original note:  Nightly AHL/CHL/NCAA/Europe lines for every MNR prospect (NHL landing + CHL HockeyTech
    feeds) with "heating up / cooling off" flags and NHLe trend.
 5. ~~2027 league-draft war room~~ **mock draft done 2026-09-26** (live draft-day board still open). Live board with the real pick order, best available by model and by consensus,
    a mock-draft simulator (AI teams pick by need + value), and pick-trade calculator during the draft.

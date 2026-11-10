@@ -96,4 +96,11 @@ as you ship them, and add any new ideas you come up with.
       (player and pick returns ranked by mutual fit), contender / bubble / not-contending status on Windows, the
       dashboard and every trade tool, Team Hub buy targets / sell candidates, FA page status note.
 - [x] Lineup check + lock alerts: IR cap warning, MNR graduation watch when promoting from the minors.
-- [ ] Next ideas: see docs/IDEAS.md (prospect stock watch; trade block when a storage option is chosen).
+- [x] Live Scoreboard that follows games (2026-11-10): locked lineups x NHL live feeds, re-scored every 3 minutes by
+      a GitHub job, week picker with every finished week, player lines, NHL game ticker.
+- [x] Category Insights (2026-11-10): team x category heat map (actual / projected / blend), category records,
+      all 13 trade partners with a two-way fit, per-category drill-down with the players who move it.
+- [x] Prospect Radar (2026-11-10): every prospect on one scale (rostered, unowned, 2026 picks not in Fantrax yet),
+      re-scored nightly; risers and fallers over 7 / 14 / 30 days and the season with the reason; hot hands; this
+      season's lines in every league; headlines from NHL.com and ~47 public feeds; a report per prospect.
+- [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

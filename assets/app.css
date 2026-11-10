@@ -288,3 +288,18 @@ select { max-width: 100%; text-overflow: ellipsis; }
 .catmx th a { color: inherit; }
 .catmx tr.mine td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
 .catchip { display: inline-block; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; margin: 1px 0; font-size: .78rem; white-space: nowrap; background: var(--card2); }
+/* Prospect Radar */
+.spark { vertical-align: middle; }
+.t td.nw { white-space: nowrap; }
+.mv { align-items: flex-start !important; }
+.mv .rk { min-width: 38px; color: var(--muted); font-variant-numeric: tabular-nums; font-size: .85rem; padding-top: 1px; }
+.mv .who { flex: 1; min-width: 0; }
+.mv .chg { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.newsitem { align-items: flex-start !important; }
+.newsitem .nd { min-width: 48px; padding-top: 2px; white-space: nowrap; }
+.newsitem > div { min-width: 0; overflow-wrap: anywhere; }
+.newsday { margin: 14px 0 2px; font-size: .9rem; color: var(--muted); }
+.newsday:first-child { margin-top: 0; }
+details.card > summary { cursor: pointer; }
+@media (max-width: 700px) { details.card ul { columns: 1 !important; } }
+

@@ -23,6 +23,13 @@ app (`fa-app/`) and Prospect app (`prospect-app/`). The full plan, verified data
 data sources are in **`docs/REBUILD_PLAN.md`**. Read it first. The feature checklist and "extra mile"
 list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
 
+In-season pieces added in November 2026 (how they work is in `docs/BUILD_NOTES.md`, upkeep in `docs/COMMISSIONER.md`):
+the live scoreboard (`tools/scoreboard.py`, the `live-data` branch), Category Insights, and the Prospect Radar
+(`tools/research/scrape_news.py`, `tools/prospect_radar.js`). If you change the prospect model in
+`assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
+Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`, and the
+browser runs in `tools/test/` (they need Playwright).
+
 ## League facts (quick reference)
 - 15 weekly H2H categories. Skaters: Pt-D, G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor.
   Goalies: W, GAA (lower wins), SV%, SHO. Season standings = total category W-L-T.

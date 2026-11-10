@@ -113,7 +113,7 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="max-width:' + W + 'px" role="img" aria-label="' + esc(o.title || 'line chart') + '">';
     ticks.forEach(function (t) { s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(t) + '" y2="' + py(t) + '"/><text class="axis" x="' + (padL - 6) + '" y="' + (py(t) + 4) + '" text-anchor="end">' + esc(o.tickFmt ? o.tickFmt(t) : U.fmt(t, Math.abs(hi - lo) < 3 ? 1 : 0)) + '</text>'; });
     var every = Math.max(1, Math.ceil(n / (o.maxLabels || 8)));
-    x.forEach(function (l, i) { if (i % every === 0 || i === n - 1) s += '<text class="axis" x="' + px(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + esc(l) + '</text>'; });
+    x.forEach(function (l, i) { if ((i % every === 0 && n - 1 - i >= every * 0.6) || i === n - 1) s += '<text class="axis" x="' + px(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + esc(l) + '</text>'; });
     series.forEach(function (sr, k) {
       var col = sr.color || C.SERIES[k], d = '', pen = false;
       sr.values.forEach(function (v, i) {

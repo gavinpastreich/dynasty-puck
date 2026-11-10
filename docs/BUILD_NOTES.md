@@ -147,3 +147,31 @@ Now E.nhleBlend: every line this season and last in a league with an NHLe factor
 (1 / 0.65) x 2 for NHL games; age multiplier min(3.3, 1 + 0.5 per year under 22) for non-NHL lines and
 min(2, 1 + 0.12 per year under 25) for NHL lines; shrunk to the draft-slot prior with K = 48 weighted games.
 Goalies: SV% vs approximate league averages (E.G_BASE), +45% / -30% at most, full weight at ~40 weighted games.
+
+Prospect Radar (2026-11-10):
+- Pool = E.prospectPool(): rostered MNR + unowned <= 22 with < 82 NHL GP + unowned 2026 NHL draft picks Fantrax hasn't
+  added (synthetic players from DP.prospects.draft2026, id/key 'n' + NHL id). "Stock" = dynastyOf(copy as MNR, rem = 1):
+  value as an MNR asset with the full season counted, so unowned players get a real number (their DV is ~0 because a
+  free agent's future seasons aren't controllable) and nothing drifts as weeks lock. Keys are 'n' + NHL id so history
+  survives Fantrax adding a player.
+- tools/research/scrape_news.py: NHL.com content API (forge-dapi.d3.nhle.com/v2/content/en-us/stories?tags.slug=
+  playerid-<id>; use `headline`, `title` is often a slug) + RSS feeds in tools/research/feeds.json. Feed match = full
+  name in the headline, or in the summary under a headline matching RELEVANT (prospects, roster moves, injuries...);
+  recaps and game threads are dropped. Google News RSS is not used (its feed terms restrict it to personal readers).
+  EliteProspects / EP Rinkside / PuckPedia / FCHockey / Oilers Nation return 403 to scripts: left alone.
+  Output raw/<season>/prospects/news.json (45 days, 12 per player).
+- tools/prospect_radar.js: runs the real engine in a vm context on data/league.js + data/prospects.js, appends tonight
+  to raw/<season>/prospects/history.json (v, g, s, c, e, k per player per date; nightly for 21 days, Mondays before),
+  writes data/radar.js (value + rank at every kept date; games/points/NHL GP/projection/model read at now, -7, -14,
+  -30 days and the first night). `--backfill` re-scores every nightly data commit in git with today's engine (needs a
+  full clone). When the prospect model changes: bump E.PROSPECT_MODEL, run --backfill, commit history.json;
+  check_radar.js fails in the nightly sanity step if the models differ.
+- Model changes made while building it: goalie "if he makes it" value was a flat 5 WAR (a top-ten starter; a goalie
+  picked 40th was worth ~8x a forward picked 40th). Now E.gPeak = mean of max(0, WAR) over the 64 NHL goalies with the
+  most projected GP (1.83 today). P(NHL) was a step at 40 NHL GP; now E.careerOdds ramps from the draft-slot rate to
+  85% at 40 GP (95% at 82 for skaters), so crossing game 40 is no longer a one-night spike.
+- Data fix: two 2026 picks (Kent Sauer #136, Ryan Brown #155) were name-matched to players born in the 1970s. The
+  build now rejects a landing page whose draft year isn't 2026 (or birth year < 2003 with no draft record). fix_text()
+  repairs team names the NHL API serves double-encoded (BÃ­lÃ­ TygÅ™i -> Bílí Tygři).
+- Mock Draft pool now takes unowned prospects from the Radar pool (stock > 0.15) instead of E.P free agents with
+  DV > 0.2, which was always empty.

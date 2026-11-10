@@ -38,9 +38,10 @@
     title: 'Prospects & MNR',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, tab = q.tab || 'grad', me = DP.state.team, ft = q.team || '';
+      if (tab === 'rank') { location.replace(U.hash('radar', null, { tab: 'rank', scope: ft })); return; }   // the rankings live on the Radar now
       var mnr = E.P.filter(function (p) { return p.gm && p.ct === 'MNR'; });
       var h = '<div class="page-head"><h1>Prospects & MNR</h1><p class="sub">' + mnr.length + ' rostered MNR players. <b>Graduation rule:</b> an MNR player graduates at <b>' + E.RULES.gradSkater + ' career NHL regular-season GP (skaters)</b> or <b>' + E.RULES.gradGoalie + ' (goalies)</b>, counted from the NHL API\'s career totals (all past seasons, not just last year, and goalies included). A player who graduates during the season <b>stays at $0 for the rest of it</b> and signs his ELC ($1.5M) in the offseason (or is dropped). If he is on your <b>active roster</b> when he graduates he has to stay there; if he is in the minors he can stay down, but once promoted he can\'t be sent back. One who hasn\'t graduated by the end of the regular season stays at $0. MNR players can be started in your weekly lineup.</p></div>';
-      h += tabs(tab, [['grad', 'Graduation tracker'], ['rank', 'Prospect rankings'], ['pipes', 'Team pipelines']]);
+      h += tabs(tab, [['grad', 'Graduation tracker'], ['pipes', 'Team pipelines'], ['rank', 'Rankings & news: Prospect Radar →']]);
       h += '<div id="pr-body"></div>';
       el.innerHTML = h;
       wireTabs(el, 'prospects', q);
@@ -63,25 +64,6 @@
             { k: 'prob', l: 'P(grad 26-27)', cls: 'num', v: function (x) { return x.g.prob; }, f: function (x) { return U.pct(x.g.prob); } },
             { k: 'war', l: 'WAR', cls: 'num', v: function (x) { return x.p.r ? x.p.WAR : null; }, f: function (x) { return x.p.r ? ui.warCell(x.p.WAR) : '–'; } },
             { k: 'dv', l: 'Dynasty', cls: 'num', v: function (x) { return x.p.DV; }, f: function (x) { return U.fmt(x.p.DV, 1); } }]
-        });
-      } else if (tab === 'rank') {
-        var pool = E.P.filter(function (p) { return (p.ct === 'MNR' && p.gm) || (!p.gm && (p.age || 30) <= 22 && (p.cgp || 0) < 82); });
-        body.innerHTML = '<p class="small muted">Rostered MNR players plus unowned prospects aged 22 or under. Value = dynasty value (prospect model: age-adjusted NHLe blended with a draft-slot prior, probability of becoming an NHL regular, ETA, then league contract rules). "Brings" = the categories he projects to help most.</p><div id="rk"></div>';
-        ui.table(U.qs('#rk', body), {
-          rows: pool, sort: 'dv', csv: 'prospect-rankings.csv', search: function (p) { return p.n + ' ' + (p.gm || 'FA') + ' ' + p.t; },
-          filters: [{ l: 'Owner', opts: [['', 'All'], ['__owned', 'Owned'], ['__fa', 'Unowned']].concat(DP.meta.gms.map(function (g) { return [g.code, g.code]; })), def: ft, fn: function (p, v) { return v === '__owned' ? !!p.gm : v === '__fa' ? !p.gm : p.gm === v; } },
-            { l: 'Pos', opts: [['', 'All'], ['F', 'F'], ['D', 'D'], ['G', 'G']], fn: function (p, v) { return p.slot === v; } }],
-          rowCls: function (p) { return p.gm === me && me ? 'mine' : ''; },
-          cols: [{ k: 'n', l: 'Player', v: function (p) { return p.n; }, f: function (p) { return ui.pcell(p); } }, { k: 'pos', l: 'Pos', v: function (p) { return p.slot; }, f: ui.pos }, { k: 'gm', l: 'Owner', v: function (p) { return p.gm || 'zz'; }, f: ui.owner },
-            { k: 'dr', l: 'Drafted', v: function (p) { return p.dr ? p.dr[2] : 999; }, f: function (p) { return p.dr ? p.dr[0] + ' #' + p.dr[2] : '<span class="faint">undrafted</span>'; }, asc: true },
-            { k: 'line', l: 'Best recent line', v: null, f: function (p) { var l = p._pros && p._pros.line; return l ? '<span class="small">' + esc(U.season(l.season) + ' ' + l.lg) + ' ' + l.pts + 'P/' + l.gp + 'GP</span>' : '–'; } },
-            { k: 'nhle', l: 'NHLe', cls: 'num', title: 'NHL-equivalent points per 82 games', v: function (p) { return p._pros && p._pros.line ? p._pros.line.pace : null; }, f: function (p) { return p._pros && p._pros.line ? U.fmt(p._pros.line.pace, 0) : '–'; } },
-            { k: 'peak', l: 'Peak pts/82', cls: 'num', v: function (p) { return p._pros ? p._pros.peakPts : null; }, f: function (p) { return p._pros && p._pros.peakPts ? U.fmt(p._pros.peakPts, 0) : '–'; } },
-            { k: 'pn', l: 'P(NHL)', cls: 'num', v: function (p) { return p._pros ? p._pros.p : null; }, f: function (p) { return p._pros ? U.pct(p._pros.p) : '–'; } },
-            { k: 'eta', l: 'ETA', cls: 'num', v: function (p) { return p._pros ? p._pros.eta : null; }, f: function (p) { return p._pros ? (p._pros.eta === 0 ? 'now' : E.YEARS[Math.min(6, p._pros.eta)].slice(2)) : '–'; } },
-            { k: 'cats', l: 'Brings', v: null, f: function (p) { return '<span class="small">' + DP.prospectCats(p).map(esc).join(', ') + '</span>'; } },
-            { k: 'cgp', l: 'Career GP', cls: 'num', v: function (p) { return p.cgp || 0; }, f: function (p) { return (p.cgp || 0) + '<span class="faint">/' + p.gradThr + '</span>'; } },
-            { k: 'dv', l: 'Value', cls: 'num', v: function (p) { return p.DV; }, f: function (p) { return '<b>' + U.fmt(p.DV, 1) + '</b>'; } }]
         });
       } else {
         var TS = DP.teamSummary();

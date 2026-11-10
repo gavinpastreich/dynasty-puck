@@ -118,8 +118,10 @@
       seen[key] = 1;
       out.push({ key: 'b' + r.rank, name: r.name, pos: /G/.test(r.pos || '') ? 'G' : /D/.test(r.pos || '') && String(r.pos).length <= 2 ? 'D' : 'F', team: (r.team || '') + (r.league ? ' (' + r.league + ')' : ''), src: '2027 NHL class #' + r.rank, v: c[Math.min(c.length - 1, r.rank - 1)] * 0.97 + 0.3 * Math.pow(0.97, r.rank) });  // consensus rank breaks the curve's flat steps
     });
-    E.P.filter(function (p) { return !p.gm && (p.age || 30) < 24 && p.DV > 0.2 && !seen[p.n.toLowerCase()]; }).forEach(function (p) {
-      out.push({ key: p.id, name: p.n, pos: p.slot, team: p.t, src: 'unowned prospect', v: p.DV, p: p });
+    // unowned prospects, valued as an MNR asset (the same scale as the Prospect Radar): players already in the Fantrax
+    // pool and 2026 NHL draft picks Fantrax hasn't added yet
+    E.prospectPool().filter(function (x) { return !x.owned && x.stock > 0.15 && !seen[x.p.n.toLowerCase()]; }).forEach(function (x) {
+      out.push({ key: x.key, name: x.p.n, pos: x.p.slot, team: x.p.t, src: x.inPool ? 'unowned prospect' : '2026 NHL draft #' + x.p.dr[2] + ' (not in Fantrax yet)', v: x.stock, p: x.inPool ? x.p : null, radar: x.key });
     });
     return out.sort(function (a, b) { return b.v - a.v; });
   }
@@ -167,7 +169,7 @@
       var au = U.qs('#mk-auto', el); if (au) au.addEventListener('click', function () { st.auto = true; mockRun(st); DP.render(); });
       var avail = st.pool.filter(function (x) { return !st.taken[x.key]; }).slice(0, 40);
       U.qs('#mk-avail', el).innerHTML = onClock ? '<div class="tbl-wrap" style="max-height:520px;overflow:auto"><table class="t"><thead><tr><th>#</th><th>Player</th><th>Pos</th><th>Source</th><th class="num">Value</th><th></th></tr></thead><tbody>' + avail.map(function (x, i) {
-        return '<tr><td class="num">' + (i + 1) + '</td><td>' + (x.p ? ui.plink(x.p) : '<b>' + esc(x.name) + '</b>') + '<br><span class="faint small">' + esc(x.team || '') + '</span></td><td>' + esc(x.pos) + '</td><td class="small muted">' + esc(x.src) + '</td><td class="num">' + U.fmt(x.v, 1) + '</td><td>' + (onClock.owner === me ? '<button class="btn sm primary" data-draft="' + esc(x.key) + '">Draft</button>' : '') + '</td></tr>';
+        return '<tr><td class="num">' + (i + 1) + '</td><td>' + (x.p ? ui.plink(x.p) : x.radar ? '<a class="plink" href="' + U.hash('radar', null, { p: x.radar }) + '">' + esc(x.name) + '</a>' : '<b>' + esc(x.name) + '</b>') + '<br><span class="faint small">' + esc(x.team || '') + '</span></td><td>' + esc(x.pos) + '</td><td class="small muted">' + esc(x.src) + '</td><td class="num">' + U.fmt(x.v, 1) + '</td><td>' + (onClock.owner === me ? '<button class="btn sm primary" data-draft="' + esc(x.key) + '">Draft</button>' : '') + '</td></tr>';
       }).join('') + '</tbody></table></div>' : '<p class="small">Your haul: ' + st.log.filter(function (l) { return l.slot.owner === me; }).map(function (l) { return esc(l.x.name); }).join(', ') + '</p>';
       var mineN = 0;
       U.qs('#mk-log', el).innerHTML = '<div class="tbl-wrap" style="max-height:560px;overflow:auto"><table class="t"><thead><tr><th class="num">Pick</th><th>Team</th><th>Player</th><th class="num">Value</th></tr></thead><tbody>' + st.order.map(function (o, i) {

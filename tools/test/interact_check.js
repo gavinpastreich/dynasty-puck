@@ -5,7 +5,7 @@ const path = require('path');
 const { chromium } = require(process.env.PW_PATH || 'playwright');
 const ROOT = path.join(__dirname, '..', '..');
 const URL = 'file://' + path.join(ROOT, 'index.html') + '#/';
-const ROUTES = process.argv.slice(2).length ? process.argv.slice(2) : ['home', 'team/ROO', 'team/SPG', 'players', 'fa', 'compare', 'leaders', 'matchup', 'season', 'trade', 'trade?t=SPG,CGN', 'finder', 'finder?mode=get', 'signing', 'cap', 'offseason', 'prospects', 'draft', 'schedule', 'injuries', 'rules', 'data', 'history', 'picks', 'values', 'windows', 'preview', 'standings', 'cats', 'alerts', 'live', 'live?w=2', 'auction', 'mock', 'awards', 'player/*04lc0*'];
+const ROUTES = process.argv.slice(2).length ? process.argv.slice(2) : ['home', 'team/ROO', 'team/SPG', 'players', 'fa', 'compare', 'leaders', 'matchup', 'season', 'trade', 'trade?t=SPG,CGN', 'finder', 'finder?mode=get', 'signing', 'cap', 'offseason', 'prospects', 'draft', 'schedule', 'injuries', 'rules', 'data', 'history', 'picks', 'values', 'windows', 'preview', 'standings', 'radar', 'radar?tab=rank', 'radar?tab=news', 'radar?p=n8484170', 'cats', 'alerts', 'live', 'live?w=2', 'auction', 'mock', 'awards', 'player/*04lc0*'];
 const JUNK = /\bNaN\b|\bundefined\b|\[object Object\]|\bInfinity\b/;
 const SKIP_BTN = /test|send|subscribe|unsubscribe|copy|download|csv|reset all|clear all|delete|📥|email/i; // network, clipboard, destructive
 

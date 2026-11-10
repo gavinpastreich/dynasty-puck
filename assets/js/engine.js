@@ -577,16 +577,24 @@
     for (var i = 0; i < QZ.length; i++) s += QW[i] * Math.max(0, fit.a + fit.b * m * Math.exp(sig * QZ[i] - sig * sig / 2));
     return s / QS;
   };
+  // chance of an NHL career: the draft-slot rate, rising with every NHL game played to 85% at 40 games (and on to 95%
+  // at 82 for skaters). It used to jump at game 40, which showed up as a one-night spike in a prospect's value.
+  E.careerOdds = function (ov, cgp, goalie) {
+    var pr = E.pNHL(ov), g = cgp || 0;
+    if (pr < 0.85) pr += (0.85 - pr) * Math.min(1, g / 40);
+    if (!goalie && g > 40) pr = Math.max(pr, 0.85 + 0.10 * Math.min(1, (g - 40) / 42));
+    return pr;
+  };
   // prospect model: expected peak WAR (per season) and ETA (seasons from 2026-27)
   E.prospect = function (p) {
-    var ov = p.dr ? p.dr[2] : null, pr = E.pNHL(ov), age = p.age || 20;
+    var ov = p.dr ? p.dr[2] : null, pr = E.careerOdds(ov, p.cgp, p.slot === 'G'), age = p.age || 20;
     if (p.slot === 'G') {
       // save percentage against the league's usual level, this season and last, weighted by games:
       // up to +45% for a goalie well above his league, down to -30% for one well below (full weight at ~40 games)
       var gf = E.goalieForm(p.car), bonus = gf ? 1 + 0.3 * gf.score * gf.rel : 1;
-      if ((p.cgp || 0) >= 40) pr = Math.max(pr, 0.85);
       var etaG = p.projGP >= 30 ? 0 : Math.max(1, Math.round(23.5 - age));
-      return { peak: 5 * pr * bonus, peakRaw: 5 * bonus, eta: etaG, p: pr, line: null, form: gf, basis: 'draft slot + SV% vs league (goalies)' };
+      var base = E.gPeak || 1.8;   // what an NHL goalie job is worth in our categories (set from the projections)
+      return { peak: base * pr * bonus, peakRaw: base * bonus, eta: etaG, p: pr, line: null, form: gf, basis: 'draft slot + SV% vs league (goalies)' };
     }
     var line = E.nhle(p.car, p.dob), fit = E.ptsWar[p.slot] || E.ptsWar.F;
     var prior = E.slotPriorPts(ov, p.slot), peakPts = prior, basis = 'draft slot';
@@ -601,7 +609,6 @@
         var nhlPace = (last[2] + last[3]) / last[1] * 82 * Math.min(2, 1 + 0.12 * Math.max(0, 25 - age));
         peakPts = Math.max(peakPts, 0.5 * peakPts + 0.5 * nhlPace); basis += ' + NHL pace';
       }
-      pr = Math.max(pr, (p.cgp || 0) >= 82 ? 0.95 : 0.85);
     }
     // expected WAR over an uncertain outcome: peak pts ~ lognormal(mean peakPts, sigma), WAR = max(0, a + b*pts)
     var peakWar = E.expWarFromPts(fit, peakPts, (p.cgp || 0) >= 82 ? 0.22 : 0.38);
@@ -807,40 +814,101 @@
     return null;
   };
 
+  // one player's 7-season value: projection, contract path and value per season. rem = share of 2026-27 still to play.
+  function dynastyOf(p, rem) {
+    var d = E.DISCOUNT, lam = E.LAMBDA, minS = E.RULES.minSalary;
+    var pr = E.projectYears(p);
+    p._pros = pr.pros;
+    p.yWar = pr.war;
+    var cp = E.costPath(p, pr.war);
+    p.yCost = cp.cost; p.yStatus = cp.status; p.grad = cp.grad; p.yDec = cp.dec;
+    var dv = 0, sur = 0, tal = 0;
+    p.yVal = [];
+    for (var y = 0; y < 7; y++) {
+      var c = cp.cost[y], w = Math.max(0, pr.war[y]), val = 0;
+      if (c === null && p.gm) { p.yVal.push(0); continue; }           // UFA: rights end
+      if (!p.gm && y > 0) { p.yVal.push(0); continue; }             // free agent: only this season is controllable
+      if (c === null) c = minS;                                     // free agent: signable near the minimum
+      var cap = Math.max(0, c - minS) / E.dpwY(y);                  // cap cost in win units (a $ buys less as the cap rises)
+      val = w - lam * cap;
+      if (/^(RFA|ELC ext)/.test(cp.status[y]) && val < 0) val = 0;   // team simply declines the RFA
+      if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {  // can drop: 50% dead cap (free for FA contracts)
+        val = Math.max(val, E.deadCapCounts(p) ? -lam * E.RULES.deadCapPct * c / E.dpwY(y) : 0);
+      }
+      p.yVal.push(val);
+      dv += Math.pow(d, y) * val * (y === 0 ? rem : 1);   // 2026-27: only the part of the season still to play
+      tal += Math.pow(d, y) * w;
+      sur += Math.pow(d, y) * (w * E.dpwY(y) + minS - (c || 0));
+    }
+    p.DV = dv; p.talent = tal; p.dSurplus = sur;
+    p.pv = pr.pros ? pr.pros.peak : 0;
+    return p;
+  }
+  // What a goalie prospect is worth if he makes it: the average value (wins above replacement, floored at 0) of the
+  // 64 NHL goalies projected for the most games this season, two per team. A flat "5 WAR" used to stand here, which is
+  // a top-ten starter; it rated a goalie drafted 40th about eight times a forward drafted 40th.
+  function fitGoaliePeak() {
+    var g = E.P.filter(function (p) { return p.G && p.r && p.projGP > 0; }).sort(function (a, b) { return b.projGP - a.projGP; }).slice(0, 64);
+    E.gPeak = g.length >= 20 ? sum(g.map(function (p) { return Math.max(0, p.WAR); })) / g.length : 1.8;
+  }
   function computeDynasty() {
     fitPtsToWar();
-    var d = E.DISCOUNT, lam = E.LAMBDA, dpw = E.dollarPerWAR, minS = E.RULES.minSalary, rem = E.remFrac();
-    E.P.forEach(function (p) {
-      var pr = E.projectYears(p);
-      p._pros = pr.pros;
-      p.yWar = pr.war;
-      var cp = E.costPath(p, pr.war);
-      p.yCost = cp.cost; p.yStatus = cp.status; p.grad = cp.grad; p.yDec = cp.dec;
-      var dv = 0, sur = 0, tal = 0;
-      p.yVal = [];
-      for (var y = 0; y < 7; y++) {
-        var c = cp.cost[y], w = Math.max(0, pr.war[y]), val = 0;
-        if (c === null && p.gm) { p.yVal.push(0); continue; }           // UFA: rights end
-        if (!p.gm && y > 0) { p.yVal.push(0); continue; }             // free agent: only this season is controllable
-        if (c === null) c = minS;                                     // free agent: signable near the minimum
-        var cap = Math.max(0, c - minS) / E.dpwY(y);                  // cap cost in win units (a $ buys less as the cap rises)
-        val = w - lam * cap;
-        if (/^(RFA|ELC ext)/.test(cp.status[y]) && val < 0) val = 0;   // team simply declines the RFA
-        if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {  // can drop: 50% dead cap (free for FA contracts)
-          val = Math.max(val, E.deadCapCounts(p) ? -lam * E.RULES.deadCapPct * c / E.dpwY(y) : 0);
-        }
-        p.yVal.push(val);
-        dv += Math.pow(d, y) * val * (y === 0 ? rem : 1);   // 2026-27: only the part of the season still to play
-        tal += Math.pow(d, y) * w;
-        sur += Math.pow(d, y) * (w * E.dpwY(y) + minS - (c || 0));
-      }
-      p.DV = dv; p.talent = tal; p.dSurplus = sur;
-      p.pv = pr.pros ? pr.pros.peak : 0;
-    });
+    fitGoaliePeak();
+    var rem = E.remFrac();
+    E.P.forEach(function (p) { dynastyOf(p, rem); });
     // prospect value rank among MNR
     var m = E.P.filter(function (p) { return p.ct === 'MNR' || (!p.gm && (p.age || 30) < 22); }).sort(function (a, b) { return b.DV - a.DV; });
     m.forEach(function (p, i) { p.prRank = i + 1; });
+    E._pool = null;
   }
+
+  // ---------------------------------------------------------------- Prospect Radar pool
+  // Bump when the prospect model changes, then rebuild the rank history: node tools/prospect_radar.js --backfill
+  E.PROSPECT_MODEL = 3;
+  // Every prospect on one scale, whoever holds him: his dynasty value as an MNR asset with a full 2026-27 counted
+  // ("stock"). Rostered MNR players, unowned players aged 22 or under in the Fantrax pool, and 2026 NHL draft picks
+  // Fantrax hasn't added yet (valued as if a team held them on an MNR deal). Counting the full season keeps the
+  // number from drifting down as weeks lock, so a move in it is new information: games, scoring, call-ups.
+  E.prospectPool = function () {
+    if (E._pool) return E._pool;
+    var out = [], seenNhl = {};
+    var asMnr = function (p) {
+      var q = Object.assign({}, p, { gm: p.gm || '~', ct: 'MNR' });
+      dynastyOf(q, 1);
+      return q;
+    };
+    E.P.forEach(function (p) {
+      var owned = !!(p.gm && p.ct === 'MNR');
+      if (!owned && !(!p.gm && (p.age || 30) <= 22 && (p.cgp || 0) < 82)) return;
+      var q = asMnr(p);
+      if (p.nhl) seenNhl[p.nhl] = 1;
+      out.push({ id: p.id, key: p.nhl ? 'n' + p.nhl : p.id, p: p, owned: owned, inPool: true, stock: q.DV, pros: q._pros, grad: q.grad, yWar: q.yWar });
+    });
+    ((DP.prospects || {}).draft2026 || []).forEach(function (r) {
+      if (r.gm || r.fid || !r.nhl || seenNhl[r.nhl]) return;
+      var nhlGp = 0;
+      (r.car || []).forEach(function (s) { if (s[1] === 'NHL') nhlGp += s[3] || 0; });
+      var p = { id: 'n' + r.nhl, n: r.n, t: r.team, pos: r.pos === 'G' ? 'G' : r.pos === 'D' ? 'D' : 'F', gm: null, ct: 'FA', sal: 0, dob: r.dob, sh: r.sh, ht: r.ht, wt: r.wt, nat: r.nat,
+        nhl: r.nhl, dr: [2026, r.rd, r.ov], car: r.car || [], cgp: nhlGp, p26: [0], notInFantrax: true };
+      prepPlayer(p);
+      if (!p.age) p.age = 18.5;
+      var q = asMnr(p);
+      p._pros = q._pros; p.DV = 0;
+      out.push({ id: p.id, key: p.id, p: p, owned: false, inPool: false, stock: q.DV, pros: q._pros, grad: q.grad, yWar: q.yWar });
+    });
+    out.sort(function (a, b) { return b.stock - a.stock; });
+    out.forEach(function (x, i) { x.rank = i + 1; });
+    var by = {}; out.forEach(function (x) { by[x.key] = x; by[x.id] = x; });   // key = NHL id when there is one (stable if Fantrax adds him later)
+    out.by = by;
+    return (E._pool = out);
+  };
+  // this season's lines for a prospect: skaters [lg, team, gp, g, a, pts, pim], goalies [lg, team, gp, w, gaa, sv, so];
+  // league-play lines only (the leagues the model can read), busiest first
+  E.seasonLines = function (p, back) {
+    var id = DP.meta.seasonId - (back || 0) * 10001;
+    return (p.car || []).filter(function (s) { return s[0] === id && s[3] > 0 && (p.G || p.pos === 'G' ? E.G_BASE[s[1]] : E.nhleFactor(s[1]) !== null && E.nhleFactor(s[1]) !== undefined); })
+      .map(function (s) { return s.slice(1); }).sort(function (a, b) { return b[2] - a[2]; });
+  };
   E.recomputeDynasty = computeDynasty;
 
   // ---------------------------------------------------------------- MNR graduation (this season)

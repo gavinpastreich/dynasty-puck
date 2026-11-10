@@ -174,7 +174,7 @@
       var p = DP.E.byId[h.arg];
       if (!p) { el.innerHTML = '<div class="callout bad">Player not found.</div>'; return; }
       document.title = p.n + ' · Dynasty Puck HQ';
-      el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
+      el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (DP.radarBrief ? DP.radarBrief(p) : '') + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
     }
   };

@@ -113,6 +113,18 @@ NICK = {
 }
 
 
+def fix_text(s):
+    """Repair text the NHL API serves double-encoded (UTF-8 bytes read as CP1252): 'BÃ\xadlÃ\xad TygÅ\u2122i' -> 'Bílí Tygři'."""
+    if not s or not re.search("[\u00c3\u00c5\u00c4\u00c2]", s):
+        return s
+    for enc in ("cp1252", "latin-1"):
+        try:
+            return s.encode(enc).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+    return s
+
+
 def strip_accents(s):
     return unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode()
 
@@ -1211,7 +1223,7 @@ def main():
             leagues[lg] += 1
             if not young and lg != "NHL":
                 continue
-            team = (s.get("teamName") or {}).get("default", "")
+            team = fix_text((s.get("teamName") or {}).get("default", ""))
             if p["pos"] == "G":
                 car.append([s["season"], lg, team, s.get("gamesPlayed", 0), s.get("wins") or 0,
                             round(s.get("goalsAgainstAvg") or 0, 2), round(s.get("savePctg") or 0, 3), s.get("shutouts") or 0])
@@ -1470,11 +1482,21 @@ def build_prospects(players, act27, hist26, bios, leagues):
                 break
     lands = API.get_many([(f"{API.WEB}/player/{r['nhl']}/landing", f"landing_{r['nhl']}", 14) for r in picks if r.get("nhl")], workers=10)
     it = iter(lands)
+    wrong = []
     for rec in picks:
         if not rec.get("nhl"):
             continue
         dd = next(it)
         if not dd:
+            continue
+        # a name search can land on an older player with the same name: the page must be a 2026 draftee's
+        # (drafted in 2026, or no draft record and born 2003 or later)
+        dyear = (dd.get("draftDetails") or {}).get("year")
+        born = int((dd.get("birthDate") or "0")[:4] or 0)
+        if (dyear and dyear != 2026) or (not dyear and born and born < 2003) or (born and born < 2000):
+            wrong.append(f"{rec['n']} (#{rec['ov']}) matched NHL id {rec['nhl']}, born {dd.get('birthDate')}, drafted {dyear}")
+            if "fid" not in rec:
+                del rec["nhl"]
             continue
         rec["dob"] = dd.get("birthDate")
         rec["sh"] = dd.get("shootsCatches")
@@ -1482,17 +1504,20 @@ def build_prospects(players, act27, hist26, bios, leagues):
         for s in dd.get("seasonTotals", []):
             if s.get("gameTypeId") != 2:
                 continue
+            team = fix_text((s.get("teamName") or {}).get("default", ""))
             if rec["pos"] == "G":
-                car.append([s["season"], s.get("leagueAbbrev"), (s.get("teamName") or {}).get("default", ""),
+                car.append([s["season"], s.get("leagueAbbrev"), team,
                             s.get("gamesPlayed", 0), s.get("wins") or 0, round(s.get("goalsAgainstAvg") or 0, 2),
                             round(s.get("savePctg") or 0, 3), s.get("shutouts") or 0])
             else:
-                car.append([s["season"], s.get("leagueAbbrev"), (s.get("teamName") or {}).get("default", ""),
+                car.append([s["season"], s.get("leagueAbbrev"), team,
                             s.get("gamesPlayed", 0), s.get("goals") or 0, s.get("assists") or 0, s.get("points") or 0,
                             s.get("pim") or 0])
         rec["car"] = car
     log(f"2026 draft: {len(picks)} picks, {sum(1 for r in picks if r.get('pre'))} with scouting notes, "
         f"{sum(1 for r in picks if r.get('gm'))} on league rosters, {sum(1 for r in picks if r.get('car'))} with histories")
+    for w in wrong:
+        log(f"  ~ 2026 draft: dropped a wrong name match: {w}")
     missing_notes = [n for n in notes if not any(n in name_keys(r["n"]) for r in picks)]
     if missing_notes:
         log(f"  ~ scouted pre-draft but not drafted / name mismatch: {missing_notes}")
