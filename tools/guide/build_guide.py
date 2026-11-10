@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the league guide PDF (assets/Dynasty-Puck-HQ-Guide.pdf).
 
-1. Screenshots:  PW_PATH=... node tools/guide/shoot.js <workdir>/shots        (the 'live' one needs a demo build, see shoot.js)
+1. Screenshots:  PW_PATH=... node tools/guide/shoot.js <workdir>/shots
 2. This script:  python3 tools/guide/build_guide.py <workdir> [--font path/to/Inter-latin.woff2]
    - downsizes the screenshots, draws the QR code, fills tools/guide/guide.html, prints it with Chromium (pdf.js)
 Needs: Pillow, segno, Node + Playwright.

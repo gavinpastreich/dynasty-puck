@@ -175,3 +175,18 @@ Prospect Radar (2026-11-10):
   repairs team names the NHL API serves double-encoded (BÃ­lÃ­ TygÅ™i -> Bílí Tygři).
 - Mock Draft pool now takes unowned prospects from the Radar pool (stock > 0.15) instead of E.P free agents with
   DV > 0.2, which was always empty.
+
+In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
+- E.injuredOut(p, wi) compared the absolute week index to "weeks out" (wi < 2 for week-to-week), i.e. it counted from
+  opening night. From week 3 on only season-long injuries were ever treated as out, so the lineup check, lock
+  reminders and lineup watch suggested IR players as starts and never flagged an injured starter. Now counted from
+  E.lockWeek(): a player on tonight's list misses the week in progress and the next `weeks` lineup weeks.
+- E.graduation(p) added expected games from week 1 against the games still needed, so mid-season it showed
+  graduation weeks that had already passed ("73/84 GP, ~wk 4" in week 7). Now it walks the NHL games on or after the
+  data build day (E.dataDay()); the probability uses the games left.
+- Weekly Preview for the week in progress now links to the Live Scoreboard and to the week being set (where the
+  lineup watch lives). check_trade.js covers all three.
+- Guide PDF (tools/guide): 15 pages, new Category Insights and Prospect Radar pages, the Live Scoreboard shot is the
+  real week in progress (the demo hack in shoot.js is gone). Needs Pillow built for the running Python
+  (python3 -m pip install --force-reinstall pillow), segno, and an Inter woff2 (npm pack @fontsource-variable/inter).
+

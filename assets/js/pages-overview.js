@@ -254,6 +254,7 @@
       h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
       h += '<div class="card"><h2>Cap by season</h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
+      h += DP.radarTeamCard ? DP.radarTeamCard(t) : '';
       h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes every week still to lock with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
       h += '<div class="card"><h2>Lineup usage by week</h2><div class="hint">How often each player makes the optimal weekly lineup (24 regular-season weeks). Part-time starters are your streaming and trade chips.</div><div id="t-usage"></div></div>';
       h += '<div class="card span2"><h2>Full roster</h2><div id="t-roster"></div></div>';
@@ -298,7 +299,7 @@
         '<h3 style="margin-top:12px">Top MNR prospects</h3><ul class="list-plain">' + pipe.slice(0, 8).map(function (p) {
           var g = E.graduation(p);
           return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + (p.cgp || 0) + '/' + p.gradThr + ' GP · ' + (g.week !== null ? 'grad ~wk ' + (g.week + 1) : g.status) + '</span></span><span class="num" style="margin-left:auto">DV <b>' + U.fmt(p.DV, 1) + '</b></span></li>';
-        }).join('') + '</ul><p><a href="' + U.hash('prospects', null, { team: t }) + '">All ' + pipe.length + ' MNR players →</a></p>';
+        }).join('') + '</ul><p><a href="' + U.hash('prospects', null, { team: t }) + '">Graduation tracker (' + pipe.length + ' MNR) →</a> · <a href="' + U.hash('radar', null, { tab: 'rank', scope: t }) + '">Prospect Radar →</a></p>';
 
       // full roster table
       DP.rosterTable(U.qs('#t-roster', el), ros, { csv: 'roster-' + t + '.csv' });

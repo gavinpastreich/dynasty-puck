@@ -268,7 +268,11 @@
     var st = p.inj[0], ret = p.inj[2], hold = p.inj[4];
     if (!/OUT|IR|Injured/i.test(st) && !hold && !/Week-to-week|Months|Season|Misses opener/.test(ret)) return false;
     var weeks = ret === 'Season' ? 99 : ret === 'Months' ? 8 : ret === 'Week-to-week' ? 2 : ret === 'Misses opener' || ret === 'Not in camp' ? 1 : hold ? 1 : 1;
-    return wi < weeks;
+    // Weeks are counted from the week lineups are being set for now (week 1 before the season). A player on tonight's
+    // injury list misses the week in progress and the next `weeks` lineup weeks. This used to count from opening night,
+    // so from week 3 on nobody but season-long injuries was ever treated as out.
+    var base = E.lockWeek(); if (base === null) base = E.NW;
+    return wi - base < weeks;
   };
   // weekly-lock optimizer: best 12F / 6D / 2G from every owned player (MNR included)
   E.lineup = function (roster, wi, opts) {
@@ -912,30 +916,33 @@
   E.recomputeDynasty = computeDynasty;
 
   // ---------------------------------------------------------------- MNR graduation (this season)
+  // Day index (0 = first day of week 1) of the data build, as an Eastern date: NHL games on or after it are not in the
+  // career totals yet.
+  E.dataDay = function () {
+    var t = DP.nowOverride ? E.now() : new Date(String(DP.meta.built).slice(0, 16) + ':00Z');
+    if (isNaN(t)) t = E.now();
+    return E.dayIndex(t.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }));
+  };
+  // Games still needed vs the NHL games still to play (from the data build on). It used to add up games from opening
+  // night against the games still needed, so mid-season it showed graduation dates that had already passed.
   E.graduation = function (p) {
     var need = p.gradThr - (p.cgp || 0), res = { need: need, thr: p.gradThr, cgp: p.cgp || 0, week: null, date: null, prob: 0 };
     if (need <= 0) { res.status = 'graduated'; res.prob = 1; return res; }
     if (!p.r || !p.nt26 || p.projGP <= 0) { res.status = 'not projected'; return res; }
-    var cum = 0, skipped = 0;
-    for (var wi = 0; wi < E.REG_WEEKS + 3; wi++) {
-      if (E.injuredOut && E.injuredOut(p, wi)) { skipped++; continue; } // injured / holding out: no games that week
-      cum += E.games(p, wi).m;
-      if (cum >= need - 1e-9) { res.week = wi; break; }
+    var d0 = E.dataDay(), games = (DP.nhl.sched[p.nt26] || []).filter(function (g) { return g[0] >= d0; });
+    var cum = 0, skipped = {};
+    for (var i = 0; i < games.length; i++) {
+      var wi = E.dayWeek[games[i][0]];
+      if (wi === undefined) wi = games[i][0] < 0 ? 0 : E.NW - 1;
+      if (E.injuredOut(p, wi)) { skipped[wi] = 1; continue; }   // injured / holding out: no games that week
+      cum += p.avail;
+      if (cum >= need - 1e-9) { res.week = wi; res.date = E.dateOfDay(games[i][0]); break; }   // expected-value approximation
     }
-    res.delayed = skipped;
-    // P(projected GP >= need): projected GP ~ Normal(proj, sd = 0.3 * proj + 4)
-    var sd = 0.3 * p.projGP + 4;
-    res.prob = 1 - E.Phi((need - 0.5 - p.projGP) / sd);
+    res.delayed = Object.keys(skipped).length;
+    // P(games still to come >= need): expected remaining GP ~ Normal(mean, sd = 30% + 4 games scaled to the season left)
+    var rem = p.avail * games.length, sd = 0.3 * rem + 4 * Math.sqrt(games.length / E.GP_SEASON);
+    res.prob = sd > 0 ? 1 - E.Phi((need - 0.5 - rem) / sd) : 0;
     res.status = res.week !== null ? 'projected' : 'stays MNR';
-    if (res.week !== null) {
-      // date of the game that crosses the threshold (expected-value approximation)
-      var games = DP.nhl.sched[p.nt26] || [], c2 = 0;
-      for (var i = 0; i < games.length; i++) {
-        if (skipped && E.dayWeek[games[i][0]] < skipped) continue;
-        c2 += p.avail;
-        if (c2 >= need - 1e-9) { res.date = E.dateOfDay(games[i][0]); break; }
-      }
-    }
     return res;
   };
 

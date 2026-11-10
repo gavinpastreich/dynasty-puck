@@ -287,6 +287,23 @@
     el.innerHTML = h;
   }
 
+  // Team Hub card: one team's prospects this week (biggest moves with the reason, latest headlines)
+  DP.radarTeamCard = function (team) {
+    if (!DP.radar) return '';
+    var V = DP.radarView(), rows = V.rows.filter(function (r) { return r.x.owned && r.p.gm === team; });
+    if (!rows.length) return '';
+    var mv = rows.filter(function (r) { return r.d['7'] && Math.abs(r.d['7'].dv) >= 0.1; }).sort(function (a, b) { return Math.abs(b.d['7'].dv) - Math.abs(a.d['7'].dv); }).slice(0, 6);
+    var li = function (r) {
+      var d = r.d['7'];
+      return '<li class="mv"><span class="rk">#' + r.rank + '</span><div class="who">' + nameHtml(r) + ' ' + ui.pos(r.p) + '<div class="small muted">' + why(r, '7').join(' · ') + '</div></div><div class="chg"><b class="' + (d.dv > 0 ? 'good' : 'bad') + '">' + U.sgn(d.dv, 1) + '</b><div class="small">' + rankMove(d) + '</div></div></li>';
+    };
+    var news = wire(rows).slice(0, 4);
+    return '<div class="card"><h2>📡 Prospect Radar: this week</h2><div class="hint">' + rows.length + ' prospects, re-scored nightly. Biggest moves in model value over the last 7 days, and the latest headlines.</div>' +
+      (mv.length ? '<ul class="list-plain">' + mv.map(li).join('') + '</ul>' : '<p class="muted small">No prospect here moved by more than 0.1 this week.</p>') +
+      (news.length ? '<h3 style="margin-top:12px">Headlines</h3><ul class="list-plain">' + news.map(function (g) { return newsLi(g.it, g.rows); }).join('') + '</ul>' : '') +
+      '<p class="small"><a href="' + U.hash('radar', null, { tab: 'rank', scope: team }) + '">All ' + rows.length + ' on the Radar →</a> · <a href="' + U.hash('radar', null, { tab: 'news', scope: team }) + '">News wire →</a></p></div>';
+  };
+
   // compact block for the player page and the Team Hub: rank, moves and the latest headlines
   DP.radarBrief = function (p) {
     if (!DP.radar) return '';

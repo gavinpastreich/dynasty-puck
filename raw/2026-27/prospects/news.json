@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-10T13:30+00:00",
+"fetched": "2026-11-10T14:24+00:00",
 "items": {
 "n8482100": [
 {
@@ -20,6 +20,16 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Maple Leafs may never have a better chance to trade for Alexander Nikishin",
 "u": "https://editorinleaf.com/maple-leafs-may-never-have-a-better-chance-to-trade-for-alexander-nikishin?utm_source=RSS",
+"w": 2
+}
+],
+"n8482123": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Second City Hockey (CHI)",
+"t": "Blackhawks Bits: Commesso, Soderblom exchange places but little else changes",
+"u": "https://www.secondcityhockey.com/chicago-blackhawks-regular-season-updates-practice-report-soderblom-waived-commesso-recalled/",
 "w": 2
 }
 ],
@@ -124,9 +134,7 @@
 "n8483478": [
 {
 "d": "2026-11-01",
-"k": [
-"honor"
-],
+"k": [],
 "s": "NHL.com",
 "t": "Star Wears: Wild award helmet with night vision goggles to player of game",
 "u": "https://www.nhl.com/news/star-wears-minnesota-wild-helmet-goggles",
@@ -460,9 +468,7 @@
 "n8484241": [
 {
 "d": "2026-11-03",
-"k": [
-"trade"
-],
+"k": [],
 "s": "NHL.com",
 "t": "Wright traded to Predators by Kraken, was No. 4 pick in 2022 NHL Draft",
 "u": "https://www.nhl.com/news/shane-wright-traded-to-nashville-predators-by-seattle-kraken-for-matthew-wood",
@@ -488,9 +494,7 @@
 },
 {
 "d": "2026-11-01",
-"k": [
-"trade"
-],
+"k": [],
 "s": "NHL.com (team site)",
 "t": "Predators Acquire Shane Wright From Kraken",
 "u": "https://www.nhl.com/news/predators-acquire-shane-wright-from-kraken-2026-11-01",
@@ -640,9 +644,7 @@
 },
 {
 "d": "2026-10-28",
-"k": [
-"injury"
-],
+"k": [],
 "s": "Editor in Leaf (TOR)",
 "t": "John Chayka reveals when key Maple Leafs could return from injury",
 "u": "https://editorinleaf.com/john-chayka-reveals-when-key-maple-leafs-could-return-from-injury?utm_source=RSS",
@@ -688,9 +690,7 @@
 },
 {
 "d": "2026-10-16",
-"k": [
-"honor"
-],
+"k": [],
 "s": "NHL.com",
 "t": "Short Shifts Power Rankings: October 16",
 "u": "https://www.nhl.com/news/short-shifts-power-rankings-october-16-2026",
@@ -755,7 +755,7 @@
 {
 "d": "2026-11-07",
 "k": [
-"call-up"
+"injury"
 ],
 "s": "Stanley Cup of Chowder (BOS)",
 "t": "Bruins place Hagens on IR, recall Eyssimont",
@@ -857,7 +857,6 @@
 {
 "d": "2026-11-09",
 "k": [
-"call-up",
 "injury"
 ],
 "s": "Blue Seat Blogs (NYR)",
@@ -1146,7 +1145,7 @@
 {
 "n": 10,
 "name": "Second City Hockey (CHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.secondcityhockey.com/rss/index.xml"
 },
@@ -1160,7 +1159,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -1382,7 +1381,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 11,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,

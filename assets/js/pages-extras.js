@@ -181,8 +181,12 @@
         var out = U.qs('#pv-out', el);
         if (!out) return;
         // lineup watch: every team's Fantrax lineup vs optimal (only for the week lineups are being set for)
-        var watch = '';
-        if (E.lockWeek() === wi) {
+        var watch = '', lw = E.lockWeek();
+        // the week in progress has already locked: point to its live score and to the week lineups are being set for
+        if (lw !== null && wi === lw - 1 && !E.weeks[lw].po) {
+          watch = '<div class="callout">Week ' + E.weeks[wi].n + ' is underway and its lineups are locked: <a href="#/live">Live Scoreboard →</a>. Week ' + E.weeks[lw].n + ' ' + esc(DP.lockText(lw)) + ': <a href="' + U.hash('preview', null, { w: lw + 1 }) + '">preview Week ' + E.weeks[lw].n + ' with the lineup watch →</a></div>';
+        }
+        if (lw === wi) {
           var rows = E.teams.map(function (t) { return { t: t, c: E.lineupCheck(t, wi) }; });
           watch = '<div class="card" style="margin-bottom:12px"><h3>🔒 Lineup watch <span class="muted small">' + esc(DP.lockText(wi)) + '</span></h3><div class="hint">Each team\'s lineup as set in Fantrax vs its optimal weekly lineup: expected category wins left on the table.</div><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Set</th><th class="num">Optimal</th><th class="num">Gap</th><th>Swaps</th></tr></thead><tbody>' +
             rows.sort(function (x, y) { return (y.c ? y.c.eOpt - y.c.eSet : 9) - (x.c ? x.c.eOpt - x.c.eSet : 9); }).map(function (r) {

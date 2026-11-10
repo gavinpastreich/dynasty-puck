@@ -34,7 +34,7 @@ KEEP_DAYS, PER_PLAYER, NHL_LOOKBACK = 45, 12, 30
 TAGS = [   # (tag, pattern on the lower-cased headline)
     ("call-up", r"\b(recall(ed|s)?|called up|call-up|summon(ed|s)?|promot(ed|es)|joins? (the )?(nhl|big) club|nhl debut|make[s]? (his )?(nhl )?debut)\b"),
     ("sent down", r"\b(assign(ed|s)?|sent down|reassign(ed|s)?|loan(ed|s)?|return(ed|s)? to (the )?(ahl|juniors?|ohl|whl|qmjhl|europe|sweden|finland))\b"),
-    ("injury", r"\b(injur(y|ed|ies)|out (indefinitely|for|\d)|week-to-week|day-to-day|surgery|concussion|upper-body|lower-body|injured reserve|sidelined|leaves game)\b"),
+    ("injury", r"\b(injur(y|ed|ies)|out (indefinitely|for|\d)|week-to-week|day-to-day|surgery|concussion|upper-body|lower-body|injured reserve|(on|to|from) (lt)?ir|sidelined|leaves game)\b"),
     ("contract", r"\b(sign(s|ed)?|entry-level|elc|contract|extension|agree(s|d)? to terms)\b"),
     ("trade", r"\b(trade(d|s)?|acquire(d|s)?|dealt)\b"),
     ("hot", r"\b(hat trick|player of the (week|month)|rookie of the (week|month)|point streak|first (nhl |career )?(goal|point|win|shutout)|two goals|\d+-point|scores twice|overtime winner|game-winner|shutout|star of the)\b"),
@@ -57,9 +57,28 @@ def fetch(url, timeout=30):
         return r.read()
 
 
-def tags_of(title):
-    t = title.lower()
-    return [k for k, pat in TAGS if re.search(pat, t)]
+PERSONAL = {"call-up", "sent down", "injury", "contract", "trade"}   # tags that say something happened to one player
+CLAUSE = re.compile(r";|,\s*(?=(?:and\s+)?(?:recall|assign|reassign|place|sign|re-sign|extend|activate|trade|waive|loan|send|call|acquire|claim)\w*\b)"
+                    r"|\s(?:due to|after|as|while|amid)\s", re.I)
+
+
+def tags_of(title, name=None):
+    """Tags read from the words of a headline. A tag about one player (call-up, injury ...) counts only when his last
+    name is in the same clause as the trigger word: 'Bruins place Hagens on IR, recall Eyssimont' is an injury for
+    Hagens, not a call-up. Without his name in the headline there are no personal tags at all."""
+    last = norm(name.split()[-1]) if name else None
+    clauses = [c for c in CLAUSE.split(title) if c and c.strip()]
+    out = []
+    for k, pat in TAGS:
+        if not last:
+            hit = bool(re.search(pat, title.lower()))
+        elif k in PERSONAL:
+            hit = any(re.search(pat, c.lower()) and last in norm(c).split() for c in clauses)
+        else:
+            hit = bool(re.search(pat, title.lower())) and last in norm(title).split()
+        if hit:
+            out.append(k)
+    return out
 
 
 def tracked():
@@ -186,7 +205,6 @@ def main():
         lst = items.setdefault(pid, [])
         if any(x["u"] == it["u"] or norm(x["t"]) == norm(it["t"]) for x in lst):
             return False
-        it["k"] = tags_of(it["t"])
         lst.append(it)
         return True
 
@@ -234,7 +252,13 @@ def main():
         sources.append({"name": fd["name"], "url": fd["url"], "ok": True, "n": len(entries), "note": f"{hits} new matches"})
         n_new += hits
 
+    name_of = {p["id"]: p["n"] for p in people}
     for pid in list(items):
+        if pid not in name_of:   # no longer tracked (graduated, signed, or a corrected id)
+            del items[pid]
+            continue
+        for it in items[pid]:    # tags are re-read every run, so a better rule fixes old headlines too
+            it["k"] = tags_of(it["t"], name_of[pid])
         items[pid] = sorted(items[pid], key=lambda x: (x["d"], x.get("w", 1)), reverse=True)[:PER_PLAYER]
         if not items[pid]:
             del items[pid]

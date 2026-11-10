@@ -1,5 +1,6 @@
 // Screenshots for the league guide PDF (tools/guide/build.sh). Usage: PW_PATH=... node tools/guide/shoot.js <outdir> [only...]
 // Opens the local site, relays Fantrax through curl (sandbox CA) so the Live chip is on, and captures pages or cards.
+// Every shot is the real site on real data (the Live Scoreboard shot is the week in progress).
 const path = require('path'), fs = require('fs');
 const { chromium } = require(process.env.PW_PATH || 'playwright');
 const ROOT = path.join(__dirname, '..', '..');
@@ -14,7 +15,7 @@ const SHOTS = [
   ['teamhub', 'team/ROO', 'ROO', { h: 900, scrollTo: 'Category profile' }],
   ['standings', 'standings', 'M.M', { h: 900 }],
   ['matchup', 'matchup?w=1&a=SPG&b=PuckLuck&set=1', 'SPG', { h: 1000 }],
-  ['lineupwatch', 'preview', 'CGN', { card: 'Lineup watch', wait: 2500 }],
+  ['lineupwatch', 'preview', 'CGN', { card: 'Lineup watch', wait: 2500, lockWeek: true }],
   ['alerts', 'alerts?team=btsay45', 'btsay45', { h: 900 }],
   ['players', 'players', 'Wags8210', { h: 900 }],
   ['player', 'player/*05w9c*', 'SPG', { h: 1000 }],
@@ -36,7 +37,13 @@ const SHOTS = [
   ['awards', 'awards?team=CGN', 'CGN', { h: 1000 }],
   ['wrapped', 'awards?team=mcianfra', 'mcianfra', { card: 'Team Wrapped' }],
   ['windows', 'windows', 'SPG', { h: 900 }],
-  ['live', 'live', 'M.M', { card: '.card', liveDemo: true }],
+  ['live', 'live', 'M.M', { card: '.card', wait: 5000 }],
+  ['cats', 'cats', 'M.M', { card: 'League by category' }],
+  ['partners', 'cats', 'SPG', { h: 760, scrollTo: 'Trade partners' }],
+  ['radar', 'radar', 'ROO', { h: 740 }],
+  ['radarrank', 'radar?tab=rank', 'CGN', { h: 700 }],
+  ['radarreport', 'radar?p=n8484170', 'TommyG10', { h: 960 }],
+  ['radarteam', 'team/ROO', 'ROO', { card: 'Prospect Radar: this week' }],
   ['phone_home', 'home', 'BHHC', { phone: true }],
   ['phone_team', 'team/mertin', 'mertin', { phone: true, scrollTo: 'Fantrax lineup check' }],
 ];
@@ -64,6 +71,11 @@ const SHOTS = [
         return 'trade?t=' + buyer + ',' + p.gm + '&a=' + encodeURIComponent('p:' + p.id + '>' + buyer + '|p:' + pr.id + '>' + p.gm + (pk ? '|k:' + E.pickKey(pk) + '>' + p.gm : ''));
       }, o.tradeLookup);
     }
+    if (o.lockWeek) { // the week lineups are being set for (the lineup watch only shows there)
+      await page.goto(URL + 'home'); await page.waitForTimeout(800);
+      const lw = await page.evaluate(() => DP.E.lockWeek());
+      if (lw !== null) r = route + '?w=' + (lw + 1);
+    }
     if (o.lookup) { // resolve a player id by name
       await page.goto(URL + 'home'); await page.waitForTimeout(800);
       const id = await page.evaluate((n) => (DP.E.P.find((p) => p.n === n) || {}).id, o.lookup);
@@ -72,10 +84,6 @@ const SHOTS = [
     await page.goto(URL + r);
     await page.waitForTimeout(o.wait || 2600);
     await page.evaluate(() => { const bg = document.querySelector('#picker-bg'); if (bg) bg.classList.remove('open'); });
-    if (o.liveDemo) { // illustration: real NHL box scores from a past week on today's lineups, with the date moved into week 7
-      await page.evaluate(() => { const sc = DP.league.score; if (sc && sc.test) { sc.to = '2026-11-12'; DP.liveOddsCache = {}; DP.render(); } });
-      await page.waitForTimeout(1500);
-    }
     if (o.clickFirst) { const b = await page.$(o.clickFirst); if (b) { await b.click(); await page.waitForTimeout(800); } }
     if (o.scrollTo) { await page.evaluate((t) => { const h = [...document.querySelectorAll('h2')].find((x) => x.textContent.includes(t)); if (h) h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -70); }, o.scrollTo); await page.waitForTimeout(400); }
     const file = path.join(OUT, name + '.jpg');

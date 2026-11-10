@@ -80,6 +80,38 @@ E.teams.forEach((t) => {
   DP.nowOverride = null; E.init();
 }
 
+// ---- in-season calendar: injuries and graduation are counted from today, not from opening night
+{
+  const mid = '2026-11-10T15:00:00Z';
+  DP.nowOverride = mid; E.init();
+  const lw = E.lockWeek(), guy = E.P.find((p) => p.gm && p.r && !p.inj && p.projGP > 60);
+  ok(lw > 3, `mid-November is past week 4 (lock week index ${lw})`);
+  guy.inj = ['IR', 'test', 'Week-to-week', '2026-11-07', 0];
+  ok(E.injuredOut(guy, lw - 1) && E.injuredOut(guy, lw) && E.injuredOut(guy, lw + 1) && !E.injuredOut(guy, lw + 2), 'week-to-week in November = out this week and the next two lineup weeks, back after');
+  guy.inj = ['OUT', 'test', '', '2026-11-09', 0];
+  ok(E.injuredOut(guy, lw) && !E.injuredOut(guy, lw + 1), 'out with no timeline = out for the week being set only');
+  guy.inj = ['DTD', 'test', '', '2026-11-09', 0];
+  ok(!E.injuredOut(guy, lw), 'day-to-day is not treated as out');
+  guy.inj = ['IR', 'test', 'Season', '2026-11-09', 0];
+  ok(E.injuredOut(guy, E.NW - 1), 'out for the season = out every week');
+  delete guy.inj;
+  E.teams.forEach((t) => {
+    const c = E.lineupCheck(t, lw);
+    if (c) ok(c.start.every((x) => !E.injuredOut(x.p, lw)) && c.opt.lu.F.concat(c.opt.lu.D, c.opt.lu.G).every((x) => !E.injuredOut(x.p, lw)), `lineup check never suggests an injured player (${t})`);
+  });
+  const d0 = E.dataDay();
+  E.P.filter((p) => p.gm && p.ct === 'MNR').forEach((p) => {
+    const g = E.graduation(p);
+    if (g.week !== null) ok(g.week >= lw - 1 && g.date && E.dayIndex(g.date.toISOString().slice(0, 10)) >= d0, `${p.n}: projected graduation is not in the past (week ${g.week + 1})`);
+    ok(g.prob >= 0 && g.prob <= 1, `${p.n}: graduation probability is a probability`);
+  });
+  DP.nowOverride = '2026-09-20T12:00:00Z'; E.init();
+  guy.inj = ['IR', 'test', 'Week-to-week', '2026-09-18', 0];
+  ok(E.lockWeek() === 0 && E.injuredOut(guy, 0) && E.injuredOut(guy, 1) && !E.injuredOut(guy, 2), 'before the season the count starts at week 1');
+  delete guy.inj;
+  DP.nowOverride = null; E.init();
+}
+
 // ---- league draft order for the mock draft
 const picks27 = (DP.league.picks || []).filter((p) => p.year === 2027);
 ok(picks27.length === E.teams.length * (DP.league.rounds || 3), `2027 has ${E.teams.length * 3} picks (got ${picks27.length})`);
