@@ -193,4 +193,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
 - Guide PDF (tools/guide): 15 pages, new Category Insights and Prospect Radar pages, the Live Scoreboard shot is the
   real week in progress (the demo hack in shoot.js is gone). Needs Pillow built for the running Python
   (python3 -m pip install --force-reinstall pillow), segno, and an Inter woff2 (npm pack @fontsource-variable/inter).
+- live.waitHours 9 -> 14 (2026-11-10): on Nov 10 every run that GitHub started between 06:00 and 14:50 UTC found the
+  first puck drop (00:00Z) more than 9 hours away and left, so the evening depended on a later run happening to start.
+  A waiting session sleeps in 30-minute steps and hands over to a successor at the job time limit; the repo is public,
+  so the minutes are free. While it waits it also nudges the alerts job hourly.
 
