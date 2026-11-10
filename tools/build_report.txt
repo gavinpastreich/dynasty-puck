@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-10T00:37:22
+Dynasty Puck HQ build 2026-11-10T05:47:32
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -79,7 +79,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-10T00:37:24+00:00): 620 rostered; changes vs CSV: {'owner': 55, 'dropped': 24}
+Fantrax sync (2026-11-10T05:47:33+00:00): 620 rostered; changes vs CSV: {'owner': 55, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1290 players (620 rostered)
 NHL id match: {'index': 1171, 'search': 116, None: 3}; unmatched 3 (rostered: 0)
@@ -136,7 +136,7 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 831 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Scoreboard: week 6 2026-11-02..2026-11-08: ROO 57 skater GP, M.M 63 skater GP, mertin 58 skater GP, BHHC 57 skater GP …
+Scoreboard: week 7 2026-11-09..- + live 2026-11-09 (3 games, 1 in progress): ROO 6 skater GP, M.M 4 skater GP, mertin 4 skater GP, BHHC 1 skater GP …
 Weekly history: 6 finished weeks (5 frozen) in raw/2026-27/weekly
 Depth (Daily Faceoff, 2026-11-10): 1207 line/PP/goalie tags; injuries matched 98/98
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
@@ -163,5 +163,5 @@ Leagues seen in player histories (top 40): NHL:8312, AHL:3666, NCAA:854, OHL:851
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'USHS-MN', 'AMBHL', 'USHS-Prep', 'Russia U16', '4 Nations', 'USA-S15', 'TV-Pucken', 'Russia U17', 'WSI U12', 'WJAC-19', 'Memorial Cup', 'J18 Nationell', 'USA-S17', 'WSI U13', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'QMAAA', 'AMHL', 'U-17', 'USA-S16', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 221 with histories
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
-wrote data/league.js (1.90 MB, 1290 players)
+wrote data/league.js (1.89 MB, 1290 players)
 wrote data/cal/*.ics (14 team feeds + league feed)

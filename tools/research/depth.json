@@ -1158,8 +1158,8 @@
   },
   "NYI": {
    "team": "New York Islanders",
-   "updated": "2026-11-09",
-   "source": "Stefen Rosner",
+   "updated": "2026-11-10",
+   "source": "Ethan Sears",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
     "Simon Holmstrom",
@@ -1208,11 +1208,11 @@
     "Mitchell Chaffee"
    ],
    "d1": [
-    "Adam Pelech",
+    "Logan Stanley",
     "Matthew Schaefer"
    ],
    "d2": [
-    "Logan Stanley",
+    "Adam Pelech",
     "Tony DeAngelo"
    ],
    "d3": [
@@ -1362,8 +1362,8 @@
   },
   "PHI": {
    "team": "Philadelphia Flyers",
-   "updated": "2026-11-09",
-   "source": "Last Game (2026-11-08)",
+   "updated": "2026-11-10",
+   "source": "Jackie Spiegel",
    "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
    "pp1": [
     "Porter Martone",
@@ -1392,19 +1392,19 @@
     "Nick Seeler"
    ],
    "f1": [
-    "Tyson Foerster",
+    "Michael Bunting",
     "Christian Dvorak",
-    "Travis Konecny"
+    "Owen Tippett"
    ],
    "f2": [
+    "Tyson Foerster",
+    "Trevor Zegras",
+    "Travis Konecny"
+   ],
+   "f3": [
     "Porter Martone",
     "Noah Cates",
     "Matvei Michkov"
-   ],
-   "f3": [
-    "Trevor Zegras",
-    "Cole Knuble",
-    "Owen Tippett"
    ],
    "f4": [
     "Denver Barkey",
@@ -1498,8 +1498,8 @@
   },
   "SJS": {
    "team": "San Jose Sharks",
-   "updated": "2026-11-09",
-   "source": "Sheng Peng",
+   "updated": "2026-11-10",
+   "source": "Max Miller",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Ivar Stenberg",
@@ -1905,7 +1905,7 @@
   },
   "VAN": {
    "team": "Vancouver Canucks",
-   "updated": "2026-11-09",
+   "updated": "2026-11-10",
    "source": "Brendan Batchelor",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "pp1": [
