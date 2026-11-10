@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -210,10 +210,10 @@
    "name": "Josh Manson",
    "team": "COL",
    "status": "IR",
-   "injury": "",
-   "ret": "Months",
-   "detail": "Manson is expected to be out for eight weeks with an ankle injury.",
-   "date": "2026-10-30",
+   "injury": "ankle",
+   "ret": "",
+   "detail": "Manson (ankle) has been placed on LTIR.",
+   "date": "2026-11-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -464,8 +464,8 @@
    "status": "IR",
    "injury": "lower-body",
    "ret": "In camp",
-   "detail": "Fiala (lower-body) was a regular participant in Friday’s practice.",
-   "date": "2026-10-30",
+   "detail": "Fiala (lower-body) has a chance to return vs. Nashville on Tuesday.",
+   "date": "2026-11-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -891,18 +891,6 @@
    "holdout": false
   },
   {
-   "name": "Alexander Wennberg",
-   "team": "SJS",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Wennberg (upper-body) will return vs. New York on Monday.",
-   "date": "2026-11-09",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Igor Chernyshov",
    "team": "SJS",
    "status": "IR",
@@ -1040,7 +1028,7 @@
    "status": "DTD",
    "injury": "maintenance",
    "ret": "",
-   "detail": "Guenther (maintenance) missed practice on Monday.",
+   "detail": "Guenther (maintenance) missed practice on Monday and is questionable for Wednesday vs. Vegas.",
    "date": "2026-11-09",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",

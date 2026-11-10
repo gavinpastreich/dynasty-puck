@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -1226,7 +1226,7 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-11-09",
+   "updated": "2026-11-10",
    "source": "Vince Mercogliano",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
@@ -1263,17 +1263,17 @@
    "f2": [
     "Tye Kartye",
     "J.T. Miller",
-    "Oliver Bjorkstrand"
-   ],
-   "f3": [
-    "Eeli Tolvanen",
-    "Will Cuylle",
     "Pavel Dorofeyev"
    ],
-   "f4": [
-    "Jaroslav Chmelar",
+   "f3": [
+    "Will Cuylle",
     "Noah Laba",
-    "Luke Glendening"
+    "Oliver Bjorkstrand"
+   ],
+   "f4": [
+    "Eeli Tolvanen",
+    "Luke Glendening",
+    "Jaroslav Chmelar"
    ],
    "d1": [
     "Vladislav Gavrikov",
@@ -1499,7 +1499,7 @@
   "SJS": {
    "team": "San Jose Sharks",
    "updated": "2026-11-09",
-   "source": "Last Game (2026-11-07)",
+   "source": "Sheng Peng",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Ivar Stenberg",
