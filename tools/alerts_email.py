@@ -62,6 +62,33 @@ def read_list(imap):
     return subs, [w for w in new if w in subs]
 
 
+def already_emailed(subject):
+    """True if a message with this subject is in the mailbox's Sent folder from the last 6 days, None if that can't
+    be checked. The alerts job runs at irregular times, so this is what keeps a weekly digest from going out twice."""
+    import datetime as dt
+    try:
+        imap = imaplib.IMAP4_SSL("imap.gmail.com")
+        imap.login(ADDR, PW)
+        try:
+            typ, _ = imap.select('"[Gmail]/Sent Mail"', readonly=True)
+            if typ != "OK":
+                return None
+            since = (dt.date.today() - dt.timedelta(days=6)).strftime("%d-%b-%Y")
+            key = subject.encode("ascii", "ignore").decode().replace('"', "").strip()
+            typ, data = imap.search(None, "SINCE", since, "SUBJECT", '"' + key + '"')
+            if typ != "OK":
+                return None
+            return bool(data and data[0] and data[0].split())
+        finally:
+            try:
+                imap.logout()
+            except Exception:
+                pass
+    except Exception as e:
+        print("email alerts: could not check the Sent folder:", e)
+        return None
+
+
 def send(smtp, to_list, subject, text, html=None, bcc=True):
     msg = EmailMessage()
     msg["From"] = email.utils.formataddr(("Dynasty Puck HQ", ADDR))
@@ -99,16 +126,24 @@ def main():
     digest = os.path.join(OUT, "digest.txt")
     if not new and not os.path.exists(digest):
         return
+    go = False
+    if os.path.exists(digest) and subs:
+        subject = open(os.path.join(OUT, "subject.txt"), encoding="utf-8").read().strip()
+        seen = already_emailed(subject)
+        exact = os.path.exists(os.path.join(OUT, "exact.txt")) and open(os.path.join(OUT, "exact.txt")).read().strip() == "yes"
+        # can't check the Sent folder -> only send in the exact digest hour (the old behaviour), never twice
+        go = (seen is False) or (seen is None and exact)
+        if not go:
+            print("email alerts: this week's digest already went out" if seen else "email alerts: Sent folder unreadable and not the digest hour; not sending")
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(ADDR, PW)
         for who in new:
             send(smtp, [who], "You're on the Dynasty Puck HQ list",
                  f"Thanks! You'll get the weekly Dynasty Puck digest every Monday morning: matchups, lineup watch, "
                  f"standings, graduations and roster moves.\n\n{SITE}\n\nTo stop, reply with 'unsubscribe'.", bcc=False)
-        if os.path.exists(digest) and subs:
+        if go:
             text = open(digest, encoding="utf-8").read()
             html = open(os.path.join(OUT, "digest.html"), encoding="utf-8").read()
-            subject = open(os.path.join(OUT, "subject.txt"), encoding="utf-8").read().strip()
             send(smtp, sorted(subs), subject, text, html)
             print(f"weekly digest sent to {len(subs)}")
 

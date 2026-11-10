@@ -282,3 +282,9 @@ select { max-width: 100%; text-overflow: ellipsis; }
 .livedot { animation: livepulse 1.6s ease-in-out infinite; }
 @keyframes livepulse { 50% { opacity: .55; } }
 @media (prefers-reduced-motion: reduce) { .livedot { animation: none; } }
+
+/* category insights */
+.catmx td.hc { min-width: 40px; padding: 6px 3px; font-size: .8rem; color: var(--ink); border-bottom: 2px solid var(--card); border-right: 2px solid var(--card); }
+.catmx th a { color: inherit; }
+.catmx tr.mine td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+.catchip { display: inline-block; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; margin: 1px 0; font-size: .78rem; white-space: nowrap; background: var(--card2); }

@@ -344,17 +344,11 @@
       return '<li>' + ui.pos(x.p) + '<span>' + ui.pcell(x.p) + '<br><span class="small muted">helps ' + best.map(function (y) { return E.CATS[y[0]].l; }).join(', ') + '</span></span><span class="num" style="margin-left:auto">' + ui.delta(x.g.total, 1) + ' cat W</span></li>';
     }).join('') + '</ul>';
     // trade partners: complementary strengths
-    var partners = E.teams.filter(function (u) { return u !== t; }).map(function (u) {
-      var z = TS[u].z, sc = 0, give = [], get = [];
-      E.CATS.forEach(function (c, i) {
-        var a = Math.max(0, -s.z[i]) * Math.max(0, z[i]), b = Math.max(0, s.z[i]) * Math.max(0, -z[i]);
-        sc += a + b; if (a > 0.3) get.push(c.l); if (b > 0.3) give.push(c.l);
-      });
-      return { u: u, sc: sc, get: get, give: give };
-    }).sort(function (a, b) { return b.sc - a.sc; }).slice(0, 3);
+    var catL = function (list) { return list.map(function (x) { return E.CATS[x.c].l; }).join(', ') || '–'; };
+    var partners = DP.partnersBrief ? DP.partnersBrief(t, 3) : [];
     h += '<h3>Complementary trade partners</h3><ul class="list-plain">' + partners.map(function (x) {
-      return '<li><span><a href="#/team/' + encodeURIComponent(x.u) + '"><b>' + esc(U.teamName(x.u)) + '</b></a><br><span class="small muted">they have: ' + esc(x.get.join(', ') || '–') + ' · they need: ' + esc(x.give.join(', ') || '–') + '</span></span><a class="btn sm" style="margin-left:auto" href="' + U.hash('trade', null, { t: t + ',' + x.u }) + '">Build trade</a></li>';
-    }).join('') + '</ul>';
+      return '<li><span><a href="#/team/' + encodeURIComponent(x.t) + '"><b>' + esc(U.teamName(x.t)) + '</b></a><br><span class="small muted">they have: ' + esc(catL(x.get)) + ' · they need: ' + esc(catL(x.give)) + '</span></span><a class="btn sm" style="margin-left:auto" href="' + U.hash('trade', null, { t: t + ',' + x.t }) + '">Build trade</a></li>';
+    }).join('') + '</ul><p class="small"><a href="' + U.hash('cats', null, { team: t }) + '">All 13 teams, category by category →</a></p>';
     // cap / contract flags
     var flags = [];
     var ros = E.rosters[t];

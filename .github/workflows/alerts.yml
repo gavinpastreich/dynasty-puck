@@ -13,6 +13,7 @@ on:
         default: ""
 permissions:
   contents: read
+  actions: write
 concurrency:
   group: alerts
   cancel-in-progress: false
@@ -33,3 +34,11 @@ jobs:
           DP_EMAIL_APP_PASSWORD: ${{ secrets.DP_EMAIL_APP_PASSWORD }}
           DP_ALERTS_MODE: ${{ inputs.mode }}
         run: python3 tools/alerts_email.py
+      - name: Wake the live scoreboard (GitHub's scheduler is unreliable, so every job that does run gives it a nudge)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -sS -o /dev/null -w "live scoreboard dispatch: HTTP %{http_code}\n" -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/live-score.yml/dispatches" -d '{"ref":"main"}' || true

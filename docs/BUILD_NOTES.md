@@ -122,3 +122,28 @@ Scoreboard + weekly history (2026-11-09):
   the site).
 - Engine: `E.gamesFrom(p, wi, d0, today)` counts a game in progress for the share left (goalie GP counts whole games
   only); `E.history()` scores every finished week on the real schedule (category records, all-play, luck).
+
+Scheduler reality + live session (2026-11-10):
+- GitHub's cron barely fires here: zero scheduled live-score runs in the first 5 hours, Alerts ("hourly") at 19:46,
+  23:47, 06:49, 17:38, 01:37. So `python tools/scoreboard.py --session` covers a night in one run: poll every
+  live.everySeconds while games are on, wait up to live.waitHours for the next puck drop (schedule API), exit when
+  nothing is within reach, and start its successor (workflow_dispatch with the job token) if it nears the 6-hour job
+  limit. Finished games are cached in memory 20 minutes after they go final. refresh-data.yml and alerts.yml dispatch
+  it at the end of every run; the session dispatches alerts.yml every 55 minutes (heartbeat).
+- alerts.js windows no longer assume hourly runs: lock = first run within 8h (ntfy title dedupe, 12h cache) + "Last
+  call" within 90 min when the lineup check still shows a problem; daily = first run 11:00-22:00 UTC; deadline = first
+  run 13-24h before; weekly digest = first run on digest day from the configured hour while the previewed week hasn't
+  locked, and alerts_email.py skips it if the subject is already in [Gmail]/Sent Mail (if that folder can't be read
+  it only sends in the exact hour, as before).
+
+Category Insights (2026-11-10): E.catStrength(mode) = z-scores/ranks from E.history() (actual), E.teamCats(null,
+E.openFrom()) (rest of season) or a blend (actual weight n/(n+6) weeks). E.partnerFit is rank-based and two-way:
+10 x (min(get, give) + 0.25 x (get + give)), get = sum need(myRank) x spare(theirRank). Player suggestions leave out
+the league's 40 most valuable players.
+
+Prospect model (2026-11-10): E.prospect used the single most recent season with >= 8 GP but ignored it below 15 GP,
+so from game 8 to 14 of a new season a prospect was valued on draft slot alone, then jumped to a small-sample pace.
+Now E.nhleBlend: every line this season and last in a league with an NHLe factor, weighted by games x recency
+(1 / 0.65) x 2 for NHL games; age multiplier min(3.3, 1 + 0.5 per year under 22) for non-NHL lines and
+min(2, 1 + 0.12 per year under 25) for NHL lines; shrunk to the draft-slot prior with K = 48 weighted games.
+Goalies: SV% vs approximate league averages (E.G_BASE), +45% / -30% at most, full weight at ~40 weighted games.

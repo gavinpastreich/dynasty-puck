@@ -1,46 +1,38 @@
 name: Live scoreboard
-# Scores the fantasy week in progress every few minutes while NHL games are on (each team's locked Fantrax lineup x
-# the NHL stats API and live game feeds) and publishes one small file, score.json, to the 'live-data' branch. The
-# site reads it from there (config/league.json -> live.url). Nothing is committed to main and the site is not
-# redeployed, so this stays cheap and keeps the history clean. Runs on GitHub's servers (free for a public
-# repository); uses no Claude usage. To pause it in the offseason: Actions tab -> Live scoreboard -> Disable workflow.
+# Scores the fantasy week in progress while NHL games are on (each team's locked Fantrax lineup x the NHL stats API
+# and live game feeds) and publishes one small file, score.json, to the 'live-data' branch. The site reads it from
+# there (config/league.json -> live.url). Nothing is committed to main and the site is not redeployed.
+#
+# GitHub's scheduler starts this repository's timed jobs hours apart (an "hourly" job really runs every 3-7 hours),
+# so one run covers a whole game night instead of counting on the next one: it waits for the next puck drop (up to
+# live.waitHours), re-scores every few minutes while games are on, and stops when the night is over. A run that
+# reaches GitHub's time limit starts its successor. The nightly refresh and the alerts job also give it a nudge.
+# Runs on GitHub's servers (free for a public repository); uses no Claude usage.
+# To pause it in the offseason: Actions tab -> Live scoreboard -> ... -> Disable workflow.
 on:
   schedule:
-    - cron: "*/10 0-7,16-23 * * *"   # every 10 minutes, 11 AM to about 3 AM Eastern
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: live-score
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   score:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 345
     steps:
       - uses: actions/checkout@v4
       - name: Last published file
         run: |
           if git fetch -q --depth=1 origin live-data 2>/dev/null && git show FETCH_HEAD:score.json > score.json 2>/dev/null; then
-            sha256sum score.json > /tmp/before.sha
+            echo "Found the last published score.json"
           else
-            rm -f score.json; echo none > /tmp/before.sha
+            rm -f score.json
           fi
-      - name: Score the week in progress
-        run: python3 tools/scoreboard.py --out score.json
-      - name: Publish if it changed
+      - name: Follow tonight's games
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          [ -f score.json ] || { echo "No week in progress: nothing to publish."; exit 0; }
-          sha256sum score.json > /tmp/after.sha
-          if cmp -s /tmp/before.sha /tmp/after.sha; then echo "Unchanged."; exit 0; fi
-          work=$(mktemp -d); cp score.json "$work/"; cd "$work"
-          git init -q -b live-data
-          git config user.name "dynasty-puck-bot"
-          git config user.email "dynasty-puck-bot@users.noreply.github.com"
-          printf 'Live scoreboard data for the Dynasty Puck site.\nRewritten every few minutes on game nights by .github/workflows/live-score.yml on main. Do not edit.\n' > README.md
-          git add score.json README.md
-          git commit -q -m "Live scoreboard $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" live-data
-          echo "Published."
+        run: python3 tools/scoreboard.py --session --out score.json --publish "bash tools/live_publish.sh score.json"

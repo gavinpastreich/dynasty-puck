@@ -506,6 +506,47 @@
     return best;
   };
 
+  // Scoring evidence across seasons, so the ranking moves with games played instead of jumping when a new season
+  // starts: every line in a league with an NHL-equivalency factor from this season and last, each season as
+  // age-adjusted NHLe points per 82, weighted by games x recency (this season 1, last season 0.65). Older seasons
+  // are left out: a 16-year-old's numbers say little about him at 19.
+  E.NHLE_W = [1, 0.65];
+  E.NHLE_K = 48;   // the draft-slot prior counts as this many weighted games (a full season of evidence ~ 45-55% weight)
+  E.NHLE_NHL_W = 2;  // an NHL game is worth two games elsewhere as evidence (no translation needed)
+  E.nhleBlend = function (car, dob, fallbackAge) {
+    if (!car || !car.length) return null;
+    var cur = Math.floor(DP.meta.seasonId / 10000), by = {}, n = 0, sumPeak = 0;
+    car.forEach(function (s) {
+      var back = cur - Math.floor(s[0] / 10000), f = E.nhleFactor(s[1]);
+      if (back < 0 || back >= E.NHLE_W.length || f === null || f === undefined || !(s[3] > 0)) return;
+      var age = dob ? ageOn(dob, String(Math.floor(s[0] / 10000)) + '-12-31') : (fallbackAge || 20) - 0.7 - back;
+      var nhl = s[1] === 'NHL', pace = s[6] / s[3] * f * 82;
+      // age adjustment: steep for junior / college / European lines, gentle for NHL production (same curve as the
+      // NHL-pace term below)
+      var mult = nhl ? Math.min(2, 1 + 0.12 * Math.max(0, 25 - age)) : Math.min(3.3, 1 + 0.5 * Math.max(0, 22 - age));
+      var w = E.NHLE_W[back] * s[3] * (nhl ? E.NHLE_NHL_W : 1);
+      n += w; sumPeak += w * pace * mult;
+      var o = by[back] || (by[back] = { back: back, season: s[0], gp: 0, np: 0, pts: 0, lg: s[1], lgGp: 0, team: s[2], age: age, w: 0, wp: 0 });
+      o.gp += s[3]; o.np += s[6] * f; o.pts += s[6]; o.w += w; o.wp += w * pace * mult;
+      if (s[3] > o.lgGp) { o.lgGp = s[3]; o.lg = s[1]; o.team = s[2]; }
+    });
+    if (!n) return null;
+    var seasons = Object.keys(by).sort().map(function (k) { var o = by[k]; return { back: o.back, season: o.season, lg: o.lg, team: o.team, gp: o.gp, pts: o.pts, pace: o.np / o.gp * 82, age: o.age, peak: o.wp / o.w }; });
+    return { n: n, peak: sumPeak / n, seasons: seasons };
+  };
+  // approximate league-average save percentages (model inputs) used to read a goalie prospect's numbers
+  E.G_BASE = { NHL: 0.900, AHL: 0.905, NCAA: 0.910, KHL: 0.922, SHL: 0.905, Liiga: 0.905, HockeyAllsvenskan: 0.908, VHL: 0.925, MHL: 0.925, OHL: 0.895, WHL: 0.900, QMJHL: 0.895, USHL: 0.900, ECHL: 0.905, Czechia: 0.915, NL: 0.915 };
+  E.goalieForm = function (car) {
+    var cur = Math.floor(DP.meta.seasonId / 10000), num = 0, den = 0, games = 0;
+    (car || []).forEach(function (s) {
+      var back = cur - Math.floor(s[0] / 10000), base = E.G_BASE[s[1]];
+      if (back < 0 || back >= E.NHLE_W.length || !base || !(s[3] >= 3) || !(s[6] > 0.5)) return;
+      var w = E.NHLE_W[back] * s[3];
+      num += w * Math.max(-1.5, Math.min(1.5, (s[6] - base) / 0.010)); den += w; games += w;
+    });
+    return den ? { score: num / den, rel: Math.min(1, games / 40), games: games } : null;
+  };
+
   function fitPtsToWar() { // WAR per 82 GP as a linear function of points per 82, by slot (current NHL skaters)
     var fit = {};
     ['F', 'D'].forEach(function (slot) {
@@ -540,19 +581,19 @@
   E.prospect = function (p) {
     var ov = p.dr ? p.dr[2] : null, pr = E.pNHL(ov), age = p.age || 20;
     if (p.slot === 'G') {
-      var bonus = 1;
-      (p.car || []).forEach(function (s) { if (s[0] >= 20242025 && (s[1] === 'AHL' || s[1] === 'NHL') && s[3] >= 15 && s[6] >= 0.910) bonus = 1.3; });
+      // save percentage against the league's usual level, this season and last, weighted by games:
+      // up to +45% for a goalie well above his league, down to -30% for one well below (full weight at ~40 games)
+      var gf = E.goalieForm(p.car), bonus = gf ? 1 + 0.3 * gf.score * gf.rel : 1;
       if ((p.cgp || 0) >= 40) pr = Math.max(pr, 0.85);
       var etaG = p.projGP >= 30 ? 0 : Math.max(1, Math.round(23.5 - age));
-      return { peak: 5 * pr * bonus, peakRaw: 5 * bonus, eta: etaG, p: pr, line: null, basis: 'draft slot + pro SV% (goalies)' };
+      return { peak: 5 * pr * bonus, peakRaw: 5 * bonus, eta: etaG, p: pr, line: null, form: gf, basis: 'draft slot + SV% vs league (goalies)' };
     }
     var line = E.nhle(p.car, p.dob), fit = E.ptsWar[p.slot] || E.ptsWar.F;
     var prior = E.slotPriorPts(ov, p.slot), peakPts = prior, basis = 'draft slot';
-    if (line && line.gp >= 15) {
-      var ageAt = line.age || age - 0.7;
-      var mult = Math.min(3.3, 1 + 0.5 * Math.max(0, 22 - ageAt));
-      var fromNhle = line.pace * mult;
-      peakPts = 0.55 * fromNhle + 0.45 * prior; basis = 'NHLe + draft slot';
+    var bl = E.nhleBlend(p.car, p.dob, age);
+    if (bl) {   // games-weighted evidence, shrunk toward the draft-slot prior
+      peakPts = (bl.n * bl.peak + E.NHLE_K * prior) / (bl.n + E.NHLE_K);
+      basis = 'NHLe (' + Math.round(100 * bl.n / (bl.n + E.NHLE_K)) + '%) + draft slot';
     }
     if ((p.cgp || 0) >= 40 && p.h && p.h.length) { // already playing in the NHL: blend in the NHL scoring pace
       var last = p.h[p.h.length - 1];
@@ -572,7 +613,7 @@
       eta = Math.max(1, Math.round((euro ? 21 : 20.5) - age));
       if (ov && ov <= 10) eta = Math.max(1, eta - 1);
     }
-    return { peak: peakWar * pr, peakRaw: peakWar, peakPts: peakPts, eta: eta, p: pr, line: line, basis: basis };
+    return { peak: peakWar * pr, peakRaw: peakWar, peakPts: peakPts, eta: eta, p: pr, line: line, blend: bl, prior: prior, basis: basis };
   };
 
   // yearly projection over the 7-season window
@@ -1711,19 +1752,24 @@
     for (var c = 0; c < E.NC; c++) E.teams.slice().sort(function (a, b) { return z[b][c] - z[a][c]; }).forEach(function (t, i) { rank[t][c] = i + 1; });
     return (E._cs[key] = { mode: mode || 'blend', wA: wA, z: z, rank: rank, proj: P, hist: H });
   };
-  // how well two teams' category strengths complement each other, and what each side has that the other needs
+  // how well two teams' category strengths complement each other, and what each side has that the other needs.
+  // Rank-based, so it stays informative early in the season: a category counts when one side is in the top half and
+  // the other in the bottom half, weighted by how strong / how needy they are. A real fit runs both ways, so the
+  // score is min(what I can get, what I can give) + a quarter of the total (one-sided "they need everything" ranks low).
   E.partnerFit = function (me, other, S) {
     S = S || E.catStrength('blend');
-    var get = [], give = [], sc = 0, n = E.teams.length, strong = Math.ceil(n * 0.36), weak = Math.floor(n / 2) + 1;
+    var n = E.teams.length, mid = (n + 1) / 2, strong = Math.ceil(n * 0.36), weak = Math.floor(n / 2) + 1;
+    var need = function (r) { return Math.max(0, (r - mid) / (n - mid)); }, spare = function (r) { return Math.max(0, (mid - r) / (mid - 1)); };
+    var get = [], give = [], gs = 0, vs = 0;
     E.CATS.forEach(function (cat, c) {
-      var a = S.z[me][c], b = S.z[other][c], ra = S.rank[me][c], rb = S.rank[other][c];
-      var g1 = Math.max(0, b - a) * Math.max(0, -a + 0.25), g2 = Math.max(0, a - b) * Math.max(0, -b + 0.25);
-      sc += g1 + g2;
-      if (rb <= strong && ra >= weak && rb < ra) get.push({ c: c, mine: ra, theirs: rb, w: b - a });
-      if (ra <= strong && rb >= weak && ra < rb) give.push({ c: c, mine: ra, theirs: rb, w: a - b });
+      var ra = S.rank[me][c], rb = S.rank[other][c];
+      var g = need(ra) * spare(rb), v = spare(ra) * need(rb);
+      gs += g; vs += v;
+      if (rb <= strong && ra >= weak) get.push({ c: c, mine: ra, theirs: rb, w: g });
+      if (ra <= strong && rb >= weak) give.push({ c: c, mine: ra, theirs: rb, w: v });
     });
     get.sort(function (x, y) { return y.w - x.w; }); give.sort(function (x, y) { return y.w - x.w; });
-    return { t: other, score: sc, get: get, give: give };
+    return { t: other, score: 10 * (Math.min(gs, vs) + 0.25 * (gs + vs)), getScore: 10 * gs, giveScore: 10 * vs, get: get, give: give };
   };
   // a player's weekly contribution by category on the same scale as the team numbers (per 7-day week, rest of season)
   E.catContrib = function (p) {

@@ -11,7 +11,9 @@ lookup: who was Active that week x what those players did in NHL games that week
 standings after six weeks: 99% of category decisions agree (the misses are near-ties in Cor, which is estimated).
 
 Used by build_data.py (nightly). Run directly for the small live file, without a full data build:
-    python tools/scoreboard.py --out score.json     (GitHub Action "Live scoreboard", every few minutes on game nights)
+    python tools/scoreboard.py --out score.json                 one pass
+    python tools/scoreboard.py --session --out score.json --publish "bash tools/live_publish.sh score.json"
+                                                    the GitHub Action "Live scoreboard": stays up for the game night
     DP_NOW=2026-11-05T02:30:00Z python tools/scoreboard.py --out /tmp/x.json    (pretend it is another time)
 """
 import datetime as dt
@@ -181,10 +183,13 @@ def live_game(gid, cor_k):
     return {"sk": sk, "gk": gk, "cor": bool(shifts)}
 
 
-def live_day(day, cor_k):
-    """Everything started on one NHL game day: per-player lines plus the state of each game."""
+def live_day(day, cor_k, cache=None, now=None):
+    """Everything started on one NHL game day: per-player lines plus the state of each game. `cache` (a dict kept by
+    the long-running live job) holds finished games so they are not downloaded again every few minutes; a game is
+    re-read for 20 minutes after it goes final, because the scorers still correct things."""
     d = _fresh(f"{API.WEB}/score/{day}", f"live_score_{day}")
     games, left, sk, gk, cor_ok = [], {}, {}, {}, True
+    now = now or now_utc()
     for g in (d or {}).get("games", []):
         if g.get("gameType") not in (2, 3):
             continue
@@ -204,7 +209,13 @@ def live_day(day, cor_k):
                 frac = max(0.0, round(1 - elapsed / 60.0, 3))
                 row["note"] = ("OT" if per == 4 else "SO" if per > 4 else f"P{per}") + (" int" if ck.get("inIntermission") else f" {ck.get('timeRemaining', '')}".rstrip())
             left[a] = left[h] = frac
-            lg = live_game(g["id"], cor_k)
+            c = cache.get(g["id"]) if cache is not None else None
+            if st in DONE and c and (now - c["final_at"]).total_seconds() > 1200 and (c["at"] - c["final_at"]).total_seconds() > 900:
+                lg = c["lg"]
+            else:
+                lg = live_game(g["id"], cor_k)
+                if cache is not None and lg and st in DONE:
+                    cache[g["id"]] = {"lg": lg, "at": now, "final_at": c["final_at"] if c else now}
             if lg:
                 sk.update(lg["sk"]); gk.update(lg["gk"]); cor_ok = cor_ok and lg["cor"]
                 row["box"] = True
@@ -266,8 +277,9 @@ def current_week(weeks, now):
     return cur[-1] if cur else None
 
 
-def scoreboard(weeks, lookup, cor_model, teams, snap=None, now=None, log=print):
-    """Category totals so far in the fantasy week being played (None before the first lock)."""
+def scoreboard(weeks, lookup, cor_model, teams, snap=None, now=None, log=print, cache=None):
+    """Category totals so far in the fantasy week being played (None before the first lock). `cache` = a dict the
+    long-running live job passes in to reuse lineups and finished games between passes."""
     now = now or now_utc()
     w = current_week(weeks, now)
     if not w:
@@ -278,7 +290,12 @@ def scoreboard(weeks, lookup, cor_model, teams, snap=None, now=None, log=print):
     day = game_day(now)
     last_done = min(dt.date.fromisoformat(w["end"]), day - dt.timedelta(days=1))   # finished days: exact stats
     start = dt.date.fromisoformat(w["start"])
-    lineups = period_lineups(w["n"], teams, snap)
+    if cache is not None and cache.get("lineups", {}).get("n") == w["n"]:   # locked for the week: one download is enough
+        lineups = cache["lineups"]["v"]
+    else:
+        lineups = period_lineups(w["n"], teams, snap)
+        if cache is not None and lineups:
+            cache["lineups"] = {"n": w["n"], "v": lineups}
     base = {"week": w["n"], "from": w["start"], "to": None, "asOf": now.isoformat(timespec="minutes"), "test": bool(os.environ.get("DP_NOW")),
             "period": w["n"], "final": day > dt.date.fromisoformat(w["end"]), "live": None, "teams": {},
             "corNote": "Cor estimated from NHL shot attempts (model, R² 0.975 vs Fantrax)"}
@@ -292,7 +309,7 @@ def scoreboard(weeks, lookup, cor_model, teams, snap=None, now=None, log=print):
     live = None
     if start <= day <= dt.date.fromisoformat(w["end"]) and not API.OFFLINE:
         try:
-            live = live_day(day, cor_model[0])
+            live = live_day(day, cor_model[0], cache.setdefault("games", {}) if cache is not None else None, now)
         except Exception as e:   # the live feeds are a bonus: never lose the finished days over them
             log(f"  ! Scoreboard: live feeds failed ({e}); showing finished days only")
             live = None
@@ -374,27 +391,145 @@ def _published():
     return meta, by_fid, snap
 
 
+def _write_if_changed(sc, out):
+    prev = None
+    if os.path.exists(out):
+        try:
+            with open(out, encoding="utf-8") as f:
+                prev = json.load(f)
+        except Exception:
+            prev = None
+    if prev is not None and {k: v for k, v in prev.items() if k != "asOf"} == {k: v for k, v in sc.items() if k != "asOf"}:
+        return False
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(sc, f, separators=(",", ":"))
+    return True
+
+
+def next_puck_drop(sc, now):
+    """Start time of the next NHL game that hasn't begun: tonight's from the scoreboard, otherwise from the schedule."""
+    starts = []
+    for g in ((sc or {}).get("live") or {}).get("games") or []:
+        if g["st"] == "pre" and g.get("start"):
+            try:
+                starts.append(dt.datetime.fromisoformat(g["start"].replace("Z", "+00:00")))
+            except ValueError:
+                pass
+    if not starts:
+        day = game_day(now)
+        d = API.get(f"{API.WEB}/schedule/{day}", f"live_sched_{day}", max_age_days=0.02) or {}
+        for wk in d.get("gameWeek", []):
+            for g in wk.get("games", []):
+                if g.get("gameType") in (2, 3) and g.get("gameScheduleState") in (None, "OK") and g.get("gameState") in ("FUT", "PRE") and g.get("startTimeUTC"):
+                    try:
+                        t = dt.datetime.fromisoformat(g["startTimeUTC"].replace("Z", "+00:00"))
+                    except ValueError:
+                        continue
+                    if t > now - dt.timedelta(minutes=20):
+                        starts.append(t)
+    return min(starts) if starts else None
+
+
+def plan(sc, now, horizon=9 * 3600):
+    """What the live job should do after a pass: ('poll', 0) while games are on or about to start, ('wait', s) until
+    the next puck drop if that is within `horizon` seconds, else ('done', 0)."""
+    if any(g["st"] == "live" for g in ((sc or {}).get("live") or {}).get("games") or []):
+        return "poll", 0
+    nxt = next_puck_drop(sc, now)
+    if nxt is None:
+        return "done", 0
+    wait = (nxt - now).total_seconds() - 240   # be there four minutes before the puck drops
+    if wait <= 0:
+        return "poll", 0   # about to start (or started and the feed hasn't flipped to LIVE yet)
+    return ("wait", wait) if wait <= horizon else ("done", 0)
+
+
+def redispatch(log=print, wf=None):
+    """Start a run of a workflow in this repository (GitHub allows that with the job's own token): this job's
+    successor on nights that outlast one run, or the alerts job as an hourly heartbeat."""
+    repo, token = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GH_TOKEN")
+    if not (repo and token):
+        return False
+    import urllib.request
+    wf = wf or os.environ.get("DP_LIVE_WORKFLOW", "live-score.yml")
+    req = urllib.request.Request(f"https://api.github.com/repos/{repo}/actions/workflows/{wf}/dispatches",
+                                 data=json.dumps({"ref": os.environ.get("DP_LIVE_REF", "main")}).encode(), method="POST",
+                                 headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "User-Agent": API.UA})
+    try:
+        urllib.request.urlopen(req, timeout=30).read()
+        log(f"Started a run of {wf}.")
+        return True
+    except Exception as e:
+        log(f"  ! could not start the next run: {e}")
+        return False
+
+
+def session(out, publish=None, every=180, budget=5.3 * 3600, horizon=9 * 3600, log=print):
+    """Stay up for the game night: score, publish when something changed, sleep, repeat. GitHub's scheduler fires
+    this repository's jobs hours apart, so one run has to cover the evening instead of counting on the next one."""
+    import subprocess
+    import time
+    meta, by_fid, snap = _published()
+    t0, cache, passes, pushes, beat = time.time(), {}, 0, 0, time.time()
+    while True:
+        now = now_utc()
+        if time.time() - beat > 55 * 60:   # while this run is up, it is the clock GitHub's scheduler isn't: nudge the
+            beat = time.time()             # alerts job about once an hour so lock reminders go out on time
+            redispatch(log, "alerts.yml")
+        try:
+            sc = scoreboard(meta["weeks"], by_fid.get, meta["corModel"], snap.get("teams") or {}, snap, now=now, log=lambda m: None, cache=cache)
+        except Exception as e:   # one bad download must not end the night
+            log(f"  ! pass failed: {e}")
+            sc = None
+        passes += 1
+        if sc is not None and out and _write_if_changed(sc, out):
+            games = ((sc.get("live") or {}).get("games")) or []
+            log(f"{now:%H:%M:%S}Z week {sc['week']}: {sum(1 for g in games if g['st'] == 'live')} live, {sum(1 for g in games if g['st'] == 'final')} final, {sum(1 for g in games if g['st'] == 'pre')} to start -> changed")
+            if publish:
+                r = subprocess.run(publish, shell=True)
+                pushes += r.returncode == 0
+                if r.returncode != 0:
+                    log("  ! publish failed (will retry on the next change)")
+                    try:
+                        os.remove(out)   # so the next pass counts as a change and publishes again
+                    except OSError:
+                        pass
+        try:
+            what, wait = plan(sc, now, horizon)
+        except Exception as e:
+            log(f"  ! schedule lookup failed: {e}")
+            what, wait = "poll", 0
+        left = budget - (time.time() - t0)
+        if what == "done":
+            log(f"No game on, and none starting within {horizon / 3600:.0f} hours ({passes} passes, {pushes} published).")
+            return 0
+        if left <= 60:
+            log(f"Out of time for this run ({passes} passes, {pushes} published).")
+            redispatch(log)
+            return 0
+        nap = every if what == "poll" else min(wait, 1800)   # long waits in half-hour steps, re-checking the schedule
+        if what == "wait" and (passes == 1 or wait < 1900):
+            log(f"{now:%H:%M}Z next puck drop in {wait / 60 + 4:.0f} min: waiting.")
+        time.sleep(max(5, min(nap, left - 30)))
+
+
 def main(argv):
     out = argv[argv.index("--out") + 1] if "--out" in argv else None
+    if "--session" in argv:
+        pub = argv[argv.index("--publish") + 1] if "--publish" in argv else None
+        with open(os.path.join(ROOT, "config", "league.json"), encoding="utf-8") as f:
+            cfg = json.load(f).get("live") or {}
+        return session(out, pub, every=float(os.environ.get("DP_LIVE_EVERY", cfg.get("everySeconds", 180))),
+                       budget=float(os.environ.get("DP_LIVE_BUDGET", 5.3 * 3600)), horizon=float(cfg.get("waitHours", 9)) * 3600)
     meta, by_fid, snap = _published()
     sc = scoreboard(meta["weeks"], by_fid.get, meta["corModel"], snap.get("teams") or {}, snap)
     if sc is None:
         print("No week has locked yet: nothing to score.")
         return 0
     if out:
-        prev = None
-        if os.path.exists(out):
-            try:
-                with open(out, encoding="utf-8") as f:
-                    prev = json.load(f)
-            except Exception:
-                prev = None
-        same = prev is not None and {k: v for k, v in prev.items() if k != "asOf"} == {k: v for k, v in sc.items() if k != "asOf"}
-        if same:
+        if not _write_if_changed(sc, out):
             print("No change since the last run.")
             return 0
-        with open(out, "w", encoding="utf-8") as f:
-            json.dump(sc, f, separators=(",", ":"))
         print(f"wrote {out} ({os.path.getsize(out) / 1024:.0f} KB)")
     return 0
 

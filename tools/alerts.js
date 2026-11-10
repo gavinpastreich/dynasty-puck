@@ -72,20 +72,29 @@ function lockMessage(team, wi) {
 }
 async function doLock() {
   const wi = E.lockWeek(); if (wi === null) return;
-  const hrs = (E.lockTime(wi) - now()) / 36e5, H = A.lockReminderHours || 3;
-  if (FORCE !== 'lock' && !(hrs <= H && hrs > H - 1.5)) return;
+  // GitHub starts this job hours apart (not hourly), so the reminder goes out on the first run inside the window
+  // instead of at an exact hour: the configured lead time, stretched to 8 hours so a run always lands in it. A second
+  // "last call" goes out in the final 90 minutes only to teams whose lineup still has something to fix.
+  const hrs = (E.lockTime(wi) - now()) / 36e5, H = Math.max(A.lockReminderHours || 3, 8);
+  if (FORCE !== 'lock' && !(hrs <= H && hrs > 0.05)) return;
   await syncFantrax(wi + 1);
+  const last = hrs <= 1.5;
   for (const t of E.teams) {
     const msg = lockMessage(t, wi), topic = topicOf(t);
-    if (FORCE !== 'lock' && await alreadySent(topic, msg.title, '6h')) continue;
-    await ntfy(topic, msg.title, msg.message, SITE + '#/team/' + encodeURIComponent(t));
+    if (FORCE !== 'lock' && !await alreadySent(topic, msg.title, '12h')) { await ntfy(topic, msg.title, msg.message, SITE + '#/team/' + encodeURIComponent(t)); continue; }
+    if (FORCE === 'lock') { await ntfy(topic, msg.title, msg.message, SITE + '#/team/' + encodeURIComponent(t)); continue; }
+    const c = E.lineupCheck(t, wi), fix = c && (c.eOpt - c.eSet >= 0.3 || c.hurt.length || c.dead.length || c.gFailSet > 0.25);
+    const t2 = 'Last call: ' + msg.title;
+    if (last && fix && !await alreadySent(topic, t2, '12h')) await ntfy(topic, t2, msg.message, SITE + '#/team/' + encodeURIComponent(t));
   }
 }
 
 // ------------------------------------------------------------------ daily news
 async function doDaily() {
   const d = now(), hourUTC = d.getUTCHours();
-  if (FORCE !== 'daily' && hourUTC !== 11) return; // the nightly refresh finishes around 10:25 UTC
+  // once a day, on the first run from 11:00 UTC (after the nightly refresh) to 22:00 UTC; ntfy remembers 12 hours of
+  // messages, which is what stops a second send
+  if (FORCE !== 'daily' && !(hourUTC >= 11 && hourUTC < 22)) return;
   const today = d.toISOString().slice(0, 10), yday = new Date(d - 864e5).toISOString().slice(0, 10);
   const moves = (DP.league.moves || []).filter((x) => x.d >= yday);
   const title = 'Dynasty Puck update ' + et(d, { month: 'short', day: 'numeric' });
@@ -100,13 +109,13 @@ async function doDaily() {
     });
     if (!lines.length) continue;
     const topic = topicOf(t);
-    if (FORCE !== 'daily' && await alreadySent(topic, title, '20h')) continue;
+    if (FORCE !== 'daily' && await alreadySent(topic, title, '12h')) continue;
     await ntfy(topic, title, lines.join('\n'), SITE + '#/team/' + encodeURIComponent(t));
   }
   const trades = moves.filter((x) => x.type === 'move' || x.type === 'pick');
   if (trades.length) {
     const topic = topicOf('league');
-    if (FORCE === 'daily' || !await alreadySent(topic, title, '20h')) await ntfy(topic, title, trades.map(desc).join('\n'), SITE + '#/history');
+    if (FORCE === 'daily' || !await alreadySent(topic, title, '12h')) await ntfy(topic, title, trades.map(desc).join('\n'), SITE + '#/history');
   }
   console.log('daily done', today);
 }
@@ -116,13 +125,13 @@ async function doDeadline() {
   const dl = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null;
   if (!dl || isNaN(dl)) return;
   const hrs = (dl - now()) / 36e5;
-  if (FORCE !== 'deadline' && !(hrs <= 24 && hrs > 22.5)) return;
+  if (FORCE !== 'deadline' && !(hrs <= 24 && hrs > 13)) return;   // first run in the 11 hours after "one day to go"
   const title = 'Trade deadline tomorrow ' + et(dl, { hour: 'numeric', minute: '2-digit' }) + ' ET';
   const msg = 'Last day to trade this season (' + E.deadlineText() + '). Players you hold from the deadline to the end of the season get the ' +
     Math.round((E.RULES.htdPct || 0.1) * 100) + '% hometown discount at the auction. Trade Finder and Trade Machine: ' + SITE + '#/finder';
   for (const t of E.teams.concat(['league'])) {
     const topic = topicOf(t);
-    if (FORCE !== 'deadline' && await alreadySent(topic, title, '24h')) continue;
+    if (FORCE !== 'deadline' && await alreadySent(topic, title, '12h')) continue;
     await ntfy(topic, title, msg, SITE + '#/finder');
   }
 }
@@ -130,8 +139,13 @@ async function doDeadline() {
 // ------------------------------------------------------------------ weekly digest (emailed by tools/alerts_email.py)
 async function doWeekly() {
   const d = now(), day = et(d, { weekday: 'long' }), hour = +et(d, { hour: 'numeric', hour12: false });
-  if (FORCE !== 'weekly' && !(day === (A.weeklyDigestDay || 'Monday') && hour === (A.weeklyDigestHourET || 9))) return;
+  // the first run on digest day from the configured hour on, as long as the week it previews hasn't locked yet
+  // (tools/alerts_email.py checks the mailbox's Sent folder so the same digest never goes out twice)
+  if (FORCE !== 'weekly' && !(day === (A.weeklyDigestDay || 'Monday') && hour >= (A.weeklyDigestHourET || 9))) return;
   const wi = E.lockWeek(); if (wi === null) return;
+  if (FORCE !== 'weekly' && (E.lockTime(wi) - d) / 36e5 > 40) return;   // this week already locked: nothing to preview today
+  require('fs').mkdirSync(require('path').join(__dirname, 'out'), { recursive: true });
+  require('fs').writeFileSync(require('path').join(__dirname, 'out', 'exact.txt'), hour === (A.weeklyDigestHourET || 9) ? 'yes' : 'no');
   await syncFantrax(wi + 1);
   const w = E.weeks[wi], txt = [], html = [];
   const H = (s) => html.push(s), T = (s) => txt.push(s), esc = U.esc;

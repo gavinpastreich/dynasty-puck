@@ -106,6 +106,9 @@
 
   "live": {
     "_what": "Live scoreboard. A GitHub Action (.github/workflows/live-score.yml) scores the week in progress every few minutes on game nights and publishes one small file, score.json, to the 'live-data' branch of this repository; the site reads it from the address below. Clear the url to turn live updates off (the scoreboard then moves with the nightly builds only).",
-    "url": "https://raw.githubusercontent.com/gavinpastreich/dynasty-puck/live-data/score.json"
+    "url": "https://raw.githubusercontent.com/gavinpastreich/dynasty-puck/live-data/score.json",
+    "everySeconds": 180,
+    "waitHours": 9,
+    "_timing": "everySeconds = how often the job re-scores while NHL games are on. waitHours = how long a run may sit and wait for the next puck drop (GitHub's scheduler starts this repository's jobs hours apart, so a run that starts in the afternoon waits for the evening games instead of leaving). 0 = never wait: lighter on GitHub, but game nights are only covered when a run happens to start during them."
   }
 }
