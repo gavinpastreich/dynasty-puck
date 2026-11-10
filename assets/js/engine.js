@@ -807,8 +807,10 @@
     if (p.ct !== 'MNR') return null;
     var need = p.gradThr - (p.cgp || 0);
     if (need <= 0) return 0;
-    if (p.projGP >= need) return 0;
-    var cum = p.projGP, pros = p._pros || E.prospect(p);
+    // games still to come this season, not the full-season projection: career GP already holds the games played so far
+    var rem = E.remGP(p);
+    if (rem >= need) return 0;
+    var cum = rem, pros = p._pros || E.prospect(p);
     for (var y = 1; y < 7; y++) {
       var gpY = y < pros.eta ? 0 : (p.G ? 30 : 60) * Math.min(1, 0.6 + 0.2 * (y - pros.eta));
       if (pros.p < 0.3 && y < pros.eta + 2) gpY *= 0.5;
@@ -868,7 +870,7 @@
 
   // ---------------------------------------------------------------- Prospect Radar pool
   // Bump when the prospect model changes, then rebuild the rank history: node tools/prospect_radar.js --backfill
-  E.PROSPECT_MODEL = 3;
+  E.PROSPECT_MODEL = 4;
   // Every prospect on one scale, whoever holds him: his dynasty value as an MNR asset with a full 2026-27 counted
   // ("stock"). Rostered MNR players, unowned players aged 22 or under in the Fantrax pool, and 2026 NHL draft picks
   // Fantrax hasn't added yet (valued as if a team held them on an MNR deal). Counting the full season keeps the
@@ -919,9 +921,22 @@
   // Day index (0 = first day of week 1) of the data build, as an Eastern date: NHL games on or after it are not in the
   // career totals yet.
   E.dataDay = function () {
+    var key = (DP.nowOverride || '') + '|' + DP.meta.built;
+    if (E._dd && E._dd.k === key) return E._dd.v;
     var t = DP.nowOverride ? E.now() : new Date(String(DP.meta.built).slice(0, 16) + ':00Z');
     if (isNaN(t)) t = E.now();
-    return E.dayIndex(t.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }));
+    E._dd = { k: key, v: E.dayIndex(t.toLocaleDateString('en-CA', { timeZone: 'America/New_York' })) };
+    return E._dd.v;
+  };
+  // NHL games a player is still expected to play this season: his availability x his team's games from the data build on
+  // (equal to the full projection before the season)
+  E.remGP = function (p) {
+    if (!(p.projGP > 0)) return 0;
+    var sched = p.nt26 && DP.nhl.sched[p.nt26];
+    if (!sched) return p.projGP * E.remFrac();
+    var d0 = E.dataDay(), n = 0;
+    for (var i = 0; i < sched.length; i++) if (sched[i][0] >= d0) n++;
+    return p.avail * n;
   };
   // Games still needed vs the NHL games still to play (from the data build on). It used to add up games from opening
   // night against the games still needed, so mid-season it showed graduation dates that had already passed.

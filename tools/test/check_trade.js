@@ -105,7 +105,14 @@ E.teams.forEach((t) => {
     if (g.week !== null) ok(g.week >= lw - 1 && g.date && E.dayIndex(g.date.toISOString().slice(0, 10)) >= d0, `${p.n}: projected graduation is not in the past (week ${g.week + 1})`);
     ok(g.prob >= 0 && g.prob <= 1, `${p.n}: graduation probability is a probability`);
   });
+  // the contract model graduates a player this season only if the games still to come get him there
+  E.P.filter((p) => p.gm && p.ct === 'MNR' && p.gradThr - (p.cgp || 0) > 0).forEach((p) => {
+    const need = p.gradThr - (p.cgp || 0), rem = E.remGP(p);
+    ok((p.grad === 0) === (rem >= need), `${p.n}: graduates this season exactly when remaining games (${rem.toFixed(1)}) cover the ${need} needed`);
+    ok(rem <= p.projGP + 1e-9, `${p.n}: games left never exceed the season projection`);
+  });
   DP.nowOverride = '2026-09-20T12:00:00Z'; E.init();
+  ok(E.P.filter((p) => p.r && p.nt26).every((p) => near(E.remGP(p), p.projGP, 1e-6)), 'before the season, games left = the full projection');
   guy.inj = ['IR', 'test', 'Week-to-week', '2026-09-18', 0];
   ok(E.lockWeek() === 0 && E.injuredOut(guy, 0) && E.injuredOut(guy, 1) && !E.injuredOut(guy, 2), 'before the season the count starts at week 1');
   delete guy.inj;

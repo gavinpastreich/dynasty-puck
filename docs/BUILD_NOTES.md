@@ -184,6 +184,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
 - E.graduation(p) added expected games from week 1 against the games still needed, so mid-season it showed
   graduation weeks that had already passed ("73/84 GP, ~wk 4" in week 7). Now it walks the NHL games on or after the
   data build day (E.dataDay()); the probability uses the games left.
+- E.gradYear(p) asked whether the full-season GP projection covers the games still needed, but career GP already
+  holds the games played, so it double counted them. Thirteen prospects (McKenna, Stenberg, Hagens ...) were priced as
+  graduating this season when they project to fall a few games short, which starts their ELC a year early. It now
+  uses E.remGP(p) (availability x team games from the data build on). Prospect model version 4; history re-scored.
 - Weekly Preview for the week in progress now links to the Live Scoreboard and to the week being set (where the
   lineup watch lives). check_trade.js covers all three.
 - Guide PDF (tools/guide): 15 pages, new Category Insights and Prospect Radar pages, the Live Scoreboard shot is the

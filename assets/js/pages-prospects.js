@@ -49,8 +49,8 @@
       var teamF = { l: 'Team', opts: [['', 'All']].concat(DP.meta.gms.map(function (g) { return [g.code, g.code]; })), def: ft, fn: function (p, v) { return (p.p || p).gm === v; } };
       if (tab === 'grad') {
         var rows = mnr.map(function (p) { return { p: p, g: E.graduation(p) }; });
-        var soon = rows.filter(function (x) { return x.g.week !== null && x.g.week < 6; }).length;
-        body.innerHTML = '<div class="stats">' + DP.statTile('Projected to graduate in 2026-27', String(rows.filter(function (x) { return x.g.week !== null; }).length), 'of ' + mnr.length + ' MNR') + DP.statTile('In the first 6 weeks', String(soon), 'Oct–early Nov') +
+        var cw = Math.max(0, E.nowWeek()), soon = rows.filter(function (x) { return x.g.week !== null && x.g.week <= cw + 3; }).length;
+        body.innerHTML = '<div class="stats">' + DP.statTile('Still to graduate in 2026-27', String(rows.filter(function (x) { return x.g.week !== null; }).length), 'projected, of ' + mnr.length + ' MNR · ' + rows.filter(function (x) { return x.g.status === 'graduated'; }).length + ' already have') + DP.statTile('In the next 4 weeks', String(soon), 'weeks ' + (cw + 1) + '–' + Math.min(E.NW, cw + 4)) +
           DP.statTile('Within 10 GP of the line', String(rows.filter(function (x) { return x.g.need > 0 && x.g.need <= 10; }).length), 'career GP') + DP.statTile('ELC cap impact', U.m(rows.filter(function (x) { return x.g.week !== null; }).length * 1.5), 'if all are signed') + '</div><div id="gt"></div>';
         ui.table(U.qs('#gt', body), {
           rows: rows, sort: 'wk', desc: false, csv: 'mnr-graduation-tracker.csv', search: function (x) { return x.p.n + ' ' + x.p.gm; }, filters: [teamF,
