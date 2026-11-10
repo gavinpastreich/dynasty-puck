@@ -197,4 +197,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   first puck drop (00:00Z) more than 9 hours away and left, so the evening depended on a later run happening to start.
   A waiting session sleeps in 30-minute steps and hands over to a successor at the job time limit; the repo is public,
   so the minutes are free. While it waits it also nudges the alerts job hourly.
+- Workflow hardening (2026-11-10): three pushes inside six minutes produced a rejected `git push` in the refresh job
+  (main had moved while it was building) and a failed Pages deployment ("in progress deployment": GitHub was still
+  finishing the previous one). The refresh job now rebases its data commit onto the newer main and pushes again
+  (or skips publishing if the two overlap); both workflows retry a refused deployment once after two minutes.
 
