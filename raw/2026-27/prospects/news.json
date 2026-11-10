@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-10T14:43+00:00",
+"fetched": "2026-11-10T17:50+00:00",
 "items": {
 "n8482100": [
 {
@@ -163,6 +163,14 @@
 ],
 "n8483497": [
 {
+"d": "2026-11-10",
+"k": [],
+"s": "NHL.com",
+"t": "Global Series Finland ‘great opportunity’ for Nyman with Kraken",
+"u": "https://www.nhl.com/news/2026-nhl-global-series-finland-great-opportunity-for-jani-nyman-seattle-kraken",
+"w": 2
+},
+{
 "d": "2026-11-09",
 "k": [],
 "s": "NHL.com (team site)",
@@ -246,6 +254,14 @@
 }
 ],
 "n8484158": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs Prospect Roundup: Brody Pepoy popping off, Ben Danford out week-to-week",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-prospect-roundup-pepoy-popping-off-danford-out-week-to-week",
+"w": 1
+},
 {
 "d": "2026-10-27",
 "k": [],
@@ -539,6 +555,32 @@
 "w": 2
 }
 ],
+"n8484770": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Lightning recall F Sam O'Reilly from AHL Syracuse",
+"u": "https://www.nhl.com/news/tampa-bay-lightning-recall-forward-sam-o-reilly-from-ahl-syracuse-crunch",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Lightning Recall Sam O’Reilly",
+"u": "https://www.prohockeyrumors.com/2026/11/lightning-recall-sam-oreilly.html",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Sportsnet",
+"t": "Lightning recall 2025-26 OHL MVP Sam O’Reilly",
+"u": "https://www.sportsnet.ca/nhl/article/lightning-recall-2025-26-ohl-mvp-sam-oreilly/",
+"w": 2
+}
+],
 "n8484773": [
 {
 "d": "2026-11-09",
@@ -632,6 +674,16 @@
 }
 ],
 "n8484805": [
+{
+"d": "2026-11-10",
+"k": [
+"injury"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs Prospect Roundup: Brody Pepoy popping off, Ben Danford out week-to-week",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-prospect-roundup-pepoy-popping-off-danford-out-week-to-week",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [
@@ -873,6 +925,16 @@
 "w": 1
 }
 ],
+"n8486025": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "The Hockey News",
+"t": "Too Much Too Soon?: How Jets Rookie Viggo Bjorck Is Handling The Pressures Of The NHL",
+"u": "https://thehockeynews.com/news/latest-news/too-much-too-soon-how-jets-rookie-viggo-bjorck-is-handling-the-pressures-of-the-nhl",
+"w": 2
+}
+],
 "n8486035": [
 {
 "d": "2026-11-03",
@@ -1045,6 +1107,18 @@
 "w": 1
 }
 ],
+"n8486300": [
+{
+"d": "2026-11-10",
+"k": [
+"injury"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs Prospect Roundup: Brody Pepoy popping off, Ben Danford out week-to-week",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-prospect-roundup-pepoy-popping-off-danford-out-week-to-week",
+"w": 2
+}
+],
 "n8486347": [
 {
 "d": "2026-11-09",
@@ -1066,7 +1140,7 @@
 },
 "sources": [
 {
-"n": 77,
+"n": 79,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1089,7 +1163,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1124,7 +1198,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1292,7 +1366,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -1348,7 +1422,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
