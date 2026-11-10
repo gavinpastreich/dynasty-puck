@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-10T11:02+00:00",
+"fetched": "2026-11-10T13:30+00:00",
 "items": {
 "n8482100": [
 {
@@ -205,6 +205,16 @@
 "t": "Red Wings’ veterans ‘lending helping hands’ to youngsters, and it’s making an impact early in 2026-27 season",
 "u": "https://www.nhl.com/news/red-wings-veterans-lending-helping-hands-to-youngsters-and-it-s-making-an-impact-early-in-2026-27-season",
 "w": 1
+}
+],
+"n8483703": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Pensburgh (PIT)",
+"t": "Murashov shares exchange with Flames goaltender Devin Cooley",
+"u": "https://www.pensburgh.com/general/83010/murashov-shares-exchange-with-flames-goaltender-devin-cooley",
+"w": 2
 }
 ],
 "n8484148": [
@@ -1150,7 +1160,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },

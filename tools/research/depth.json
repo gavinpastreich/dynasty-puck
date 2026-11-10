@@ -887,8 +887,8 @@
   },
   "MIN": {
    "team": "Minnesota Wild",
-   "updated": "2026-11-08",
-   "source": "Last Game (2026-11-07)",
+   "updated": "2026-11-10",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "pp1": [
     "Maxim Shabanov",
@@ -905,14 +905,14 @@
     "Quinn Hughes"
    ],
    "pk1": [
-    "Ryan Hartman",
+    "Michael McCarron",
     "Blake Coleman",
     "Olli Maatta",
     "Jonas Brodin"
    ],
    "pk2": [
+    "Ryan Hartman",
     "Yakov Trenin",
-    "Nico Sturm",
     "David Spacek",
     "Zach Bogosian"
    ],
@@ -923,7 +923,7 @@
    ],
    "f2": [
     "Blake Coleman",
-    "Ryan Hartman",
+    "Michael McCarron",
     "Bobby Brink"
    ],
    "f3": [
@@ -933,7 +933,7 @@
    ],
    "f4": [
     "Marcus Foligno",
-    "Nico Sturm",
+    "Ryan Hartman",
     "Nick Foligno"
    ],
    "d1": [
