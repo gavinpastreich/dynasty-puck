@@ -42,6 +42,8 @@ lineup set for that period), getDraftPicks (future picks with original owner), g
 
 Tests (run before pushing; the browser ones need Playwright via PW_PATH):
 - `node tools/test/check_trade.js`: assertions for contention weights, use value, in-season proration, IR cap, picks.
+- `node tools/test/check_scoreboard.js`: the scoreboard is not empty once a week has locked, weekly history adds up
+  and stays within 5% of the Fantrax standings, category strength / partner fit, live-day fractions.
 - `node tools/test/check_engine.js`: engine diagnostics (prints, no asserts).
 - `node tools/test/browser_check.js`: every route at desktop + phone width; page errors, sideways scroll, and
   oversized widgets (a badge once inherited the page-layout `.wrap` class and grew 850px tall).
@@ -98,3 +100,25 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
 Regenerate after big changes: `node tools/guide/shoot.js <work>/shots` (the 'live' shot needs a temporary
 `DP_SCORE_TEST=2026-03-02:2026-03-05:7` build, restored afterwards), then `python3 tools/guide/build_guide.py <work> --font Inter-latin.woff2`.
 Text lives in tools/guide/guide.html. Linked from the site menu.
+
+Scoreboard + weekly history (2026-11-09):
+- Bug: the Live Scoreboard was empty all season. `week_scoreboard` looked for weeks whose lock time had passed, but
+  lock times were attached to the weeks a few lines later (in `apply_fantrax_league`), so it always returned None.
+  Pre-season testing used DP_SCORE_TEST, which skipped that branch. Fixed by `attach_locks` before anything asks for
+  the current week; the build now logs `!!` and check_scoreboard.js fails if the season has started with no score.
+- tools/scoreboard.py: `scoreboard()` (week in progress) and `history()` (finished weeks -> raw/2026-27/weekly/
+  week_NN.json, frozen 3 days after the week ends; data/weeks/wNN.js holds the player lines for the page).
+  Fantrax's public API returns the locked lineup of any period (`getTeamRosters&period=N`), so a week = Active slots
+  x NHL date-range stats. Pt-D counts points from players in D slots. Checked against the Fantrax standings after
+  6 weeks: 26 of 1,260 team-category decisions differ (near-ties in estimated Cor).
+- Game day in progress (until 4 AM Eastern): NHL live feeds. Box score = G, A, PIM, SOG, hits, blocks, takeaways,
+  goalie lines (all exact vs the stats API on an 11-game night); play-by-play = special-teams points (a goal with
+  more players on the ice than the opponent); Cor = 5v5 on-ice shot attempts rebuilt from play-by-play + shift
+  charts x the model's SAT coefficient (mean abs error ~4 per team per night; replaced by the stats API next morning).
+- Neither NHL API sends CORS headers, so the browser can't read them. The "Live scoreboard" Action runs
+  `python tools/scoreboard.py --out score.json` every 10 minutes and force-pushes a one-commit `live-data` branch;
+  the page polls raw.githubusercontent.com (CORS *) every 2.5 minutes and takes the file when it is newer than the
+  build's `DP.league.score`. `DP_NOW=<iso>` pretends it is another time (the output is marked test and ignored by
+  the site).
+- Engine: `E.gamesFrom(p, wi, d0, today)` counts a game in progress for the share left (goalie GP counts whole games
+  only); `E.history()` scores every finished week on the real schedule (category records, all-play, luck).

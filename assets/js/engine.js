@@ -214,7 +214,7 @@
     agg.cGA_GP += g.v * r.ga;
     agg.cGA_SA += g.m * q * varSA + g.v * r.ga * r.sa;
     // goalie GP distribution: binomial(N, a) convolved into the team pmf
-    agg.gpmf = convolve(agg.gpmf, binomPmf(g.N, p.avail));
+    agg.gpmf = convolve(agg.gpmf, binomPmf(g.Ni === undefined ? g.N : g.Ni, p.avail));
   }
   function binomPmf(n, a) {
     var out = new Array(n + 1), c = 1;
@@ -929,12 +929,13 @@
   };
 
   // team category strength: average weekly (7-day) expected total per category for starters, and league rank
-  E.teamCats = function (weeksByTeam) {
+  E.teamCats = function (weeksByTeam, from) {
     weeksByTeam = weeksByTeam || E.baseline;
+    from = from && from < E.REG_WEEKS ? from : 0;   // from = first week counted (e.g. the next lock, for rest-of-season)
     var out = {};
     E.teams.forEach(function (t) {
       var v = new Array(E.NC).fill(0), n = 0;
-      for (var wi = 0; wi < E.REG_WEEKS; wi++) {
+      for (var wi = from; wi < E.REG_WEEKS; wi++) {
         var cv = E.catVec(weeksByTeam[t][wi]), f = 7 / E.weeks[wi].days;
         for (var c = 0; c < E.NC; c++) v[c] += (E.CATS[c].ratio ? (cv.mu[c] || 0) : cv.mu[c] * f);
         n++;
@@ -1514,19 +1515,24 @@
 
   // ---------------------------------------------------------------- live scoreboard (week in progress)
   E.dayIndex = function (iso) { return Math.round((new Date(iso + 'T12:00:00Z').getTime() - E.seasonStart) / 864e5); };
-  // expected games for a player from day d0 to the end of week wi
-  E.gamesFrom = function (p, wi, d0) {
+  // expected games for a player from day d0 to the end of week wi. `today` = { d: day index of the game day in
+  // progress, left: { NHL team: share of its game still to play } }: a game being played counts for what is left of
+  // it, a finished one for nothing (its stats are already in the totals), one that hasn't started in full.
+  E.gamesFrom = function (p, wi, d0, today) {
     if (!p.r || !p.nt26) return { m: 0, v: 0, N: 0 };
-    var w = E.weeks[wi], end = w.d0 + w.days - 1, N = 0;
-    (DP.nhl.sched[p.nt26] || []).forEach(function (r) { if (r[0] >= d0 && r[0] <= end) N++; });
-    var a = p.avail; return { m: N * a, v: N * a * (1 - a), N: N };
+    var w = E.weeks[wi], end = w.d0 + w.days - 1, N = 0, Ni = 0;   // Ni = whole games still to start (goalie GP counts)
+    (DP.nhl.sched[p.nt26] || []).forEach(function (r) {
+      if (today && r[0] === today.d) { var lf = today.left[p.nt26]; if (lf === undefined) { N++; Ni++; } else N += lf; }
+      else if (r[0] >= d0 && r[0] <= end) { N++; Ni++; }
+    });
+    var a = p.avail; return { m: N * a, v: N * a * (1 - a), N: N, Ni: Ni };
   };
   // the rest of the week for the players active in Fantrax this period (weekly lock: the lineup can't change)
-  E.restWeek = function (team, wi, d0, activeIds) {
+  E.restWeek = function (team, wi, d0, activeIds, today) {
     var only = {}; (activeIds || []).forEach(function (id) { only[id] = 1; });
     var ros = E.rosters[team] || [], lu = E.lineup(ros, wi, activeIds && activeIds.length ? { only: only } : null), agg = emptyAgg();
-    lu.F.concat(lu.D).forEach(function (x) { addSkater(agg, x.p, E.gamesFrom(x.p, wi, d0)); });
-    lu.G.forEach(function (x) { addGoalie(agg, x.p, E.gamesFrom(x.p, wi, d0)); });
+    lu.F.concat(lu.D).forEach(function (x) { addSkater(agg, x.p, E.gamesFrom(x.p, wi, d0, today)); });
+    lu.G.forEach(function (x) { addGoalie(agg, x.p, E.gamesFrom(x.p, wi, d0, today)); });
     agg.r = ratios(agg); agg.lu = lu;
     return agg;
   };
@@ -1536,11 +1542,13 @@
   };
   // current totals + a Monte Carlo of the rest of the week -> projected finals, per-category and matchup win odds
   E.liveOdds = function (a, b, sc, n) {
-    var wi = sc.week - 1, d0 = sc.to ? E.dayIndex(sc.to) + 1 : E.weeks[wi].d0;
+    var wi = sc.week - 1, d0 = sc.to ? E.dayIndex(sc.to) + 1 : E.weeks[wi].d0, today = null;
+    if (sc.final) d0 = E.weeks[wi].d0 + E.weeks[wi].days;            // week over: nothing left to simulate
+    else if (sc.live && sc.live.date) { today = { d: E.dayIndex(sc.live.date), left: sc.live.left || {} }; d0 = today.d + 1; }
     var TA = sc.teams[a] || { tot: {}, active: [] }, TB = sc.teams[b] || { tot: {}, active: [] };
     var zero = { PtD: 0, G: 0, A: 0, GA2: 0, PIM: 0, SOG: 0, STP: 0, Hit: 0, Blk: 0, Tk: 0, Cor: 0, W: 0, GA: 0, SA: 0, SHO: 0, GGP: 0, GTOI: 0 };
     var ca = Object.assign({}, zero, TA.tot), cb = Object.assign({}, zero, TB.tot);
-    var ra = E.restWeek(a, wi, d0, TA.active), rb = E.restWeek(b, wi, d0, TB.active);
+    var ra = E.restWeek(a, wi, d0, TA.active, today), rb = E.restWeek(b, wi, d0, TB.active, today);
     var rand = E.rng(sc.week * 1009 + 17), nrm = E.normalSampler(rand), minGP = E.RULES.goalieMinGP;
     n = n || 4000;
     var cdf = function (pm) { var acc = 0; return pm.map(function (x) { acc += x; return acc; }); };
@@ -1592,6 +1600,137 @@
       if (E.CATS[c].low ? x.a < x.b : x.a > x.b) wa++; else wb++;
     });
     return [wa, wb, t];
+  };
+
+  // ---------------------------------------------------------------- weeks played: real category results
+  // DP.league.hist = every finished week (each team's locked Fantrax lineup x NHL stats that week, built nightly).
+  var HKEYS = ['PtD', 'G', 'A', 'GA2', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor', 'W', null, null, 'SHO'];
+  E.weekVec = function (tot) { // the 15 category values of one team-week (ratio cats from the raw goalie totals)
+    var v = HKEYS.map(function (k) { return k ? (tot[k] || 0) : null; });
+    v[10] = Math.round(v[10]);
+    v[12] = tot.GTOI > 0 ? tot.GA * 60 / tot.GTOI : null;
+    v[13] = tot.SA > 0 ? 1 - tot.GA / tot.SA : null;
+    v.ggp = tot.GGP || 0;
+    return v;
+  };
+  // one matchup, category by category, from a's side: 1 win, -1 loss, 0 tie, -2 both lose (both missed the goalie minimum)
+  E.catResults = function (va, vb) {
+    var minGP = E.RULES.goalieMinGP, fa = va.ggp < minGP, fb = vb.ggp < minGP;
+    return E.CATS.map(function (cat, c) {
+      if (cat.grp === 'G' && (fa || fb)) return fa && fb ? -2 : fa ? -1 : 1;
+      var x = va[c], y = vb[c];
+      if (x === null || y === null || Math.abs(x - y) < 1e-9) return 0;
+      return (cat.low ? x < y : x > y) ? 1 : -1;
+    });
+  };
+  // every finished week scored on the real schedule, plus per-team category records, weekly averages, ranks and
+  // "all-play" (how often a team's number would have beaten each other team's that week: strength without schedule luck)
+  E.history = function () {
+    var src = DP.league.hist || [], sc = DP.league.score;
+    if (E._hist && E._hist.v === E.version && E._hist.src === src && E._hist.sc === sc) return E._hist.d;
+    var teams = E.teams, nT = teams.length, NC = E.NC;
+    var list = src.map(function (h) { return { n: h.n, from: h.from, to: h.to, final: h.final, tot: h.teams }; });
+    if (sc && sc.final && sc.teams && !list.some(function (w) { return w.n === sc.week; })) {   // just ended, not archived yet
+      var tt = {}; Object.keys(sc.teams).forEach(function (t) { tt[t] = sc.teams[t].tot; });
+      list.push({ n: sc.week, from: sc.from, to: sc.to, final: false, tot: tt });
+    }
+    list = list.filter(function (w) { return teams.every(function (t) { return w.tot[t]; }); }).sort(function (a, b) { return a.n - b.n; });
+    var rec = {}, ap = {}, sumTot = {}, wl = {}, exp = {};
+    teams.forEach(function (t) {
+      rec[t] = []; ap[t] = new Array(NC).fill(0); sumTot[t] = {}; wl[t] = { W: 0, L: 0, T: 0 }; exp[t] = 0;
+      for (var c = 0; c < NC; c++) rec[t].push([0, 0, 0]);
+    });
+    var nReg = 0;
+    list.forEach(function (w) {
+      w.vec = {}; teams.forEach(function (t) { w.vec[t] = E.weekVec(w.tot[t]); Object.keys(w.tot[t]).forEach(function (k) { sumTot[t][k] = (sumTot[t][k] || 0) + w.tot[t][k]; }); });
+      w.games = DP.meta.h2h.filter(function (g) { return g[0] === w.n; }).map(function (g) {
+        var r = E.catResults(w.vec[g[1]], w.vec[g[2]]), a = { W: 0, L: 0, T: 0 }, b = { W: 0, L: 0, T: 0 };
+        r.forEach(function (x, c) {
+          if (x === 1) { a.W++; b.L++; rec[g[1]][c][0]++; rec[g[2]][c][1]++; }
+          else if (x === -1) { a.L++; b.W++; rec[g[1]][c][1]++; rec[g[2]][c][0]++; }
+          else if (x === 0) { a.T++; b.T++; rec[g[1]][c][2]++; rec[g[2]][c][2]++; }
+          else { a.L++; b.L++; rec[g[1]][c][1]++; rec[g[2]][c][1]++; }
+        });
+        ['W', 'L', 'T'].forEach(function (k) { wl[g[1]][k] += a[k]; wl[g[2]][k] += b[k]; });
+        return { a: g[1], b: g[2], r: r, sa: a, sb: b };
+      });
+      if (!w.games.length) return;
+      nReg++;
+      // all-play: each team's categories against the other 13 teams' numbers that week
+      w.ap = {};
+      teams.forEach(function (t) {
+        var row = new Array(NC).fill(0);
+        teams.forEach(function (u) {
+          if (u === t) return;
+          E.catResults(w.vec[t], w.vec[u]).forEach(function (x, c) { row[c] += x === 1 ? 1 : x === 0 ? 0.5 : 0; });
+        });
+        w.ap[t] = row.map(function (x) { return x / (nT - 1); });
+        w.ap[t].forEach(function (x, c) { ap[t][c] += x; exp[t] += x; });
+      });
+    });
+    var avg = {}, rank = {}, z = {};
+    teams.forEach(function (t) {
+      var S = sumTot[t], n = list.length || 1;
+      avg[t] = HKEYS.map(function (k) { return k ? (S[k] || 0) / n : null; });
+      avg[t][12] = S.GTOI > 0 ? S.GA * 60 / S.GTOI : null;
+      avg[t][13] = S.SA > 0 ? 1 - S.GA / S.SA : null;
+      rank[t] = new Array(NC); z[t] = new Array(NC);
+      if (nReg) ap[t] = ap[t].map(function (x) { return x / nReg; });
+    });
+    for (var c = 0; c < NC; c++) {
+      var low = E.CATS[c].low, val = function (t) { var x = avg[t][c]; return x === null ? (low ? Infinity : -Infinity) : x; };
+      teams.slice().sort(function (a, b) { return low ? val(a) - val(b) : val(b) - val(a); }).forEach(function (t, i) { rank[t][c] = i + 1; });
+      var vals = teams.map(function (t) { return avg[t][c]; }).filter(function (x) { return x !== null; });
+      var m = sum(vals) / (vals.length || 1), sd = Math.sqrt(sum(vals.map(function (q) { return (q - m) * (q - m); })) / (vals.length || 1)) || 1;
+      teams.forEach(function (t) { var x = avg[t][c]; z[t][c] = x === null ? 0 : (low ? m - x : x - m) / sd; });
+    }
+    // how close the rebuilt records are to the Fantrax standings (they differ by a few near-ties in estimated Cor)
+    var chk = null, st = DP.league.standings || [];
+    if (st.length && nReg) {
+      var d = 0, played = 0;
+      st.forEach(function (r) { var x = wl[r.t]; if (x) { d += Math.abs(x.W - r.W) + Math.abs(x.L - r.L) + Math.abs(x.T - r.T); played += r.W + r.L + r.T; } });
+      if (played === nReg * NC * nT) chk = { diff: d, of: played };
+    }
+    var luck = {}; teams.forEach(function (t) { luck[t] = nReg ? wl[t].W + wl[t].T / 2 - exp[t] : 0; });
+    var res = { weeks: list, n: list.length, nReg: nReg, rec: rec, avg: avg, rank: rank, z: z, ap: ap, wl: wl, allPlay: exp, luck: luck, check: chk };
+    E._hist = { v: E.version, src: src, sc: sc, d: res };
+    return res;
+  };
+  // category strength for trade talk. mode: 'proj' = rest of season on current rosters (optimal lineups, projections
+  // already blended with this season's play), 'act' = what the locked lineups actually did, 'blend' = both, with the
+  // actual side counting more as weeks pile up (k = 6 weeks of projection weight).
+  E.CAT_BLEND_K = 6;
+  E.catStrength = function (mode) {
+    var key = (mode || 'blend') + ':' + E.version + ':' + E.openFrom() + ':' + (DP.league.hist || []).length;
+    E._cs = E._cs || {};
+    if (E._cs[key]) return E._cs[key];
+    var H = E.history(), P = E.teamCats(null, E.openFrom()), n = H.nReg, k = E.CAT_BLEND_K, wA = mode === 'act' ? 1 : mode === 'proj' || !n ? 0 : n / (n + k);
+    if (mode === 'act' && !n) wA = 0;
+    var z = {}, rank = {};
+    E.teams.forEach(function (t) { z[t] = P.z[t].map(function (zp, c) { return wA * H.z[t][c] + (1 - wA) * zp; }); rank[t] = new Array(E.NC); });
+    for (var c = 0; c < E.NC; c++) E.teams.slice().sort(function (a, b) { return z[b][c] - z[a][c]; }).forEach(function (t, i) { rank[t][c] = i + 1; });
+    return (E._cs[key] = { mode: mode || 'blend', wA: wA, z: z, rank: rank, proj: P, hist: H });
+  };
+  // how well two teams' category strengths complement each other, and what each side has that the other needs
+  E.partnerFit = function (me, other, S) {
+    S = S || E.catStrength('blend');
+    var get = [], give = [], sc = 0, n = E.teams.length, strong = Math.ceil(n * 0.36), weak = Math.floor(n / 2) + 1;
+    E.CATS.forEach(function (cat, c) {
+      var a = S.z[me][c], b = S.z[other][c], ra = S.rank[me][c], rb = S.rank[other][c];
+      var g1 = Math.max(0, b - a) * Math.max(0, -a + 0.25), g2 = Math.max(0, a - b) * Math.max(0, -b + 0.25);
+      sc += g1 + g2;
+      if (rb <= strong && ra >= weak && rb < ra) get.push({ c: c, mine: ra, theirs: rb, w: b - a });
+      if (ra <= strong && rb >= weak && ra < rb) give.push({ c: c, mine: ra, theirs: rb, w: a - b });
+    });
+    get.sort(function (x, y) { return y.w - x.w; }); give.sort(function (x, y) { return y.w - x.w; });
+    return { t: other, score: sc, get: get, give: give };
+  };
+  // a player's weekly contribution by category on the same scale as the team numbers (per 7-day week, rest of season)
+  E.catContrib = function (p) {
+    if (!p.r) return null;
+    var from = Math.min(E.openFrom(), E.REG_WEEKS - 1), wk = E.REG_WEEKS - from, g = p.nt26 && E.wg[p.nt26] ? sum(E.wg[p.nt26].slice(from, E.REG_WEEKS)) / wk * p.avail : 0, r = p.r;
+    if (p.G) return { g: g, v: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, r.w * g, r.gaa, r.sv, r.sho * g] };
+    return { g: g, v: [r.PtD * g, r.G * g, r.A * g, (2 * r.G + r.A) * g, r.PIM * g, r.SOG * g, r.STP * g, r.Hit * g, r.Blk * g, r.Tk * g, r.Cor * g, 0, null, null, 0] };
   };
 
   // single-week Monte Carlo for the matchup page: P(win matchup), distribution of category score

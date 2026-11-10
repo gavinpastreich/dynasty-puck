@@ -102,5 +102,10 @@
     "lockReminderHours": 3,
     "weeklyDigestDay": "Monday",
     "weeklyDigestHourET": 9
+  },
+
+  "live": {
+    "_what": "Live scoreboard. A GitHub Action (.github/workflows/live-score.yml) scores the week in progress every few minutes on game nights and publishes one small file, score.json, to the 'live-data' branch of this repository; the site reads it from the address below. Clear the url to turn live updates off (the scoreboard then moves with the nightly builds only).",
+    "url": "https://raw.githubusercontent.com/gavinpastreich/dynasty-puck/live-data/score.json"
   }
 }

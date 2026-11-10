@@ -146,7 +146,9 @@
           var lg = DP.meta.h2h.find(function (m) { return m[0] === sc.week && (m[1] === me || m[2] === me); });
           if (lg) {
             var lo = lg[1] === me ? lg[2] : lg[1], od = DP.liveOdds(me, lo), ls = E.liveScore(od);
-            h += '<div class="callout ' + (od.win >= 0.5 ? 'good' : 'warn') + '">📺 <b>Week ' + sc.week + ' so far</b> vs ' + esc(U.teamName(lo)) + ': leading ' + ls[0] + ' categories to ' + ls[1] + (ls[2] ? ' (' + ls[2] + ' tied)' : '') + ' · ' + U.pct(od.win) + ' to win the week' + (sc.to ? ' (games through ' + esc(sc.to) + ')' : '') + '. <a href="#/live">Live scoreboard →</a></div>';
+            var nLv = DP.scoreFeed ? DP.scoreFeed.nLive() : 0, tied = ls[2] ? ' (' + ls[2] + ' tied)' : '';
+            if (sc.final) h += '<div class="callout ' + (ls[0] > ls[1] ? 'good' : ls[0] < ls[1] ? 'warn' : '') + '">📺 <b>Week ' + sc.week + ' final</b> vs ' + esc(U.teamName(lo)) + ': ' + (ls[0] > ls[1] ? 'won ' : ls[0] < ls[1] ? 'lost ' : 'tied ') + ls[0] + ' categories to ' + ls[1] + tied + '. <a href="#/live">Scoreboard →</a></div>';
+            else h += '<div class="callout ' + (od.win >= 0.5 ? 'good' : 'warn') + '">📺 ' + (nLv ? '<span class="badge bad livedot">● LIVE</span> ' : '') + '<b>Week ' + sc.week + ' so far</b> vs ' + esc(U.teamName(lo)) + ': ' + (ls[0] >= ls[1] ? 'leading ' : 'trailing ') + ls[0] + ' categories to ' + ls[1] + tied + ' · ' + U.pct(od.win) + ' to win the week' + (nLv ? ' (' + nLv + ' NHL game' + (nLv > 1 ? 's' : '') + ' in progress)' : sc.to ? ' (games through ' + esc(U.date(new Date(sc.to + 'T12:00:00Z'))) + ')' : '') + '. <a href="#/live">Live scoreboard →</a></div>';
           }
         }
         h += DP.lineupCheckHtml(me, true);

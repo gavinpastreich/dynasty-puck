@@ -21,6 +21,8 @@ from collections import Counter, defaultdict
 
 import fantrax_api as FX
 import nhl_api as API
+import scoreboard as SB
+from scoreboard import skater_rows, goalie_rows  # shared with the live scoreboard job
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Commissioner settings (config/league.json, editable on GitHub). Everything league-specific lives there.
@@ -365,30 +367,6 @@ def load_h2h():
 
 
 # ----------------------------------------------------------------------------- NHL data
-def skater_rows(summ, real, shot, toi):
-    out = {}
-    for pid, r in summ.items():
-        re_, sh, ti = real.get(pid, {}), shot.get(pid, {}), toi.get(pid, {})
-        out[pid] = {
-            "gp": r["gamesPlayed"], "g": r["goals"], "a": r["assists"], "pts": r["points"],
-            "pim": r["penaltyMinutes"], "sog": r["shots"],
-            "stp": (r.get("ppPoints") or 0) + (r.get("shPoints") or 0),
-            "hit": re_.get("hits") or 0, "blk": re_.get("blockedShots") or 0, "tk": re_.get("takeaways") or 0,
-            "gv": re_.get("giveaways") or 0,
-            "sat": sh.get("satTotal") or 0, "satf": sh.get("satFor") or 0, "sata": sh.get("satAgainst") or 0,
-            "pp": (ti.get("ppTimeOnIce") or 0) / 60.0, "shtoi": (ti.get("shTimeOnIce") or 0) / 60.0,
-            "toi": (ti.get("timeOnIce") or 0) / 60.0, "team": r.get("teamAbbrevs"), "pos": r.get("positionCode"),
-        }
-    return out
-
-
-def goalie_rows(gsum):
-    return {r["playerId"]: {"gp": r["gamesPlayed"], "gs": r.get("gamesStarted"), "w": r["wins"],
-                            "ga": r["goalsAgainst"], "sa": r["shotsAgainst"], "sho": r["shutouts"],
-                            "gaa": r["goalsAgainstAverage"], "sv": r["savePct"], "toi": (r.get("timeOnIce") or 0) / 60.0,
-                            "team": r.get("teamAbbrevs")} for r in gsum}
-
-
 def nhl_history():
     """Per NHL player id: {season: row} for skaters and goalies from the bulk stats reports."""
     sk, gk, bios = defaultdict(dict), defaultdict(dict), {}
@@ -674,66 +652,49 @@ def season_to_date(players, sk_hist, cor_est, sched, season_start):
     return n
 
 
-def week_scoreboard(players, weeks, snap, cor_est):
-    """Category totals so far in the fantasy week being played: each team's Active players in the current Fantrax
-    period x their NHL stats from the week's start through today (NHL stats API, aggregated by date range)."""
-    test = os.environ.get("DP_SCORE_TEST")  # "YYYY-MM-DD:YYYY-MM-DD:week" to exercise this with an old date range
-    now = dt.datetime.now(dt.timezone.utc)
-    if test:
-        a, b, wn = test.split(":")
-        w = dict(next(x for x in weeks if x["n"] == int(wn)), start=a)
-        end = b
-    else:
-        cur = [x for x in weeks if x.get("lock") and dt.datetime.fromisoformat(x["lock"]) <= now]
-        if not cur:
-            return None
-        w = cur[-1]
-        yday_et = ((now - dt.timedelta(hours=4)).date() - dt.timedelta(days=1)).isoformat()
-        end = min(w["end"], yday_et)  # completed days only; today's games get simulated
-        if end < w["start"]:
-            return {"week": w["n"], "from": w["start"], "to": None, "asOf": now.isoformat(timespec="minutes"), "test": False, "teams": {}}
-    active = (snap or {}).get("current", {}) or {}
-    act = active.get("active") if active else None
-    if not act:  # fall back to the lineup slots in the snapshot (next lock) when Fantrax gave no in-progress period
-        act = defaultdict(list)
-        for fid, r in ((snap or {}).get("rosters") or {}).items():
-            if r["slot"] == "A":
-                act[r["gm"]].append(fid)
-    reps = {rep: {r["playerId"]: r for r in API.range_report("skater", rep, w["start"], end)} for rep in ("summary", "realtime", "summaryshooting", "timeonice")}
-    sk = skater_rows(reps["summary"], reps["realtime"], reps["summaryshooting"], reps["timeonice"])
-    gk = goalie_rows(API.range_report("goalie", "summary", w["start"], end))
-    teams = {}
-    for code, ids in act.items():
-        tot = {k: 0.0 for k in ("PtD", "G", "A", "GA2", "PIM", "SOG", "STP", "Hit", "Blk", "Tk", "Cor", "W", "GA", "SA", "SHO", "GGP", "GTOI", "SGP")}
-        pl = {}
-        for fid in ids:
-            p = players.get(f"*{fid}*")
-            if not p or not p.get("nhl"):
-                continue
-            if p["kind"] == "G":
-                h = gk.get(p["nhl"])
-                if not h or not h["gp"]:
-                    continue
-                tot["W"] += h["w"]; tot["GA"] += h["ga"]; tot["SA"] += h["sa"]; tot["SHO"] += h["sho"]
-                tot["GGP"] += h["gp"]; tot["GTOI"] += h["toi"]
-                pl[p["id"]] = [h["gp"], h["w"], h["ga"], h["sa"], h["sho"], round(h["toi"], 1)]
-            else:
-                h = sk.get(p["nhl"])
-                if not h or not h["gp"]:
-                    continue
-                cor = cor_est(h)
-                line = [h["gp"], h["g"], h["a"], h["pim"], h["sog"], h["stp"], h["hit"], h["blk"], h["tk"], round(cor, 1)]
-                if p["pos"] == "D":
-                    tot["PtD"] += h["g"] + h["a"]
-                for k, v in zip(("G", "A", "PIM", "SOG", "STP", "Hit", "Blk", "Tk", "Cor"), line[1:]):
-                    tot[k] += v
-                tot["GA2"] += 2 * h["g"] + h["a"]; tot["SGP"] += h["gp"]
-                pl[p["id"]] = line
-        teams[code] = {"tot": {k: round(v, 2) for k, v in tot.items()}, "pl": pl, "active": [f"*{i}*" for i in ids]}
-    log(f"Scoreboard: {'TEST ' if test else ''}week {w['n']} {w['start']}..{end}: " +
-        ", ".join(f"{c} {int(t['tot']['SGP'])} skater GP" for c, t in list(teams.items())[:4]) + " …")
-    return {"week": w["n"], "from": w["start"], "to": end, "asOf": now.isoformat(timespec="minutes"), "test": bool(test),
-            "period": active.get("period") if active else None, "teams": teams, "corNote": "Cor estimated from NHL shot attempts (model, R² 0.975 vs Fantrax)"}
+def attach_locks(weeks, snap):
+    """Lineup-lock time of each week = the start of its Fantrax period (first puck drop). Needed before anything
+    asks which week is being played."""
+    if not snap:
+        return
+    lock = {p["n"]: re.sub(r"\.0(?=[-+])", "", p["start"]) for p in snap.get("periods", [])}
+    lock = {n: v[:-2] + ":" + v[-2:] if re.search(r"[-+]\d{4}$", v) else v for n, v in lock.items()}
+    for w in weeks:
+        if w["n"] in lock:
+            w["lock"] = lock[w["n"]]
+
+
+def weekly_results(players, weeks, snap, beta_cor):
+    """The live scoreboard for the week in progress and the category totals of every finished week."""
+    attach_locks(weeks, snap)
+    by_fid = {p["id"].strip("*"): (p["id"], p.get("nhl"), p["kind"] == "G", p["pos"] == "D") for p in players.values()}
+    teams = (snap or {}).get("teams") or {}
+    raw_dir = os.path.join(RAW, "weekly")
+    try:
+        score = SB.scoreboard(weeks, by_fid.get, beta_cor, teams, snap, log=log)
+    except Exception as e:
+        log(f"  ! Scoreboard failed: {e}")
+        score = None
+    try:
+        hist = SB.history(weeks, by_fid.get, beta_cor, teams, snap, raw_dir=raw_dir, log=log)
+    except Exception as e:
+        log(f"  ! Weekly history failed: {e}")
+        hist = []
+    # player lines of each finished week, loaded by the Scoreboard page on demand (data/weeks/wNN.js)
+    wk_dir = os.path.join(OUT, "weeks")
+    for h in hist:
+        src = os.path.join(raw_dir, f"week_{h['n']:02d}.json")
+        if os.path.exists(src):
+            with open(src, encoding="utf-8") as f:
+                rec = json.load(f)
+            os.makedirs(wk_dir, exist_ok=True)
+            body = json.dumps({"n": rec["n"], "teams": {c: {"pl": t["pl"], "active": t["active"]} for c, t in rec["teams"].items()}}, separators=(",", ":"), sort_keys=True)
+            with open(os.path.join(wk_dir, f"w{h['n']:02d}.js"), "w", encoding="utf-8") as f:
+                f.write(f"/* generated by tools/build_data.py - do not edit */\nwindow.DP=window.DP||{{}};DP.weekDetail=DP.weekDetail||{{}};DP.weekDetail[{rec['n']}]={body};\n")
+    started = any(w.get("lock") and dt.datetime.fromisoformat(w["lock"]) <= SB.now_utc() for w in weeks)
+    if started and not (score and score.get("teams")):
+        log("  !! The season has started but the scoreboard is EMPTY. The Live Scoreboard page will have nothing to show.")
+    return score, hist
 
 
 # ----------------------------------------------------------------------------- NHLe
@@ -1082,11 +1043,7 @@ def apply_fantrax_league(league, weeks, players, snap, moves):
                          "period": snap.get("period"), "teamIds": {tid: t["code"] for tid, t in snap["teams"].items()},
                          "divisions": {t["code"]: t["div"] for t in snap["teams"].values() if t.get("code")},
                          "roster": snap["league"].get("roster"), "playoffs": snap["league"].get("playoffs")}
-    lock = {p["n"]: re.sub(r"\.0(?=[-+])", "", p["start"]) for p in snap["periods"]}
-    lock = {n: v[:-2] + ":" + v[-2:] if re.search(r"[-+]\d{4}$", v) else v for n, v in lock.items()}
-    for w in weeks:
-        if w["n"] in lock:
-            w["lock"] = lock[w["n"]]
+    attach_locks(weeks, snap)
 
 
 # ----------------------------------------------------------------------------- league (minor-league) drafts
@@ -1449,10 +1406,11 @@ def main():
         log(f"  ! team strength fetch failed: {e}")
 
     ros_n = season_to_date(players, sk, cor_est, sched, season_start)
-    score = week_scoreboard(players, weeks, fx_snap, cor_est)
+    score, hist = weekly_results(players, weeks, fx_snap, beta_cor)
     attach_depth(players)
     league = load_trades(players)
     league["score"] = score
+    league["hist"] = hist
     league["ros"] = {"n": ros_n, "k": ROS_K, "kG": ROS_K_G, "season": ROS_SEASON}
     apply_fantrax_league(league, weeks, players, fx_snap, fx_moves)
     league["penalties"] = cap_penalties(players, sheet, fx_moves)
@@ -1680,7 +1638,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     meta = {
         "built": dt.datetime.now().isoformat(timespec="minutes"), "season": SEASON_LABEL, "seasonId": SEASON_ID,
         "cap": CAP, "capByYear": CAP_BY_YEAR, "years": YEARS, "nhlGames": NHL_GAMES,
-        "capNote": CFG.get("capNote", ""), "alerts": CFG.get("alerts", {}),
+        "capNote": CFG.get("capNote", ""), "alerts": CFG.get("alerts", {}), "live": {"url": (CFG.get("live") or {}).get("url") or ""},
         "gms": [{"code": c, "name": n} for c, n in GMS],
         "weeks": weeks, "h2h": h2h,
         "playoffs": dict(CFG.get("playoffs", {}), source="config/league.json (Fantrax schedule pasted by the commissioner 2026-09-25)"),

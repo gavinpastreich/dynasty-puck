@@ -273,3 +273,12 @@ select { max-width: 100%; text-overflow: ellipsis; }
   .grid[style*="repeat"] { grid-template-columns: minmax(0, 1fr) !important; }
   .controls label select { max-width: calc(100vw - 60px); }
 }
+
+/* scoreboard: NHL game ticker + live marker */
+.ticker { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.ticker .tk { border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; font-size: .8rem; background: var(--card); white-space: nowrap; }
+.ticker .tk.live { border-color: color-mix(in srgb, var(--bad) 55%, transparent); }
+.ticker .tk.pre { opacity: .75; }
+.livedot { animation: livepulse 1.6s ease-in-out infinite; }
+@keyframes livepulse { 50% { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .livedot { animation: none; } }

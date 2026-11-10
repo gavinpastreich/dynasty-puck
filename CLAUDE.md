@@ -6,8 +6,8 @@ https://gavinpastreich.github.io/dynasty-puck/ (deployed by GitHub Pages from `m
 ## Ground rules
 - **Only work in this repository.** Do not read, clone, fork, or modify any other repository.
 - When a piece of work is done and verified, **commit and push to `main`** so the league sees it.
-  Don't leave finished work unpushed. End commit messages with
-  `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+  Don't leave finished work unpushed. End commit messages with a Claude co-author line that names the model
+  doing the work, e.g. `Co-Authored-By: Claude <model name> <noreply@anthropic.com>`.
 - The owner wants you to **go the extra mile without being asked**: research anything missing on the
   public web, add features you think a serious dynasty league would love, and polish them. Ask questions
   only when a decision is genuinely theirs (league rules, schedule, preferences). Otherwise pick a

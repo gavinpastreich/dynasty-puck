@@ -78,11 +78,11 @@ def stats_report(kind, report, season, game_type=2):
     return (d or {}).get("data", [])
 
 
-def range_report(kind, report, start, end, game_type=2):
+def range_report(kind, report, start, end, game_type=2, max_age_days=0.02):
     """Per-player totals over a date range (aggregated over games), e.g. one fantasy week so far."""
     exp = urllib.parse.quote(f'gameDate>="{start}" and gameDate<="{end}" and gameTypeId={game_type}')
     url = f"{STATS}/{kind}/{report}?isAggregate=true&isGame=true&limit=-1&cayenneExp={exp}"
-    d = get(url, f"range_{kind}_{report}_{start}_{end}", max_age_days=0.02)
+    d = get(url, f"range_{kind}_{report}_{start}_{end}", max_age_days=max_age_days)
     return (d or {}).get("data", [])
 
 

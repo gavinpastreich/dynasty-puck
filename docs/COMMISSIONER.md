@@ -7,13 +7,19 @@ Everything below runs on GitHub. None of it uses Claude, and all of it is free o
 | Job | When | What it does |
 | --- | --- | --- |
 | **Nightly data refresh** (`.github/workflows/refresh-data.yml`) | 10:17 UTC daily, when you edit `config/` or `raw/`, or on demand | Syncs Fantrax (rosters, contracts, salaries, lineup slots, standings, future picks), pulls NHL stats/schedules, Daily Faceoff injuries and lines, rebuilds `data/`, commits, redeploys the site |
+| **Live scoreboard** (`.github/workflows/live-score.yml`) | Every 10 minutes, 11 AM to about 3 AM Eastern | Scores the week in progress (locked Fantrax lineups × NHL stats and live game feeds) and publishes one small file, `score.json`, to the `live-data` branch. The Live Scoreboard page reads it. Nothing is committed to `main` and the site isn't redeployed |
 | **Alerts** (`.github/workflows/alerts.yml`) | Every hour (sends only when it's time) | Lineup-lock reminders to each team's phone topic, a morning note when something happens to a team, the Monday email digest |
 | **Deploy** (`.github/workflows/deploy.yml`) | Every push to `main` | Publishes the site to GitHub Pages |
 
 The site also re-syncs Fantrax live every time someone opens it, so rosters and lineups are never more than a page load old.
 
 To run a job right now: GitHub → **Actions** → pick the workflow → **Run workflow**. If a run fails, GitHub emails you and the
-site keeps the last good version.
+site keeps the last good version. The nightly refresh ends with sanity checks; if one fails (for example the scoreboard
+came out empty during the season) the run is marked failed and you get that email, but the site is still updated.
+
+The `live-data` branch holds only `score.json` (one commit, overwritten each time). Leave it alone. To pause live
+updates in the offseason: **Actions** → **Live scoreboard** → **⋯** → **Disable workflow**; to turn them off for good,
+clear `live.url` in `config/league.json`. The scoreboard then moves with the nightly builds only.
 
 ## Changing league settings
 
