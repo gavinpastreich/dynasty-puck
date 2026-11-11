@@ -39,6 +39,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # no nudge when a live run is already up or queued: the extra run would only sit in the queue and then
+          # show as "cancelled" in the Actions tab
+          up=$(curl -sS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/live-score.yml/runs?per_page=10" \
+            | jq '[.workflow_runs[] | select(.status=="in_progress" or .status=="queued" or .status=="pending" or .status=="waiting" or .status=="requested")] | length' 2>/dev/null || echo 0)
+          if [ "${up:-0}" -gt 0 ] 2>/dev/null; then echo "live scoreboard already running or queued ($up): no nudge needed"; exit 0; fi
           curl -sS -o /dev/null -w "live scoreboard dispatch: HTTP %{http_code}\n" -X POST \
             -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/live-score.yml/dispatches" -d '{"ref":"main"}' || true

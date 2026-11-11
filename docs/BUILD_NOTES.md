@@ -201,4 +201,11 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   (main had moved while it was building) and a failed Pages deployment ("in progress deployment": GitHub was still
   finishing the previous one). The refresh job now rebases its data commit onto the newer main and pushes again
   (or skips publishing if the two overlap); both workflows retry a refused deployment once after two minutes.
+- First full game night watched (2026-11-10, 7 games): the session that had been waiting since 14:48 UTC handed over
+  to a successor at 20:05 and was publishing every few minutes by 00:29 UTC (4 games live, scores, clocks, shares
+  left, 61 players on the ice). Cor for games in progress stayed flat in the first period: the shift-chart feed had
+  0 rows for all four games, so live.corOk was false; the page now shows a note while that is the case.
+- The hourly nudges from alerts.yml / refresh-data.yml each queued a live run behind the running session, and each
+  was replaced by the next one, which showed as a "cancelled" run every hour. The wake step now checks for a live run
+  that is in progress or queued and skips the dispatch.
 
