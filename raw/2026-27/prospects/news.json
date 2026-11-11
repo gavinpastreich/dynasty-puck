@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-11T12:46+00:00",
+"fetched": "2026-11-11T17:55+00:00",
 "items": {
 "n8482100": [
 {
@@ -233,6 +233,16 @@
 "w": 1
 }
 ],
+"n8483668": [
+{
+"d": "2026-11-11",
+"k": [],
+"s": "NHL.com",
+"t": "Kokko embracing Finland homecoming with Kraken at Global Series",
+"u": "https://www.nhl.com/news/seattle-kraken-nikke-kokko-embracing-nhl-global-series-finland-homecoming",
+"w": 2
+}
+],
 "n8483679": [
 {
 "d": "2026-11-08",
@@ -283,6 +293,14 @@
 ],
 "n8484158": [
 {
+"d": "2026-11-11",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs’ Easton Cowan highlights need to play full 60-minute game following loss vs. Avalanche",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-easton-cowan-highlights-need-play-full-60-minute-game-loss-colorado-avalanche",
+"w": 2
+},
+{
 "d": "2026-11-10",
 "k": [],
 "s": "The Leafs Nation (TOR)",
@@ -332,6 +350,14 @@
 }
 ],
 "n8484170": [
+{
+"d": "2026-11-11",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Jacob Fowler: Drawing start Thursday",
+"u": "https://www.rotowire.com//hockey/player/jacob-fowler-6988",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -690,6 +716,14 @@
 }
 ],
 "n8484800": [
+{
+"d": "2026-11-11",
+"k": [],
+"s": "NHL.com",
+"t": "Global Series Finland blog: Kraken’s Catton on going to sauna",
+"u": "https://www.nhl.com/news/global-series-finland-blog-seattle-kraken-berkly-catton-november-11-2026",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -1236,7 +1270,7 @@
 },
 "sources": [
 {
-"n": 80,
+"n": 82,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1245,7 +1279,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1273,7 +1307,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1294,7 +1328,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1399,7 +1433,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -1462,7 +1496,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -1504,14 +1538,14 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
 {
 "n": 10,
 "name": "Blue Seat Blogs (NYR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://blueseatblogs.com/feed/"
 },
@@ -1567,7 +1601,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 }

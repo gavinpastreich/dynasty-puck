@@ -126,10 +126,10 @@
    "name": "Jonathan Huberdeau",
    "team": "CGY",
    "status": "IR",
-   "injury": "hip",
+   "injury": "",
    "ret": "",
-   "detail": "Huberdeau (hip) is not expected to be ready for the start of Calgary’s training camp.",
-   "date": "2026-09-04",
+   "detail": "Huburdeau (hip) practiced in a regular jersey on Wednesday.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -163,9 +163,9 @@
    "team": "CHI",
    "status": "IR",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Byram (upper-body) has been placed on IR retroactive to October 15th.",
-   "date": "2026-11-03",
+   "ret": "Months",
+   "detail": "Byram (upper-body) is practicing in a non-contact jersey on Wednesday.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -426,10 +426,10 @@
    "name": "Brock Faber",
    "team": "MIN",
    "status": "IR",
-   "injury": "skull fracture",
+   "injury": "fractured skull",
    "ret": "",
-   "detail": "Faber (skull fracture) returned to practice on Thursday.",
-   "date": "2026-11-05",
+   "detail": "Faber (fractured skull) has a chance to return on Saturday vs. Boston.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -454,18 +454,6 @@
    "ret": "Week-to-week",
    "detail": "Demidov (fractured ankle) is still considered week-to-week.",
    "date": "2026-11-04",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jake Evans",
-   "team": "MTL",
-   "status": "DTD",
-   "injury": "hand",
-   "ret": "",
-   "detail": "Evans (hand) will play Tuesday vs. the Wild.",
-   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -502,6 +490,18 @@
    "ret": "",
    "detail": "Mantha (throat) will not play on Sunday and will \"miss some time.\"",
    "date": "2026-11-08",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Johnathan Kovacevic",
+   "team": "NJD",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Kovacevic (undisclosed) left Tuesday's game and did not return.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -669,7 +669,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-09",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -753,7 +753,19 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-09",
+   "date": "2026-11-11",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Samuel Girard",
+   "team": "PIT",
+   "status": "Game-time decision",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Girard (undisclosed) will be a game-time decision vs. Utah on Thursday.",
+   "date": "2026-10-29",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -766,18 +778,6 @@
    "ret": "In camp",
    "detail": "van Riemsdyk (lower-body) was a full participant in practice on Tuesday.",
    "date": "2026-11-10",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Ville Koivunen",
-   "team": "PIT",
-   "status": "DTD",
-   "injury": "lower body",
-   "ret": "Day-to-day",
-   "detail": "Koivunen (lower body) is day-to-day and will not play on Sunday.",
-   "date": "2026-11-08",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -867,18 +867,6 @@
    "holdout": false
   },
   {
-   "name": "Chris Tanev",
-   "team": "TOR",
-   "status": "Game-time decision",
-   "injury": "planned maintenance",
-   "ret": "",
-   "detail": "Tanev (planned maintenance) will not play on Sunday.",
-   "date": "2026-11-08",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Elvis Merzlikins",
    "team": "TOR",
    "status": "IR",
@@ -886,18 +874,6 @@
    "ret": "Months",
    "detail": "Merzlikins (shoulder) is expected to be out for another 3-to-5 months.",
    "date": "2026-09-29",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Jack Roslovic",
-   "team": "TOR",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Roslovic (lower-body) will be a game-time decision vs. Colorado on Tuesday.",
-   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -946,6 +922,18 @@
    "ret": "Day-to-day",
    "detail": "Rielly (lower-body) is still considered day-to-day.",
    "date": "2026-11-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Zack MacEwen",
+   "team": "TOR",
+   "status": "DTD",
+   "injury": "wrist",
+   "ret": "",
+   "detail": "MacEwen (wrist) missed practice on Wednesday.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1035,6 +1023,18 @@
    "holdout": false
   },
   {
+   "name": "Noah Hanifin",
+   "team": "VGK",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "Week-to-week",
+   "detail": "Hanifin (undisclosed) is considered week-to-week.",
+   "date": "2026-11-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Parker Wotherspoon",
    "team": "VGK",
    "status": "IR",
@@ -1065,7 +1065,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
