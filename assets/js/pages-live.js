@@ -27,12 +27,25 @@
   var feed = DP.scoreFeed = { state: 'idle', at: null, err: null };
   feed.url = function () { return ((DP.meta || {}).live || {}).url || null; };
   feed.nLive = function () { var sc = DP.league.score; return sc && sc.live ? sc.live.games.filter(function (g) { return g.st === 'live'; }).length : 0; };
+  // The published file sits behind GitHub's 5-minute cache, which made the board trail the games by up to 8 minutes.
+  // GitHub's API serves the same file about a minute fresh, but only ~60 requests an hour per visitor without signing
+  // in. So: ask the API first; when it refuses (or fails), use the cached file and stay off the API for 20 minutes.
+  feed.apiUrl = function () {
+    var m = /^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+)$/.exec(feed.url() || '');
+    return m ? 'https://api.github.com/repos/' + m[1] + '/' + m[2] + '/contents/' + m[4] + '?ref=' + encodeURIComponent(m[3]) : null;
+  };
+  feed.apiOff = 0; feed.via = null;
   feed.pull = function (done) {
     var url = feed.url();
     if (!url || typeof fetch === 'undefined') { if (done) done(false); return; }
     feed.state = 'loading';
-    fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 't=' + Math.floor(Date.now() / 120000), { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    var json = function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); };
+    var file = function () { feed.via = 'file'; return fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 't=' + Math.floor(Date.now() / 120000), { cache: 'no-store' }).then(json); };
+    var api = feed.apiUrl();
+    (api && Date.now() > feed.apiOff
+      ? fetch(api, { cache: 'no-store', headers: { Accept: 'application/vnd.github.raw+json' } }).then(json).then(function (sc) { feed.via = 'api'; return sc; })
+        .catch(function () { feed.apiOff = Date.now() + 20 * 60000; return file(); })
+      : file())
       .then(function (sc) {
         feed.state = 'ok'; feed.at = new Date(); feed.err = null;
         var cur = DP.league.score, changed = false;

@@ -30,6 +30,10 @@ the last 45 days) and `history.json` (every prospect's model value each night). 
 RSS feed to `tools/research/feeds.json`; a feed that stops working is skipped and shown as unreachable under
 Prospect Radar → News wire → Sources. Nothing else needs upkeep.
 
+During games the page shows numbers that are usually 2 to 5 minutes behind the ice: the job re-scores every 3
+minutes and the page checks for a new file every 2.5. Cor for a game in progress can trail further, because the NHL
+posts the shift data it is counted from several minutes into each period (the page says so while that is the case).
+
 The `live-data` branch holds only `score.json` (one commit, overwritten each time). Leave it alone. To pause live
 updates in the offseason: **Actions** → **Live scoreboard** → **⋯** → **Disable workflow**; to turn them off for good,
 clear `live.url` in `config/league.json`. The scoreboard then moves with the nightly builds only.

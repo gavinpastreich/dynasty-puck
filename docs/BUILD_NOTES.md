@@ -208,4 +208,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
 - The hourly nudges from alerts.yml / refresh-data.yml each queued a live run behind the running session, and each
   was replaced by the next one, which showed as a "cancelled" run every hour. The wake step now checks for a live run
   that is in progress or queued and skips the dispatch.
+- Live feed freshness (2026-11-11): raw.githubusercontent.com serves score.json with max-age=300, so on the first
+  game night the page trailed the job by up to 8 minutes although the job published every 3. DP.scoreFeed.pull now
+  asks api.github.com/repos/<owner>/<repo>/contents/score.json?ref=live-data (Accept: application/vnd.github.raw+json,
+  CORS *, about a minute fresh) first. Anonymous visitors get ~60 API requests an hour; the page uses 24 an hour while
+  the Live Scoreboard or Dashboard is open. On a refusal or failure it uses the cached file and stays off the API for
+  20 minutes. flows_check.js covers API first, fallback, back-off and "never replace newer with older".
 

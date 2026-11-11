@@ -126,6 +126,37 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await pp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth <= 2), 'phone: no sideways scroll on Windows');
   await ph.close();
 
+  // ---- Live Scoreboard feed: GitHub's API first (fresh), the cached file when the API refuses, then stay off the API
+  {
+    const lc = await browser.newContext({ viewport: { width: 1360, height: 900 } });
+    await lc.addInitScript(() => { try { localStorage.setItem('dp_team', JSON.stringify('ROO')); } catch (e) {} });
+    await lc.route('https://www.fantrax.com/**', (r) => r.abort());
+    let apiCalls = 0, fileCalls = 0, apiStatus = 200, apiBody = null, fileBody = null;
+    await lc.route('https://api.github.com/**', (r) => { apiCalls++; r.fulfill({ status: apiStatus, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: apiStatus === 200 ? apiBody : '{"message":"API rate limit exceeded"}' }); });
+    await lc.route('https://raw.githubusercontent.com/**', (r) => { fileCalls++; r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: fileBody }); });
+    const lp = await lc.newPage(); const lerr = []; lp.on('pageerror', (e) => lerr.push(e.message));
+    // the page's first automatic pull gets "nothing newer" (the build's own score), so the test controls what follows
+    const seed = await (async () => { const t = await browser.newPage(); await t.goto(URL + 'rules'); await t.waitForTimeout(600); const v = await t.evaluate(() => JSON.stringify(DP.league.score)); await t.close(); return v; })();
+    apiBody = fileBody = seed;
+    await lp.goto(URL + 'live'); await lp.waitForTimeout(2500);
+    const base = JSON.parse(seed), later = (min) => JSON.stringify(Object.assign({}, base, { asOf: new Date(Date.parse(base.asOf) + min * 60000).toISOString().slice(0, 16) + '+00:00' }));
+    const pull = () => lp.evaluate(() => new Promise((res) => DP.scoreFeed.pull((changed) => res({ changed, via: DP.scoreFeed.via, asOf: DP.league.score.asOf, off: DP.scoreFeed.apiOff > Date.now() }))));
+    apiCalls = fileCalls = 0; apiBody = later(9); fileBody = later(3);
+    let r1 = await pull();
+    ok(r1.changed && r1.via === 'api' && r1.asOf === JSON.parse(apiBody).asOf && apiCalls === 1 && fileCalls === 0, 'live feed: takes the fresh copy from the GitHub API and leaves the cached file alone');
+    apiStatus = 403; fileBody = later(12);
+    let r2 = await pull();
+    ok(r2.changed && r2.via === 'file' && r2.asOf === JSON.parse(fileBody).asOf && r2.off, 'live feed: API refuses (rate limit) -> uses the cached file and backs off the API');
+    const before = apiCalls; fileBody = later(15);
+    let r3 = await pull();
+    ok(r3.changed && r3.via === 'file' && apiCalls === before, 'live feed: stays off the API while backed off');
+    fileBody = later(1);
+    let r4 = await pull();
+    ok(!r4.changed && r4.asOf === JSON.parse(later(15)).asOf, 'live feed: an older copy never replaces a newer one');
+    ok(lerr.length === 0, 'live feed: no page errors (' + lerr.slice(0, 2).join(' | ') + ')');
+    await lc.close();
+  }
+
   ok(errs.length === 0, 'no page errors (' + errs.slice(0, 3).join(' | ') + ')');
   await browser.close();
   console.log(`${n - fails}/${n} flow checks passed`);
