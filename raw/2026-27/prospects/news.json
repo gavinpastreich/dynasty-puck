@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-10T17:50+00:00",
+"fetched": "2026-11-11T12:46+00:00",
 "items": {
 "n8482100": [
 {
@@ -79,6 +79,16 @@
 ],
 "n8482733": [
 {
+"d": "2026-11-10",
+"k": [
+"injury"
+],
+"s": "Daily Faceoff",
+"t": "Blues activate Logan Mailloux from IR for season debut",
+"u": "https://www.dailyfaceoff.com/news/st-louis-blues-activate-logan-mailloux-ir-injury-nhl-season-debut-red-wings",
+"w": 2
+},
+{
 "d": "2026-11-09",
 "k": [],
 "s": "Pro Hockey Rumors",
@@ -119,6 +129,16 @@
 "t": "Sharks To Activate Alexander Wennberg; Reassign Filip Bystedt",
 "u": "https://www.prohockeyrumors.com/2026/11/sharks-to-activate-alexander-wennberg-reassign-filip-bystedt.html",
 "w": 2
+}
+],
+"n8483455": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Lightning recall Sam O’Reilly from AHL, place Brayden Point on IR",
+"u": "https://www.dailyfaceoff.com/news/sam-oreilly-nhl-debut-recalled-tampa-bay-lightning-brayden-point-injured-reserve",
+"w": 1
 }
 ],
 "n8483476": [
@@ -168,6 +188,14 @@
 "s": "NHL.com",
 "t": "Global Series Finland ‘great opportunity’ for Nyman with Kraken",
 "u": "https://www.nhl.com/news/2026-nhl-global-series-finland-great-opportunity-for-jani-nyman-seattle-kraken",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "The AHL",
+"t": "Global Series Finland ‘great opportunity’ for Nyman",
+"u": "https://www.nhl.com/news/2026-nhl-global-series-finland-great-opportunity-for-jani-nyman-seattle-kraken#new_tab?utm_source=rss&utm_medium=rss&utm_campaign=global-series-finland-great-opportunity-for-nyman",
 "w": 2
 },
 {
@@ -579,6 +607,30 @@
 "t": "Lightning recall 2025-26 OHL MVP Sam O’Reilly",
 "u": "https://www.sportsnet.ca/nhl/article/lightning-recall-2025-26-ohl-mvp-sam-oreilly/",
 "w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Sam O’Reilly ready for first NHL test after Lightning recall Tuesday",
+"u": "https://www.nhl.com/news/sam-o-reilly-ready-for-first-nhl-test-after-lightning-recall-november-10-2026",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Lightning recall Sam O’Reilly from AHL, place Brayden Point on IR",
+"u": "https://www.dailyfaceoff.com/news/sam-oreilly-nhl-debut-recalled-tampa-bay-lightning-brayden-point-injured-reserve",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Raw Charge (TBL)",
+"t": "In wake of Point’s injury, Lightning recall top prospect",
+"u": "https://www.rawcharge.com/in-wake-of-brayden-points-injury-lightning-recall-top-prospect-sam-oreilly-syracuse-crunch/",
+"w": 1
 }
 ],
 "n8484773": [
@@ -665,6 +717,14 @@
 ],
 "n8484803": [
 {
+"d": "2026-11-11",
+"k": [],
+"s": "NHL.com",
+"t": "Connelly thriving as rookie with Golden Knights, ‘focused on winning’",
+"u": "https://www.nhl.com/news/trevor-connelly-thriving-as-rookie-with-vegas-golden-knights",
+"w": 2
+},
+{
 "d": "2026-11-06",
 "k": [],
 "s": "Knights on Ice (VGK)",
@@ -732,6 +792,22 @@
 }
 ],
 "n8484873": [
+{
+"d": "2026-11-11",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Cole Hutson is overtime hero as Caps beat Senators",
+"u": "https://russianmachineneverbreaks.com/2026/11/10/cole-hutson-is-overtime-hero-as-caps-beat-senators/",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Capitals vs. Senators live updates: Cole Hutson wins it for Washington in overtime 3-2",
+"u": "https://russianmachineneverbreaks.com/2026/11/10/capitals-senators-live-updates-ovechkin-ottawa-protest-ryan-leonard-100-nhl-games/",
+"w": 2
+},
 {
 "d": "2026-11-02",
 "k": [],
@@ -888,6 +964,26 @@
 }
 ],
 "n8485957": [
+{
+"d": "2026-11-11",
+"k": [
+"injury"
+],
+"s": "Pro Hockey Rumors",
+"t": "Rangers Place Alberts Smits On Injured Reserve, Recall Glenn Gawdin",
+"u": "https://www.prohockeyrumors.com/2026/11/rangers-place-alberts-smits-on-injured-reserve-recall-glenn-gawdin.html",
+"w": 2
+},
+{
+"d": "2026-11-10",
+"k": [
+"injury"
+],
+"s": "Blue Seat Blogs (NYR)",
+"t": "New York Rangers recall center Glenn Gawdin, place Alberts Smits on IR",
+"u": "https://blueseatblogs.com/2026/11/10/new-york-rangers-glenn-gawdin-smits/",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [
@@ -1140,7 +1236,7 @@
 },
 "sources": [
 {
-"n": 79,
+"n": 80,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1149,7 +1245,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1163,7 +1259,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1177,7 +1273,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1303,7 +1399,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -1359,14 +1455,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "4 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -1408,21 +1504,21 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
 {
 "n": 10,
 "name": "Blue Seat Blogs (NYR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://blueseatblogs.com/feed/"
 },
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -43,9 +43,9 @@
    "team": "ANA",
    "status": "IR",
    "injury": "hip",
-   "ret": "In camp",
-   "detail": "Terry (hip) was a full participant at practice on Saturday.",
-   "date": "2026-10-31",
+   "ret": "",
+   "detail": "Terry (hip) is likely to return vs. Nashville on Wednesday.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -68,8 +68,8 @@
    "status": "IR",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Lyon (upper-body) is days away from return to Buffalo's lineup.",
-   "date": "2026-11-03",
+   "detail": "Lyon (upper-body) will travel with Buffalo on their upcoming road trip.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -108,18 +108,6 @@
    "date": "2026-11-07",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Denton Mateychuk",
-   "team": "CBJ",
-   "status": "DTD",
-   "injury": "upper body",
-   "ret": "",
-   "detail": "Mateychuk (upper body) left practice early and will be reevaluated.",
-   "date": "2026-11-08",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
   },
   {
@@ -285,43 +273,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-10",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "John Gibson",
-   "team": "DET",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Gibson (lower-body) returned to practice on Friday.",
-   "date": "2026-11-06",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Marco Kasper",
-   "team": "DET",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Kasper (upper-body) has been activated from IR.",
-   "date": "2026-11-10",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Mason Appleton",
-   "team": "DET",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Appleton (undisclosed) has been activated from IR.",
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -403,9 +355,9 @@
    "team": "FLA",
    "status": "IR",
    "injury": "lower-body",
-   "ret": "Months",
-   "detail": "Barkov (lower-body) has started skating and is expected to be out for four more weeks.",
-   "date": "2026-10-29",
+   "ret": "",
+   "detail": "Barkov (lower-body) is within two weeks of returning to the lineup.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -416,8 +368,8 @@
    "status": "IR",
    "injury": "leg",
    "ret": "",
-   "detail": "Marchand (leg) has resumed skating and is expected to be out for three more weeks.",
-   "date": "2026-10-29",
+   "detail": "Marchand (leg) is expected back within the next two weeks.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "holdout": false
@@ -447,6 +399,18 @@
    "holdout": false
   },
   {
+   "name": "Erik Gustafsson",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "Day-to-day",
+   "detail": "Gustafsson (undisclosed) is out vs. Nashville and considered day-to-day.",
+   "date": "2026-11-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Kevin Fiala",
    "team": "LAK",
    "status": "IR",
@@ -454,18 +418,6 @@
    "ret": "In camp",
    "detail": "Fiala (lower-body) has a chance to return vs. Nashville on Tuesday.",
    "date": "2026-11-09",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Mats Zuccarello",
-   "team": "LAK",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Zuccarello (upper-body) has been placed on IR.",
-   "date": "2026-10-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -495,18 +447,6 @@
    "holdout": false
   },
   {
-   "name": "Michael McCarron",
-   "team": "MIN",
-   "status": "Game-time decision",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "McCarron (undisclosed) will be a game-time decision vs. Montreal on Tuesday.",
-   "date": "2026-11-10",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Ivan Demidov",
    "team": "MTL",
    "status": "IR",
@@ -524,7 +464,7 @@
    "status": "DTD",
    "injury": "hand",
    "ret": "",
-   "detail": "Evans (hand) will be a game-time decision vs. Minnesota on Tuesday.",
+   "detail": "Evans (hand) will play Tuesday vs. the Wild.",
    "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
@@ -677,7 +617,7 @@
   {
    "name": "Alberts Smits",
    "team": "NYR",
-   "status": "OUT",
+   "status": "IR",
    "injury": "",
    "ret": "Week-to-week",
    "detail": "Smits is week-to-week with an upper-body injury.",
@@ -823,9 +763,9 @@
    "team": "PIT",
    "status": "IR",
    "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-09",
+   "ret": "In camp",
+   "detail": "van Riemsdyk (lower-body) was a full participant in practice on Tuesday.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -917,7 +857,7 @@
   {
    "name": "Brayden Point",
    "team": "TBL",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "undisclosed",
    "ret": "",
    "detail": "Point (undisclosed) has been placed on IR.",
@@ -1083,13 +1023,25 @@
    "holdout": false
   },
   {
+   "name": "Tom Willander",
+   "team": "VAN",
+   "status": "Game-time decision",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Parker Wotherspoon",
    "team": "VGK",
    "status": "IR",
-   "injury": "upper body",
-   "ret": "",
-   "detail": "Wotherspoon (upper body) has been placed on IR.",
-   "date": "2026-10-21",
+   "injury": "lower-body",
+   "ret": "Months",
+   "detail": "Wotherspoon (lower-body) was a full participant in practice on Tuesday.",
+   "date": "2026-11-10",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "holdout": false
