@@ -135,7 +135,8 @@
     var h = '<div class="callout small"><b>' + esc(weekLabel(w)) + '</b> (' + esc(dateRange(w.start, w.end)) + ')' +
       (sc.final ? ' · <b>final</b>' : (sc.to ? ' · finished days through <b>' + esc(U.date(new Date(sc.to + 'T12:00:00Z'))) + '</b> are exact' : '') +
         (L ? ' · ' + esc(U.date(new Date(L.date + 'T12:00:00Z'))) + ': ' + (nLive ? '<b>' + nLive + ' game' + (nLive > 1 ? 's' : '') + ' in progress</b>' : '') + (nLive && nPre ? ', ' : '') + (nPre ? nPre + ' still to start' : '') + (!nLive && !nPre ? 'all games final' : '') + ' (counted from the NHL live feeds)' : '')) +
-      (sc.test ? ' · <b class="bad">TEST DATA</b>' : '') + '. Cor is estimated from NHL shot attempts' + (L && !sc.final ? ', and for games still being played from play-by-play and shift charts until the NHL posts the final numbers' : '') + '.</div>';
+      (sc.test ? ' · <b class="bad">TEST DATA</b>' : '') + '. Cor is estimated from NHL shot attempts' + (L && !sc.final ? ', and for games still being played from play-by-play and shift charts until the NHL posts the final numbers' : '') + '.' +
+      (L && !sc.final && L.corOk === false && nLive ? ' <b>Cor for tonight\'s games in progress isn\'t all in yet</b>: the NHL posts the shift data it is counted from partway through each game, so Cor can trail the other categories.' : '') + '</div>';
     h += ticker(sc);
     return h + '<div id="live-games"><p class="muted">Simulating the rest of the week…</p></div>';
   }
