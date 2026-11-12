@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-12T13:48+00:00",
+"fetched": "2026-11-12T18:19+00:00",
 "items": {
 "n8482100": [
 {
@@ -60,6 +60,14 @@
 }
 ],
 "n8482661": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Jesper Wallstedt: Starting against Toronto",
+"u": "https://www.rotowire.com//hockey/player/jesper-wallstedt-6464",
+"w": 2
+},
 {
 "d": "2026-10-31",
 "k": [],
@@ -279,6 +287,14 @@
 "w": 2
 },
 {
+"d": "2026-11-12",
+"k": [],
+"s": "Pensburgh (PIT)",
+"t": "Hopefully Sergei Murashov is finding his confidence for Penguins",
+"u": "https://www.pensburgh.com/analysis/83108/hopefully-sergei-murashov-is-finding-his-confidence-for-penguins",
+"w": 2
+},
+{
 "d": "2026-11-10",
 "k": [],
 "s": "Pensburgh (PIT)",
@@ -490,6 +506,18 @@
 "w": 2
 }
 ],
+"n8484180": [
+{
+"d": "2026-11-12",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Flames Activate, Reassign Samuel Honzek",
+"u": "https://www.prohockeyrumors.com/2026/11/flames-activate-reassign-samuel-honzek.html",
+"w": 2
+}
+],
 "n8484188": [
 {
 "d": "2026-10-23",
@@ -672,6 +700,14 @@
 "w": 2
 },
 {
+"d": "2026-11-12",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Zayne Parekh is blossoming into a star with the Calgary Flames",
+"u": "https://www.dailyfaceoff.com/news/zayne-parekh-calgary-flames-blossoming-into-star-nhl-rangers-flyers-nemec-carels-bahl",
+"w": 2
+},
+{
 "d": "2026-11-09",
 "k": [],
 "s": "Flames Nation (CGY)",
@@ -681,6 +717,14 @@
 }
 ],
 "n8484770": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "O’Reilly highlights ‘great’ NHL debut with first career point for Lightning",
+"u": "https://www.nhl.com/news/sam-o-reilly-highlights-great-nhl-debut-with-first-career-point-for-tampa-bay-lightning",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -1359,7 +1403,7 @@
 },
 "sources": [
 {
-"n": 81,
+"n": 82,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1368,7 +1412,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1382,7 +1426,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1396,7 +1440,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1431,7 +1475,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1508,7 +1552,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -1613,7 +1657,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -1627,7 +1671,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -1690,7 +1734,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 }

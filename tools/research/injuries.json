@@ -81,7 +81,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
@@ -135,18 +135,6 @@
    "holdout": false
   },
   {
-   "name": "Samuel Honzek",
-   "team": "CGY",
-   "status": "OUT",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Honzek (lower-body) has been activated from IR and assigned to the Calgary Wranglers (AHL).",
-   "date": "2026-11-11",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Bowen Byram",
    "team": "CHI",
    "status": "IR",
@@ -162,10 +150,10 @@
    "name": "Patrick Kane",
    "team": "CHI",
    "status": "OUT",
-   "injury": "undisclosed",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Kane (undisclosed) is out vs. Florida on Wednesday and is not travelling with the team.",
-   "date": "2026-11-04",
+   "detail": "Kane (upper-body) will be a game-time decision vs. Buffalo on Thursday.",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -261,7 +249,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-11",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -375,18 +363,6 @@
    "holdout": false
   },
   {
-   "name": "Sandis Vilmanis",
-   "team": "FLA",
-   "status": "OUT",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Vilmanis (undisclosed) left Saturday's game vs. Washington and will not return.",
-   "date": "2026-11-07",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Drew Doughty",
    "team": "LAK",
    "status": "DTD",
@@ -464,8 +440,8 @@
    "status": "OUT",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Matheson (lower-body) will travel with Montreal on their upcoming road trip.",
-   "date": "2026-11-11",
+   "detail": "Matheson (lower-body) will return in Boston on Thursday.",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -495,13 +471,25 @@
    "holdout": false
   },
   {
-   "name": "Johnathan Kovacevic",
+   "name": "Brett Pesce",
    "team": "NJD",
    "status": "DTD",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Pesce (illness) is out vs. Washington on Thursday.",
+   "date": "2026-11-12",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Johnathan Kovacevic",
+   "team": "NJD",
+   "status": "OUT",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Kovacevic (undisclosed) left Tuesday's game and did not return.",
-   "date": "2026-11-11",
+   "detail": "Kovacevic (undisclosed) is out vs. Washington and expected to miss some time.",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-jersey-devils/line-combinations",
    "holdout": false
@@ -675,13 +663,13 @@
    "holdout": false
   },
   {
-   "name": "Linus Ullmark",
+   "name": "Nick Cousins",
    "team": "OTT",
    "status": "DTD",
-   "injury": "lower-body",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Ullmark (lower-body) will remain out vs. Washington on Tuesday.",
-   "date": "2026-11-10",
+   "detail": "Cousins (undisclosed) will be out for at least the next 7-10 days.",
+   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -908,8 +896,8 @@
    "status": "DTD",
    "injury": "wrist",
    "ret": "",
-   "detail": "MacEwen (wrist) missed practice on Wednesday.",
-   "date": "2026-11-11",
+   "detail": "MacEwen (wrist) will be a game-time decision vs. Minnesota on Thursday.",
+   "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
