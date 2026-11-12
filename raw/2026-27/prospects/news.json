@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-11T17:55+00:00",
+"fetched": "2026-11-12T13:48+00:00",
 "items": {
 "n8482100": [
 {
@@ -173,6 +173,14 @@
 ],
 "n8483491": [
 {
+"d": "2026-11-12",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Capitals ‘inching closer’ to trading Ivan Miroshnichenko, with multiple teams still involved despite expected high price (report)",
+"u": "https://russianmachineneverbreaks.com/2026/11/11/ivan-miroshnichenko-capitals-trade-rumor-multiple-nhl-teams-high-price/",
+"w": 2
+},
+{
 "d": "2026-11-09",
 "k": [],
 "s": "NHL Rumors",
@@ -262,6 +270,14 @@
 }
 ],
 "n8483703": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "Pensburgh (PIT)",
+"t": "Penguins/Sharks Recap: Murashov outduels San Jose’s young guns, Pens win shootout",
+"u": "https://www.pensburgh.com/game-recaps/83065/penguins-sharks-recap-murashov-outduels-san-joses-young-guns-pens-win-shootout",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -451,6 +467,29 @@
 "w": 2
 }
 ],
+"n8484177": [
+{
+"d": "2026-11-11",
+"k": [
+"call-up",
+"injury"
+],
+"s": "NHL.com (team site)",
+"t": "Mantha to LTIR, Hameenaho, Noesen Recalled | BLOG",
+"u": "https://www.nhl.com/news/hameenaho-noesen-recalled-blog-11-11-26",
+"w": 2
+},
+{
+"d": "2026-11-11",
+"k": [
+"call-up"
+],
+"s": "All About the Jersey (NJD)",
+"t": "Anthony Mantha Placed on LTIR; Stefan Noesen and Lenni Hameenaho Recalled — And Concerns for Kovacevic",
+"u": "https://www.allaboutthejersey.com/devils-news/75150/anthony-mantha-placed-on-ltir-stefan-noesen-and-lenni-hameenaho-recalled-and-concerns-for-kovacevic",
+"w": 2
+}
+],
 "n8484188": [
 {
 "d": "2026-10-23",
@@ -460,6 +499,30 @@
 "s": "NHL.com (team site)",
 "t": "Blues assign Lindstein to Springfield",
 "u": "https://www.nhl.com/news/blues-assign-lindstein-to-springfield",
+"w": 2
+}
+],
+"n8484197": [
+{
+"d": "2026-11-12",
+"k": [
+"trade"
+],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers reportedly targeting Oliver Moore in trade talks with Blackhawks",
+"u": "https://www.broadstreethockey.com/post/flyers-reportedly-targeting-oliver-moore-in-trade-talks-with-blackhawks/",
+"w": 2
+}
+],
+"n8484201": [
+{
+"d": "2026-11-11",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Ducks Reassign Nico Myatovic; To Activate Troy Terry",
+"u": "https://www.prohockeyrumors.com/2026/11/ducks-reassign-nico-myatovic-to-activate-troy-terry.html",
 "w": 2
 }
 ],
@@ -600,6 +663,14 @@
 }
 ],
 "n8484768": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Zayne Parekh dazzled, but the Flames fell short against the Rangers",
+"u": "https://flamesnation.ca/news/calgary-flames-zayne-parekh-highlight-wraparound-rangers-2026",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -750,6 +821,14 @@
 }
 ],
 "n8484803": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "The AHL",
+"t": "Connelly thriving with Golden Knights, ‘focused on winning’",
+"u": "https://www.nhl.com/news/trevor-connelly-thriving-as-rookie-with-vegas-golden-knights#new_tab?utm_source=rss&utm_medium=rss&utm_campaign=connelly-thriving-with-golden-knights-focused-on-winning",
+"w": 2
+},
 {
 "d": "2026-11-11",
 "k": [],
@@ -1237,6 +1316,16 @@
 "w": 1
 }
 ],
+"n8486112": [
+{
+"d": "2026-11-11",
+"k": [],
+"s": "The Hockey News",
+"t": "Will Keaton Verhoeff Need Time In The NCAA Beyond This Season?: The Hockey News Future Watch Show",
+"u": "https://thehockeynews.com/news/podcast/will-keaton-verhoeff-need-time-in-the-ncaa-beyond-this-season-the-hockey-news-future-watch-show",
+"w": 2
+}
+],
 "n8486300": [
 {
 "d": "2026-11-10",
@@ -1270,7 +1359,7 @@
 },
 "sources": [
 {
-"n": 82,
+"n": 81,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1279,7 +1368,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1293,7 +1382,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1328,7 +1417,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1342,7 +1431,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1363,7 +1452,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -1419,7 +1508,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -1496,7 +1585,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -1524,7 +1613,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -1538,7 +1627,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -1601,7 +1690,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 }

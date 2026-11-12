@@ -1082,5 +1082,61 @@
 "to": "mertin",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-12",
+"id": "04dwk",
+"type": "move",
+"from": "nbracken",
+"to": "M.M",
+"ct": "BID",
+"sal": 2800000
+},
+{
+"d": "2026-11-12",
+"id": "04mtp",
+"type": "move",
+"from": "M.M",
+"to": "nbracken",
+"ct": "BID",
+"sal": 4000000
+},
+{
+"d": "2026-11-12",
+"id": "051m4",
+"type": "move",
+"from": "M.M",
+"to": "nbracken",
+"ct": "BID",
+"sal": 4100000
+},
+{
+"d": "2026-11-12",
+"id": "06bmb",
+"type": "move",
+"from": "nbracken",
+"to": "M.M",
+"ct": "MNR",
+"sal": 0
+},
+{
+"d": "2026-11-12",
+"id": "pick-2027-2-SPG",
+"type": "pick",
+"year": 2027,
+"round": 2,
+"orig": "SPG",
+"from": "M.M",
+"to": "BULLIES"
+},
+{
+"d": "2026-11-12",
+"id": "pick-2028-3-nbracken",
+"type": "pick",
+"year": 2028,
+"round": 3,
+"orig": "nbracken",
+"from": "nbracken",
+"to": "BULLIES"
 }
 ]

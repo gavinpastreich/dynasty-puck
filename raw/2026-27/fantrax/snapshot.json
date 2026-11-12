@@ -330,7 +330,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-11T17:52:59+00:00",
+"fetched": "2026-11-12T13:46:00+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -3725,7 +3725,7 @@
 },
 {
 "orig": "SPG",
-"owner": "M.M",
+"owner": "BULLIES",
 "round": 2,
 "year": 2027
 },
@@ -4097,7 +4097,7 @@
 },
 {
 "orig": "nbracken",
-"owner": "nbracken",
+"owner": "BULLIES",
 "round": 3,
 "year": 2028
 },
@@ -5700,7 +5700,7 @@
 },
 "04dwk": {
 "ct": "BID",
-"gm": "nbracken",
+"gm": "M.M",
 "pos": "F",
 "sal": 2800000,
 "slot": "A"
@@ -5833,7 +5833,7 @@
 },
 "04mtp": {
 "ct": "BID",
-"gm": "M.M",
+"gm": "nbracken",
 "pos": "F",
 "sal": 4000000,
 "slot": "A"
@@ -6134,10 +6134,10 @@
 },
 "051m4": {
 "ct": "BID",
-"gm": "M.M",
+"gm": "nbracken",
 "pos": "D",
 "sal": 4100000,
-"slot": "A"
+"slot": "R"
 },
 "051tx": {
 "ct": "RFA1",
@@ -7618,10 +7618,10 @@
 },
 "06bmb": {
 "ct": "MNR",
-"gm": "nbracken",
+"gm": "M.M",
 "pos": "D",
 "sal": 0,
-"slot": "R"
+"slot": "A"
 },
 "06bui": {
 "ct": "MNR",
@@ -8903,14 +8903,8 @@
 }
 },
 "waivers": [
-"02yjw",
 "03rgv",
-"03wpn",
 "03yg4",
-"04qza",
-"05m17",
-"05oxl",
-"05oxs",
-"060jl"
+"05oxs"
 ]
 }
