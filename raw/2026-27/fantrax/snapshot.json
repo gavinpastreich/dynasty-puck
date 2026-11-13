@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-13T01:47:34+00:00",
+"fetched": "2026-11-13T13:07:01+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -5327,7 +5327,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 2500000,
-"slot": "A"
+"slot": "IR"
 },
 "03raf": {
 "ct": "BID",
@@ -5341,7 +5341,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "03rew": {
 "ct": "FA",
@@ -6167,7 +6167,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "R"
 },
 "051uw": {
 "ct": "FA",
@@ -6678,7 +6678,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 0,
-"slot": "R"
+"slot": "A"
 },
 "05rjh": {
 "ct": "MNR",
@@ -6937,7 +6937,7 @@
 "gm": "BHHC",
 "pos": "F",
 "sal": 3100000,
-"slot": "IR"
+"slot": "R"
 },
 "05y3a": {
 "ct": "RFA1",
@@ -7049,7 +7049,7 @@
 "gm": "BHHC",
 "pos": "D",
 "sal": 2700000,
-"slot": "R"
+"slot": "IR"
 },
 "060hq": {
 "ct": "MNR",

@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-13T01:53+00:00",
+"fetched": "2026-11-13T13:09+00:00",
 "items": {
 "n8482100": [
 {
@@ -433,6 +433,14 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Friday Habs Headlines: Is Jacob Fowler the future?",
+"u": "https://www.habseyesontheprize.com/montreal-canadiens-news-jacob-fowler-future-starter-habs-legends-arber-xhekaj-penalties-luke-mittlelstadt-casey-underrated-vladislav-tretiak-russia-canada-quinn-hughes-minnesota-wild/",
+"w": 2
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "ESPN NHL",
@@ -522,14 +530,6 @@
 "s": "NHL.com (team site)",
 "t": "Fowler named NHL’s third star of the week",
 "u": "https://www.nhl.com/news/fowler-named-nhl-s-third-star-of-the-week-oct-26-2026",
-"w": 2
-},
-{
-"d": "2026-10-26",
-"k": [],
-"s": "NHL.com",
-"t": "Draisaitl leads 3 Stars of the Week, had nine points in three games",
-"u": "https://www.nhl.com/news/draisaitl-cooley-fowler-named-nhl-3-stars-of-week-october-26-2026",
 "w": 2
 }
 ],
@@ -1312,6 +1312,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Jim Hiller reveals what's standing between Gavin McKenna and more ice time",
+"u": "https://editorinleaf.com/jim-hiller-reveals-what-s-standing-between-gavin-mckenna-and-more-ice-time?utm_source=RSS",
+"w": 2
+},
+{
 "d": "2026-11-09",
 "k": [],
 "s": "NHL.com",
@@ -1398,14 +1406,6 @@
 "t": "Jim Hiller’s usage of Gavin McKenna is becoming impossible to ignore",
 "u": "https://editorinleaf.com/jim-hiller-s-usage-of-gavin-mckenna-is-becoming-impossible-to-ignore?utm_source=RSS",
 "w": 2
-},
-{
-"d": "2026-11-02",
-"k": [],
-"s": "NHL.com",
-"t": "Rookie Watch: Canadiens goalie Fowler named top first-year player for October",
-"u": "https://www.nhl.com/news/rookie-watch-montreal-canadiens-goalie-jacob-fowler-named-top-first-year-player-for-october",
-"w": 1
 }
 ],
 "n8486074": [
@@ -1528,7 +1528,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1549,7 +1549,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1577,7 +1577,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -1710,7 +1710,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "3 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -1773,7 +1773,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -1806,9 +1806,9 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 12,
+"n": 0,
 "name": "ESPN NHL",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.espn.com/espn/rss/nhl/news"
 },

@@ -276,8 +276,8 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-11-12",
-   "source": "Walt Ruff",
+   "updated": "2026-11-13",
+   "source": "Tom Gulitti",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
     "Andrei Svechnikov",
@@ -291,17 +291,17 @@
     "Mark Jankowski",
     "Seth Jarvis",
     "Logan Stankoven",
-    "K'Andre Miller"
+    "Alexander Nikishin"
    ],
    "pk1": [
-    "Sebastian Aho",
-    "Eric Robinson",
+    "Jordan Staal",
+    "Jordan Martinook",
     "Jaccob Slavin",
     "Jalen Chatfield"
    ],
    "pk2": [
-    "Logan Stankoven",
-    "Jordan Martinook",
+    "Mark Jankowski",
+    "Seth Jarvis",
     "K'Andre Miller",
     "Sean Walker"
    ],
@@ -316,14 +316,14 @@
     "Jackson Blake"
    ],
    "f3": [
-    "Taylor Hall",
-    "Mark Jankowski",
-    "Seth Jarvis"
+    "Seth Jarvis",
+    "Jordan Staal",
+    "Jordan Martinook"
    ],
    "f4": [
-    "Eric Robinson",
-    "Jesperi Kotkaniemi",
-    "Jordan Martinook"
+    "Taylor Hall",
+    "Mark Jankowski",
+    "Jesperi Kotkaniemi"
    ],
    "d1": [
     "Jaccob Slavin",
@@ -335,11 +335,11 @@
    ],
    "d3": [
     "Shayne Gostisbehere",
-    "Juuso Valimaki"
+    "Alexander Nikishin"
    ],
    "goalies": [
-    "Brandon Bussi",
-    "Pyotr Kochetkov"
+    "Pyotr Kochetkov",
+    "Brandon Bussi"
    ]
   },
   "CHI": {
@@ -820,7 +820,7 @@
   },
   "LAK": {
    "team": "Los Angeles Kings",
-   "updated": "2026-11-12",
+   "updated": "2026-11-13",
    "source": "Zach Dooley",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "pp1": [
@@ -861,24 +861,24 @@
    ],
    "f3": [
     "Trevor Moore",
-    "Scott Laughton",
-    "Corey Perry"
+    "Erik Haula",
+    "Joel Armia"
    ],
    "f4": [
     "Andre Lee",
-    "Erik Haula",
-    "Joel Armia"
+    "Scott Laughton",
+    "Corey Perry"
    ],
    "d1": [
     "Mikey Anderson",
     "Drew Doughty"
    ],
    "d2": [
-    "Joel Edmundson",
+    "Brian Dumoulin",
     "Brandt Clarke"
    ],
    "d3": [
-    "Brian Dumoulin",
+    "Joel Edmundson",
     "Cody Ceci"
    ],
    "goalies": [
@@ -1160,8 +1160,8 @@
   },
   "NYI": {
    "team": "New York Islanders",
-   "updated": "2026-11-12",
-   "source": "Projected",
+   "updated": "2026-11-13",
+   "source": "Andrew Gross",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "pp1": [
     "Simon Holmstrom",
@@ -1195,18 +1195,18 @@
     "Kyle Palmieri"
    ],
    "f2": [
-    "Matias Maccelli",
+    "Emil Heineman",
     "Brayden Schenn",
     "Victor Eklund"
    ],
    "f3": [
-    "Emil Heineman",
+    "Ondrej Palat",
     "Casey Cizikas",
     "Anthony Duclair"
    ],
    "f4": [
-    "Ondrej Palat",
-    "Kyle MacLean"
+    "Mitchell Chaffee",
+    "Matias Maccelli"
    ],
    "d1": [
     "Logan Stanley",
@@ -1227,8 +1227,8 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-11-12",
-   "source": "Last Game (2026-11-11)",
+   "updated": "2026-11-13",
+   "source": "Vince Mercogliano",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1289,8 +1289,8 @@
     "Scott Morrow"
    ],
    "goalies": [
-    "Joonas Korpisalo",
-    "Dylan Garand"
+    "Dylan Garand",
+    "Joonas Korpisalo"
    ]
   },
   "OTT": {
@@ -1567,8 +1567,8 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-11-12",
-   "source": "Seattle Kraken",
+   "updated": "2026-11-13",
+   "source": "Tom Gulitti",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1587,13 +1587,13 @@
    "pk1": [
     "Frederick Gaudreau",
     "Ben Meyers",
-    "Vince Dunn",
+    "Joshua Mahura",
     "Adam Larsson"
    ],
    "pk2": [
     "Chandler Stephenson",
     "Ryan Winterton",
-    "Ryker Evans",
+    "Vince Dunn",
     "Brandon Montour"
    ],
    "f1": [
@@ -1604,16 +1604,16 @@
    "f2": [
     "Kaapo Kakko",
     "Berkly Catton",
-    "Matthew Wood"
-   ],
-   "f3": [
-    "Jani Nyman",
-    "Chandler Stephenson",
     "Mackie Samoskevich"
    ],
-   "f4": [
-    "Ben Meyers",
+   "f3": [
     "Frederick Gaudreau",
+    "Chandler Stephenson",
+    "Jagger Firkus"
+   ],
+   "f4": [
+    "Matthew Wood",
+    "Ben Meyers",
     "Ryan Winterton"
    ],
    "d1": [
@@ -1629,8 +1629,8 @@
     "Ville Ottavainen"
    ],
    "goalies": [
-    "Philipp Grubauer",
-    "Joey Daccord"
+    "Joey Daccord",
+    "Philipp Grubauer"
    ]
   },
   "STL": {
@@ -1838,66 +1838,66 @@
   },
   "UTA": {
    "team": "Utah Mammoth",
-   "updated": "2026-11-12",
-   "source": "Last Game (2026-11-11)",
+   "updated": "2026-11-13",
+   "source": "Utah Mammoth",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "pp1": [
-    "Barrett Hayton",
+    "Anders Lee",
     "Vincent Trocheck",
-    "Nick Schmaltz",
+    "Barrett Hayton",
     "Mikhail Sergachev",
     "Clayton Keller"
    ],
    "pp2": [
     "Kailer Yamamoto",
+    "Jack McBain",
     "Michael Carcone",
-    "Anders Lee",
     "Daniil But",
     "MacKenzie Weegar"
    ],
    "pk1": [
-    "Nick Schmaltz",
+    "Kevin Stenlund",
     "Lawson Crouse",
     "Mikhail Sergachev",
     "MacKenzie Weegar"
    ],
    "pk2": [
-    "Kevin Stenlund",
+    "Vincent Trocheck",
     "Jack McBain",
     "Dmitri Simashev",
     "Andrew Peeke"
    ],
    "f1": [
-    "Clayton Keller",
-    "Nick Schmaltz",
-    "Daniil But"
+    "Anders Lee",
+    "Vincent Trocheck",
+    "Clayton Keller"
    ],
    "f2": [
-    "Jack McBain",
-    "Vincent Trocheck",
-    "Lawson Crouse"
+    "Kailer Yamamoto",
+    "Barrett Hayton",
+    "Daniil But"
    ],
    "f3": [
-    "Anders Lee",
-    "Barrett Hayton",
-    "Kailer Yamamoto"
+    "Michael Carcone",
+    "Jack McBain",
+    "Lawson Crouse"
    ],
    "f4": [
-    "Liam O'Brien",
+    "Ben McCartney",
     "Kevin Stenlund",
-    "Michael Carcone"
+    "Liam O'Brien"
    ],
    "d1": [
     "Mikhail Sergachev",
-    "MacKenzie Weegar"
+    "Andrew Peeke"
    ],
    "d2": [
     "Dmitri Simashev",
-    "Andrew Peeke"
+    "MacKenzie Weegar"
    ],
    "d3": [
-    "Artem Duda",
-    "Nick DeSimone"
+    "Zac Jones",
+    "Artem Duda"
    ],
    "goalies": [
     "Karel Vejmelka",
@@ -2036,8 +2036,8 @@
     "Dylan Coghlan"
    ],
    "goalies": [
-    "Carter Hart",
-    "Adin Hill"
+    "Adin Hill",
+    "Carter Hart"
    ]
   },
   "WSH": {
