@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-12T18:19+00:00",
+"fetched": "2026-11-13T01:53+00:00",
 "items": {
 "n8482100": [
 {
@@ -24,6 +24,16 @@
 }
 ],
 "n8482123": [
+{
+"d": "2026-11-12",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Blackhawks Recall Drew Commesso; Activate Patrick Kane",
+"u": "https://www.prohockeyrumors.com/2026/11/blackhawks-recall-drew-commesso-place-patrick-kane-on-ir.html",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -66,6 +76,14 @@
 "s": "RotoWire NHL player news",
 "t": "Jesper Wallstedt: Starting against Toronto",
 "u": "https://www.rotowire.com//hockey/player/jesper-wallstedt-6464",
+"w": 2
+},
+{
+"d": "2026-11-12",
+"k": [],
+"s": "Sportsnet",
+"t": "MacEwen buries top shelf beauty past Wallstedt to give Maple Leafs lead",
+"u": "https://www.sportsnet.ca/nhl/video/macewen-buries-top-shelf-beauty-past-wallstedt-to-give-maple-leafs-lead/",
 "w": 2
 },
 {
@@ -136,6 +154,28 @@
 "s": "Pro Hockey Rumors",
 "t": "Sharks To Activate Alexander Wennberg; Reassign Filip Bystedt",
 "u": "https://www.prohockeyrumors.com/2026/11/sharks-to-activate-alexander-wennberg-reassign-filip-bystedt.html",
+"w": 2
+}
+],
+"n8483433": [
+{
+"d": "2026-11-13",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Panthers Reassign Jack Devine",
+"u": "https://www.prohockeyrumors.com/2026/11/panthers-recall-jack-devine-2.html",
+"w": 2
+},
+{
+"d": "2026-11-12",
+"k": [
+"sent down"
+],
+"s": "NHL.com (team site)",
+"t": "‘On the right track’: Panthers loan forward Jack Devine to AHL",
+"u": "https://www.nhl.com/news/on-the-right-track-panthers-loan-forward-jack-devine-to-ahl",
 "w": 2
 }
 ],
@@ -247,6 +287,16 @@
 "t": "Stamkos, Preds Prevail Over Lightning in Halloween Shootout",
 "u": "https://www.nhl.com/news/stamkos-preds-prevail-over-lightning-in-halloween-shootout-2026-10-31",
 "w": 1
+}
+],
+"n8483525": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "NHL.com",
+"t": "Guerin plays coy when asked about trading Yurov for Larkin",
+"u": "https://www.nhl.com/news/minnesota-wild-gm-bill-guerin-talks-on-yurov-for-red-wings-larkin-trade-report",
+"w": 2
 }
 ],
 "n8483668": [
@@ -383,6 +433,14 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-12",
+"k": [],
+"s": "ESPN NHL",
+"t": "Rookie watch: Jacob Fowler, Cole Hutson living up to expectations",
+"u": "https://www.espn.com/fantasy/hockey/story/_/id/50455027/fantasy-hockey-rookies-goalies-forwards-defensemen",
+"w": 2
+},
+{
 "d": "2026-11-11",
 "k": [],
 "s": "RotoWire NHL player news",
@@ -472,14 +530,6 @@
 "s": "NHL.com",
 "t": "Draisaitl leads 3 Stars of the Week, had nine points in three games",
 "u": "https://www.nhl.com/news/draisaitl-cooley-fowler-named-nhl-3-stars-of-week-october-26-2026",
-"w": 2
-},
-{
-"d": "2026-10-26",
-"k": [],
-"s": "NHL.com",
-"t": "Heritage Classic with Canadiens was something Fowler 'dreamed of my whole life'",
-"u": "https://www.nhl.com/news/jacob-fowler-heritage-classic-sider-october-25-2026",
 "w": 2
 }
 ],
@@ -812,6 +862,28 @@
 "w": 1
 }
 ],
+"n8484797": [
+{
+"d": "2026-11-13",
+"k": [
+"injury"
+],
+"s": "Pro Hockey Rumors",
+"t": "Sabres Activate Alex Lyon, Place Konsta Helenius On IR",
+"u": "https://www.prohockeyrumors.com/2026/11/sabres-activate-alex-lyon-place-konsta-helenius-on-ir.html",
+"w": 2
+},
+{
+"d": "2026-11-12",
+"k": [
+"injury"
+],
+"s": "Daily Faceoff",
+"t": "Sabres place Konsta Helenius on injured reserve, activate Alex Lyon",
+"u": "https://www.dailyfaceoff.com/news/buffalo-sabres-konsta-helenius-nhl-ir-injured-reserve-activate-alex-lyon-news",
+"w": 2
+}
+],
 "n8484799": [
 {
 "d": "2026-11-08",
@@ -831,6 +903,14 @@
 }
 ],
 "n8484800": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "NHL.com",
+"t": "Global Series Finland blog: Kraken's Catton on atmosphere",
+"u": "https://www.nhl.com/news/global-series-finland-blog-seattle-kraken-berkly-catton-november-12-2026",
+"w": 2
+},
 {
 "d": "2026-11-11",
 "k": [],
@@ -949,6 +1029,14 @@
 }
 ],
 "n8484873": [
+{
+"d": "2026-11-12",
+"k": [],
+"s": "ESPN NHL",
+"t": "Rookie watch: Jacob Fowler, Cole Hutson living up to expectations",
+"u": "https://www.espn.com/fantasy/hockey/story/_/id/50455027/fantasy-hockey-rookies-goalies-forwards-defensemen",
+"w": 2
+},
 {
 "d": "2026-11-11",
 "k": [],
@@ -1403,7 +1491,7 @@
 },
 "sources": [
 {
-"n": 82,
+"n": 83,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1461,7 +1549,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1496,7 +1584,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -1685,7 +1773,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -1718,9 +1806,9 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 12,
 "name": "ESPN NHL",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.espn.com/espn/rss/nhl/news"
 },
@@ -1734,7 +1822,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 }
