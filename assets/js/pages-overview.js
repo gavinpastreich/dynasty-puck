@@ -137,6 +137,7 @@
       h += '<div class="page-head"><h1>Dynasty Puck HQ</h1><p class="sub">' + esc(DP.meta.season) + ' · 14 teams · 15 weekly H2H categories · weekly lineup lock · ' +
         (days > 0 ? 'Week 1 starts ' + U.date(new Date(E.weeks[0].start + 'T12:00:00Z')) + ' (' + days + ' day' + (days === 1 ? '' : 's') + ')' : 'season underway') +
         (E.deadlineText() && new Date(E.RULES.tradeDeadline) > E.now() ? ' · trade deadline ' + esc(E.deadlineText()) : '') + '</p></div>';
+      if (DP.newsCard) h += DP.newsCard();
 
       if (me) {
         var s = TS[me], nm = nextMatch(me), opp = nm ? (nm[1] === me ? nm[2] : nm[1]) : null, pr = null;

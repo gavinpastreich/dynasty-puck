@@ -29,7 +29,7 @@
     b.title = st === 'ok' ? 'Rosters, contracts, lineups and standings synced live from Fantrax at ' + t + '. ' +
       (n ? n + ' change' + (n > 1 ? 's' : '') + ' since the nightly build (click for details).' : 'No changes since the nightly build.')
       : st === 'loading' ? 'Syncing with Fantrax…'
-      : st === 'fail' ? 'Could not reach Fantrax; showing the nightly build from ' + DP.meta.built.replace('T', ' ') + '. Click to retry.'
+      : st === 'fail' ? 'Could not reach Fantrax; showing the nightly build from ' + U.builtText() + '. Click to retry.'
       : 'Live sync is off; showing the nightly build. Click to turn it on.';
   }
 

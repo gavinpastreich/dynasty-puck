@@ -125,8 +125,13 @@
     if (keys.length) s += '?' + keys.map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(q[k]); }).join('&');
     return s;
   };
+  // when the published data was built (the build stamps UTC), in the reader's own time zone: "Nov 12, 8:33 PM"
+  U.builtText = function () {
+    var d = new Date(String(DP.meta.built).slice(0, 16) + ':00Z');
+    return isNaN(d) ? String(DP.meta.built).replace('T', ' ') : d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  };
   U.setQuery = function (q) { // update the query part of the current route without re-rendering
     var cur = U.parseHash(), nq = Object.assign({}, cur.q, q);
-    history.replaceState(null, '', U.hash(cur.route, cur.arg, nq));
+    history.replaceState(history.state, '', U.hash(cur.route, cur.arg, nq)); // keep the entry's state (app.js numbers the entries)
   };
 })();

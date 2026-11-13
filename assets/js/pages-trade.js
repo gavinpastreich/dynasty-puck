@@ -325,20 +325,24 @@
       var mine = E.rosters[me].slice().sort(U.by(function (p) { return E.dvWith(p, L); }, true));
       h += '<div class="controls"><div class="seg" role="tablist"><button data-mode="give" class="' + (mode === 'give' ? 'on' : '') + '">Trade away one of mine</button><button data-mode="get" class="' + (mode === 'get' ? 'on' : '') + '">Acquire a target</button></div>' +
         '<label>Lens <select id="f-lens">' + ['model', 'league'].map(function (k) { return '<option value="' + k + '"' + (k === lensKey ? ' selected' : '') + '>' + esc(LS[k].name) + '</option>'; }).join('') + '</select></label></div>';
+      // no player in the link: the one picked last time on this device, else a sensible first choice
+      var last = E.byId[U.store.get('finder_' + mode, '')];
       if (mode === 'give') {
-        var x = target && target.gm === me ? target : mine[0];
+        var x = target && target.gm === me ? target : last && last.gm === me ? last : mine[0];
         h += '<div class="controls"><label>My player <select id="f-p">' + mine.map(function (p) { return '<option value="' + esc(p.id) + '"' + (p === x ? ' selected' : '') + '>' + esc(p.n + ' · ' + p.slot + ' · value ' + U.fmt(E.dvWith(p, L), 1)) + '</option>'; }).join('') + '</select></label></div><div id="f-out"><p class="muted">Searching the league…</p></div>';
         el.innerHTML = h;
         setTimeout(function () { give(U.qs('#f-out', el), x, me, L); }, 30);
       } else {
         var others = E.P.filter(function (p) { return p.gm && p.gm !== me; }).sort(U.by(function (p) { return E.dvWith(p, L); }, true));
-        var y = target && target.gm !== me ? target : others[0];
+        // first look: the best player a package of two of my assets could match (the league's very best never is)
+        var reach = (E.sum(mine.slice(0, 2).map(function (p) { return Math.max(0, E.dvWith(p, L)); })) || 1) * 1.2;
+        var y = target && target.gm !== me ? target : last && last.gm && last.gm !== me ? last : others.find(function (p) { return E.dvWith(p, L) <= reach; }) || others[0];
         h += '<div class="controls"><label>Target <select id="f-p">' + others.slice(0, 400).map(function (p) { return '<option value="' + esc(p.id) + '"' + (p === y ? ' selected' : '') + '>' + esc(p.n + ' (' + p.gm + ') · value ' + U.fmt(E.dvWith(p, L), 1)) + '</option>'; }).join('') + '</select></label></div><div id="f-out"><p class="muted">Building packages…</p></div>';
         el.innerHTML = h;
         setTimeout(function () { get(U.qs('#f-out', el), y, me, L); }, 30);
       }
       U.qsa('[data-mode]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('finder', null, { mode: b.dataset.mode, lens: lensKey }); }); });
-      U.qs('#f-p', el).addEventListener('change', function (e) { DP.go('finder', null, { mode: mode, p: e.target.value, lens: lensKey }); });
+      U.qs('#f-p', el).addEventListener('change', function (e) { U.store.set('finder_' + mode, e.target.value); DP.go('finder', null, { mode: mode, p: e.target.value, lens: lensKey }); });
       U.qs('#f-lens', el).addEventListener('change', function (e) { DP.go('finder', null, { mode: mode, p: q.p, lens: e.target.value }); });
     }
   };

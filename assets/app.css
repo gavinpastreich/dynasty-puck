@@ -49,10 +49,11 @@ small, .small { font-size: .82rem; }
 .brand b { color: var(--accent); }
 .top .spacer { flex: 1; }
 .search { position: relative; }
-.search input { width: 240px; max-width: 42vw; padding: 7px 10px 7px 30px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); }
+.search input { width: 290px; max-width: 42vw; padding: 7px 10px 7px 30px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); }
 .search .ico { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
 .search .results { position: absolute; top: calc(100% + 4px); right: 0; width: 340px; max-width: 92vw; max-height: 60vh; overflow: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); display: none; z-index: 40; }
 .search .results.open { display: block; }
+.search .results .shead { padding: 6px 10px 3px; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
 .search .results button { display: flex; width: 100%; gap: 8px; align-items: center; padding: 7px 10px; background: none; border: 0; text-align: left; cursor: pointer; border-bottom: 1px solid var(--line2); }
 .search .results button:hover, .search .results button.hl { background: var(--card2); }
 .teambtn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); cursor: pointer; white-space: nowrap; }
@@ -257,6 +258,7 @@ hr.sep { border: 0; border-top: 1px solid var(--line2); margin: 14px 0; }
   .teambtn .tn { max-width: 74px; overflow: hidden; text-overflow: ellipsis; }
   .search { flex: 1; min-width: 0; }
   .search input { width: 100%; max-width: none; }
+  .search input::placeholder { color: transparent; }
   .search .results { right: auto; left: 0; width: 88vw; }
   h1 { font-size: 1.3rem; }
   .stat .v { font-size: 1.2rem; }
@@ -305,3 +307,28 @@ select { max-width: 100%; text-overflow: ellipsis; }
 details.card > summary { cursor: pointer; }
 @media (max-width: 700px) { details.card ul { columns: 1 !important; } }
 
+/* phones: the name column stays put while a wide table scrolls sideways */
+:root { --tbg: var(--bg); }
+.card, .tradecol { --tbg: var(--card); }
+@media (max-width: 860px) {
+  .tbl-wrap table.t.hasstick .stick, .tbl-wrap table.t:not(.hasstick) th:first-child, .tbl-wrap table.t:not(.hasstick) td:first-child {
+    position: sticky; left: 0; z-index: 1; background: var(--tbg); box-shadow: 1px 0 0 var(--line2); max-width: 44vw; white-space: normal; }
+  .tbl-wrap table.t.hasstick th.stick, .tbl-wrap table.t:not(.hasstick) th:first-child { z-index: 2; background: var(--card2); }
+  .tbl-wrap table.t tr.mine .stick, .tbl-wrap table.t:not(.hasstick) tr.mine td:first-child {
+    background: linear-gradient(color-mix(in srgb, var(--accent) 9%, transparent), color-mix(in srgb, var(--accent) 9%, transparent)), var(--tbg); }
+  .tbl-wrap table.t td[colspan] { position: static; max-width: none; }
+}
+
+/* phones: quick bar at the bottom */
+.tabbar { display: none; }
+@media (max-width: 860px) {
+  .tabbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--bg); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .tabbar a, .tabbar button { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 6px 2px 5px; font: inherit; font-size: .68rem; color: var(--muted); background: none; border: 0; text-decoration: none; cursor: pointer; }
+  .tabbar .i { font-size: 1.15rem; line-height: 1.2; }
+  .tabbar a.on { color: var(--accent); }
+  main { padding-bottom: 96px; }
+  nav.side { height: calc(100vh - 50px); padding-bottom: 90px; }
+  .toast { bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+}
+@media print { .tabbar { display: none; } }
+@media (max-width: 520px) { #newscard .newsd { display: none; } }

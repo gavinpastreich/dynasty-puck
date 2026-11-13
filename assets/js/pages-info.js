@@ -199,11 +199,38 @@
     return true;
   };
 
+  // What changed on the site, newest first: [date, title, what it does, route to open]. The Dashboard shows the
+  // entries a visitor hasn't dismissed yet; the full list lives on Data & Updates.
+  DP.NEWS = [
+    ['2026-11-13', 'Traded cap space', 'Each team\'s own cap now comes straight from Fantrax, so cap space is right after a trade that includes cap. Cap space can be added to any deal in the Trade Machine (2 to 4 teams), and Trade History shows who sent it.', 'trade'],
+    ['2026-11-13', 'Easier to get around', 'Search finds teams and pages as well as players. Back closes a player card and returns you to where you were. On a phone the name column stays put when a table scrolls sideways, and there is a quick bar at the bottom.', null],
+    ['2026-11-10', 'Live Scoreboard', 'The week in progress, re-scored every few minutes while NHL games are on.', 'live'],
+    ['2026-11-10', 'Category Insights', 'How every team stacks up in each category, and all 13 trade partners ranked by fit.', 'cats'],
+    ['2026-11-10', 'Prospect Radar', 'Every prospect re-scored nightly, with headlines, risers and fallers.', 'radar']
+  ];
+  DP.newsHtml = function (since, max) { // entries newer than `since` (all when empty), newest `max`
+    var day = function (d) { return U.date(new Date(d + 'T12:00:00Z')); };
+    return DP.NEWS.filter(function (x) { return !since || x[0] > since; }).slice(0, max || 99).map(function (x) {
+      return '<li><span class="faint small">' + esc(day(x[0])) + '</span> <b>' + esc(x[1]) + '.</b> <span class="newsd">' + esc(x[2]) + '</span>' + (x[3] ? ' <a href="#/' + x[3] + '">Open →</a>' : '') + '</li>';
+    }).join('');
+  };
+  DP.newsCard = function () { // Dashboard: what's new since this visitor last dismissed it
+    var seen = U.store.get('newsSeen', ''), items = DP.newsHtml(seen, 3);
+    if (!items) return '';
+    return '<div class="callout" id="newscard"><div style="display:flex;gap:8px;align-items:baseline"><b>🆕 New on the site</b><span style="margin-left:auto;white-space:nowrap"><a class="small" href="#/data">all updates</a> <button class="btn sm" data-act="news-seen">Got it</button></span></div><ul class="small" style="margin:6px 0 0;padding-left:18px">' + items + '</ul></div>';
+  };
+  if (typeof document !== 'undefined') document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-act="news-seen"]'); if (!b) return;
+    U.store.set('newsSeen', DP.NEWS[0][0]);
+    var c = document.getElementById('newscard'); if (c) c.parentNode.removeChild(c);
+  });
+
   DP.pages.data = {
     title: 'Data & Updates',
     render: function (el) {
       var E = DP.E, ov = DP.overrideInfo;
       var h = '<div class="page-head"><h1>Data & Updates</h1><p class="sub">Refresh the app during the season without waiting for a rebuild: drop new Fantrax CSV exports here. Changes stay in <b>this browser only</b> (for everyone, the commissioner runs the build; see below).</p></div>';
+      h += '<div class="card" style="margin-bottom:14px"><h2>🆕 What\'s new</h2><ul class="small" style="margin:0;padding-left:18px">' + DP.newsHtml('') + '</ul></div>';
       if (ov) h += '<div class="callout warn">Using your uploaded data from ' + esc(ov.when) + ' (' + esc(ov.what.join(', ')) + '). <button class="btn sm" id="ov-reset">Reset to published data</button></div>';
       h += '<div class="card" style="margin-bottom:14px" id="fx-panel">' + (DP.live ? DP.live.panel() : '') + '<p class="small muted">Rosters, contracts, salaries, lineup slots, standings and future picks come straight from Fantrax: every night into the published data (a GitHub Action), and again live each time the app opens. The CSV upload below is only needed for projections and stats.</p></div>';
       h += '<div class="grid g2"><div class="card"><h2>1 · Drop Fantrax CSVs</h2><div class="hint">Fantrax → Players → (Skaters or Goalies) → export CSV. Choose what the file contains, then drop it. Rosters, contracts and salaries update from the Status/Contract/Salary columns.</div>' +

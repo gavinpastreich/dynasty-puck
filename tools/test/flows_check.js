@@ -149,6 +149,77 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await pp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth <= 2), 'phone: no sideways scroll on Windows');
   await ph.close();
 
+  // ---- Getting around: search (pages, teams, players), Back with a card open, scroll kept, phone bar and pinned column
+  {
+    const nc = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+    await nc.route('https://www.fantrax.com/**', (r) => r.abort()); await nc.route('https://api.github.com/**', (r) => r.abort()); await nc.route('https://raw.githubusercontent.com/**', (r) => r.abort());
+    await nc.addInitScript(() => { try { localStorage.setItem('dp_team', JSON.stringify('ROO')); } catch (e) {} });
+    const np = await nc.newPage(); const nerr = []; np.on('pageerror', (e) => nerr.push(e.message));
+    const S = () => np.evaluate(() => ({ hash: location.hash, card: document.querySelector('#modal-bg').classList.contains('open'), y: Math.round(scrollY), h1: (document.querySelector('#main h1') || {}).textContent }));
+    await np.goto(URL + 'home'); await np.waitForTimeout(2000);
+    ok(await np.evaluate(() => !!document.querySelector('#newscard') && /Traded cap space/.test(document.querySelector('#newscard').innerText)), 'dashboard: "new on the site" card shown');
+    await np.tap('#newscard [data-act="news-seen"]'); await np.waitForTimeout(200);
+    ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsSeen')) === DP.NEWS[0][0]), 'dashboard: "Got it" hides the card and remembers');
+    ok(await np.evaluate(() => getComputedStyle(document.querySelector('#tabbar')).display === 'flex' && document.querySelectorAll('#tabbar a, #tabbar button').length === 5), 'phone: bottom bar with five entries');
+    await np.tap('#tabbar a[href="#/live"]'); await np.waitForTimeout(1500);
+    ok((await S()).hash === '#/live' && await np.evaluate(() => document.querySelector('#tabbar a.on').getAttribute('href') === '#/live'), 'phone: bottom bar navigates and marks the page');
+    await np.tap('#tabbar button[data-act="menu"]'); await np.waitForTimeout(300);
+    ok(await np.evaluate(() => document.querySelector('#nav').classList.contains('open')), 'phone: More opens the full menu');
+    await np.touchscreen.tap(350, 420); await np.waitForTimeout(300); // right of the 240px drawer
+    ok(await np.evaluate(() => !document.querySelector('#nav').classList.contains('open')), 'phone: tapping outside closes the menu');
+    // search
+    const res = async (q2) => { await np.fill('#gsearch', q2); await np.waitForTimeout(250); return np.evaluate(() => [...document.querySelectorAll('#gresults > *')].map((e) => e.className === 'shead' ? '[' + e.textContent + ']' : e.innerText.replace(/\s+/g, ' ')).join(' | ')); };
+    ok(/\[Pages\] \| .*Contracts & Cap/.test(await res('cap')) && !/Awards/.test(await res('cap')), 'search: "cap" finds the Contracts & Cap page (word starts only)');
+    ok(/\[Teams\] \| .*Kalamazoo Kangaroo/.test(await res('kalam')), 'search: finds a team by name');
+    ok(/Live Scoreboard/.test(await res('score')) && /Free Agents/.test(await res('waiv')), 'search: finds pages by what people call them');
+    await res('kalam'); await np.keyboard.press('Enter'); await np.waitForTimeout(1500);
+    ok((await S()).hash === '#/team/ROO', 'search: Enter on a team opens its Team Hub');
+    // Back with a card open, and scroll kept on the way back
+    await np.goto(URL + 'players'); await np.waitForTimeout(1800);
+    await np.evaluate(() => window.scrollTo(0, 900)); await np.waitForTimeout(300);
+    const name = await np.evaluate(() => { const a = document.querySelector('#main a.plink'); a.click(); return a.textContent; }); await np.waitForTimeout(500);
+    ok((await S()).card, 'player card opens');
+    await np.goBack(); await np.waitForTimeout(800);
+    let s1 = await S();
+    ok(!s1.card && s1.hash === '#/players' && s1.y === 900, 'Back closes the card and stays on the page at the same spot (' + JSON.stringify(s1) + ')');
+    await np.evaluate(() => { document.querySelector('#gsearch').focus(); }); await np.waitForTimeout(300);
+    ok(await np.evaluate((nm) => /Recently opened/i.test(document.querySelector('#gresults').innerText) && document.querySelector('#gresults').innerText.indexOf(nm) >= 0, name), 'search: empty box lists the players opened last');
+    await np.evaluate(() => { document.querySelector('#gsearch').blur(); location.hash = '#/cap'; }); await np.waitForTimeout(1500);
+    ok((await S()).y === 0, 'a new page starts at the top');
+    await np.goBack(); await np.waitForTimeout(1500);
+    s1 = await S();
+    ok(s1.hash === '#/players' && s1.y === 900, 'Back to a list returns to where you were (' + s1.y + ')');
+    await np.evaluate(() => document.querySelector('#main a.plink').click()); await np.waitForTimeout(500);
+    await np.evaluate(() => [...document.querySelectorAll('#modal-body a.btn')].find((a) => /Trade for/.test(a.textContent)).click()); await np.waitForTimeout(1500);
+    s1 = await S();
+    ok(!s1.card && /^#\/trade/.test(s1.hash), 'a link inside the card closes it and goes there');
+    await np.goBack(); await np.waitForTimeout(1500); s1 = await S();
+    ok(s1.hash === '#/players' && !s1.card, 'Back from there: the list, no card');
+    await np.goBack(); await np.waitForTimeout(1500); s1 = await S();
+    ok(s1.hash !== '#/players', 'Back again leaves the list (no dead press on the card\'s old entry): ' + s1.hash);
+    // Back to a list: the table is as it was left (sort, filter, search, rows shown); a fresh visit starts clean
+    await np.goto(URL + 'players'); await np.waitForTimeout(1800);
+    const T = () => np.evaluate(() => { const t = document.querySelector('#main table.t'), th = t.querySelector('th.sorted'); return [th ? th.textContent.replace(/[^A-Za-z%+]/g, '') : '', t.querySelectorAll('tbody tr').length, document.querySelector('#main [data-r=q]').value, document.querySelector('#main .tbl-tools select').value].join('|'); });
+    const t0 = await T();
+    await np.evaluate(() => { [...document.querySelectorAll('#main table.t th')].find((h) => /^GP/.test(h.textContent)).click(); const s2 = document.querySelector('#main .tbl-tools select'); s2.selectedIndex = 2; s2.dispatchEvent(new Event('change', { bubbles: true })); });
+    await np.fill('#main [data-r=q]', 'an'); await np.waitForTimeout(300);
+    await np.evaluate(() => document.querySelector('#main .tbl-more [data-more=page]').click()); await np.waitForTimeout(300);
+    const t1 = await T();
+    await np.evaluate(() => { location.hash = '#/cap'; }); await np.waitForTimeout(1500);
+    await np.goBack(); await np.waitForTimeout(1500);
+    ok(t1 !== t0 && await T() === t1, 'Back to a list: sort, filter, search and rows shown are as you left them (' + t1 + ')');
+    await np.evaluate(() => { location.hash = '#/home'; }); await np.waitForTimeout(1200);
+    await np.evaluate(() => { location.hash = '#/players'; }); await np.waitForTimeout(1500);
+    ok(await T() === t0, 'a fresh visit to the list starts clean (' + t0 + ')');
+    // pinned name column
+    await np.goto(URL + 'players'); await np.waitForTimeout(1800);
+    const pin = await np.evaluate(() => { const w = document.querySelector('#main .tbl-wrap'); w.scrollLeft = 300; const c = w.querySelector('tbody td.stick'), r = c.getBoundingClientRect(), wr = w.getBoundingClientRect(); return { left: Math.round(r.left - wr.left), scrolled: w.scrollLeft, bg: getComputedStyle(c).backgroundColor }; });
+    ok(pin.scrolled > 100 && Math.abs(pin.left) <= 1 && !/rgba\(0, 0, 0, 0\)|transparent/.test(pin.bg), 'phone: the name column stays in view when the table scrolls sideways (' + JSON.stringify(pin) + ')');
+    ok(await np.evaluate(() => document.documentElement.scrollWidth - window.innerWidth <= 2), 'phone: no sideways page scroll on Players');
+    ok(nerr.length === 0, 'getting around: no page errors (' + nerr.slice(0, 2).join(' | ') + ')');
+    await nc.close();
+  }
+
   // ---- Live Scoreboard feed: GitHub's API first (fresh), the cached file when the API refuses, then stay off the API
   {
     const lc = await browser.newContext({ viewport: { width: 1360, height: 900 } });

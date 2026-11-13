@@ -90,30 +90,38 @@
   ui.tip = function (value, label) { return '<div class="tv">' + value + '</div>' + (label ? '<div class="tl">' + label + '</div>' : ''); };
 
   // ---------------------------------------------------------------- table
+  ui._tstate = {}; ui._tn = 0; ui.restore = false;
   // cols: [{k, l, v(row)->sort value, f(row)->html, cls, title, csv(row), hide}]
   ui.table = function (el, o) {
     o.cols = o.cols.filter(Boolean);
+    // the column that stays in view when a wide table is scrolled sideways on a phone: the first one that isn't a rank number
+    var stick = Math.max(0, o.cols.findIndex(function (c) { return c.l !== '#' && c.l !== ''; }));
+    if (stick > 1) stick = 0;
     var st = { sort: o.sort || null, desc: o.desc !== undefined ? o.desc : true, q: '', f: {}, shown: o.page || 60 };
     (o.filters || []).forEach(function (f, i) { st.f[i] = f.def || ''; });
+    // Back / Forward to a page: the table comes back as it was left (sort, search, filters, rows shown). The key is
+    // the page address plus the table's place on the page; app.js sets ui.restore only while re-rendering for Back/Forward.
+    var tkey = location.hash + '|' + (ui._tn = (ui._tn || 0) + 1), sig = o.cols.map(function (c) { return c.k; }).join(','), old = ui.restore && ui._tstate[tkey];
+    if (old && old.sig === sig) { st.sort = old.sort; st.desc = old.desc; st.q = o.search ? old.q : ''; st.shown = old.shown; (o.filters || []).forEach(function (f, i) { if (old.f[i] !== undefined && f.opts.some(function (op) { return op[0] === old.f[i]; })) st.f[i] = old.f[i]; }); }
     var id = 't' + Math.random().toString(36).slice(2, 8);
     var tools = '';
     if (o.search || o.filters || o.csv || o.extra) {
       tools = '<div class="tbl-tools">';
-      if (o.search) tools += '<input type="search" placeholder="' + esc(o.searchPh || 'Search…') + '" aria-label="Search table" data-r="q">';
+      if (o.search) tools += '<input type="search" placeholder="' + esc(o.searchPh || 'Search…') + '" aria-label="Search table" data-r="q" value="' + esc(st.q) + '">';
       (o.filters || []).forEach(function (f, i) {
         tools += '<label class="small muted">' + esc(f.l) + ' <select data-r="f' + i + '" aria-label="' + esc(f.l) + '">' +
-          f.opts.map(function (op) { return '<option value="' + esc(op[0]) + '"' + (op[0] === (f.def || '') ? ' selected' : '') + '>' + esc(op[1]) + '</option>'; }).join('') + '</select></label>';
+          f.opts.map(function (op) { return '<option value="' + esc(op[0]) + '"' + (op[0] === st.f[i] ? ' selected' : '') + '>' + esc(op[1]) + '</option>'; }).join('') + '</select></label>';
       });
       tools += '<span class="grow"></span>' + (o.extra || '') + '<span class="small muted" data-r="count"></span>';
       if (o.csv) tools += '<button class="btn sm" data-r="csv" title="Download as CSV">⬇ CSV</button>';
       tools += '</div>';
     }
-    el.innerHTML = tools + '<div class="tbl-wrap"' + (o.maxH ? ' style="max-height:' + o.maxH + 'px;overflow:auto"' : '') + '><table class="t' + (o.cls ? ' ' + o.cls : '') + '" id="' + id + '"><thead><tr></tr></thead><tbody></tbody></table></div><div class="tbl-more"></div>';
+    el.innerHTML = tools + '<div class="tbl-wrap"' + (o.maxH ? ' style="max-height:' + o.maxH + 'px;overflow:auto"' : '') + '><table class="t hasstick' + (o.cls ? ' ' + o.cls : '') + '" id="' + id + '"><thead><tr></tr></thead><tbody></tbody></table></div><div class="tbl-more"></div>';
     var table = U.qs('#' + id, el), thead = U.qs('thead tr', table), tbody = U.qs('tbody', table), more = U.qs('.tbl-more', el);
     function hdr() {
       thead.innerHTML = o.cols.map(function (c, i) {
         var sortable = c.v !== null && c.sortable !== false;
-        var cls = [c.cls || '', sortable ? 'sortable' : '', st.sort === c.k ? 'sorted' : ''].join(' ');
+        var cls = [c.cls || '', sortable ? 'sortable' : '', st.sort === c.k ? 'sorted' : '', i === stick ? 'stick' : ''].join(' ');
         var arrow = st.sort === c.k ? (st.desc ? ' ▾' : ' ▴') : '';
         return '<th class="' + cls + '" data-i="' + i + '"' + (c.title ? ' title="' + esc(c.title) + '"' : '') + (sortable ? ' tabindex="0" aria-sort="' + (st.sort === c.k ? (st.desc ? 'descending' : 'ascending') : 'none') + '"' : '') + '>' + esc(c.l) + arrow + '</th>';
       }).join('');
@@ -144,15 +152,16 @@
         h += '<tr' + (rc ? ' class="' + rc + '"' : '') + '>';
         for (var j = 0; j < o.cols.length; j++) {
           var c = o.cols[j], v = c.f ? c.f(r, i) : esc(val(c, r));
-          h += '<td' + (c.cls ? ' class="' + c.cls + '"' : '') + '>' + (v === undefined || v === null ? '' : v) + '</td>';
+          h += '<td' + (c.cls || j === stick ? ' class="' + (c.cls || '') + (j === stick ? ' stick' : '') + '"' : '') + '>' + (v === undefined || v === null ? '' : v) + '</td>';
         }
         h += '</tr>';
       }
       if (!rows.length) h = '<tr><td colspan="' + o.cols.length + '" class="muted">' + esc(o.empty || 'Nothing to show.') + '</td></tr>';
       tbody.innerHTML = h;
-      more.innerHTML = rows.length > st.shown ? '<button class="btn sm">Show more (' + (rows.length - st.shown) + ' left)</button>' : '';
+      more.innerHTML = rows.length > st.shown ? '<button class="btn sm" data-more="page">Show more (' + (rows.length - st.shown) + ' left)</button>' + (rows.length - st.shown > (o.page || 60) && rows.length <= 1500 ? ' <button class="btn sm ghost" data-more="all">Show all ' + rows.length + '</button>' : '') : '';
       var cnt = U.qs('[data-r=count]', el);
       if (cnt) cnt.textContent = rows.length + ' rows';
+      ui._tstate[tkey] = { sig: sig, sort: st.sort, desc: st.desc, q: st.q, f: Object.assign({}, st.f), shown: st.shown };
       if (o.onRender) o.onRender(rows);
     }
     thead.addEventListener('click', function (e) {
@@ -162,7 +171,7 @@
       hdr(); body();
     });
     thead.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.target.click(); });
-    more.addEventListener('click', function () { st.shown += o.page || 60; body(); });
+    more.addEventListener('click', function (e) { var b = e.target.closest('[data-more]'); if (!b) return; st.shown = b.dataset.more === 'all' ? o.rows.length : st.shown + (o.page || 60); body(); });
     el.addEventListener('input', function (e) {
       var r = e.target.dataset && e.target.dataset.r;
       if (r === 'q') { st.q = e.target.value; st.shown = o.page || 60; body(); }
@@ -183,15 +192,20 @@
   };
 
   // ---------------------------------------------------------------- modal
+  // An open card gets its own history entry, so the Back button (or the back swipe on a phone) closes the card
+  // instead of leaving the page underneath it. ui.onModal is set by app.js, which numbers the history entries.
   ui.modal = function (html) {
-    var bg = U.qs('#modal-bg'), body = U.qs('#modal-body');
+    var bg = U.qs('#modal-bg'), body = U.qs('#modal-body'), was = bg.classList.contains('open');
     body.innerHTML = html; bg.classList.add('open'); bg.scrollTop = 0;
     document.body.style.overflow = 'hidden';
+    if (!was && ui.onModal) ui.onModal();
     setTimeout(function () { var b = U.qs('#modal-close'); if (b) b.focus(); }, 30);
     return body;
   };
-  ui.closeModal = function () {
-    U.qs('#modal-bg').classList.remove('open'); document.body.style.overflow = '';
+  ui.closeModal = function (keepHistory) { // keepHistory === true: the history already moved (Back pressed, or a link followed)
+    var bg = U.qs('#modal-bg'), was = bg.classList.contains('open');
+    bg.classList.remove('open'); document.body.style.overflow = '';
     ui.tipHide();
+    try { if (was && keepHistory !== true && history.state && history.state.dpModal) history.back(); } catch (e) { /* ignore */ }
   };
 })();

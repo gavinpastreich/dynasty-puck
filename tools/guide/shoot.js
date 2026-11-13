@@ -60,7 +60,7 @@ const SHOTS = [
     await ctx.route('https://assets.nhle.com/**', async (r) => { // headshots via curl too
       try { r.fulfill({ status: 200, contentType: 'image/png', body: require('child_process').execFileSync('curl', ['-sS', '--max-time', '20', r.request().url()]) }); } catch (e) { r.abort(); }
     });
-    await ctx.addInitScript((t) => { try { localStorage.setItem('dp_team', JSON.stringify(t)); } catch (e) {} }, team);
+    await ctx.addInitScript((t) => { try { localStorage.setItem('dp_team', JSON.stringify(t)); localStorage.setItem('dp_newsSeen', JSON.stringify('2999-01-01')); } catch (e) {} }, team); // no "new on the site" card in the shots
     const page = await ctx.newPage();
     let r = route;
     if (o.tradeLookup) { // a contender buying a veteran from a rebuilding team for its 2027 1st + a prospect

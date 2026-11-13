@@ -241,3 +241,20 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     place), "Cap space after" per team, a one-click "X sends $Y of cap space" when one team ends up over, cap offered
     as a balancer. Trade Finder flags ideas that leave either team over its cap. Trade History names the sender of
     every asset in 3+ team trades. live.js applies a changed team cap on the visit, before the nightly build.
+- Quality-of-life pass (2026-11-13):
+  - History entries are numbered (history.state.i, app.js navInit/onHash). An open card pushes its own entry, so
+    Back closes the card and stays on the page; before this, Back changed the page underneath and left the card up.
+    Following a link out of a card closes it, and the card's leftover entry is stepped over in either direction.
+    Back / Forward to a page restores its scroll position (retried while the page finishes rendering, dropped as
+    soon as the reader touches anything); a new page starts at the top. U.setQuery keeps the entry's state.
+  - Search finds pages (by name, group and the PAGE_WORDS aliases in app.js; word starts only) and teams as well as
+    players; an empty box lists the six players opened last (localStorage dp_recent).
+  - Phones (<= 860px): bottom bar (Home, My team, Live, Trade, More = the full menu); a tap outside the open menu
+    closes it; in a table that scrolls sideways the name column stays in view (ui.table marks it `stick`: the first
+    column that isn't a rank; hand-built tables use the first column; --tbg carries the background behind it).
+  - Tables: "Show all N" next to "Show more" when more than one page is left.
+  - Dashboard "New on the site" card from DP.NEWS in pages-info.js (dismissed per device: dp_newsSeen); full list on
+    Data & Updates. Add an entry at the top of DP.NEWS when something worth announcing ships.
+  - Trade Finder opens on the player picked last on this device, or in "Acquire a target" on the best player two of
+    the team's assets could match (it used to open on the league's most valuable player, which never returns a
+    package). The data build time is shown in the reader's time zone ("data updated Nov 12, 8:33 PM").
