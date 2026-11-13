@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-13T17:45+00:00",
+"fetched": "2026-11-13T23:21+00:00",
 "items": {
 "n8482100": [
 {
@@ -44,6 +44,14 @@
 }
 ],
 "n8482193": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Victoria native Dylan Garand adjusting to life as Rangers’ sudden starting goalie",
+"u": "https://canucksarmy.com/news/victoria-dylan-garand-adjusting-life-new-york-rangers-sudden-starting-goalie",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -449,6 +457,14 @@
 ],
 "n8484159": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Derek King on Lynden Lakovic’s early scoring struggles as an AHL rookie: ‘He just has to get to the inside of the ice’",
+"u": "https://russianmachineneverbreaks.com/2026/11/13/derek-king-lynden-lakovic-ahl-rookie-scoring-struggles/",
+"w": 1
+},
+{
 "d": "2026-11-08",
 "k": [
 "hot"
@@ -562,6 +578,14 @@
 }
 ],
 "n8484177": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "All About the Jersey (NJD)",
+"t": "Devils in the Details – 11/13/26: Capitalizing Call-ups Edition",
+"u": "https://www.allaboutthejersey.com/devils-in-the-details-news-and-links/75201/devils-in-the-details-11-13-26-capitalizing-call-ups-edition",
+"w": 1
+},
 {
 "d": "2026-11-11",
 "k": [
@@ -796,6 +820,14 @@
 ],
 "n8484770": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "NHL.com",
+"t": "Short Shifts Power Rankings: November 13",
+"u": "https://www.nhl.com/news/short-shifts-power-rankings-november-13-2026",
+"w": 1
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "NHL.com (team site)",
@@ -909,6 +941,16 @@
 "s": "Daily Faceoff",
 "t": "Sabres place Konsta Helenius on injured reserve, activate Alex Lyon",
 "u": "https://www.dailyfaceoff.com/news/buffalo-sabres-konsta-helenius-nhl-ir-injured-reserve-activate-alex-lyon-news",
+"w": 2
+}
+],
+"n8484798": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Sportsnet",
+"t": "‘He demands a lot of himself’: Canucks’ Malhotra on Buium’s development",
+"u": "https://www.sportsnet.ca/nhl/video/he-demands-a-lot-of-himself-canucks-malhotra-on-buiums-development/",
 "w": 2
 }
 ],
@@ -1066,6 +1108,16 @@
 ],
 "n8484873": [
 {
+"d": "2026-11-13",
+"k": [
+"hot"
+],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Cole Hutson says ‘I’m just not playing well enough’ after two-game stretch featuring overtime winner and highlight-reel assist",
+"u": "https://russianmachineneverbreaks.com/2026/11/13/cole-hutson-not-playing-well-enough-assists-first-overtime-goal-capitals-nhl/",
+"w": 2
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "ESPN NHL",
@@ -1112,6 +1164,26 @@
 "t": "Hutson brothers primed for high ‘intensity’ of first NHL showdown",
 "u": "https://www.nhl.com/news/hutson-brothers-primed-for-intensity-of-first-nhl-showdown",
 "w": 2
+}
+],
+"n8484987": [
+{
+"d": "2026-11-13",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Devils Place Jonathan Kovacevic On IR, Recall Anton Silayev",
+"u": "https://www.prohockeyrumors.com/2026/11/devils-place-jonathan-kovacevic-on-ir-recall-anton-silayev.html",
+"w": 2
+},
+{
+"d": "2026-11-13",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Silaev Recalled from Utica, Kovacevic to IR | TRANSACTIONS",
+"u": "https://www.nhl.com/news/silaev-recalled-transactions-11-13-26",
+"w": 1
 }
 ],
 "n8485003": [
@@ -1195,6 +1267,26 @@
 "s": "NHL.com (team site)",
 "t": "Sharks welcome cancer survivor to meet Misa",
 "u": "https://www.nhl.com/news/san-jose-sharks-welcome-cancer-survivor-to-meet-michael-misa-x5442",
+"w": 2
+}
+],
+"n8485406": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "How Porter Martone can get back into the Calder Trophy race",
+"u": "https://www.broadstreethockey.com/post/porter-martone-must-pick-up-the-pace-to-remain-in-the-calder-trophy-race/",
+"w": 2
+}
+],
+"n8485412": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Derek King on Lynden Lakovic’s early scoring struggles as an AHL rookie: ‘He just has to get to the inside of the ice’",
+"u": "https://russianmachineneverbreaks.com/2026/11/13/derek-king-lynden-lakovic-ahl-rookie-scoring-struggles/",
 "w": 2
 }
 ],
@@ -1557,7 +1649,7 @@
 },
 "sources": [
 {
-"n": 84,
+"n": 86,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1594,7 +1686,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1629,7 +1721,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1706,7 +1798,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -1804,7 +1896,7 @@
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -1825,7 +1917,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -1839,7 +1931,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
