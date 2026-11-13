@@ -2,7 +2,8 @@
 
 Endpoints (no login needed for this league; verified 2026-09-26):
   /fxea/general/getLeagueInfo?leagueId=    teams + divisions, H2H matchups by period, lock times, roster rules
-  /fxea/general/getTeamRosters?leagueId=   every rostered player: Fantrax id, slot, contract type, salary
+  /fxea/general/getTeamRosters?leagueId=   every rostered player: Fantrax id, slot, contract type, salary;
+                                           plus each team's own salary cap (it moves when cap space is traded)
   /fxea/general/getDraftPicks?leagueId=    future league draft picks: current + original owner
   /fxea/general/getStandings?leagueId=     category W-L-T, rank, games back
   /fxea/general/getPlayerIds?sport=NHL     Fantrax id -> name, NHL team, position (for players added after the CSV exports)
@@ -86,8 +87,10 @@ def fetch_snapshot():
     teams = {tid: {"code": short.get(tid), "name": t.get("name"), "div": t.get("division")}
              for tid, t in (info.get("teamInfo") or {}).items()}
     code = lambda tid: (teams.get(tid) or {}).get("code") or tid
-    ros, names = {}, {}
+    ros, names, caps = {}, {}, {}
     for tid, t in (rosters.get("rosters") or {}).items():
+        if t.get("salaryCap"):  # the team's own cap this season: the league cap plus or minus cap space it traded
+            caps[code(tid)] = int(round(float(t["salaryCap"])))
         for it in t.get("rosterItems", []):
             ros[it["id"]] = {"gm": code(tid), "ct": (it.get("contract") or {}).get("name") or "",
                              "sal": int(round(float(it.get("salary") or 0))), "slot": SLOT.get(it.get("status"), it.get("status")),
@@ -116,7 +119,7 @@ def fetch_snapshot():
         "league": {"id": LEAGUE_ID, "name": info.get("leagueName"), "url": LEAGUE_URL, "season": info.get("seasonYear"),
                    "start": info.get("startDate"), "end": info.get("endDate"), "playoffs": info.get("playoffs"),
                    "roster": info.get("rosterInfo")},
-        "teams": teams, "periods": periods, "rosters": ros, "names": names, "elig": elig, "waivers": waivers,
+        "teams": teams, "periods": periods, "rosters": ros, "names": names, "elig": elig, "waivers": waivers, "caps": caps,
         "picks": sorted(fut, key=lambda p: (p["year"], p["round"], p["orig"])), "standings": st,
     }
 
@@ -143,6 +146,48 @@ def diff_moves(old, new, when):
         if k in op and op[k] != p["owner"]:
             ev.append({"d": when, "id": f"pick-{k[0]}-{k[1]}-{k[2]}", "type": "pick", "year": k[0], "round": k[1],
                        "orig": k[2], "from": op[k], "to": p["owner"]})
+    if (old or {}).get("caps") and new.get("caps"):  # no caps in the older snapshot = nothing to compare against
+        ev += cap_moves(old["caps"], new["caps"], when)
+    return ev
+
+
+def cap_base(caps):
+    """The league's cap = the figure most teams have (a team that traded cap space sits above or below it).
+    Ties go to the figure nearest the average, since cap sent and cap received cancel out."""
+    vals = list(caps.values())
+    if not vals:
+        return 0
+    mean = sum(vals) / len(vals)
+    return max(set(vals), key=lambda v: (vals.count(v), -abs(v - mean)))
+
+
+def cap_moves(old, new, when):
+    """Cap space changing hands between two snapshots. Fantrax moves the teams' own caps when cap is part of a trade:
+    the sender's goes down and the receiver's up by the same amount. Equal amounts are paired first; anything left
+    is split largest to largest; a change with no partner is logged one-sided (a commissioner adjustment)."""
+    bo, bn = cap_base(old), cap_base(new)
+    delta = {t: (new[t] - bn) - (old.get(t, bo) - bo) for t in new}
+    give = sorted(([t, -d] for t, d in delta.items() if d < 0), key=lambda x: (-x[1], x[0]))
+    take = sorted(([t, d] for t, d in delta.items() if d > 0), key=lambda x: (-x[1], x[0]))
+    pairs = []
+    for g in give:  # exact matches first
+        for r in take:
+            if r[1] and r[1] == g[1]:
+                pairs.append((g[0], r[0], g[1]))
+                g[1] = r[1] = 0
+                break
+    for g in give:
+        for r in take:
+            if not g[1]:
+                break
+            x = min(g[1], r[1])
+            if x:
+                pairs.append((g[0], r[0], x))
+                g[1] -= x
+                r[1] -= x
+    ev = [{"d": when, "id": f"cap-{when}-{a}-{b}", "type": "cap", "from": a, "to": b, "amt": x} for a, b, x in pairs]
+    ev += [{"d": when, "id": f"cap-{when}-{t}-", "type": "cap", "from": t, "to": None, "amt": x} for t, x in give if x]
+    ev += [{"d": when, "id": f"cap-{when}--{t}", "type": "cap", "from": None, "to": t, "amt": x} for t, x in take if x]
     return ev
 
 
@@ -163,7 +208,7 @@ def sync(offline=False, log=print):
         new = diff_moves(prev, snap, snap["fetched"][:10])
         # carry names for players who left the league so the log can still show them
         for e in new:
-            if e["type"] != "pick" and e["id"] not in snap["names"] and e["id"] in prev.get("names", {}):
+            if e["type"] not in ("pick", "cap") and e["id"] not in snap["names"] and e["id"] in prev.get("names", {}):
                 e["n"] = prev["names"][e["id"]]["n"]
         if new:
             log(f"Fantrax: {len(new)} roster changes since {prev['fetched']}")

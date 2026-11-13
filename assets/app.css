@@ -269,6 +269,8 @@ select { max-width: 100%; text-overflow: ellipsis; }
 .controls label { max-width: 100%; flex-wrap: wrap; min-width: 0; }
 .controls label select, .controls label input { min-width: 0; }
 .tradecol .pl select { max-width: 110px; }
+.tradecol .pl input.capamt { width: 62px; padding: 2px 6px; margin: 0 2px; }
+.nw { white-space: nowrap; }
 @media (max-width: 860px) {
   .grid[style*="repeat"] { grid-template-columns: minmax(0, 1fr) !important; }
   .controls label select { max-width: calc(100vw - 60px); }

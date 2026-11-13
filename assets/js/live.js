@@ -1,7 +1,8 @@
 /* Dynasty Puck HQ - live Fantrax sync.
  * Fantrax's public league API allows cross-origin reads, so every visit pulls the current rosters (for the next
  * lineup lock) and standings straight from Fantrax and applies whatever changed since the nightly build:
- * owners, contracts, salaries, lineup slots. Values and sims recompute only when ownership or contracts changed. */
+ * owners, contracts, salaries, lineup slots, and each team's own cap (traded cap space). Values and sims recompute only
+ * when ownership, contracts or a team's cap changed. */
 (function () {
   'use strict';
   var DP = window.DP, U = DP.U, esc = U.esc;
@@ -63,7 +64,29 @@
     DP.players.forEach(function (p) {
       if (p.gm && !seen[p.id]) { changes.push({ p: p, type: 'drop', from: p.gm, ct: p.ct, sal: p.sal }); p.gm = null; p.fs = null; }
     });
+    live.caps(ros, changes);
     return { changes: changes, slots: slots, unknown: unknown };
+  };
+
+  // Traded cap space: Fantrax reports each team's own salary cap. A team above or below the league's figure (the one
+  // most teams have) took in or sent cap in a trade; apply it now rather than waiting for the nightly build.
+  live.caps = function (ros, changes) {
+    var caps = {}, vals = [];
+    Object.keys(ros.rosters || {}).forEach(function (tid) {
+      var t = ros.rosters[tid], gm = teamCode(tid, t.teamName);
+      if (gm && +t.salaryCap > 0) { caps[gm] = +t.salaryCap; vals.push(+t.salaryCap); }
+    });
+    if (vals.length < DP.meta.gms.length) return; // no caps in the response (or a team missing): keep the build's figures
+    var mean = vals.reduce(function (a, b) { return a + b; }, 0) / vals.length, count = {}, base = vals[0];
+    vals.forEach(function (v) { count[v] = (count[v] || 0) + 1; });
+    vals.forEach(function (v) { if (count[v] > count[base] || (count[v] === count[base] && Math.abs(v - mean) < Math.abs(base - mean))) base = v; });
+    var old = DP.league.capAdj || {}, next = {};
+    Object.keys(caps).forEach(function (gm) {
+      var a = Math.round((caps[gm] - base) / 1e3) / 1e3, was = (old[gm] || [])[0] || 0;
+      if (Math.abs(a - was) > 0.0005) changes.push({ type: 'cap', to: gm, adj: a, was: was, cap: caps[gm] / 1e6 });
+      if (a) next[gm] = [a].concat((old[gm] || [0]).slice(1));
+    });
+    DP.league.capAdj = next;
   };
 
   live.start = function (force) {
@@ -92,7 +115,7 @@
       if (r.changes.length || stChanged || (r.slots && /^(home|team|matchup|preview|standings)$/.test(route || 'home'))) {
         if (!document.querySelector('.modal-bg.open') && !(document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))) DP.render();
       }
-      if (r.changes.length) U.toast('Fantrax: ' + r.changes.length + ' roster change' + (r.changes.length > 1 ? 's' : '') + ' since last night applied');
+      if (r.changes.length) U.toast('Fantrax: ' + r.changes.length + ' change' + (r.changes.length > 1 ? 's' : '') + ' since last night applied');
     }).catch(function (e) {
       live.state = 'fail'; chip();
       if (window.console) console.info('Fantrax live sync unavailable:', e && e.message);
@@ -100,6 +123,7 @@
   };
 
   live.describe = function (c) {
+    if (c.type === 'cap') return '<span class="pos">$</span> ' + esc(U.teamName(c.to)) + (c.adj > c.was ? ' took in ' : ' sent ') + U.m(Math.abs(c.adj - c.was), 1) + ' of cap space: its 2026-27 cap is now ' + U.m(c.cap, 1);
     var p = c.p, money = function (s) { return c.ct === 'MNR' ? 'MNR' : c.ct + ' ' + U.m(s / 1e6); };
     if (c.type === 'add') return esc(c.to) + ' added ' + DP.ui.plink(p) + ' (' + money(c.sal) + ')';
     if (c.type === 'drop') return esc(c.from) + ' dropped ' + DP.ui.plink(p);

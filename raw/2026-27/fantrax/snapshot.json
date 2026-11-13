@@ -1,4 +1,20 @@
 {
+"caps": {
+"BHHC": 104000000,
+"BULLIES": 100000000,
+"CGN": 104000000,
+"M.M": 104000000,
+"PuckLuck": 100500000,
+"ROO": 104000000,
+"SPG": 104000000,
+"TommyG10": 104000000,
+"Wags8210": 104000000,
+"btsay45": 107500000,
+"mcianfra": 104000000,
+"mertin": 104000000,
+"nbracken": 108000000,
+"nebsnave": 104000000
+},
 "current": {
 "active": {
 "BHHC": [
@@ -330,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-12T18:16:47+00:00",
+"fetched": "2026-11-13T01:34:50+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -773,6 +789,11 @@
 "pos": "LW",
 "t": "VGK"
 },
+"02yjw": {
+"n": "Jarry, Tristan",
+"pos": "G",
+"t": "EDM"
+},
 "02zpp": {
 "n": "Arvidsson, Viktor",
 "pos": "RW",
@@ -852,11 +873,6 @@
 "n": "Kapanen, Kasperi",
 "pos": "RW",
 "t": "EDM"
-},
-"039sy": {
-"n": "Nedeljkovic, Alex",
-"pos": "G",
-"t": "SJS"
 },
 "03as6": {
 "n": "McCann, Jared",
@@ -4849,7 +4865,7 @@
 "gm": "nbracken",
 "pos": "G",
 "sal": 8100000,
-"slot": "R"
+"slot": "A"
 },
 "02un4": {
 "ct": "BID",
@@ -4934,6 +4950,13 @@
 "pos": "F",
 "sal": 1000000,
 "slot": "A"
+},
+"02yjw": {
+"ct": "FA",
+"gm": "nbracken",
+"pos": "G",
+"sal": 1000000,
+"slot": "R"
 },
 "02zpp": {
 "ct": "FA",
@@ -5044,13 +5067,6 @@
 "ct": "FA",
 "gm": "mertin",
 "pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
-"039sy": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "G",
 "sal": 1000000,
 "slot": "A"
 },
@@ -5332,7 +5348,7 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "03rf2": {
 "ct": "BID",
@@ -6137,14 +6153,14 @@
 "gm": "nbracken",
 "pos": "D",
 "sal": 4100000,
-"slot": "R"
+"slot": "A"
 },
 "051tx": {
 "ct": "RFA1",
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "A"
+"slot": "R"
 },
 "051um": {
 "ct": "MNR",
@@ -7026,7 +7042,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1500000,
-"slot": "R"
+"slot": "A"
 },
 "060hp": {
 "ct": "BID",

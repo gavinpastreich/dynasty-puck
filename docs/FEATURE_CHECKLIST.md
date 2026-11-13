@@ -103,4 +103,7 @@ as you ship them, and add any new ideas you come up with.
 - [x] Prospect Radar (2026-11-10): every prospect on one scale (rostered, unowned, 2026 picks not in Fantrax yet),
       re-scored nightly; risers and fallers over 7 / 14 / 30 days and the season with the reason; hot hands; this
       season's lines in every league; headlines from NHL.com and ~47 public feeds; a report per prospect.
+- [x] Traded cap space (2026-11-13): each team's own cap read from Fantrax and used for every cap-space number;
+      cap listed in the trade it was part of; cap space as an asset in the Trade Machine (with 3- and 4-team
+      deals), over-cap flags in the Trade Finder.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

@@ -233,7 +233,8 @@
       var net = {};
       tr.teams.forEach(function (t) { net[t] = 0; });
       tr.moves.forEach(function (m) {
-        var v = m.kind === 'player' ? (m.id && E.byId[m.id] ? E.dvWith(E.byId[m.id]) : 0) : m.kind === 'pick' ? (m.year >= 2027 ? E.pickValue({ year: m.year, round: m.round, orig: m.orig }) : 0) : 0;
+        var v = m.kind === 'player' ? (m.id && E.byId[m.id] ? E.dvWith(E.byId[m.id]) : 0) : m.kind === 'pick' ? (m.year >= 2027 ? E.pickValue({ year: m.year, round: m.round, orig: m.orig }) : 0)
+          : m.kind === 'cap' && tr.season === DP.meta.season ? E.assetValue({ kind: 'cap', amt: m.amt, cur: true }) : 0; // cap space from a past season is used up
         if (net[m.to] !== undefined) net[m.to] += v; if (net[m.from] !== undefined) net[m.from] -= v;
       });
       return { tr: tr, net: net };

@@ -35,6 +35,7 @@ REPORT = []
 
 SEASON_LABEL = CFG.get("season", "2026-27")
 _y0 = int(SEASON_LABEL[:4])
+SEASON_FROM = f"{_y0}-07-01"  # league year: cap space traded from here on counts against this season's cap
 SEASON_ID = _y0 * 10000 + _y0 + 1
 YEARS = [f"{_y0 + i}-{str(_y0 + i + 1)[2:]}" for i in range(7)]
 # League cap follows the NHL cap (see config capNote for sources); missing later seasons repeat the last known value
@@ -865,7 +866,7 @@ def load_trades(players):
             teams = sorted(set([m["from"] for m in g] + [m["to"] for m in g]))
             trades.append({"date": date, "period": g[0]["period"], "teams": teams, "moves": g,
                            "obj": max(m["obj"] for m in g),
-                           "season": "2025-26" if date < "2026-07-01" else "2026 offseason"})
+                           "season": f"{_y0 - 1}-{str(_y0)[2:]}" if date < SEASON_FROM else f"{_y0} offseason" if date < f"{_y0}-10-01" else SEASON_LABEL})
     trades.sort(key=lambda t: t["date"], reverse=True)
     for i, t in enumerate(trades):
         t["id"] = len(trades) - i
@@ -971,13 +972,21 @@ def cap_penalties(players, sheet, moves):
 def add_logged_trades(league, moves):
     """Trades the nightly Fantrax log saw (players and picks switching teams the same night) that aren't in the uploaded
     trade exports yet. A one-way player move with nothing coming back is a waiver claim, not a trade."""
-    known = set()
+    # what the uploaded trade exports already list: the same asset going between the same two teams within a few days
+    # of the night the log saw it (an asset can be traded again later, so the asset alone isn't enough)
+    known = defaultdict(list)
     for t in league["trades"]:
         for m in t["moves"]:
-            known.add(m.get("id") or f"pick-{m.get('year')}-{m.get('round')}-{m.get('orig')}")
+            what = round(m["amt"] * 1e6) if m["kind"] == "cap" else m.get("id") or f"pick-{m.get('year')}-{m.get('round')}-{m.get('orig')}"
+            known[(what, m["from"], m["to"])].append(m["date"])
+
+    def listed(e):
+        what = e["amt"] if e["type"] == "cap" else e["id"]
+        day = dt.date.fromisoformat(e["d"])
+        return any(abs((day - dt.date.fromisoformat(d)).days) <= 4 for d in known.get((what, e["from"], e["to"]), []))
     by_day = defaultdict(list)
     for e in moves:
-        if e["type"] in ("move", "pick") and e["id"] not in known:
+        if e["type"] in ("move", "pick", "cap") and e.get("from") and e.get("to") and not listed(e):
             by_day[e["d"]].append(e)
     added = 0
     for day, evs in sorted(by_day.items()):
@@ -996,11 +1005,14 @@ def add_logged_trades(league, moves):
             groups[find(e["from"])].append(e)
         for g in groups.values():
             dirs = {(e["from"], e["to"]) for e in g}
-            if not any((b, a) in dirs for a, b in dirs) and not any(e["type"] == "pick" for e in g):
+            if not any((b, a) in dirs for a, b in dirs) and not any(e["type"] in ("pick", "cap") for e in g):
                 continue  # one-way player move: waiver claim
             mv = []
             for e in g:
-                if e["type"] == "pick":
+                if e["type"] == "cap":
+                    mv.append({"date": day, "from": e["from"], "to": e["to"], "kind": "cap", "amt": e["amt"] / 1e6,
+                               "label": f"Cap space: ${e['amt']:,.0f}", "obj": 0, "period": 0})
+                elif e["type"] == "pick":
                     mv.append({"date": day, "from": e["from"], "to": e["to"], "kind": "pick", "year": e["year"], "round": e["round"],
                                "orig": e["orig"], "label": f"{e['year']} R{e['round']} ({e['orig']})", "obj": 0, "period": 0})
                 else:
@@ -1014,6 +1026,33 @@ def add_logged_trades(league, moves):
         for i, t in enumerate(league["trades"]):
             t["id"] = len(league["trades"]) - i
         log(f"Trades: {added} new trade(s) picked up from the Fantrax nightly log")
+
+
+def team_caps(snap, moves):
+    """Traded cap space. Fantrax keeps a salary cap per team: the league cap, plus cap space the team took in
+    trades, minus what it sent. Returns {team: $M above or below the league cap} for this season (teams at the league
+    cap are left out). Next season every team is back at the league cap, so only the first year is filled."""
+    caps = snap.get("caps") or {}
+    if not caps:
+        return {}
+    base = FX.cap_base(caps)
+    if abs(base - CAP) > 1:
+        log(f"  ! Fantrax's league cap is ${base / 1e6:.2f}M but config/league.json says ${CAP / 1e6:.2f}M for {SEASON_LABEL}")
+    adj = {t: round((v - base) / 1e6, 3) for t, v in caps.items() if v != base}
+    logged = defaultdict(float)
+    for e in moves:
+        if e["type"] == "cap" and e["d"] >= SEASON_FROM:
+            if e.get("to"):
+                logged[e["to"]] += e["amt"] / 1e6
+            if e.get("from"):
+                logged[e["from"]] -= e["amt"] / 1e6
+    for t in sorted(set(adj) | set(logged)):
+        a, b = adj.get(t, 0), round(logged.get(t, 0), 3)
+        log(f"  $ cap traded {t}: {a:+.2f}M (team cap ${caps.get(t, base) / 1e6:.2f}M)" +
+            ("" if abs(a - b) < 0.001 else f"  ! the move log adds up to {b:+.2f}M"))
+    if abs(sum(adj.values())) > 0.001:
+        log(f"  ! team caps don't net to zero ({sum(adj.values()):+.2f}M): a cap was changed outside a trade")
+    return {t: [v] + [0] * (len(YEARS) - 1) for t, v in adj.items()}
 
 
 def apply_fantrax_league(league, weeks, players, snap, moves):
@@ -1045,12 +1084,15 @@ def apply_fantrax_league(league, weeks, players, snap, moves):
         e = dict(e)
         if e["type"] == "pick":
             e["n"] = f"{e['year']} R{e['round']} pick ({e['orig']})"
+        elif e["type"] == "cap":
+            e["n"] = f"Cap space ${e['amt'] / 1e6:.2f}M"
         else:
             e["n"] = names.get(f"*{e['id']}*") or e.get("n") or (snap["names"].get(e["id"]) or {}).get("n") or e["id"]
             e["id"] = f"*{e['id']}*"
         out.append(e)
     league["moves"] = out
     add_logged_trades(league, out)
+    league["capAdj"] = team_caps(snap, out)
     league["fantrax"] = {"id": snap["league"]["id"], "url": snap["league"]["url"], "fetched": snap["fetched"],
                          "period": snap.get("period"), "teamIds": {tid: t["code"] for tid, t in snap["teams"].items()},
                          "divisions": {t["code"]: t["div"] for t in snap["teams"].values() if t.get("code")},

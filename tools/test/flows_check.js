@@ -37,6 +37,29 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await page.click('#tr-clear'); await page.waitForTimeout(900);
   ok(await q('#tr-cols .pl') === 0, 'trade: clear');
 
+  // ---- Trade Machine: cap space as an asset (add, set the amount, legality, one-click fix)
+  await go('trade?t=ROO,SPG');
+  const space = () => page.evaluate(() => { const o = {}; ['ROO', 'SPG'].forEach((t) => { o[t] = DP.E.teamCap(t)[0].space; }); return o; });
+  const sp0 = await space();
+  await page.evaluate(() => { const e = document.querySelector('[data-add="ROO"]'); e.value = [...e.options].find((o) => o.value.indexOf('c:') === 0).value; e.dispatchEvent(new Event('change', { bubbles: true })); });
+  await page.waitForTimeout(900);
+  ok(await q('#tr-cols input.capamt') === 1 && /c:1:ROO>SPG/.test(decodeURIComponent(await page.evaluate(() => location.hash))), 'trade: cap space added from the menu ($1.0M to start)');
+  ok(await page.evaluate(() => ![...document.querySelector('[data-add="ROO"]').options].some((o) => o.value.indexOf('c:') === 0)), 'trade: one cap entry per sending team');
+  await page.evaluate(() => { const i = document.querySelector('#tr-cols input.capamt'); i.value = '2.5'; i.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(900);
+  ok(/c:2\.5:ROO>SPG/.test(decodeURIComponent(await page.evaluate(() => location.hash))), 'trade: amount edit kept in the link');
+  const capCells = await page.evaluate(() => { const t = [...document.querySelectorAll('#tr-res table')].find((x) => /Cap space after/.test(x.innerText)); const i = [...t.querySelectorAll('th')].findIndex((h) => /Cap space after/.test(h.textContent)); return [...t.querySelectorAll('tbody tr')].map((r) => r.children[i].innerText); });
+  const usd = (x) => +x.replace(/[^0-9.\-]/g, '');
+  ok(Math.abs(usd(capCells[0].split('(')[0]) - (sp0.ROO - 2.5)) < 0.011 && Math.abs(usd(capCells[1].split('(')[0]) - (sp0.SPG + 2.5)) < 0.011, 'trade: cap space after = before -/+ the cap sent (' + capCells.join(' | ') + ')');
+  ok(await page.evaluate(() => /of which cap space/.test(document.querySelector('#tr-res').innerText) && !/Who wins when/.test(document.querySelector('#tr-res').innerText)), 'trade: cap shown in team context; no empty player chart');
+  await go('trade?t=ROO,SPG&a=' + encodeURIComponent('c:60:ROO>SPG'));
+  ok(await page.evaluate(() => /Not legal as built/.test(document.querySelector('#tr-res').innerText)), 'trade: sending more cap than a team has room for is flagged');
+  await page.click('#tr-res .callout.bad a.btn'); await page.waitForTimeout(1200);
+  ok(await page.evaluate(() => !/Not legal as built/.test(document.querySelector('#tr-res').innerText) && document.querySelectorAll('#tr-cols input.capamt').length === 2), 'trade: the one-click cap fix makes the deal legal');
+  await page.evaluate(() => { const i = document.querySelector('#tr-cols input.capamt'); i.value = '0'; i.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(900);
+  ok(await q('#tr-cols input.capamt') === 1, 'trade: setting the amount to 0 removes the cap entry');
+  await go('history', 1500);
+  ok(await page.evaluate(() => [...document.querySelectorAll('#h-list .card')].some((c) => /Cap space \$\d/.test(c.innerText) && /from [A-Za-z.0-9]+ · 2026-27 cap/.test(c.innerText))), 'history: this season\'s traded cap is listed with its sender');
+
   // ---- Trade Finder: both modes produce ranked results with an Open link into the machine
   await go('finder', 2500);
   ok(await q('#f-t tbody tr') > 3, 'finder give: results');
@@ -155,6 +178,36 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     ok(!r4.changed && r4.asOf === JSON.parse(later(15)).asOf, 'live feed: an older copy never replaces a newer one');
     ok(lerr.length === 0, 'live feed: no page errors (' + lerr.slice(0, 2).join(' | ') + ')');
     await lc.close();
+  }
+
+  // ---- Live sync: a team's cap changing in Fantrax (cap space traded today) is applied on the visit
+  {
+    const fc = await browser.newContext({ viewport: { width: 1360, height: 900 } });
+    await fc.addInitScript(() => { try { localStorage.setItem('dp_team', JSON.stringify('ROO')); } catch (e) {} });
+    await fc.route('https://api.github.com/**', (r) => r.abort()); await fc.route('https://raw.githubusercontent.com/**', (r) => r.abort());
+    // Fantrax's roster response rebuilt from the build's own data, with $2.0M of cap moved from ROO to SPG
+    const mock = await (async () => {
+      const t = await browser.newPage(); await t.route('https://www.fantrax.com/**', (r) => r.abort()); await t.goto(URL + 'rules'); await t.waitForTimeout(800);
+      const v = await t.evaluate(() => {
+        const ids = DP.league.fantrax.teamIds, ST = { A: 'ACTIVE', R: 'RESERVE', M: 'MINORS', IR: 'INJURED_RESERVE' }, out = { period: 1, rosters: {} };
+        Object.keys(ids).forEach((tid) => {
+          const gm = ids[tid];
+          out.rosters[tid] = { teamName: gm, salaryCap: (DP.E.capOf(gm, 0) + (gm === 'ROO' ? -2 : gm === 'SPG' ? 2 : 0)) * 1e6,
+            rosterItems: DP.players.filter((p) => p.gm === gm).map((p) => ({ id: p.id.replace(/\*/g, ''), contract: { name: p.ct }, salary: p.sal, status: ST[p.fs] || 'ACTIVE', position: p.pos })) };
+        });
+        return { body: JSON.stringify(out), roo: DP.E.teamCap('ROO')[0], spg: DP.E.teamCap('SPG')[0] };
+      });
+      await t.close(); return v;
+    })();
+    await fc.route('https://www.fantrax.com/**', (r) => r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: /getTeamRosters/.test(r.request().url()) ? mock.body : '[]' }));
+    const fp = await fc.newPage(); const ferr = []; fp.on('pageerror', (e) => ferr.push(e.message));
+    await fp.goto(URL + 'home'); await fp.waitForTimeout(3500);
+    const lv = await fp.evaluate(() => ({ state: DP.live.state, ch: DP.live.changes.map((c) => c.type + ':' + c.to), roo: DP.E.teamCap('ROO')[0], spg: DP.E.teamCap('SPG')[0], txt: document.querySelector('#main').innerText }));
+    ok(lv.state === 'ok' && lv.ch.length === 2 && lv.ch.every((c) => /^cap:(ROO|SPG)$/.test(c)), 'live sync: a cap trade in Fantrax shows up as two cap changes and nothing else (' + lv.ch.join(',') + ')');
+    ok(Math.abs(lv.roo.cap - (mock.roo.cap - 2)) < 1e-6 && Math.abs(lv.spg.cap - (mock.spg.cap + 2)) < 1e-6 && Math.abs(lv.roo.space - (mock.roo.space - 2)) < 1e-6, 'live sync: both teams\' caps and cap space move by the traded amount');
+    ok(/sent \$2\.0M of cap space/.test(lv.txt) && /took in \$2\.0M of cap space/.test(lv.txt), 'live sync: the dashboard activity card says who sent and who took in cap');
+    ok(ferr.length === 0, 'live sync: no page errors (' + ferr.slice(0, 2).join(' | ') + ')');
+    await fc.close();
   }
 
   ok(errs.length === 0, 'no page errors (' + errs.slice(0, 3).join(' | ') + ')');

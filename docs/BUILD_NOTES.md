@@ -214,4 +214,30 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   CORS *, about a minute fresh) first. Anonymous visitors get ~60 API requests an hour; the page uses 24 an hour while
   the Live Scoreboard or Dashboard is open. On a refusal or failure it uses the cached file and stays off the API for
   20 minutes. flows_check.js covers API first, fallback, back-off and "never replace newer with older".
-
+- Traded cap space (2026-11-13). The league trades cap space, and the three-team trade of 2026-11-12 (M.M, nbracken,
+  BULLIES) included $4.0M of it; the site treated every team as having the league cap. Fantrax's public
+  getTeamRosters response carries `salaryCap` per team (BULLIES $100.0M, PuckLuck $100.5M, btsay45 $107.5M,
+  nbracken $108.0M, everyone else $104M on 2026-11-13), which is the league cap plus or minus traded cap.
+  - tools/fantrax_api.py saves it as `caps` in the snapshot. diff_moves() turns a change between two snapshots into
+    `{"type": "cap", "from", "to", "amt"}` events in moves.json (cap_moves(): equal amounts paired first, then
+    largest to largest; a change with no partner is logged one-sided). The league cap is the figure most teams have
+    (ties: nearest the average). tools/test/check_fantrax.py covers the pairing.
+  - The two cap moves that predate this (PuckLuck -> btsay45 $3.5M, BULLIES -> nbracken $4.0M) were entered in
+    moves.json by hand: the amounts and teams are Fantrax's, the dates are the only trade this season between each
+    pair (2026-10-14 and 2026-11-12). Each carries a `note` saying so. Confirm the October one with the commissioner.
+  - build_data.py: league.capAdj = {team: [$M by season]} (this season only: last season's three cap trades did not
+    carry into 2026-27 in Fantrax, so traded cap is treated as one season's). add_logged_trades() puts the cap in
+    the trade it belongs to (same day, connected teams). It also used to drop an asset from a logged trade if the
+    same asset appeared in any earlier uploaded trade export (a pick or player traded twice): it now matches on
+    asset + both teams + within 4 days. That restored the SPG 2027 2nd in the three-team trade and Dragicevic in the
+    Oct 24 one.
+  - engine: E.capAdj / E.capOf / E.capMoves; E.teamCap(team, roster, dead, capIn) returns cap = league cap + adj
+    (+ capIn for a what-if) with `base` and `adj`. Every cap-space number goes through it.
+  - Value of cap space: lens cap weight x $M / ($/WAR) x win-now weight x share of the season left for this
+    season's cap (`cur`), i.e. the mirror image of how dvWith charges this season's salary. In tradeUse it is also
+    multiplied by the team's win-now weight. Cap traded in a past season keeps the unprorated figure in Trade
+    History and the league-lens fit.
+  - Trade Machine: cap is an asset (`c:AMOUNT:FROM>TO` in the link, one entry per sending team, amount editable in
+    place), "Cap space after" per team, a one-click "X sends $Y of cap space" when one team ends up over, cap offered
+    as a balancer. Trade Finder flags ideas that leave either team over its cap. Trade History names the sender of
+    every asset in 3+ team trades. live.js applies a changed team cap on the visit, before the nightly build.

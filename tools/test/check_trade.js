@@ -124,5 +124,45 @@ const picks27 = (DP.league.picks || []).filter((p) => p.year === 2027);
 ok(picks27.length === E.teams.length * (DP.league.rounds || 3), `2027 has ${E.teams.length * 3} picks (got ${picks27.length})`);
 ok(picks27.every((p) => E.rosters[p.owner] && E.rosters[p.orig]), 'every 2027 pick has a valid owner and original team');
 
+// ---- traded cap space: each team's own cap (Fantrax), cap as a trade asset
+{
+  const adj = (t) => E.capAdj(t)[0] || 0;
+  ok(near(E.teams.reduce((s, t) => s + adj(t), 0), 0, 1e-6), 'cap sent and cap received cancel out across the league');
+  E.teams.forEach((t) => {
+    const c = E.teamCap(t);
+    ok(near(c[0].cap, E.capY(0) + adj(t), 1e-9) && near(c[0].cap, E.capOf(t, 0), 1e-9), `own cap = league cap + traded cap for ${t}`);
+    ok(c.slice(1).every((y, i) => near(y.cap, E.capY(i + 1), 1e-9)), `later seasons are at the league cap for ${t}`);
+    const logged = E.capMoves(t).reduce((s, m) => s + m.amt, 0);
+    ok(near(logged, adj(t), 1e-6), `logged cap moves add up to Fantrax's cap for ${t} (${logged} vs ${adj(t)})`);
+    // a what-if: cap coming in or going out moves this season's cap and space one for one, nothing else
+    const up = E.teamCap(t, null, null, 2.5), dn = E.teamCap(t, null, null, -2.5);
+    ok(near(up[0].space - c[0].space, 2.5, 1e-9) && near(dn[0].space - c[0].space, -2.5, 1e-9), `what-if cap moves space one for one (${t})`);
+    ok(near(up[0].total, c[0].total, 1e-9) && near(up[1].cap, c[1].cap, 1e-9), `what-if cap leaves payroll and next season alone (${t})`);
+  });
+  // every cap move in the trade list is between two teams of that trade, and this season's add up to the caps
+  const net = {}; E.teams.forEach((t) => { net[t] = 0; });
+  (DP.league.trades || []).forEach((tr) => tr.moves.filter((m) => m.kind === 'cap').forEach((m) => {
+    ok(tr.teams.indexOf(m.from) >= 0 && tr.teams.indexOf(m.to) >= 0 && m.amt > 0, `cap in the ${tr.date} trade moves between its teams`);
+    if (tr.season === DP.meta.season) { net[m.to] += m.amt; net[m.from] -= m.amt; }
+  }));
+  E.teams.forEach((t) => ok(near(net[t], adj(t), 1e-6), `cap in this season's trades matches ${t}'s cap (${net[t]} vs ${adj(t)})`));
+  // value: this season's cap space is weighted like this season's salary; nothing under a lens that ignores cap
+  const L = E.LENS_MODEL, v1 = E.assetValue({ kind: 'cap', amt: 1, cur: true }, L), v4 = E.assetValue({ kind: 'cap', amt: 4, cur: true }, L);
+  ok(near(v1, L.lam / E.dollarPerWAR * L.now * E.remFrac(), 1e-9) && near(v4, 4 * v1, 1e-9), 'cap space value is linear and prorated to the season left');
+  ok(E.assetValue({ kind: 'cap', amt: 4, cur: true }, Object.assign({}, L, { lam: 0 })) === 0, 'cap space is worth nothing to a lens that ignores cap');
+  const big = E.P.filter((p) => p.gm && p.ct === 'BID' && p.sal26 >= 4 && p.fs !== 'IR')[0];
+  if (big) { // $X of cap space offsets $X of this season's salary in the lens (above the league minimum, which the model nets out)
+    const noCost = Object.assign({}, L, { lam: 0 }), d0 = (E.dvWith(big, noCost) - E.dvWith(big, L));
+    ok(d0 >= -1e-9, 'salary never adds value');
+  }
+  // use value: the receiver gains, the sender gives up, in proportion to each one's win-now weight
+  const a = E.teams[0], b = E.teams[1], u = E.tradeUse([{ asset: { kind: 'cap', amt: 3, cur: true }, from: a, to: b }]);
+  ok(u[b].cap > 0 && u[a].cap < 0 && near(u[b].capIn, 3) && near(u[a].capIn, -3), 'cap-only trade: receiver up, sender down');
+  ok(near(u[b].cap / u[b].k[0], -u[a].cap / u[a].k[0], 1e-9), 'cap use value scales with the win-now weight');
+  ok(near(u[b].total, u[b].cap, 1e-9) && near(u[a].total, u[a].cap, 1e-9), 'cap-only trade moves nothing else');
+  const tv = E.tradeValue([{ asset: { kind: 'cap', amt: 3, cur: true }, from: a, to: b }]);
+  ok(near(tv[a].net, -tv[b].net, 1e-9) && tv[b].net > 0, 'market value of cap is zero-sum');
+}
+
 console.log(`${n - fails}/${n} checks passed`);
 process.exit(fails ? 1 : 0);

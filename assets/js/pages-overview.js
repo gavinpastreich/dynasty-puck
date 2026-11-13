@@ -102,13 +102,25 @@
     return h;
   };
 
+  // ------------------------------------------------------------ shared: traded cap space
+  // 'own cap $108.0M: league $104M +$4.0M from BULLIES (Nov 12)' for a team whose cap isn't the league cap, else ''
+  DP.capTradeNote = function (team) {
+    var E = DP.E, adj = E.capAdj(team)[0] || 0;
+    if (Math.abs(adj) < 0.001) return '';
+    var mv = E.capMoves(team), sum = E.sum(mv.map(function (m) { return m.amt; }));
+    var parts = mv.map(function (m) { return (m.amt > 0 ? '+' : '−') + U.m(Math.abs(m.amt), 1) + (m.other ? (m.amt > 0 ? ' from ' : ' to ') + esc(m.other) : '') + ' (' + esc(U.date(new Date(m.d + 'T12:00:00Z'))) + ')'; });
+    if (Math.abs(sum - adj) > 0.001) parts = [(adj > 0 ? '+' : '−') + U.m(Math.abs(adj), 1) + ' of traded cap space']; // the log doesn't add up to Fantrax's figure: state the figure
+    return 'own cap ' + U.m(E.capOf(team, 0), 1) + ': league $' + E.capY(0) + 'M ' + parts.join(' ');
+  };
+
   // ------------------------------------------------------------ shared: league activity (nightly Fantrax diffs + live changes)
   DP.activityHtml = function (limit) {
     var E = DP.E, L = DP.league, items = [];
     (DP.live.changes || []).forEach(function (c) { items.push('<li><span class="badge good">today</span> ' + DP.live.describe(c) + '</li>'); });
     (L.moves || []).slice().reverse().forEach(function (m) {
-      var p = m.type === 'pick' ? null : E.byId[m.id], who = p ? ui.plink(p) : esc(m.n || m.id), money = m.ct === 'MNR' ? 'MNR' : esc(m.ct) + ' ' + U.m(m.sal / 1e6);
-      var txt = m.type === 'add' ? esc(m.to) + ' added ' + who + ' (' + money + ')' : m.type === 'drop' ? esc(m.from) + ' dropped ' + who + (m.ct && m.ct !== 'MNR' ? ' (' + money + ')' : '')
+      var p = m.type === 'pick' || m.type === 'cap' ? null : E.byId[m.id], who = p ? ui.plink(p) : esc(m.n || m.id), money = m.ct === 'MNR' ? 'MNR' : esc(m.ct) + ' ' + U.m(m.sal / 1e6);
+      var txt = m.type === 'cap' ? '<span class="pos">$</span> Cap space ' + U.m(m.amt / 1e6) + ': ' + (m.from && m.to ? esc(m.from) + ' → ' + esc(m.to) : m.to ? 'added to ' + esc(m.to) + '\'s cap' : 'taken off ' + esc(m.from) + '\'s cap')
+        : m.type === 'add' ? esc(m.to) + ' added ' + who + ' (' + money + ')' : m.type === 'drop' ? esc(m.from) + ' dropped ' + who + (m.ct && m.ct !== 'MNR' ? ' (' + money + ')' : '')
         : m.type === 'move' || m.type === 'pick' ? (m.type === 'pick' ? esc(m.n) : who) + ': ' + esc(m.from) + ' → ' + esc(m.to) : who + ' (' + esc(m.to) + '): ' + esc(m.was[0]) + ' ' + U.m(m.was[1] / 1e6) + ' → ' + money;
       items.push('<li><span class="faint small">' + esc(U.date(new Date(m.d + 'T12:00:00Z'))) + '</span> ' + txt + '</li>');
     });
@@ -136,7 +148,7 @@
           DP.statTile('Power rank', '#' + s.prank, 'now + dynasty + prospects') +
           DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' cats') +
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
-          DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(E.CAP, 0) + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
+          DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(s.cap[0].cap, s.cap[0].adj ? 1 : 0) + (s.cap[0].adj ? ' (' + U.sm(s.cap[0].adj, 1) + ' traded)' : '') + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
           (nm ? DP.statTile((E.weeks[nm[0] - 1].po ? 'Playoffs' : 'Week ' + nm[0]) + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
           '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
@@ -241,7 +253,7 @@
       h += '<div class="stats">' +
         DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' category record') +
         '<div class="stat"><div class="l">Playoff odds</div><div class="v" id="t-po">…</div><div class="d" id="t-champ">title odds …</div></div>' +
-        DP.statTile('Payroll 2026-27', U.m(s.pay), 'cap space ' + U.m(s.space) + (s.ir ? ' · ' + U.m(s.ir) + ' on IR, off the cap' : '')) +
+        DP.statTile('Payroll 2026-27', U.m(s.pay), 'cap space ' + U.m(s.space) + (s.cap[0].adj ? ' of a ' + U.m(s.cap[0].cap, 1) + ' cap' : '') + (s.ir ? ' · ' + U.m(s.ir) + ' on IR, off the cap' : '')) +
         DP.statTile('Starter WAR', U.fmt(s.war, 1), 'week-1 optimal lineup') +
         DP.statTile('Dynasty value', U.fmt(s.dv, 0), U.ord(Object.keys(TS).filter(function (k) { return TS[k].dv > s.dv; }).length + 1) + ' in league') +
         DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') +
@@ -289,6 +301,7 @@
       var series = types.map(function (ty, k) { return { name: ty, values: s.cap.map(function (y) { return y.byType[ty] || 0; }), color: C.SERIES[k] }; }).filter(function (sr) { return sr.values.some(function (v) { return v > 0; }); });
       U.qs('#t-cap', el).innerHTML = C.stacked(E.YEARS.map(function (y) { return y.slice(2); }), series, { refLine: s.cap.map(function (y) { return y.cap; }), refLabel: 'cap', fmt: function (v) { return U.m(v); }, tickFmt: function (v) { return '$' + v + 'M'; }, title: 'Committed cap by season' }) +
         '<div class="tbl-wrap"><table class="t"><thead><tr><th></th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody><tr><td>Committed</td>' + s.cap.map(function (y) { return '<td class="num">' + U.m(y.total, 1) + '</td>'; }).join('') + '</tr><tr><td>Space</td>' + s.cap.map(function (y) { return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.space, 1) + '</td>'; }).join('') + '</tr><tr><td>Players</td>' + s.cap.map(function (y) { return '<td class="num">' + y.n + '</td>'; }).join('') + '</tr></tbody></table></div>' +
+        (s.cap[0].adj ? '<p class="small muted">Traded cap space: ' + DP.capTradeNote(t) + '. It changes this season\'s cap only; next season is back at the league cap.</p>' : '') +
         (s.ir ? '<p class="small muted">IR relief: ' + s.cap[0].irP.map(function (p) { return ui.plink(p) + ' ' + U.m(p.cy[0]); }).join(', ') + (s.nIR > 1 ? ' (' + U.m(s.ir) + ')' : '') + ' ' + (s.nIR > 1 ? 'are' : 'is') + ' on IR in Fantrax, so ' + (s.nIR > 1 ? 'they don\'t' : 'it doesn\'t') + ' count against the 2026-27 cap. Future seasons still count.</p>' : '');
 
       // age & pipeline

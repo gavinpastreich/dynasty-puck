@@ -36,21 +36,32 @@
     var E = DP.E, UV = E.tradeUse(moves, L);
     var rows = teams.map(function (t) { return { t: t, u: UV[t] || { now: 0, later: 0, picks: 0, total: 0, k: E.contention()[t].k }, c: E.contention()[t] }; });
     var good = rows.filter(function (r) { return r.u.total > 0.5; }), bad = rows.filter(function (r) { return r.u.total < -0.5; });
+    var hasCap = moves.some(function (m) { return m.asset.kind === 'cap'; });
     var verdict, cls;
     if (!bad.length && good.length === rows.length) { verdict = 'Win-win: every team gets better for its situation'; cls = 'good'; }
     else if (!good.length && bad.length) { verdict = 'Nobody really gains'; cls = 'bad'; }
     else if (good.length && bad.length) { verdict = 'Helps ' + good.map(function (r) { return r.t; }).join(', ') + '; costs ' + bad.map(function (r) { return r.t; }).join(', '); cls = 'warn'; }
     else { verdict = 'Roughly neutral for everyone'; cls = 'info'; }
     var fairMkt = marketBal !== null && marketBal !== undefined && Math.abs(marketBal) < 0.1; // same line as the "Fair" badge above
-    var h = '<div class="card" style="margin-top:14px"><h2>Team context <span class="badge multiline ' + cls + '">' + esc(verdict) + '</span></h2><div class="hint">Market value (above) is the same for every team. This is what the deal is worth to <b>each team</b> given its roster and window: 2026-27 = change in expected category wins with weekly lineups re-optimised (depth, positions, category fit) × that team\'s win-now weight; later seasons = change in its best projected lineup; minus cap cost; picks at market value.</div>' +
-      '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Status</th><th class="num" title="What one 2026-27 category win is worth to this team vs the league average (from its title odds)">Win-now weight</th><th class="num">2026-27</th><th class="num">Later seasons</th><th class="num">Picks</th><th class="num">Total for them</th></tr></thead><tbody>' +
+    var h = '<div class="card" style="margin-top:14px"><h2>Team context <span class="badge multiline ' + cls + '">' + esc(verdict) + '</span></h2><div class="hint">Market value (above) is the same for every team. This is what the deal is worth to <b>each team</b> given its roster and window: 2026-27 = change in expected category wins with weekly lineups re-optimised (depth, positions, category fit) × that team\'s win-now weight; later seasons = change in its best projected lineup; minus cap cost; picks at market value' + (hasCap ? '; cap space = the salary room it adds or gives up for the rest of this season' : '') + '.</div>' +
+      '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Status</th><th class="num" title="What one 2026-27 category win is worth to this team vs the league average (from its title odds)">Win-now weight</th><th class="num">2026-27</th>' + (hasCap ? '<th class="num" title="Cap space in the deal: what that much salary room is worth to this team for the rest of 2026-27 (already inside the 2026-27 column)">of which cap space</th>' : '') + '<th class="num">Later seasons</th><th class="num">Picks</th><th class="num">Total for them</th></tr></thead><tbody>' +
       rows.map(function (r) {
-        return '<tr><td><b>' + esc(U.teamName(r.t)) + '</b></td><td>' + DP.tierBadge(r.t) + ' <span class="faint small">' + U.pct(r.c.champ, 1) + ' title</span></td><td class="num">×' + U.fmt(r.c.k[0], 2) + '</td><td class="num">' + ui.delta(r.u.now, 1) + '</td><td class="num">' + ui.delta(r.u.later - (r.u.picks || 0), 1) + '</td><td class="num">' + ui.delta(r.u.picks || 0, 1) + '</td><td class="num"><b>' + ui.delta(r.u.total, 1) + '</b></td></tr>';
+        return '<tr><td><b>' + esc(U.teamName(r.t)) + '</b></td><td>' + DP.tierBadge(r.t) + ' <span class="faint small">' + U.pct(r.c.champ, 1) + ' title</span></td><td class="num">×' + U.fmt(r.c.k[0], 2) + '</td><td class="num">' + ui.delta(r.u.now, 1) + '</td>' + (hasCap ? '<td class="num">' + ui.delta(r.u.cap || 0, 1) + '</td>' : '') + '<td class="num">' + ui.delta(r.u.later - (r.u.picks || 0), 1) + '</td><td class="num">' + ui.delta(r.u.picks || 0, 1) + '</td><td class="num"><b>' + ui.delta(r.u.total, 1) + '</b></td></tr>';
       }).join('') + '</tbody></table></div>';
-    // legality: the cap this season (IR relief included) for every team after the deal
+    // legality: the cap this season (IR relief and traded cap space included) for every team after the deal
     var ros = E.applyMoves(moves.filter(function (m) { return m.asset.kind === 'player'; }).map(function (m) { return { id: m.asset.p.id, to: m.to }; }));
-    var over = teams.map(function (t) { return { t: t, c: E.teamCap(t, ros[t])[0] }; }).filter(function (x) { return x.c.space < 0; });
-    if (over.length) h += '<div class="callout bad">Not legal as built: ' + over.map(function (x) { return esc(U.teamName(x.t)) + ' would be ' + U.m(-x.c.space) + ' over the 2026-27 cap'; }).join('; ') + '. Add salary going back, or clear room first.</div>';
+    var capIn = capNet(moves);
+    var after = teams.map(function (t) { return { t: t, c: E.teamCap(t, ros[t], null, capIn[t] || 0)[0] }; });
+    var over = after.filter(function (x) { return x.c.space < -0.0005; });
+    if (over.length) {
+      // a one-click fix when another team in the deal has the room to send the missing cap space along
+      var fix = over.length === 1 ? after.filter(function (x) { return x.t !== over[0].t && x.c.space >= -over[0].c.space; }).sort(function (a, b) { return b.c.space - a.c.space; })[0] : null;
+      var need = fix ? Math.ceil(-over[0].c.space * 10 - 1e-6) / 10 : 0, cur = U.parseHash().q;
+      var prev = fix ? moves.filter(function (m) { return m.asset.kind === 'cap' && m.from === fix.t && m.to === over[0].t; })[0] : null;
+      var rest = fix ? moves.filter(function (m) { return !(m.asset.kind === 'cap' && m.from === fix.t); }) : [];
+      h += '<div class="callout bad">Not legal as built: ' + over.map(function (x) { return esc(U.teamName(x.t)) + ' would be ' + U.m(-x.c.space) + ' over its 2026-27 cap' + (x.c.adj ? ' (' + U.m(x.c.cap) + ' after cap trades)' : ''); }).join('; ') + '. Add salary going back, send cap space with the deal, or clear room first.' +
+        (fix ? ' <a class="btn sm" href="' + U.hash('trade', null, Object.assign({}, cur, { t: teams.join(','), p: '', a: encode(rest.concat([{ asset: { kind: 'cap', amt: +(need + (prev ? prev.asset.amt : 0)).toFixed(1) }, from: fix.t, to: over[0].t }])) })) + '">＋ ' + esc(fix.t) + ' sends ' + U.m(need + (prev ? prev.asset.amt : 0), 1) + ' of cap space</a>' : '') + '</div>';
+    }
     if (teams.length === 2 && fairMkt && cls === 'good') h += '<div class="callout good">Fair by market value <b>and</b> good for both teams\' situations: the kind of deal that gets accepted.</div>';
     else if (teams.length === 2 && cls === 'good') h += '<div class="callout">Good for both teams\' situations even though the market value isn\'t even: the team getting less on paper may still say yes.</div>';
     h += '<p class="small muted">Same units as dynasty value (discounted category wins). A contender gains more from this-season production than a rebuilding team does; future seasons count about the same for everyone. <a href="#/windows">Who is contending →</a></p></div>';
@@ -63,6 +74,12 @@
     if (a.kind === 'pick') return E.pickLabel(a.pk) + ' pick';
     return 'Cap space ' + U.m(a.amt);
   }
+  // net cap space each team takes in (+) or sends (-) this season in a set of moves
+  function capNet(moves) {
+    var out = {};
+    moves.forEach(function (m) { if (m.asset.kind === 'cap') { out[m.to] = (out[m.to] || 0) + m.asset.amt; out[m.from] = (out[m.from] || 0) - m.asset.amt; } });
+    return out;
+  }
   function assetHtml(a, L) {
     var E = DP.E, v = E.assetValue(a, L);
     if (a.kind === 'player') {
@@ -70,21 +87,25 @@
       return ui.pos(p) + '<span>' + ui.plink(p) + ' <span class="faint small">' + esc(p.t) + ' · ' + Math.floor(p.age || 0) + 'y</span><br><span class="small muted">' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + ' · WAR ' + U.fmt(p.WAR, 1) + '</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
     }
     if (a.kind === 'pick') return '<span class="pos">PK</span><span>' + esc(E.pickLabel(a.pk)) + '<br><span class="small muted">~#' + E.pickOverall(a.pk) + ' overall</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
-    return '<span class="pos">$</span><span>' + esc(assetName(a)) + '</span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
+    return '<span class="pos">$</span><span>Cap space <span class="nw">$<input type="number" class="capamt" data-cap="' + esc(a.from || '') + '" value="' + a.amt + '" min="0.1" max="60" step="0.1" inputmode="decimal" aria-label="Cap space sent, $ millions">M</span><br><span class="small muted">2026-27 cap room · no salary moves</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
   }
 
-  // encode / decode trade assets in the URL: p:ID>TO | k:YEAR-RD-ORIG>TO
+  // encode / decode trade assets in the URL: p:ID>TO | k:YEAR-RD-ORIG>TO | c:AMOUNT($M):FROM>TO (cap space)
   function decode(str) {
     var E = DP.E;
     return (str || '').split('|').filter(Boolean).map(function (s) {
       var m = s.split('>'), to = m[1], id = m[0];
       if (id.indexOf('p:') === 0) { var p = E.byId[id.slice(2)]; return p ? { asset: { kind: 'player', p: p }, from: p.gm, to: to } : null; }
       if (id.indexOf('k:') === 0) { var pk = E.pickByKey(id.slice(2)); return pk ? { asset: { kind: 'pick', pk: pk }, from: pk.owner, to: to } : null; }
+      if (id.indexOf('c:') === 0) {
+        var c = id.slice(2).split(':'), amt = Math.round(+c[0] * 100) / 100, from = c.slice(1).join(':');
+        return amt > 0 && E.rosters[from] && E.rosters[to] && from !== to ? { asset: { kind: 'cap', amt: Math.min(amt, 60), cur: true, from: from }, from: from, to: to } : null;
+      }
       return null;
     }).filter(Boolean);
   }
   function encode(moves) {
-    return moves.map(function (m) { return (m.asset.kind === 'player' ? 'p:' + m.asset.p.id : 'k:' + DP.E.pickKey(m.asset.pk)) + '>' + m.to; }).join('|');
+    return moves.map(function (m) { return key(m, true) + '>' + m.to; }).join('|');
   }
 
   // ------------------------------------------------------------ Trade Machine
@@ -107,7 +128,7 @@
       var state = function (o) { return Object.assign({ t: teams.join(','), a: encode(moves), lens: lensKey }, lensKey === 'custom' ? { lam: L.lam, disc: L.disc, pick: L.pick, now: L.now } : {}, o || {}); };
       var go = function (o) { DP.go('trade', null, state(o)); };
 
-      var h = '<div class="page-head"><h1>Trade Machine</h1><p class="sub">Any 2–4 teams, players and draft picks. Shows value balance under different valuation lenses, this-season category impact (lineups re-optimized every week), projected standings, multi-year cap and playoff odds. Share the link to propose it.</p></div>'; h += DP.deadlineNote();
+      var h = '<div class="page-head"><h1>Trade Machine</h1><p class="sub">Any 2–4 teams: players, draft picks and cap space. Shows value balance under different valuation lenses, this-season category impact (lineups re-optimized every week), projected standings, multi-year cap and playoff odds. Share the link to propose it.</p></div>'; h += DP.deadlineNote();
       h += '<div class="controls">' + teams.map(function (t, i) { return '<label>Team ' + (i + 1) + ' <select data-team="' + i + '">' + U.teamOptions(t) + '</select></label>'; }).join('') +
         (teams.length < 4 ? '<button class="btn sm" id="tr-addteam">＋ Add team</button>' : '') + (teams.length > 2 ? '<button class="btn sm ghost" id="tr-rmteam">− Remove last team</button>' : '') +
         '<button class="btn sm ghost" id="tr-clear">Clear</button></div>';
@@ -126,9 +147,10 @@
           var dest = teams.length > 2 ? '<select class="small" data-dest="' + esc(key(m)) + '" aria-label="Destination">' + teams.filter(function (x) { return x !== t; }).map(function (x) { return '<option value="' + esc(x) + '"' + (x === m.to ? ' selected' : '') + '>→ ' + esc(x) + '</option>'; }).join('') + '</select>' : '';
           return '<div class="pl">' + assetHtml(m.asset, L) + dest + '<button class="btn sm ghost" data-rm="' + esc(key(m)) + '" aria-label="Remove">✕</button></div>';
         }).join('') || '<p class="small muted">Nothing yet.</p>';
-        h += '<select data-add="' + esc(t) + '" style="width:100%;margin-top:8px" aria-label="Add asset from ' + esc(t) + '"><option value="">＋ Add player or pick…</option><optgroup label="Players (by value)">' +
+        h += '<select data-add="' + esc(t) + '" style="width:100%;margin-top:8px" aria-label="Add asset from ' + esc(t) + '"><option value="">＋ Add player, pick or cap space…</option><optgroup label="Players (by value)">' +
           roster.map(function (p) { return '<option value="p:' + esc(p.id) + '">' + esc(p.n + ' · ' + p.slot + ' · ' + p.ct + ' ' + U.m(p.sal26) + ' · value ' + U.fmt(E.dvWith(p, L), 1)) + '</option>'; }).join('') +
-          '</optgroup><optgroup label="Draft picks">' + picks.map(function (pk) { return '<option value="k:' + esc(E.pickKey(pk)) + '">' + esc(E.pickLabel(pk) + ' · ~#' + E.pickOverall(pk) + ' · value ' + U.fmt(E.pickValue(pk, L), 1)) + '</option>'; }).join('') + '</optgroup></select></div>';
+          '</optgroup><optgroup label="Draft picks">' + picks.map(function (pk) { return '<option value="k:' + esc(E.pickKey(pk)) + '">' + esc(E.pickLabel(pk) + ' · ~#' + E.pickOverall(pk) + ' · value ' + U.fmt(E.pickValue(pk, L), 1)) + '</option>'; }).join('') + '</optgroup>' +
+          (out.some(function (m) { return m.asset.kind === 'cap'; }) ? '' : '<optgroup label="Cap space (2026-27)"><option value="c:1:' + esc(t) + '">Cap space: starts at $1.0M, then set the amount (' + U.m(Math.max(0, E.teamCap(t)[0].space), 1) + ' free now)</option></optgroup>') + '</select></div>';
       });
       h += '</div><div id="tr-res" style="margin-top:14px"></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📊 How this league values things</h2><div id="tr-league"></div></div>';
@@ -160,12 +182,21 @@
       });
       el.addEventListener('click', function (e) { var r = e.target.closest('[data-rm]'); if (r) { moves = moves.filter(function (m) { return key(m) !== r.dataset.rm; }); go(); } });
       U.qsa('[data-dest]', el).forEach(function (s) { s.addEventListener('change', function () { moves.forEach(function (m) { if (key(m) === s.dataset.dest) m.to = s.value; }); go(); }); });
+      U.qsa('input[data-cap]', el).forEach(function (inp) {
+        inp.addEventListener('change', function () {
+          var v = Math.round(+inp.value * 100) / 100;
+          if (!(v > 0)) { moves = moves.filter(function (m) { return !(m.asset.kind === 'cap' && m.from === inp.dataset.cap); }); go(); return; }
+          moves.forEach(function (m) { if (m.asset.kind === 'cap' && m.from === inp.dataset.cap) m.asset.amt = Math.min(v, 60); });
+          go();
+        });
+      });
 
       results(U.qs('#tr-res', el), teams, moves, L, LS);
       leaguePanel(U.qs('#tr-league', el), LS);
     }
   };
-  function key(m) { return m.asset.kind === 'player' ? 'p:' + m.asset.p.id : 'k:' + DP.E.pickKey(m.asset.pk); }
+  // one cap entry per sending team; full = with the amount, as written in the link
+  function key(m, full) { return m.asset.kind === 'player' ? 'p:' + m.asset.p.id : m.asset.kind === 'cap' ? 'c:' + (full ? m.asset.amt + ':' : '') + m.from : 'k:' + DP.E.pickKey(m.asset.pk); }
   function slider(k, label, v, min, max, step, fmt) {
     var isPct = k === 'lam' || k === 'disc';
     return '<label>' + esc(label) + ' <input type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + v + '" data-lens="' + k + '" data-fmt="' + (isPct ? 'pct' : 'x') + '" aria-label="' + esc(label) + '"><b id="lv-' + k + '">' + fmt(v) + '</b></label>';
@@ -173,7 +204,7 @@
 
   function results(box, teams, moves, L, LS) {
     var E = DP.E;
-    if (!moves.length) { box.innerHTML = '<div class="callout">Add players or picks from each team above. Tip: open any player and click <b>Trade for</b>, or use the <a href="#/finder">Trade Finder</a> for ideas.</div>'; return; }
+    if (!moves.length) { box.innerHTML = '<div class="callout">Add players, picks or cap space from each team above. Tip: open any player and click <b>Trade for</b>, or use the <a href="#/finder">Trade Finder</a> for ideas.</div>'; return; }
     var val = E.tradeValue(moves.map(function (m) { return { asset: m.asset, from: m.from, to: m.to }; }), L);
     var valM = E.tradeValue(moves, LS.model), valL = E.tradeValue(moves, LS.league);
     var rosters = E.applyMoves(moves.filter(function (m) { return m.asset.kind === 'player'; }).map(function (m) { return { id: m.asset.p.id, to: m.to }; }));
@@ -189,27 +220,28 @@
     }
     h += contextCard(teams, moves, L, teams.length === 2 ? (function () { var ia = (val[teams[0]] || {}).in || 0, ib = (val[teams[1]] || {}).in || 0; return (ia - ib) / (ia + ib || 1); })() : null);
     // per-team impact table
-    h += '<div class="card" style="margin-top:14px"><h2>Impact by team</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Value in</th><th class="num">Value out</th><th class="num">Net</th><th class="num">Δ exp. cat wins (2026-27)</th><th class="num">Proj. finish</th><th class="num">Cap 26-27 after</th><th class="num">Cap 27-28 after</th><th class="num">Roster</th><th>Biggest category changes</th></tr></thead><tbody>';
-    var capRows = [];
+    h += '<div class="card" style="margin-top:14px"><h2>Impact by team</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Value in</th><th class="num">Value out</th><th class="num">Net</th><th class="num">Δ exp. cat wins (2026-27)</th><th class="num">Proj. finish</th><th class="num">Payroll 26-27 after</th><th class="num" title="This season\'s cap room after the deal: the team\'s cap (league cap plus or minus traded cap space) minus payroll">Cap space after</th><th class="num">Roster</th><th>Biggest category changes</th></tr></thead><tbody>';
+    var capRows = [], capIn = capNet(moves);
     teams.forEach(function (t) {
       var v = val[t] || { in: 0, out: 0, net: 0 };
       var adds = moves.filter(function (m) { return m.to === t && m.asset.kind === 'player'; }).map(function (m) { return m.asset.p; });
       var rems = moves.filter(function (m) { return m.from === t && m.asset.kind === 'player'; }).map(function (m) { return m.asset.p; });
       var g = E.gain(t, adds, rems);
       var rb = E.expStandings.find(function (r) { return r.t === t; }), ra = stA.find(function (r) { return r.t === t; });
-      var capB = E.teamCap(t), capA = E.teamCap(t, rosters[t]);
+      var capB = E.teamCap(t), capA = E.teamCap(t, rosters[t], null, capIn[t] || 0);
       capRows.push({ t: t, b: capB, a: capA });
       var top = g.byCat.map(function (x, c) { return [c, x]; }).filter(function (x) { return Math.abs(x[1]) > 0.15; }).sort(function (x, y) { return Math.abs(y[1]) - Math.abs(x[1]); }).slice(0, 4);
       h += '<tr><td><b>' + esc(U.teamName(t)) + '</b></td><td class="num">' + U.fmt(v.in, 1) + '</td><td class="num">' + U.fmt(v.out, 1) + '</td><td class="num">' + ui.delta(v.net, 1) + '</td><td class="num">' + ui.delta(g.total, 1) + '</td><td class="num">' + U.ord(rb.rank) + ' → <b>' + U.ord(ra.rank) + '</b></td>' +
-        '<td class="num ' + (capA[0].space < 0 ? 'bad' : '') + '">' + U.m(capA[0].total) + ' <span class="faint small">(' + U.sm(capA[0].total - capB[0].total) + ')</span></td><td class="num">' + U.m(capA[1].total) + '</td><td class="num">' + rosters[t].length + '</td><td class="small">' + top.map(function (x) { return ui.delta(x[1], 1) + ' ' + esc(E.CATS[x[0]].l); }).join(' · ') + '</td></tr>';
+        '<td class="num">' + U.m(capA[0].total) + ' <span class="faint small">(' + U.sm(capA[0].total - capB[0].total) + ')</span></td><td class="num ' + (capA[0].space < -0.0005 ? 'bad' : '') + '"><b>' + U.m(capA[0].space) + '</b> <span class="faint small">(was ' + U.m(capB[0].space) + ')</span></td><td class="num">' + rosters[t].length + '</td><td class="small">' + top.map(function (x) { return ui.delta(x[1], 1) + ' ' + esc(E.CATS[x[0]].l); }).join(' · ') + '</td></tr>';
     });
-    h += '</tbody></table></div><p class="small muted">Value = dynasty value under the lens (discounted category wins). Δ exp. cat wins re-optimizes each team\'s weekly lineups over the regular-season weeks still to lock, against its real schedule. Over-cap cells in red.</p>' +
+    h += '</tbody></table></div><p class="small muted">Value = dynasty value under the lens (discounted category wins). Δ exp. cat wins re-optimizes each team\'s weekly lineups over the regular-season weeks still to lock, against its real schedule. Cap space = the team\'s own 2026-27 cap minus payroll (IR salaries are off the cap); negative = over the cap, in red.</p>' +
       '<div class="controls"><button class="btn" id="tr-odds">🎲 Playoff odds before/after</button><button class="btn" id="tr-share">🔗 Copy share link</button><span id="tr-odds-out" class="small"></span></div></div>';
     // multi-year cap
     h += '<div class="card" style="margin-top:14px"><h2>Multi-year cap impact</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y + '</th>'; }).join('') + '</tr></thead><tbody>' +
       capRows.map(function (r) {
-        return '<tr><td><b>' + esc(r.t) + '</b></td>' + r.a.map(function (y, i) { var d = y.total - r.b[i].total; return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.total, 1) + (Math.abs(d) > 0.001 ? '<br><span class="small ' + (d > 0 ? 'bad' : 'good') + '">' + U.sm(d, 1) + '</span>' : '') + '</td>'; }).join('') + '</tr>';
-      }).join('') + '</tbody></table></div><p class="small muted">Committed salary after the trade (cap $' + E.capY(0) + 'M, $' + E.capY(1) + 'M next season, $' + E.capY(2) + 'M projected after). Expiring RFA/UFA seasons are not counted.</p></div>';
+        return '<tr><td><b>' + esc(r.t) + '</b></td>' + r.a.map(function (y, i) { var d = y.total - r.b[i].total; return '<td class="num ' + (y.space < -0.0005 ? 'bad' : '') + '">' + U.m(y.total, 1) + (Math.abs(d) > 0.001 ? '<br><span class="small ' + (d > 0 ? 'bad' : 'good') + '">' + U.sm(d, 1) + '</span>' : '') + (i === 0 && Math.abs(y.adj) > 0.001 ? '<br><span class="small muted" title="This team\'s own 2026-27 cap after traded cap space">cap ' + U.m(y.cap, 1) + '</span>' : '') + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</tbody></table></div><p class="small muted">Committed salary after the trade (league cap $' + E.capY(0) + 'M, $' + E.capY(1) + 'M next season, $' + E.capY(2) + 'M projected after). Expiring RFA/UFA seasons are not counted.' +
+      (capRows.some(function (r) { return Math.abs(r.a[0].adj) > 0.001; }) ? ' Traded cap space moves a team\'s 2026-27 cap only (shown under its payroll); every team is back at the league cap next season.' : '') + '</p></div>';
     // dynasty value by year
     var yearsVal = teams.map(function (t) {
       return E.YEARS.map(function (_, y) {
@@ -222,7 +254,7 @@
         return +s.toFixed(2);
       });
     });
-    h += '<div class="card" style="margin-top:14px"><h2>Who wins when?</h2><div class="hint">Net player value gained per season (model, before discounting; picks excluded). Above zero = that team comes out ahead that season.</div>' +
+    if (moves.some(function (m) { return m.asset.kind === 'player'; })) h += '<div class="card" style="margin-top:14px"><h2>Who wins when?</h2><div class="hint">Net player value gained per season (model, before discounting; picks and cap space excluded). Above zero = that team comes out ahead that season.</div>' +
       C.lines(E.YEARS.map(function (y) { return y.slice(2); }), teams.map(function (t, i) { return { name: t, values: yearsVal[i], color: C.SERIES[i] }; }), { height: 230, width: 900, zero: true, title: 'Net value by season' }) + '</div>';
     box.innerHTML = h;
     U.qs('#tr-share', box).addEventListener('click', function () {
@@ -249,12 +281,18 @@
       .concat(E.picksOf(giver).map(function (pk) { return { a: { kind: 'pick', pk: pk }, k: 'k:' + E.pickKey(pk), v: E.pickValue(pk, L), lab: E.pickLabel(pk) + ' pick' }; }))
       .filter(function (c) { return !used[c.k] && c.v >= gap * 0.5 && c.v <= gap * 1.5; })
       .sort(function (x, y) { return Math.abs(x.v - gap) - Math.abs(y.v - gap); }).slice(0, 5);
-    if (!cands.length) return '<p class="small muted">No single ' + esc(giver) + ' asset closes the gap of ' + U.fmt(gap, 1) + '. Try two smaller pieces.</p>';
-    var cur = U.parseHash().q;
+    var cur = U.parseHash().q, base = cur.a || encode(moves);
+    // cap space as the sweetener: only when the giver isn't already sending or receiving cap and has the room
+    var per = E.assetValue({ kind: 'cap', amt: 1, cur: true }, L), capAmt = per > 0 ? Math.round(gap / per * 10) / 10 : 0, capTxt = '';
+    if (capAmt >= 0.3 && !moves.some(function (m) { return m.asset.kind === 'cap'; })) {
+      var ros = E.applyMoves(moves.filter(function (m) { return m.asset.kind === 'player'; }).map(function (m) { return { id: m.asset.p.id, to: m.to }; }));
+      if (E.teamCap(giver, ros[giver])[0].space >= capAmt) capTxt = '<a href="' + U.hash('trade', null, Object.assign({}, cur, { a: base + '|c:' + capAmt + ':' + giver + '>' + getter, p: '' })) + '">' + U.m(capAmt, 1) + ' of cap space</a>';
+    }
+    if (!cands.length) return '<p class="small muted">No single ' + esc(giver) + ' asset closes the gap of ' + U.fmt(gap, 1) + '. Try two smaller pieces' + (capTxt ? ', or ' + capTxt : '') + '.</p>';
     return '<p class="small"><b>Balance it:</b> ' + esc(giver) + ' could add one of ' + cands.map(function (c) {
-      var a2 = (cur.a ? cur.a + '|' : '') + c.k + '>' + getter;
+      var a2 = base + '|' + c.k + '>' + getter;
       return '<a href="' + U.hash('trade', null, Object.assign({}, cur, { a: a2, p: '' })) + '">' + esc(c.lab) + ' (' + U.fmt(c.v, 1) + ')</a>';
-    }).join(', ') + ' to cover the ' + U.fmt(gap, 1) + ' gap.</p>';
+    }).join(', ') + (capTxt ? ', or ' + capTxt : '') + ' to cover the ' + U.fmt(gap, 1) + ' gap.</p>';
   }
   function balTxt(v, a, b) {
     var ia = (v[a] || {}).in || 0, ib = (v[b] || {}).in || 0, tot = ia + ib || 1, bal = (ia - ib) / tot;
@@ -262,8 +300,9 @@
   }
 
   function leaguePanel(box, LS) {
-    var E = DP.E, f = LS.league;
-    var h = '<p>Fitted to the league\'s <b>' + f.n + ' actual trades</b> (Nov 2025 – Aug 2026) by finding the valuation that makes those deals look most even using today\'s projections. It\'s a read on revealed preferences, not a rule:</p><ul>' +
+    var E = DP.E, f = LS.league, ds = ((DP.league && DP.league.trades) || []).map(function (t) { return t.date; }).sort();
+    var mon = function (d) { return new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+    var h = '<p>Fitted to the league\'s <b>' + f.n + ' actual trades</b> (' + (ds.length ? mon(ds[0]) + ' – ' + mon(ds[ds.length - 1]) : 'none yet') + ') by finding the valuation that makes those deals look most even using today\'s projections. It\'s a read on revealed preferences, not a rule:</p><ul>' +
       '<li><b>Cap cost:</b> trades are best explained when cap hit counts <b>' + Math.round(f.lam * 100) + '%</b> (model default 50%). ' + (f.lam <= 0.25 ? 'The league mostly trades on talent and doesn\'t discount expensive players much.' : f.lam >= 0.75 ? 'GMs are very cap-conscious.' : '') + '</li>' +
       '<li><b>Patience:</b> future seasons are discounted about <b>' + Math.round((1 - f.disc) * 100) + '% per year</b> (model 15%). ' + (f.disc >= 0.9 ? 'This is a patient, long-game league.' : '') + '</li>' +
       '<li><b>Draft picks:</b> valued at about <b>×' + f.pick + '</b> the model\'s estimate. ' + (f.pick >= 3 ? 'Picks and prospects trade at a premium here, so selling picks is a good way to buy current production.' : '') + '</li>' +
@@ -306,6 +345,18 @@
   // Trade Finder scoring: each side's use value (roster fit x window). Mutual fit rewards deals where the worse-off
   // side still gains; market value keeps the deals realistic.
   function mutual(mine, theirs) { return Math.min(mine, theirs) + 0.25 * (mine + theirs); }
+  // 2026-27 cap room for both teams after a swap (me gets inP, sends outP); each team's own cap, IR relief included
+  function capFit(me, them, inP, outP) {
+    var E = DP.E, ids = function (l) { var o = {}; l.forEach(function (p) { o[p.id] = 1; }); return o; }, a = ids(outP), b = ids(inP);
+    var mine = E.teamCap(me, E.rosters[me].filter(function (p) { return !a[p.id]; }).concat(inP))[0].space;
+    var theirs = E.teamCap(them, E.rosters[them].filter(function (p) { return !b[p.id]; }).concat(outP))[0].space;
+    return { mine: mine, theirs: theirs, ok: mine >= -0.0005 && theirs >= -0.0005 };
+  }
+  function capBadge(f, them) {
+    if (f.ok) return '';
+    var who = f.mine < -0.0005 ? 'You' : them, by = f.mine < -0.0005 ? -f.mine : -f.theirs;
+    return ' <span class="badge bad" title="' + esc(who + ' would be ' + U.m(by) + ' over the 2026-27 cap after this deal. Cap space can be part of a trade: open it in the Trade Machine to add some.') + '">' + esc(who === 'You' ? 'you' : who) + ' ' + U.m(by, 1) + ' over cap</span>';
+  }
   function give(box, x, me, L) {
     var E = DP.E, vx = E.dvWith(x, L), band = Math.max(1.5, 0.3 * Math.abs(vx));
     var loseX = E.useValue(me, [], [x], L).total, gainX = {};
@@ -328,7 +379,7 @@
         cands.push({ kind: 'picks', picks: list.map(function (z) { return z.pk; }), t: t, v: pv, mine: loseX + pv, theirs: getX(t) - pv });
       });
     });
-    cands.forEach(function (c) { c.score = mutual(c.mine, c.theirs); });
+    cands.forEach(function (c) { c.score = mutual(c.mine, c.theirs); c.fit = capFit(me, c.t, c.kind === 'player' ? [c.p] : [], [x]); });
     cands.sort(function (a, b) { return b.score - a.score; });
     var none = !cands.length || cands[0].score <= 0;
     box.innerHTML = '<p class="small muted">' + esc(x.n) + ' is worth <b>' + U.fmt(vx, 1) + '</b> on the market (this lens). Returns within ±' + U.fmt(band, 1) + ' of that (players, or one or two draft picks), ranked by how much <b>both</b> teams gain for their own situation: roster fit × win-now weight, so contenders value this season and rebuilding teams value the future. You are ' + DP.tierBadge(me) + '.</p>' + (none ? '<div class="callout warn">No return in this range clearly helps both teams. ' + esc(x.n) + ' may be worth more to you than to anyone else right now' + (E.contention()[me].tier === 'out' && x.yVal && x.yVal[0] < 0.4 * Math.max(0.1, E.sum(x.yVal.slice(1))) ? ' (most of his value is in later seasons, which count about the same for every team)' : '') + '.</div>' : '') + '<div id="f-t"></div>';
@@ -339,7 +390,7 @@
         { k: 't', l: 'From', v: function (c) { return c.t; }, f: function (c) { return U.teamLabel(c.t) + ' ' + DP.tierBadge(c.t); } },
         { k: 'v', l: 'Market value', cls: 'num', v: function (c) { return c.v; }, f: function (c) { return U.fmt(c.v, 1); } },
         { k: 'war', l: 'WAR', cls: 'num', v: function (c) { return c.kind === 'player' ? c.p.WAR : null; }, f: function (c) { return c.kind === 'player' ? U.fmt(c.p.WAR, 1) : ''; } },
-        { k: 'sal', l: 'Salary', cls: 'num', v: function (c) { return c.kind === 'player' ? c.p.sal26 : 0; }, f: function (c) { return c.kind === 'player' ? U.m(c.p.sal26) + ' ' + ui.pill(c.p.ct) : ''; } },
+        { k: 'sal', l: 'Salary', cls: 'num', v: function (c) { return c.kind === 'player' ? c.p.sal26 : 0; }, f: function (c) { return (c.kind === 'player' ? U.m(c.p.sal26) + ' ' + ui.pill(c.p.ct) : '') + capBadge(c.fit, c.t); } },
         { k: 'mine', l: 'For you', cls: 'num', title: 'Your use value: roster fit x your win-now weight, all seasons', v: function (c) { return c.mine; }, f: function (c) { return ui.delta(c.mine, 1); } },
         { k: 'theirs', l: 'For them', cls: 'num', title: 'Their use value: roster fit x their win-now weight, all seasons', v: function (c) { return c.theirs; }, f: function (c) { return ui.delta(c.theirs, 1); } },
         { k: 'score', l: 'Mutual fit', cls: 'num', v: function (c) { return c.score; }, f: function (c) { return '<b>' + U.fmt(c.score, 1) + '</b>'; } },
@@ -364,12 +415,12 @@
       var players = list.filter(function (a) { return a.kind === 'player'; }).map(function (a) { return a.p; });
       var pv = E.sum(list.filter(function (a) { return a.kind === 'pick'; }).map(function (a) { return a.v; }));
       var mine = E.useValue(me, [y], players, L).total - pv, theirs = E.useValue(y.gm, players, [y], L).total + pv;
-      return { list: list, v: E.sum(list.map(function (a) { return a.v; })), mine: mine, theirs: theirs, score: mutual(mine, theirs) };
+      return { list: list, v: E.sum(list.map(function (a) { return a.v; })), mine: mine, theirs: theirs, score: mutual(mine, theirs), fit: capFit(me, y.gm, [y], players) };
     }).sort(function (a, b) { return b.score - a.score; }).slice(0, 25);
     box.innerHTML = '<p class="small muted">' + esc(y.n) + ' (' + esc(y.gm) + ', ' + DP.tierBadge(y.gm) + ') is worth <b>' + U.fmt(vy, 1) + '</b> on the market. Packages of one or two of your assets within ±20%, ranked by how much both teams gain for their own situation (roster fit × win-now weight). You are ' + DP.tierBadge(me) + '.</p>' +
       (pk.length ? '<div class="tbl-wrap"><table class="t"><thead><tr><th>Package</th><th class="num">Market value</th><th class="num">For you</th><th class="num">For them</th><th class="num">Mutual fit</th><th></th></tr></thead><tbody>' + pk.map(function (x) {
         var link = U.hash('trade', null, { t: me + ',' + y.gm, a: ['p:' + y.id + '>' + me].concat(x.list.map(function (a) { return (a.kind === 'player' ? 'p:' + a.p.id : 'k:' + E.pickKey(a.pk)) + '>' + y.gm; })).join('|') });
-        return '<tr><td>' + x.list.map(function (a) { return a.kind === 'player' ? ui.plink(a.p) : esc(E.pickLabel(a.pk)); }).join(' + ') + '</td><td class="num">' + U.fmt(x.v, 1) + '</td><td class="num">' + ui.delta(x.mine, 1) + '</td><td class="num">' + ui.delta(x.theirs, 1) + '</td><td class="num"><b>' + U.fmt(x.score, 1) + '</b></td><td><a class="btn sm" href="' + link + '">Open</a></td></tr>';
+        return '<tr><td>' + x.list.map(function (a) { return a.kind === 'player' ? ui.plink(a.p) : esc(E.pickLabel(a.pk)); }).join(' + ') + capBadge(x.fit, y.gm) + '</td><td class="num">' + U.fmt(x.v, 1) + '</td><td class="num">' + ui.delta(x.mine, 1) + '</td><td class="num">' + ui.delta(x.theirs, 1) + '</td><td class="num"><b>' + U.fmt(x.score, 1) + '</b></td><td><a class="btn sm" href="' + link + '">Open</a></td></tr>';
       }).join('') + '</tbody></table></div>' : '<p class="muted">No one- or two-asset package matches that value. Try the league-implied lens or build a bigger deal in the Trade Machine.</p>');
   }
 
@@ -386,7 +437,7 @@
           var a = null;
           if (m.kind === 'player') a = m.id && E.byId[m.id] ? { kind: 'player', p: E.byId[m.id] } : { kind: 'gone', label: m.label };
           else if (m.kind === 'pick') a = m.year >= 2027 ? { kind: 'pick', pk: { year: m.year, round: m.round, orig: m.orig, owner: m.to } } : { kind: 'usedpick', label: m.label, round: m.round };
-          else a = { kind: 'cap', amt: m.amt };
+          else a = { kind: 'cap', amt: m.amt, cur: tr.season === DP.meta.season };
           return { m: m, a: a };
         });
         var v = function (x, L) {
@@ -425,8 +476,10 @@
           ts.map(function (t) {
             var s = c.sides[t];
             return '<div class="tradecol"><h3 class="small">' + esc(U.teamName(t)) + ' received ' + (t === best && ts.length === 2 ? '<span class="badge good">wins today</span>' : '') + '</h3>' + s.items.map(function (x) {
-              var a = x.a, val = c.v(x, DP.E.LENS_MODEL);
-              var name = a.kind === 'player' ? ui.plink(a.p) + ' <span class="faint small">' + esc(a.p.gm ? 'now ' + a.p.gm : 'now FA') + '</span>' : a.kind === 'pick' ? esc(x.m.label) : a.kind === 'usedpick' ? esc(x.m.label) + ' <span class="faint small">(used)</span>' : a.kind === 'cap' ? esc(x.m.label) : esc(x.m.label) + ' <span class="faint small">(no longer in data)</span>';
+              var a = x.a, val = c.v(x, DP.E.LENS_MODEL), frm = ts.length > 2 && x.m.from ? 'from ' + x.m.from : '';
+              var now = a.kind === 'player' ? (a.p.gm === t ? '' : a.p.gm ? 'now ' + a.p.gm : 'now FA') : '';
+              var sub = function (bits) { bits = bits.filter(Boolean); return bits.length ? ' <span class="faint small">' + esc(bits.join(' · ')) + '</span>' : ''; };
+              var name = a.kind === 'player' ? ui.plink(a.p) + sub([frm, now]) : a.kind === 'pick' ? esc(x.m.label) + sub([frm]) : a.kind === 'usedpick' ? esc(x.m.label) + sub([frm, 'used']) : a.kind === 'cap' ? '<span class="pos">$</span> Cap space ' + U.m(a.amt) + sub(['from ' + x.m.from, tr.season === DP.meta.season ? '2026-27 cap' : 'that season\'s cap']) : esc(x.m.label) + sub([frm, 'no longer in data']);
               return '<div class="pl"><span>' + name + '</span><span class="num" style="margin-left:auto">' + U.fmt(val, 1) + '</span></div>';
             }).join('') + '<div class="small muted" style="margin-top:6px">Total: model <b>' + U.fmt(s.m, 1) + '</b> · league lens <b>' + U.fmt(s.l, 1) + '</b></div></div>';
           }).join('') + '</div></div>';

@@ -1216,9 +1216,20 @@
 
   // ---------------------------------------------------------------- cap
   // committed cap by team and year ($M), plus dead cap entries (added by what-if tools)
-  E.teamCap = function (team, roster, dead) {
+  // Traded cap space: a team's own cap = the league cap + cap it took in trades - cap it sent (Fantrax keeps the
+  // figure per team; DP.league.capAdj = {team: [$M by season]}, this season only). capIn = extra cap coming in (+)
+  // or going out (-) this season in a what-if trade.
+  E.capAdj = function (team) { return ((DP.league && DP.league.capAdj) || {})[team] || []; };
+  E.capOf = function (team, y) { return E.capY(y || 0) + (E.capAdj(team)[y || 0] || 0); };
+  E.capMoves = function (team) { // this season's logged cap moves for one team: [{d, other, amt (+ in / - out)}]
+    var from = E.YEARS[0].slice(0, 4) + '-07-01';
+    return ((DP.league && DP.league.moves) || []).filter(function (m) { return m.type === 'cap' && m.d >= from && (m.to === team || m.from === team); })
+      .map(function (m) { return { d: m.d, other: m.to === team ? m.from : m.to, amt: (m.to === team ? 1 : -1) * m.amt / 1e6 }; });
+  };
+  E.teamCap = function (team, roster, dead, capIn) {
     roster = roster || E.rosters[team];
-    var yrs = E.YEARS.map(function (_, y) { return { total: 0, byType: {}, n: 0, cap: E.capY(y), ir: 0, irP: [] }; });
+    var adj = E.capAdj(team);
+    var yrs = E.YEARS.map(function (_, y) { var a = (adj[y] || 0) + (y === 0 ? capIn || 0 : 0); return { total: 0, byType: {}, n: 0, cap: E.capY(y) + a, base: E.capY(y), adj: a, ir: 0, irP: [] }; });
     var irOk = E.RULES.irCapExempt !== false;
     roster.forEach(function (p) {
       p.cy.forEach(function (v, y) {
@@ -1344,7 +1355,9 @@
     L = L || E.LENS_MODEL;
     if (a.kind === 'player') return a.p ? E.dvWith(a.p, L) : 0;
     if (a.kind === 'pick') return E.pickValue(a.pk, L);
-    if (a.kind === 'cap') return L.lam * a.amt / E.dollarPerWAR; // cap space handed over this season
+    // cap space: room for that much more salary. This season's (cur) is weighted like this season's salary in dvWith
+    // (the part of the season left x the lens's win-now weight); cap traded in a past season keeps its value then.
+    if (a.kind === 'cap') return L.lam * a.amt / E.dollarPerWAR * (a.cur ? L.now * E.remFrac() : 1);
     return 0;
   };
 
@@ -1359,7 +1372,7 @@
         if (m.kind === 'player' && m.id && E.byId[m.id]) a = { kind: 'player', p: E.byId[m.id] };
         else if (m.kind === 'pick' && m.year >= 2027) a = { kind: 'pick', pk: { year: m.year, round: m.round, orig: m.orig } };
         else if (m.kind === 'pick') a = { kind: 'usedpick', year: m.year, round: m.round, orig: m.orig };
-        else if (m.kind === 'cap') a = { kind: 'cap', amt: m.amt };
+        else if (m.kind === 'cap') a = { kind: 'cap', amt: m.amt, cur: t.season === DP.meta.season };
         if (!a) return;
         (sides[m.to] = sides[m.to] || []).push(a);
       });
@@ -1473,6 +1486,7 @@
   // use value of a whole trade for every team in it (picks count at their lens value: a future asset is worth
   // about the same to everyone)
   E.tradeUse = function (moves, L) {
+    L = L || E.LENS_MODEL;
     var out = {}, teams = [];
     moves.forEach(function (m) { [m.from, m.to].forEach(function (t) { if (teams.indexOf(t) < 0) teams.push(t); }); });
     teams.forEach(function (t) {
@@ -1481,6 +1495,11 @@
       var u = E.useValue(t, add, rem, L), pk = 0;
       moves.forEach(function (m) { if (m.asset.kind === 'pick') { var v = E.pickValue(m.asset.pk, L); if (m.to === t) pk += v; if (m.from === t) pk -= v; } });
       u.picks = pk; u.total += pk; u.later += pk;
+      // cap space in the deal: worth what that much salary room is to this team for the rest of the season
+      var capIn = 0;
+      moves.forEach(function (m) { if (m.asset.kind === 'cap') { if (m.to === t) capIn += m.asset.amt; if (m.from === t) capIn -= m.asset.amt; } });
+      u.capIn = capIn; u.cap = u.k[0] * (L.now || 1) * (L.lam || 0) * capIn / E.dollarPerWAR * E.remFrac();
+      u.total += u.cap; u.now += u.cap;
       out[t] = u;
     });
     return out;
