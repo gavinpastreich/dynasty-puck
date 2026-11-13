@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-13T13:09+00:00",
+"fetched": "2026-11-13T17:45+00:00",
 "items": {
 "n8482100": [
 {
@@ -70,6 +70,14 @@
 }
 ],
 "n8482661": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "NHL.com",
+"t": "NHL EDGE stats behind Wallstedt’s breakout season for Wild",
+"u": "https://www.nhl.com/news/nhl-edge-stats-jesper-wallstedt-minnesota-wild-2026-27",
+"w": 2
+},
 {
 "d": "2026-11-12",
 "k": [],
@@ -190,6 +198,14 @@
 }
 ],
 "n8483476": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Daily Faceoff",
+"t": "How Jonathan Lekkerimäki is realizing his potential with Canucks",
+"u": "https://www.dailyfaceoff.com/news/vancouver-canucks-jonathan-lekkerimaki-breakout-season-malhotra-pettersson",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -360,6 +376,18 @@
 "s": "NHL.com",
 "t": "Rookie Watch: Caulfield, Bonk earning trust with Ducks, Flyers",
 "u": "https://www.nhl.com/news/rookie-watch-ducks-judd-caulfield-flyers-oliver-bonk-earning-trust",
+"w": 2
+}
+],
+"n8484149": [
+{
+"d": "2026-11-13",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Avalanche Recall Gavin Brindley",
+"u": "https://www.prohockeyrumors.com/2026/11/avalanche-recall-gavin-brindley-2.html",
 "w": 2
 }
 ],
@@ -886,6 +914,14 @@
 ],
 "n8484799": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "Sportsnet",
+"t": "Prospects Report: Why Canadiens fans should be ‘really excited’ about Michael Hage",
+"u": "https://www.sportsnet.ca/nhl/article/prospects-report-why-canadiens-fans-should-be-really-excited-about-michael-hage/",
+"w": 2
+},
+{
 "d": "2026-11-08",
 "k": [],
 "s": "The Hockey News",
@@ -1188,6 +1224,16 @@
 "w": 2
 }
 ],
+"n8485417": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers prospect Shane Vansaghi erupts for two goals in breakout performance",
+"u": "https://www.broadstreethockey.com/post/flyers-prospect-shane-vansaghi-erupts-for-two-goals-in-breakout-performance/",
+"w": 1
+}
+],
 "n8485562": [
 {
 "d": "2026-11-08",
@@ -1420,6 +1466,14 @@
 ],
 "n8486087": [
 {
+"d": "2026-11-13",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers prospect Shane Vansaghi erupts for two goals in breakout performance",
+"u": "https://www.broadstreethockey.com/post/flyers-prospect-shane-vansaghi-erupts-for-two-goals-in-breakout-performance/",
+"w": 1
+},
+{
 "d": "2026-11-06",
 "k": [],
 "s": "The Hockey News",
@@ -1470,6 +1524,18 @@
 "w": 2
 }
 ],
+"n8486340": [
+{
+"d": "2026-11-13",
+"k": [
+"trade"
+],
+"s": "Sportsnet",
+"t": "Spitfires acquire seven-foot-one D Alexander Karmanov from Battalion",
+"u": "https://www.sportsnet.ca/ohl/article/spitfires-acquire-seven-foot-one-d-alexander-karmanov-from-battalion/",
+"w": 2
+}
+],
 "n8486347": [
 {
 "d": "2026-11-09",
@@ -1491,7 +1557,7 @@
 },
 "sources": [
 {
-"n": 83,
+"n": 84,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1528,7 +1594,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -1549,7 +1615,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1563,7 +1629,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1577,7 +1643,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -1710,7 +1776,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "4 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -1773,7 +1839,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },

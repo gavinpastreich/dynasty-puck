@@ -135,6 +135,18 @@
    "holdout": false
   },
   {
+   "name": "Cale Makar",
+   "team": "COL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Makar left Thursday's game with a lower-body injury and is questionable to play Saturday.",
+   "date": "2026-11-13",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Josh Manson",
    "team": "COL",
    "status": "IR",
@@ -142,6 +154,18 @@
    "ret": "",
    "detail": "Manson (ankle) has been placed on LTIR.",
    "date": "2026-11-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Nathan MacKinnon",
+   "team": "COL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "MacKinnon left Thursday's game with a lower-body injury and is questionable to play Saturday.",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -166,6 +190,18 @@
    "ret": "",
    "detail": "Capobianco (lower-body) is expected to be out for the next four weeks.",
    "date": "2026-10-29",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Lian Bichsel",
+   "team": "DAL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Bichsel left Thursday's game with a lower-body injury and did not return.",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -225,7 +261,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -372,6 +408,30 @@
    "date": "2026-11-06",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Joel Eriksson Ek",
+   "team": "MIN",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Eriksson Ek left Thursday's game with an upper-body injury and did not return.",
+   "date": "2026-11-13",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Chris Kreider",
+   "team": "MTL",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Kreider left Thursday's game with a lower-body injury and did not return.",
+   "date": "2026-11-13",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
   },
   {
@@ -585,7 +645,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -801,7 +861,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -963,6 +1023,18 @@
    "holdout": false
   },
   {
+   "name": "Dylan DeMelo",
+   "team": "WPG",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "Week-to-week",
+   "detail": "DeMelo (lower-body) has been placed on IR.",
+   "date": "2026-11-13",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Elias Salomonsson",
    "team": "WPG",
    "status": "DTD",
@@ -981,7 +1053,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false

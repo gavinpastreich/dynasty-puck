@@ -1,5 +1,6 @@
-Dynasty Puck HQ build 2026-11-13T13:07:00
-Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
+Dynasty Puck HQ build 2026-11-13T17:43:02
+Fantrax: 1 roster changes since 2026-11-13T13:07:01+00:00
+Fantrax: synced 621 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
   > Jaccob Slavin: FA -> ROO (Fantrax)
@@ -9,6 +10,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Dustin Wolf: ROO -> M.M (Fantrax)
   > Josh Norris: nbracken -> M.M (Fantrax)
   > Chandler Stephenson: FA -> M.M (Fantrax)
+  > Jalen Chatfield: FA -> M.M (Fantrax)
   > Hampus Lindholm: FA -> M.M (Fantrax)
   > Zeev Buium: nbracken -> M.M (Fantrax)
   > Nazem Kadri: ROO -> M.M (Fantrax)
@@ -83,9 +85,9 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-13T13:07:01+00:00): 620 rostered; changes vs CSV: {'owner': 59, 'dropped': 24}
+Fantrax sync (2026-11-13T17:43:03+00:00): 621 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
-Universe: 1293 players (620 rostered)
+Universe: 1293 players (621 rostered)
 NHL id match: {'index': 1173, 'search': 117, None: 3}; unmatched 3 (rostered: 0)
 Landing pages: 1248/1248
 Cor translation (n=772): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
@@ -107,7 +109,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   SPG       Fantrax $102.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 2, 'MNR': 21}   <- differs by +2.00M (Fantrax is current)  (IR relief $3.60M)
   BHHC      Fantrax $102.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 6, 'ELC1': 1}   <- differs by +6.00M (Fantrax is current)  (IR relief $6.20M)
   nebsnave  Fantrax $101.51M  sheet $ 98.81M  {'BID': 16, 'FA': 5, 'RFA1': 1, 'ELC1': 2, 'MNR': 20}   <- differs by +2.70M (Fantrax is current)  (IR relief $7.20M)
-  M.M       Fantrax $101.52M  sheet $103.32M  {'BID': 17, 'RFA1': 1, 'FA': 3, 'ELC1': 3, 'MNR': 19}   <- differs by -1.80M (Fantrax is current)  (IR relief $11.30M)
+  M.M       Fantrax $102.52M  sheet $103.32M  {'BID': 17, 'RFA1': 1, 'FA': 4, 'ELC1': 3, 'MNR': 19}   <- differs by -0.80M (Fantrax is current)  (IR relief $11.30M)
   mcianfra  Fantrax $100.55M  sheet $ 95.55M  {'BID': 16, 'RFA1': 2, 'FA': 5, 'MNR': 22}   <- differs by +5.00M (Fantrax is current)  (IR relief $2.00M)
   btsay45   Fantrax $ 92.80M  sheet $ 93.10M  {'BID': 14, 'ELC1': 4, 'RFA1': 1, 'FA': 3, 'MNR': 18}   <- differs by -0.30M (Fantrax is current)
   PuckLuck  Fantrax $ 96.70M  sheet $ 89.50M  {'BID': 17, 'FA': 4, 'MNR': 22, 'RFA1': 2}   <- differs by +7.20M (Fantrax is current)  (IR relief $16.50M)
@@ -142,7 +144,7 @@ NHL games outside the fantasy calendar: 0
 Season to date (20262027): 843 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
 Scoreboard: week 7 2026-11-09..2026-11-12 + live 2026-11-13 (2 games, 0 in progress): ROO 31 skater GP, M.M 30 skater GP, mertin 31 skater GP, BHHC 31 skater GP …
 Weekly history: 6 finished weeks (6 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-13): 1207 line/PP/goalie tags; injuries matched 85/85
+Depth (Daily Faceoff, 2026-11-13): 1207 line/PP/goalie tags; injuries matched 91/91
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)

@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-13T13:07:01+00:00",
+"fetched": "2026-11-13T17:43:03+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1148,6 +1148,11 @@
 "n": "Vilardi, Gabriel",
 "pos": "RW",
 "t": "WPG"
+},
+"03wky": {
+"n": "Chatfield, Jalen",
+"pos": "D",
+"t": "CAR"
 },
 "03wor": {
 "n": "Marchment, Mason",
@@ -5454,6 +5459,13 @@
 "pos": "F",
 "sal": 3300000,
 "slot": "A"
+},
+"03wky": {
+"ct": "FA",
+"gm": "M.M",
+"pos": "D",
+"sal": 1000000,
+"slot": "R"
 },
 "03wor": {
 "ct": "BID",

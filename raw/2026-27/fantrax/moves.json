@@ -1173,5 +1173,13 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Nedeljkovic, Alex"
+},
+{
+"d": "2026-11-13",
+"id": "03wky",
+"type": "add",
+"to": "M.M",
+"ct": "FA",
+"sal": 1000000
 }
 ]
