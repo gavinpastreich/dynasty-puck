@@ -332,3 +332,23 @@ details.card > summary { cursor: pointer; }
 }
 @media print { .tabbar { display: none; } }
 @media (max-width: 520px) { #newscard .newsd { display: none; } }
+
+/* Offseason Planner: a player's contract by season */
+table.plan td.pc { white-space: nowrap; font-variant-numeric: tabular-nums; border-left: 1px solid var(--line2); }
+table.plan td.pc span { display: block; font-size: .66rem; line-height: 1.1; opacity: .8; }
+table.plan td.c-con { background: rgba(56,139,253,.13); }
+table.plan td.c-off { opacity: .6; }
+table.plan td.c-elc, .pk.c-elc { background: rgba(63,185,80,.20); }
+table.plan td.c-re, .pk.c-re { background: var(--warn-bg); }
+table.plan td.c-auc, .pk.c-auc { background: rgba(163,113,247,.20); }
+table.plan td.c-mnr, .pk.c-mnr { background: rgba(139,148,158,.12); color: var(--muted); }
+table.plan td.c-ufa, .pk.c-ufa { background: var(--bad-bg); color: var(--bad); }
+table.plan td.c-ufa, table.plan td.c-mnr { font-size: .74rem; }
+.pk { display: inline-block; padding: 0 6px; border-radius: 5px; font-size: .74rem; white-space: nowrap; }
+.pk.c-con { background: rgba(56,139,253,.16); }
+table.plan tr.grp td { background: var(--card2); font-weight: 600; padding-top: 8px; }
+table.plan tfoot td { border-top: 1px solid var(--line); background: var(--card); }
+table.plan tfoot tr.sum td { border-top: 2px solid var(--line); }
+@media (min-width: 861px) { table.plan tbody td:first-child { white-space: nowrap; } }
+select.plsel { max-width: 210px; padding: 2px 4px; font-size: .78rem; }
+select.plsel.chg { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn); }

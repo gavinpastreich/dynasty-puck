@@ -214,7 +214,7 @@
           var p = E.byId[a.id];
           if (a.kind === 'fa') { capA[0].total += a.sal; capA[0].n++; }
           else {
-            if (!(p.fs === 'IR' && E.RULES.irCapExempt !== false)) capA[0].total += a.sal - (typeof p.cy[0] === 'number' ? p.cy[0] : 0); // IR: off this season's cap either way
+            if (!E.offCap(p)) capA[0].total += a.sal - (typeof p.cy[0] === 'number' ? p.cy[0] : 0); // IR or Minors slot: off this season's cap either way
             if (a.sal > 0 && p.ct === 'MNR') { capA[1].total += a.sal; }
           }
         });

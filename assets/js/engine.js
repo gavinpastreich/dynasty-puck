@@ -699,7 +699,11 @@
 
   // contract cost by year ($M): current deal, MNR -> ELC (the offseason after graduating), ELC/RFA decisions, UFA exit.
   // At each decision the model takes the option with the best surplus, or lets him walk if none is positive.
-  E.costPath = function (p, war) {
+  // plan (optional, the Offseason Planner's what-if for one player) overrides the model's calls:
+  //   plan.elc: years of the ELC an MNR signs after graduating (1 or 2; 0 = released instead)
+  //   plan.dec[y]: at the decision in season y, re-sign for that many years (0 = let him go)
+  E.costPath = function (p, war, plan) {
+    plan = plan || {};
     var R = E.RULES, cost = [], status = [], dec = [], y = 0, grad = E.gradYear(p);
     var push = function (c, s) { cost.push(c); status.push(s); y++; };
     if (!p.gm) { while (y < 7) push(null, 'FA'); return { cost: cost, status: status, grad: grad, dec: dec }; }
@@ -707,7 +711,9 @@
     if (p.ct === 'MNR') {
       var elcStart = grad === null ? 7 : grad + 1; // stays $0 through the season he graduates; ELC signed that offseason
       while (y < 7 && y < elcStart) push(0, 'MNR');
-      for (var k = 0; k < (R.elcYears || 2) && y < 7; k++) push(R.elcSalary, 'ELC');
+      var elcY = plan.elc === undefined ? (R.elcYears || 2) : plan.elc; // ELCs run 1 or 2 years, the team's choice
+      if (!elcY) { while (y < 7) push(null, 'UFA'); return { cost: cost, status: status, grad: grad, dec: dec }; }
+      for (var k = 0; k < elcY && y < 7; k++) push(R.elcSalary, 'ELC');
       st = { kind: 'elcUp' };
     } else {
       while (y < 7 && typeof p.cy[y] === 'number') push(p.cy[y], y === 0 ? p.ct : 'contract');
@@ -720,8 +726,9 @@
       if (!st) { while (y < 7) push(null, 'UFA'); break; }
       var opts = E.resignOptions(st), best = null;
       opts.forEach(function (o) { o.v = E.optionValue(p, o, y, war); if (!best || o.v > best.v) best = o; });
-      var pick = best && best.v > 0 ? best : null;
-      dec.push({ y: y, kind: st.kind, opts: opts, pick: pick });
+      var model = best && best.v > 0 ? best : null, forced = plan.dec ? plan.dec[y] : undefined;
+      var pick = forced === undefined ? model : forced ? opts.filter(function (o) { return o.L === forced; })[0] || null : null;
+      dec.push({ y: y, kind: st.kind, opts: opts, pick: pick, model: model });
       if (!pick) { st = null; continue; }
       for (var k2 = 0; k2 < pick.L && y < 7; k2++) push(pick.price, st.kind === 'elcUp' && pick.L === 1 ? 'ELC ext' : 'RFA ' + pick.L + 'yr');
       st = pick.next !== 'rfa' ? null : st.kind === 'rfaInit' ? { kind: 'rfaInit', sal: pick.price } : { kind: 'rfa', base: pick.base };
@@ -1015,8 +1022,8 @@
     var hurt = ros.filter(function (p) { return act[p.id] && p.r && E.injuredOut(p, wi); });
     var dead = ros.filter(function (p) { return act[p.id] && (!p.r || !E.games(p, wi).N); });
     var byV = function (a, b) { return b.v - a.v; };
-    // activating someone from IR puts his salary back on this season's cap
-    var irUp = start.filter(function (x) { return x.p.fs === 'IR' && E.RULES.irCapExempt !== false; }), irCap = null;
+    // activating someone from IR or the minors puts his salary back on this season's cap
+    var irUp = start.filter(function (x) { return E.offCap(x.p) && typeof x.p.cy[0] === 'number' && x.p.cy[0] > 0; }), irCap = null;
     if (irUp.length) { var irSal = E.sum(irUp.map(function (x) { return typeof x.p.cy[0] === 'number' ? x.p.cy[0] : 0; })); irCap = { sal: irSal, space: E.teamCap(team)[0].space - irSal }; }
     // promoting an MNR player from a Minors slot: if he is on the active roster when he graduates, he can't go back down
     var gradRisk = start.filter(function (x) { return x.p.fs === 'M' && x.p.ct === 'MNR'; }).map(function (x) { return { p: x.p, g: E.graduation(x.p) }; })
@@ -1219,6 +1226,13 @@
   // Traded cap space: a team's own cap = the league cap + cap it took in trades - cap it sent (Fantrax keeps the
   // figure per team; DP.league.capAdj = {team: [$M by season]}, this season only). capIn = extra cap coming in (+)
   // or going out (-) this season in a what-if trade.
+  // Only the active roster (Active + Bench slots) counts against this season's cap: the slot that takes a player off
+  // it ('IR', or 'M' for Minors), or null. Commissioner 2026-09-26 (IR) and 2026-11-13 (Minors).
+  E.offCap = function (p) {
+    if (p.fs === 'IR' && E.RULES.irCapExempt !== false) return 'IR';
+    if (p.fs === 'M' && E.RULES.minorsCapExempt !== false) return 'M';
+    return null;
+  };
   E.capAdj = function (team) { return ((DP.league && DP.league.capAdj) || {})[team] || []; };
   E.capOf = function (team, y) { return E.capY(y || 0) + (E.capAdj(team)[y || 0] || 0); };
   E.capMoves = function (team) { // this season's logged cap moves for one team: [{d, other, amt (+ in / - out)}]
@@ -1229,12 +1243,13 @@
   E.teamCap = function (team, roster, dead, capIn) {
     roster = roster || E.rosters[team];
     var adj = E.capAdj(team);
-    var yrs = E.YEARS.map(function (_, y) { var a = (adj[y] || 0) + (y === 0 ? capIn || 0 : 0); return { total: 0, byType: {}, n: 0, cap: E.capY(y) + a, base: E.capY(y), adj: a, ir: 0, irP: [] }; });
-    var irOk = E.RULES.irCapExempt !== false;
+    var yrs = E.YEARS.map(function (_, y) { var a = (adj[y] || 0) + (y === 0 ? capIn || 0 : 0); return { total: 0, byType: {}, n: 0, cap: E.capY(y) + a, base: E.capY(y), adj: a, ir: 0, irP: [], mn: 0, mnP: [] }; });
     roster.forEach(function (p) {
       p.cy.forEach(function (v, y) {
         if (typeof v !== 'number') return;
-        if (y === 0 && irOk && p.fs === 'IR') { yrs[0].ir += v; yrs[0].irP.push(p); yrs[0].n++; return; } // IR: off this season's cap
+        var off = y === 0 ? E.offCap(p) : null; // IR and Minors slots: off this season's cap (later seasons count in full)
+        if (off === 'IR') { yrs[0].ir += v; yrs[0].irP.push(p); yrs[0].n++; return; }
+        if (off === 'M') { yrs[0].mn += v; if (v > 0) yrs[0].mnP.push(p); yrs[0].n++; return; }
         yrs[y].total += v; yrs[y].n++;
         var ty = y === 0 ? p.ct : (p.yStatus && p.yStatus[y] === 'ELC' ? 'ELC1' : p.ct);
         yrs[y].byType[ty] = (yrs[y].byType[ty] || 0) + v;

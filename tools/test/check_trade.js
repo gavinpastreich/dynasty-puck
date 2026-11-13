@@ -60,7 +60,12 @@ E.teams.forEach((t) => {
   ok(near(c[0].ir, E.RULES.irCapExempt === false ? 0 : irSal, 1e-6), `IR relief matches IR salaries for ${t}`);
   const all0 = E.rosters[t].reduce((s, p) => s + (typeof p.cy[0] === 'number' ? p.cy[0] : 0), 0);
   const pen0 = E.penaltiesOf(t).reduce((s, d) => s + (d.amt[0] || 0), 0);
-  ok(near(c[0].total, all0 - c[0].ir + pen0, 1e-6), `2026-27 cap total = salaries - IR + penalties for ${t}`);
+  const mn = E.rosters[t].filter((p) => p.fs === 'M' && typeof p.cy[0] === 'number').reduce((s, p) => s + p.cy[0], 0);
+  ok(near(c[0].mn, E.RULES.minorsCapExempt === false ? 0 : mn, 1e-6), `minors relief matches Minors-slot salaries for ${t}`);
+  ok(near(c[0].total, all0 - c[0].ir - c[0].mn + pen0, 1e-6), `2026-27 cap total = salaries - IR - minors + penalties for ${t}`);
+  const onCap = E.rosters[t].filter((p) => p.fs === 'A' || p.fs === 'R').reduce((s, p) => s + (typeof p.cy[0] === 'number' ? p.cy[0] : 0), 0);
+  ok(near(c[0].total, onCap + pen0, 1e-6), `2026-27 cap total = Active + Bench salaries + penalties for ${t}`);
+  ok(c.slice(1).every((y, i) => near(y.total, E.rosters[t].reduce((s, p) => s + (typeof p.cy[i + 1] === 'number' ? p.cy[i + 1] : 0), 0) + E.penaltiesOf(t).reduce((s, d) => s + (d.amt[i + 1] || 0), 0), 1e-6)), `later seasons count every contract for ${t}`);
   ok(near(c[0].space, c[0].cap - c[0].total, 1e-9), `space = cap - total for ${t}`);
 });
 
@@ -162,6 +167,44 @@ ok(picks27.every((p) => E.rosters[p.owner] && E.rosters[p.orig]), 'every 2027 pi
   ok(near(u[b].total, u[b].cap, 1e-9) && near(u[a].total, u[a].cap, 1e-9), 'cap-only trade moves nothing else');
   const tv = E.tradeValue([{ asset: { kind: 'cap', amt: 3, cur: true }, from: a, to: b }]);
   ok(near(tv[a].net, -tv[b].net, 1e-9) && tv[b].net > 0, 'market value of cap is zero-sum');
+}
+
+// ---- Offseason Planner: a plan overrides the model's contract calls, and nothing else
+{
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  // no plan = the model's own path (what every page already shows)
+  ok(E.P.filter((p) => p.gm).every((p) => { const cp = E.costPath(p, p.yWar); return same(cp.cost, p.yCost) && same(cp.status, p.yStatus); }), 'costPath without a plan reproduces every rostered player\'s path');
+  // MNR graduates: the ELC is 2 years unless the plan says 1, or he is released
+  const grads = E.P.filter((p) => p.gm && p.ct === 'MNR' && p.grad !== null && p.grad !== undefined && p.grad + 3 <= 6);
+  ok(grads.length > 0, 'there are MNR players projected to sign an ELC in the window');
+  grads.slice(0, 40).forEach((p) => {
+    const y = p.grad + 1, two = E.costPath(p, p.yWar, { elc: 2 }), one = E.costPath(p, p.yWar, { elc: 1 }), rel = E.costPath(p, p.yWar, { elc: 0 });
+    ok(same(two.cost, p.yCost), `2-year ELC is the default for ${p.n}`);
+    ok(two.status[y] === 'ELC' && two.status[y + 1] === 'ELC' && two.cost[y] === E.RULES.elcSalary, `2-year ELC: two seasons at the ELC salary for ${p.n}`);
+    ok(one.status[y] === 'ELC' && one.status[y + 1] !== 'ELC', `1-year ELC: one season, then the ELC-up decision a year sooner for ${p.n}`);
+    ok(one.cost.slice(0, y).every((v) => v === 0) && rel.cost.slice(0, y).every((v) => v === 0), `still $0 until he graduates (${p.n})`);
+    ok(rel.cost.slice(y).every((v) => v === null) && rel.status[y] === 'UFA', `released: nothing on the books after graduation for ${p.n}`);
+    if (one.dec.length && two.dec.length) ok(one.dec[0].y === two.dec[0].y - 1, `ELC-up decision moves up a year with a 1-year ELC (${p.n})`);
+  });
+  // re-sign decisions: any listed term can be forced, or the player let go
+  const decs = E.P.filter((p) => p.gm && p.ct !== 'MNR' && p.yDec && p.yDec[0] && p.yDec[0].opts);
+  ok(decs.length > 0, 'there are re-sign decisions in the window');
+  decs.slice(0, 60).forEach((p) => {
+    const d = p.yDec[0], y = d.y;
+    const go = E.costPath(p, p.yWar, { dec: { [y]: 0 } });
+    ok(go.cost.slice(y).every((v) => v === null) && same(go.cost.slice(0, y), p.yCost.slice(0, y)), `let go: off the books from the decision on, unchanged before it (${p.n})`);
+    d.opts.forEach((o) => {
+      const cp = E.costPath(p, p.yWar, { dec: { [y]: o.L } });
+      const yrs = cp.cost.slice(y, Math.min(7, y + o.L));
+      ok(yrs.length > 0 && yrs.every((v) => near(v, o.price, 1e-9)), `forcing ${o.L} yr(s) puts ${o.price} on the books for that term (${p.n})`);
+    });
+    const m = d.model || d.pick;
+    ok(same(E.costPath(p, p.yWar, { dec: { [y]: m ? m.L : 0 } }).cost, p.yCost), `forcing the model's own call changes nothing (${p.n})`);
+  });
+  // ELC lengths come from the contract sheet: every current ELC has 1 or 2 seasons left
+  const elcs = E.P.filter((p) => p.gm && p.ct === 'ELC1');
+  ok(elcs.every((p) => { const left = p.cy.filter((v) => typeof v === 'number').length; return left >= 1 && left <= 2; }), 'every current ELC has 1 or 2 seasons left on the sheet');
+  ok(elcs.every((p) => p.yDec && p.yDec[0] && p.yDec[0].kind === 'elcUp' && p.yDec[0].y === p.cy.filter((v) => typeof v === 'number').length), 'the ELC-up decision falls the summer the sheet says the ELC ends');
 }
 
 console.log(`${n - fails}/${n} checks passed`);

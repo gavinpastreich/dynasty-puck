@@ -258,3 +258,33 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Trade Finder opens on the player picked last on this device, or in "Acquire a target" on the best player two of
     the team's assets could match (it used to open on the league's most valuable player, which never returns a
     package). The data build time is shown in the reader's time zone ("data updated Nov 12, 8:33 PM").
+- Commissioner answers (2026-11-13): traded cap is one season only for now (multi-season cap may come later: capAdj
+  is already an array by season); the Oct 14 cap move (PuckLuck -> btsay45 $3.5M) was part of the Skinner trade;
+  **only the active roster counts against the cap**, so a salaried player in a Minors slot is off this season's cap
+  like one on IR. Checked against Fantrax: every team's Active + Bench payroll (plus dead cap) fits under its cap,
+  which the old rule (everything but IR) did not (mertin was $1.6M "over"). config `minorsCapExempt` (default true);
+  E.offCap(p) returns 'IR' / 'M' / null and E.teamCap uses it for season 0 only (`mn`, `mnP` next to `ir`, `irP`).
+  Later seasons still count every contract. The lineup check's "adds $X back to your cap" now covers promotions
+  from the minors too.
+- Offseason Planner (2026-11-13, assets/js/pages-planner.js; route `offseason`, three tabs):
+  - E.costPath(p, war, plan) takes an optional plan: `elc` (years of the ELC an MNR signs: 2 by default, 1, or 0 =
+    released) and `dec[y]` (years to re-sign at the decision in season y, 0 = let go). Without a plan it returns
+    the model's path exactly (check_trade.js asserts this for every rostered player). Each decision also records
+    `model`, the model's own pick.
+  - Roster planner: DP.planFor(team, plan) -> rows (cost and status by season per player) and yrs (signed deals,
+    new ELCs, re-signs, auction buy-backs, dead cap, cap, space, roster count, F/D/G, MNR count). One select per
+    player for his first decision; later decisions follow the model. "Win him back" = E.auctionPrice(p, 1) (with
+    the hometown discount when E.htdTeam says he qualifies) for the band's term, shown as a projection. Season 0
+    is Fantrax as it stands (Active + Bench = the 23; IR and Minors off the cap) and must equal E.teamCap; later
+    seasons count every contract and every contracted player as a roster spot. Plan saved in localStorage
+    `dp_plan_<team>`.
+  - League outlook: cap space by team x season (with the model's calls, or signed deals only), what comes off the
+    books each summer (DP.contractEvent: UFA / RFA / ELC up / ELC to sign), and every event for a chosen summer.
+  - Decisions & auction: the old 2027 Offseason tables (DP.offseasonTables in pages-cap.js), unchanged.
+  - ELC length: the contract sheet's Term column already says whether a signed ELC is 1 or 2 years (16 ELCs on
+    2026-11-13: 13 with two seasons left, 2 with one, 1 marked UFA after). Shown as "2y" next to the contract and
+    it sets when the ELC-up decision falls. New ELCs default to 2 years (config elc.years).
+  - The "New on the site" card now remembers the newest entry dismissed by title (dp_newsTop), so entries added
+    the same day as a dismissal still show; the old date key is read once as "seen up to Traded cap space".
+  - Test note: Chromium drops localStorage for file:// pages on reload, so persistence of a plan across reloads was
+    checked over http (python -m http.server), not in flows_check.js.

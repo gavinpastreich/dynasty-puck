@@ -68,7 +68,7 @@
     return 'locks ' + s + ' (in ' + (d ? d + 'd ' + hh + 'h' : hh ? hh + 'h ' + mm + 'm' : mm + 'm') + ')';
   };
   DP.fsTag = function (p) {
-    return p && p.gm && p.fs && p.fs !== 'A' ? '<span class="fs ' + p.fs + '" title="Slot in Fantrax right now' + (p.fs === 'IR' && DP.E.RULES.irCapExempt !== false ? ': off the 2026-27 cap while on IR' : '') + '">' + (DP.SLOT_NAME || {})[p.fs] + '</span>' : '';
+    return p && p.gm && p.fs && p.fs !== 'A' ? '<span class="fs ' + p.fs + '" title="Slot in Fantrax right now' + (DP.E.offCap(p) === 'IR' ? ': off the 2026-27 cap while on IR' : DP.E.offCap(p) === 'M' && p.sal26 > 0 ? ': off the 2026-27 cap while in the minors' : '') + '">' + (DP.SLOT_NAME || {})[p.fs] + '</span>' : '';
   };
   DP.lineupCheckHtml = function (team, compact) {
     var E = DP.E, wi = E.lockWeek();
@@ -83,7 +83,7 @@
       if (fine && !chk.start.length) return '<div class="callout good">✓ Your Fantrax lineup for ' + head + ' matches the optimal lineup (' + U.fmt(chk.eSet, 1) + ' expected cats).</div>';
       return '<div class="callout ' + (gap > 0.3 ? 'bad' : 'warn') + '"><b>Lineup check</b>, ' + head + ': as set in Fantrax you project <b>' + U.fmt(chk.eSet, 1) + '</b> cats, optimal <b>' + U.fmt(chk.eOpt, 1) + '</b> (' + U.sgn(-gap, 1) + ').' +
         (chk.start.length ? ' Start ' + chk.start.slice(0, 3).map(nm).join(', ') + (chk.sit.length ? ' over ' + chk.sit.slice(0, 3).map(function (x) { return ui.plink(x.p) + why(x.p); }).join(', ') : '') + '.' : '') +
-        (chk.irCap && chk.irCap.space < 0 ? ' <span class="bad">Activating from IR puts you ' + U.m(-chk.irCap.space) + ' over the cap.</span>' : '') +
+        (chk.irCap && chk.irCap.space < 0 ? ' <span class="bad">Activating from IR or the minors puts you ' + U.m(-chk.irCap.space) + ' over the cap.</span>' : '') +
         ' <a href="#/team/' + encodeURIComponent(team) + '">Details →</a></div>';
     }
     var h = '<p class="small">' + head + '</p><div class="stats" style="margin:6px 0 10px">' +
@@ -95,7 +95,7 @@
     var extra = chk.hurt.concat(chk.dead).filter(function (p, i, a) { return a.indexOf(p) === i && !chk.sit.some(function (x) { return x.p === p; }); });
     if (extra.length) h += '<p class="small warn">Active in Fantrax but not expected to play: ' + extra.map(function (p) { return ui.plink(p) + why(p); }).join(', ') + '.</p>';
     if (chk.gFailSet > 0.12) h += '<p class="small bad">Goalie minimum: your set lineup has a ' + U.pct(chk.gFailSet) + ' chance of fewer than 2 goalie GP (optimal: ' + U.pct(chk.gFailOpt) + ').</p>';
-    if (chk.irCap) h += '<p class="small ' + (chk.irCap.space < 0 ? 'bad' : 'muted') + '">Activating from IR adds ' + U.m(chk.irCap.sal) + ' back to your 2026-27 cap: space goes to ' + U.m(chk.irCap.space) + (chk.irCap.space < 0 ? '. That doesn\'t fit, so clear room first (IR players don\'t count against the cap).' : ' (IR players don\'t count against the cap).') + '</p>';
+    if (chk.irCap) h += '<p class="small ' + (chk.irCap.space < 0 ? 'bad' : 'muted') + '">Moving the suggested starters up from IR or the minors adds ' + U.m(chk.irCap.sal) + ' back to your 2026-27 cap: space goes to ' + U.m(chk.irCap.space) + (chk.irCap.space < 0 ? '. That doesn\'t fit, so clear room first (only Active and Bench slots count against the cap).' : ' (only Active and Bench slots count against the cap).') + '</p>';
     if (chk.gradRisk && chk.gradRisk.length) h += '<p class="small warn">Graduation watch: ' + chk.gradRisk.map(function (x) { return ui.plink(x.p) + ' (' + x.g.cgp + '/' + x.g.thr + ' career GP' + (x.g.status === 'graduated' ? ', already past the threshold' : ', projected to graduate week ' + E.weeks[x.g.week].n) + ')'; }).join(', ') + '. A player on your active roster when he graduates can\'t be moved back down to the minors.</p>';
     if (chk.start.some(function (x) { return x.p.fs === 'M'; })) h += '<p class="small muted">Players in Minors slots have to be moved up in Fantrax first (Active + Bench max ' + ((DP.league.fantrax && DP.league.fantrax.roster && DP.league.fantrax.roster.maxTotalPlayers) || 23) + ').</p>';
     h += '<p class="small muted">Lineups ' + (DP.live.state === 'ok' ? 'synced live from Fantrax at ' + esc(DP.live.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) : 'from the nightly Fantrax sync (' + esc((DP.league.fantrax || {}).fetched || '').slice(0, 16).replace('T', ' ') + ' UTC)') + '. Opponent uses their Fantrax lineup too. Injuries from Daily Faceoff.</p>';
@@ -165,7 +165,7 @@
           }
         }
         h += DP.lineupCheckHtml(me, true);
-        if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) or are released next offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can\'t go back.</div>';
+        if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) or are released next offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can\'t go back. <a href="#/offseason">Plan the ELCs and next season\'s cap →</a></div>';
       } else {
         h += '<div class="callout">👋 Welcome! <button class="btn sm primary" data-act="pick-team">Pick your team</button> to get your matchup, needs and targets. Everything else works without it.</div>';
       }
@@ -265,7 +265,7 @@
       h += '<div class="card"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
       h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
-      h += '<div class="card"><h2>Cap by season</h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
+      h += '<div class="card"><h2>Cap by season <a class="btn sm" href="' + U.hash('offseason', null, { team: t === DP.state.team ? undefined : t }) + '" style="margin-left:auto">Plan next season →</a></h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
       h += DP.radarTeamCard ? DP.radarTeamCard(t) : '';
       h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes every week still to lock with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
@@ -303,6 +303,7 @@
       U.qs('#t-cap', el).innerHTML = C.stacked(E.YEARS.map(function (y) { return y.slice(2); }), series, { refLine: s.cap.map(function (y) { return y.cap; }), refLabel: 'cap', fmt: function (v) { return U.m(v); }, tickFmt: function (v) { return '$' + v + 'M'; }, title: 'Committed cap by season' }) +
         '<div class="tbl-wrap"><table class="t"><thead><tr><th></th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody><tr><td>Committed</td>' + s.cap.map(function (y) { return '<td class="num">' + U.m(y.total, 1) + '</td>'; }).join('') + '</tr><tr><td>Space</td>' + s.cap.map(function (y) { return '<td class="num ' + (y.space < 0 ? 'bad' : '') + '">' + U.m(y.space, 1) + '</td>'; }).join('') + '</tr><tr><td>Players</td>' + s.cap.map(function (y) { return '<td class="num">' + y.n + '</td>'; }).join('') + '</tr></tbody></table></div>' +
         (s.cap[0].adj ? '<p class="small muted">Traded cap space: ' + DP.capTradeNote(t) + '. It changes this season\'s cap only; next season is back at the league cap.</p>' : '') +
+        (s.cap[0].mn ? '<p class="small muted">In the minors, off the 2026-27 cap: ' + s.cap[0].mnP.map(function (p) { return ui.plink(p) + ' ' + U.m(p.cy[0]); }).join(', ') + '. Promoting one adds his salary back.</p>' : '') +
         (s.ir ? '<p class="small muted">IR relief: ' + s.cap[0].irP.map(function (p) { return ui.plink(p) + ' ' + U.m(p.cy[0]); }).join(', ') + (s.nIR > 1 ? ' (' + U.m(s.ir) + ')' : '') + ' ' + (s.nIR > 1 ? 'are' : 'is') + ' on IR in Fantrax, so ' + (s.nIR > 1 ? 'they don\'t' : 'it doesn\'t') + ' count against the 2026-27 cap. Future seasons still count.</p>' : '');
 
       // age & pipeline

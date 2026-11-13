@@ -56,7 +56,7 @@
     render: function (el, hsh) {
       var E = DP.E, me = DP.state.team, t = hsh.q.team || me || E.teams[0];
       var h = '<div class="page-head"><h1>Contracts & Cap</h1><p class="sub">Cap by season: ' + E.YEARS.slice(0, 4).map(function (y, i) { return y + ' <b>$' + E.capY(i) + 'M</b>'; }).join(' · ') + ' (' + esc(DP.meta.capNote || '') + ') 2026-27 salaries from Fantrax; later seasons from the contract sheet. Contract types: BID, RFA1, ELC1 ($1.5M), MNR ($0), FA. Dropped contracts leave 50% dead cap for each remaining year.</p></div>';
-      h += '<div class="card flush"><h2>League cap table</h2><div class="hint">Committed salary by season. Red = over the cap. Players in an IR slot in Fantrax don\'t count against the 2026-27 cap (shown as "IR"). A team that traded cap space has its own 2026-27 cap (marked ⇄, from Fantrax). Click a team for its chart.</div><div id="cap-league" style="padding:0 12px 12px"></div></div>';
+      h += '<div class="card flush"><h2>League cap table</h2><div class="hint">Committed salary by season. Red = over the cap. Only Active and Bench slots count against the 2026-27 cap: salaries in IR and Minors slots are shown as "IR" and "minors" off. A team that traded cap space has its own 2026-27 cap (marked ⇄, from Fantrax). Click a team for its chart.</div><div id="cap-league" style="padding:0 12px 12px"></div></div>';
       h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>Team cap by season</h2><div class="controls"><label>Team ' + ui.teamSelect('cap-team', t) + '</label></div><div id="cap-chart"></div></div>';
       h += '<div class="card"><h2>Contract option calculator</h2><div class="hint">Pick a player to see every option at his next decision (ELC up, RFA re-sign, or auction) with the model\'s pick. Or price an auction-contract RFA by salary with the league formula (1yr S+1, 2yr 1.5S+1, 3yr 1.5S+2, 4yr 1.5S+3, 5yr 1.75S+4, 6yr 1.75S+5).</div>' +
         '<div class="controls"><label>Salary $M <input type="number" id="ext-s" step="0.1" min="0" value="3.0"></label><label>Formula <select id="ext-scale"><option value="ext2026">League formula (+$1M, summer 2026)</option><option value="ext2027">Sheet 2027 tab (+$1.5M)</option></select></label></div>' +
@@ -77,7 +77,7 @@
         rows: rows, sort: 'y0', csv: 'league-cap.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
         cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('cap', null, { team: r.t }) + '"><b>' + esc(U.teamName(r.t)) + '</b></a>'; } }]
           .concat(E.YEARS.map(function (y, i) {
-            return { k: 'y' + i, l: y, cls: 'num', v: function (r) { return r.c[i].total; }, f: function (r) { var v = r.c[i].total; return '<span class="' + (r.c[i].space < 0 ? 'bad' : '') + '">' + U.m(v, 1) + '</span><br><span class="small faint">' + U.m(r.c[i].space, 1) + ' of $' + r.c[i].cap + 'M' + (r.c[i].adj ? ' <span title="' + esc(DP.capTradeNote(r.t).replace(/<[^>]+>/g, '')) + '">⇄</span>' : '') + '</span>' + (r.c[i].ir ? '<br><span class="small faint" title="' + esc(r.c[i].irP.map(function (p) { return p.n + ' ' + U.m(p.cy[0]); }).join(', ')) + '">IR ' + U.m(r.c[i].ir, 1) + ' off</span>' : ''); }, csv: function (r) { return r.c[i].total.toFixed(2); } };
+            return { k: 'y' + i, l: y, cls: 'num', v: function (r) { return r.c[i].total; }, f: function (r) { var v = r.c[i].total; return '<span class="' + (r.c[i].space < 0 ? 'bad' : '') + '">' + U.m(v, 1) + '</span><br><span class="small faint">' + U.m(r.c[i].space, 1) + ' of $' + r.c[i].cap + 'M' + (r.c[i].adj ? ' <span title="' + esc(DP.capTradeNote(r.t).replace(/<[^>]+>/g, '')) + '">⇄</span>' : '') + '</span>' + (r.c[i].ir ? '<br><span class="small faint" title="' + esc(r.c[i].irP.map(function (p) { return p.n + ' ' + U.m(p.cy[0]); }).join(', ')) + '">IR ' + U.m(r.c[i].ir, 1) + ' off</span>' : '') + (r.c[i].mn ? '<br><span class="small faint" title="' + esc(r.c[i].mnP.map(function (p) { return p.n + ' ' + U.m(p.cy[0]); }).join(', ')) + '">minors ' + U.m(r.c[i].mn, 1) + ' off</span>' : ''); }, csv: function (r) { return r.c[i].total.toFixed(2); } };
           })).concat([{ k: 'n', l: 'Players', cls: 'num', v: function (r) { return E.rosters[r.t].length; } }])
       });
       var sc = E.P.filter(function (p) { return p.gm && p.ct !== 'MNR' && p.r && p.sal26 > 0; });
@@ -194,7 +194,8 @@
   };
 
   // ------------------------------------------------------------ 2027 Offseason planner
-  DP.pages.offseason = {
+  // the summer-2027 tables; shown as the "Decisions & auction" tab of the Offseason Planner (pages-planner.js)
+  DP.offseasonTables = {
     title: '2027 Offseason',
     render: function (el, hsh) {
       var E = DP.E, me = DP.state.team, t = hsh.q.team || me;

@@ -60,6 +60,42 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('history', 1500);
   ok(await page.evaluate(() => [...document.querySelectorAll('#h-list .card')].some((c) => /Cap space \$\d/.test(c.innerText) && /from [A-Za-z.0-9]+ · 2026-27 cap/.test(c.innerText))), 'history: this season\'s traded cap is listed with its sender');
 
+  // ---- Offseason Planner: decisions move the grid, next season's cap and the roster count; reset returns to the model
+  {
+    const T = await page.evaluate(() => DP.E.teams.find((t) => { const r = DP.planFor(t, {}).rows, has = (k) => r.some((x) => x.ch && x.ch.kind === k && x.ch.y === 1); return has('elc') && has('dec') && has('rebuy'); }));
+    ok(!!T, 'planner: a team with an ELC to sign, a re-sign call and a UFA next summer (' + T + ')');
+    await page.evaluate((t) => DP.U.store.del('plan_' + t), T);
+    await go('offseason?team=' + encodeURIComponent(T), 1500);
+    const PL = () => page.evaluate((t) => { const y = DP.planFor(t, DP.U.store.get('plan_' + t, {})).yrs; return { space: y[1].space, n: y[1].n, space2: y[2].space, tile: document.querySelector('#os-body .stat .v').textContent, chg: document.querySelectorAll('select.plsel.chg').length, reset: !!document.querySelector('#pl-reset') }; }, T);
+    // set the first select of a kind (summer 2027) to a value, or to the first value that isn't the model's call
+    const setPlan = async (kind, val) => { const r = await page.evaluate(([kind, val]) => { const s = document.querySelector('select[data-plan][data-kind="' + kind + '"][data-y="1"]'); const v = val !== null ? val : [...s.options].map((o) => o.value).find((x) => x !== s.dataset.model); s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); return { id: s.dataset.plan, v: v, model: s.dataset.model }; }, [kind, val]); await page.waitForTimeout(700); return r; };
+    const cells = (id) => page.evaluate((id) => { const s = document.querySelector('select[data-plan="' + id + '"]'); return [...s.closest('tr').querySelectorAll('td.pc')].map((c) => c.innerText.replace(/\s+/g, ' ').trim()); }, id);
+    const p0 = await PL();
+    ok(p0.chg === 0 && !p0.reset && await q('table.plan tbody tr') > 20, 'planner: starts on the model\'s calls, a row per player');
+    ok(await page.evaluate((t) => { const c = DP.E.teamCap(t)[0], y = DP.planFor(t, {}).yrs[0]; return Math.abs(c.total - y.total) < 1e-6 && Math.abs(c.space - y.space) < 1e-6 && y.n <= 23; }, T), 'planner: 2026-27 matches the cap page and the Fantrax roster');
+    const e1 = await setPlan('elc', '1'), c1 = await cells(e1.id), p1 = await PL();
+    ok(c1.filter((x) => /ELC$/.test(x)).length === 1 && Math.abs(p1.space - p0.space) < 1e-6 && p1.chg === 1 && p1.reset, 'planner: a 1-year ELC shows one ELC season, same cap next season, and is marked as a change (' + c1.join(' | ') + ')');
+    await setPlan('elc', '0'); const c2 = await cells(e1.id), p2 = await PL();
+    ok(c2.indexOf('released') >= 0 && Math.abs(p2.space - (p0.space + 1.5)) < 1e-6 && p2.n === p0.n - 1, 'planner: releasing him frees $1.5M and a roster spot next season');
+    ok(p2.tile.replace(/[^0-9.\-]/g, '') === String(p2.space >= 10 ? p2.space.toFixed(1) : p2.space.toFixed(2)), 'planner: the cap-space tile shows the plan (' + p2.tile + ')');
+    const d1 = await setPlan('dec', null), p3 = await PL();
+    ok(d1.v !== d1.model && Math.abs(p3.space - p2.space) > 0.01 && p3.chg === 2, 'planner: changing a re-sign call moves next season\'s cap (' + d1.model + ' -> ' + d1.v + ')');
+    const b1 = await setPlan('rebuy', '1'), c4 = await cells(b1.id), p4 = await PL();
+    ok(c4.some((x) => /auction$/.test(x)) && p4.n === p3.n + 1 && p4.space < p3.space, 'planner: winning a UFA back adds a roster spot at his projected auction price');
+    await page.click('#pl-reset'); await page.waitForTimeout(700);
+    const p5 = await PL();
+    ok(p5.chg === 0 && !p5.reset && Math.abs(p5.space - p0.space) < 1e-6 && p5.n === p0.n && Math.abs(p5.space2 - p0.space2) < 1e-6, 'planner: reset returns to the model\'s calls');
+    await go('offseason?tab=league', 1500);
+    ok(await q('#lg-cap tbody tr') === 14 && await q('#lg-exp tbody tr') === 14 && await q('#lg-ev tbody tr') > 5, 'planner: league outlook lists every team and next summer\'s contract events');
+    const sp = () => page.evaluate(() => document.querySelector('#lg-cap tbody tr td:nth-child(3) b').textContent);
+    const m1 = await sp(); await page.click('#os-body [data-mode="signed"]'); await page.waitForTimeout(900);
+    ok(/mode=signed/.test(await page.evaluate(() => location.hash)) && await sp() !== m1, 'planner: "signed deals only" changes the outlook and is kept in the link');
+    await page.click('#os-body [data-s="2"]'); await page.waitForTimeout(900);
+    ok(await page.evaluate(() => document.querySelector('#os-body [data-s="2"]').classList.contains('on') && /2028/.test(document.querySelector('#lg-ev').closest('.card').innerText)), 'planner: summer picker switches the event list');
+    await go('offseason?tab=dec', 1500);
+    ok(await page.evaluate(() => /Decisions for summer 2027/.test(document.querySelector('#os-body').innerText) && document.querySelectorAll('#main .page-head').length === 1), 'planner: the summer-2027 tables live under their own tab');
+  }
+
   // ---- Trade Finder: both modes produce ranked results with an Open link into the machine
   await go('finder', 2500);
   ok(await q('#f-t tbody tr') > 3, 'finder give: results');
@@ -159,7 +195,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     await np.goto(URL + 'home'); await np.waitForTimeout(2000);
     ok(await np.evaluate(() => !!document.querySelector('#newscard') && /Traded cap space/.test(document.querySelector('#newscard').innerText)), 'dashboard: "new on the site" card shown');
     await np.tap('#newscard [data-act="news-seen"]'); await np.waitForTimeout(200);
-    ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsSeen')) === DP.NEWS[0][0]), 'dashboard: "Got it" hides the card and remembers');
+    ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsTop')) === DP.NEWS[0][1] && DP.newsCard() === ''), 'dashboard: "Got it" hides the card and remembers');
+    ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); return one === 1 && /Offseason Planner/.test(old) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');
     ok(await np.evaluate(() => getComputedStyle(document.querySelector('#tabbar')).display === 'flex' && document.querySelectorAll('#tabbar a, #tabbar button').length === 5), 'phone: bottom bar with five entries');
     await np.tap('#tabbar a[href="#/live"]'); await np.waitForTimeout(1500);
     ok((await S()).hash === '#/live' && await np.evaluate(() => document.querySelector('#tabbar a.on').getAttribute('href') === '#/live'), 'phone: bottom bar navigates and marks the page');

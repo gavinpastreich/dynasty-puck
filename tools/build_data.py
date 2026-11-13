@@ -1381,8 +1381,8 @@ def main():
         if p["gm"]:
             fx_pay[p["gm"]] += p["sal"] / 1e6
             counts[p["gm"]][p["ct"]] += 1
-            if p.get("fs") == "IR" and CFG.get("irCapExempt", True):
-                ir_pay[p["gm"]] += p["sal"] / 1e6
+            if (p.get("fs") == "IR" and CFG.get("irCapExempt", True)) or (p.get("fs") == "M" and CFG.get("minorsCapExempt", True)):
+                ir_pay[p["gm"]] += p["sal"] / 1e6  # off this season's cap: IR and Minors slots
     for code, name in GMS:
         diff = fx_pay[code] - sheet_pay[code]
         flag = "" if abs(diff) < 0.01 else f"   <- differs by {diff:+.2f}M (Fantrax is current)"
@@ -1680,6 +1680,7 @@ def rules_from_config():
         "deadCapPct": C.get("deadCapPct", 0.5), "deadCapNote": C.get("deadCapNote", ""),
         "deadCapContracts": C.get("deadCapContracts", ["BID", "ELC1", "RFA1"]),
         "irCapExempt": C.get("irCapExempt", True), "irNote": C.get("irNote", ""),
+        "minorsCapExempt": C.get("minorsCapExempt", True), "minorsNote": C.get("minorsNote", ""),
         "gradSkater": g.get("skaterGP", 84), "gradGoalie": g.get("goalieGP", 42), "gradNote": C.get("gradNote", ""),
         "elcSalary": e.get("salary", 1.5), "elcYears": e.get("years", 2), "elcNote": e.get("note", ""),
         "minSalary": C.get("minSalary", 1.0), "lineup": C.get("lineup", {"F": 12, "D": 6, "G": 2, "bench": 3}),

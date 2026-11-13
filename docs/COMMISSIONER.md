@@ -65,6 +65,14 @@ team's own cap everywhere, adds the cap to the trade in Trade History, and lists
 current season only. If a team's cap is ever changed in Fantrax outside a trade, the build log says
 "team caps don't net to zero" and the site still uses Fantrax's figure.
 
+What counts against the cap this season: Active and Bench slots only. `irCapExempt` and `minorsCapExempt` in
+`config/league.json` (both true) take salaries in IR and Minors slots off the current season's cap; set one to false if
+the league ever changes that. Future seasons always count every contract.
+
+ELC length: the site reads whether a signed ELC is 1 or 2 years from the contract sheet's Term column, so keep that
+column filled in when ELCs are signed next summer. In the Offseason Planner each GM can try 1 or 2 years for his own
+graduating players before deciding.
+
 Cap hit penalties: `raw/2026-27/league/cap_penalties.csv` (one row per player, $M per season). The build starts it from
 the contract sheet; edit it to match Fantrax's "Cap hit penalties". Drops seen in Fantrax are added automatically.
 

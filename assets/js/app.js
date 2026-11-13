@@ -10,7 +10,7 @@
     ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
     ['League', [['standings', '📊', 'Standings'], ['cats', '🧩', 'Category Insights'], ['awards', '🏅', 'Awards & Wrapped'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
-    ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', '2027 Offseason'], ['auction', '🔨', 'Auction War Room']]],
+    ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', 'Offseason Planner'], ['auction', '🔨', 'Auction War Room']]],
     ['Prospects', [['radar', '📡', 'Prospect Radar'], ['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
     ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],
     ['About', [['rules', '📖', 'Rules & Methods'], ['data', '🗂️', 'Data & Updates']]]
@@ -123,7 +123,7 @@
 
   // ------------------------------------------------------------ global search: players, teams and pages
   // extra words people type for a page that aren't in its name
-  var PAGE_WORDS = { live: 'score scoreboard games tonight', fa: 'waivers pickups add', cap: 'salary salaries payroll space dead penalties', offseason: 'rfa ufa elc re-sign extension',
+  var PAGE_WORDS = { live: 'score scoreboard games tonight', fa: 'waivers pickups add', cap: 'salary salaries payroll space dead penalties', offseason: 'rfa ufa elc re-sign extension roster planner future contracts expiring 2027 next season',
     auction: 'bid ufa budget', trade: 'simulator analyzer three team cap space', finder: 'ideas partners targets', history: 'trades log roster moves', picks: 'draft picks', cats: 'categories needs strengths partners',
     radar: 'prospects news risers fallers rankings', prospects: 'mnr graduation minors pipeline', draft: 'rookie draft board', mock: 'mock draft', matchup: 'h2h weekly lineup odds', season: 'playoff odds simulation',
     standings: 'record seeds playoffs', values: 'trade value chart rankings', windows: 'contender rebuild title odds', preview: 'matchups lineup watch', schedule: 'streaming games off-nights playoffs',

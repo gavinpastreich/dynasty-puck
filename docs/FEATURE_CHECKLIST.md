@@ -108,4 +108,7 @@ as you ship them, and add any new ideas you come up with.
       deals), over-cap flags in the Trade Finder.
 - [x] Quality-of-life pass (2026-11-13): Back closes a player card and returns to the same spot; search finds
       pages and teams; phone bottom bar and pinned name column; "Show all"; "New on the site" card.
+- [x] Offseason Planner (2026-11-13): roster by season with every contract decision as a what-if (ELC 1 or 2 years
+      or release, re-sign terms, let go, win back at auction), cap space and roster spots it leaves; league cap
+      outlook by season; what comes off the books each summer. Minors-slot salaries off this season's cap.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).
