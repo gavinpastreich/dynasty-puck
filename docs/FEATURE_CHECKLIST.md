@@ -111,4 +111,7 @@ as you ship them, and add any new ideas you come up with.
 - [x] Offseason Planner (2026-11-13): roster by season with every contract decision as a what-if (ELC 1 or 2 years
       or release, re-sign terms, let go, win back at auction), cap space and roster spots it leaves; league cap
       outlook by season; what comes off the books each summer. Minors-slot salaries off this season's cap.
+- [x] Draft Center and Mock Draft, live (2026-11-14): the 2027 class tracked nightly on Tankathon's board (Central
+      Scouting when it publishes), risers and fallers, this season's stats, headlines, a report per player, a draft
+      news wire; mock draft with a personal queue, odds of a player lasting to your next pick, grades, copy results.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

@@ -42,7 +42,7 @@ TAGS = [   # (tag, pattern on the lower-cased headline)
 ]
 
 
-RELEVANT = re.compile(r"prospect|roster moves?|recall|\b(re)?assign|call[- ]?ups?\b|transactions?|waivers?|\bnotes\b|\breport\b|rankings?|top \d+|rookie|world junior|injur|pipeline|stock (up|watch)|risers|fallers|entry-level|\bahl\b|\bncaa\b|\bjuniors?\b|\b(ohl|whl|qmjhl|ushl|khl|shl)\b|college hockey|farm (team|report)|development camp|three stars", re.I)
+RELEVANT = re.compile(r"prospect|roster moves?|recall|\b(re)?assign|call[- ]?ups?\b|transactions?|waivers?|\bnotes\b|\breport\b|rankings?|top \d+|rookie|world junior|injur|pipeline|stock (up|watch)|risers|fallers|entry-level|\bahl\b|\bncaa\b|\bjuniors?\b|\b(ohl|whl|qmjhl|ushl|khl|shl)\b|college hockey|farm (team|report)|development camp|three stars|\bdraft\b|draft-eligible|central scouting|big board|u18|hlinka", re.I)
 
 
 def norm(s):
@@ -111,6 +111,17 @@ def tracked():
             out.append({"id": "n%s" % r["nhl"], "n": r["n"], "nhl": r["nhl"], "gm": None})
     except Exception as e:   # the news still works without the draft class
         print("  ! could not read the 2026 draft class:", e)
+    # the Draft Center's classes: everyone on the 2027 tracker and the 2027-2029 boards (no NHL ids yet, so headlines
+    # are filed under 'd27:<name key>'). A name the Radar already follows stays with the Radar.
+    try:
+        sys.path.insert(0, HERE)
+        import draft_tracker as DT
+        have = {norm(p["n"]) for p in out}
+        for c in DT.classes():
+            if norm(c["n"]) not in have:
+                out.append({"id": c["id"], "n": c["n"], "nhl": None, "gm": None, "draft": c["year"]})
+    except Exception as e:
+        print("  ! could not read the draft classes:", e)
     return out
 
 
@@ -268,7 +279,8 @@ def main():
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=0, sort_keys=True, ensure_ascii=False)
     total = sum(len(v) for v in items.values())
-    print(f"Prospect news: {len(people)} prospects tracked, {n_new} new headlines, {total} kept for {len(items)} players "
+    n_draft = sum(1 for p in people if p.get("draft"))
+    print(f"Prospect news: {len(people) - n_draft} prospects and {n_draft} draft prospects tracked, {n_new} new headlines, {total} kept for {len(items)} players "
           f"({sum(1 for s in sources if s['ok'])}/{len(sources)} sources reachable)")
     for s in sources:
         if not s["ok"]:

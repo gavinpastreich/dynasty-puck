@@ -146,7 +146,7 @@
     var h = '<div class="stats">' +
       DP.statTile('Cap space ' + Y[1], '<span class="' + (n1.space < 0 ? 'bad' : '') + '">' + U.m(n1.space) + '</span>', U.m(n1.total, 1) + ' of $' + n1.cap + 'M' + (changed ? ' · model\'s calls: ' + U.m(base.yrs[1].space, 1) : '')) +
       DP.statTile('Roster ' + Y[1], n1.n + ' / ' + ROSTER, (n1.open > 0 ? n1.open + ' open spot' + (n1.open > 1 ? 's' : '') : n1.open < 0 ? '<span class="bad">' + (-n1.open) + ' too many</span>' : 'full') + ' · F ' + n1.pos.F + ' · D ' + n1.pos.D + ' · G ' + n1.pos.G) +
-      DP.statTile('ELCs to sign', newElc.length, newElc.length ? U.m(E.sum(newElc.map(function (r) { return r.cost[1]; })), 1) + ' · ' + esc(newElc.map(function (r) { return r.p.n.split(' ').slice(-1)[0]; }).join(', ')) : 'no MNR projected to graduate this season') +
+      DP.statTile('ELCs to sign', newElc.length, newElc.length ? U.m(E.sum(newElc.map(function (r) { return r.cost[1]; })), 1) + ' · ' + newElc.map(function (r) { return r.p.n.split(' ').slice(-1)[0]; }).join(', ') : 'no MNR projected to graduate this season') +
       DP.statTile('Re-sign calls', calls.length, calls.length ? 'RFA and ELC-up decisions in summer ' + yr(1) : 'none in summer ' + yr(1)) +
       DP.statTile('Leaving', leaving.length, leaving.length ? U.m(E.sum(leaving.map(function (r) { return r.cost[0] || 0; })), 1) + ' of salary to the auction' : 'nobody hits the auction') +
       (n1.open > 0 && n1.space > 0 ? DP.statTile('Max auction bid', U.m(n1.space - (n1.open - 1) * minS, 1), U.m(n1.space / n1.open, 1) + ' per open spot · keeps $' + minS + 'M for each other spot') : '') + '</div>';

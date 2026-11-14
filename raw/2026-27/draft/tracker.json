@@ -1,0 +1,4010 @@
+{
+"css": {},
+"fetched": "2026-11-14T01:41+00:00",
+"latest": [
+{
+"dob": "2009-05",
+"ht": "6'0\"",
+"k": "landondupont",
+"lg": "NCAA",
+"ls": null,
+"n": "Landon DuPont",
+"nat": "Canada",
+"pos": "RD",
+"rk": 1,
+"s": {
+"a": 8,
+"g": 0,
+"gp": 8,
+"nhle": 27.3,
+"pts": 8
+},
+"slug": "landon-dupont",
+"team": "Michigan",
+"wt": 190
+},
+{
+"dob": "2009-05",
+"ht": "6'4\"",
+"k": "nazarprivalov",
+"lg": "KHL",
+"ls": null,
+"n": "Nazar Privalov",
+"nat": "Russia",
+"pos": "RW/C",
+"rk": 2,
+"s": {
+"a": 0,
+"g": 2,
+"gp": 18,
+"nhle": 7.3,
+"pts": 2
+},
+"slug": "nazar-privalov",
+"team": "CSKA Moskva",
+"wt": 227
+},
+{
+"dob": "2009-03",
+"ht": "6'0\"",
+"k": "sergeiskvortsov",
+"lg": "KHL",
+"ls": null,
+"n": "Sergei Skvortsov",
+"nat": "Russia",
+"pos": "LW",
+"rk": 3,
+"s": {
+"a": 1,
+"g": 1,
+"gp": 10,
+"nhle": 13.2,
+"pts": 2
+},
+"slug": "sergei-skvortsov",
+"team": "Torpedo NN",
+"wt": 163
+},
+{
+"dob": "2009-03",
+"ht": "6'3\"",
+"k": "jonahneuenschwander",
+"lg": "NL",
+"ls": null,
+"n": "Jonah Neuenschwander",
+"nat": "Switzerland",
+"pos": "F",
+"rk": 4,
+"s": {
+"a": 4,
+"g": 4,
+"gp": 19,
+"pts": 8
+},
+"slug": "jonah-neuenschwander",
+"team": "EHC Biel-Bienne",
+"wt": 187
+},
+{
+"dob": "2008-10",
+"ht": "5'11\"",
+"k": "dimazhilkin",
+"lg": "OHL",
+"ls": null,
+"n": "Dima Zhilkin",
+"nat": "Canada",
+"pos": "RW",
+"rk": 5,
+"s": {
+"a": 15,
+"g": 15,
+"gp": 20,
+"nhle": 39.7,
+"pts": 30
+},
+"slug": "dima-zhilkin",
+"team": "Saginaw",
+"wt": 196
+},
+{
+"dob": "2009-04",
+"ht": "6'1\"",
+"k": "cartermeyer",
+"lg": "QMJHL",
+"ls": null,
+"n": "Carter Meyer",
+"nat": "USA",
+"pos": "C",
+"rk": 6,
+"s": {
+"a": 13,
+"g": 7,
+"gp": 19,
+"nhle": 24.5,
+"pts": 20
+},
+"slug": "carter-meyer",
+"team": "Quebec",
+"wt": 179
+},
+{
+"dob": "2009-05",
+"ht": "6'2\"",
+"k": "milansundstrom",
+"lg": "HA",
+"ls": null,
+"n": "Milan Sundström",
+"nat": "Sweden",
+"pos": "C",
+"rk": 7,
+"s": {
+"a": 8,
+"g": 3,
+"gp": 16,
+"pts": 11
+},
+"slug": "milan-sundstrom",
+"team": "MoDo Hockey",
+"wt": 198
+},
+{
+"dob": "2009-06",
+"ht": "6'5\"",
+"k": "alexisjoseph",
+"lg": "QMJHL",
+"ls": null,
+"n": "Alexis Joseph",
+"nat": "Canada",
+"pos": "C",
+"rk": 8,
+"s": {
+"a": 10,
+"g": 8,
+"gp": 17,
+"nhle": 24.7,
+"pts": 18
+},
+"slug": "alexis-joseph",
+"team": "Saint John",
+"wt": 203
+},
+{
+"dob": "2009-08",
+"ht": "5'11\"",
+"k": "brockengland",
+"lg": "WHL",
+"ls": null,
+"n": "Brock England",
+"nat": "Canada",
+"pos": "C",
+"rk": 9,
+"s": {
+"a": 8,
+"g": 6,
+"gp": 17,
+"nhle": 20.4,
+"pts": 14
+},
+"slug": "brock-england",
+"team": "Seattle",
+"wt": 174
+},
+{
+"dob": "2008-09",
+"ht": "6'2\"",
+"k": "sammynelson",
+"lg": "NCAA",
+"ls": null,
+"n": "Sammy Nelson",
+"nat": "USA",
+"pos": "F",
+"rk": 10,
+"s": {
+"a": 2,
+"g": 3,
+"gp": 11,
+"nhle": 12.4,
+"pts": 5
+},
+"slug": "sammy-nelson",
+"team": "Notre Dame",
+"wt": 192
+},
+{
+"dob": "2009-07",
+"ht": "5'11\"",
+"k": "brockcripps",
+"lg": "WHL",
+"ls": null,
+"n": "Brock Cripps",
+"nat": "Canada",
+"pos": "RD",
+"rk": 11,
+"s": {
+"a": 19,
+"g": 1,
+"gp": 18,
+"nhle": 27.5,
+"pts": 20
+},
+"slug": "brock-cripps",
+"team": "Prince Albert",
+"wt": 168
+},
+{
+"dob": "2008-12",
+"ht": "6'3\"",
+"k": "andreipustovoy",
+"lg": "KHL",
+"ls": null,
+"n": "Andrei Pustovoy",
+"nat": "Russia",
+"pos": "RW/C",
+"rk": 12,
+"s": {
+"a": 2,
+"g": 2,
+"gp": 23,
+"nhle": 11.5,
+"pts": 4
+},
+"slug": "andrei-pustovoy",
+"team": "Lokomotiv Yaroslavl",
+"wt": 201
+},
+{
+"dob": "2009-03",
+"ht": "6'1\"",
+"k": "jaakkowycisk",
+"lg": "OHL",
+"ls": null,
+"n": "Jaakko Wycisk",
+"nat": "Canada",
+"pos": "RW/C",
+"rk": 13,
+"s": {
+"a": 10,
+"g": 5,
+"gp": 19,
+"nhle": 20.9,
+"pts": 15
+},
+"slug": "jaakko-wycisk",
+"team": "Guelph",
+"wt": 190
+},
+{
+"dob": "2008-09",
+"ht": "5'11\"",
+"k": "jamieglance",
+"lg": "QMJHL",
+"ls": null,
+"n": "Jamie Glance",
+"nat": "USA",
+"pos": "RW/C",
+"rk": 14,
+"s": {
+"a": 15,
+"g": 9,
+"gp": 19,
+"nhle": 29.4,
+"pts": 24
+},
+"slug": "jamie-glance",
+"team": "Saint John",
+"wt": 185
+},
+{
+"dob": "2008-11",
+"ht": "6'3\"",
+"k": "noahdavidson",
+"lg": "WHL",
+"ls": {
+"a": 22,
+"g": 30,
+"gp": 67,
+"nhle": 19.2,
+"pts": 52,
+"season": "2025-26"
+},
+"n": "Noah Davidson",
+"nat": "USA",
+"pos": "F",
+"rk": 15,
+"s": null,
+"slug": "noah-davidson",
+"team": "Medicine Hat",
+"wt": 216
+},
+{
+"dob": "2008-12",
+"ht": "5'10\"",
+"k": "bossemeijer",
+"lg": "SHL",
+"ls": null,
+"n": "Bosse Meijer",
+"nat": "Sweden",
+"pos": "C",
+"rk": 16,
+"s": {
+"a": 4,
+"g": 4,
+"gp": 17,
+"nhle": 23.0,
+"pts": 8
+},
+"slug": "bosse-meijer",
+"team": "Frölunda HC",
+"wt": 168
+},
+{
+"dob": "2009-06",
+"ht": "6'4\"",
+"k": "maliklitalien",
+"lg": "QMJHL",
+"ls": null,
+"n": "Malik L'Italien",
+"nat": "Canada",
+"pos": "LD",
+"rk": 17,
+"s": {
+"a": 9,
+"g": 1,
+"gp": 16,
+"nhle": 14.6,
+"pts": 10
+},
+"slug": "malik-l-italien",
+"team": "Halifax",
+"wt": 198
+},
+{
+"dob": "2009-02",
+"ht": "6'3\"",
+"k": "yevgeniyakunin",
+"lg": "MHL",
+"ls": null,
+"n": "Yevgeni Yakunin",
+"nat": "Russia",
+"pos": "C",
+"rk": 18,
+"s": {
+"a": 7,
+"g": 6,
+"gp": 9,
+"pts": 13
+},
+"slug": "yevgeni-yakunin",
+"team": "MHK Spartak Moskva",
+"wt": 194
+},
+{
+"dob": "2008-12",
+"ht": "5'11\"",
+"k": "jaxonjacobson",
+"lg": "WHL",
+"ls": null,
+"n": "Jaxon Jacobson",
+"nat": "Canada",
+"pos": "C",
+"rk": 19,
+"s": {
+"a": 14,
+"g": 6,
+"gp": 20,
+"nhle": 24.8,
+"pts": 20
+},
+"slug": "jaxon-jacobson",
+"team": "Brandon",
+"wt": 190
+},
+{
+"dob": "2009-03",
+"ht": "6'0\"",
+"k": "kaydenstroeder",
+"lg": "WHL",
+"ls": null,
+"n": "Kayden Stroeder",
+"nat": "Canada",
+"pos": "F",
+"rk": 20,
+"s": {
+"a": 10,
+"g": 8,
+"gp": 15,
+"nhle": 29.7,
+"pts": 18
+},
+"slug": "kayden-stroeder",
+"team": "Edmonton",
+"wt": 165
+},
+{
+"dob": "2008-10",
+"ht": "6'0\"",
+"k": "leviharper",
+"lg": "OHL",
+"ls": null,
+"n": "Levi Harper",
+"nat": "USA",
+"pos": "RD",
+"rk": 21,
+"s": {
+"a": 15,
+"g": 3,
+"gp": 14,
+"nhle": 34.1,
+"pts": 18
+},
+"slug": "levi-harper",
+"team": "Saginaw",
+"wt": 185
+},
+{
+"dob": "2009-02",
+"ht": "5'11\"",
+"k": "nolanfitzhenry",
+"lg": "USHL",
+"ls": null,
+"n": "Nolan Fitzhenry",
+"nat": "USA",
+"pos": "C",
+"rk": 22,
+"s": {
+"a": 6,
+"g": 3,
+"gp": 6,
+"pts": 9
+},
+"slug": "nolan-fitzhenry",
+"team": "USDP",
+"wt": 172
+},
+{
+"dob": "2008-10",
+"ht": "6'1\"",
+"k": "timothykazda",
+"lg": "OHL",
+"ls": null,
+"n": "Timothy Kazda",
+"nat": "Slovakia",
+"pos": "F",
+"rk": 23,
+"s": {
+"a": 6,
+"g": 3,
+"gp": 15,
+"nhle": 15.9,
+"pts": 9
+},
+"slug": "timothy-kazda",
+"team": "Guelph",
+"wt": 194
+},
+{
+"dob": "2009-07",
+"ht": "5'10\"",
+"k": "ryersonedgar",
+"lg": "OHL",
+"ls": null,
+"n": "Ryerson Edgar",
+"nat": "Canada",
+"pos": "C",
+"rk": 24,
+"s": {
+"a": 10,
+"g": 8,
+"gp": 18,
+"nhle": 26.5,
+"pts": 18
+},
+"slug": "ryerson-edgar",
+"team": "Niagara",
+"wt": 165
+},
+{
+"dob": "2009-07",
+"ht": "6'2\"",
+"k": "lucasantala",
+"lg": "OHL",
+"ls": null,
+"n": "Luca Santala",
+"nat": "Finland",
+"pos": "F",
+"rk": 25,
+"s": {
+"a": 4,
+"g": 9,
+"gp": 18,
+"nhle": 19.1,
+"pts": 13
+},
+"slug": "luca-santala",
+"team": "Kitchener",
+"wt": 190
+},
+{
+"dob": "2009-06",
+"ht": "6'0\"",
+"k": "maxcalce",
+"lg": "DEL",
+"ls": null,
+"n": "Max Calce",
+"nat": "Germany",
+"pos": "C",
+"rk": 26,
+"s": {
+"a": 2,
+"g": 4,
+"gp": 16,
+"pts": 6
+},
+"slug": "max-calce",
+"team": "Adler Mannheim",
+"wt": 194
+},
+{
+"dob": "2009-03",
+"ht": "6'2\"",
+"k": "alekskulemin",
+"lg": "OHL",
+"ls": null,
+"n": "Aleks Kulemin",
+"nat": "Canada",
+"pos": "C",
+"rk": 27,
+"s": {
+"a": 13,
+"g": 6,
+"gp": 20,
+"nhle": 25.2,
+"pts": 19
+},
+"slug": "aleks-kulemin",
+"team": "Kingston",
+"wt": 183
+},
+{
+"dob": "2008-11",
+"ht": "6'0\"",
+"k": "shaeffergordoncarroll",
+"lg": "WHL",
+"ls": null,
+"n": "Shaeffer Gordon-Carroll",
+"nat": "USA",
+"pos": "F",
+"rk": 28,
+"s": {
+"a": 5,
+"g": 6,
+"gp": 16,
+"nhle": 17.0,
+"pts": 11
+},
+"slug": "shaeffer-gordon-carroll",
+"team": "Medicine Hat",
+"wt": 194
+},
+{
+"dob": "2008-10",
+"ht": "5'10\"",
+"k": "petrtomek",
+"lg": "Czechia",
+"ls": null,
+"n": "Petr Tomek",
+"nat": "Czechia",
+"pos": "C",
+"rk": 29,
+"s": {
+"a": 5,
+"g": 4,
+"gp": 17,
+"nhle": 20.4,
+"pts": 9
+},
+"slug": "petr-tomek",
+"team": "Karlovy Vary",
+"wt": 165
+},
+{
+"dob": "2009-03",
+"ht": "6'3\"",
+"k": "coopermcaslan",
+"lg": "OHL",
+"ls": null,
+"n": "Cooper McAslan",
+"nat": "Canada",
+"pos": "RD",
+"rk": 30,
+"s": {
+"a": 13,
+"g": 4,
+"gp": 18,
+"nhle": 25.0,
+"pts": 17
+},
+"slug": "cooper-mcaslan",
+"team": "London",
+"wt": 201
+},
+{
+"dob": "2009-01",
+"ht": "5'10\"",
+"k": "jamesscantlebury",
+"lg": "QMJHL",
+"ls": null,
+"n": "James Scantlebury",
+"nat": "Canada",
+"pos": "C",
+"rk": 31,
+"s": {
+"a": 12,
+"g": 12,
+"gp": 19,
+"nhle": 29.4,
+"pts": 24
+},
+"slug": "james-scantlebury",
+"team": "Quebec",
+"wt": 174
+},
+{
+"dob": "2009-05",
+"ht": "6'2\"",
+"k": "diegogutierrez",
+"lg": "USHL",
+"ls": null,
+"n": "Diego Gutierrez",
+"nat": "USA",
+"pos": "RD",
+"rk": 32,
+"s": {
+"a": 1,
+"g": 0,
+"gp": 6,
+"pts": 1
+},
+"slug": "diego-gutierrez",
+"team": "USDP",
+"wt": 192
+},
+{
+"dob": "2009-01",
+"ht": "6'0\"",
+"k": "vladimirshtyrkhunov",
+"lg": "QMJHL",
+"ls": null,
+"n": "Vladimir Shtyrkhunov",
+"nat": "Russia",
+"pos": "RD",
+"rk": 33,
+"s": {
+"a": 10,
+"g": 5,
+"gp": 17,
+"nhle": 20.5,
+"pts": 15
+},
+"slug": "vladimir-shtyrkhunov",
+"team": "Shawinigan",
+"wt": 168
+},
+{
+"dob": "2009-08",
+"ht": "6'6\"",
+"k": "vilmersalenforsberg",
+"lg": "OHL",
+"ls": null,
+"n": "Vilmer Salén Forsberg",
+"nat": "Sweden",
+"pos": "G",
+"rk": 34,
+"s": null,
+"slug": "vilmer-salen-forsberg",
+"team": "Brantford",
+"wt": 220
+},
+{
+"dob": "2009-04",
+"ht": "6'6\"",
+"k": "maxmilianmares",
+"lg": "QMJHL",
+"ls": null,
+"n": "Maxmilian Mares",
+"nat": "Czechia",
+"pos": "F",
+"rk": 35,
+"s": {
+"a": 10,
+"g": 6,
+"gp": 18,
+"nhle": 20.7,
+"pts": 16
+},
+"slug": "maxmilian-mares",
+"team": "Rimouski",
+"wt": 231
+},
+{
+"dob": "2009-04",
+"ht": "6'4\"",
+"k": "gunnarconboy",
+"lg": "USHL",
+"ls": null,
+"n": "Gunnar Conboy",
+"nat": "USA",
+"pos": "C",
+"rk": 36,
+"s": {
+"a": 6,
+"g": 4,
+"gp": 11,
+"pts": 10
+},
+"slug": "gunnar-conboy",
+"team": "Green Bay",
+"wt": 201
+},
+{
+"dob": "2009-05",
+"ht": "6'3\"",
+"k": "tomasselic",
+"lg": "Czechia U20",
+"ls": null,
+"n": "Tomas Selic",
+"nat": "Slovakia",
+"pos": "RW",
+"rk": 37,
+"s": {
+"a": 3,
+"g": 1,
+"gp": 5,
+"pts": 4
+},
+"slug": "tomas-selic",
+"team": "HC Kometa Brno",
+"wt": 198
+},
+{
+"dob": "2009-01",
+"ht": "6'3\"",
+"k": "bengeiger",
+"lg": "USHL",
+"ls": null,
+"n": "Ben Geiger",
+"nat": "USA",
+"pos": "RD",
+"rk": 38,
+"s": {
+"a": 5,
+"g": 1,
+"gp": 6,
+"pts": 6
+},
+"slug": "ben-geiger",
+"team": "USDP",
+"wt": 190
+},
+{
+"dob": "2009-07",
+"ht": "5'10\"",
+"k": "douglasjohnsson",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Douglas Johnsson",
+"nat": "Sweden",
+"pos": "RD",
+"rk": 39,
+"s": {
+"a": 1,
+"g": 1,
+"gp": 4,
+"pts": 2
+},
+"slug": "douglas-johnsson",
+"team": "Skellefteå AIK",
+"wt": 170
+},
+{
+"dob": "2008-12",
+"ht": "5'11\"",
+"k": "eastonwalos",
+"lg": "OHL",
+"ls": null,
+"n": "Easton Walos",
+"nat": "USA",
+"pos": "C",
+"rk": 40,
+"s": {
+"a": 16,
+"g": 11,
+"gp": 21,
+"nhle": 34.1,
+"pts": 27
+},
+"slug": "easton-walos",
+"team": "Sarnia",
+"wt": 192
+},
+{
+"dob": "2009-02",
+"ht": "6'4\"",
+"k": "dorianeklundaspe",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Dorian Eklund Aspe",
+"nat": "Sweden",
+"pos": "F",
+"rk": 41,
+"s": {
+"a": 4,
+"g": 5,
+"gp": 16,
+"pts": 9
+},
+"slug": "dorian-eklund-aspe",
+"team": "Djurgårdens IF",
+"wt": 209
+},
+{
+"dob": "2009-04",
+"ht": "6'2\"",
+"k": "bostontait",
+"lg": "WHL",
+"ls": null,
+"n": "Boston Tait",
+"nat": "Canada",
+"pos": "LD",
+"rk": 42,
+"s": {
+"a": 4,
+"g": 2,
+"gp": 17,
+"nhle": 8.7,
+"pts": 6
+},
+"slug": "boston-tait",
+"team": "Wenatchee",
+"wt": 196
+},
+{
+"dob": "2009-03",
+"ht": "6'2\"",
+"k": "lennikokkonen",
+"lg": "U20 SM‑sarja",
+"ls": null,
+"n": "Lenni Kokkonen",
+"nat": "Finland",
+"pos": "RD",
+"rk": 43,
+"s": {
+"a": 7,
+"g": 0,
+"gp": 9,
+"pts": 7
+},
+"slug": "lenni-kokkonen",
+"team": "Kärpät",
+"wt": 194
+},
+{
+"dob": "2009-04",
+"ht": "6'2\"",
+"k": "oliverbotka",
+"lg": "Slovak",
+"ls": null,
+"n": "Oliver Botka",
+"nat": "Slovakia",
+"pos": "LD",
+"rk": 44,
+"s": {
+"a": 1,
+"g": 0,
+"gp": 8,
+"pts": 1
+},
+"slug": "oliver-botka",
+"team": "HK Nitra",
+"wt": 172
+},
+{
+"dob": "2009-02",
+"ht": "6'2\"",
+"k": "daniilyermolov",
+"lg": "MHL",
+"ls": null,
+"n": "Daniil Yermolov",
+"nat": "Russia",
+"pos": "F",
+"rk": 45,
+"s": {
+"a": 8,
+"g": 6,
+"gp": 16,
+"pts": 14
+},
+"slug": "daniil-yermolov",
+"team": "Krasnaya Armiya",
+"wt": 183
+},
+{
+"dob": "2009-01",
+"ht": "6'2\"",
+"k": "gavinburcar",
+"lg": "WHL",
+"ls": null,
+"n": "Gavin Burcar",
+"nat": "USA",
+"pos": "F",
+"rk": 46,
+"s": {
+"a": 4,
+"g": 4,
+"gp": 16,
+"nhle": 12.4,
+"pts": 8
+},
+"slug": "gavin-burcar",
+"team": "Spokane",
+"wt": 181
+},
+{
+"dob": "2009-08",
+"ht": "6'0\"",
+"k": "johnmclaughlin",
+"lg": "OHL",
+"ls": null,
+"n": "Johnny McLaughlin",
+"nat": "Canada",
+"pos": "F",
+"rk": 47,
+"s": {
+"a": 7,
+"g": 9,
+"gp": 18,
+"nhle": 23.5,
+"pts": 16
+},
+"slug": "johnny-mclaughlin",
+"team": "Windsor",
+"wt": 185
+},
+{
+"dob": "2009-01",
+"ht": "6'0\"",
+"k": "bogdanyakushevsky",
+"lg": "OHL",
+"ls": null,
+"n": "Bogdan Yakushevsky",
+"nat": "Russia",
+"pos": "RW/LW",
+"rk": 48,
+"s": {
+"a": 15,
+"g": 10,
+"gp": 20,
+"nhle": 33.1,
+"pts": 25
+},
+"slug": "bogdan-yakushevsky",
+"team": "Windsor",
+"wt": 183
+},
+{
+"dob": "2009-01",
+"ht": "6'0\"",
+"k": "oliversundberg",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Oliver Sundberg",
+"nat": "Sweden",
+"pos": "RW",
+"rk": 49,
+"s": {
+"a": 12,
+"g": 10,
+"gp": 18,
+"pts": 22
+},
+"slug": "oliver-sundberg",
+"team": "Djurgårdens IF",
+"wt": 176
+},
+{
+"dob": "2009-06",
+"ht": "6'0\"",
+"k": "michalhartl",
+"lg": "Czechia U20",
+"ls": null,
+"n": "Michal Hartl",
+"nat": "Czechia",
+"pos": "F",
+"rk": 50,
+"s": {
+"a": 7,
+"g": 3,
+"gp": 7,
+"pts": 10
+},
+"slug": "michal-hartl",
+"team": "HC Kometa Brno",
+"wt": 190
+},
+{
+"dob": "2009-06",
+"ht": "6'3\"",
+"k": "tylerhinde",
+"lg": "OHL",
+"ls": null,
+"n": "Tyler Hinde",
+"nat": "Canada",
+"pos": "F",
+"rk": 51,
+"s": {
+"a": 7,
+"g": 8,
+"gp": 19,
+"nhle": 20.9,
+"pts": 15
+},
+"slug": "tyler-hinde",
+"team": "Oshawa",
+"wt": 170
+},
+{
+"dob": "2009-05",
+"ht": "6'0\"",
+"k": "finnegansears",
+"lg": "USHL",
+"ls": null,
+"n": "Finnegan Sears",
+"nat": "USA",
+"pos": "LW",
+"rk": 52,
+"s": {
+"a": 6,
+"g": 3,
+"gp": 6,
+"pts": 9
+},
+"slug": "finnegan-sears",
+"team": "USDP",
+"wt": 201
+},
+{
+"dob": "2008-11",
+"ht": "6'7\"",
+"k": "robertsnaudins",
+"lg": "WHL",
+"ls": null,
+"n": "Roberts Naudins",
+"nat": "Latvia",
+"pos": "C/LW",
+"rk": 53,
+"s": {
+"a": 0,
+"g": 4,
+"gp": 17,
+"nhle": 5.8,
+"pts": 4
+},
+"slug": "roberts-naudins",
+"team": "Penticton",
+"wt": 212
+},
+{
+"dob": "2009-04",
+"ht": "6'2\"",
+"k": "ronikuukasjarvi",
+"lg": "U20 SM‑sarja",
+"ls": null,
+"n": "Roni Kuukasjärvi",
+"nat": "Finland",
+"pos": "RD",
+"rk": 54,
+"s": {
+"a": 10,
+"g": 0,
+"gp": 12,
+"pts": 10
+},
+"slug": "roni-kuukasjarvi",
+"team": "Ilves",
+"wt": 172
+},
+{
+"dob": "2009-02",
+"ht": "5'11\"",
+"k": "freddieschneider",
+"lg": "USHL",
+"ls": null,
+"n": "Freddie Schneider",
+"nat": "USA",
+"pos": "F",
+"rk": 55,
+"s": {
+"a": 1,
+"g": 1,
+"gp": 2,
+"pts": 2
+},
+"slug": "freddie-schneider",
+"team": "USDP",
+"wt": 165
+},
+{
+"dob": "2009-03",
+"ht": "6'7\"",
+"k": "drewroscoe",
+"lg": "OHL",
+"ls": null,
+"n": "Drew Roscoe",
+"nat": "USA",
+"pos": "RD",
+"rk": 56,
+"s": {
+"a": 0,
+"g": 0,
+"gp": 4,
+"pts": 0
+},
+"slug": "drew-roscoe",
+"team": "Saginaw",
+"wt": 209
+},
+{
+"dob": "2008-11",
+"ht": "5'11\"",
+"k": "kohyneshkawkogan",
+"lg": "OHL",
+"ls": null,
+"n": "Kohyn Eshkawkogan",
+"nat": "Canada",
+"pos": "RD",
+"rk": 57,
+"s": {
+"a": 9,
+"g": 1,
+"gp": 18,
+"nhle": 14.7,
+"pts": 10
+},
+"slug": "kohyn-eshkawkogan",
+"team": "Ottawa",
+"wt": 183
+},
+{
+"dob": "2008-10",
+"ht": "6'2\"",
+"k": "patrickdeniger",
+"lg": "QMJHL",
+"ls": null,
+"n": "Patrick Déniger",
+"nat": "Canada",
+"pos": "G",
+"rk": 58,
+"s": null,
+"slug": "patrick-deniger",
+"team": "Quebec",
+"wt": 190
+},
+{
+"dob": "2009-09",
+"ht": "6'1\"",
+"k": "brennerlammens",
+"lg": "OHL",
+"ls": null,
+"n": "Brenner Lammens",
+"nat": "Canada",
+"pos": "C",
+"rk": 59,
+"s": {
+"a": 6,
+"g": 5,
+"gp": 20,
+"nhle": 14.6,
+"pts": 11
+},
+"slug": "brenner-lammens",
+"team": "Sarnia",
+"wt": 196
+},
+{
+"dob": "2009-02",
+"ht": "6'0\"",
+"k": "noahlaus",
+"lg": "OHL",
+"ls": null,
+"n": "Noah Laus",
+"nat": "Canada",
+"pos": "F",
+"rk": 60,
+"s": {
+"a": 12,
+"g": 10,
+"gp": 21,
+"nhle": 27.7,
+"pts": 22
+},
+"slug": "noah-laus",
+"team": "Soo",
+"wt": 190
+},
+{
+"dob": "2009-01",
+"ht": "6'0\"",
+"k": "artemkatsuro",
+"lg": "WHL",
+"ls": null,
+"n": "Artem Katsuro",
+"nat": "Russia",
+"pos": "F",
+"rk": 61,
+"s": {
+"a": 10,
+"g": 10,
+"gp": 19,
+"nhle": 26.1,
+"pts": 20
+},
+"slug": "artem-katsuro",
+"team": "Calgary",
+"wt": 174
+},
+{
+"dob": "2009-03",
+"ht": "6'3\"",
+"k": "benjaminnystrom",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Benjamin Nyström",
+"nat": "Sweden",
+"pos": "F",
+"rk": 62,
+"s": {
+"a": 10,
+"g": 11,
+"gp": 18,
+"pts": 21
+},
+"slug": "benjamin-nystrom",
+"team": "Luleå HF",
+"wt": 205
+},
+{
+"dob": "2008-10",
+"ht": "5'11\"",
+"k": "hampuszirath",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Hampus Zirath",
+"nat": "Sweden",
+"pos": "RW",
+"rk": 63,
+"s": {
+"a": 13,
+"g": 7,
+"gp": 15,
+"pts": 20
+},
+"slug": "hampus-zirath",
+"team": "Djurgårdens IF",
+"wt": 172
+},
+{
+"dob": "2008-11",
+"ht": "6'2\"",
+"k": "davidhuk",
+"lg": "WHL",
+"ls": null,
+"n": "David Huk",
+"nat": "Czechia",
+"pos": "C",
+"rk": 64,
+"s": {
+"a": 6,
+"g": 5,
+"gp": 18,
+"nhle": 15.1,
+"pts": 11
+},
+"slug": "david-huk",
+"team": "Tri-City (WHL)",
+"wt": 198
+},
+{
+"dob": "2008-09",
+"ht": "6'2\"",
+"k": "odinvauhkonen",
+"lg": "WHL",
+"ls": null,
+"n": "Odin Vauhkonen",
+"nat": "USA",
+"pos": "LD",
+"rk": 65,
+"s": {
+"a": 17,
+"g": 2,
+"gp": 16,
+"nhle": 29.4,
+"pts": 19
+},
+"slug": "odin-vauhkonen",
+"team": "Victoria",
+"wt": 190
+},
+{
+"dob": "2009-01",
+"ht": "5'11\"",
+"k": "kadenmcgregor",
+"lg": "OHL",
+"ls": null,
+"n": "Kaden McGregor",
+"nat": "Canada",
+"pos": "C",
+"rk": 66,
+"s": {
+"a": 7,
+"g": 7,
+"gp": 19,
+"nhle": 19.5,
+"pts": 14
+},
+"slug": "kaden-mcgregor",
+"team": "Brantford",
+"wt": 181
+},
+{
+"dob": "2009-06",
+"ht": "6'0\"",
+"k": "alexforrest",
+"lg": "OHL",
+"ls": null,
+"n": "Alex Forrest",
+"nat": "Canada",
+"pos": "LD",
+"rk": 67,
+"s": {
+"a": 8,
+"g": 0,
+"gp": 19,
+"nhle": 11.2,
+"pts": 8
+},
+"slug": "alex-forrest",
+"team": "Kitchener",
+"wt": 165
+},
+{
+"dob": "2009-03",
+"ht": "6'1\"",
+"k": "paulsintschnig",
+"lg": "QMJHL",
+"ls": null,
+"n": "Paul Sintschnig",
+"nat": "Austria",
+"pos": "F",
+"rk": 68,
+"s": {
+"a": 6,
+"g": 3,
+"gp": 17,
+"nhle": 12.3,
+"pts": 9
+},
+"slug": "paul-sintschnig",
+"team": "Halifax",
+"wt": 179
+},
+{
+"dob": "2009-06",
+"ht": "6'1\"",
+"k": "wiggoforsberg",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Wiggo Forsberg",
+"nat": "Sweden",
+"pos": "C",
+"rk": 69,
+"s": {
+"a": 8,
+"g": 6,
+"gp": 16,
+"pts": 14
+},
+"slug": "wiggo-forsberg",
+"team": "Frölunda HC",
+"wt": 170
+},
+{
+"dob": "2009-07",
+"ht": "6'3\"",
+"k": "ryankaczynski",
+"lg": "OHL",
+"ls": null,
+"n": "Ryan Kaczynski",
+"nat": "USA",
+"pos": "F",
+"rk": 70,
+"s": {
+"a": 1,
+"g": 8,
+"gp": 11,
+"nhle": 21.7,
+"pts": 9
+},
+"slug": "ryan-kaczynski",
+"team": "Soo",
+"wt": 194
+},
+{
+"dob": "2009-05",
+"ht": "5'10\"",
+"k": "camwarren",
+"lg": "OHL",
+"ls": null,
+"n": "Cam Warren",
+"nat": "Canada",
+"pos": "F",
+"rk": 71,
+"s": {
+"a": 13,
+"g": 5,
+"gp": 19,
+"nhle": 25.1,
+"pts": 18
+},
+"slug": "cam-warren",
+"team": "North Bay",
+"wt": 159
+},
+{
+"dob": "2009-05",
+"ht": "6'2\"",
+"k": "prabhbhathal",
+"lg": "WHL",
+"ls": null,
+"n": "Prabh Bhathal",
+"nat": "Canada",
+"pos": "F",
+"rk": 72,
+"s": {
+"a": 0,
+"g": 3,
+"gp": 19,
+"nhle": 3.9,
+"pts": 3
+},
+"slug": "prabh-bhathal",
+"team": "Brandon",
+"wt": 214
+},
+{
+"dob": "2009-03",
+"ht": "5'10\"",
+"k": "jakeprunty",
+"lg": "USHL",
+"ls": null,
+"n": "Jake Prunty",
+"nat": "USA",
+"pos": "RD",
+"rk": 73,
+"s": {
+"a": 2,
+"g": 0,
+"gp": 6,
+"pts": 2
+},
+"slug": "jake-prunty",
+"team": "USDP",
+"wt": 165
+},
+{
+"dob": "2008-09",
+"ht": "6'0\"",
+"k": "rhettsather",
+"lg": "WHL",
+"ls": null,
+"n": "Rhett Sather",
+"nat": "Canada",
+"pos": "LD",
+"rk": 74,
+"s": {
+"a": 9,
+"g": 0,
+"gp": 14,
+"nhle": 15.9,
+"pts": 9
+},
+"slug": "rhett-sather",
+"team": "Spokane",
+"wt": 179
+},
+{
+"dob": "2009-06",
+"ht": "6'2\"",
+"k": "romankozhevnikov",
+"lg": "VHL",
+"ls": null,
+"n": "Roman Kozhevnikov",
+"nat": "Russia",
+"pos": "LW",
+"rk": 75,
+"s": {
+"a": 2,
+"g": 0,
+"gp": 11,
+"pts": 2
+},
+"slug": "roman-kozhevnikov",
+"team": "Chelmet Chelyabinsk",
+"wt": 201
+},
+{
+"dob": "2008-09",
+"ht": "6'1\"",
+"k": "ilyakolmakov",
+"lg": "QMJHL",
+"ls": null,
+"n": "Ilya Kolmakov",
+"nat": "Russia",
+"pos": "LW",
+"rk": 76,
+"s": {
+"a": 13,
+"g": 3,
+"gp": 16,
+"nhle": 23.3,
+"pts": 16
+},
+"slug": "ilya-kolmakov",
+"team": "Sherbrooke",
+"wt": 165
+},
+{
+"dob": "2008-10",
+"ht": "6'3\"",
+"k": "erictu",
+"lg": "WHL",
+"ls": null,
+"n": "Eric Tu",
+"nat": "China",
+"pos": "G",
+"rk": 77,
+"s": null,
+"slug": "eric-tu",
+"team": "Calgary",
+"wt": 198
+},
+{
+"dob": "2009-07",
+"ht": "6'1\"",
+"k": "maxdelisle",
+"lg": "OHL",
+"ls": null,
+"n": "Max Delisle",
+"nat": "Canada",
+"pos": "F",
+"rk": 78,
+"s": {
+"a": 11,
+"g": 7,
+"gp": 19,
+"nhle": 25.1,
+"pts": 18
+},
+"slug": "max-delisle",
+"team": "Owen Sound",
+"wt": 183
+},
+{
+"dob": "2009-02",
+"ht": "6'2\"",
+"k": "illarionbabkin",
+"lg": "MHL",
+"ls": null,
+"n": "Illarion Babkin",
+"nat": "Russia",
+"pos": "RD",
+"rk": 79,
+"s": {
+"a": 0,
+"g": 0,
+"gp": 1,
+"pts": 0
+},
+"slug": "illarion-babkin",
+"team": "Spartak-MAH Moskva",
+"wt": 185
+},
+{
+"dob": "2009-07",
+"ht": "6'0\"",
+"k": "keatonardagh",
+"lg": "OHL",
+"ls": null,
+"n": "Keaton Ardagh",
+"nat": "Canada",
+"pos": "RW",
+"rk": 80,
+"s": {
+"a": 4,
+"g": 6,
+"gp": 15,
+"nhle": 17.7,
+"pts": 10
+},
+"slug": "keaton-ardagh",
+"team": "Brampton",
+"wt": 163
+},
+{
+"dob": "2008-12",
+"ht": "6'2\"",
+"k": "filipkovalcik",
+"lg": "QMJHL",
+"ls": null,
+"n": "Filip Kovalcik",
+"nat": "Slovakia",
+"pos": "LD",
+"rk": 81,
+"s": {
+"a": 11,
+"g": 2,
+"gp": 19,
+"nhle": 15.9,
+"pts": 13
+},
+"slug": "filip-kovalcik",
+"team": "Drummondville",
+"wt": 187
+},
+{
+"dob": "2009-09",
+"ht": "5'8\"",
+"k": "lukaskachlir",
+"lg": "Czechia U20",
+"ls": null,
+"n": "Lukas Kachlir",
+"nat": "Czechia",
+"pos": "RD",
+"rk": 82,
+"s": {
+"a": 7,
+"g": 0,
+"gp": 4,
+"pts": 7
+},
+"slug": "lukas-kachlir",
+"team": "Liberec",
+"wt": 150
+},
+{
+"dob": "2009-09",
+"ht": "5'10\"",
+"k": "louikarlsson",
+"lg": "U20 Nationell",
+"ls": null,
+"n": "Loui Karlsson",
+"nat": "Sweden",
+"pos": "RW",
+"rk": 83,
+"s": {
+"a": 5,
+"g": 4,
+"gp": 15,
+"pts": 9
+},
+"slug": "loui-karlsson",
+"team": "Leksands IF",
+"wt": 176
+},
+{
+"dob": "2009-04",
+"ht": "6'2\"",
+"k": "artyommate",
+"lg": "QMJHL",
+"ls": null,
+"n": "Artyom Mate",
+"nat": "Russia",
+"pos": "LD",
+"rk": 84,
+"s": {
+"a": 2,
+"g": 0,
+"gp": 14,
+"nhle": 3.3,
+"pts": 2
+},
+"slug": "artyom-mate",
+"team": "Charlottetown",
+"wt": 196
+},
+{
+"dob": "2008-12",
+"ht": "6'4\"",
+"k": "gradypichette",
+"lg": "WHL",
+"ls": null,
+"n": "Grady Pichette",
+"nat": "Canada",
+"pos": "RD",
+"rk": 85,
+"s": {
+"a": 2,
+"g": 1,
+"gp": 15,
+"nhle": 5.0,
+"pts": 3
+},
+"slug": "grady-pichette",
+"team": "Lethbridge",
+"wt": 201
+},
+{
+"dob": "2008-11",
+"ht": "6'0\"",
+"k": "maximsimko",
+"lg": "USHL",
+"ls": null,
+"n": "Maxim Simko",
+"nat": "Slovakia",
+"pos": "C",
+"rk": 86,
+"s": {
+"a": 5,
+"g": 5,
+"gp": 14,
+"pts": 10
+},
+"slug": "maxim-simko",
+"team": "Muskegon",
+"wt": 172
+},
+{
+"dob": "2009-01",
+"ht": "5'11\"",
+"k": "roccopelosi",
+"lg": "USHL",
+"ls": null,
+"n": "Rocco Pelosi",
+"nat": "USA",
+"pos": "C",
+"rk": 87,
+"s": {
+"a": 3,
+"g": 1,
+"gp": 5,
+"pts": 4
+},
+"slug": "rocco-pelosi",
+"team": "USDP",
+"wt": 183
+},
+{
+"dob": "2009-04",
+"ht": "6'0\"",
+"k": "jonasschwarz",
+"lg": "U20 SM‑sarja",
+"ls": null,
+"n": "Jonas Schwarz",
+"nat": "Germany",
+"pos": "RW/C",
+"rk": 88,
+"s": {
+"a": 9,
+"g": 1,
+"gp": 17,
+"pts": 10
+},
+"slug": "jonas-schwarz",
+"team": "Lukko",
+"wt": 172
+},
+{
+"dob": "2009-08",
+"ht": "5'11\"",
+"k": "benharvey",
+"lg": "WHL",
+"ls": null,
+"n": "Ben Harvey",
+"nat": "Canada",
+"pos": "F",
+"rk": 89,
+"s": {
+"a": 10,
+"g": 6,
+"gp": 18,
+"nhle": 22.0,
+"pts": 16
+},
+"slug": "ben-harvey",
+"team": "Prince Albert",
+"wt": 185
+},
+{
+"dob": "2009-03",
+"ht": "6'0\"",
+"k": "ollikylmala",
+"lg": "U20 SM‑sarja",
+"ls": null,
+"n": "Olli Kylmälä",
+"nat": "Finland",
+"pos": "C",
+"rk": 90,
+"s": {
+"a": 18,
+"g": 9,
+"gp": 19,
+"pts": 27
+},
+"slug": "olli-kylmala",
+"team": "Kärpät",
+"wt": 172
+},
+{
+"dob": "2009-02",
+"ht": "6'0\"",
+"k": "charliemurata",
+"lg": "OHL",
+"ls": null,
+"n": "Charlie Murata",
+"nat": "Canada",
+"pos": "F",
+"rk": 91,
+"s": {
+"a": 2,
+"g": 5,
+"gp": 17,
+"nhle": 10.9,
+"pts": 7
+},
+"slug": "charlie-murata",
+"team": "Flint",
+"wt": 183
+},
+{
+"dob": "2009-07",
+"ht": "5'9\"",
+"k": "trevordaleyjr",
+"lg": "OHL",
+"ls": null,
+"n": "Trevor Daley Jr.",
+"nat": "USA",
+"pos": "LW",
+"rk": 92,
+"s": {
+"a": 7,
+"g": 7,
+"gp": 12,
+"nhle": 9.9,
+"pts": 14
+},
+"slug": "trevor-daley-jr",
+"team": "Soo",
+"wt": 185
+}
+],
+"p": {
+"alekskulemin": {
+"c": [],
+"n": "Aleks Kulemin",
+"r": [
+[
+"2026-09-10",
+38
+],
+[
+"2026-11-09",
+27
+]
+],
+"s": [
+[
+"2026-11-14",
+20,
+6,
+13,
+19,
+25.2
+]
+]
+},
+"alexforrest": {
+"c": [],
+"n": "Alex Forrest",
+"r": [
+[
+"2026-11-09",
+67
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+0,
+8,
+8,
+11.2
+]
+]
+},
+"alexisjoseph": {
+"c": [],
+"n": "Alexis Joseph",
+"r": [
+[
+"2026-09-10",
+3
+],
+[
+"2026-11-09",
+8
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+8,
+10,
+18,
+24.7
+]
+]
+},
+"andreipustovoy": {
+"c": [],
+"n": "Andrei Pustovoy",
+"r": [
+[
+"2026-09-10",
+10
+],
+[
+"2026-11-09",
+12
+]
+],
+"s": [
+[
+"2026-11-14",
+23,
+2,
+2,
+4,
+11.5
+]
+]
+},
+"artemkatsuro": {
+"c": [],
+"n": "Artem Katsuro",
+"r": [
+[
+"2026-11-09",
+61
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+10,
+10,
+20,
+26.1
+]
+]
+},
+"artyommate": {
+"c": [],
+"n": "Artyom Mate",
+"r": [
+[
+"2026-11-09",
+84
+]
+],
+"s": [
+[
+"2026-11-14",
+14,
+0,
+2,
+2,
+3.3
+]
+]
+},
+"bengeiger": {
+"c": [],
+"n": "Ben Geiger",
+"r": [
+[
+"2026-11-09",
+38
+]
+],
+"s": [
+[
+"2026-11-14",
+6,
+1,
+5,
+6,
+null
+]
+]
+},
+"benharvey": {
+"c": [],
+"n": "Ben Harvey",
+"r": [
+[
+"2026-11-09",
+89
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+6,
+10,
+16,
+22.0
+]
+]
+},
+"benjaminnystrom": {
+"c": [],
+"n": "Benjamin Nyström",
+"r": [
+[
+"2026-09-10",
+61
+],
+[
+"2026-11-09",
+62
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+11,
+10,
+21,
+null
+]
+]
+},
+"bogdanyakushevsky": {
+"c": [],
+"n": "Bogdan Yakushevsky",
+"r": [
+[
+"2026-11-09",
+48
+]
+],
+"s": [
+[
+"2026-11-14",
+20,
+10,
+15,
+25,
+33.1
+]
+]
+},
+"bossemeijer": {
+"c": [],
+"n": "Bosse Meijer",
+"r": [
+[
+"2026-09-10",
+16
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+4,
+4,
+8,
+23.0
+]
+]
+},
+"bostontait": {
+"c": [],
+"n": "Boston Tait",
+"r": [
+[
+"2026-09-10",
+32
+],
+[
+"2026-11-09",
+42
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+2,
+4,
+6,
+8.7
+]
+]
+},
+"brennerlammens": {
+"c": [],
+"n": "Brenner Lammens",
+"r": [
+[
+"2026-09-10",
+63
+],
+[
+"2026-11-09",
+59
+]
+],
+"s": [
+[
+"2026-11-14",
+20,
+5,
+6,
+11,
+14.6
+]
+]
+},
+"brockcripps": {
+"c": [],
+"n": "Brock Cripps",
+"r": [
+[
+"2026-09-10",
+13
+],
+[
+"2026-11-09",
+11
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+1,
+19,
+20,
+27.5
+]
+]
+},
+"brockengland": {
+"c": [],
+"n": "Brock England",
+"r": [
+[
+"2026-09-10",
+11
+],
+[
+"2026-11-09",
+9
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+6,
+8,
+14,
+20.4
+]
+]
+},
+"camwarren": {
+"c": [],
+"n": "Cam Warren",
+"r": [
+[
+"2026-09-10",
+54
+],
+[
+"2026-11-09",
+71
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+5,
+13,
+18,
+25.1
+]
+]
+},
+"cartermeyer": {
+"c": [],
+"n": "Carter Meyer",
+"r": [
+[
+"2026-09-10",
+6
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+7,
+13,
+20,
+24.5
+]
+]
+},
+"charliemurata": {
+"c": [],
+"n": "Charlie Murata",
+"r": [
+[
+"2026-09-10",
+69
+],
+[
+"2026-11-09",
+91
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+5,
+2,
+7,
+10.9
+]
+]
+},
+"coopermcaslan": {
+"c": [],
+"n": "Cooper McAslan",
+"r": [
+[
+"2026-09-10",
+41
+],
+[
+"2026-11-09",
+30
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+4,
+13,
+17,
+25.0
+]
+]
+},
+"daniilsavin": {
+"c": [],
+"n": "Daniil Savin",
+"r": [
+[
+"2026-09-10",
+55
+],
+[
+"2026-11-09",
+null
+]
+],
+"s": []
+},
+"daniilyermolov": {
+"c": [],
+"n": "Daniil Yermolov",
+"r": [
+[
+"2026-09-10",
+40
+],
+[
+"2026-11-09",
+45
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+6,
+8,
+14,
+null
+]
+]
+},
+"davidhuk": {
+"c": [],
+"n": "David Huk",
+"r": [
+[
+"2026-09-10",
+42
+],
+[
+"2026-11-09",
+64
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+5,
+6,
+11,
+15.1
+]
+]
+},
+"diegogutierrez": {
+"c": [],
+"n": "Diego Gutierrez",
+"r": [
+[
+"2026-09-10",
+24
+],
+[
+"2026-11-09",
+32
+]
+],
+"s": [
+[
+"2026-11-14",
+6,
+0,
+1,
+1,
+null
+]
+]
+},
+"dimazhilkin": {
+"c": [],
+"n": "Dima Zhilkin",
+"r": [
+[
+"2026-09-10",
+8
+],
+[
+"2026-11-09",
+5
+]
+],
+"s": [
+[
+"2026-11-14",
+20,
+15,
+15,
+30,
+39.7
+]
+]
+},
+"dorianeklundaspe": {
+"c": [],
+"n": "Dorian Eklund Aspe",
+"r": [
+[
+"2026-09-10",
+37
+],
+[
+"2026-11-09",
+41
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+5,
+4,
+9,
+null
+]
+]
+},
+"douglasjohnsson": {
+"c": [],
+"n": "Douglas Johnsson",
+"r": [
+[
+"2026-09-10",
+27
+],
+[
+"2026-11-09",
+39
+]
+],
+"s": [
+[
+"2026-11-14",
+4,
+1,
+1,
+2,
+null
+]
+]
+},
+"drewroscoe": {
+"c": [],
+"n": "Drew Roscoe",
+"r": [
+[
+"2026-11-09",
+56
+]
+],
+"s": [
+[
+"2026-11-14",
+4,
+0,
+0,
+0,
+null
+]
+]
+},
+"eastonwalos": {
+"c": [],
+"n": "Easton Walos",
+"r": [
+[
+"2026-09-10",
+70
+],
+[
+"2026-11-09",
+40
+]
+],
+"s": [
+[
+"2026-11-14",
+21,
+11,
+16,
+27,
+34.1
+]
+]
+},
+"erictu": {
+"c": [],
+"n": "Eric Tu",
+"r": [
+[
+"2026-09-10",
+53
+],
+[
+"2026-11-09",
+77
+]
+],
+"s": []
+},
+"filipkovalcik": {
+"c": [],
+"n": "Filip Kovalcik",
+"r": [
+[
+"2026-09-10",
+48
+],
+[
+"2026-11-09",
+81
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+2,
+11,
+13,
+15.9
+]
+]
+},
+"finnegansears": {
+"c": [],
+"n": "Finnegan Sears",
+"r": [
+[
+"2026-09-10",
+72
+],
+[
+"2026-11-09",
+52
+]
+],
+"s": [
+[
+"2026-11-14",
+6,
+3,
+6,
+9,
+null
+]
+]
+},
+"freddieschneider": {
+"c": [],
+"n": "Freddie Schneider",
+"r": [
+[
+"2026-11-09",
+55
+]
+],
+"s": [
+[
+"2026-11-14",
+2,
+1,
+1,
+2,
+null
+]
+]
+},
+"gavinburcar": {
+"c": [],
+"n": "Gavin Burcar",
+"r": [
+[
+"2026-09-10",
+36
+],
+[
+"2026-11-09",
+46
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+4,
+4,
+8,
+12.4
+]
+]
+},
+"gradypichette": {
+"c": [],
+"n": "Grady Pichette",
+"r": [
+[
+"2026-11-09",
+85
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+1,
+2,
+3,
+5.0
+]
+]
+},
+"gunnarconboy": {
+"c": [],
+"n": "Gunnar Conboy",
+"r": [
+[
+"2026-09-10",
+34
+],
+[
+"2026-11-09",
+36
+]
+],
+"s": [
+[
+"2026-11-14",
+11,
+4,
+6,
+10,
+null
+]
+]
+},
+"hampuszirath": {
+"c": [],
+"n": "Hampus Zirath",
+"r": [
+[
+"2026-11-09",
+63
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+7,
+13,
+20,
+null
+]
+]
+},
+"illarionbabkin": {
+"c": [],
+"n": "Illarion Babkin",
+"r": [
+[
+"2026-11-09",
+79
+]
+],
+"s": [
+[
+"2026-11-14",
+1,
+0,
+0,
+0,
+null
+]
+]
+},
+"ilyakolmakov": {
+"c": [],
+"n": "Ilya Kolmakov",
+"r": [
+[
+"2026-09-10",
+58
+],
+[
+"2026-11-09",
+76
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+3,
+13,
+16,
+23.3
+]
+]
+},
+"jaakkowycisk": {
+"c": [],
+"n": "Jaakko Wycisk",
+"r": [
+[
+"2026-09-10",
+18
+],
+[
+"2026-11-09",
+13
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+5,
+10,
+15,
+20.9
+]
+]
+},
+"jakeprunty": {
+"c": [],
+"n": "Jake Prunty",
+"r": [
+[
+"2026-09-10",
+62
+],
+[
+"2026-11-09",
+73
+]
+],
+"s": [
+[
+"2026-11-14",
+6,
+0,
+2,
+2,
+null
+]
+]
+},
+"jamesscantlebury": {
+"c": [],
+"n": "James Scantlebury",
+"r": [
+[
+"2026-09-10",
+44
+],
+[
+"2026-11-09",
+31
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+12,
+12,
+24,
+29.4
+]
+]
+},
+"jamieglance": {
+"c": [],
+"n": "Jamie Glance",
+"r": [
+[
+"2026-09-10",
+21
+],
+[
+"2026-11-09",
+14
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+9,
+15,
+24,
+29.4
+]
+]
+},
+"jaxonjacobson": {
+"c": [],
+"n": "Jaxon Jacobson",
+"r": [
+[
+"2026-09-10",
+12
+],
+[
+"2026-11-09",
+19
+]
+],
+"s": [
+[
+"2026-11-14",
+20,
+6,
+14,
+20,
+24.8
+]
+]
+},
+"johnmclaughlin": {
+"c": [],
+"n": "Johnny McLaughlin",
+"r": [
+[
+"2026-09-10",
+47
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+9,
+7,
+16,
+23.5
+]
+]
+},
+"jonahneuenschwander": {
+"c": [],
+"n": "Jonah Neuenschwander",
+"r": [
+[
+"2026-09-10",
+9
+],
+[
+"2026-11-09",
+4
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+4,
+4,
+8,
+null
+]
+]
+},
+"jonasschwarz": {
+"c": [],
+"n": "Jonas Schwarz",
+"r": [
+[
+"2026-09-10",
+57
+],
+[
+"2026-11-09",
+88
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+1,
+9,
+10,
+null
+]
+]
+},
+"kadenmcgregor": {
+"c": [],
+"n": "Kaden McGregor",
+"r": [
+[
+"2026-09-10",
+66
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+7,
+7,
+14,
+19.5
+]
+]
+},
+"kaydenstroeder": {
+"c": [],
+"n": "Kayden Stroeder",
+"r": [
+[
+"2026-09-10",
+45
+],
+[
+"2026-11-09",
+20
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+8,
+10,
+18,
+29.7
+]
+]
+},
+"keatonardagh": {
+"c": [],
+"n": "Keaton Ardagh",
+"r": [
+[
+"2026-09-10",
+67
+],
+[
+"2026-11-09",
+80
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+6,
+4,
+10,
+17.7
+]
+]
+},
+"kohyneshkawkogan": {
+"c": [],
+"n": "Kohyn Eshkawkogan",
+"r": [
+[
+"2026-09-10",
+35
+],
+[
+"2026-11-09",
+57
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+1,
+9,
+10,
+14.7
+]
+]
+},
+"landondupont": {
+"c": [],
+"n": "Landon DuPont",
+"r": [
+[
+"2026-09-10",
+1
+]
+],
+"s": [
+[
+"2026-11-14",
+8,
+0,
+8,
+8,
+27.3
+]
+]
+},
+"lennikokkonen": {
+"c": [],
+"n": "Lenni Kokkonen",
+"r": [
+[
+"2026-09-10",
+39
+],
+[
+"2026-11-09",
+43
+]
+],
+"s": [
+[
+"2026-11-14",
+9,
+0,
+7,
+7,
+null
+]
+]
+},
+"leviharper": {
+"c": [],
+"n": "Levi Harper",
+"r": [
+[
+"2026-09-10",
+30
+],
+[
+"2026-11-09",
+21
+]
+],
+"s": [
+[
+"2026-11-14",
+14,
+3,
+15,
+18,
+34.1
+]
+]
+},
+"louikarlsson": {
+"c": [],
+"n": "Loui Karlsson",
+"r": [
+[
+"2026-09-10",
+59
+],
+[
+"2026-11-09",
+83
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+4,
+5,
+9,
+null
+]
+]
+},
+"lucasantala": {
+"c": [],
+"n": "Luca Santala",
+"r": [
+[
+"2026-09-10",
+19
+],
+[
+"2026-11-09",
+25
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+9,
+4,
+13,
+19.1
+]
+]
+},
+"lukaskachlir": {
+"c": [],
+"n": "Lukas Kachlir",
+"r": [
+[
+"2026-09-10",
+51
+],
+[
+"2026-11-09",
+82
+]
+],
+"s": [
+[
+"2026-11-14",
+4,
+0,
+7,
+7,
+null
+]
+]
+},
+"maliklitalien": {
+"c": [],
+"n": "Malik L'Italien",
+"r": [
+[
+"2026-09-10",
+29
+],
+[
+"2026-11-09",
+17
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+1,
+9,
+10,
+14.6
+]
+]
+},
+"maxcalce": {
+"c": [],
+"n": "Max Calce",
+"r": [
+[
+"2026-09-10",
+31
+],
+[
+"2026-11-09",
+26
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+4,
+2,
+6,
+null
+]
+]
+},
+"maxdelisle": {
+"c": [],
+"n": "Max Delisle",
+"r": [
+[
+"2026-11-09",
+78
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+7,
+11,
+18,
+25.1
+]
+]
+},
+"maximsimko": {
+"c": [],
+"n": "Maxim Simko",
+"r": [
+[
+"2026-09-10",
+68
+],
+[
+"2026-11-09",
+86
+]
+],
+"s": [
+[
+"2026-11-14",
+14,
+5,
+5,
+10,
+null
+]
+]
+},
+"maxmilianmares": {
+"c": [],
+"n": "Maxmilian Mares",
+"r": [
+[
+"2026-09-10",
+43
+],
+[
+"2026-11-09",
+35
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+6,
+10,
+16,
+20.7
+]
+]
+},
+"michalhartl": {
+"c": [],
+"n": "Michal Hartl",
+"r": [
+[
+"2026-09-10",
+50
+]
+],
+"s": [
+[
+"2026-11-14",
+7,
+3,
+7,
+10,
+null
+]
+]
+},
+"milansundstrom": {
+"c": [],
+"n": "Milan Sundström",
+"r": [
+[
+"2026-09-10",
+4
+],
+[
+"2026-11-09",
+7
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+3,
+8,
+11,
+null
+]
+]
+},
+"nazarprivalov": {
+"c": [],
+"n": "Nazar Privalov",
+"r": [
+[
+"2026-09-10",
+2
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+2,
+0,
+2,
+7.3
+]
+]
+},
+"noahdavidson": {
+"c": [],
+"n": "Noah Davidson",
+"r": [
+[
+"2026-09-10",
+15
+]
+],
+"s": []
+},
+"noahlaus": {
+"c": [],
+"n": "Noah Laus",
+"r": [
+[
+"2026-11-09",
+60
+]
+],
+"s": [
+[
+"2026-11-14",
+21,
+10,
+12,
+22,
+27.7
+]
+]
+},
+"nolanfitzhenry": {
+"c": [],
+"n": "Nolan Fitzhenry",
+"r": [
+[
+"2026-09-10",
+23
+],
+[
+"2026-11-09",
+22
+]
+],
+"s": [
+[
+"2026-11-14",
+6,
+3,
+6,
+9,
+null
+]
+]
+},
+"odinvauhkonen": {
+"c": [],
+"n": "Odin Vauhkonen",
+"r": [
+[
+"2026-11-09",
+65
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+2,
+17,
+19,
+29.4
+]
+]
+},
+"oliverbotka": {
+"c": [],
+"n": "Oliver Botka",
+"r": [
+[
+"2026-09-10",
+46
+],
+[
+"2026-11-09",
+44
+]
+],
+"s": [
+[
+"2026-11-14",
+8,
+0,
+1,
+1,
+null
+]
+]
+},
+"oliversundberg": {
+"c": [],
+"n": "Oliver Sundberg",
+"r": [
+[
+"2026-09-10",
+60
+],
+[
+"2026-11-09",
+49
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+10,
+12,
+22,
+null
+]
+]
+},
+"ollikylmala": {
+"c": [],
+"n": "Olli Kylmälä",
+"r": [
+[
+"2026-11-09",
+90
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+9,
+18,
+27,
+null
+]
+]
+},
+"oskarsluks": {
+"c": [],
+"n": "Oskars Lūks",
+"r": [
+[
+"2026-09-10",
+49
+],
+[
+"2026-11-09",
+null
+]
+],
+"s": []
+},
+"patrickdeniger": {
+"c": [],
+"n": "Patrick Déniger",
+"r": [
+[
+"2026-11-09",
+58
+]
+],
+"s": []
+},
+"paulsintschnig": {
+"c": [],
+"n": "Paul Sintschnig",
+"r": [
+[
+"2026-11-09",
+68
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+3,
+6,
+9,
+12.3
+]
+]
+},
+"petrtomek": {
+"c": [],
+"n": "Petr Tomek",
+"r": [
+[
+"2026-09-10",
+20
+],
+[
+"2026-11-09",
+29
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+4,
+5,
+9,
+20.4
+]
+]
+},
+"prabhbhathal": {
+"c": [],
+"n": "Prabh Bhathal",
+"r": [
+[
+"2026-09-10",
+71
+],
+[
+"2026-11-09",
+72
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+3,
+0,
+3,
+3.9
+]
+]
+},
+"rhettsather": {
+"c": [],
+"n": "Rhett Sather",
+"r": [
+[
+"2026-11-09",
+74
+]
+],
+"s": [
+[
+"2026-11-14",
+14,
+0,
+9,
+9,
+15.9
+]
+]
+},
+"robertsnaudins": {
+"c": [],
+"n": "Roberts Naudins",
+"r": [
+[
+"2026-09-10",
+25
+],
+[
+"2026-11-09",
+53
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+4,
+0,
+4,
+5.8
+]
+]
+},
+"roccopelosi": {
+"c": [],
+"n": "Rocco Pelosi",
+"r": [
+[
+"2026-09-10",
+56
+],
+[
+"2026-11-09",
+87
+]
+],
+"s": [
+[
+"2026-11-14",
+5,
+1,
+3,
+4,
+null
+]
+]
+},
+"romankozhevnikov": {
+"c": [],
+"n": "Roman Kozhevnikov",
+"r": [
+[
+"2026-11-09",
+75
+]
+],
+"s": [
+[
+"2026-11-14",
+11,
+0,
+2,
+2,
+null
+]
+]
+},
+"ronikuukasjarvi": {
+"c": [],
+"n": "Roni Kuukasjärvi",
+"r": [
+[
+"2026-09-10",
+52
+],
+[
+"2026-11-09",
+54
+]
+],
+"s": [
+[
+"2026-11-14",
+12,
+0,
+10,
+10,
+null
+]
+]
+},
+"ryankaczynski": {
+"c": [],
+"n": "Ryan Kaczynski",
+"r": [
+[
+"2026-11-09",
+70
+]
+],
+"s": [
+[
+"2026-11-14",
+11,
+8,
+1,
+9,
+21.7
+]
+]
+},
+"ryersonedgar": {
+"c": [],
+"n": "Ryerson Edgar",
+"r": [
+[
+"2026-09-10",
+33
+],
+[
+"2026-11-09",
+24
+]
+],
+"s": [
+[
+"2026-11-14",
+18,
+8,
+10,
+18,
+26.5
+]
+]
+},
+"sammynelson": {
+"c": [],
+"n": "Sammy Nelson",
+"r": [
+[
+"2026-09-10",
+7
+],
+[
+"2026-11-09",
+10
+]
+],
+"s": [
+[
+"2026-11-14",
+11,
+3,
+2,
+5,
+12.4
+]
+]
+},
+"sergeiskvortsov": {
+"c": [],
+"n": "Sergei Skvortsov",
+"r": [
+[
+"2026-09-10",
+5
+],
+[
+"2026-11-09",
+3
+]
+],
+"s": [
+[
+"2026-11-14",
+10,
+1,
+1,
+2,
+13.2
+]
+]
+},
+"shaeffergordoncarroll": {
+"c": [],
+"n": "Shaeffer Gordon-Carroll",
+"r": [
+[
+"2026-09-10",
+22
+],
+[
+"2026-11-09",
+28
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+6,
+5,
+11,
+17.0
+]
+]
+},
+"timothykazda": {
+"c": [],
+"n": "Timothy Kazda",
+"r": [
+[
+"2026-09-10",
+14
+],
+[
+"2026-11-09",
+23
+]
+],
+"s": [
+[
+"2026-11-14",
+15,
+3,
+6,
+9,
+15.9
+]
+]
+},
+"tomasselic": {
+"c": [],
+"n": "Tomas Selic",
+"r": [
+[
+"2026-09-10",
+26
+],
+[
+"2026-11-09",
+37
+]
+],
+"s": [
+[
+"2026-11-14",
+5,
+1,
+3,
+4,
+null
+]
+]
+},
+"trevordaleyjr": {
+"c": [],
+"n": "Trevor Daley Jr.",
+"r": [
+[
+"2026-09-10",
+64
+],
+[
+"2026-11-09",
+92
+]
+],
+"s": [
+[
+"2026-11-14",
+12,
+7,
+7,
+14,
+9.9
+]
+]
+},
+"tylerhinde": {
+"c": [],
+"n": "Tyler Hinde",
+"r": [
+[
+"2026-11-09",
+51
+]
+],
+"s": [
+[
+"2026-11-14",
+19,
+8,
+7,
+15,
+20.9
+]
+]
+},
+"vilmersalenforsberg": {
+"c": [],
+"n": "Vilmer Salén Forsberg",
+"r": [
+[
+"2026-11-09",
+34
+]
+],
+"s": []
+},
+"vladimirshtyrkhunov": {
+"c": [],
+"n": "Vladimir Shtyrkhunov",
+"r": [
+[
+"2026-09-10",
+28
+],
+[
+"2026-11-09",
+33
+]
+],
+"s": [
+[
+"2026-11-14",
+17,
+5,
+10,
+15,
+20.5
+]
+]
+},
+"wiggoforsberg": {
+"c": [],
+"n": "Wiggo Forsberg",
+"r": [
+[
+"2026-09-10",
+65
+],
+[
+"2026-11-09",
+69
+]
+],
+"s": [
+[
+"2026-11-14",
+16,
+6,
+8,
+14,
+null
+]
+]
+},
+"yevgeniyakunin": {
+"c": [],
+"n": "Yevgeni Yakunin",
+"r": [
+[
+"2026-09-10",
+17
+],
+[
+"2026-11-09",
+18
+]
+],
+"s": [
+[
+"2026-11-14",
+9,
+6,
+7,
+13,
+null
+]
+]
+}
+},
+"seeded": "2026-09-10",
+"status": {
+"css": [
+{
+"cat": "NA skaters",
+"n": 0,
+"note": "not published yet",
+"ok": true
+},
+{
+"cat": "Intl skaters",
+"n": 0,
+"note": "not published yet",
+"ok": true
+},
+{
+"cat": "NA goalies",
+"n": 0,
+"note": "not published yet",
+"ok": true
+},
+{
+"cat": "Intl goalies",
+"n": 0,
+"note": "not published yet",
+"ok": true
+}
+],
+"tk": {
+"n": 92,
+"ok": true,
+"updated": "2026-11-09",
+"url": "https://www.tankathon.com/nhl/big-board"
+}
+},
+"tkUpdated": "2026-11-09",
+"v": 1
+}

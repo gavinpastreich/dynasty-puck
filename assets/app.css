@@ -352,3 +352,7 @@ table.plan tfoot tr.sum td { border-top: 2px solid var(--line); }
 @media (min-width: 861px) { table.plan tbody td:first-child { white-space: nowrap; } }
 select.plsel { max-width: 210px; padding: 2px 4px; font-size: .78rem; }
 select.plsel.chg { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn); }
+
+/* Draft Center: rank-history chart labels */
+svg text.ax { font-size: 10px; fill: var(--muted); }
+.list-plain.mvlist li { display: block; }

@@ -119,10 +119,35 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await page.click('#g-reset'); await page.waitForTimeout(1500);
   ok(await page.evaluate(() => document.querySelectorAll('#g-out [data-rm]').length) === 0, 'signing: reset');
 
+  // ---- Draft Center: 2027 class (live board), a report, the news wire, risers/fallers windows
+  await go('draft', 1800);
+  ok(await q('#c27 tbody tr') >= 30 && await page.evaluate(() => /Tankathon/.test(document.querySelector('#dc-body').innerText)), 'draft: the 2027 class is listed from the live board');
+  const firstName = await page.evaluate(() => document.querySelector('#c27 tbody tr a.plink').textContent);
+  await page.evaluate(() => document.querySelector('#c27 tbody tr a.plink').click()); await page.waitForTimeout(1200);
+  ok(await page.evaluate((n) => document.querySelector('#main h1').textContent === n && /Tankathon rank/.test(document.querySelector('#main').innerText) && /League pick/.test(document.querySelector('#main').innerText), firstName), 'draft: a name opens his report (rank, production, league pick)');
+  await page.goBack(); await page.waitForTimeout(1200);
+  await page.click('#dc-body [data-w="30"]'); await page.waitForTimeout(900);
+  ok(/w=30/.test(await page.evaluate(() => location.hash)) && await page.evaluate(() => document.querySelector('[data-w="30"]').classList.contains('on')), 'draft: the movement window is kept in the link');
+  await go('draft?tab=news', 1500);
+  ok(await page.evaluate(() => document.querySelectorAll('#dc-body .newsitem').length > 0 || /No headlines/.test(document.querySelector('#dc-body').innerText)), 'draft: news wire lists headlines (or says there are none)');
+  if (await q('#dc-body [data-cls="2026"]')) { await page.click('#dc-body [data-cls="2026"]'); await page.waitForTimeout(900); ok(/cls=2026/.test(await page.evaluate(() => location.hash)), 'draft: news wire filters by class'); }
+
+  // ---- Mock draft: queue, odds at my next pick, auto-pick by queue
+  await page.evaluate(() => localStorage.removeItem('dp_mockq_M.M'));
+  await go('mock?team=M.M', 1500);
+  const qk = await page.evaluate(() => { const b = document.querySelectorAll('#mk-avail [data-star]'); b[4].click(); return b[4].dataset.star; }); await page.waitForTimeout(600);
+  ok(await page.evaluate((k) => JSON.parse(localStorage.getItem('dp_mockq_M.M') || '[]')[0] === k && /My queue/.test(document.querySelector('#main').innerText), qk), 'mock: ★ puts a player in my queue');
+  await page.click('#mk-odds'); await page.waitForTimeout(3500);
+  ok(await page.evaluate(() => [...document.querySelectorAll('#mk-avail thead th')].some((t) => /Still there at/.test(t.textContent)) || /No more picks/.test(document.querySelector('#main').innerText)), 'mock: odds add a "still there at my next pick" column');
+  await page.click('#mk-auto'); await page.waitForTimeout(1500);
+  ok(await page.evaluate((k) => { const s = [...document.querySelectorAll('#mk-log tbody tr.mine')][0]; return s && s.querySelector('a') && s.querySelector('a').getAttribute('href').indexOf(k.split(':')[1] || k) >= 0; }, qk), 'mock: auto-pick takes the queued player at my first pick');
+  ok(await page.evaluate(() => /Draft complete/.test(document.querySelector('#main').innerText) && /vs slot value/.test(document.querySelector('#main').innerText)), 'mock: grades at the end');
+  await page.evaluate(() => localStorage.removeItem('dp_mockq_M.M'));
+
   // ---- Mock draft: draft for a team to the end
   await go('mock?team=M.M');
   for (let i = 0; i < 10; i++) { const b = await page.$('[data-draft]'); if (!b) break; await b.click(); await page.waitForTimeout(250); }
-  ok(await page.evaluate(() => /Draft complete/.test(document.querySelector('#main h2').innerText)), 'mock: draft completes');
+  ok(await page.evaluate(() => /Draft complete/.test(document.querySelector('#main').innerText)), 'mock: draft completes');
   ok(await page.evaluate(() => [...document.querySelectorAll('#mk-log tbody tr')].every((r) => r.children[2].innerText.trim())), 'mock: every pick filled');
 
   // ---- Auction sale tracker (prompt dialogs)
@@ -193,7 +218,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     const np = await nc.newPage(); const nerr = []; np.on('pageerror', (e) => nerr.push(e.message));
     const S = () => np.evaluate(() => ({ hash: location.hash, card: document.querySelector('#modal-bg').classList.contains('open'), y: Math.round(scrollY), h1: (document.querySelector('#main h1') || {}).textContent }));
     await np.goto(URL + 'home'); await np.waitForTimeout(2000);
-    ok(await np.evaluate(() => !!document.querySelector('#newscard') && /Traded cap space/.test(document.querySelector('#newscard').innerText)), 'dashboard: "new on the site" card shown');
+    ok(await np.evaluate(() => !!document.querySelector('#newscard') && document.querySelector('#newscard').innerText.indexOf(DP.NEWS[0][1]) >= 0), 'dashboard: "new on the site" card shown');
     await np.tap('#newscard [data-act="news-seen"]'); await np.waitForTimeout(200);
     ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsTop')) === DP.NEWS[0][1] && DP.newsCard() === ''), 'dashboard: "Got it" hides the card and remembers');
     ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); return one === 1 && /Offseason Planner/.test(old) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');

@@ -59,6 +59,11 @@ The site rebuilds itself about 3 minutes later.
 | `alerts` | Phone-topic prefix, the league email address, reminder timing. |
 | `hometownDiscount` | Share off the winning bid for the player's own team, and the trade deadline (`"2027-01-29T23:59:00-05:00"`) that decides who qualifies. Update the deadline every season. |
 
+Draft tracker: nothing to do. The nightly refresh reads Tankathon's 2027 big board and NHL Central Scouting (from
+January) and keeps the history in `raw/2026-27/draft/tracker.json`. If Tankathon changes its page and the read fails,
+the job prints "draft tracker fetch failed" and the site keeps the last good board. To refresh the hand-written
+profiles (style, ceiling, notes), edit `tools/research/boards_src.py` and run `python tools/research/make_boards.py`.
+
 Traded cap space: nothing to do. When cap is part of a trade, Fantrax changes the two teams' salary caps, and the
 nightly refresh reads each team's cap from Fantrax (the site also re-reads it on every visit). The site then shows that
 team's own cap everywhere, adds the cap to the trade in Trade History, and lists it in the roster log. It applies to the

@@ -1,6 +1,74 @@
 {
-"fetched": "2026-11-13T23:21+00:00",
+"fetched": "2026-11-14T01:30+00:00",
 "items": {
+"d27:alexisjoseph": [
+{
+"d": "2026-11-06",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: QMJHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-qmjhl-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:brockcripps": [
+{
+"d": "2026-11-10",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Brock Cripps (RD)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-brock-cripps-rd",
+"w": 2
+},
+{
+"d": "2026-11-05",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: WHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step-whl/",
+"w": 1
+}
+],
+"d27:landondupont": [
+{
+"d": "2026-11-07",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: USA Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-usa-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:maliklitalien": [
+{
+"d": "2026-11-06",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: QMJHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-qmjhl-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:nolanfitzhenry": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "The Hockey News",
+"t": "Prospect Watch: Nolan Fitzhenry 'Brings A Ton' To NTDP As Leader On And Off The Ice",
+"u": "https://thehockeynews.com/news/latest-news/prospect-watch-nolan-fitzhenry-brings-a-ton-to-ntdp-as-leader-on-and-off-the-ice",
+"w": 2
+}
+],
+"d28:maddoxschultz": [
+{
+"d": "2026-11-08",
+"k": [],
+"s": "The Hockey News",
+"t": "USA Hockey Domination Continues At U17 World Challenge, Maddox Schultz Shines",
+"u": "https://thehockeynews.com/news/latest-news/usa-hockey-domination-continues-at-u17-world-challenge-maddox-schultz-shines",
+"w": 2
+}
+],
 "n8482100": [
 {
 "d": "2026-10-27",
@@ -1448,6 +1516,16 @@
 "w": 1
 }
 ],
+"n8486063": [
+{
+"d": "2026-11-13",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers prospect Brek Liske commits to Wisconsin for 2027-28 season",
+"u": "https://www.broadstreethockey.com/post/flyers-prospect-brek-liske-commits-to-wisconsin-for-2027-28-season/",
+"w": 2
+}
+],
 "n8486067": [
 {
 "d": "2026-11-13",
@@ -1649,7 +1727,7 @@
 },
 "sources": [
 {
-"n": 86,
+"n": 83,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1672,7 +1750,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1693,7 +1771,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -1707,7 +1785,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1798,7 +1876,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -1896,7 +1974,7 @@
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -1917,7 +1995,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -1931,7 +2009,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -1952,7 +2030,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -1964,7 +2042,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 13,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
@@ -1985,5 +2063,5 @@
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 }
 ],
-"tracked": 490
+"tracked": 636
 }

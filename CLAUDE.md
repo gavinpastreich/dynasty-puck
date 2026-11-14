@@ -24,11 +24,12 @@ data sources are in **`docs/REBUILD_PLAN.md`**. Read it first. The feature check
 list are in **`docs/FEATURE_CHECKLIST.md`**. Work through all of it.
 
 In-season pieces added in November 2026 (how they work is in `docs/BUILD_NOTES.md`, upkeep in `docs/COMMISSIONER.md`):
-the live scoreboard (`tools/scoreboard.py`, the `live-data` branch), Category Insights, and the Prospect Radar
-(`tools/research/scrape_news.py`, `tools/prospect_radar.js`). If you change the prospect model in
+the live scoreboard (`tools/scoreboard.py`, the `live-data` branch), Category Insights, the Prospect Radar
+(`tools/research/scrape_news.py`, `tools/prospect_radar.js`), traded cap space, the Offseason Planner, and the draft
+tracker behind the Draft Center and Mock Draft (`tools/research/draft_tracker.py`). If you change the prospect model in
 `assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
-Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`, and the
-browser runs in `tools/test/` (they need Playwright).
+Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`,
+`check_draft.js`, `python tools/test/check_fantrax.py`, and the browser runs in `tools/test/` (they need Playwright).
 
 ## League facts (quick reference)
 - 15 weekly H2H categories. Skaters: Pt-D, G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor.

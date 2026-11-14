@@ -288,3 +288,29 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     the same day as a dismissal still show; the old date key is read once as "seen up to Traded cap space".
   - Test note: Chromium drops localStorage for file:// pages on reload, so persistence of a plan across reloads was
     checked over http (python -m http.server), not in flows_check.js.
+- Draft Center and Mock Draft, live (2026-11-14; assets/js/pages-draft.js, tools/research/draft_tracker.py):
+  - The September boards (tools/research/board_2027-2029.json, make_boards.py) were a one-time build. The 2027 class
+    is now read every night from Tankathon's big board: one page with rank, bio and this season's GP/G/A/P plus
+    Tankathon's NHLe for ~92 players (the page repeats some blocks: first one per rank wins), and from NHL Central
+    Scouting via api-web.nhle.com/v1/draft/rankings/2027/{1-4} (404 until the January midterm list; the site says so).
+  - Tankathon shows LAST season's line, labelled "25-26 GP", for a player with no games yet this season (Noah
+    Davidson on 2026-11-14). The tracker stores that as `ls` with its season and never as this season's `s`;
+    check_draft.js asserts it.
+  - raw/2026-27/draft/tracker.json: per player (name key = ascii letters of the name, shared with the site's
+    DP.draftKey), rank history [[date, rank|null]] stored on change and dated by Tankathon's update, stat snapshots
+    [[date, gp, g, a, pts, nhle]] stored when GP changes, Central Scouting entries. Seeded with the September
+    board's Tankathon ranks (dated 2026-09-10), so movement is Tankathon vs Tankathon. data/draft.js = rows + news.
+  - Nightly order: draft_tracker.py fetch -> scrape_news.py (now also tracks every 2027-2029 board name, filed as
+    d27:/d28:/d29:<key>; a name the Radar already follows stays with the Radar) -> prospect_radar.js ->
+    draft_tracker.py publish. Two feeds added for draft coverage: the CHL and Recruit Scouting.
+  - A Fantrax player counts as "in Fantrax"/owned for a 2027 prospect only if born in 2008 or later (a name match with
+    an older player is ignored). Owned 2027 prospects are left out of the mock pool (none today).
+  - Draft Center tabs: 2027 class (live rank, movement since September / 30 days / last board update, this season,
+    P/GP vs last season, NHLe, preseason consensus, Central Scouting, projected league pick, curated profile, 📰),
+    risers and fallers with the reason, a report per player (#/draft?p=<key>[&y=2028]), a news wire across the
+    2026-2029 classes, the 2026 NHL draft with this season and Radar rank/stock, league drafts with each pick's stock
+    change this season, 2028/2029 watch lists with reports. Old #/draft?tab=b2027 links open the 2027 class.
+  - Mock Draft moved here from pages-warroom.js. Queue (localStorage dp_mockq_<team>), odds = 500 drafts from the
+    current point for each of your later picks, DP.mockProjection() = 300 all-AI drafts (~0.4 s, cached per engine
+    version) for the Draft Center's "League pick". The mock's internals are on DP._mock for check_draft.js.
+

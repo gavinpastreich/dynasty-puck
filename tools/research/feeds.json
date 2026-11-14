@@ -47,6 +47,8 @@
     {"name": "Last Word on Hockey", "url": "https://lastwordonsports.com/hockey/feed/"},
     {"name": "ESPN NHL", "url": "https://www.espn.com/espn/rss/nhl/news"},
     {"name": "NBC Sports NHL", "url": "https://www.nbcsports.com/nhl.rss"},
-    {"name": "RotoWire NHL player news", "url": "https://www.rotowire.com/rss/news.php?sport=NHL"}
+    {"name": "RotoWire NHL player news", "url": "https://www.rotowire.com/rss/news.php?sport=NHL"},
+    {"name": "CHL (Canadian Hockey League)", "url": "https://chl.ca/feed/"},
+    {"name": "Recruit Scouting (draft rankings)", "url": "https://recruitscouting.com/feed/"}
   ]
 }
