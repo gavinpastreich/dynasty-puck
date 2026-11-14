@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-14T12:14+00:00",
+"fetched": "2026-11-14T16:38+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -26,6 +26,16 @@
 "s": "McKeen's Hockey",
 "t": "NHL PROSPECTS: WHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step-whl/",
+"w": 1
+}
+],
+"d27:daniilyermolov": [
+{
+"d": "2026-11-14",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: RUSSIA Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-russia-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
 }
 ],
@@ -153,6 +163,16 @@
 "w": 1
 }
 ],
+"n8482209": [
+{
+"d": "2026-11-14",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Sam Honzek plays his first AHL game in 18 months on Saturday night",
+"u": "https://flamesnation.ca/news/sam-honzek-calgary-wranglers-return-brett-sutter-plan-2026",
+"w": 1
+}
+],
 "n8482661": [
 {
 "d": "2026-11-13",
@@ -217,6 +237,14 @@
 ],
 "n8483424": [
 {
+"d": "2026-11-14",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Chris Kreider out 6-8 weeks with lower body injury",
+"u": "https://www.habseyesontheprize.com/chris-kreider-out-6-8-weeks-with-lower-body-injury-montreal-canadiens-habs/",
+"w": 1
+},
+{
 "d": "2026-10-22",
 "k": [
 "call-up"
@@ -268,6 +296,18 @@
 "s": "NHL.com (team site)",
 "t": "‘On the right track’: Panthers loan forward Jack Devine to AHL",
 "u": "https://www.nhl.com/news/on-the-right-track-panthers-loan-forward-jack-devine-to-ahl",
+"w": 2
+}
+],
+"n8483442": [
+{
+"d": "2026-11-14",
+"k": [
+"call-up"
+],
+"s": "NHL.com",
+"t": "Firkus to make NHL debut for Kraken in Global Series finale",
+"u": "https://www.nhl.com/news/jagger-firkus-nhl-debut-for-kraken-in-global-series-finale",
 "w": 2
 }
 ],
@@ -387,6 +427,18 @@
 "t": "Stamkos, Preds Prevail Over Lightning in Halloween Shootout",
 "u": "https://www.nhl.com/news/stamkos-preds-prevail-over-lightning-in-halloween-shootout-2026-10-31",
 "w": 1
+}
+],
+"n8483516": [
+{
+"d": "2026-11-14",
+"k": [
+"injury"
+],
+"s": "McKeen's Hockey",
+"t": "NHL: CULLEN – 20 FANTASY POINTS – Massive injuries in Colorado, plus Dawson Mercer, Shane Pinto, Jimmy Snuggerud, and Tommy Novak producing while William Nylander is not, plus so much more!",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-cullen-20-fantasy-points-massive-injuries-colorado-dawson-mercer-shane-pinto-jimmy-snuggerud-tommy-novak-producing-william-nylander-not-more/",
+"w": 2
 }
 ],
 "n8483525": [
@@ -553,6 +605,16 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-14",
+"k": [
+"contract"
+],
+"s": "The Hockey Writers",
+"t": "Projecting Jacob Fowler’s Next Contract With the Canadiens",
+"u": "https://thehockeywriters.com/projecting-jacob-fowlers-next-contract-with-the-canadiens/",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Habs Eyes on the Prize (MTL)",
@@ -640,16 +702,6 @@
 "s": "NHL.com (team site)",
 "t": "Fowler makes career-high 46 saves, Canadiens blank Blues for third win in row",
 "u": "https://www.nhl.com/news/montreal-canadiens-st-louis-blues-game-recap-october-27-2026-x1993",
-"w": 2
-},
-{
-"d": "2026-10-26",
-"k": [
-"hot"
-],
-"s": "NHL.com (team site)",
-"t": "Fowler named NHL’s third star of the week",
-"u": "https://www.nhl.com/news/fowler-named-nhl-s-third-star-of-the-week-oct-26-2026",
 "w": 2
 }
 ],
@@ -869,6 +921,14 @@
 }
 ],
 "n8484768": [
+{
+"d": "2026-11-14",
+"k": [],
+"s": "The Win Column (CGY)",
+"t": "Zayne Parekh is breaking out in a big way",
+"u": "https://thewincolumn.ca/2026/11/14/zayne-parekh-is-breaking-out-in-a-big-way/",
+"w": 2
+},
 {
 "d": "2026-11-12",
 "k": [],
@@ -1536,6 +1596,14 @@
 ],
 "n8486063": [
 {
+"d": "2026-11-14",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers Prospect Report: Liske heating up, Gill getting settled",
+"u": "https://www.broadstreethockey.com/post/flyers-prospect-report-liske-heating-up-gill-getting-settled/",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Broad Street Hockey (PHI)",
@@ -1745,7 +1813,7 @@
 },
 "sources": [
 {
-"n": 84,
+"n": 85,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1775,7 +1843,7 @@
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -1789,7 +1857,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -1817,7 +1885,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1831,7 +1899,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -1999,14 +2067,14 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },

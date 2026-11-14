@@ -72,8 +72,8 @@
   },
   "BOS": {
    "team": "Boston Bruins",
-   "updated": "2026-11-13",
-   "source": "Jack Studley",
+   "updated": "2026-11-14",
+   "source": "Belle Fraser",
    "url": "https://www.dailyfaceoff.com/teams/boston-bruins/line-combinations",
    "pp1": [
     "Morgan Geekie",
@@ -86,7 +86,7 @@
     "Matthew Poitras",
     "Fraser Minten",
     "Casey Mittelstadt",
-    "Mason Lohrei",
+    "Hampus Lindholm",
     "JJ Peterka"
    ],
    "pk1": [
@@ -130,8 +130,8 @@
     "Will Borgen"
    ],
    "d3": [
-    "Jonathan Aspirot",
-    "Mason Lohrei"
+    "Frederic Brunet",
+    "Connor Clifton"
    ],
    "goalies": [
     "Jeremy Swayman",
@@ -276,7 +276,7 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-11-13",
+   "updated": "2026-11-14",
    "source": "Tom Gulitti",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
@@ -485,7 +485,7 @@
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
     "Matthew Knies",
-    "Sean Monahan",
+    "Cole Sillinger",
     "Charlie Coyle",
     "Zach Werenski",
     "Kent Johnson"
@@ -498,26 +498,26 @@
     "Ivan Provorov"
    ],
    "pk1": [
-    "Sean Monahan",
+    "Charlie Coyle",
     "Valeri Nichushkin",
     "Ivan Provorov",
     "Damon Severson"
    ],
    "pk2": [
-    "Charlie Coyle",
+    "Cole Sillinger",
     "Mathieu Olivier",
     "Dante Fabbro",
     "Denton Mateychuk"
    ],
    "f1": [
-    "Matthew Knies",
-    "Sean Monahan",
-    "Kent Johnson"
-   ],
-   "f2": [
     "Dmitri Voronkov",
     "Adam Fantilli",
     "Valeri Nichushkin"
+   ],
+   "f2": [
+    "Matthew Knies",
+    "Luca Del Bel Belluz",
+    "Kent Johnson"
    ],
    "f3": [
     "Cole Sillinger",
@@ -752,8 +752,8 @@
   },
   "FLA": {
    "team": "Florida Panthers",
-   "updated": "2026-11-13",
-   "source": "Last Game (2026-11-12)",
+   "updated": "2026-11-14",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "pp1": [
     "Brady Tkachuk",
@@ -783,7 +783,7 @@
    ],
    "f1": [
     "Brady Tkachuk",
-    "Sam Bennett",
+    "Anton Lundell",
     "Matthew Tkachuk"
    ],
    "f2": [
@@ -793,7 +793,7 @@
    ],
    "f3": [
     "Eetu Luostarinen",
-    "Anton Lundell",
+    "Sam Bennett",
     "Sandis Vilmanis"
    ],
    "f4": [
@@ -956,7 +956,7 @@
   },
   "MTL": {
    "team": "Montreal Canadiens",
-   "updated": "2026-11-13",
+   "updated": "2026-11-14",
    "source": "Last Game (2026-11-12)",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "pp1": [
@@ -967,7 +967,7 @@
     "Lane Hutson"
    ],
    "pp2": [
-    "Chris Kreider",
+    "Kirby Dach",
     "Oliver Kapanen",
     "Alexandre Texier",
     "Noah Dobson",
@@ -996,14 +996,14 @@
     "Alexandre Texier"
    ],
    "f3": [
-    "Chris Kreider",
-    "Jake Evans",
-    "Josh Anderson"
-   ],
-   "f4": [
     "Alex Newhook",
     "Oliver Kapanen",
     "Kirby Dach"
+   ],
+   "f4": [
+    "Florian Xhekaj",
+    "Jake Evans",
+    "Josh Anderson"
    ],
    "d1": [
     "Lane Hutson",
@@ -1018,8 +1018,8 @@
     "Alexandre Carrier"
    ],
    "goalies": [
-    "Jacob Fowler",
-    "Jakub Dobes"
+    "Jakub Dobes",
+    "Jacob Fowler"
    ]
   },
   "NSH": {
@@ -1567,8 +1567,8 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-11-13",
-   "source": "Tom Gulitti",
+   "updated": "2026-11-14",
+   "source": "Mike Benton",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1587,7 +1587,7 @@
    "pk1": [
     "Frederick Gaudreau",
     "Ben Meyers",
-    "Joshua Mahura",
+    "Ryan Lindgren",
     "Adam Larsson"
    ],
    "pk2": [
@@ -1625,8 +1625,8 @@
     "Brandon Montour"
    ],
    "d3": [
-    "Joshua Mahura",
-    "Ville Ottavainen"
+    "Ryan Lindgren",
+    "Cale Fleury"
    ],
    "goalies": [
     "Joey Daccord",
@@ -1832,8 +1832,8 @@
     "Cole McWard"
    ],
    "goalies": [
-    "Sergei Bobrovsky",
-    "Anthony Stolarz"
+    "Anthony Stolarz",
+    "Sergei Bobrovsky"
    ]
   },
   "UTA": {
