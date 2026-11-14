@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-14T04:01+00:00",
+"fetched": "2026-11-14T12:14+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -112,6 +112,14 @@
 }
 ],
 "n8482193": [
+{
+"d": "2026-11-14",
+"k": [],
+"s": "NHL.com",
+"t": "Rangers get four goals in second, top Canucks for fifth win in six games",
+"u": "https://www.nhl.com/news/new-york-rangers-vancouver-canucks-game-recap-november-13-2026",
+"w": 1
+},
 {
 "d": "2026-11-13",
 "k": [],
@@ -1737,7 +1745,7 @@
 },
 "sources": [
 {
-"n": 83,
+"n": 84,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
