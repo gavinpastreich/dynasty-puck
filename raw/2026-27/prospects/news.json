@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-14T01:30+00:00",
+"fetched": "2026-11-14T02:04+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -1236,6 +1236,16 @@
 ],
 "n8484987": [
 {
+"d": "2026-11-14",
+"k": [
+"call-up"
+],
+"s": "The Hockey Writers",
+"t": "Devils Recall Defenseman Anton Silayev From Utica",
+"u": "https://thehockeywriters.com/devils-recall-defenseman-anton-silayev-from-utica/",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [
 "call-up"
@@ -1750,14 +1760,14 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -1771,7 +1781,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "4 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -1799,7 +1809,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -2030,7 +2040,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2042,7 +2052,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 13,
+"n": 0,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
@@ -2061,6 +2071,20 @@
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
+},
+{
+"n": 10,
+"name": "CHL (Canadian Hockey League)",
+"note": "0 new matches",
+"ok": true,
+"url": "https://chl.ca/feed/"
+},
+{
+"n": 10,
+"name": "Recruit Scouting (draft rankings)",
+"note": "0 new matches",
+"ok": true,
+"url": "https://recruitscouting.com/feed/"
 }
 ],
 "tracked": 636

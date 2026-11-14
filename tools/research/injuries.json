@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -996,18 +996,6 @@
    "date": "2026-11-12",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Filip Chytil",
-   "team": "VAN",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Chytil (upper-body) has been placed on IR.",
-   "date": "2026-10-30",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "holdout": false
   },
   {

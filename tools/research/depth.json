@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -1227,8 +1227,8 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-11-13",
-   "source": "Vince Mercogliano",
+   "updated": "2026-11-14",
+   "source": "Mollie Walker",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1906,8 +1906,8 @@
   },
   "VAN": {
    "team": "Vancouver Canucks",
-   "updated": "2026-11-12",
-   "source": "Thomas Drance",
+   "updated": "2026-11-14",
+   "source": "Brendan Batchelor",
    "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
    "pp1": [
     "Jake DeBrusk",
