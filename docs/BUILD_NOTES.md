@@ -313,4 +313,20 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Mock Draft moved here from pages-warroom.js. Queue (localStorage dp_mockq_<team>), odds = 500 drafts from the
     current point for each of your later picks, DP.mockProjection() = 300 all-AI drafts (~0.4 s, cached per engine
     version) for the Draft Center's "League pick". The mock's internals are on DP._mock for check_draft.js.
+- Buy Low / Sell High and The Weekly (2026-11-14; assets/js/pages-luck.js, assets/js/pages-weekly.js):
+  - DP.luck(): per skater with 15+ shots this season, expected goals from his normal Sh% (last three completed
+    seasons' goals / shots from p.h, shrunk toward last season's league rate for F or D with 120 shots); per goalie
+    with 4+ GP, goals saved vs his normal SV% (1,500 shots of league weight) on shots against estimated from
+    GAA x GP / (1 - SV%) (p.ytd has no shots against). Flags at |goals| >= 3 (goalies 6) and |z| >= 1.5. "Projection
+    assumes" = (p26 G - ytd G) / (p26 SOG - ytd SOG), blank when p26's full-season total is below what he already
+    has (a few players: the projection's GP sits under games already played).
+  - On 2026-11-14 the projection blend already expects most hot shooters to cool (Lehkonen 15.1% vs his 15.2%
+    norm), but not all (Bouchard 9.0% vs 7.6%).
+  - The Weekly: DP.weeklyData(n) from E.history() (results, all-play, standings before/after rebuilt from the
+    games), the roster log (trades by date, adds dated up to the morning after the week), players of the week
+    from data/weeks/wNN.js (loaded on demand), and for the latest week only the Radar, draft tracker, luck flags
+    and the next week's marquee/closest by E.matchupProbs on the baseline. "Copy for the chat" gives plain text.
+  - Team Hub gets a "Luck check" card (DP.luckTeamCard); the dashboard links both pages.
+  - tools/test/check_weekly.js (2,619 checks: the luck math and flags against the formulas, every week's results,
+    margins, standings and players of the week against the raw lines); in the nightly sanity step.
 

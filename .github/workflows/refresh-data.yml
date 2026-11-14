@@ -100,5 +100,6 @@ jobs:
           node tools/test/check_trade.js || rc=1
           node tools/test/check_radar.js || rc=1
           node tools/test/check_draft.js || rc=1
+          node tools/test/check_weekly.js || rc=1
           python tools/test/check_fantrax.py || rc=1
           exit $rc

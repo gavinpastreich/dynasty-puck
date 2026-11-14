@@ -356,3 +356,4 @@ select.plsel.chg { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn);
 /* Draft Center: rank-history chart labels */
 svg text.ax { font-size: 10px; fill: var(--muted); }
 .list-plain.mvlist li { display: block; }
+.list-plain.mvlist li.mine-li { background: color-mix(in srgb, var(--accent) 9%, transparent); }

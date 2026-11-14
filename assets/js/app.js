@@ -7,9 +7,9 @@
 
   var NAV = [
     ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['alerts', '🔔', 'Alerts']]],
-    ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards']]],
+    ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards'], ['luck', '🎰', 'Buy Low / Sell High']]],
     ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
-    ['League', [['standings', '📊', 'Standings'], ['cats', '🧩', 'Category Insights'], ['awards', '🏅', 'Awards & Wrapped'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['League', [['standings', '📊', 'Standings'], ['cats', '🧩', 'Category Insights'], ['awards', '🏅', 'Awards & Wrapped'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['weekly', '🗞️', 'The Weekly'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', 'Offseason Planner'], ['auction', '🔨', 'Auction War Room']]],
     ['Prospects', [['radar', '📡', 'Prospect Radar'], ['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
     ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],
@@ -128,7 +128,7 @@
     radar: 'prospects news risers fallers rankings', prospects: 'mnr graduation minors pipeline', draft: 'rookie draft board', mock: 'mock draft', matchup: 'h2h weekly lineup odds', season: 'playoff odds simulation',
     standings: 'record seeds playoffs', values: 'trade value chart rankings', windows: 'contender rebuild title odds', preview: 'matchups lineup watch', schedule: 'streaming games off-nights playoffs',
     injuries: 'injury ir depth lines', rules: 'methods how it works model glossary', data: 'updates upload sources freshness', alerts: 'email push notifications calendar reminders', compare: 'versus side by side',
-    leaders: 'leaderboards best top', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
+    leaders: 'leaderboards best top', luck: 'regression luck shooting percentage hot cold sell high buy low trade targets', weekly: 'recap newsletter results last week standings movers players of the week', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
   DP.recent = U.store.get('recent', []);
   DP.noteRecent = function (id) { // last few player cards opened, for the empty search box
     DP.recent = [id].concat(DP.recent.filter(function (x) { return x !== id; })).slice(0, 6);

@@ -38,5 +38,5 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
   gives each team's draft-slot distribution, so the value of losing could be priced for non-contenders.
 - **Injury-adjusted everything.** Feed Daily Faceoff injury status and line changes into weekly projections
   automatically (the plumbing exists; lineups can already auto-bench injured players).
-- **Voice-of-the-league newsletter.** A weekly auto-written column (power-ranking movers, trade grades, prospect
+- ~~Voice-of-the-league newsletter~~ **The Weekly done 2026-11-14** (a recap page with copy-for-the-chat; not yet emailed). A weekly auto-written column (power-ranking movers, trade grades, prospect
   of the week) published as a page on the site.

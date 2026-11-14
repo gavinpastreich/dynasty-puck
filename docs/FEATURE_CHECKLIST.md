@@ -114,4 +114,8 @@ as you ship them, and add any new ideas you come up with.
 - [x] Draft Center and Mock Draft, live (2026-11-14): the 2027 class tracked nightly on Tankathon's board (Central
       Scouting when it publishes), risers and fallers, this season's stats, headlines, a report per player, a draft
       news wire; mock draft with a personal queue, odds of a player lasting to your next pick, grades, copy results.
+- [x] Buy Low / Sell High (2026-11-14): shooting % and save % regression watch with sell-high candidates on your
+      roster, buy-low targets elsewhere, cold free agents, and whether the projection already expects regression.
+- [x] The Weekly (2026-11-14): auto-written recap of every finished week (results, luck, standings movers, players of
+      the week, moves, what to watch) with a copy-for-the-chat button.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

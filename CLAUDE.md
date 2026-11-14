@@ -29,7 +29,7 @@ the live scoreboard (`tools/scoreboard.py`, the `live-data` branch), Category In
 tracker behind the Draft Center and Mock Draft (`tools/research/draft_tracker.py`). If you change the prospect model in
 `assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
 Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`,
-`check_draft.js`, `python tools/test/check_fantrax.py`, and the browser runs in `tools/test/` (they need Playwright).
+`check_draft.js`, `check_weekly.js`, `python tools/test/check_fantrax.py`, and the browser runs in `tools/test/` (they need Playwright).
 
 ## League facts (quick reference)
 - 15 weekly H2H categories. Skaters: Pt-D, G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor.

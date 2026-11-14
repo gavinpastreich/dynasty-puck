@@ -151,7 +151,7 @@
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
           DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(s.cap[0].cap, s.cap[0].adj ? 1 : 0) + (s.cap[0].adj ? ' (' + U.sm(s.cap[0].adj, 1) + ' traded)' : '') + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
           (nm ? DP.statTile((E.weeks[nm[0] - 1].po ? 'Playoffs' : 'Week ' + nm[0]) + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
-          '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
+          '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/weekly">🗞️ Last week\'s recap →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/luck">Buy low / sell high →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
           .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
         var sc = DP.league.score;
@@ -268,6 +268,7 @@
       h += '<div class="card"><h2>Cap by season <a class="btn sm" href="' + U.hash('offseason', null, { team: t === DP.state.team ? undefined : t }) + '" style="margin-left:auto">Plan next season →</a></h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
       h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
       h += DP.radarTeamCard ? DP.radarTeamCard(t) : '';
+      h += DP.luckTeamCard ? DP.luckTeamCard(t) : '';
       h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes every week still to lock with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
       h += '<div class="card"><h2>Lineup usage by week</h2><div class="hint">How often each player makes the optimal weekly lineup (24 regular-season weeks). Part-time starters are your streaming and trade chips.</div><div id="t-usage"></div></div>';
       h += '<div class="card span2"><h2>Full roster</h2><div id="t-roster"></div></div>';

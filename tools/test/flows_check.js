@@ -144,6 +144,27 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => /Draft complete/.test(document.querySelector('#main').innerText) && /vs slot value/.test(document.querySelector('#main').innerText)), 'mock: grades at the end');
   await page.evaluate(() => localStorage.removeItem('dp_mockq_M.M'));
 
+  // ---- Buy Low / Sell High: filters, cards, links into the Trade Finder
+  await go('luck', 1500);
+  ok(await q('#lk-t tbody tr') > 3 && await page.evaluate(() => /Sell high on your roster|Buy-low targets/.test(document.querySelector('#main').innerText)), 'luck: flagged players and the cards for my team');
+  await page.click('[data-k="G"]'); await page.waitForTimeout(900);
+  ok(/k=G/.test(await page.evaluate(() => location.hash)) && await page.evaluate(() => [...document.querySelectorAll('#lk-t thead th')].some((t) => /SV%/.test(t.textContent))), 'luck: goalie view');
+  await page.evaluate(() => { const s = document.querySelector('#lk-sig'); s.value = 'all'; s.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(900);
+  ok(/sig=all/.test(await page.evaluate(() => location.hash)) && await q('#lk-t tbody tr') > 10, 'luck: "everyone" shows unflagged goalies too');
+  const fl = await page.evaluate(() => { const a = document.querySelector('#main .card a.btn[href*="finder"]'); return a ? a.getAttribute('href') : null; });
+  ok(!fl || /mode=(give|get)/.test(fl), 'luck: card buttons open the Trade Finder in the right mode');
+
+  // ---- The Weekly: a finished week's recap, week switch, players of the week, copy for the chat
+  await go('weekly', 2500);
+  ok(await page.evaluate(() => /Results/.test(document.querySelector('#main').innerText) && /Team of the week/.test(document.querySelector('#main').innerText) && document.querySelectorAll('#main table.t tbody tr').length === 14), 'weekly: results, story and standings');
+  ok(await page.evaluate(() => /Players of the week|aren't published/.test(document.querySelector('#wk-stars').innerText)), 'weekly: players of the week load from the week file');
+  await page.evaluate(() => { const s = document.querySelector('#wk-n'); s.value = s.options[s.options.length - 1].value; s.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(1500);
+  ok(/w=1/.test(await page.evaluate(() => location.hash)) && await page.evaluate(() => /Week 1 ·/.test(document.querySelector('#main').innerText) && !/What to watch/.test(document.querySelector('#main').innerText)), 'weekly: an older week, without the "what to watch" section');
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
+  await page.click('#wk-copy'); await page.waitForTimeout(500);
+  const txt = await page.evaluate(() => navigator.clipboard.readText().catch(() => ''));
+  ok(!txt || (/^THE WEEKLY/.test(txt) && /def\.|tied/.test(txt) && /#\/weekly\?w=1/.test(txt)), 'weekly: copy for the chat gives the plain-text recap');
+
   // ---- Mock draft: draft for a team to the end
   await go('mock?team=M.M');
   for (let i = 0; i < 10; i++) { const b = await page.$('[data-draft]'); if (!b) break; await b.click(); await page.waitForTimeout(250); }
