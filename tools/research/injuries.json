@@ -273,7 +273,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -632,8 +632,8 @@
    "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Shesterkin (lower-body) will miss the rest of the 2026-27 season.",
-   "date": "2026-10-10",
+   "detail": "Shesterkin (lower-body) has been placed on Season Ending Injury Reserve.",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
@@ -669,7 +669,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "holdout": false
@@ -741,7 +741,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-14",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -751,9 +751,9 @@
    "team": "PIT",
    "status": "IR",
    "injury": "",
-   "ret": "In camp",
-   "detail": "van Riemsdyk (lower-body) was a full participant in practice on Tuesday.",
-   "date": "2026-11-10",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false
@@ -1041,7 +1041,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-13",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false

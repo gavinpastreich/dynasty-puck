@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-15T12:47+00:00",
+"fetched": "2026-11-15T17:08+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -8,6 +8,16 @@
 "s": "McKeen's Hockey",
 "t": "NHL PROSPECTS: QMJHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-qmjhl-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:bossemeijer": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: SWEDEN Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-sweden-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
 }
 ],
@@ -308,6 +318,14 @@
 }
 ],
 "n8483442": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "A Sprint Across The Atlantic For Firkus Parents",
+"u": "https://www.nhl.com/news/seattle-kraken-jagger-firkus-debut-parents-travel-to-finland-nhl-global-series",
+"w": 2
+},
 {
 "d": "2026-11-14",
 "k": [
@@ -742,6 +760,14 @@
 }
 ],
 "n8484177": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Lenni Hameenaho: Three-point effort in win",
+"u": "https://www.rotowire.com//hockey/player/lenni-hameenaho-6969",
+"w": 2
+},
 {
 "d": "2026-11-13",
 "k": [],
@@ -1288,6 +1314,22 @@
 ],
 "n8484873": [
 {
+"d": "2026-11-15",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Cole Hutson now leads all NHL rookies in scoring after registering three assists against Devils",
+"u": "https://russianmachineneverbreaks.com/2026/11/15/cole-hutson-leads-all-nhl-rookies-scoring-three-assists-capitals-devils/",
+"w": 2
+},
+{
+"d": "2026-11-15",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Cole Hutson: Three helpers in Saturday's loss",
+"u": "https://www.rotowire.com//hockey/player/cole-hutson-7187",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [
 "hot"
@@ -1658,6 +1700,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-15",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Cole Hutson now leads all NHL rookies in scoring after registering three assists against Devils",
+"u": "https://russianmachineneverbreaks.com/2026/11/15/cole-hutson-leads-all-nhl-rookies-scoring-three-assists-capitals-devils/",
+"w": 1
+},
+{
 "d": "2026-11-14",
 "k": [],
 "s": "The Leafs Nation (TOR)",
@@ -1743,14 +1793,6 @@
 "s": "Maple Leafs Hot Stove (TOR)",
 "t": "Jim Hiller on Tavares’ return bumping McKenna to the Leafs’ PP2: “Gavin really becomes a focus on that second group, where the puck really runs through him… That’s a good thing, too”",
 "u": "https://mapleleafshotstove.com/2026/11/06/jim-hiller-on-tavares-return-bumping-mckenna-to-the-leafs-pp2/",
-"w": 2
-},
-{
-"d": "2026-11-02",
-"k": [],
-"s": "NHL.com",
-"t": "Gavin McKenna Watch: Maple Leafs prepare for six-game homestand",
-"u": "https://www.nhl.com/news/gavin-mckenna-watch-toronto-maple-leafs-prepare-for-six-game-homestand",
 "w": 2
 }
 ],
@@ -1867,7 +1909,7 @@
 },
 "sources": [
 {
-"n": 85,
+"n": 87,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -1876,7 +1918,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1890,7 +1932,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -1911,7 +1953,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -1939,7 +1981,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -1953,7 +1995,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -2093,7 +2135,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2135,7 +2177,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -2149,7 +2191,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2163,7 +2205,7 @@
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },
@@ -2198,7 +2240,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
