@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-14T16:38+00:00",
+"fetched": "2026-11-15T12:47+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -175,6 +175,14 @@
 ],
 "n8482661": [
 {
+"d": "2026-11-14",
+"k": [],
+"s": "The Hockey News",
+"t": "Taking Down The Walls: How A Summer Reset Prepared Wild's Jesper Wallstedt For A Dominant Season",
+"u": "https://thehockeynews.com/news/latest-news/taking-down-the-walls-how-a-summer-reset-prepared-wilds-jesper-wallstedt-for-a-dominant-season",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "NHL.com",
@@ -308,6 +316,16 @@
 "s": "NHL.com",
 "t": "Firkus to make NHL debut for Kraken in Global Series finale",
 "u": "https://www.nhl.com/news/jagger-firkus-nhl-debut-for-kraken-in-global-series-finale",
+"w": 2
+},
+{
+"d": "2026-11-14",
+"k": [
+"call-up"
+],
+"s": "The AHL",
+"t": "With parents on hand, Firkus makes NHL debut in Helsinki",
+"u": "https://www.nhl.com/kraken/news/seattle-kraken-jagger-firkus-debut-parents-travel-to-finland-nhl-global-series#new_tab?utm_source=rss&utm_medium=rss&utm_campaign=firkus-makes-nhl-debut-in-helsinki",
 "w": 2
 }
 ],
@@ -443,6 +461,14 @@
 ],
 "n8483525": [
 {
+"d": "2026-11-14",
+"k": [],
+"s": "NHL Rumors",
+"t": "NHL Rumors: The Red Wings Aren’t Biting on Yurov and Three First-Rounders",
+"u": "https://s47317.pcdn.co/nhl-rumors-the-red-wings-arent-biting-on-yurov-and-three-first-rounders/2026/11/14/",
+"w": 2
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "NHL.com",
@@ -502,6 +528,16 @@
 "s": "Pensburgh (PIT)",
 "t": "Murashov shares exchange with Flames goaltender Devin Cooley",
 "u": "https://www.pensburgh.com/general/83010/murashov-shares-exchange-with-flames-goaltender-devin-cooley",
+"w": 2
+}
+],
+"n8484142": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Takeaways: Barkey, Michkov lead Flyers to comeback win in Columbus",
+"u": "https://www.broadstreethockey.com/post/takeaways-barkey-michkov-lead-flyers-to-comeback-in-columbus/",
 "w": 2
 }
 ],
@@ -1226,6 +1262,14 @@
 ],
 "n8484860": [
 {
+"d": "2026-11-15",
+"k": [],
+"s": "Sportsnet",
+"t": "Flames’ Gridin capitalizes on turnover to score go-ahead goal",
+"u": "https://www.sportsnet.ca/nhl/video/flames-gridin-capitalizes-on-turnover-to-score-go-ahead-goal/",
+"w": 2
+},
+{
 "d": "2026-11-06",
 "k": [],
 "s": "The Win Column (CGY)",
@@ -1614,6 +1658,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-14",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Gavin McKenna expands on what he likes about his game, staying focused with limited ice time",
+"u": "https://theleafsnation.com/news/gavin-mckenna-expands-likes-game-focused-limited-ice-time",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -1700,14 +1752,6 @@
 "t": "Gavin McKenna Watch: Maple Leafs prepare for six-game homestand",
 "u": "https://www.nhl.com/news/gavin-mckenna-watch-toronto-maple-leafs-prepare-for-six-game-homestand",
 "w": 2
-},
-{
-"d": "2026-11-02",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Jim Hiller’s usage of Gavin McKenna is becoming impossible to ignore",
-"u": "https://editorinleaf.com/jim-hiller-s-usage-of-gavin-mckenna-is-becoming-impossible-to-ignore?utm_source=RSS",
-"w": 2
 }
 ],
 "n8486074": [
@@ -1768,6 +1812,16 @@
 "w": 2
 }
 ],
+"n8486237": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "The Dispatch: Rögle coach Dan Tangnes talks about rival prospects Luc Koblar and Nils Bartholdsson",
+"u": "https://www.habseyesontheprize.com/the-dispatch-podcast-rogle-coach-dan-tangnes-talks-about-rival-prospects-luc-koblar-and-nils-bartholdsson-shl-toronto-maple-leafs-boston-bruins/",
+"w": 2
+}
+],
 "n8486300": [
 {
 "d": "2026-11-10",
@@ -1822,7 +1876,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -1836,14 +1890,14 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -1857,7 +1911,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2032,14 +2086,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "3 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2067,14 +2121,14 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },
@@ -2095,7 +2149,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2109,7 +2163,7 @@
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },
