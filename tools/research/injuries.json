@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -10,18 +10,6 @@
    "ret": "",
    "detail": "Greer has been placed on IR with an upper-body injury.",
    "date": "2026-11-02",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Ian Moore",
-   "team": "ANA",
-   "status": "IR",
-   "injury": "lower body",
-   "ret": "Months",
-   "detail": "Moore (lower body) could return by the end of the week.",
-   "date": "2026-11-11",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -150,9 +138,9 @@
    "name": "Cale Makar",
    "team": "COL",
    "status": "OUT",
-   "injury": "lower-body",
+   "injury": "",
    "ret": "",
-   "detail": "Makar (lower-body) will not play Saturday in Montreal.",
+   "detail": "Makar is expected to miss a couple of weeks with a lower-body injury.",
    "date": "2026-11-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
@@ -174,9 +162,9 @@
    "name": "Nathan MacKinnon",
    "team": "COL",
    "status": "OUT",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "MacKinnon (lower-body) will not play Saturday in Montreal.",
+   "injury": "",
+   "ret": "Months",
+   "detail": "MacKinnon will miss at least a month with a lower-body injury.",
    "date": "2026-11-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
@@ -201,7 +189,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -213,7 +201,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-15",
+   "date": "2026-11-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -351,6 +339,18 @@
    "holdout": false
   },
   {
+   "name": "Ryan Nugent-Hopkins",
+   "team": "EDM",
+   "status": "OUT",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Nugent-Hopkins (undisclosed) is out vs. Philadelphia on Sunday.",
+   "date": "2026-11-15",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Aleksander Barkov",
    "team": "FLA",
    "status": "IR",
@@ -447,13 +447,25 @@
    "holdout": false
   },
   {
+   "name": "Josh Anderson",
+   "team": "MTL",
+   "status": "IR",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Anderson (lower-body) will be out for approximately 3-4 weeks.",
+   "date": "2026-11-15",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Mike Matheson",
    "team": "MTL",
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Matheson (lower-body) will not play Saturday vs. the Avalanche.",
-   "date": "2026-11-14",
+   "detail": "Matheson (lower-body) is expected to be out for 2-3 weeks.",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -711,6 +723,18 @@
    "holdout": false
   },
   {
+   "name": "Denver Barkey",
+   "team": "PHI",
+   "status": "OUT",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Barkey (illness) is out vs. Edmonton on Sunday.",
+   "date": "2026-11-15",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/philadelphia-flyers/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Nikita Grebenkin",
    "team": "PHI",
    "status": "IR",
@@ -787,9 +811,9 @@
    "team": "SJS",
    "status": "DTD",
    "injury": "undisclosed",
-   "ret": "",
-   "detail": "Wennberg (undisclosed) will not play Saturday in Utah.",
-   "date": "2026-11-14",
+   "ret": "Day-to-day",
+   "detail": "Wennberg (undisclosed) is out vs. Nashville on Sunday and is considered day-to-day.",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "holdout": false
@@ -807,6 +831,18 @@
    "holdout": false
   },
   {
+   "name": "Kiefer Sherwood",
+   "team": "SJS",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Sherwood (upper-body) left Sunday's game vs. Nashville and did not return.",
+   "date": "2026-11-16",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Dillon Dube",
    "team": "STL",
    "status": "IR",
@@ -814,6 +850,18 @@
    "ret": "",
    "detail": "Dube will be re-evaluated in eight weeks after suffering a neck injury vs. San Jose.",
    "date": "2026-10-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Philip Broberg",
+   "team": "STL",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "Day-to-day",
+   "detail": "Broberg (lower-body) is not practicing on Sunday and is considered day-to-day.",
+   "date": "2026-11-15",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
    "holdout": false

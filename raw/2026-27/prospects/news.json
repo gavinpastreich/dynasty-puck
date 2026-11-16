@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-15T17:08+00:00",
+"fetched": "2026-11-16T13:41+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -90,6 +90,14 @@
 }
 ],
 "n8482100": [
+{
+"d": "2026-11-15",
+"k": [],
+"s": "NHL Rumors",
+"t": "The Toronto Maple Leafs Need Blue Help … What About Alexander Nikishin?",
+"u": "https://s47317.pcdn.co/the-toronto-maple-leafs-need-blue-help-what-about-alexander-nikishin/2026/11/15/",
+"w": 2
+},
 {
 "d": "2026-10-27",
 "k": [
@@ -659,6 +667,14 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-16",
+"k": [],
+"s": "NHL.com",
+"t": "Trophy Tracker: Fowler of Canadiens choice for Calder as best rookie",
+"u": "https://www.nhl.com/news/calder-trophy-tracker-montreal-canadiens-jacob-fowler-early-favorite-november-16-2026",
+"w": 2
+},
+{
 "d": "2026-11-14",
 "k": [
 "contract"
@@ -748,14 +764,6 @@
 "s": "NHL.com",
 "t": "Fowler sets Canadiens record for saves by rookie, team 'gave me a chance'",
 "u": "https://www.nhl.com/news/jacob-fowler-sets-montreal-canadiens-record-for-saves-by-rookie",
-"w": 2
-},
-{
-"d": "2026-10-28",
-"k": [],
-"s": "NHL.com (team site)",
-"t": "Fowler makes career-high 46 saves, Canadiens blank Blues for third win in row",
-"u": "https://www.nhl.com/news/montreal-canadiens-st-louis-blues-game-recap-october-27-2026-x1993",
 "w": 2
 }
 ],
@@ -857,6 +865,35 @@
 }
 ],
 "n8484220": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Monday Habs Headlines: David Reinbacher feels well-prepared for his promotion",
+"u": "https://www.habseyesontheprize.com/montreal-canadiens-news-david-reinbacher-recall-lane-hutson-power-play-comments-rangers-100-years-centennial-connor-mcdavid-assist-record-wayne-gretzky-cutter-guathier-goal-streak-iihf-russia-ban/",
+"w": 2
+},
+{
+"d": "2026-11-15",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Canadiens Recall David Reinbacher; Place Josh Anderson On IR",
+"u": "https://www.prohockeyrumors.com/2026/11/canadiens-recall-david-reinbacher-place-josh-anderson-on-ir.html",
+"w": 2
+},
+{
+"d": "2026-11-15",
+"k": [
+"call-up",
+"injury"
+],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "David Reinbacher recalled by Montreal Canadiens, Josh Anderson placed on IR",
+"u": "https://www.habseyesontheprize.com/david-reinbacher-recalled-by-montreal-canadiens-josh-anderson-placed-on-ir-mike-matheson-samuel-montembeault-ivan-demidov/",
+"w": 2
+},
 {
 "d": "2026-10-21",
 "k": [
@@ -1680,6 +1717,16 @@
 "w": 1
 }
 ],
+"n8486037": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "Game Report – Soo Greyhounds 5 – London Knights 4 – November 13th, 2026",
+"u": "https://draftprospectshockey.com/articles/game-report-soo-greyhounds-5-london-knights-4-november-13th-2026",
+"w": 1
+}
+],
 "n8486063": [
 {
 "d": "2026-11-14",
@@ -1699,6 +1746,22 @@
 }
 ],
 "n8486067": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "NHL.com",
+"t": "Gavin McKenna Watch: No. 1 pick, Maple Leafs face Bedard in Chicago",
+"u": "https://www.nhl.com/news/gavin-mckenna-watch-maple-leafs-set-to-face-connor-bedard-blackhawks",
+"w": 2
+},
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Gavin McKenna admits limited ice time is making it harder to contribute",
+"u": "https://editorinleaf.com/gavin-mckenna-admits-limited-ice-time-is-making-it-harder-to-contribute?utm_source=RSS",
+"w": 2
+},
 {
 "d": "2026-11-15",
 "k": [],
@@ -1778,22 +1841,16 @@
 "t": "Jim Hiller is messing with a good thing by taking Gavin McKenna off top power play unit",
 "u": "https://editorinleaf.com/jim-hiller-is-messing-with-a-good-thing-by-taking-gavin-mckenna-off-top-power-play-unit?utm_source=RSS",
 "w": 2
-},
+}
+],
+"n8486072": [
 {
-"d": "2026-11-06",
+"d": "2026-11-16",
 "k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna reacts to Jim Hiller’s controversial power-play decision",
-"u": "https://editorinleaf.com/gavin-mckenna-reacts-to-jim-hiller-s-controversial-power-play-decision?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-06",
-"k": [],
-"s": "Maple Leafs Hot Stove (TOR)",
-"t": "Jim Hiller on Tavares’ return bumping McKenna to the Leafs’ PP2: “Gavin really becomes a focus on that second group, where the puck really runs through him… That’s a good thing, too”",
-"u": "https://mapleleafshotstove.com/2026/11/06/jim-hiller-on-tavares-return-bumping-mckenna-to-the-leafs-pp2/",
-"w": 2
+"s": "Draft Prospects Hockey",
+"t": "Game Report – Soo Greyhounds 5 – London Knights 4 – November 13th, 2026",
+"u": "https://draftprospectshockey.com/articles/game-report-soo-greyhounds-5-london-knights-4-november-13th-2026",
+"w": 1
 }
 ],
 "n8486074": [
@@ -1953,7 +2010,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -1967,7 +2024,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -1995,7 +2052,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -2128,7 +2185,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "2 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2177,7 +2234,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -2205,14 +2262,14 @@
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2240,7 +2297,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },

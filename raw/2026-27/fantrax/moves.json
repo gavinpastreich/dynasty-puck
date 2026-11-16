@@ -1181,5 +1181,31 @@
 "to": "M.M",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-16",
+"id": "023wa",
+"type": "drop",
+"from": "mcianfra",
+"ct": "FA",
+"sal": 1000000,
+"n": "Spurgeon, Jared"
+},
+{
+"d": "2026-11-16",
+"id": "03rik",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "Terry, Troy"
+},
+{
+"d": "2026-11-16",
+"id": "05gtp",
+"type": "add",
+"to": "nbracken",
+"ct": "FA",
+"sal": 1000000
 }
 ]
