@@ -1207,5 +1207,22 @@
 "to": "nbracken",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-16",
+"id": "04f0u",
+"type": "add",
+"to": "mertin",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-16",
+"id": "051uw",
+"type": "drop",
+"from": "mertin",
+"ct": "FA",
+"sal": 1000000,
+"n": "Caulfield, Judd"
 }
 ]

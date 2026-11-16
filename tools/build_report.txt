@@ -1,5 +1,5 @@
-Dynasty Puck HQ build 2026-11-16T13:39:08
-Fantrax: 3 roster changes since 2026-11-15T17:05:36+00:00
+Dynasty Puck HQ build 2026-11-16T20:26:32
+Fantrax: 2 roster changes since 2026-11-16T13:39:09+00:00
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -19,10 +19,10 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Eric Pohlkamp: FA -> mertin (Fantrax)
   > Charle-Edouard D'Astous: FA -> mertin (Fantrax)
   > Vitali Pinchuk: FA -> mertin (Fantrax)
+  > Dylan Samberg: FA -> mertin (Fantrax)
   > Kasperi Kapanen: FA -> mertin (Fantrax)
   > Logan Stanley: FA -> mertin (Fantrax)
   > William Carrier: FA -> mertin (Fantrax)
-  > Judd Caulfield: FA -> mertin (Fantrax)
   > Jack Roslovic: FA -> BHHC (Fantrax)
   > Noah Warren: FA -> BHHC (Fantrax)
   > Mikael Granlund: FA -> BHHC (Fantrax)
@@ -84,10 +84,10 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-16T13:39:09+00:00): 620 rostered; changes vs CSV: {'owner': 59, 'dropped': 24}
+Fantrax sync (2026-11-16T20:26:33+00:00): 620 rostered; changes vs CSV: {'owner': 59, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1295 players (620 rostered)
-NHL id match: {'index': 1175, 'search': 117, None: 3}; unmatched 3 (rostered: 0)
+NHL id match: {'index': 1177, 'search': 115, None: 3}; unmatched 3 (rostered: 0)
 Landing pages: 1248/1248
 Cor translation (n=772): Cor = 1.045*SAT5v5 + 0.103*PPmin + -0.070*SHmin + -0.027*GP   R^2=0.975
 Tk check: Fantrax 2025-26 Tk equals NHL takeaways (+-1) for 772/772 matched skaters
@@ -143,7 +143,7 @@ NHL games outside the fantasy calendar: 0
 Season to date (20262027): 850 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
 Scoreboard: week 7 2026-11-09..2026-11-15: ROO 53 skater GP, M.M 57 skater GP, mertin 56 skater GP, BHHC 52 skater GP …
 Weekly history: 7 finished weeks (6 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-16): 1208 line/PP/goalie tags; injuries matched 94/94
+Depth (Daily Faceoff, 2026-11-16): 1206 line/PP/goalie tags; injuries matched 98/98
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)

@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-16T13:39:09+00:00",
+"fetched": "2026-11-16T20:26:33+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1334,6 +1334,11 @@
 "pos": "C",
 "t": "BUF"
 },
+"04f0u": {
+"n": "Samberg, Dylan",
+"pos": "D",
+"t": "WPG"
+},
 "04f24": {
 "n": "Swayman, Jeremy",
 "pos": "G",
@@ -1653,11 +1658,6 @@
 "n": "Gritsyuk, Arseny",
 "pos": "RW",
 "t": "NJD"
-},
-"051uw": {
-"n": "Caulfield, Judd",
-"pos": "RW",
-"t": "ANA"
 },
 "051v4": {
 "n": "Silovs, Arturs",
@@ -4984,7 +4984,7 @@
 "gm": "mertin",
 "pos": "F",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "031og": {
 "ct": "BID",
@@ -5516,7 +5516,7 @@
 "gm": "mertin",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "IR"
 },
 "042t5": {
 "ct": "BID",
@@ -5712,6 +5712,13 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 2800000,
+"slot": "A"
+},
+"04f0u": {
+"ct": "FA",
+"gm": "mertin",
+"pos": "D",
+"sal": 1000000,
 "slot": "A"
 },
 "04f24": {
@@ -6161,13 +6168,6 @@
 "pos": "F",
 "sal": 0,
 "slot": "R"
-},
-"051uw": {
-"ct": "FA",
-"gm": "mertin",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
 },
 "051v4": {
 "ct": "ELC1",
@@ -7623,7 +7623,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 0,
-"slot": "M"
+"slot": "A"
 },
 "06bma": {
 "ct": "MNR",
@@ -7826,7 +7826,7 @@
 "gm": "SPG",
 "pos": "F",
 "sal": 0,
-"slot": "A"
+"slot": "M"
 },
 "06hk8": {
 "ct": "MNR",
@@ -8920,6 +8920,7 @@
 },
 "waivers": [
 "023wa",
-"03rik"
+"03rik",
+"051uw"
 ]
 }
