@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-17T14:27+00:00",
+"fetched": "2026-11-17T19:13+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -97,6 +97,16 @@
 "t": "NHL PROSPECTS: QMJHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-qmjhl-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
+}
+],
+"d27:nazarprivalov": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Nazar Privalov (F)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-nazar-privalov-f",
+"w": 2
 }
 ],
 "d27:nolanfitzhenry": [
@@ -1829,6 +1839,16 @@
 "w": 1
 }
 ],
+"n8486024": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Sportsnet",
+"t": "‘Bilecki could be a steal’: Bukala ranks Maple Leafs’ prospect pool",
+"u": "https://www.sportsnet.ca/nhl/video/bilecki-could-be-a-steal-bukala-ranks-maple-leafs-prospect-pool/",
+"w": 2
+}
+],
 "n8486025": [
 {
 "d": "2026-11-10",
@@ -1941,6 +1961,14 @@
 {
 "d": "2026-11-17",
 "k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Gavin McKenna just said the 3 words no Maple Leafs fan wanted to hear",
+"u": "https://editorinleaf.com/gavin-mckenna-just-said-the-3-words-no-maple-leafs-fan-wanted-to-hear?utm_source=RSS",
+"w": 2
+},
+{
+"d": "2026-11-17",
+"k": [],
 "s": "Habs Eyes on the Prize (MTL)",
 "t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
 "u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
@@ -2016,14 +2044,6 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Jim Hiller reveals what's standing between Gavin McKenna and more ice time",
 "u": "https://editorinleaf.com/jim-hiller-reveals-what-s-standing-between-gavin-mckenna-and-more-ice-time?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-09",
-"k": [],
-"s": "NHL.com",
-"t": "Gavin McKenna Watch: McDavid, Oilers await Maple Leafs for rematch",
-"u": "https://www.nhl.com/news/gavin-mckenna-watch-connor-mcdavid-edmonton-oilers-await-toronto-maple-leafs-for-rematch",
 "w": 2
 }
 ],
@@ -2197,14 +2217,14 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2218,7 +2238,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2246,7 +2266,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "4 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -2323,7 +2343,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -2379,7 +2399,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "5 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2400,7 +2420,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -2442,28 +2462,28 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
 {
 "n": 10,
 "name": "Dobber Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dobberhockey.com/feed/"
 },
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
