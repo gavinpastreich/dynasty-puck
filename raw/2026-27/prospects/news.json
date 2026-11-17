@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-16T20:28+00:00",
+"fetched": "2026-11-17T14:27+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -46,6 +46,16 @@
 "s": "McKeen's Hockey",
 "t": "NHL PROSPECTS: RUSSIA Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-russia-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:jaakkowycisk": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: OHL Early Season Favourites, Part Two – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-ohl-early-season-favourites-part-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
 }
 ],
@@ -100,6 +110,14 @@
 }
 ],
 "d28:maddoxschultz": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: OHL Early Season Favourites, Part Two – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-ohl-early-season-favourites-part-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+},
 {
 "d": "2026-11-08",
 "k": [],
@@ -277,6 +295,16 @@
 "w": 2
 }
 ],
+"n8482666": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Dobber Hockey",
+"t": "Ramblings: Boucher Recall; Remaining Schedules for Los Angeles, San Jose, and Nashville; Power Play Trends for Columbus and Dallas",
+"u": "https://dobberhockey.com/2026/11/17/ramblings-boucher-recall-remaining-schedules-for-los-angeles-san-jose-and-nashville-power-play-trends-for-columbus-and-dallas/",
+"w": 1
+}
+],
 "n8482733": [
 {
 "d": "2026-11-10",
@@ -298,6 +326,14 @@
 }
 ],
 "n8483424": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
+"u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
+"w": 1
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -406,6 +442,16 @@
 "s": "Sportsnet",
 "t": "Oilers activate Isaac Howard, loan him to AHL Bakersfield",
 "u": "https://www.sportsnet.ca/nhl/article/oilers-activate-isaac-howard-loan-him-to-ahl-bakersfield/",
+"w": 2
+},
+{
+"d": "2026-11-16",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Oilers Activate, Reassign Isaac Howard",
+"u": "https://www.prohockeyrumors.com/2026/11/oilers-activate-reassign-isaac-howard.html",
 "w": 2
 },
 {
@@ -719,6 +765,14 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-17",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
+"u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
+"w": 1
+},
+{
 "d": "2026-11-16",
 "k": [],
 "s": "NHL.com",
@@ -808,14 +862,6 @@
 "s": "NHL.com",
 "t": "Fowler named NHL Rookie of the Month for October",
 "u": "https://www.nhl.com/news/jacob-fowler-named-nhl-rookie-of-the-month-for-november-2026",
-"w": 2
-},
-{
-"d": "2026-10-28",
-"k": [],
-"s": "NHL.com",
-"t": "Fowler sets Canadiens record for saves by rookie, team 'gave me a chance'",
-"u": "https://www.nhl.com/news/jacob-fowler-sets-montreal-canadiens-record-for-saves-by-rookie",
 "w": 2
 }
 ],
@@ -917,6 +963,14 @@
 }
 ],
 "n8484220": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
+"u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
+"w": 1
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -1114,6 +1168,14 @@
 }
 ],
 "n8484770": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Raw Charge (TBL)",
+"t": "Lightning get good news on injury front",
+"u": "https://www.rawcharge.com/tampa-bay-lightning-get-good-news-on-injury-front-brayden-point-erik-cernak-anthony-cirelli/",
+"w": 1
+},
 {
 "d": "2026-11-13",
 "k": [],
@@ -1525,6 +1587,16 @@
 "w": 1
 }
 ],
+"n8485385": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "4 Vancouver Canucks prospects who are heating up right now",
+"u": "https://dailyhive.com/offside/canucks-prospects-heating-up",
+"w": 1
+}
+],
 "n8485388": [
 {
 "d": "2026-11-02",
@@ -1596,6 +1668,14 @@
 "s": "NHL Rumors",
 "t": "NHL Rumors: Luke Kunin, Evegeni Malkin, Michael Misa, and the Toronto Maple Leafs",
 "u": "https://s47317.pcdn.co/kunin-malkin-misa-maple-leafs/2026/11/16/",
+"w": 2
+},
+{
+"d": "2026-11-16",
+"k": [],
+"s": "NHL Rumors",
+"t": "NHL Rumors: Luke Kunin, Evgeni Malkin, Michael Misa, and the Toronto Maple Leafs",
+"u": "https://nhlrumors.com/kunin-malkin-misa-maple-leafs/2026/11/16/",
 "w": 2
 },
 {
@@ -1761,6 +1841,14 @@
 ],
 "n8486035": [
 {
+"d": "2026-11-16",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Islanders Prospect Report: Nov. 16, 2026",
+"u": "https://www.nhl.com/news/islanders-prospect-report-nov-16-2026",
+"w": 1
+},
+{
 "d": "2026-11-03",
 "k": [],
 "s": "NHL.com (team site)",
@@ -1831,7 +1919,33 @@
 "w": 2
 }
 ],
+"n8486065": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "4 Vancouver Canucks prospects who are heating up right now",
+"u": "https://dailyhive.com/offside/canucks-prospects-heating-up",
+"w": 1
+}
+],
 "n8486067": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Gavin McKenna just received the ultimate vote of confidence",
+"u": "https://editorinleaf.com/gavin-mckenna-just-received-the-ultimate-vote-of-confidence?utm_source=RSS",
+"w": 2
+},
+{
+"d": "2026-11-17",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
+"u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
+"w": 1
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -1854,6 +1968,22 @@
 "s": "The Leafs Nation (TOR)",
 "t": "Gavin McKenna says it’s time for Maple Leafs to ‘dig in’ heading into Tuesday’s contest vs. Blackhawks",
 "u": "https://theleafsnation.com/news/gavin-mckenna-says-time-toronto-maple-leafs-dig-in-tuesday-blackhawks",
+"w": 2
+},
+{
+"d": "2026-11-16",
+"k": [],
+"s": "NHL.com",
+"t": "Bedard, McKenna share mutual respect as No. 1 picks in NHL Draft",
+"u": "https://www.nhl.com/news/gavin-mckenna-connor-bedard-mutual-respect-ahead-of-first-nhl-meeting",
+"w": 2
+},
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Gavin McKenna’s usage with Leafs continues to be frustrating",
+"u": "https://www.dailyfaceoff.com/news/gavin-mckenna-toronto-maple-leafs-jim-hiller-ice-time-usage-tavares-roslovic-power-play",
 "w": 2
 },
 {
@@ -1895,38 +2025,6 @@
 "t": "Gavin McKenna Watch: McDavid, Oilers await Maple Leafs for rematch",
 "u": "https://www.nhl.com/news/gavin-mckenna-watch-connor-mcdavid-edmonton-oilers-await-toronto-maple-leafs-for-rematch",
 "w": 2
-},
-{
-"d": "2026-11-09",
-"k": [],
-"s": "The Hockey News",
-"t": "Gavin McKenna's Growing Pains Were On Full Display As Maple Leafs Drop A Pair Of Games Over The Weekend",
-"u": "https://thehockeynews.com/news/latest-news/gavin-mckennas-growing-pains-were-on-full-display-as-maple-leafs-drop-a-pair-of-games-over-the-weekend",
-"w": 2
-},
-{
-"d": "2026-11-08",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna had a rollercoaster night in the Maple Leafs' 4-2 loss to the Canadiens",
-"u": "https://editorinleaf.com/gavin-mckenna-had-a-rollercoaster-night-in-the-maple-leafs-4-2-loss-to-the-canadiens?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-08",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna calls out Maple Leafs teammates for being unprepared",
-"u": "https://editorinleaf.com/gavin-mckenna-calls-out-maple-leafs-teammates-for-being-unprepared?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-08",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Maple Leafs’ Jim Hiller expands on Morgan Rielly’s impact, message to Gavin McKenna",
-"u": "https://theleafsnation.com/news/toronto-maple-leafs-jim-hiller-expands-morgan-rielly-impact-message-gavin-mckenna",
-"w": 2
 }
 ],
 "n8486072": [
@@ -1965,6 +2063,16 @@
 "t": "Prospect Watch: Chase Reid Excelling With Michigan State, Maddox Schultz Dominates U-17 World Hockey Challenge",
 "u": "https://thehockeynews.com/news/latest-news/prospect-watch-chase-reid-excelling-with-michigan-state-maddox-schultz-dominates-u-17-world-hockey-challenge",
 "w": 2
+}
+],
+"n8486088": [
+{
+"d": "2026-11-16",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "4 Vancouver Canucks prospects who are heating up right now",
+"u": "https://dailyhive.com/offside/canucks-prospects-heating-up",
+"w": 1
 }
 ],
 "n8486093": [
@@ -2052,7 +2160,7 @@
 },
 "sources": [
 {
-"n": 89,
+"n": 91,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2089,14 +2197,14 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "1 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2110,7 +2218,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2124,7 +2232,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -2138,7 +2246,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "2 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -2215,7 +2323,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -2271,14 +2379,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "3 new matches",
+"note": "5 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2292,7 +2400,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -2334,14 +2442,14 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
 {
 "n": 10,
 "name": "Dobber Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dobberhockey.com/feed/"
 },
@@ -2355,7 +2463,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2390,7 +2498,7 @@
 {
 "n": 10,
 "name": "CHL (Canadian Hockey League)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://chl.ca/feed/"
 },

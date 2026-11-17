@@ -1224,5 +1224,14 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Caulfield, Judd"
+},
+{
+"d": "2026-11-17",
+"id": "05r50",
+"type": "drop",
+"from": "nebsnave",
+"ct": "FA",
+"sal": 1000000,
+"n": "Samoskevich, Mackie"
 }
 ]

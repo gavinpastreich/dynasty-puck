@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -459,6 +459,18 @@
    "holdout": false
   },
   {
+   "name": "Olli Maatta",
+   "team": "MIN",
+   "status": "IR",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Maatta (upper-body) has been placed on IR and is expected to miss a week.",
+   "date": "2026-11-16",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Chris Kreider",
    "team": "MTL",
    "status": "OUT",
@@ -682,6 +694,18 @@
    "ret": "Months",
    "detail": "Veleno (lower-body) will be placed on LTIR and is expected to miss 3-to-3.5 months.",
    "date": "2026-10-10",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Pavel Dorofeyev",
+   "team": "NYR",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Dorofeyev (undisclosed) will not play Monday vs. Montreal.",
+   "date": "2026-11-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
@@ -1004,7 +1028,7 @@
    "status": "DTD",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Duda (lower-body) will be a game-time decision vs. Vancouver on Monday.",
+   "detail": "Duda (lower-body) will not play Monday vs. the Canucks.",
    "date": "2026-11-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
@@ -1030,18 +1054,6 @@
    "ret": "",
    "detail": "Marino (upper-body) has been placed on IR retroactive to October 17th.",
    "date": "2026-11-01",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Logan Cooley",
-   "team": "UTA",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "Day-to-day",
-   "detail": "Cooley (upper-body) remains day-to-day and will not play on Saturday.",
-   "date": "2026-11-14",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
@@ -1119,25 +1131,13 @@
    "holdout": false
   },
   {
-   "name": "Kyle Connor",
-   "team": "WPG",
-   "status": "DTD",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Nick Bjugstad",
    "team": "WPG",
    "status": "IR",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "holdout": false
