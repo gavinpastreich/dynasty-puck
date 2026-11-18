@@ -1233,5 +1233,13 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Samoskevich, Mackie"
+},
+{
+"d": "2026-11-18",
+"id": "03nqi",
+"type": "add",
+"to": "BHHC",
+"ct": "FA",
+"sal": 1000000
 }
 ]

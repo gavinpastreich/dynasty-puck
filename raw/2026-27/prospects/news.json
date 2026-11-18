@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-17T19:13+00:00",
+"fetched": "2026-11-18T14:00+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -69,7 +69,25 @@
 "w": 2
 }
 ],
+"d27:jonahneuenschwander": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS:  AUSTRIA, GERMANY AND SWITZERLAN Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-austria-germany-switzerlan-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
 "d27:landondupont": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Sergei Skvortsov (LW)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-sergei-skvortsov-lw",
+"w": 1
+},
 {
 "d": "2026-11-07",
 "k": [],
@@ -99,6 +117,16 @@
 "w": 1
 }
 ],
+"d27:maxcalce": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS:  AUSTRIA, GERMANY AND SWITZERLAN Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-austria-germany-switzerlan-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
 "d27:nazarprivalov": [
 {
 "d": "2026-11-17",
@@ -116,6 +144,16 @@
 "s": "The Hockey News",
 "t": "Prospect Watch: Nolan Fitzhenry 'Brings A Ton' To NTDP As Leader On And Off The Ice",
 "u": "https://thehockeynews.com/news/latest-news/prospect-watch-nolan-fitzhenry-brings-a-ton-to-ntdp-as-leader-on-and-off-the-ice",
+"w": 2
+}
+],
+"d27:sergeiskvortsov": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Sergei Skvortsov (LW)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-sergei-skvortsov-lw",
 "w": 2
 }
 ],
@@ -185,6 +223,26 @@
 "t": "Blackhawks Bits: Commesso, Soderblom exchange places but little else changes",
 "u": "https://www.secondcityhockey.com/chicago-blackhawks-regular-season-updates-practice-report-soderblom-waived-commesso-recalled/",
 "w": 2
+}
+],
+"n8482171": [
+{
+"d": "2026-11-18",
+"k": [
+"injury"
+],
+"s": "Pro Hockey Rumors",
+"t": "Red Wings’ William Wallinder Day-To-Day",
+"u": "https://www.prohockeyrumors.com/2026/11/red-wings-william-wallinder-day-to-day.html",
+"w": 2
+},
+{
+"d": "2026-11-18",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "With road-heavy stretch behind them, Red Wings aim to ‘get going again’ at Little Caesars Area in the coming weeks",
+"u": "https://www.nhl.com/news/with-road-heavy-stretch-behind-them-red-wings-aim-to-get-going-again-at-little-caesars-area-in-the-coming-weeks",
+"w": 1
 }
 ],
 "n8482193": [
@@ -511,6 +569,18 @@
 "w": 2
 }
 ],
+"n8483487": [
+{
+"d": "2026-11-18",
+"k": [
+"call-up"
+],
+"s": "Pensburgh (PIT)",
+"t": "Pens Points: McGroarty embracing the challenges of frequent NHL recalls",
+"u": "https://www.pensburgh.com/news/83262/pens-points-mcgroarty-jagr-retirement-gaudreau-statue-bedard-injury-ovechkin-hellebuyck",
+"w": 2
+}
+],
 "n8483491": [
 {
 "d": "2026-11-12",
@@ -707,6 +777,32 @@
 "w": 2
 }
 ],
+"n8484154": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Sportsnet",
+"t": "Flames takeaways: Rookie Jonathan Castagna hits milestone in win",
+"u": "https://www.sportsnet.ca/nhl/article/flames-takeaways-rookie-jonathan-castagna-hits-milestone-in-win/",
+"w": 2
+},
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Sportsnet",
+"t": "Castagna reflects on scoring first career NHL goal: ‘Special moment’",
+"u": "https://www.sportsnet.ca/nhl/video/castagna-reflects-on-scoring-first-career-nhl-goal-special-moment/",
+"w": 2
+},
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Sportsnet",
+"t": "Flames’ Castagna fights free to find rebound for first career NHL goal",
+"u": "https://www.sportsnet.ca/nhl/video/flames-castagna-fights-free-to-find-rebound-for-first-career-nhl-goal/",
+"w": 2
+}
+],
 "n8484158": [
 {
 "d": "2026-11-11",
@@ -876,6 +972,14 @@
 }
 ],
 "n8484177": [
+{
+"d": "2026-11-17",
+"k": [],
+"s": "All About the Jersey (NJD)",
+"t": "New Jersey Devils Prospect Update: Back to Back Shutouts Propel Comets as Utica Takes Two of Three",
+"u": "https://www.allaboutthejersey.com/utica-comets/75249/new-jersey-devils-prospect-update-back-to-back-shutouts-propel-comets-as-utica-takes-two-of-three-on-week",
+"w": 1
+},
 {
 "d": "2026-11-15",
 "k": [],
@@ -2180,7 +2284,7 @@
 },
 "sources": [
 {
-"n": 91,
+"n": 90,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2224,7 +2328,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2238,7 +2342,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2273,7 +2377,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -2329,7 +2433,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -2399,7 +2503,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2462,7 +2566,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2483,7 +2587,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
