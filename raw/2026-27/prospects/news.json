@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-18T14:00+00:00",
+"fetched": "2026-11-18T18:52+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -297,6 +297,16 @@
 "w": 1
 }
 ],
+"n8482657": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Sebastian Cossa: Slated to start Wednesday",
+"u": "https://www.rotowire.com//hockey/player/sebastian-cossa-6477",
+"w": 2
+}
+],
 "n8482661": [
 {
 "d": "2026-11-16",
@@ -532,6 +542,14 @@
 }
 ],
 "n8483476": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Technique behind Lekkerimäki's big shot has Canucks teammates impressed",
+"u": "https://dailyhive.com/offside/canucks-lekkerimaki-teammates-shot",
+"w": 2
+},
 {
 "d": "2026-11-13",
 "k": [],
@@ -1145,6 +1163,16 @@
 ],
 "n8484221": [
 {
+"d": "2026-11-18",
+"k": [
+"injury"
+],
+"s": "NHL.com (team site)",
+"t": "Isles Day-to-Day: Cal Ritchie Activated From Injured Reserve, Loaned to Hamilton",
+"u": "https://www.nhl.com/news/isles-day-to-day-cal-ritchie-activated-from-injured-reserve-loaned-to-hamilton",
+"w": 2
+},
+{
 "d": "2026-10-26",
 "k": [
 "injury"
@@ -1248,6 +1276,14 @@
 }
 ],
 "n8484768": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "The Win Column (CGY)",
+"t": "Is Zayne Parekh already a top defenceman in the NHL?",
+"u": "https://thewincolumn.ca/2026/11/18/is-zayne-parekh-already-a-top-defenceman-in-the-nhl/",
+"w": 2
+},
 {
 "d": "2026-11-14",
 "k": [],
@@ -1452,6 +1488,14 @@
 }
 ],
 "n8484800": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Catton Finding His Groove in Year 2",
+"u": "https://www.nhl.com/news/seattle-kraken-berkly-catton-develops-in-nhl-year-2",
+"w": 2
+},
 {
 "d": "2026-11-12",
 "k": [],
@@ -2055,6 +2099,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-18",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Former NHLer Matthew Barnaby believes Gavin McKenna should return to Maple Leafs’ top power play unit",
+"u": "https://theleafsnation.com/news/former-nhl-matthew-barnaby-gavin-mckenna-return-toronto-maple-leafs-top-power-play",
+"w": 2
+},
+{
 "d": "2026-11-17",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -2140,14 +2192,6 @@
 "s": "The Leafs Nation (TOR)",
 "t": "Gavin McKenna expands on what he likes about his game, staying focused with limited ice time",
 "u": "https://theleafsnation.com/news/gavin-mckenna-expands-likes-game-focused-limited-ice-time",
-"w": 2
-},
-{
-"d": "2026-11-13",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Jim Hiller reveals what's standing between Gavin McKenna and more ice time",
-"u": "https://editorinleaf.com/jim-hiller-reveals-what-s-standing-between-gavin-mckenna-and-more-ice-time?utm_source=RSS",
 "w": 2
 }
 ],
@@ -2284,7 +2328,7 @@
 },
 "sources": [
 {
-"n": 90,
+"n": 92,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2328,7 +2372,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2342,7 +2386,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2377,7 +2421,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -2433,7 +2477,7 @@
 {
 "n": 10,
 "name": "All About the Jersey (NJD)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.allaboutthejersey.com/rss/index.xml"
 },
@@ -2510,7 +2554,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2524,7 +2568,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -2545,7 +2589,7 @@
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },
@@ -2566,7 +2610,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2587,7 +2631,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2615,7 +2659,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },

@@ -1,5 +1,4 @@
-Dynasty Puck HQ build 2026-11-18T13:58:14
-Fantrax: 1 roster changes since 2026-11-17T19:10:06+00:00
+Dynasty Puck HQ build 2026-11-18T18:50:14
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -85,7 +84,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-18T13:58:15+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
+Fantrax sync (2026-11-18T18:50:15+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1296 players (620 rostered)
 NHL id match: {'index': 1178, 'search': 115, None: 3}; unmatched 3 (rostered: 0)
@@ -144,7 +143,7 @@ NHL games outside the fantasy calendar: 0
 Season to date (20262027): 854 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
 Scoreboard: week 8 2026-11-16..2026-11-17 + live 2026-11-18 (3 games, 0 in progress): ROO 12 skater GP, M.M 13 skater GP, mertin 16 skater GP, BHHC 14 skater GP …
 Weekly history: 7 finished weeks (7 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-18): 1207 line/PP/goalie tags; injuries matched 101/101
+Depth (Daily Faceoff, 2026-11-18): 1206 line/PP/goalie tags; injuries matched 101/101
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)
