@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -87,15 +87,15 @@
    "holdout": false
   },
   {
-   "name": "Pyotr Kochetkov",
-   "team": "CAR",
+   "name": "Mattias Samuelsson",
+   "team": "BUF",
    "status": "DTD",
-   "injury": "illness",
+   "injury": "maintenance",
    "ret": "",
-   "detail": "Kochetkov (illness) returned to practice on Wednesday.",
+   "detail": "Samuelsson (maintenance) missed practice on Wednesday.",
    "date": "2026-11-18",
    "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
+   "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "holdout": false
   },
   {
@@ -114,10 +114,10 @@
    "name": "Isac Lundestrom",
    "team": "CBJ",
    "status": "IR",
-   "injury": "achilles",
-   "ret": "Months",
-   "detail": "Lundestrom (achilles) is considered month-to-month.",
-   "date": "2026-10-01",
+   "injury": "achilies",
+   "ret": "",
+   "detail": "Lundestrom (achilies) has been activated from IR and is available vs. Chicago on Thursday.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -195,6 +195,18 @@
    "holdout": false
   },
   {
+   "name": "Gavin Brindley",
+   "team": "COL",
+   "status": "DTD",
+   "injury": "upper body",
+   "ret": "",
+   "detail": "Brindley (upper body) left Wednesday’s game vs. Utah and will not return.",
+   "date": "2026-11-18",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Josh Manson",
    "team": "COL",
    "status": "IR",
@@ -214,18 +226,6 @@
    "ret": "Months",
    "detail": "MacKinnon will miss at least a month with a lower-body injury.",
    "date": "2026-11-14",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Scott Wedgewood",
-   "team": "COL",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Wedgewood (illness) left Colorado's practice on Tuesday and did not return.",
-   "date": "2026-11-17",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -284,8 +284,8 @@
    "status": "IR",
    "injury": "broken finger",
    "ret": "Months",
-   "detail": "Back (broken finger) will be out for the next 4-6 weeks.",
-   "date": "2026-10-16",
+   "detail": "Back (broken finger) is skating but doubtful to return vs. Vegas on Thursday.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -296,8 +296,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Myers (upper-body) is out vs. Vegas on Tuesday.",
-   "date": "2026-11-17",
+   "detail": "Myers (upper-body) is doubtful to return vs. Vegas on Thursday.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -321,7 +321,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-17",
+   "date": "2026-11-19",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -483,18 +483,6 @@
    "holdout": false
   },
   {
-   "name": "Alexandre Texier",
-   "team": "MTL",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Texier (illness) missed practice on Tuesday.",
-   "date": "2026-11-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Chris Kreider",
    "team": "MTL",
    "status": "IR",
@@ -550,6 +538,18 @@
    "ret": "",
    "detail": "Montembeault (lower-body) is expected to be out for the next 10 to 14 days.",
    "date": "2026-10-09",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Zack Bolduc",
+   "team": "MTL",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Bolduc (undisclosed) left Wednesday game vs. New Jersey and did not return.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -618,10 +618,10 @@
    "name": "Calum Ritchie",
    "team": "NYI",
    "status": "IR",
-   "injury": "lower-body",
+   "injury": "",
    "ret": "",
-   "detail": "Ritchie (lower-body) returned to practice on Monday in a non-contact jersey.",
-   "date": "2026-11-16",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -1087,9 +1087,21 @@
    "team": "UTA",
    "status": "IR",
    "injury": "upper-body",
+   "ret": "Months",
+   "detail": "Marino (upper-body) returned to practice in a full-contact jersey on Wednesday.",
+   "date": "2026-11-18",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Mikhail Sergachev",
+   "team": "UTA",
+   "status": "DTD",
+   "injury": "undisclosed",
    "ret": "",
-   "detail": "Marino (upper-body) has been placed on IR retroactive to October 17th.",
-   "date": "2026-11-01",
+   "detail": "Sergachev (undisclosed) is on the ice for warmups and will play on Wednesday.",
+   "date": "2026-11-18",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false

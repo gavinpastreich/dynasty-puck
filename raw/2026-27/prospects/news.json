@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-18T18:52+00:00",
+"fetched": "2026-11-19T14:29+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -46,6 +46,16 @@
 "s": "McKeen's Hockey",
 "t": "NHL PROSPECTS: RUSSIA Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-russia-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
+"d27:dimazhilkin": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: VIDEO SCOUT Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-video-scout-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
 }
 ],
@@ -107,6 +117,16 @@
 "w": 1
 }
 ],
+"d27:leviharper": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: VIDEO SCOUT Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-video-scout-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
+"w": 1
+}
+],
 "d27:maliklitalien": [
 {
 "d": "2026-11-06",
@@ -118,6 +138,14 @@
 }
 ],
 "d27:maxcalce": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Max Calce (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-max-calce-c-2",
+"w": 2
+},
 {
 "d": "2026-11-18",
 "k": [],
@@ -247,6 +275,14 @@
 ],
 "n8482193": [
 {
+"d": "2026-11-18",
+"k": [],
+"s": "The Hockey News",
+"t": "How The New York Rangers Overcame Shesterkin's Injury And Salvaged Their Season",
+"u": "https://thehockeynews.com/news/latest-news/how-the-new-york-rangers-have-overcome-shesterkins-injury-and-salvaged-their-season",
+"w": 1
+},
+{
 "d": "2026-11-14",
 "k": [],
 "s": "NHL.com",
@@ -308,6 +344,14 @@
 }
 ],
 "n8482661": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "NHL.com",
+"t": "Trophy Tracker: Wallstedt is Vezina pick as top goalie after start with Wild",
+"u": "https://www.nhl.com/news/vezina-trophy-tracker-wild-jesper-wallstedt-early-favorite-november-19-2026",
+"w": 2
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -1173,6 +1217,16 @@
 "w": 2
 },
 {
+"d": "2026-11-18",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Islanders Activate, Reassign Calum Ritchie",
+"u": "https://www.prohockeyrumors.com/2026/11/islanders-activate-reassign-calum-ritchie.html",
+"w": 2
+},
+{
 "d": "2026-10-26",
 "k": [
 "injury"
@@ -1209,6 +1263,16 @@
 "t": "Rookie Watch: Canadiens goalie Fowler named top first-year player for October",
 "u": "https://www.nhl.com/news/rookie-watch-montreal-canadiens-goalie-jacob-fowler-named-top-first-year-player-for-october",
 "w": 1
+}
+],
+"n8484240": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Canucks: What’s driving Tom Willander’s emergence?",
+"u": "https://canucksarmy.com/news/vancouver-canucks-whats-driving-tom-willanders-emergence",
+"w": 2
 }
 ],
 "n8484241": [
@@ -1745,7 +1809,25 @@
 "w": 1
 }
 ],
+"n8485371": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "These four Canucks prospects are projected to play at World Juniors",
+"u": "https://dailyhive.com/offside/four-canucks-prospects-projected-world-junior",
+"w": 1
+}
+],
 "n8485385": [
+{
+"d": "2026-11-18",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "These four Canucks prospects are projected to play at World Juniors",
+"u": "https://dailyhive.com/offside/four-canucks-prospects-projected-world-junior",
+"w": 1
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -1782,6 +1864,16 @@
 }
 ],
 "n8485391": [
+{
+"d": "2026-11-18",
+"k": [
+"injury"
+],
+"s": "Draft Prospects Hockey",
+"t": "Connor Bedard’s injury gives Anton Frondell a much needed opportunity",
+"u": "https://draftprospectshockey.com/articles/connor-bedards-injury-gives-anton-frondell-a-much-needed-opportunity",
+"w": 2
+},
 {
 "d": "2026-10-21",
 "k": [],
@@ -2089,6 +2181,14 @@
 ],
 "n8486065": [
 {
+"d": "2026-11-18",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "These four Canucks prospects are projected to play at World Juniors",
+"u": "https://dailyhive.com/offside/four-canucks-prospects-projected-world-junior",
+"w": 1
+},
+{
 "d": "2026-11-16",
 "k": [],
 "s": "Daily Hive Offside (VAN)",
@@ -2245,6 +2345,14 @@
 ],
 "n8486093": [
 {
+"d": "2026-11-18",
+"k": [],
+"s": "The Hockey News",
+"t": "Will Sabres Prospect Daxon Rudolph Be A Hobey Baker Candidate?: The Hockey News Future Watch Show",
+"u": "https://thehockeynews.com/news/latest-news/will-sabres-prospect-daxon-rudolph-be-a-hobey-baker-candidate-the-hockey-news-future-watch-show",
+"w": 2
+},
+{
 "d": "2026-11-05",
 "k": [],
 "s": "McKeen's Hockey",
@@ -2328,7 +2436,7 @@
 },
 "sources": [
 {
-"n": 92,
+"n": 89,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2351,7 +2459,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -2372,7 +2480,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2386,7 +2494,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2547,14 +2655,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "4 new matches",
+"note": "5 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2568,14 +2676,14 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "1 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -2589,7 +2697,7 @@
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },
@@ -2631,7 +2739,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2643,7 +2751,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 12,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
@@ -2659,7 +2767,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
