@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-19T14:29+00:00",
+"fetched": "2026-11-19T19:01+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -819,6 +819,16 @@
 ],
 "n8484149": [
 {
+"d": "2026-11-19",
+"k": [
+"injury"
+],
+"s": "Pro Hockey Rumors",
+"t": "Avalanche’s Gavin Brindley Sustains Upper-Body Injury",
+"u": "https://www.prohockeyrumors.com/2026/11/avalanches-gavin-brindley-sustains-upper-body-injury.html",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [
 "call-up"
@@ -1527,6 +1537,16 @@
 ],
 "n8484799": [
 {
+"d": "2026-11-19",
+"k": [
+"trade"
+],
+"s": "The Hockey Writers",
+"t": "How the Canadiens’ Trade Up for Michael Hage Has Aged",
+"u": "https://thehockeywriters.com/how-the-canadiens-trade-up-for-michael-hage-has-aged/",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Sportsnet",
@@ -2181,6 +2201,14 @@
 ],
 "n8486065": [
 {
+"d": "2026-11-19",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Canucks prospect Connor Davis listed on Steven Ellis’s top-5 late-round steals from 2026 NHL Draft",
+"u": "https://canucksarmy.com/news/vancouver-canucks-prospect-connor-davis-listed-steven-ellis-top-5-late-round-steals-2026-nhl-entry-draft",
+"w": 1
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "Daily Hive Offside (VAN)",
@@ -2198,6 +2226,32 @@
 }
 ],
 "n8486067": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Maple Leafs finally make the Gavin McKenna lineup change fans demanded",
+"u": "https://editorinleaf.com/maple-leafs-finally-make-the-gavin-mckenna-lineup-change-fans-demanded?utm_source=RSS",
+"w": 2
+},
+{
+"d": "2026-11-19",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs rookie Gavin McKenna knows he’s ready for promotion to top power play unit",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-gavin-mckenna-ready-promotion-top-power-play",
+"w": 2
+},
+{
+"d": "2026-11-19",
+"k": [
+"call-up"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs lineup news: Gavin McKenna promoted to top power play unit, William Nylander on 3rd line",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-lineup-news-gavin-mckenna-promoted-top-power-play-unit-william-nylander-3rd-line",
+"w": 2
+},
 {
 "d": "2026-11-18",
 "k": [],
@@ -2269,30 +2323,6 @@
 "t": "Gavin McKenna’s usage with Leafs continues to be frustrating",
 "u": "https://www.dailyfaceoff.com/news/gavin-mckenna-toronto-maple-leafs-jim-hiller-ice-time-usage-tavares-roslovic-power-play",
 "w": 2
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "NHL.com",
-"t": "Maple Leafs won’t be defined by 0-6-0 homestand, Chayka says",
-"u": "https://www.nhl.com/news/maple-leafs-gm-chayka-has-faith-in-team-despite-losing-streak",
-"w": 1
-},
-{
-"d": "2026-11-15",
-"k": [],
-"s": "Russian Machine Never Breaks (WSH)",
-"t": "Cole Hutson now leads all NHL rookies in scoring after registering three assists against Devils",
-"u": "https://russianmachineneverbreaks.com/2026/11/15/cole-hutson-leads-all-nhl-rookies-scoring-three-assists-capitals-devils/",
-"w": 1
-},
-{
-"d": "2026-11-14",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Gavin McKenna expands on what he likes about his game, staying focused with limited ice time",
-"u": "https://theleafsnation.com/news/gavin-mckenna-expands-likes-game-focused-limited-ice-time",
-"w": 2
 }
 ],
 "n8486072": [
@@ -2306,6 +2336,14 @@
 }
 ],
 "n8486074": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Canucks prospect Connor Davis listed on Steven Ellis’s top-5 late-round steals from 2026 NHL Draft",
+"u": "https://canucksarmy.com/news/vancouver-canucks-prospect-connor-davis-listed-steven-ellis-top-5-late-round-steals-2026-nhl-entry-draft",
+"w": 1
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -2334,6 +2372,14 @@
 }
 ],
 "n8486088": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Canucks prospect Connor Davis listed on Steven Ellis’s top-5 late-round steals from 2026 NHL Draft",
+"u": "https://canucksarmy.com/news/vancouver-canucks-prospect-connor-davis-listed-steven-ellis-top-5-late-round-steals-2026-nhl-entry-draft",
+"w": 1
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -2388,6 +2434,16 @@
 "s": "Habs Eyes on the Prize (MTL)",
 "t": "The Dispatch: Rögle coach Dan Tangnes talks about rival prospects Luc Koblar and Nils Bartholdsson",
 "u": "https://www.habseyesontheprize.com/the-dispatch-podcast-rogle-coach-dan-tangnes-talks-about-rival-prospects-luc-koblar-and-nils-bartholdsson-shl-toronto-maple-leafs-boston-bruins/",
+"w": 2
+}
+],
+"n8486268": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Canucks prospect Connor Davis listed on Steven Ellis’s top-5 late-round steals from 2026 NHL Draft",
+"u": "https://canucksarmy.com/news/vancouver-canucks-prospect-connor-davis-listed-steven-ellis-top-5-late-round-steals-2026-nhl-entry-draft",
 "w": 2
 }
 ],
@@ -2459,14 +2515,14 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -2480,7 +2536,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2655,14 +2711,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "5 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2676,14 +2732,14 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "1 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -2739,7 +2795,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -2751,7 +2807,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 12,
+"n": 0,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
