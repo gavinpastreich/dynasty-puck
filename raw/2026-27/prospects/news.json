@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-19T21:57+00:00",
+"fetched": "2026-11-19T22:08+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -186,6 +186,14 @@
 }
 ],
 "d28:maddoxschultz": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Maddox Schultz will be a special prospect for 2028 draft",
+"u": "https://www.dailyfaceoff.com/news/maddox-schultz-will-be-special-prospect-2028-nhl-draft-canada-hlinka-gretzky-cup",
+"w": 2
+},
 {
 "d": "2026-11-17",
 "k": [],
@@ -609,6 +617,16 @@
 "t": "Canucks’ Lekkerimaki scores power-play goal against Flyers",
 "u": "https://www.sportsnet.ca/nhl/video/canucks-lekkerimaki-scores-power-play-goal-against-flyers/",
 "w": 2
+}
+],
+"n8483478": [
+{
+"d": "2026-11-01",
+"k": [],
+"s": "NHL.com",
+"t": "Star Wears: Wild award helmet with night vision goggles to player of game",
+"u": "https://www.nhl.com/news/star-wears-minnesota-wild-helmet-goggles",
+"w": 1
 }
 ],
 "n8483482": [
@@ -2496,9 +2514,9 @@
 },
 "sources": [
 {
-"n": 88,
+"n": 89,
 "name": "NHL.com stories by player",
-"note": "484 players asked",
+"note": "490 players asked",
 "ok": true,
 "url": "https://www.nhl.com/news"
 },
@@ -2526,14 +2544,14 @@
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "3 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -2554,7 +2572,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2736,7 +2754,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -2846,5 +2864,5 @@
 "url": "https://recruitscouting.com/feed/"
 }
 ],
-"tracked": 630
+"tracked": 636
 }

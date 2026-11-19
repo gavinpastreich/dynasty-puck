@@ -99,18 +99,6 @@
    "holdout": false
   },
   {
-   "name": "Isac Lundestrom",
-   "team": "CBJ",
-   "status": "IR",
-   "injury": "achillies",
-   "ret": "",
-   "detail": "Lundestrom (achillies) will make his season debut in Chicago on Thursday.",
-   "date": "2026-11-19",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Sean Monahan",
    "team": "CBJ",
    "status": "DTD",
@@ -845,7 +833,7 @@
   {
    "name": "Jacob Melanson",
    "team": "SEA",
-   "status": "IR",
+   "status": "Game-time decision",
    "injury": "upper-body",
    "ret": "Months",
    "detail": "Melanson (upper-body) is a game-time decision vs. Vancouver on Thursday.",

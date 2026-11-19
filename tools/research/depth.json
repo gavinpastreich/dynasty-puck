@@ -480,8 +480,8 @@
   },
   "CBJ": {
    "team": "Columbus Blue Jackets",
-   "updated": "2026-11-18",
-   "source": "Last Game (2026-11-17)",
+   "updated": "2026-11-19",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "pp1": [
     "Matthew Knies",
@@ -493,7 +493,7 @@
    "pp2": [
     "Valeri Nichushkin",
     "Adam Fantilli",
-    "Dmitri Voronkov",
+    "Cole Sillinger",
     "Denton Mateychuk",
     "Ivan Provorov"
    ],
@@ -506,18 +506,18 @@
    "pk2": [
     "Cole Sillinger",
     "Mathieu Olivier",
-    "Dante Fabbro",
+    "Erik Gudbranson",
     "Zach Werenski"
    ],
    "f1": [
-    "Dmitri Voronkov",
-    "Adam Fantilli",
-    "Valeri Nichushkin"
-   ],
-   "f2": [
     "Matthew Knies",
     "Luca Del Bel Belluz",
     "Kent Johnson"
+   ],
+   "f2": [
+    "Ryan Lomberg",
+    "Adam Fantilli",
+    "Valeri Nichushkin"
    ],
    "f3": [
     "Cole Sillinger",
@@ -525,6 +525,7 @@
     "Mathieu Olivier"
    ],
    "f4": [
+    "Isac Lundestrom",
     "Jack Williams",
     "Steven Lorentz"
    ],
@@ -537,7 +538,7 @@
     "Denton Mateychuk"
    ],
    "d3": [
-    "Dante Fabbro",
+    "Jake Christiansen",
     "Erik Gudbranson"
    ],
    "goalies": [
@@ -592,9 +593,9 @@
     "Tyler Seguin"
    ],
    "f4": [
-    "David Perron",
+    "Joel Kiviranta",
     "Radek Faksa",
-    "Colin Blackwell"
+    "David Perron"
    ],
    "d1": [
     "Esa Lindell",
@@ -1567,8 +1568,8 @@
   },
   "SEA": {
    "team": "Seattle Kraken",
-   "updated": "2026-11-15",
-   "source": "Last Game (2026-11-14)",
+   "updated": "2026-11-19",
+   "source": "Mike Benton",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "pp1": [
     "Jordan Eberle",
@@ -1598,23 +1599,23 @@
    ],
    "f1": [
     "Bobby McMann",
-    "Matty Beniers",
+    "Berkly Catton",
     "Jordan Eberle"
    ],
    "f2": [
     "Kaapo Kakko",
-    "Berkly Catton",
+    "Matty Beniers",
     "Mackie Samoskevich"
    ],
    "f3": [
-    "Frederick Gaudreau",
-    "Ben Meyers",
-    "Matthew Wood"
-   ],
-   "f4": [
     "Ryan Winterton",
     "Chandler Stephenson",
-    "Jagger Firkus"
+    "Frederick Gaudreau"
+   ],
+   "f4": [
+    "Matthew Wood",
+    "Ben Meyers",
+    "Jacob Melanson"
    ],
    "d1": [
     "Vince Dunn",
@@ -1626,7 +1627,7 @@
    ],
    "d3": [
     "Ryan Lindgren",
-    "Cale Fleury"
+    "Joshua Mahura"
    ],
    "goalies": [
     "Philipp Grubauer",
