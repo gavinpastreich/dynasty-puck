@@ -1577,7 +1577,7 @@ def build_prospects(players, act27, hist26, bios, leagues):
                     b["gm"] = fp["gm"]
                     b["fid"] = fp["id"]
     extra = {}
-    for nm in ("injuries", "depth", "notes"):
+    for nm in ("injuries", "depth", "notes", "wjc"):
         path = os.path.join(RESEARCH, f"{nm}.json")
         if os.path.exists(path):
             with open(path, encoding="utf-8") as f:
@@ -1707,7 +1707,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
         "built": dt.datetime.now().isoformat(timespec="minutes"), "season": SEASON_LABEL, "seasonId": SEASON_ID,
         "cap": CAP, "capByYear": CAP_BY_YEAR, "years": YEARS, "nhlGames": NHL_GAMES,
         "capNote": CFG.get("capNote", ""), "alerts": CFG.get("alerts", {}), "live": {"url": (CFG.get("live") or {}).get("url") or ""},
-        "gms": [{"code": c, "name": n} for c, n in GMS],
+        "gms": [dict({"code": t["code"], "name": t["name"]}, **{k: t[k] for k in ("color", "abbr") if t.get(k)}) for t in CFG["teams"]],
         "weeks": weeks, "h2h": h2h,
         "playoffs": dict(CFG.get("playoffs", {}), source="config/league.json (Fantrax schedule pasted by the commissioner 2026-09-25)"),
         "rules": rules_from_config(),

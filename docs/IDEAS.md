@@ -29,7 +29,7 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
 ## Wild ones
 - **"GM brain" personas.** Fit each GM's own valuation lens from their trades (who overpays for picks, who chases
   vets) and show "how X values your offer" before you send it.
-- **Rival scouting report.** Before each week: your opponent's weakest categories, which of their players are
+- ~~Rival scouting report~~ **done 2026-11-19** (Opponent Scouting). Before each week: your opponent's weakest categories, which of their players are
   on back-to-backs, and the lineup tweak that maximizes your win probability against *that* opponent.
 - **Monte Carlo "what would it take to win the title?"** Search trades and FA adds that raise title odds the most per
   unit of dynasty value spent. (Partly there since 2026-09-26: win-now weights come from the title odds and the Team Hub
@@ -40,3 +40,10 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
   automatically (the plumbing exists; lineups can already auto-bench injured players).
 - ~~Voice-of-the-league newsletter~~ **The Weekly done 2026-11-14** (a recap page with copy-for-the-chat; not yet emailed). A weekly auto-written column (power-ranking movers, trade grades, prospect
   of the week) published as a page on the site.
+
+## From the 2026-11-19 list, still open
+- Record book / franchise history (needs past seasons' results), email The Weekly on Mondays (needs who gets it),
+  post to the league chat (needs the chat app and a webhook), live World Juniors stats (needs a public stats feed that
+  allows automated reads; EliteProspects refused), guided tour for new GMs, prospect watchlist and call-up tracker,
+  live auction-day mode, dead-cap ledger, multi-year cap retention.
+

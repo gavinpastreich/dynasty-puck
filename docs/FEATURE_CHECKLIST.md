@@ -118,4 +118,9 @@ as you ship them, and add any new ideas you come up with.
       roster, buy-low targets elsewhere, cold free agents, and whether the projection already expects regression.
 - [x] The Weekly (2026-11-14): auto-written recap of every finished week (results, luck, standings movers, players of
       the week, moves, what to watch) with a copy-for-the-chat button.
+- [x] Design pass (2026-11-19): team colors and badges, headshots in lists, dashboard "your week" panel and every
+      matchup at a glance, Team Hub header with the season week by week and section buttons, regrouped menu with folding
+      groups and tab rows between related pages, offline copy, share-as-image cards.
+- [x] In-season tools (2026-11-19): IR-slot cap check, Trade Deadline hub with hometown-discount value, Playoff Picture,
+      Opponent Scouting with a tuned lineup, Trade Machine counteroffers, World Juniors watch list, Commissioner Checks.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

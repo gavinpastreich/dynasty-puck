@@ -117,7 +117,7 @@
   function myTeam(me, S) {
     var E = DP.E, H = S.hist, P = S.proj, nT = E.teams.length, strongN = Math.ceil(nT * 0.3), weakN = nT - strongN + 1;
     var rows = E.CATS.map(function (cat, c) { return { c: c, cat: cat, r: S.rank[me][c] }; });
-    var h = '<div class="card" style="margin-top:14px"><h2>' + esc(U.teamName(me)) + ', category by category</h2><div class="hint">Verdict uses the basis chosen above. "Who to call" lists the teams strongest where you need help (when you need it) or weakest where you have plenty (when it\'s a strength).</div>' +
+    var h = '<div class="card" style="margin-top:14px"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ', category by category</h2><div class="hint">Verdict uses the basis chosen above. "Who to call" lists the teams strongest where you need help (when you need it) or weakest where you have plenty (when it\'s a strength).</div>' +
       '<div class="tbl-wrap"><table class="t"><thead><tr><th>Category</th><th>Verdict</th>' + (H.nReg ? '<th class="num">So far /wk</th><th class="num">Rank</th><th class="num">Record</th><th class="num" title="Share of the league your weekly number would have beaten">Beats</th>' : '') + '<th class="num">Rest of season /wk</th><th class="num">Rank</th><th>Who to call</th></tr></thead><tbody>' +
       rows.map(function (x) {
         var c = x.c, v = x.r <= strongN ? ['good', 'Strength'] : x.r >= weakN ? ['bad', 'Need'] : ['info', 'Middle'];
@@ -146,7 +146,7 @@
       fits.map(function (f) {
         var theirs = f.get.length ? movers(f.t, f.get, 3) : [], mine = f.give.length ? movers(me, f.give, 3) : [];
         var a = ['p:' + (theirs[0] ? theirs[0].p.id : '') + '>' + me, 'p:' + (mine[0] ? mine[0].p.id : '') + '>' + f.t].filter(function (x) { return x.indexOf('p:>') !== 0; }).join('|');
-        return '<tr><td><a href="#/team/' + encodeURIComponent(f.t) + '"><b>' + esc(U.teamName(f.t)) + '</b></a><br>' + (DP.tierBadge ? DP.tierBadge(f.t) : '') + '</td>' +
+        return '<tr><td>' + U.teamChip(f.t, { link: 1, b: 1 }) + '<br>' + (DP.tierBadge ? DP.tierBadge(f.t) : '') + '</td>' +
           '<td>' + ui.meter(f.score / max, f.score / max > 0.66 ? 'good' : '', 'Fit ' + U.fmt(f.score, 1)) + '<span class="faint small">' + U.fmt(f.score, 1) + '</span></td>' +
           '<td>' + (f.get.map(function (x) { return chip(x, false); }).join(' ') || '<span class="faint small">nothing clear</span>') + '</td>' +
           '<td>' + (f.give.map(function (x) { return chip(x, true); }).join(' ') || '<span class="faint small">nothing clear</span>') + '</td>' +
@@ -166,7 +166,7 @@
     var h = '<div class="card" style="margin-top:14px" id="ct-drill"><h2>Category drill-down <select id="ct-cat" aria-label="Category" style="margin-left:8px">' + E.CATS.map(function (x, i) { return '<option value="' + i + '"' + (i === c ? ' selected' : '') + '>' + esc(x.l + ' · ' + x.name) + '</option>'; }).join('') + '</select></h2>' +
       '<div class="grid g2"><div><h3>Every team in ' + esc(cat.l) + '</h3><div class="tbl-wrap"><table class="t"><thead><tr><th>#</th><th>Team</th>' + (H.nReg ? '<th class="num">So far' + (cat.ratio ? '' : ' /wk') + '</th><th style="min-width:70px"></th><th class="num">Record</th>' : '') + '<th class="num">Rest of season' + (cat.ratio ? '' : ' /wk') + '</th><th style="min-width:70px"></th></tr></thead><tbody>' +
       teams.map(function (t) {
-        return '<tr class="' + (t === me ? 'mine' : '') + '"><td class="num">' + S.rank[t][c] + '</td><td><a href="#/team/' + encodeURIComponent(t) + '">' + esc(U.teamName(t)) + '</a></td>' +
+        return '<tr class="' + (t === me ? 'mine' : '') + '"><td class="num">' + S.rank[t][c] + '</td><td>' + U.teamChip(t, { link: 1 }) + '</td>' +
           (H.nReg ? '<td class="num">' + fmt(c, H.avg[t][c]) + '</td><td>' + bar(H.avg[t][c], ra) + '</td><td class="num">' + recTxt(H.rec[t][c]) + '</td>' : '') +
           '<td class="num">' + fmt(c, P.avg[t][c]) + '</td><td>' + bar(P.avg[t][c], rp) + '</td></tr>';
       }).join('') + '</tbody></table></div><p class="small muted">Ranked on the basis chosen at the top (' + esc(MODES.filter(function (m) { return m[0] === S.mode; })[0][1].toLowerCase()) + ').' + (cat.low ? ' Lower is better.' : '') + '</p></div>';

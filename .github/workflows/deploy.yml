@@ -21,7 +21,7 @@ jobs:
       - name: Assemble site (app only; raw data and tools stay out of the published site)
         run: |
           mkdir -p _site
-          cp -r index.html manifest.json shinylive-sw.js assets data fa prospects _site/
+          cp -r index.html manifest.json sw.js shinylive-sw.js assets data fa prospects _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

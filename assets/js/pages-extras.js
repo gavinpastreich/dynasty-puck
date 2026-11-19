@@ -28,7 +28,7 @@
         rowCls: function (a) { var o = a.kind === 'pick' ? a.pk.owner : a.p.gm; return (o === me && me ? 'mine' : '') + (a.rank > 1 && assets[a.rank - 2] && assets[a.rank - 2].tier !== a.tier ? ' sep' : ''); },
         cols: [{ k: 'rank', l: '#', cls: 'num', v: function (a) { return a.rank; } },
           { k: 'tier', l: 'Tier', cls: 'num', v: function (a) { return a.tier; }, f: function (a) { return '<span class="badge info">T' + a.tier + '</span>'; } },
-          { k: 'asset', l: 'Asset', v: function (a) { return a.kind === 'player' ? a.p.n : E.pickLabel(a.pk); }, f: function (a) { return a.kind === 'player' ? ui.pos(a.p) + ' ' + ui.pcell(a.p) : '<span class="pos">PK</span> <b>' + esc(a.pk.year + ' Round ' + a.pk.round) + '</b> <span class="small muted">' + esc(U.teamName(a.pk.orig)) + '\'s · ~#' + E.pickOverall(a.pk) + '</span>'; } },
+          { k: 'asset', l: 'Asset', v: function (a) { return a.kind === 'player' ? a.p.n : E.pickLabel(a.pk); }, f: function (a) { return a.kind === 'player' ? ui.pcell(a.p, { pos: 1 }) : '<span class="pos">PK</span> <b>' + esc(a.pk.year + ' Round ' + a.pk.round) + '</b> <span class="small muted">' + esc(U.teamName(a.pk.orig)) + '\'s · ~#' + E.pickOverall(a.pk) + '</span>'; } },
           { k: 'owner', l: 'Owner', v: function (a) { return a.kind === 'pick' ? a.pk.owner : (a.p.gm || 'zz'); }, f: function (a) { return a.kind === 'pick' ? U.teamLabel(a.pk.owner) : ui.owner(a.p); } },
           { k: 'ct', l: 'Contract', v: function (a) { return a.kind === 'player' ? a.p.ct : 'pick'; }, f: function (a) { return a.kind === 'player' ? ui.pill(a.p.ct) + ' ' + (a.p.gm ? U.m(a.p.sal26) : '') : ''; } },
           { k: 'age', l: 'Age', cls: 'num', v: function (a) { return a.kind === 'player' ? a.p.age : null; }, f: function (a) { return a.kind === 'player' && a.p.age ? U.fmt(a.p.age, 1) : ''; } },
@@ -81,7 +81,7 @@
         var c = r.c, z = function (y) { return (r.s[y] - avgY[y]) / (sdY[y] || 1); }, fade = z(2) < z(0) - 0.8;
         var label = c.tier === 'contender' ? (fade ? 'Now; core ages out fast' : 'Now, and built to last')
           : c.rise ? 'Core peaks vs league ' + E.YEARS[c.rise] : c.tier === 'bubble' ? 'On the bubble' : 'Rebuild';
-        h += '<tr class="' + (r.t === me ? 'mine' : '') + '"><td><a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a></td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.pct(c.champ, 1) + '</td><td class="num">×' + U.fmt(c.k[0], 2) + '</td>' + r.s.map(function (v, y) {
+        h += '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + U.teamChip(r.t, { link: 1, b: 1 }) + '</td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.pct(c.champ, 1) + '</td><td class="num">×' + U.fmt(c.k[0], 2) + '</td>' + r.s.map(function (v, y) {
           var t = (v - lo) / (hi - lo || 1);
           return '<td class="hc" style="background:' + C.heat(t) + ';color:' + C.heatInk(t) + '" data-tip="' + esc('<div class="tv">' + U.fmt(v, 0) + ' WAR</div><div class="tl">' + U.teamName(r.t) + ' · ' + E.YEARS[y] + (y ? ' · projected title share on this roster ' + U.pct(c.share[y], 0) : '') + '</div>') + '">' + U.fmt(v, 0) + '</td>';
         }).join('') + '<td class="small" style="min-width:150px">' + esc(label) + '</td><td class="small" style="min-width:120px"><b>' + esc(DP.strategy(r.t).short) + '</b></td></tr>';
@@ -89,8 +89,8 @@
       h += '</tbody></table></div><p class="small muted">More intense shading = stronger roster that season. <b>Win-now weight</b>: title odds rise steeply with strength only near the top, so an extra 2026-27 category win is worth several times more to a contender than to the league average, and little to a team out of the race (floor ×' + E.CONTEND.floor + ': that production can still be flipped at the deadline). Contender = weight ≥ ×' + E.CONTEND.contender + ', bubble ≥ ×' + E.CONTEND.bubble + '. Later seasons use the same curve on each roster\'s projected strength, pulled most of the way back toward average (rosters change a lot in a year). The Trade Machine and Trade Finder use these weights.</p></div>';
       if (me) {
         var mine = rows.find(function (r) { return r.t === me; }), avg = avgY;
-        h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>' + esc(U.teamName(me)) + ': ' + esc(DP.strategy(me).short) + '</h2><p>' + esc(DP.strategy(me).text) + '</p><p class="small"><a href="#/team/' + encodeURIComponent(me) + '">Buy and sell targets on your Team Hub →</a></p></div>' +
-          '<div class="card"><h2>' + esc(U.teamName(me)) + ' vs the league</h2>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), [{ name: U.teamName(me), values: mine.s.map(function (v) { return +v.toFixed(1); }), color: 'var(--accent)' }, { name: 'League average', values: avg.map(function (v) { return +v.toFixed(1); }), color: 'var(--s1)', dash: true }], { height: 220, width: 900, title: 'Window vs league average' }) + '</div></div>';
+        h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ': ' + esc(DP.strategy(me).short) + '</h2><p>' + esc(DP.strategy(me).text) + '</p><p class="small"><a href="#/team/' + encodeURIComponent(me) + '">Buy and sell targets on your Team Hub →</a></p></div>' +
+          '<div class="card"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ' vs the league</h2>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), [{ name: U.teamName(me), values: mine.s.map(function (v) { return +v.toFixed(1); }), color: U.teamColor(me) }, { name: 'League average', values: avg.map(function (v) { return +v.toFixed(1); }), color: 'var(--s1)', dash: true }], { height: 220, width: 900, title: 'Window vs league average' }) + '</div></div>';
       }
       el.innerHTML = h;
     }
@@ -112,7 +112,7 @@
       var tbl = ui.table(U.qs('#st-table', el), {
         rows: rows, sort: act && !act.odd ? 'pct' : 'proj', csv: 'dynasty-puck-standings.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
         cols: [
-          { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a> <span class="faint small">' + esc(r.t) + '</span>'; } },
+          { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return U.teamChip(r.t, { link: 1, b: 1, code: 1 }); } },
           { k: 'div', l: 'Div', v: function (r) { return r.div; } },
           { k: 'rec', l: 'W-L-T', cls: 'num', v: function (r) { return r.pct; }, f: function (r) { return r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0'; } },
           { k: 'pct', l: 'Win%', cls: 'num', v: function (r) { return r.pct; }, f: function (r) { return r.a ? U.rate(r.pct) : '–'; } },
@@ -133,7 +133,7 @@
         box.innerHTML = divs.map(function (d) {
           var rs = rows.filter(function (r) { return r.div === d; }).sort(function (a, b) { return (b.pct || 0) - (a.pct || 0) || b.sim.pct - a.sim.pct; });
           return '<div class="card"><h2>' + esc(d) + ' division</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">W-L-T</th><th class="num">Proj final</th><th class="num">Playoffs</th></tr></thead><tbody>' + rs.map(function (r) {
-            return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + esc(U.teamName(r.t)) + '</td><td class="num">' + (r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0') + '</td><td class="num">' + U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) + '</td><td class="num">' + U.pct(r.sim.po) + '</td></tr>';
+            return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + U.teamChip(r.t) + '</td><td class="num">' + (r.a ? r.a.W + '-' + r.a.L + '-' + r.a.T : '0-0-0') + '</td><td class="num">' + U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) + '</td><td class="num">' + U.pct(r.sim.po) + '</td></tr>';
           }).join('') + '</tbody></table></div></div>';
         }).join('') + (divs.length ? '<p class="small muted span2">Divisions come from Fantrax. Playoffs: 8 teams, no byes; the two division winners are seeds 1-2, everyone else by category win%.</p>' : '');
       }, 1500);
@@ -170,7 +170,7 @@
           ];
           if (inj.length) lines.push('   Missing: ' + inj.map(function (p) { return p.n + ' (' + p.gm + ')'; }).join(', ') + '.');
           text = text.concat(lines);
-          cards.push('<div class="card" style="margin-bottom:12px"><h3>' + esc(U.teamName(g[1])) + ' <span class="muted">at</span> ' + esc(U.teamName(g[2])) + ' <span class="badge ' + (tone === 'coin flip' ? 'warn' : 'good') + '">' + esc(tone === 'coin flip' ? 'coin flip' : fav + ' ' + U.pct(favP)) + '</span> <a class="btn sm" style="margin-left:auto" href="' + U.hash('matchup', null, { w: w, a: g[1], b: g[2] }) + '">Open matchup</a></h3>' +
+          cards.push('<div class="card" style="margin-bottom:12px"><h3>' + U.teamBadge(g[1]) + ' ' + esc(U.teamName(g[1])) + ' <span class="muted">at</span> ' + esc(U.teamName(g[2])) + ' <span class="badge ' + (tone === 'coin flip' ? 'warn' : 'good') + '">' + esc(tone === 'coin flip' ? 'coin flip' : fav + ' ' + U.pct(favP)) + '</span> <a class="btn sm" style="margin-left:auto" href="' + U.hash('matchup', null, { w: w, a: g[1], b: g[2] }) + '">Open matchup</a></h3>' +
             '<p class="small">' + lines.map(function (l) { return esc(l.trim()); }).join('<br>') + '</p></div>');
         });
         if (gradsThisWeek.length) {
@@ -191,7 +191,7 @@
           watch = '<div class="card" style="margin-bottom:12px"><h3>🔒 Lineup watch <span class="muted small">' + esc(DP.lockText(wi)) + '</span></h3><div class="hint">Each team\'s lineup as set in Fantrax vs its optimal weekly lineup: expected category wins left on the table.</div><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Set</th><th class="num">Optimal</th><th class="num">Gap</th><th>Swaps</th></tr></thead><tbody>' +
             rows.sort(function (x, y) { return (y.c ? y.c.eOpt - y.c.eSet : 9) - (x.c ? x.c.eOpt - x.c.eSet : 9); }).map(function (r) {
               var c = r.c, gap = c ? c.eOpt - c.eSet : null;
-              return '<tr class="' + (r.t === DP.state.team ? 'mine' : '') + '"><td><a href="#/team/' + encodeURIComponent(r.t) + '">' + esc(U.teamName(r.t)) + '</a></td>' + (c ? '<td class="num">' + U.fmt(c.eSet, 1) + '</td><td class="num">' + U.fmt(c.eOpt, 1) + '</td><td class="num ' + (gap > 0.3 ? 'bad' : gap > 0.05 ? 'warn' : 'good') + '">' + (gap > 0.05 ? U.fmt(gap, 2) : '✓') + '</td><td class="small">' + (c.start.length ? c.start.length + ' (' + c.start.slice(0, 2).map(function (x) { return esc(x.p.n); }).join(', ') + (c.start.length > 2 ? '…' : '') + ')' : '–') + '</td>' : '<td colspan="4" class="muted small">no lineup set in Fantrax</td>') + '</tr>';
+              return '<tr class="' + (r.t === DP.state.team ? 'mine' : '') + '"><td>' + U.teamChip(r.t, { link: 1 }) + '</td>' + (c ? '<td class="num">' + U.fmt(c.eSet, 1) + '</td><td class="num">' + U.fmt(c.eOpt, 1) + '</td><td class="num ' + (gap > 0.3 ? 'bad' : gap > 0.05 ? 'warn' : 'good') + '">' + (gap > 0.05 ? U.fmt(gap, 2) : '✓') + '</td><td class="small">' + (c.start.length ? c.start.length + ' (' + c.start.slice(0, 2).map(function (x) { return esc(x.p.n); }).join(', ') + (c.start.length > 2 ? '…' : '') + ')' : '–') + '</td>' : '<td colspan="4" class="muted small">no lineup set in Fantrax</td>') + '</tr>';
             }).join('') + '</tbody></table></div></div>';
         }
         out.innerHTML = watch + cards.join('') + '<details><summary>Text version</summary><textarea id="pv-text" rows="18">' + esc(text.join('\n')) + '</textarea></details>';

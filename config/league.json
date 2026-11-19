@@ -78,21 +78,22 @@
 
   "leagueDraft": { "rounds": 3, "pickYears": [2026, 2027, 2028, 2029], "order": "Reverse standings: worst record picks 1st, champion 14th." },
 
+  "teamsNote": "color = the team's color on the site (dots, badges, charts; any #rrggbb, keep it dark enough for white text). abbr = the 1-3 letters on its badge. Both are optional.",
   "teams": [
-    { "code": "ROO", "name": "Kalamazoo Kangaroo" },
-    { "code": "TommyG10", "name": "TommyG1095" },
-    { "code": "Wags8210", "name": "Wags8210" },
-    { "code": "BULLIES", "name": "Bethesda Bullies" },
-    { "code": "nbracken", "name": "Cake Eaters" },
-    { "code": "SPG", "name": "South Philly Gravy" },
-    { "code": "BHHC", "name": "Book Hockey HC" },
-    { "code": "nebsnave", "name": "nebsnave" },
-    { "code": "M.M", "name": "Milwaukee Musketeers" },
-    { "code": "mcianfra", "name": "mcianfrani" },
-    { "code": "btsay45", "name": "Worcester Gators" },
-    { "code": "PuckLuck", "name": "Beginner's Luck" },
-    { "code": "CGN", "name": "Colganites" },
-    { "code": "mertin", "name": "Upper Darby Rats" }
+    { "code": "ROO", "name": "Kalamazoo Kangaroo", "color": "#ae6113", "abbr": "KK" },
+    { "code": "TommyG10", "name": "TommyG1095", "color": "#167e98", "abbr": "TG" },
+    { "code": "Wags8210", "name": "Wags8210", "color": "#458226", "abbr": "WA" },
+    { "code": "BULLIES", "name": "Bethesda Bullies", "color": "#d13d47", "abbr": "BB" },
+    { "code": "nbracken", "name": "Cake Eaters", "color": "#cf3095", "abbr": "CE" },
+    { "code": "SPG", "name": "South Philly Gravy", "color": "#ca4821", "abbr": "SPG" },
+    { "code": "BHHC", "name": "Book Hockey HC", "color": "#2575d0", "abbr": "BH" },
+    { "code": "nebsnave", "name": "nebsnave", "color": "#7f5dd0", "abbr": "NB" },
+    { "code": "M.M", "name": "Milwaukee Musketeers", "color": "#5e6ad9", "abbr": "MM" },
+    { "code": "mcianfra", "name": "mcianfrani", "color": "#697915", "abbr": "MC" },
+    { "code": "btsay45", "name": "Worcester Gators", "color": "#268245", "abbr": "WG" },
+    { "code": "PuckLuck", "name": "Beginner's Luck", "color": "#8e6f0b", "abbr": "BL" },
+    { "code": "CGN", "name": "Colganites", "color": "#1c8271", "abbr": "CO" },
+    { "code": "mertin", "name": "Upper Darby Rats", "color": "#a54fc4", "abbr": "UD" }
   ],
   "oldTeamNames": { "Cawlidge Hockey": "ROO", "Gavitron": "M.M", "Lsleeves": "BULLIES", "btsay45": "btsay45", "mertin": "mertin", "nbracken": "nbracken" },
 

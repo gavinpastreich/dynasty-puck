@@ -47,7 +47,7 @@
     render: function (el, hsh) {
       var E = DP.E, me = hsh.q.team || DP.state.team;
       var fas = E.P.filter(function (p) { return !p.gm && p.r && p.projGP >= 5; });
-      var h = '<div class="page-head"><h1>Free-Agent Finder</h1><p class="sub">' + fas.length + ' unowned players with a 2026-27 projection' + (me ? ', ranked by fit for <b>' + esc(U.teamName(me)) + '</b>: the change in your expected 2026-27 category wins if you add the player (your lineup re-optimized every week, replacing whoever he bumps).' : '. Pick a team to rank them by fit.') + '</p></div>';
+      var h = '<div class="page-head"><h1>Free-Agent Finder</h1><p class="sub">' + fas.length + ' unowned players with a 2026-27 projection' + (me ? ', ranked by fit for ' + U.teamChip(me, { b: 1 }) + ': the change in your expected 2026-27 category wins if you add the player (your lineup re-optimized every week, replacing whoever he bumps).' : '. Pick a team to rank them by fit.') + '</p></div>';
       h += '<div class="controls"><label>Fit for ' + ui.teamSelect('fa-team', me, 'No team (rank by WAR)') + '</label><span class="small muted" id="fa-status"></span></div>';
       if (me) {
         var s = DP.teamSummary()[me], order = E.CATS.map(function (c, i) { return i; }).sort(function (a, b) { return s.z[a] - s.z[b]; });
@@ -155,7 +155,7 @@
       var owned = E.P.filter(function (p) { return p.gm; });
       var h = '<div class="page-head"><h1>Leaderboards</h1><p class="sub">Contracts, dynasty value, prospect pools, roster age and cap efficiency across the league.</p></div><div class="grid g2">';
       var top = function (title, hint, rows, f) { return '<div class="card"><h2>' + title + '</h2><div class="hint">' + hint + '</div><ol class="list-plain">' + rows.map(function (p, i) { return '<li><span class="rank">' + (i + 1) + '</span>' + f(p) + '</li>'; }).join('') + '</ol></div>'; };
-      var pl = function (right) { return function (p) { return ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + esc(p.gm || 'FA') + ' · ' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + '</span></span><span class="num" style="margin-left:auto">' + right(p) + '</span>'; }; };
+      var pl = function (right) { return function (p) { return ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + U.teamLabel(p.gm) + ' · ' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + '</span></span><span class="num" style="margin-left:auto">' + right(p) + '</span>'; }; };
       h += top('Best contracts (surplus)', 'Market value minus 2026-27 salary. MNR at $0 excluded.', owned.filter(function (p) { return p.ct !== 'MNR'; }).sort(U.by(function (p) { return p.surplus; }, true)).slice(0, 10), pl(function (p) { return '<b class="good">' + U.sm(p.surplus) + '</b>'; }));
       h += top('Most valuable MNR contracts', 'MNR players produce at $0 until they graduate; ranked by this-season WAR.', owned.filter(function (p) { return p.ct === 'MNR' && p.r; }).sort(U.by(function (p) { return p.WAR; }, true)).slice(0, 10), pl(function (p) { return '<b>' + U.fmt(p.WAR, 1) + '</b> WAR'; }));
       h += top('Dynasty value', 'Discounted category wins over 7 seasons net of cap cost.', E.P.slice().sort(U.by(function (p) { return p.DV; }, true)).slice(0, 10), pl(function (p) { return '<b>' + U.fmt(p.DV, 1) + '</b>'; }));
@@ -163,7 +163,7 @@
       var teams = E.teams.map(function (t) { return TS[t]; });
       var tt = function (title, hint, key, fmt, asc) {
         var rows = teams.slice().sort(function (a, b) { return asc ? a[key] - b[key] : b[key] - a[key]; });
-        return '<div class="card"><h2>' + title + '</h2><div class="hint">' + hint + '</div>' + C.hbars(rows.map(function (r) { return { label: U.teamName(r.t), value: r[key], hl: r.t === me }; }), { fmt: fmt, labelW: 150, title: title }) + '</div>';
+        return '<div class="card"><h2>' + title + '</h2><div class="hint">' + hint + '</div>' + C.hbars(rows.map(function (r) { return { label: U.teamName(r.t), value: r[key], hl: r.t === me, color: U.teamColor(r.t) }; }), { fmt: fmt, labelW: 150, title: title }) + '</div>';
       };
       teams.forEach(function (r) {
         var ros = E.rosters[r.t];

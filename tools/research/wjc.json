@@ -1,0 +1,25 @@
+{
+  "_what": "2027 IIHF World Junior Championship (World Juniors page). Edit 'rosters' when the national teams name their rosters (mid-December): country code -> player names exactly as listed. 'status' notes are shown on the page as written.",
+  "name": "2027 IIHF World Junior Championship",
+  "start": "2026-12-26",
+  "end": "2027-01-05",
+  "born": 2007,
+  "eligibility": "A player can't have been born earlier than 2007 (IIHF U20 rule).",
+  "venues": ["Rogers Place, Edmonton", "Marchant Crane Centrium, Red Deer"],
+  "groups": {
+    "A": { "venue": "Marchant Crane Centrium, Red Deer", "teams": ["SWE", "FIN", "USA", "SVK", "DEU"] },
+    "B": { "venue": "Rogers Place, Edmonton", "teams": ["CZE", "CAN", "CHE", "LVA", "NOR"] }
+  },
+  "dates": [["2026-12-26", "Opening day"], ["2027-01-02", "Quarterfinals"], ["2027-01-04", "Semifinals"], ["2027-01-05", "Bronze and gold medal games"]],
+  "status": [
+    "Norway's spot: on November 8 the Norwegian association said the IIHF had removed Norway to make room for Russia; on November 15 the IIHF confirmed Russia can't take part because of the Canadian government's position. The sources checked on November 19 don't say whether Norway was put back.",
+    "Russian players can't play in this tournament."
+  ],
+  "rosters": {},
+  "checked": "2026-11-19",
+  "sources": [
+    { "name": "Wikipedia: 2027 World Junior Ice Hockey Championships", "url": "https://en.wikipedia.org/wiki/2027_World_Junior_Ice_Hockey_Championships" },
+    { "name": "IIHF: Edmonton and Red Deer to host 2027", "url": "https://www.iihf.com/en/news/70834/edmonton_and_red_deer_to_host_2027_iihf_world_juni" },
+    { "name": "NHL.com: 2027 schedule announced", "url": "https://www.nhl.com/news/2027-world-junior-championship-schedule-announced" }
+  ]
+}

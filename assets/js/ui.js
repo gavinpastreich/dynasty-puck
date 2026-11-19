@@ -18,7 +18,11 @@
     if (opts.team !== false) sub.push(esc(p.t || ''));
     if (opts.age !== false && p.age) sub.push(Math.floor(p.age) + 'y');
     if (p.wv) sub.push('<span class="pill W" title="On waivers">W</span>');
-    return ui.plink(p) + ui.injBadge(p) + ' <span class="faint small">' + sub.join(' · ') + '</span>';
+    // a small headshot in front of the name (opts.av === false or DP.state.noAv leaves it out)
+    var av = opts.av !== false && !(DP.state && DP.state.noAv) && DP.headshot ? DP.headshot(p, 24) : '';
+    var txt = ui.plink(p) + ui.injBadge(p) + ' <span class="faint small">' + sub.join(' · ') + '</span>';
+    var pos = opts.pos ? ui.pos(p) : '';
+    return av || pos ? '<span class="pc">' + pos + av + '<span class="pct">' + txt + '</span></span>' : txt;
   };
   ui.injBadge = function (p) {
     if (!p.inj) return '';
@@ -189,6 +193,24 @@
     hdr(); body();
     api.update = function (rows) { if (rows) o.rows = rows; body(); };
     return api;
+  };
+
+  // ---------------------------------------------------------------- section jump bar (a sticky row of buttons that scroll to a card)
+  DP.jumpNav = function (root) {
+    var nav = U.qs('.jump', root); if (!nav) return;
+    var btns = U.qsa('[data-jump]', nav), calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    nav.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-jump]'); if (!b) return;
+      var t = document.getElementById(b.dataset.jump); if (t) t.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+    });
+    if (!('IntersectionObserver' in window)) return;
+    var seen = {};
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+      var cur = btns.filter(function (b) { return seen[b.dataset.jump]; })[0];
+      btns.forEach(function (b) { b.classList.toggle('on', b === cur); });
+    }, { rootMargin: '-110px 0px -55% 0px' });
+    btns.forEach(function (b) { var t = document.getElementById(b.dataset.jump); if (t) io.observe(t); });
   };
 
   // ---------------------------------------------------------------- modal

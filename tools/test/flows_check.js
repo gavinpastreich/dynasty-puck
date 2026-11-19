@@ -49,7 +49,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(/c:2\.5:ROO>SPG/.test(decodeURIComponent(await page.evaluate(() => location.hash))), 'trade: amount edit kept in the link');
   const capCells = await page.evaluate(() => { const t = [...document.querySelectorAll('#tr-res table')].find((x) => /Cap space after/.test(x.innerText)); const i = [...t.querySelectorAll('th')].findIndex((h) => /Cap space after/.test(h.textContent)); return [...t.querySelectorAll('tbody tr')].map((r) => r.children[i].innerText); });
   const usd = (x) => +x.replace(/[^0-9.\-]/g, '');
-  ok(Math.abs(usd(capCells[0].split('(')[0]) - (sp0.ROO - 2.5)) < 0.011 && Math.abs(usd(capCells[1].split('(')[0]) - (sp0.SPG + 2.5)) < 0.011, 'trade: cap space after = before -/+ the cap sent (' + capCells.join(' | ') + ')');
+  const shown = (want) => (Math.abs(want) >= 10 ? 0.051 : 0.0051) + 1e-9; // U.m shows 1 decimal from $10M up, 2 below
+  ok(Math.abs(usd(capCells[0].split('(')[0]) - (sp0.ROO - 2.5)) <= shown(sp0.ROO - 2.5) && Math.abs(usd(capCells[1].split('(')[0]) - (sp0.SPG + 2.5)) <= shown(sp0.SPG + 2.5), 'trade: cap space after = before -/+ the cap sent (' + capCells.join(' | ') + ')');
   ok(await page.evaluate(() => /of which cap space/.test(document.querySelector('#tr-res').innerText) && !/Who wins when/.test(document.querySelector('#tr-res').innerText)), 'trade: cap shown in team context; no empty player chart');
   await go('trade?t=ROO,SPG&a=' + encodeURIComponent('c:60:ROO>SPG'));
   ok(await page.evaluate(() => /Not legal as built/.test(document.querySelector('#tr-res').innerText)), 'trade: sending more cap than a team has room for is flagged');
@@ -165,6 +166,54 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   const txt = await page.evaluate(() => navigator.clipboard.readText().catch(() => ''));
   ok(!txt || (/^THE WEEKLY/.test(txt) && /def\.|tied/.test(txt) && /#\/weekly\?w=1/.test(txt)), 'weekly: copy for the chat gives the plain-text recap');
 
+  // ---- Share as image: The Weekly, the scoreboard and a trade draw a picture in a preview card
+  await page.click('#wk-img'); await page.waitForTimeout(600);
+  ok(await page.evaluate(() => { const i = document.querySelector('#modal-body img'); return !!(i && /^data:image\/png/.test(i.src) && i.naturalWidth === 1080 && document.querySelector('#modal-body a[download]')); }), 'share: The Weekly as a 1080px picture with Download');
+  await page.keyboard.press('Escape'); await page.waitForTimeout(300);
+  await go('live', 2500);
+  await page.click('#lv-img'); await page.waitForTimeout(600);
+  ok(await page.evaluate(() => { const i = document.querySelector('#modal-body img'); return !!(i && i.naturalHeight > 400); }), 'share: the scoreboard as a picture');
+  await page.keyboard.press('Escape'); await page.waitForTimeout(300);
+
+  // ---- Dashboard: your week, the to-do list, every matchup this week
+  await go('home', 3500);
+  ok(await page.evaluate(() => !!document.querySelector('.hero.yw') && document.querySelectorAll('.yw-todo li').length >= 1), 'dashboard: your-week panel with a to-do list');
+  ok(await page.evaluate(() => { const n = document.querySelectorAll('.mini-board .mg').length; return n === 0 || n === DP.E.teams.length / 2; }), 'dashboard: one card per matchup this week');
+  // ---- Team Hub: header, season strip, section buttons
+  await go('team', 3500);
+  ok(await page.evaluate(() => !!document.querySelector('.hero .tbadge.xl') && document.querySelectorAll('.stats.stats6 .stat').length === 6), 'team hub: team header and six tiles');
+  ok(await page.evaluate(() => document.querySelectorAll('#tj-season .wkchip').length === DP.seasonRows(DP.state.team).length), 'team hub: one chip per week played');
+  await page.click('.jump [data-jump="tj-cap"]'); await page.waitForTimeout(1200);
+  ok(await page.evaluate(() => { const r = document.querySelector('#tj-cap').getBoundingClientRect(); return r.top >= 0 && r.top < 260; }), 'team hub: a section button scrolls to its card');
+  // ---- Menu: groups fold away and stay folded; related pages share a tab row
+  await page.click('#nav [data-grp="Prospects"]'); await page.waitForTimeout(300);
+  ok(await page.evaluate(() => !document.querySelector('#nav a[href="#/radar"]') && JSON.parse(localStorage.getItem('dp_navFold') || '{}').Prospects === true), 'menu: a group folds and is remembered');
+  await go('radar', 1500);
+  ok(await page.evaluate(() => !!document.querySelector('#nav a[href="#/radar"].on')), 'menu: the group of the page you are on always shows');
+  await page.evaluate(() => localStorage.removeItem('dp_navFold'));
+  await go('trade', 1500);
+  ok(await page.evaluate(() => document.querySelectorAll('#famtabs a').length >= 5 && !!document.querySelector('#famtabs a.on[href="#/trade"]')), 'menu: trade pages share a tab row');
+  // ---- Trade Machine: counteroffer for a lopsided deal, picture of the trade
+  const lop = await page.evaluate(() => { const E = DP.E, a = E.rosters['M.M'].slice().sort((x, y) => y.WAR - x.WAR)[2], b = E.rosters.ROO.slice().sort((x, y) => y.WAR - x.WAR)[5]; return encodeURIComponent('p:' + a.id + '>ROO|p:' + b.id + '>M.M'); });
+  await go('trade?t=M.M,ROO&a=' + lop, 3500);
+  ok(await page.evaluate(() => /Counteroffer/.test(document.querySelector('#tr-res').innerText)), 'trade: counteroffer line for a deal one side loses');
+  const coLink = await page.evaluate(() => { const a = [...document.querySelectorAll('#tr-res p.small a')].find((x) => /a=/.test(x.getAttribute('href') || '') && x.closest('p').innerText.indexOf('Counteroffer') === 0); return a ? a.getAttribute('href') : null; });
+  if (coLink) { await go(coLink.slice(2), 3000); ok(await q('#tr-cols .pl') === 3, 'trade: the counteroffer link adds the piece'); }
+  await page.click('#tr-img'); await page.waitForTimeout(600);
+  ok(await page.evaluate(() => !!document.querySelector('#modal-body img')), 'share: the trade as a picture');
+  await page.keyboard.press('Escape'); await page.waitForTimeout(300);
+  // ---- New pages render their main pieces
+  await go('deadline', 2500);
+  ok(await page.evaluate(() => document.querySelectorAll('#dl-teams tbody tr').length === 14 && (!!document.querySelector('.countdown') || /deadline/.test(document.querySelector('#main').innerText))), 'deadline: buyers and sellers, countdown');
+  await go('playoffs', 4000);
+  ok(await page.evaluate(() => document.querySelectorAll('.bracket .bcol').length === 4 && document.querySelectorAll('#po-tbl tbody tr').length === 14), 'playoffs: bracket and odds table');
+  await go('commish', 2500);
+  ok(await page.evaluate(() => document.querySelectorAll('#cm-cap tbody tr').length === 14), 'commissioner checks: every team');
+  await go('scout', 2500);
+  ok(await page.evaluate(() => /Category battle/.test(document.querySelector('#main').innerText) && document.querySelectorAll('#main table.t tbody tr').length >= 15), 'scouting: category battle table');
+  await go('wjc', 2500);
+  ok(await page.evaluate(() => document.querySelectorAll('#wj-t tbody tr').length > 10), 'world juniors: watch list');
+
   // ---- Mock draft: draft for a team to the end
   await go('mock?team=M.M');
   for (let i = 0; i < 10; i++) { const b = await page.$('[data-draft]'); if (!b) break; await b.click(); await page.waitForTimeout(250); }
@@ -242,7 +291,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     ok(await np.evaluate(() => !!document.querySelector('#newscard') && document.querySelector('#newscard').innerText.indexOf(DP.NEWS[0][1]) >= 0), 'dashboard: "new on the site" card shown');
     await np.tap('#newscard [data-act="news-seen"]'); await np.waitForTimeout(200);
     ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsTop')) === DP.NEWS[0][1] && DP.newsCard() === ''), 'dashboard: "Got it" hides the card and remembers');
-    ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); return one === 1 && /Offseason Planner/.test(old) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');
+    ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); const idx = DP.NEWS.findIndex((x) => x[1] === 'Traded cap space'), want = DP.NEWS.slice(0, Math.min(idx, 3)).map((x) => x[1]); return one === 1 && want.every((t) => old.indexOf(t) >= 0) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');
     ok(await np.evaluate(() => getComputedStyle(document.querySelector('#tabbar')).display === 'flex' && document.querySelectorAll('#tabbar a, #tabbar button').length === 5), 'phone: bottom bar with five entries');
     await np.tap('#tabbar a[href="#/live"]'); await np.waitForTimeout(1500);
     ok((await S()).hash === '#/live' && await np.evaluate(() => document.querySelector('#tabbar a.on').getAttribute('href') === '#/live'), 'phone: bottom bar navigates and marks the page');

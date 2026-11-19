@@ -59,7 +59,7 @@ jobs:
         if: steps.commit.outputs.changed == 'true'
         run: |
           mkdir -p _site
-          cp -r index.html manifest.json shinylive-sw.js assets data fa prospects _site/
+          cp -r index.html manifest.json sw.js shinylive-sw.js assets data fa prospects _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
         if: steps.commit.outputs.changed == 'true'
@@ -101,5 +101,6 @@ jobs:
           node tools/test/check_radar.js || rc=1
           node tools/test/check_draft.js || rc=1
           node tools/test/check_weekly.js || rc=1
+          node tools/test/check_season.js || rc=1
           python tools/test/check_fantrax.py || rc=1
           exit $rc

@@ -43,10 +43,34 @@
 
   // teams
   U.teamName = function (code) { return (DP.E && DP.E.teamName[code]) || code || 'Free agent'; };
+  // team colors and badge letters come from config/league.json (teams[].color / .abbr); a team without one gets a neutral grey
+  var tstyle = null, tfor = null;
+  function ts(code) {
+    if (!tstyle || tfor !== DP.meta) { tstyle = {}; tfor = DP.meta; ((DP.meta && DP.meta.gms) || []).forEach(function (g) { tstyle[g.code] = g; }); }
+    return tstyle[code] || {};
+  }
+  U.teamColor = function (code) { var c = ts(code).color; return /^#[0-9a-f]{3,8}$/i.test(c || '') ? c : '#6e7681'; };
+  U.teamAbbr = function (code) {
+    var g = ts(code); if (g.abbr) return String(g.abbr).slice(0, 3);
+    var w = String(g.name || code || '?').replace(/[^A-Za-z ]/g, ' ').trim().split(/\s+/);
+    return (w.length > 1 ? w.map(function (x) { return x[0]; }).join('') : w[0].slice(0, 2)).slice(0, 3).toUpperCase();
+  };
+  // the small square "logo": the team color with its letters. size: '' (22px), 'sm' (18px), 'lg' (40px)
+  U.teamBadge = function (code, size) {
+    if (!code) return '';
+    return '<span class="tbadge' + (size ? ' ' + size : '') + '" style="--tc:' + U.teamColor(code) + '" aria-hidden="true">' + esc(U.teamAbbr(code)) + '</span>';
+  };
   U.teamLabel = function (code) {
     if (!code) return '<span class="muted">FA</span>';
     var n = U.teamName(code);
-    return '<span class="teamtag" title="' + esc(n + ' (' + code + ')') + '">' + esc(code) + '</span>';
+    return '<span class="teamtag" style="--tc:' + U.teamColor(code) + '" title="' + esc(n + ' (' + code + ')') + '"><i class="tdot" aria-hidden="true"></i>' + esc(code) + '</span>';
+  };
+  // badge + full team name (lists, standings, headers); opts.code adds the short code after the name, opts.link links to the Team Hub, opts.b = bold
+  U.teamChip = function (code, opts) {
+    opts = opts || {};
+    if (!code) return '<span class="muted">Free agent</span>';
+    var n = esc(U.teamName(code)), inner = U.teamBadge(code, opts.size || 'sm') + '<span class="tn">' + (opts.b ? '<b>' + n + '</b>' : n) + (opts.code && U.teamName(code) !== code ? ' <span class="faint small">' + esc(code) + '</span>' : '') + '</span>';
+    return opts.link ? '<a class="teamchip" href="#/team/' + encodeURIComponent(code) + '">' + inner + '</a>' : '<span class="teamchip">' + inner + '</span>';
   };
   U.teamOptions = function (sel, opts) {
     opts = opts || {};

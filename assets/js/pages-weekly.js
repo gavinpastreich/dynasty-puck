@@ -122,6 +122,47 @@
     return x.p.G ? pl(l[1], 'win', 'wins') + (l[3] ? ', ' + U.rate(1 - l[2] / l[3]) + ' on ' + l[3] + ' shots' : '') + (l[4] ? ', ' + pl(l[4], 'shutout', 'shutouts') : '')
       : l[1] + 'G ' + l[2] + 'A in ' + l[0] + ' GP, ' + l[4] + ' SOG' + (l[6] + l[7] ? ', ' + pl(l[6], 'hit', 'hits') + ', ' + pl(l[7], 'block', 'blocks') : '');
   }
+  // A team's season so far, week by week: the result, the opponent, its place in the standings after the week (rebuilt
+  // from the weekly results, the same way The Weekly does) and its all-play strength. Used by the Team Hub.
+  DP.seasonRows = function (t) {
+    var E = DP.E, H = E.history();
+    return H.weeks.filter(function (w) { return w.games && w.games.length; }).map(function (w) {
+      var g = w.games.filter(function (x) { return x.a === t || x.b === t; })[0];
+      if (!g) return null;
+      var me = g.a === t ? g.sa : g.sb, after = standingsAfter(H, w.n);
+      return { n: w.n, from: w.from, to: w.to, opp: g.a === t ? g.b : g.a, W: me.W, L: me.L, T: me.T, res: me.W > me.L ? 'W' : me.W < me.L ? 'L' : 'T', place: after.by[t].rank, ap: strength(w, t), rec: after.by[t] };
+    }).filter(Boolean);
+  };
+  DP.seasonStrip = function (t) {
+    var R = DP.seasonRows(t), nT = DP.E.teams.length;
+    if (!R.length) return '<p class="muted small">This fills in after the first week is played.</p>';
+    var W = 760, H = 170, padL = 34, padR = 16, padT = 14, padB = 24, n = R.length;
+    var px = function (i) { return padL + (n === 1 ? (W - padL - padR) / 2 : i / (n - 1) * (W - padL - padR)); };
+    var py = function (r) { return padT + (r - 1) / (nT - 1) * (H - padT - padB); };
+    var col = U.teamColor(t), resCol = { W: 'var(--good)', L: 'var(--bad)', T: 'var(--faint)' };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="max-width:' + W + 'px" role="img" aria-label="Place in the standings after each week">';
+    [1, 4, 8, 11, 14].forEach(function (r) { if (r > nT) return; s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(r) + '" y2="' + py(r) + '"' + (r === 8 ? ' stroke-dasharray="4 4"' : '') + '/><text class="axis" x="' + (padL - 6) + '" y="' + (py(r) + 4) + '" text-anchor="end">' + U.ord(r) + '</text>'; });
+    var po = (DP.meta.playoffs || {}).teams || 8;
+    s += '<text class="axis" x="' + (W - padR) + '" y="' + (py(po) - 5) + '" text-anchor="end">playoff line</text>';
+    s += '<path d="' + R.map(function (r, i) { return (i ? 'L' : 'M') + px(i).toFixed(1) + ',' + py(r.place).toFixed(1); }).join('') + '" fill="none" stroke="' + col + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+    R.forEach(function (r, i) {
+      var tip = '<div class="tv">Week ' + r.n + ': ' + (r.res === 'W' ? 'beat ' : r.res === 'L' ? 'lost to ' : 'tied ') + esc(U.teamName(r.opp)) + ' ' + r.W + '-' + r.L + '-' + r.T + '</div><div class="tl">' + U.ord(r.place) + ' after the week (' + r.rec.W + '-' + r.rec.L + '-' + r.rec.T + ')' + (r.ap !== null ? ' · numbers beat ' + U.pct(r.ap) + ' of the league' : '') + '</div>';
+      var bw = (W - padL - padR) / Math.max(1, n - 1);
+      s += '<g data-tip="' + esc(tip) + '"><rect class="hit" x="' + (px(i) - bw / 2) + '" y="0" width="' + bw + '" height="' + H + '"/><circle cx="' + px(i) + '" cy="' + py(r.place) + '" r="5.5" fill="' + resCol[r.res] + '" stroke="var(--card)" stroke-width="2"/></g>';
+      s += '<text class="axis" x="' + px(i) + '" y="' + (H - 6) + '" text-anchor="middle">W' + r.n + '</text>';
+    });
+    s += '</svg>';
+    var chips = '<div class="wkchips">' + R.map(function (r) {
+      return '<a class="wkchip ' + r.res + '" href="' + U.hash('weekly', null, { w: r.n }) + '" title="' + esc('Week ' + r.n + ' recap') + '"><span class="wk">W' + r.n + '</span><b>' + r.res + '</b> <span class="num">' + r.W + '-' + r.L + '-' + r.T + '</span> ' + U.teamBadge(r.opp, 'sm') + '</a>';
+    }).join('') + '</div>';
+    var w = R.filter(function (r) { return r.res === 'W'; }).length, l = R.filter(function (r) { return r.res === 'L'; }).length, tt = R.length - w - l;
+    var streak = 1; for (var i = R.length - 2; i >= 0 && R[i].res === R[R.length - 1].res; i--) streak++;
+    var aps = R.map(function (r) { return r.ap; }).filter(function (x) { return x !== null; }), apAvg = aps.length ? DP.E.sum(aps) / aps.length : null;
+    var head = '<p class="small">Matchups <b>' + w + '-' + l + '-' + tt + '</b> · ' + (R[R.length - 1].res === 'T' ? 'tied last week' : (R[R.length - 1].res === 'W' ? 'won ' : 'lost ') + streak + ' straight') +
+      (apAvg !== null ? ' · on average its weekly numbers beat <b>' + U.pct(apAvg) + '</b> of the league (all-play)' : '') + '.</p>';
+    return head + '<div class="chart">' + s + '</div>' + chips;
+  };
+
   DP._weekly = { standingsAfter: standingsAfter, strength: strength, stars: stars, nowBits: nowBits }; // for tools/test/check_weekly.js
   DP.weekDetail = DP.weekDetail || {};
   function loadWeek(n, done) {
@@ -142,12 +183,12 @@
       if (!done.some(function (x) { return x.n === n; })) n = done[done.length - 1].n;
       var D = DP.weeklyData(n), w = D.w;
       h += '<div class="controls"><label>Week <select id="wk-n">' + done.slice().reverse().map(function (x) { return '<option value="' + x.n + '"' + (x.n === n ? ' selected' : '') + '>Week ' + x.n + ' · ' + esc(day(x.from)) + '–' + esc(day(x.to)) + '</option>'; }).join('') + '</select></label>' +
-        '<button class="btn" id="wk-copy">📋 Copy for the chat</button><a class="btn ghost" href="' + U.hash('live', null, { w: n }) + '">Full box scores →</a><a class="btn ghost" href="' + U.hash('preview', null, { w: n + 1 }) + '">Week ' + (n + 1) + ' preview →</a></div>';
+        '<button class="btn" id="wk-copy">📋 Copy for the chat</button><button class="btn" id="wk-img">🖼️ Share as image</button><a class="btn ghost" href="' + U.hash('live', null, { w: n }) + '">Full box scores →</a><a class="btn ghost" href="' + U.hash('preview', null, { w: n + 1 }) + '">Week ' + (n + 1) + ' preview →</a></div>';
       h += '<h2 style="margin:6px 0 2px">Week ' + n + ' · ' + esc(day(w.from)) + '–' + esc(day(w.to)) + (w.final ? '' : ' <span class="badge warn" title="Stat corrections can still move a number for a day or two">provisional</span>') + '</h2>';
       // results
       h += '<div class="grid g2"><div class="card"><h2>Results</h2><ul class="list-plain mvlist">' + D.sorted.map(function (x) {
         var g = x.g, mine = g.a === me || g.b === me;
-        return '<li' + (mine ? ' class="mine-li"' : '') + '><b>' + esc(tn(x.win || g.a)) + '</b> ' + (x.win ? 'beat' : 'tied') + ' <b>' + esc(tn(x.win ? x.lose : g.b)) + '</b> <span class="num">' + (x.win === g.b ? score(g, 'b') : score(g, 'a')) + '</span>' +
+        return '<li' + (mine ? ' class="mine-li"' : '') + '>' + U.teamChip(x.win || g.a, { b: 1 }) + ' ' + (x.win ? 'beat' : 'tied') + ' ' + U.teamChip(x.win ? x.lose : g.b, { b: 1 }) + ' <span class="num">' + (x.win === g.b ? score(g, 'b') : score(g, 'a')) + '</span>' +
           (x === D.blow && x.margin >= 5 ? ' <span class="badge info">blowout</span>' : '') + (x === D.close && x.margin <= 1 ? ' <span class="badge warn">nail-biter</span>' : '') + '</li>';
       }).join('') + '</ul></div>';
       // stories
@@ -180,7 +221,7 @@
       // standings table
       h += '<div class="card" style="margin-top:14px"><h2>Standings after week ' + n + '</h2><div class="tbl-wrap"><table class="t"><thead><tr><th class="num">#</th><th>Team</th><th class="num">W-L-T</th><th class="num">Win %</th><th class="num">Move</th><th class="num">This week</th></tr></thead><tbody>' + D.after.list.map(function (r) {
         var b = D.before.by[r.t], d = b.rank - r.rank, x = D.games.filter(function (g) { return g.a === r.t || g.b === r.t; })[0];
-        return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td class="num">' + r.rank + '</td><td><b>' + esc(tn(r.t)) + '</b></td><td class="num">' + r.W + '-' + r.L + '-' + r.T + '</td><td class="num">' + U.rate(r.pct) + '</td><td class="num">' + (n > 1 && d ? '<span class="' + (d > 0 ? 'good' : 'bad') + '">' + (d > 0 ? '▲' : '▼') + Math.abs(d) + '</span>' : '<span class="faint">–</span>') + '</td><td class="num">' + (x ? score(x.g, x.g.a === r.t ? 'a' : 'b') : '') + '</td></tr>';
+        return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td class="num">' + r.rank + '</td><td>' + U.teamChip(r.t, { b: 1 }) + '</td><td class="num">' + r.W + '-' + r.L + '-' + r.T + '</td><td class="num">' + U.rate(r.pct) + '</td><td class="num">' + (n > 1 && d ? '<span class="' + (d > 0 ? 'good' : 'bad') + '">' + (d > 0 ? '▲' : '▼') + Math.abs(d) + '</span>' : '<span class="faint">–</span>') + '</td><td class="num">' + (x ? score(x.g, x.g.a === r.t ? 'a' : 'b') : '') + '</td></tr>';
       }).join('') + '</tbody></table></div><p class="small muted">Rebuilt from the weekly results; Fantrax is the official record (they match on about 99% of category decisions).</p></div>';
       el.innerHTML = h;
       U.qs('#wk-n', el).addEventListener('change', function (e) { DP.go('weekly', null, { w: e.target.value }); });
@@ -199,6 +240,17 @@
         starsTxt = parts.map(function (x) { return x[0] + ': ' + x[1].p.n + ' (' + x[1].t + '), ' + lineTxt(x[1]); });
       });
       U.qs('#wk-copy', el).addEventListener('click', function () { U.copy(chatText(D, X, starsTxt), 'The Weekly copied. Paste it in the league chat.'); });
+      U.qs('#wk-img', el).addEventListener('click', function () {
+        var rows = [{ kind: 'head', text: 'Results' }].concat(D.sorted.map(function (x) {
+          var g = x.g, note = [g.sa.T ? g.sa.T + ' tied' : '', x === D.blow && x.margin >= 5 ? 'blowout' : x === D.close && x.margin <= 1 ? 'nail-biter' : ''].filter(Boolean).join(' · ');
+          return { kind: 'game', a: g.a, b: g.b, sa: g.sa.W, sb: g.sb.W, win: x.win, note: note };
+        }));
+        if (D.best && D.best[0]) rows.push({ kind: 'head', text: 'Team of the week' }, { kind: 'team', t: D.best[0], text: tn(D.best[0]), right: 'beat ' + U.pct(strength(D.w, D.best[0])) + ' of the league' });
+        if (starsTxt && starsTxt.length) { rows.push({ kind: 'head', text: 'Players of the week' }); starsTxt.slice(0, 4).forEach(function (t) { rows.push({ kind: 'text', text: t }); }); }
+        rows.push({ kind: 'head', text: 'Standings' });
+        D.after.list.slice(0, 5).forEach(function (r) { rows.push({ kind: 'team', t: r.t, text: r.rank + '. ' + tn(r.t), right: r.W + '-' + r.L + '-' + r.T }); });
+        DP.shareCard({ title: 'The Weekly · Week ' + D.n, sub: day(D.w.from) + ' – ' + day(D.w.to) + ' · category record W-L in each matchup', rows: rows, foot: ((DP.meta.alerts || {}).siteUrl || '') + '#/weekly?w=' + D.n }, 'dynasty-puck-week-' + D.n + '.png');
+      });
     }
   };
   function chatText(D, X, starsTxt) {

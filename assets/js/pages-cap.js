@@ -75,7 +75,7 @@
       var rows = E.teams.map(function (tm) { var c = E.teamCap(tm); return { t: tm, c: c }; });
       ui.table(U.qs('#cap-league', el), {
         rows: rows, sort: 'y0', csv: 'league-cap.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
-        cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('cap', null, { team: r.t }) + '"><b>' + esc(U.teamName(r.t)) + '</b></a>'; } }]
+        cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('cap', null, { team: r.t }) + '">' + U.teamChip(r.t, { b: 1 }) + '</a>'; } }]
           .concat(E.YEARS.map(function (y, i) {
             return { k: 'y' + i, l: y, cls: 'num', v: function (r) { return r.c[i].total; }, f: function (r) { var v = r.c[i].total; return '<span class="' + (r.c[i].space < 0 ? 'bad' : '') + '">' + U.m(v, 1) + '</span><br><span class="small faint">' + U.m(r.c[i].space, 1) + ' of $' + r.c[i].cap + 'M' + (r.c[i].adj ? ' <span title="' + esc(DP.capTradeNote(r.t).replace(/<[^>]+>/g, '')) + '">⇄</span>' : '') + '</span>' + (r.c[i].ir ? '<br><span class="small faint" title="' + esc(r.c[i].irP.map(function (p) { return p.n + ' ' + U.m(p.cy[0]); }).join(', ')) + '">IR ' + U.m(r.c[i].ir, 1) + ' off</span>' : '') + (r.c[i].mn ? '<br><span class="small faint" title="' + esc(r.c[i].mnP.map(function (p) { return p.n + ' ' + U.m(p.cy[0]); }).join(', ')) + '">minors ' + U.m(r.c[i].mn, 1) + ' off</span>' : ''); }, csv: function (r) { return r.c[i].total.toFixed(2); } };
           })).concat([{ k: 'n', l: 'Players', cls: 'num', v: function (r) { return E.rosters[r.t].length; } }])

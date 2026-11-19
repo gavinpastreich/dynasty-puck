@@ -5,23 +5,46 @@
   DP.state = { team: U.store.get('team', null) };
   if (DP.state.team && !DP.meta.gms.some(function (g) { return g.code === DP.state.team; })) DP.state.team = null;
 
+  // the menu, grouped by what people come to do. Pages not listed here (e.g. Weekly Preview) are reached from their
+  // family's tab row and from search (PAGE_EXTRA).
   var NAV = [
-    ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['alerts', '🔔', 'Alerts']]],
-    ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards'], ['luck', '🎰', 'Buy Low / Sell High']]],
-    ['Simulators', [['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['signing', '✍️', 'Signing Sim']]],
-    ['League', [['standings', '📊', 'Standings'], ['cats', '🧩', 'Category Insights'], ['awards', '🏅', 'Awards & Wrapped'], ['values', '💎', 'Trade Value Chart'], ['windows', '📈', 'Contention Windows'], ['preview', '📰', 'Weekly Preview'], ['weekly', '🗞️', 'The Weekly'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['Overview', [['home', '🏠', 'Dashboard'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['weekly', '🗞️', 'The Weekly'], ['standings', '📊', 'Standings'], ['playoffs', '🏆', 'Playoff Picture']]],
+    ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['luck', '🎰', 'Buy Low / Sell High'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards'], ['injuries', '🩹', 'Injuries & Depth']]],
+    ['Trades', [['deadline', '⏳', 'Trade Deadline'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['values', '💎', 'Trade Value Chart'], ['history', '📜', 'Trade History'], ['picks', '🎟️', 'Draft Picks']]],
+    ['Simulators', [['scout', '🔭', 'Opponent Scouting'], ['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['signing', '✍️', 'Signing Sim']]],
+    ['League', [['cats', '🧩', 'Category Insights'], ['windows', '📈', 'Contention Windows'], ['awards', '🏅', 'Awards & Wrapped']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', 'Offseason Planner'], ['auction', '🔨', 'Auction War Room']]],
-    ['Prospects', [['radar', '📡', 'Prospect Radar'], ['prospects', '🌱', 'Prospects & MNR'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
-    ['Schedule & News', [['schedule', '🗓️', 'Schedule Tools'], ['injuries', '🩹', 'Injuries & Depth']]],
-    ['About', [['rules', '📖', 'Rules & Methods'], ['data', '🗂️', 'Data & Updates']]]
+    ['Prospects', [['radar', '📡', 'Prospect Radar'], ['prospects', '🌱', 'Prospects & MNR'], ['wjc', '🌍', 'World Juniors'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
+    ['Schedule', [['schedule', '🗓️', 'Schedule Tools']]],
+    ['About', [['alerts', '🔔', 'Alerts'], ['commish', '🧑‍⚖️', 'Commissioner Checks'], ['rules', '📖', 'Rules & Methods'], ['data', '🗂️', 'Data & Updates']]]
   ];
+  var PAGE_EXTRA = [['preview', '📰', 'Weekly Preview', 'The Weekly']]; // in search, not in the menu
+  // families: related pages share a tab row at the top, so moving between them is one click
+  var FAMS = [
+    [['weekly', 'Last week'], ['live', 'This week (live)'], ['preview', 'Next week'], ['scout', 'Scout your opponent'], ['matchup', 'Matchup sim']],
+    [['players', 'Players'], ['fa', 'Free Agents'], ['luck', 'Buy Low / Sell High'], ['compare', 'Compare'], ['leaders', 'Leaderboards']],
+    [['deadline', 'Deadline'], ['trade', 'Trade Machine'], ['finder', 'Trade Finder'], ['values', 'Value Chart'], ['history', 'Trade History'], ['picks', 'Draft Picks']],
+    [['standings', 'Standings'], ['playoffs', 'Playoff Picture'], ['season', 'Season Sim'], ['cats', 'Category Insights'], ['windows', 'Contention Windows'], ['awards', 'Awards & Wrapped']],
+    [['cap', 'Contracts & Cap'], ['offseason', 'Offseason Planner'], ['auction', 'Auction War Room'], ['signing', 'Signing Sim']],
+    [['radar', 'Prospect Radar'], ['prospects', 'Prospects & MNR'], ['wjc', 'World Juniors'], ['draft', 'Draft Center'], ['mock', 'Mock Draft']]
+  ];
+  var FAM_OF = {}; FAMS.forEach(function (f) { f.forEach(function (it) { if (!FAM_OF[it[0]]) FAM_OF[it[0]] = f; }); });
+  function famTabs(route) {
+    var el = U.qs('#famtabs'); if (!el) return;
+    var f = FAM_OF[route];
+    el.innerHTML = f ? f.map(function (it) { return '<a href="#/' + it[0] + '"' + (it[0] === route ? ' class="on" aria-current="page"' : '') + '>' + esc(it[1]) + '</a>'; }).join('') : '';
+    el.hidden = !f;
+  }
   DP.NAV = NAV;
 
+  // a group can be folded away (remembered on this device); the group holding the page you're on always shows
+  var folded = U.store.get('navFold', {});
   function navHtml(cur) {
     return NAV.map(function (g) {
-      return '<div class="grp">' + esc(g[0]) + '</div>' + g[1].map(function (it) {
+      var here = g[1].some(function (it) { return it[0] === cur; }), shut = folded[g[0]] && !here;
+      return '<button type="button" class="grp" data-grp="' + esc(g[0]) + '" aria-expanded="' + !shut + '">' + esc(g[0]) + '<span class="car" aria-hidden="true">' + (shut ? '▸' : '▾') + '</span></button>' + (shut ? '' : g[1].map(function (it) {
         return '<a href="#/' + it[0] + '" class="' + (cur === it[0] ? 'on' : '') + '"' + (cur === it[0] ? ' aria-current="page"' : '') + '><span class="i" aria-hidden="true">' + it[1] + '</span>' + esc(it[2]) + '</a>';
-      }).join('');
+      }).join(''));
     }).join('') + '<a href="assets/Dynasty-Puck-HQ-Guide.pdf" target="_blank" rel="noopener"><span class="i" aria-hidden="true">📘</span>League guide (PDF)</a><div class="grp">Season</div><div class="small muted" style="padding:0 10px">' + esc(DP.meta.season) + ' · data updated ' + esc(U.builtText()) + '</div>';
   }
 
@@ -37,7 +60,7 @@
 
   function teamBtn() {
     var t = DP.state.team, b = U.qs('#teambtn');
-    b.innerHTML = t ? '<span aria-hidden="true">🧢</span><span class="tn">' + esc(U.teamName(t)) + '</span>' : '<span aria-hidden="true">🧢</span><span class="tn">Pick your team</span>';
+    b.innerHTML = t ? U.teamBadge(t, 'sm') + '<span class="tn">' + esc(U.teamName(t)) + '</span>' : '<span aria-hidden="true">🧢</span><span class="tn">Pick your team</span>';
     b.title = t ? 'Your team: ' + U.teamName(t) + ' (' + t + '). Click to change.' : 'Choose your team';
   }
 
@@ -46,7 +69,7 @@
     var st = {}; (E.expStandings || []).forEach(function (r) { st[r.t] = r; });
     U.qs('#picker-teams').innerHTML = DP.meta.gms.map(function (g) {
       var ros = E.rosters[g.code] || [], pay = E.teamCap(g.code)[0].total;
-      return '<button data-team="' + esc(g.code) + '"><b>' + esc(g.name) + '</b><span>' + esc(g.code) + ' · ' + ros.length + ' players · ' + U.m(pay) + '</span></button>';
+      return '<button data-team="' + esc(g.code) + '" style="--tc:' + U.teamColor(g.code) + '">' + U.teamBadge(g.code, 'lg') + '<span class="pt"><b>' + esc(g.name) + '</b><span>' + esc(g.code) + ' · ' + ros.length + ' players · ' + U.m(pay) + '</span></span></button>';
     }).join('');
     bg.classList.add('open');
   };
@@ -99,7 +122,9 @@
   function render() {
     var h = U.parseHash(), page = DP.pages[h.route] || DP.pages.home;
     var route = DP.pages[h.route] ? h.route : 'home';
-    U.qs('#nav').innerHTML = navHtml(route === 'player' ? 'players' : route);
+    var navCur = route === 'player' ? 'players' : route === 'preview' ? 'weekly' : route;
+    U.qs('#nav').innerHTML = navHtml(navCur); DP._navCur = navCur;
+    famTabs(route);
     U.qs('#nav').classList.remove('open');
     tabbar(route); ui._tn = 0;
     // a fresh <main> each render: pages attach click handlers to it, and a reused node would stack them
@@ -128,7 +153,7 @@
     radar: 'prospects news risers fallers rankings', prospects: 'mnr graduation minors pipeline', draft: 'rookie draft board', mock: 'mock draft', matchup: 'h2h weekly lineup odds', season: 'playoff odds simulation',
     standings: 'record seeds playoffs', values: 'trade value chart rankings', windows: 'contender rebuild title odds', preview: 'matchups lineup watch', schedule: 'streaming games off-nights playoffs',
     injuries: 'injury ir depth lines', rules: 'methods how it works model glossary', data: 'updates upload sources freshness', alerts: 'email push notifications calendar reminders', compare: 'versus side by side',
-    leaders: 'leaderboards best top', luck: 'regression luck shooting percentage hot cold sell high buy low trade targets', weekly: 'recap newsletter results last week standings movers players of the week', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
+    leaders: 'leaderboards best top', wjc: 'world juniors wjc u20 junior championship international canada usa sweden finland', scout: 'opponent scouting report lineup tuned matchup swing categories', commish: 'commissioner rules checks cap roster limit goalie minimum ir graduation audit', playoffs: 'playoff picture bracket clinch eliminated magic number seeds schedule', deadline: 'trade deadline buyers sellers rentals hometown discount countdown', luck: 'regression luck shooting percentage hot cold sell high buy low trade targets', weekly: 'recap newsletter results last week standings movers players of the week', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
   DP.recent = U.store.get('recent', []);
   DP.noteRecent = function (id) { // last few player cards opened, for the empty search box
     DP.recent = [id].concat(DP.recent.filter(function (x) { return x !== id; })).slice(0, 6);
@@ -146,6 +171,10 @@
           var name = norm(it[2]), all = name + ' ' + norm(g[0]) + ' ' + (PAGE_WORDS[it[0]] || '');
           if (starts(all, nq)) out.push({ kind: 'page', route: it[0], icon: it[1], label: it[2], sub: g[0], rank: name.indexOf(nq) === 0 ? 0 : starts(name, nq) ? 1 : 2 });
         });
+      });
+      PAGE_EXTRA.forEach(function (it) {
+        var name = norm(it[2]), all = name + ' ' + norm(it[3]) + ' ' + (PAGE_WORDS[it[0]] || '');
+        if (starts(all, nq)) out.push({ kind: 'page', route: it[0], icon: it[1], label: it[2], sub: it[3], rank: name.indexOf(nq) === 0 ? 0 : starts(name, nq) ? 1 : 2 });
       });
       out.sort(function (a, b) { return a.rank - b.rank; });
       out = out.slice(0, 4);
@@ -211,6 +240,13 @@
       document.documentElement.dataset.theme = cur; U.store.set('theme', cur); render();
     });
     U.qs('#menubtn').addEventListener('click', function () { U.qs('#nav').classList.toggle('open'); });
+    U.qs('#nav').addEventListener('click', function (e) {
+      var g = e.target.closest('[data-grp]'); if (!g) return;
+      e.stopPropagation(); // the menu is redrawn under the tap: don't let the tap-outside check close it on phones
+      var k = g.dataset.grp; folded[k] = g.getAttribute('aria-expanded') === 'true'; U.store.set('navFold', folded);
+      U.qs('#nav').innerHTML = navHtml(DP._navCur);
+      var again = U.qs('#nav [data-grp="' + k.replace(/"/g, '') + '"]'); if (again) again.focus();
+    });
     U.qs('#picker-teams').addEventListener('click', function (e) { var b = e.target.closest('[data-team]'); if (b) DP.setTeam(b.dataset.team); });
     U.qs('#picker-skip').addEventListener('click', function () { U.qs('#picker-bg').classList.remove('open'); });
     U.qs('#modal-close').addEventListener('click', ui.closeModal);
@@ -236,6 +272,12 @@
     if (!DP.state.team && U.parseHash().route === 'home') DP.openPicker();
     DP.bootMs = Date.now() - t0;
     if (DP.live) DP.live.start();
+    // offline copy (sw.js): only on the real site, never on file:// or a local server
+    try { if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function () {}); } catch (e) { /* ignore */ }
+    var offMsg = function () { U.toast('Offline: showing the copy saved on this device (data from ' + U.builtText() + ')', 6000); };
+    if (navigator.onLine === false) offMsg();
+    window.addEventListener('offline', offMsg);
+    window.addEventListener('online', function () { U.toast('Back online', 2000); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

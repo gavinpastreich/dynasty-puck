@@ -153,7 +153,7 @@
     if (n1.space < 0) h += '<div class="callout bad">This plan is ' + U.m(-n1.space) + ' over the ' + Y[1] + ' cap. Let someone go, pick a shorter or cheaper option, or plan a trade.</div>';
     else if (n1.open < 0) h += '<div class="callout warn">This plan has ' + n1.n + ' players for ' + ROSTER + ' Active and Bench spots in ' + Y[1] + '. Players who can still go to the minors don\'t need one; everyone else does.</div>';
     else if (short.length) h += '<div class="callout">Lineup needs for ' + Y[1] + ' (12 F, 6 D, 2 G): short at ' + short.map(function (k) { return '<b>' + k + '</b> (' + n1.pos[k] + ' of ' + need[k] + ')'; }).join(', ') + ' before the auction, with ' + U.m(n1.space, 1) + ' to spend.</div>';
-    h += '<div class="card flush" style="margin-top:14px"><h2>' + esc(U.teamName(t)) + ': roster by season' + (changed ? ' <span class="badge warn">' + changed + ' change' + (changed > 1 ? 's' : '') + ' from the model\'s calls</span>' : '') + '</h2>' +
+    h += '<div class="card flush" style="margin-top:14px"><h2>' + U.teamBadge(t) + ' ' + esc(U.teamName(t)) + ': roster by season' + (changed ? ' <span class="badge warn">' + changed + ' change' + (changed > 1 ? 's' : '') + ' from the model\'s calls</span>' : '') + '</h2>' +
       '<div class="hint">Every player and what he costs each season. Set the <b>next decision</b> on a player to see what it does to your cap and roster; ★ marks the model\'s call (best projected surplus). ' +
       '<span class="pk c-con">signed</span> <span class="pk c-elc">new ELC</span> <span class="pk c-re">re-sign (planned)</span> <span class="pk c-auc">auction (projected)</span> <span class="pk c-mnr">MNR, $0</span> <span class="pk c-ufa">rights end</span>. Saved on this device only.' +
       (changed ? ' <button class="btn sm" id="pl-reset">Reset to the model\'s calls</button>' : '') + '</div>';
@@ -218,7 +218,7 @@
     U.qsa('[data-s]', box).forEach(function (b) { b.addEventListener('click', function () { go({ s: b.dataset.s === '1' ? '' : b.dataset.s }); }); });
     ui.table(U.qs('#lg-cap', box), {
       rows: teams, sort: 'y1', csv: 'league-cap-outlook.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
-      cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('offseason', null, { team: r.t }) + '"><b>' + esc(U.teamName(r.t)) + '</b></a>'; } }]
+      cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('offseason', null, { team: r.t }) + '">' + U.teamChip(r.t, { b: 1 }) + '</a>'; } }]
         .concat(Y.slice(0, NY).map(function (y, i) {
           return { k: 'y' + i, l: y, cls: 'num', v: function (r) { return r.y[i].cap - tot(r.y[i]); }, csv: function (r) { return (r.y[i].cap - tot(r.y[i])).toFixed(2); },
             f: function (r) { var o = r.y[i], sp = o.cap - tot(o); return '<b class="' + (sp < 0 ? 'bad' : sp > 0.25 * o.cap ? 'good' : '') + '">' + U.m(sp, 1) + '</b><br><span class="small faint">' + U.m(tot(o), 1) + ' · ' + cnt(o) + ' players</span>'; } };
@@ -230,7 +230,7 @@
         var mine = ev.filter(function (x) { return x.p.gm === t; });
         return { t: t, s: [1, 2, 3, 4].map(function (k) { var l = mine.filter(function (x) { return x.e.y === k; }), c = function (ty) { return l.filter(function (x) { return x.e.type === ty; }).length; }; return { ufa: c('ufa'), rfa: c('rfa'), elcup: c('elcup'), sign: c('sign'), sal: E.sum(l.map(function (x) { return x.e.sal || 0; })) }; }) };
       }), sort: 's0', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
-      cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('offseason', null, { team: r.t }) + '"><b>' + esc(U.teamName(r.t)) + '</b></a>'; } }]
+      cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="' + U.hash('offseason', null, { team: r.t }) + '">' + U.teamChip(r.t, { b: 1 }) + '</a>'; } }]
         .concat([1, 2, 3, 4].map(function (k, i) {
           return { k: 's' + i, l: 'Summer ' + yr(k), v: function (r) { return r.s[i].sal; },
             f: function (r) { var x = r.s[i]; return (chip('c-ufa', x.ufa, 'UFA') + chip('c-re', x.rfa, 'RFA') + chip('c-elc', x.elcup, 'ELC up') + chip('c-mnr', x.sign, 'sign') || '<span class="faint">–</span>') + (x.sal ? '<br><span class="small faint">' + U.m(x.sal, 1) + ' ending</span>' : ''); } };

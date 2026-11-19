@@ -319,7 +319,7 @@
     });
     ui.table(U.qs('#lg', body), {
       rows: gl, sort: 'v', rowCls: function (g) { return g.t === me ? 'mine' : ''; },
-      cols: [{ k: 't', l: 'Team', v: function (g) { return U.teamName(g.t); }, f: function (g) { return '<b>' + esc(U.teamName(g.t)) + '</b>'; } }, { k: 'grade', l: 'Grade', v: function (g) { return g.v; }, f: function (g) { return '<b>' + g.grade + '</b>'; } },
+      cols: [{ k: 't', l: 'Team', v: function (g) { return U.teamName(g.t); }, f: function (g) { return U.teamChip(g.t, { b: 1 }); } }, { k: 'grade', l: 'Grade', v: function (g) { return g.v; }, f: function (g) { return '<b>' + g.grade + '</b>'; } },
         { k: 'n', l: 'Picks made', cls: 'num' }, { k: 'v', l: 'Value drafted', cls: 'num', v: function (g) { return g.v; }, f: function (g) { return U.fmt(g.v, 1); } },
         { k: 'up', l: 'Stock since ' + since, cls: 'num', title: 'Total change in Prospect Radar stock of the players picked, since the start of the season', v: function (g) { return g.up; }, f: function (g) { return ui.delta(g.up, 1); } },
         { k: 'best', l: 'Best pick', v: null, f: function (g) { return g.best && g.best.p ? ui.plink(g.best.p) + ' <span class="small muted">#' + g.best.pk.ov + '</span>' : ''; } }]
@@ -497,7 +497,7 @@
       var c = 0, lo = null, hi = null; d.forEach(function (p, k) { c += p; if (lo === null && c >= 0.1) lo = k + 1; if (hi === null && c >= 0.9) hi = k + 1; });
       return lo === hi ? '' : ' <span class="faint small">(slot ' + lo + '–' + hi + ' in 80% of season sims)</span>';
     };
-    var h = '<div class="card" style="margin-bottom:14px"><h2>' + esc(U.teamName(me)) + ': picks and needs</h2><p class="small">' + (mine.length ? mine.map(function (i) {
+    var h = '<div class="card" style="margin-bottom:14px"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ': picks and needs</h2><p class="small">' + (mine.length ? mine.map(function (i) {
       var o = st.order[i], l = st.log[i];
       return '<b>' + DP.pickLabel(i + 1) + '</b>' + (o.orig !== me ? ' <span class="faint">(' + esc(o.orig) + '\'s)</span>' : '') + range(o.orig) + (l ? ' → <a class="plink" href="' + esc(l.x.href) + '">' + esc(l.x.name) + '</a>' : '');
     }).join(' · ') : 'No 2027 picks (traded away).') + '</p><p class="small muted">MNR pipeline: ' + cnt.F + ' F · ' + cnt.D + ' D · ' + cnt.G + ' G. The model\'s GMs lean toward D with fewer than 5 and G with fewer than 2 in the pipeline.</p>';

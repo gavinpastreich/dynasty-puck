@@ -70,7 +70,7 @@
         body.innerHTML = '<div class="grid g2">' + E.teams.slice().sort(function (a, b) { return TS[b].pros - TS[a].pros; }).map(function (tm) {
           var list = mnr.filter(function (p) { return p.gm === tm; }).sort(U.by(function (p) { return p.DV; }, true));
           var grads = list.filter(function (p) { return E.graduation(p).week !== null; }).length;
-          return '<div class="card' + (tm === me ? '" style="border-color:var(--accent)' : '') + '"><h3>' + esc(U.teamName(tm)) + ' <span class="badge info">' + TS[tm].prosGrade + '</span> <span class="faint small">#' + TS[tm].prosRank + ' · ' + list.length + ' MNR · value ' + U.fmt(TS[tm].pros, 1) + ' · ' + grads + ' graduating</span></h3><ul class="list-plain">' +
+          return '<div class="card' + (tm === me ? '" style="border-color:var(--accent)' : '') + '"><h3>' + U.teamBadge(tm) + ' ' + esc(U.teamName(tm)) + ' <span class="badge info">' + TS[tm].prosGrade + '</span> <span class="faint small">#' + TS[tm].prosRank + ' · ' + list.length + ' MNR · value ' + U.fmt(TS[tm].pros, 1) + ' · ' + grads + ' graduating</span></h3><ul class="list-plain">' +
             list.slice(0, 5).map(function (p) { return '<li>' + ui.pos(p) + '<span>' + ui.pcell(p) + '</span><span class="small muted" style="margin-left:auto">' + DP.prospectCats(p).slice(0, 3).map(esc).join(', ') + '</span><span class="num" style="width:44px">' + U.fmt(p.DV, 1) + '</span></li>'; }).join('') +
             '</ul><p class="small"><a href="' + U.hash('prospects', null, { tab: 'rank', team: tm }) + '">All ' + list.length + ' →</a></p></div>';
         }).join('') + '</div>';

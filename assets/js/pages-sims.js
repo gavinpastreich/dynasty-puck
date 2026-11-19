@@ -65,7 +65,7 @@
       else h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Away</th><th class="num">Exp cats</th><th></th><th class="num">Exp cats</th><th>Home</th><th class="num">Away NHL games</th><th class="num">Home NHL games</th><th></th></tr></thead><tbody>' + games.map(function (g) {
         var x = E.baseline[g[1]][wi], y = E.baseline[g[2]][wi], p2 = E.matchupProbs(x, y), ea = E.sum(p2.map(function (z) { return z.w + z.t / 2; }));
         var ng = function (agg) { return E.sum(agg.lu.F.concat(agg.lu.D).map(function (s) { return E.games(s.p, wi).N; })); };
-        return '<tr class="' + (g[1] === me || g[2] === me ? 'mine' : '') + '"><td><b>' + esc(U.teamName(g[1])) + '</b></td><td class="num">' + U.fmt(ea, 1) + '</td><td class="muted">vs</td><td class="num">' + U.fmt(15 - ea, 1) + '</td><td><b>' + esc(U.teamName(g[2])) + '</b></td><td class="num">' + ng(x) + '</td><td class="num">' + ng(y) + '</td><td><a class="btn sm" href="' + U.hash('matchup', null, { w: w, a: g[1], b: g[2] }) + '">Open</a></td></tr>';
+        return '<tr class="' + (g[1] === me || g[2] === me ? 'mine' : '') + '"><td>' + U.teamChip(g[1], { b: 1 }) + '</td><td class="num">' + U.fmt(ea, 1) + '</td><td class="muted">vs</td><td class="num">' + U.fmt(15 - ea, 1) + '</td><td>' + U.teamChip(g[2], { b: 1 }) + '</td><td class="num">' + ng(x) + '</td><td class="num">' + ng(y) + '</td><td><a class="btn sm" href="' + U.hash('matchup', null, { w: w, a: g[1], b: g[2] }) + '">Open</a></td></tr>';
       }).join('') + '</tbody></table></div>';
       h += '</div>';
       el.innerHTML = h;
@@ -89,7 +89,7 @@
       return '<div class="slot">' + ui.pos(x.p) + ui.plink(x.p) + ui.injBadge(x.p) + '<span class="gms">' + g.N + 'G</span><button class="btn sm ghost" style="padding:0 5px;min-height:20px" data-out="' + esc(x.p.id) + '" title="Take out of the lineup" aria-label="Remove ' + esc(x.p.n) + '">✕</button></div>';
     };
     var ng = E.sum(lu.F.concat(lu.D).map(function (x) { return E.games(x.p, wi).N; }));
-    return '<div><h3>' + esc(U.teamName(t)) + '</h3><p class="small muted">' + ng + ' skater games · goalies ' + U.fmt(agg.m.GGP, 1) + ' exp GP</p><div class="lineup" style="grid-template-columns:1fr">' + lu.F.concat(lu.D, lu.G).map(row).join('') + '</div></div>';
+    return '<div><h3>' + U.teamBadge(t) + ' ' + esc(U.teamName(t)) + '</h3><p class="small muted">' + ng + ' skater games · goalies ' + U.fmt(agg.m.GGP, 1) + ' exp GP</p><div class="lineup" style="grid-template-columns:1fr">' + lu.F.concat(lu.D, lu.G).map(row).join('') + '</div></div>';
   }
 
   // ------------------------------------------------------------ Season simulator
@@ -116,7 +116,7 @@
           ui.table(U.qs('#s-table', el), {
             rows: res, sort: 'pct', csv: 'season-sim.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
             cols: [
-              { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a>'; } },
+              { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return U.teamChip(r.t, { link: 1, b: 1 }); } },
               { k: 'rec', l: 'Avg W-L-T', v: function (r) { return r.W; }, f: function (r) { return U.fmt(r.W, 0) + '-' + U.fmt(r.L, 0) + '-' + U.fmt(r.T, 0); }, cls: 'num' },
               { k: 'pct', l: 'Win%', v: function (r) { return r.pct; }, f: function (r) { return U.rate(r.pct); }, cls: 'num' },
               { k: 'avgSeed', l: 'Avg seed', v: function (r) { return r.avgSeed; }, f: function (r) { return U.fmt(r.avgSeed, 1); }, cls: 'num', asc: true },

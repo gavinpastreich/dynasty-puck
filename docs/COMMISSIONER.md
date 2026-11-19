@@ -55,7 +55,7 @@ The site rebuilds itself about 3 minutes later.
 | `initialAuctionRfa` | Contract-sheet formula for the first RFA deal of 2025 auction players. |
 | `auctionBands` | Winning bid → contract length. Add a new set (keyed by the offseason year) when the league changes them. |
 | `playoffs` | Teams, weeks, and whether division winners take seeds 1-2. |
-| `teams`, `oldTeamNames` | Team codes and Fantrax names (codes must match Fantrax's short names). |
+| `teams`, `oldTeamNames` | Team codes and Fantrax names (codes must match Fantrax's short names). Each team can also have a `color` (any `#rrggbb`, dark enough for white letters) and `abbr` (1-3 letters on its badge); the site uses them everywhere a team appears. |
 | `alerts` | Phone-topic prefix, the league email address, reminder timing. |
 | `hometownDiscount` | Share off the winning bid for the player's own team, and the trade deadline (`"2027-01-29T23:59:00-05:00"`) that decides who qualifies. Update the deadline every season. |
 
@@ -111,6 +111,20 @@ How it works: GMs sign up by sending a pre-filled email from the Alerts page and
 lives only in that mailbox, so nobody's address is ever published. Sign-ups sent before step 3 wait in the inbox and are
 picked up on the first run after the secret is added. If Gmail ever asks, IMAP access must be on (Gmail settings →
 Forwarding and POP/IMAP).
+
+## World Juniors page (December)
+
+`tools/research/wjc.json` holds the tournament facts (dates, groups, status notes, sources). When the national teams name
+their rosters (mid-December), add them under `"rosters"`: a country code and the player names as listed, e.g.
+`"CAN": ["Gavin McKenna", "Michael Misa"]`. The page then marks those players as named. Country codes: CAN, USA, SWE, FIN,
+CZE, SVK, DEU, CHE, LVA, NOR.
+
+## Commissioner Checks page
+
+**Commissioner Checks** (in the About group) puts the rule watch in one place: teams over the cap or the 23-player Active +
+Bench limit, goalie-minimum misses by week, IR slots holding players who aren't on the injury lists, MNR players past the
+graduation line, trades dated after the deadline, and next lock's lineups with no lineup, injured starters or goalie risk.
+They're flags to look at; Fantrax enforces most limits itself.
 
 ## Phone push and calendar
 

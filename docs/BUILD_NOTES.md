@@ -330,3 +330,31 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - tools/test/check_weekly.js (2,619 checks: the luck math and flags against the formulas, every week's results,
     margins, standings and players of the week against the raw lines); in the nightly sanity step.
 
+- Design pass and in-season tools (2026-11-19):
+  - Team identity: `config/league.json` teams[].color / .abbr → `DP.meta.gms` → `U.teamColor`, `U.teamAbbr`, `U.teamBadge`
+    (square with letters), `U.teamLabel` (dot + code), `U.teamChip` (badge + name, `{ link, b, code, size }`). Colors were
+    picked for 4.5:1 white-letter contrast (checked in check_season.js).
+  - Headshots in lists: `ui.pcell(p, { pos: 1 })` wraps position chip + 24px headshot (`DP.headshot(p, 24)`, cropped to
+    the face) + name in `.pc` (inline-flex) so the name wraps beside the picture. `opts.av === false` leaves it out.
+  - Dashboard: `.hero.yw` (your week: record, next lock, live score from `DP.liveOdds`/`E.liveScore`, to-do list from
+    the lineup check, `DP.irTodo`, graduation watch, deadline), six tiles, `.mini-board` of every matchup this week.
+  - Team Hub: `.hero` header (official record and place from `E.actual()`), sticky `.jump` section bar (`DP.jumpNav`,
+    IntersectionObserver marks the section in view), "Season so far" (`DP.seasonRows`/`DP.seasonStrip` in pages-weekly.js:
+    place after each week rebuilt like The Weekly, result chips linking to each recap), IR card (`DP.irCard`).
+  - Menu: NAV regrouped (Overview, Players, Trades, Simulators, League, Cap & Contracts, Prospects, Schedule, About);
+    groups fold (`dp_navFold`, the current page's group always shows); `FAMS` = related pages sharing the `#famtabs` row
+    above `<main>` (index.html wraps main in `.mainwrap`). Weekly Preview left the menu (tab row + search via PAGE_EXTRA).
+  - Offline: `sw.js` (network first, saved copy after 4 s or offline; same-origin GET only), registered only on https;
+    deploy.yml and refresh-data.yml copy it into the site.
+  - Share as image: `assets/js/share.js` `DP.drawCard(spec)` (1080px canvas: head / game / team / text rows) and
+    `DP.shareCard(spec, file)` (preview, Download, Share on phones). Buttons on The Weekly, Live Scoreboard, Trade Machine.
+  - pages-season.js: `DP.irCheck` / `DP.irCard` / `DP.irTodo` / `DP.irLeagueHtml` (Injuries page), `DP.lineupUsage`,
+    Trade Deadline (`deadline`, `DP.htdValue` = 10% × model 2027 price × term, `DP.pendingUFA`), Playoff Picture
+    (`playoffs`, `DP.playoffMath`: eliminated / clinched / division / points to clinch alone), Commissioner Checks
+    (`commish`, `DP.commishChecks`), World Juniors (`wjc`, `DP.wjcRows` from `DP.research.wjc` = tools/research/wjc.json).
+  - pages-scout.js: Opponent Scouting (`scout`), `DP.tunedLineup` (category weights × exp(−z²/2) at the projected
+    margin, floor 0.1, two passes via `E.withWeights`, keeps the better lineup), `DP.scoutData`.
+  - Trade Machine counteroffer (`counterOffer` in pages-trade.js): extra pieces from the gaining side scored with
+    `E.tradeUse` (~2 ms each after the first), shown when they turn the loser's use value to ≥ +0.3.
+  - Tests: tools/test/check_season.js (also in the nightly sanity step); new flows and routes in the browser suites.
+

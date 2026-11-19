@@ -7,13 +7,15 @@
   var SKL = ['GP', 'Pt-D', 'G', 'A', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor'];
   var GKL = ['GP', 'W', 'GAA', 'SV%', 'SHO'];
 
+  // NHL.com headshot (assets.nhle.com). Small ones (lists) are round avatars; a player with no NHL id gets his initials.
   DP.headshot = function (p, size) {
-    var team = p.nt || p.t, s = size || 92;
+    var team = p.nt || p.t, s = size || 92, small = s <= 40;
     var init = esc(p.n.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2));
-    if (!p.nhl) return '<div class="noimg" style="width:' + s + 'px;height:' + s + 'px">' + init + '</div>';
+    if (!p.nhl) return small ? '<span class="av noimg" style="width:' + s + 'px;height:' + s + 'px" aria-hidden="true">' + init + '</span>' : '<div class="noimg" style="width:' + s + 'px;height:' + s + 'px">' + init + '</div>';
     var src = 'https://assets.nhle.com/mugs/nhl/20262027/' + encodeURIComponent(team || 'NHL') + '/' + p.nhl + '.png';
-    var fb = 'https://assets.nhle.com/mugs/nhl/default-skater.png';
-    return '<img loading="lazy" alt="' + esc(p.n) + ' headshot" src="' + src + '" width="' + s + '" height="' + s + '" style="width:' + s + 'px;height:' + s + 'px" onerror="this.onerror=null;this.src=\'' + fb + '\'">';
+    var fb = 'https://assets.nhle.com/mugs/nhl/default-' + (p.pos === 'G' ? 'goalie' : 'skater') + '.png';
+    var img = '<img loading="lazy" decoding="async" alt="' + (small ? '' : esc(p.n) + ' headshot') + '" src="' + src + '" width="' + s + '" height="' + s + '"' + (small ? '' : ' style="width:' + s + 'px;height:' + s + 'px"') + ' onerror="this.onerror=null;this.src=\'' + fb + '\'">';
+    return small ? '<span class="av" style="width:' + s + 'px;height:' + s + 'px" aria-hidden="true">' + img + '</span>' : img;
   };
 
   // percentile of a per-game rate among regular players at the same slot
@@ -54,7 +56,7 @@
     else if (p.nhl) bio.push('Undrafted');
     h += '<div class="phead">' + DP.headshot(p) + '<div style="flex:1;min-width:220px"><h2>' + esc(p.n) + ' ' + ui.pos(p) + '</h2>' +
       '<div class="muted">' + esc(p.t || '') + (p.nt && p.nt !== p.t ? ' (NHL: ' + esc(p.nt) + ')' : '') + ' · ' + esc(bio.join(' · ')) + '</div>' +
-      '<div style="margin-top:6px">' + (p.gm ? 'Owned by <b>' + esc(U.teamName(p.gm)) + '</b> (' + esc(p.gm) + ') ' : (p.wv ? '<span class="pill W">On waivers</span> ' : '<span class="badge info">Free agent</span> ')) +
+      '<div style="margin-top:6px">' + (p.gm ? 'Owned by ' + U.teamChip(p.gm, { b: 1 }) + ' (' + esc(p.gm) + ') ' : (p.wv ? '<span class="pill W">On waivers</span> ' : '<span class="badge info">Free agent</span> ')) +
       ui.pill(p.ct) + ' ' + (p.gm ? U.m(p.sal26) : '') + (p.act27 ? ' <span class="badge warn" title="On the 2027 offseason action list">2027 decision</span>' : '') + ui.depBadge(p) + '</div>' +
       (p.inj ? '<div class="small" style="margin-top:6px">' + ui.injBadge(p) + ' ' + esc((p.inj[4] ? 'Contract holdout' : p.inj[0]) + (p.inj[1] ? ' (' + p.inj[1] + ')' : '') + (p.inj[2] ? ' · ' + p.inj[2] : '')) + ' <span class="faint">Daily Faceoff, ' + esc(p.inj[3]) + '</span></div>' : '') + '</div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
@@ -188,12 +190,12 @@
     var top = rows.slice(0, 5), mine = me && me !== p.gm ? rows.find(function (r) { return r.t === me; }) : null;
     var h = '<p class="small muted">Use value: what adding him does for each team\'s lineup (depth, positions, categories) across the seasons it would control him, × that team\'s win-now weight, minus cap cost. Market value (same for everyone): <b>' + U.fmt(p.DV, 1) + '</b>.</p>' +
       '<div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th>Status</th><th class="num">Worth to them</th><th class="num">vs ' + esc(p.gm) + '</th></tr></thead><tbody>' +
-      '<tr class="' + (p.gm === me ? 'mine' : '') + '"><td><b>' + esc(U.teamName(p.gm)) + '</b> <span class="faint small">current team</span></td><td>' + DP.tierBadge(p.gm) + '</td><td class="num"><b>' + U.fmt(own, 1) + '</b></td><td></td></tr>' +
+      '<tr class="' + (p.gm === me ? 'mine' : '') + '"><td>' + U.teamChip(p.gm, { b: 1 }) + ' <span class="faint small">current team</span></td><td>' + DP.tierBadge(p.gm) + '</td><td class="num"><b>' + U.fmt(own, 1) + '</b></td><td></td></tr>' +
       top.concat(mine && top.indexOf(mine) < 0 ? [mine] : []).map(function (r) {
-        return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + esc(U.teamName(r.t)) + '</td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.fmt(r.v, 1) + '</td><td class="num">' + ui.delta(r.v - own, 1) + '</td></tr>';
+        return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + U.teamChip(r.t) + '</td><td>' + DP.tierBadge(r.t) + '</td><td class="num">' + U.fmt(r.v, 1) + '</td><td class="num">' + ui.delta(r.v - own, 1) + '</td></tr>';
       }).join('') + '</tbody></table></div>';
     var best = rows[0];
-    h += '<p class="small">' + (best && best.v > own + 0.5 ? 'Worth most to <b>' + esc(U.teamName(best.t)) + '</b> (+' + U.fmt(best.v - own, 1) + ' more than to ' + esc(p.gm) + '), so a deal there can help both sides.' : esc(p.gm) + ' values him about as much as anyone: no obvious trade surplus.') + ' ' +
+    h += '<p class="small">' + (best && best.v > own + 0.5 ? 'Worth most to ' + U.teamChip(best.t, { b: 1 }) + ' (+' + U.fmt(best.v - own, 1) + ' more than to ' + esc(p.gm) + '), so a deal there can help both sides.' : esc(p.gm) + ' values him about as much as anyone: no obvious trade surplus.') + ' ' +
       (p.gm === me ? '<a class="btn sm" href="' + U.hash('finder', null, { mode: 'give', p: p.id }) + '">Find deals for him</a>' : me ? '<a class="btn sm" href="' + U.hash('finder', null, { mode: 'get', p: p.id }) + '">What would it take?</a>' : '') + '</p>';
     box.innerHTML = h;
   }

@@ -134,40 +134,72 @@
     render: function (el) {
       var E = DP.E, me = DP.state.team, TS = DP.teamSummary(), h = '';
       var start = new Date(E.weeks[0].start + 'T00:00:00'), days = Math.ceil((start - new Date()) / 864e5);
+      var dl = E.RULES.tradeDeadline ? new Date(E.RULES.tradeDeadline) : null, dlDays = dl && dl > E.now() ? Math.ceil((dl - E.now()) / 864e5) : null;
       h += '<div class="page-head"><h1>Dynasty Puck HQ</h1><p class="sub">' + esc(DP.meta.season) + ' · 14 teams · 15 weekly H2H categories · weekly lineup lock · ' +
         (days > 0 ? 'Week 1 starts ' + U.date(new Date(E.weeks[0].start + 'T12:00:00Z')) + ' (' + days + ' day' + (days === 1 ? '' : 's') + ')' : 'season underway') +
-        (E.deadlineText() && new Date(E.RULES.tradeDeadline) > E.now() ? ' · trade deadline ' + esc(E.deadlineText()) : '') + '</p></div>';
+        (dlDays !== null ? ' · trade deadline ' + esc(E.deadlineText()) : '') + '</p></div>';
       if (DP.newsCard) h += DP.newsCard();
+      var sc = DP.league.score, scGames = sc && sc.week && sc.teams ? DP.meta.h2h.filter(function (m) { return m[0] === sc.week; }) : [];
+      // categories each side leads right now (the scoreboard's own count) and the odds with the rest of the week simulated
+      var liveOf = function (a, b) { var od = DP.liveOdds ? DP.liveOdds(a, b) : null; return od ? { od: od, ls: E.liveScore(od) } : null; };
 
       if (me) {
-        var s = TS[me], nm = nextMatch(me), opp = nm ? (nm[1] === me ? nm[2] : nm[1]) : null, pr = null;
+        var s = TS[me], nm = nextMatch(me), opp = nm ? (nm[1] === me ? nm[2] : nm[1]) : null, pr = null, wiL = E.lockWeek();
         if (nm) {
           var probs = E.matchupProbs(E.baseline[me][nm[0] - 1], E.baseline[opp][nm[0] - 1]);
           pr = E.sum(probs.map(function (x) { return x.w + x.t / 2; }));
         }
-        h += '<div class="card" style="margin-bottom:14px"><h2>' + esc(U.teamName(me)) + ' <span class="muted small">(' + esc(me) + ')</span> <a class="btn sm" href="#/team/' + encodeURIComponent(me) + '" style="margin-left:auto">Team Hub →</a></h2><div class="stats" style="margin:0">' +
+        var act = E.actual(), arec = act && !act.odd ? act.rec[me] : null, aRank = null;
+        if (arec) { var pctOf = function (r) { return (r.W + r.T / 2) / Math.max(1, r.W + r.L + r.T); }; aRank = 1 + E.teams.filter(function (u) { var r = act.rec[u]; return r && pctOf(r) > pctOf(arec); }).length; }
+        // this week, live
+        var lg = scGames.filter(function (m) { return m[1] === me || m[2] === me; })[0], live = '';
+        if (lg && DP.liveOdds) {
+          var lo = lg[1] === me ? lg[2] : lg[1], lv = liveOf(me, lo), od = lv && lv.od, ls = lv ? lv.ls : [0, 0, E.NC], nLv = DP.scoreFeed ? DP.scoreFeed.nLive() : 0;
+          live = '<a class="yw-live" href="#/live"><div class="yw-k">' + (nLv ? '<span class="badge bad livedot">● LIVE</span> ' : '') + 'Week ' + sc.week + (sc.final ? ' final' : ' so far') + '</div>' +
+            '<div class="yw-score">' + U.teamBadge(me) + '<b class="num">' + ls[0] + '</b><span class="muted">–</span><b class="num">' + ls[1] + '</b>' + U.teamBadge(lo) + '</div>' +
+            '<div class="small">vs ' + esc(U.teamName(lo)) + (ls[2] ? ' · ' + ls[2] + ' tied' : '') + '</div>' +
+            (od && !sc.final ? '<div class="yw-bar" title="Chance to win the week (the rest of it simulated)"><span style="width:' + (od.win * 100).toFixed(0) + '%"></span></div><div class="small muted">' + U.pct(od.win) + ' to win the week</div>' : '') + '</a>';
+        }
+        // next lock + to-do list
+        var chk = wiL !== null ? E.lineupCheck(me, wiL) : null, todo = [];
+        if (wiL !== null) {
+          var wl = E.weeks[wiL], wlab = wl.po ? 'Playoffs round ' + wl.po : 'Week ' + wl.n;
+          if (!chk) todo.push(['warn', '🔒', 'No Fantrax lineup found for ' + wlab + ' yet.', '#/team/' + encodeURIComponent(me)]);
+          else if (chk.start.length) todo.push([chk.eOpt - chk.eSet > 0.3 ? 'bad' : 'warn', '🔒', wlab + ' lineup: ' + chk.start.length + ' change' + (chk.start.length > 1 ? 's' : '') + ' worth ' + U.sgn(chk.eOpt - chk.eSet, 1) + ' expected cats (start ' + chk.start.slice(0, 2).map(function (x) { return esc(x.p.n); }).join(', ') + ')', '#/team/' + encodeURIComponent(me)]);
+          else todo.push(['good', '✓', wlab + ' lineup is optimal (' + U.fmt(chk.eSet, 1) + ' expected cats)', '#/team/' + encodeURIComponent(me)]);
+          if (chk && chk.irCap && chk.irCap.space < 0) todo.push(['bad', '💰', 'Activating those players puts you ' + U.m(-chk.irCap.space) + ' over the cap: clear room first', '#/team/' + encodeURIComponent(me)]);
+          if (chk && chk.gFailSet > 0.12) todo.push(['bad', '🥅', U.pct(chk.gFailSet) + ' chance of missing the 2-goalie-GP minimum with your set lineup', '#/team/' + encodeURIComponent(me)]);
+        }
+        if (DP.irTodo) todo = todo.concat(DP.irTodo(me));
+        var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
+          .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
+        if (mine.length) todo.push(['warn', '🎓', 'Graduation watch: ' + mine.slice(0, 3).map(function (x) { return esc(x[0].n) + ' ' + x[1].cgp + '/' + x[1].thr + ' GP (~wk ' + (x[1].week + 1) + ')'; }).join(', ') + (mine.length > 3 ? ' +' + (mine.length - 3) : ''), '#/offseason']);
+        if (dlDays !== null && dlDays <= 75) todo.push([dlDays <= 14 ? 'warn' : '', '⏳', 'Trade deadline in ' + dlDays + ' day' + (dlDays === 1 ? '' : 's') + ' (' + esc(E.deadlineText()) + ')', '#/finder']);
+        h += '<div class="hero yw" style="--tc:' + U.teamColor(me) + '"><div class="yw-id">' + U.teamBadge(me, 'xl') + '<div class="hero-tx"><h2>' + esc(U.teamName(me)) + '</h2>' +
+          '<p class="sub">' + (arec ? '<b class="num">' + arec.W + '-' + arec.L + '-' + arec.T + '</b> · ' + U.ord(aRank) + ' of 14 · ' : '') + 'power rank #' + s.prank + '</p>' +
+          '<p class="sub">' + (wiL !== null ? '🔒 ' + (E.weeks[wiL].po ? 'Playoffs R' + E.weeks[wiL].po : 'Week ' + E.weeks[wiL].n) + ' ' + esc(DP.lockText(wiL)) + (opp ? ' · vs ' + esc(U.teamName(opp)) + (pr !== null ? ' (expected ' + U.fmt(pr, 1) + ' of 15 cats)' : '') : '') : 'No lineup locks left this season') + '</p></div></div>' +
+          live + '<ul class="yw-todo">' + todo.map(function (x) { return '<li class="' + x[0] + '"><a href="' + x[3] + '"><span class="ic" aria-hidden="true">' + x[1] + '</span><span>' + x[2] + '</span></a></li>'; }).join('') + '</ul>' +
+          '<p class="yw-links small"><a href="#/team/' + encodeURIComponent(me) + '">Team Hub →</a><a href="#/scout">🔭 Scout your opponent</a><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Matchup sim</a><a href="#/weekly">🗞️ Last week\'s recap</a><a href="#/fa">Best FA fits</a><a href="#/finder">Trade ideas</a><a href="#/luck">Buy low / sell high</a><a href="#/alerts">🔔 Alerts</a></p></div>';
+        h += '<div class="stats stats6">' +
           DP.statTile('Power rank', '#' + s.prank, 'now + dynasty + prospects') +
           DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' cats') +
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
           DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(s.cap[0].cap, s.cap[0].adj ? 1 : 0) + (s.cap[0].adj ? ' (' + U.sm(s.cap[0].adj, 1) + ' traded)' : '') + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
-          (nm ? DP.statTile((E.weeks[nm[0] - 1].po ? 'Playoffs' : 'Week ' + nm[0]) + ' opponent', esc(opp), 'expected ' + U.fmt(pr, 1) + ' of 15 cats') : '') +
-          '</div><p style="margin:10px 0 0"><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Preview the matchup →</a> · <a href="#/weekly">🗞️ Last week\'s recap →</a> · <a href="#/fa">Best FA fits →</a> · <a href="#/finder">Trade ideas →</a> · <a href="#/luck">Buy low / sell high →</a> · <a href="#/alerts">🔔 Get lineup alerts →</a></p></div>';
-        var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
-          .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
-        var sc = DP.league.score;
-        if (sc && sc.week && sc.teams && DP.liveOdds) {
-          var lg = DP.meta.h2h.find(function (m) { return m[0] === sc.week && (m[1] === me || m[2] === me); });
-          if (lg) {
-            var lo = lg[1] === me ? lg[2] : lg[1], od = DP.liveOdds(me, lo), ls = E.liveScore(od);
-            var nLv = DP.scoreFeed ? DP.scoreFeed.nLive() : 0, tied = ls[2] ? ' (' + ls[2] + ' tied)' : '';
-            if (sc.final) h += '<div class="callout ' + (ls[0] > ls[1] ? 'good' : ls[0] < ls[1] ? 'warn' : '') + '">📺 <b>Week ' + sc.week + ' final</b> vs ' + esc(U.teamName(lo)) + ': ' + (ls[0] > ls[1] ? 'won ' : ls[0] < ls[1] ? 'lost ' : 'tied ') + ls[0] + ' categories to ' + ls[1] + tied + '. <a href="#/live">Scoreboard →</a></div>';
-            else h += '<div class="callout ' + (od.win >= 0.5 ? 'good' : 'warn') + '">📺 ' + (nLv ? '<span class="badge bad livedot">● LIVE</span> ' : '') + '<b>Week ' + sc.week + ' so far</b> vs ' + esc(U.teamName(lo)) + ': ' + (ls[0] >= ls[1] ? 'leading ' : 'trailing ') + ls[0] + ' categories to ' + ls[1] + tied + ' · ' + U.pct(od.win) + ' to win the week' + (nLv ? ' (' + nLv + ' NHL game' + (nLv > 1 ? 's' : '') + ' in progress)' : sc.to ? ' (games through ' + esc(U.date(new Date(sc.to + 'T12:00:00Z'))) + ')' : '') + '. <a href="#/live">Live scoreboard →</a></div>';
-          }
-        }
-        h += DP.lineupCheckHtml(me, true);
-        if (mine.length) h += '<div class="callout warn"><b>Graduation watch:</b> ' + mine.map(function (x) { return ui.plink(x[0]) + ' (' + x[1].cgp + '/' + x[1].thr + ' GP, ~wk ' + (x[1].week + 1) + ')'; }).join(', ') + '. Once they cross the line they stay at $0 for the rest of the season and sign an ELC ($1.5M) or are released next offseason. Graduating on your active roster locks him there; graduating in the minors he can stay down, but once promoted he can\'t go back. <a href="#/offseason">Plan the ELCs and next season\'s cap →</a></div>';
+          DP.statTile('Dynasty value', U.fmt(s.dv, 0), U.ord(Object.keys(TS).filter(function (k) { return TS[k].dv > s.dv; }).length + 1) + ' in league') +
+          DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') + '</div>';
       } else {
         h += '<div class="callout">👋 Welcome! <button class="btn sm primary" data-act="pick-team">Pick your team</button> to get your matchup, needs and targets. Everything else works without it.</div>';
+      }
+      // every matchup this week, at a glance
+      if (scGames.length) {
+        h += '<div class="card" style="margin-bottom:14px"><h2>📺 Week ' + sc.week + (sc.final ? ' final' : ' around the league') + ' <a class="btn sm" href="' + U.hash('live', null, { w: sc.week }) + '" style="margin-left:auto">Scoreboard →</a></h2><div class="mini-board">' + scGames.map(function (g) {
+          var lv = liveOf(g[1], g[2]), x = lv ? lv.ls : [0, 0, E.NC], mine2 = g[1] === me || g[2] === me, fav = lv && lv.od.win >= lv.od.loss;
+          var odds = lv && !sc.final ? esc(U.teamName(fav ? g[1] : g[2])) + ' ' + U.pct(fav ? lv.od.win : lv.od.loss) + ' to win' : '';
+          return '<a class="mg' + (mine2 ? ' mine' : '') + '" href="' + U.hash('live', null, { w: sc.week }) + '" data-mg="' + esc(g[1] + '|' + g[2]) + '">' +
+            '<span class="mt' + (x[0] > x[1] ? ' lead' : '') + '">' + U.teamBadge(g[1], 'sm') + '<span class="tn">' + esc(U.teamName(g[1])) + '</span><b class="num">' + x[0] + '</b></span>' +
+            '<span class="mt' + (x[1] > x[0] ? ' lead' : '') + '">' + U.teamBadge(g[2], 'sm') + '<span class="tn">' + esc(U.teamName(g[2])) + '</span><b class="num">' + x[1] + '</b></span>' +
+            '<span class="mp small muted">' + [x[2] ? x[2] + ' tied' : '', odds].filter(Boolean).join(' · ') + '&nbsp;</span></a>';
+        }).join('') + '</div></div>';
       }
 
       h += '<div class="grid g2">';
@@ -188,7 +220,7 @@
         rowCls: function (r) { return r.t === me ? 'mine' : ''; },
         cols: [
           { k: 'prank', l: '#', cls: 'num', v: function (r) { return r.prank; } },
-          { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return '<a href="#/team/' + encodeURIComponent(r.t) + '"><b>' + esc(U.teamName(r.t)) + '</b></a> <span class="faint small">' + esc(r.t) + '</span>'; } },
+          { k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return U.teamChip(r.t, { link: 1, b: 1, code: 1 }); } },
           E.actual() && !E.actual().odd ? { k: 'act', l: 'Actual W-L-T', v: function (r) { var a = E.actual().rec[r.t]; return a ? (a.W + a.T / 2) / Math.max(1, a.W + a.L + a.T) : null; }, f: function (r) { var a = E.actual().rec[r.t]; return a ? a.W + '-' + a.L + '-' + a.T : '–'; }, cls: 'num', title: 'Category record so far (Fantrax)' } : null,
           { k: 'rec', l: 'Proj cat W-L-T', v: function (r) { return r.exp.pct; }, f: function (r) { return U.fmt(r.exp.W, 0) + '-' + U.fmt(r.exp.L, 0) + '-' + U.fmt(r.exp.T, 0); }, cls: 'num' },
           { k: 'pct', l: 'Win%', v: function (r) { return r.exp.pct; }, f: function (r) { return U.rate(r.exp.pct); }, cls: 'num' },
@@ -232,7 +264,7 @@
         var pool = E.P.filter(function (p) { return ci < cats.length ? !p.G : p.G; });
         var top = pool.map(function (p) { return [p, c[1](p)]; }).filter(function (x) { return x[1] !== null && x[1] > -99; }).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 5);
         lh += '<div><h3 class="small" style="margin:0 0 4px">' + esc(c[0]) + '</h3><ol class="small" style="margin:0;padding-left:18px">' + top.map(function (x) {
-          return '<li>' + ui.plink(x[0]) + (x[0].gm === me && me ? ' ★' : '') + ' <span class="muted">' + (c[2] ? c[2](x[1]) : U.fmt(x[1])) + (x[0].gm ? ' · ' + esc(x[0].gm) : ' · FA') + '</span></li>';
+          return '<li>' + ui.plink(x[0]) + (x[0].gm === me && me ? ' ★' : '') + ' <span class="muted">' + (c[2] ? c[2](x[1]) : U.fmt(x[1])) + ' · ' + U.teamLabel(x[0].gm) + '</span></li>';
         }).join('') + '</ol></div>';
       });
       U.qs('#leaders', el).innerHTML = lh;
@@ -250,31 +282,43 @@
         return;
       }
       var TS = DP.teamSummary(), s = TS[t], ros = E.rosters[t], h = '', wk0 = E.lockWeek() === null ? 0 : E.lockWeek();
-      h += '<div class="page-head"><h1>' + esc(U.teamName(t)) + '</h1><label class="small muted">Team ' + ui.teamSelect('tsel', t) + '</label><p class="sub">GM ' + esc(t) + ' · ' + ros.length + ' players (' + s.nMnr + ' MNR) · Power rank #' + s.prank + '</p></div>';
-      h += '<div class="stats">' +
+      // header: the team's color, its official record and place (Fantrax), then six tiles
+      var act = E.actual(), arec = act && !act.odd ? act.rec[t] : null, divs = (DP.league.fantrax || {}).divisions || {}, aRank = null;
+      if (arec) {
+        var pctOf = function (r) { return (r.W + r.T / 2) / Math.max(1, r.W + r.L + r.T); };
+        aRank = 1 + E.teams.filter(function (u) { var r = act.rec[u]; return r && pctOf(r) > pctOf(arec); }).length;
+      }
+      h += '<div class="hero" style="--tc:' + U.teamColor(t) + '"><div class="hero-id">' + U.teamBadge(t, 'xl') + '<div class="hero-tx"><h1>' + esc(U.teamName(t)) + '</h1>' +
+        '<p class="sub">' + (U.teamName(t) !== t ? 'GM ' + esc(t) + ' · ' : '') + (divs[t] ? esc(divs[t]) + ' division · ' : '') + ros.length + ' players (' + s.nMnr + ' MNR) · power rank #' + s.prank + '</p></div></div>' +
+        '<div class="hero-rec">' + (arec ? '<div class="big num">' + arec.W + '-' + arec.L + '-' + arec.T + '</div><div class="small">' + U.ord(aRank) + ' of ' + E.teams.length + ' · ' + act.done + ' week' + (act.done === 1 ? '' : 's') + ' played</div>' : '<div class="small muted">Season not started</div>') + '</div>' +
+        '<label class="hero-sel small muted">Team ' + ui.teamSelect('tsel', t) + '</label></div>';
+      h += '<nav class="jump" aria-label="Sections of this page">' + [['lineup', 'Lineup'], ['season', 'Season'], ['strat', 'Strategy'], ['cats', 'Categories'], ['slots', 'Roster by slot'], ['cap', 'Cap'], ['pipe', 'Prospects'], ['roster', 'Full roster']].map(function (x) { return '<button type="button" data-jump="tj-' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</nav>';
+      h += '<div class="stats stats6">' +
         DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' category record') +
         '<div class="stat"><div class="l">Playoff odds</div><div class="v" id="t-po">…</div><div class="d" id="t-champ">title odds …</div></div>' +
-        DP.statTile('Payroll 2026-27', U.m(s.pay), 'cap space ' + U.m(s.space) + (s.cap[0].adj ? ' of a ' + U.m(s.cap[0].cap, 1) + ' cap' : '') + (s.ir ? ' · ' + U.m(s.ir) + ' on IR, off the cap' : '')) +
-        DP.statTile('Starter WAR', U.fmt(s.war, 1), 'week-1 optimal lineup') +
+        DP.statTile('Cap space', U.m(s.space), 'payroll ' + U.m(s.pay) + (s.cap[0].adj ? ' of a ' + U.m(s.cap[0].cap, 1) + ' cap' : '') + (s.ir ? ' · ' + U.m(s.ir) + ' on IR, off the cap' : '')) +
+        DP.statTile('Starters', U.fmt(s.war, 1) + ' <span class="unit">WAR</span>', 'average age ' + U.fmt(s.age, 1) + ' · optimal week-1 lineup') +
         DP.statTile('Dynasty value', U.fmt(s.dv, 0), U.ord(Object.keys(TS).filter(function (k) { return TS[k].dv > s.dv; }).length + 1) + ' in league') +
-        DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') +
-        DP.statTile('Starter age', U.fmt(s.age, 1), 'average') + '</div>';
+        DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') + '</div>';
       h += '<div class="grid g2">';
-      h += '<div class="card span2"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
-      h += '<div class="card span2"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
-      h += '<div class="card"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
+      h += '<div class="card span2" id="tj-lineup"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
+      h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
+      h += '<div class="card span2" id="tj-strat"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
+      h += '<div class="card" id="tj-cats"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
-      h += '<div class="card span2"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
-      h += '<div class="card"><h2>Cap by season <a class="btn sm" href="' + U.hash('offseason', null, { team: t === DP.state.team ? undefined : t }) + '" style="margin-left:auto">Plan next season →</a></h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
-      h += '<div class="card"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
+      h += '<div class="card span2" id="tj-slots"><h2>Roster by slot</h2><div class="hint">Optimal weekly-lock lineup for the selected week (12F / 6D / 2G + 3 bench). Every owned player is eligible, MNR included. G = NHL games that week. Tags show a player\'s current Fantrax slot when it isn\'t Active.</div><div class="controls"><label>Week <select id="t-week">' + E.weeks.map(function (w, i) { return '<option value="' + i + '"' + (i === wk0 ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' (' + U.date(new Date(w.start + 'T12:00:00Z')) + ')</option>'; }).join('') + '</select></label></div><div id="t-lineup"></div></div>';
+      h += '<div class="card" id="tj-cap"><h2>Cap by season <a class="btn sm" href="' + U.hash('offseason', null, { team: t === DP.state.team ? undefined : t }) + '" style="margin-left:auto">Plan next season →</a></h2><div class="hint">Committed salary by contract type (Fantrax salaries; future years from the contract sheet). Red line = the cap by season ($' + E.capY(0) + 'M, $' + E.capY(1) + 'M, $' + E.capY(2) + 'M projected).</div><div id="t-cap"></div></div>';
+      h += '<div class="card" id="tj-pipe"><h2>Age profile & pipeline</h2><div id="t-age"></div></div>';
+      h += DP.irCard ? DP.irCard(t) : '';
       h += DP.radarTeamCard ? DP.radarTeamCard(t) : '';
       h += DP.luckTeamCard ? DP.luckTeamCard(t) : '';
       h += '<div class="card"><h2>Category strategy (punt check)</h2><div class="hint">If your weekly lineup ignored one category, would you win more categories overall? Each row re-optimizes every week still to lock with that category\'s weight set to zero.</div><div id="t-punt"><p class="muted small">Calculating…</p></div></div>';
       h += '<div class="card"><h2>Lineup usage by week</h2><div class="hint">How often each player makes the optimal weekly lineup (24 regular-season weeks). Part-time starters are your streaming and trade chips.</div><div id="t-usage"></div></div>';
-      h += '<div class="card span2"><h2>Full roster</h2><div id="t-roster"></div></div>';
+      h += '<div class="card span2" id="tj-roster"><h2>Full roster</h2><div id="t-roster"></div></div>';
       h += '</div>';
       el.innerHTML = h;
       U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
+      DP.jumpNav(el);
 
       DP.getSim(function (sim) {
         var r = sim.find(function (x) { return x.t === t; });
@@ -364,7 +408,7 @@
     var catL = function (list) { return list.map(function (x) { return E.CATS[x.c].l; }).join(', ') || '–'; };
     var partners = DP.partnersBrief ? DP.partnersBrief(t, 3) : [];
     h += '<h3>Complementary trade partners</h3><ul class="list-plain">' + partners.map(function (x) {
-      return '<li><span><a href="#/team/' + encodeURIComponent(x.t) + '"><b>' + esc(U.teamName(x.t)) + '</b></a><br><span class="small muted">they have: ' + esc(catL(x.get)) + ' · they need: ' + esc(catL(x.give)) + '</span></span><a class="btn sm" style="margin-left:auto" href="' + U.hash('trade', null, { t: t + ',' + x.t }) + '">Build trade</a></li>';
+      return '<li><span>' + U.teamChip(x.t, { link: 1, b: 1 }) + '<br><span class="small muted">they have: ' + esc(catL(x.get)) + ' · they need: ' + esc(catL(x.give)) + '</span></span><a class="btn sm" style="margin-left:auto" href="' + U.hash('trade', null, { t: t + ',' + x.t }) + '">Build trade</a></li>';
     }).join('') + '</ul><p class="small"><a href="' + U.hash('cats', null, { team: t }) + '">All 13 teams, category by category →</a></p>';
     // cap / contract flags
     var flags = [];

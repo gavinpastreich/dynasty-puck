@@ -106,7 +106,7 @@
       h += '<div class="controls"><label>Week <select id="lv-week">' + opts.map(function (o) {
         var ww = E.weeks[o.n - 1];
         return '<option value="' + o.n + '"' + (o === sel ? ' selected' : '') + '>' + esc(weekLabel(ww) + ' · ' + dateRange(ww.start, ww.end) + (o.cur && !o.final ? ' · in progress' : ' · final')) + '</option>';
-      }).join('') + '</select></label>' + (sel.cur && feed.url() ? '<button class="btn sm" id="lv-refresh">↻ Refresh</button>' : '') +
+      }).join('') + '</select></label>' + (sel.cur && feed.url() ? '<button class="btn sm" id="lv-refresh">↻ Refresh</button>' : '') + '<button class="btn sm" id="lv-img">🖼️ Image</button>' +
         (nLive ? '<span class="badge bad livedot">● LIVE · ' + nLive + ' NHL game' + (nLive > 1 ? 's' : '') + ' on</span>' : '') + '<span class="small muted" id="live-stamp"></span></div>';
 
       if (sel.cur) h += currentWeek(sc, w, me);
@@ -114,6 +114,15 @@
       el.innerHTML = h;
       stamp();
       U.qs('#lv-week', el).addEventListener('change', function (e) { DP.go('live', null, { w: e.target.value }); });
+      U.qs('#lv-img', el).addEventListener('click', function () {
+        var hw = H.weeks.filter(function (x) { return x.n === sel.n; })[0];
+        var games = sel.cur ? DP.meta.h2h.filter(function (m) { return m[0] === sel.n; }).map(function (m) {
+          var od = DP.liveOdds(m[1], m[2]), ls = od ? E.liveScore(od) : [0, 0, E.NC], fav = od && od.win >= od.loss;
+          return { kind: 'game', a: m[1], b: m[2], sa: ls[0], sb: ls[1], win: ls[0] > ls[1] ? m[1] : ls[1] > ls[0] ? m[2] : null, note: [ls[2] ? ls[2] + ' tied' : '', od && !sc.final ? U.teamAbbr(fav ? m[1] : m[2]) + ' ' + U.pct(fav ? od.win : od.loss) + ' to win' : ''].filter(Boolean).join(' · ') };
+        }) : (hw ? hw.games : []).map(function (g) { return { kind: 'game', a: g.a, b: g.b, sa: g.sa.W, sb: g.sb.W, win: g.sa.W > g.sb.W ? g.a : g.sb.W > g.sa.W ? g.b : null, note: g.sa.T ? g.sa.T + ' tied' : '' }; });
+        var fin = !sel.cur || sel.final;
+        DP.shareCard({ title: weekLabel(w) + (fin ? ' final' : ' so far'), sub: dateRange(w.start, w.end) + (fin ? '' : ' · categories each side leads now'), rows: games }, 'dynasty-puck-week-' + sel.n + (fin ? '-final' : '-live') + '.png');
+      });
       var rf = U.qs('#lv-refresh', el);
       if (rf) rf.addEventListener('click', function () { rf.disabled = true; rf.textContent = 'Checking…'; feed.pull(function (changed) { if (changed) DP.render(); else { rf.disabled = false; rf.textContent = '↻ Refresh'; stamp(); U.toast('Already up to date'); } }); });
       el.addEventListener('click', function (e) {
@@ -159,7 +168,7 @@
     var onA = playing(a, sc), onB = playing(b, sc), fin = !!sc.final;
     var badge = fin ? (sNow[0] === sNow[1] ? '<span class="badge warn" style="margin-left:auto">Final: tied</span>' : '<span class="badge good" style="margin-left:auto">Final: ' + esc(sNow[0] > sNow[1] ? a : b) + ' wins</span>')
       : '<span class="badge ' + (Math.abs(o.win - o.loss) < 0.2 ? 'warn' : 'good') + '" style="margin-left:auto">' + esc(o.win >= o.loss ? a : b) + ' ' + U.pct(Math.max(o.win, o.loss)) + ' to win</span>';
-    var h = '<div class="card' + (a === me || b === me ? ' mine-card' : '') + '" style="margin-bottom:12px"><h2 style="flex-wrap:wrap">' + esc(U.teamName(a)) + ' <span class="num">' + sNow[0] + '</span><span class="muted">–</span><span class="num">' + sNow[1] + '</span> ' + esc(U.teamName(b)) + (sNow[2] ? ' <span class="small muted">(' + sNow[2] + ' tied)</span>' : '') + badge + '</h2>';
+    var h = '<div class="card' + (a === me || b === me ? ' mine-card' : '') + '" style="margin-bottom:12px"><h2 style="flex-wrap:wrap">' + U.teamBadge(a) + ' ' + esc(U.teamName(a)) + ' <span class="num">' + sNow[0] + '</span><span class="muted">–</span><span class="num">' + sNow[1] + '</span> ' + esc(U.teamName(b)) + ' ' + U.teamBadge(b) + (sNow[2] ? ' <span class="small muted">(' + sNow[2] + ' tied)</span>' : '') + badge + '</h2>';
     if (onA || onB) h += '<p class="small" style="margin:0 0 8px"><span class="bad">●</span> On the ice now: ' + esc(a) + ' ' + onA + ', ' + esc(b) + ' ' + onB + ' players.</p>';
     h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Cat</th><th class="num">' + esc(a) + (fin ? '' : ' now') + '</th>' + (fin ? '' : '<th class="num">proj</th><th style="min-width:120px">' + esc(a) + ' wins cat</th><th class="num">proj</th>') + '<th class="num">' + esc(b) + (fin ? '' : ' now') + '</th></tr></thead><tbody>' +
       o.cats.map(function (x, c) {
@@ -186,7 +195,7 @@
     var sk = rows.filter(function (x) { return !x[0].G; }).sort(function (x, y) { return (2 * y[1][1] + y[1][2]) - (2 * x[1][1] + x[1][2]) || y[1][4] - x[1][4]; }), gk = rows.filter(function (x) { return x[0].G; });
     var idle = (T.active || []).map(function (id) { return E.byId[id]; }).filter(function (p) { return p && !(T.pl || {})[p.id]; });
     var dot = function (p) { var lf = sc && sc.live && p.nt26 ? sc.live.left[p.nt26] : undefined; return lf > 0 && lf < 1 ? ' <span class="bad" title="Playing right now">●</span>' : ''; };
-    return '<h3 class="small">' + esc(U.teamName(t)) + '</h3><div class="tbl-wrap"><table class="t small"><thead><tr><th>Skater</th><th class="num">GP</th><th class="num">G</th><th class="num">A</th><th class="num">PIM</th><th class="num">SOG</th><th class="num">STP</th><th class="num">Hit</th><th class="num">Blk</th><th class="num">Tk</th><th class="num">Cor*</th></tr></thead><tbody>' +
+    return '<h3 class="small">' + U.teamBadge(t) + ' ' + esc(U.teamName(t)) + '</h3><div class="tbl-wrap"><table class="t small"><thead><tr><th>Skater</th><th class="num">GP</th><th class="num">G</th><th class="num">A</th><th class="num">PIM</th><th class="num">SOG</th><th class="num">STP</th><th class="num">Hit</th><th class="num">Blk</th><th class="num">Tk</th><th class="num">Cor*</th></tr></thead><tbody>' +
       sk.map(function (x) { return '<tr><td>' + ui.plink(x[0]) + dot(x[0]) + '</td>' + x[1].map(function (v) { return '<td class="num">' + U.fmt(v, 0) + '</td>'; }).join('') + '</tr>'; }).join('') +
       '</tbody></table></div>' + (gk.length ? '<div class="tbl-wrap"><table class="t small"><thead><tr><th>Goalie</th><th class="num">GP</th><th class="num">W</th><th class="num">GA</th><th class="num">SA</th><th class="num">SHO</th><th class="num">Min</th></tr></thead><tbody>' +
       gk.map(function (x) { return '<tr><td>' + ui.plink(x[0]) + dot(x[0]) + '</td>' + x[1].map(function (v) { return '<td class="num">' + U.fmt(v, 0) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' : '') +
@@ -203,7 +212,7 @@
     games.forEach(function (g) {
       var va = W.vec[g.a], vb = W.vec[g.b], key = W.n + ':' + g.a + '|' + g.b, id = 'p' + key.replace(/[^A-Za-z0-9]/g, '_');
       var res = g.sa.W === g.sb.W ? '<span class="badge warn" style="margin-left:auto">Tied</span>' : '<span class="badge good" style="margin-left:auto">' + esc(g.sa.W > g.sb.W ? g.a : g.b) + ' won</span>';
-      h += '<div class="card' + (g.a === me || g.b === me ? ' mine-card' : '') + '" style="margin-bottom:12px"><h2 style="flex-wrap:wrap">' + esc(U.teamName(g.a)) + ' <span class="num">' + g.sa.W + '</span><span class="muted">–</span><span class="num">' + g.sb.W + '</span> ' + esc(U.teamName(g.b)) + (g.sa.T ? ' <span class="small muted">(' + g.sa.T + ' tied)</span>' : '') + res + '</h2>' +
+      h += '<div class="card' + (g.a === me || g.b === me ? ' mine-card' : '') + '" style="margin-bottom:12px"><h2 style="flex-wrap:wrap">' + U.teamBadge(g.a) + ' ' + esc(U.teamName(g.a)) + ' <span class="num">' + g.sa.W + '</span><span class="muted">–</span><span class="num">' + g.sb.W + '</span> ' + esc(U.teamName(g.b)) + ' ' + U.teamBadge(g.b) + (g.sa.T ? ' <span class="small muted">(' + g.sa.T + ' tied)</span>' : '') + res + '</h2>' +
         '<div class="tbl-wrap"><table class="t"><thead><tr><th>Cat</th><th class="num">' + esc(g.a) + '</th><th class="num">' + esc(g.b) + '</th><th class="num" title="Share of the other 13 teams this number would have beaten that week">' + esc(g.a) + ' vs league</th><th class="num">' + esc(g.b) + ' vs league</th></tr></thead><tbody>' +
         E.CATS.map(function (cat, c) {
           var r = g.r[c];
