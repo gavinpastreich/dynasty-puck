@@ -15,18 +15,6 @@
    "holdout": false
   },
   {
-   "name": "Beckett Sennecke",
-   "team": "ANA",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Sennecke (illness) will not play on Tuesday.",
-   "date": "2026-11-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Ryan Poehling",
    "team": "ANA",
    "status": "IR",
@@ -198,10 +186,10 @@
    "name": "Gavin Brindley",
    "team": "COL",
    "status": "DTD",
-   "injury": "upper body",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Brindley (upper body) left Wednesday’s game vs. Utah and will not return.",
-   "date": "2026-11-18",
+   "detail": "Brindley (upper-body) is out vs. Anaheim on Thursday.",
+   "date": "2026-11-19",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -459,13 +447,25 @@
    "holdout": false
   },
   {
+   "name": "Trevor Moore",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "Day-to-day",
+   "detail": "Moore (undisclosed) is out vs. Toronto on Thursday and is considered day-to-day.",
+   "date": "2026-11-19",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Filip Gustavsson",
    "team": "MIN",
    "status": "IR",
    "injury": "hip",
    "ret": "",
-   "detail": "Gustavsson (hip) is hopeful to be medically cleared on Tuesday.",
-   "date": "2026-11-16",
+   "detail": "Gustavsson (hip) has been assigned to Iowa (AHL) for a conditioning assignment.",
+   "date": "2026-11-19",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -846,10 +846,10 @@
    "name": "Jacob Melanson",
    "team": "SEA",
    "status": "IR",
-   "injury": "",
-   "ret": "",
-   "detail": "Melanson will be out indefinitely after suffering an upper-body injury.",
-   "date": "2026-10-10",
+   "injury": "upper-body",
+   "ret": "Months",
+   "detail": "Melanson (upper-body) is a game-time decision vs. Vancouver on Thursday.",
+   "date": "2026-11-19",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false

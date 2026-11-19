@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-19T19:01+00:00",
+"fetched": "2026-11-19T21:57+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -611,16 +611,6 @@
 "w": 2
 }
 ],
-"n8483478": [
-{
-"d": "2026-11-01",
-"k": [],
-"s": "NHL.com",
-"t": "Star Wears: Wild award helmet with night vision goggles to player of game",
-"u": "https://www.nhl.com/news/star-wears-minnesota-wild-helmet-goggles",
-"w": 1
-}
-],
 "n8483482": [
 {
 "d": "2026-11-08",
@@ -662,6 +652,16 @@
 }
 ],
 "n8483497": [
+{
+"d": "2026-11-19",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Kraken Activate Jacob Melanson; Reassign Jani Nyman",
+"u": "https://www.prohockeyrumors.com/2026/11/kraken-activate-jacob-melanson-reassign-jani-nyman.html",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -846,32 +846,6 @@
 "s": "McKeen's Hockey",
 "t": "McKeen’s Dynasty Battle: Luca Cagnoni vs. Sam Dickinson",
 "u": "https://www.mckeenshockey.com/nhl-blog/mckeens-dynasty-battle-luca-cagnoni-vs-sam-dickinson/",
-"w": 2
-}
-],
-"n8484154": [
-{
-"d": "2026-11-18",
-"k": [],
-"s": "Sportsnet",
-"t": "Flames takeaways: Rookie Jonathan Castagna hits milestone in win",
-"u": "https://www.sportsnet.ca/nhl/article/flames-takeaways-rookie-jonathan-castagna-hits-milestone-in-win/",
-"w": 2
-},
-{
-"d": "2026-11-18",
-"k": [],
-"s": "Sportsnet",
-"t": "Castagna reflects on scoring first career NHL goal: ‘Special moment’",
-"u": "https://www.sportsnet.ca/nhl/video/castagna-reflects-on-scoring-first-career-nhl-goal-special-moment/",
-"w": 2
-},
-{
-"d": "2026-11-18",
-"k": [],
-"s": "Sportsnet",
-"t": "Flames’ Castagna fights free to find rebound for first career NHL goal",
-"u": "https://www.sportsnet.ca/nhl/video/flames-castagna-fights-free-to-find-rebound-for-first-career-nhl-goal/",
 "w": 2
 }
 ],
@@ -1126,18 +1100,6 @@
 "w": 2
 }
 ],
-"n8484201": [
-{
-"d": "2026-11-11",
-"k": [
-"sent down"
-],
-"s": "Pro Hockey Rumors",
-"t": "Ducks Reassign Nico Myatovic; To Activate Troy Terry",
-"u": "https://www.prohockeyrumors.com/2026/11/ducks-reassign-nico-myatovic-to-activate-troy-terry.html",
-"w": 2
-}
-],
 "n8484205": [
 {
 "d": "2026-11-09",
@@ -1277,6 +1239,14 @@
 ],
 "n8484240": [
 {
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Analytics show Willander has taken big step in second Canucks season",
+"u": "https://dailyhive.com/offside/analytics-tom-willander-big-step-canucks",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "Canucks Army (VAN)",
@@ -1350,6 +1320,14 @@
 }
 ],
 "n8484768": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Calgary Flames teammates showed up to cheer on Huberdeau in AHL game",
+"u": "https://dailyhive.com/offside/flames-teammates-showed-up-cheer-huberdeau-ahl",
+"w": 1
+},
 {
 "d": "2026-11-18",
 "k": [],
@@ -1715,6 +1693,14 @@
 ],
 "n8484873": [
 {
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Cole Hutson has surprisingly emerged as one of the top rookies",
+"u": "https://www.dailyfaceoff.com/news/washington-capitals-cole-hutson-surprisingly-emerged-top-nhl-rookies-calder-trophy",
+"w": 2
+},
+{
 "d": "2026-11-15",
 "k": [],
 "s": "Russian Machine Never Breaks (WSH)",
@@ -1827,6 +1813,16 @@
 "t": "Kraken Took Slice Of Powerhouse Finnish Hockey Pie",
 "u": "https://www.nhl.com/news/seattle-kraken-finnish-prospects-2026-nhl-global-series-finland",
 "w": 1
+}
+],
+"n8485358": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Future Flames: Adversity Is Nothing for Theo Stockselius After Beating Cancer",
+"u": "https://thehockeywriters.com/future-flames-adversity-is-nothing-for-theo-stockselius-after-beating-cancer/",
+"w": 2
 }
 ],
 "n8485371": [
@@ -1958,6 +1954,14 @@
 }
 ],
 "n8485406": [
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Can Porter Martone, Gavin McKenna work their way back into Calder conversation?",
+"u": "https://www.dailyfaceoff.com/news/calder-trophy-race-odds-gavin-mckenna-porter-martone-jacob-fowler-leafs-flyers-canadiens",
+"w": 2
+},
 {
 "d": "2026-11-16",
 "k": [],
@@ -2253,6 +2257,14 @@
 "w": 2
 },
 {
+"d": "2026-11-19",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Can Porter Martone, Gavin McKenna work their way back into Calder conversation?",
+"u": "https://www.dailyfaceoff.com/news/calder-trophy-race-odds-gavin-mckenna-porter-martone-jacob-fowler-leafs-flyers-canadiens",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "The Leafs Nation (TOR)",
@@ -2314,14 +2326,6 @@
 "s": "NHL.com",
 "t": "Bedard, McKenna share mutual respect as No. 1 picks in NHL Draft",
 "u": "https://www.nhl.com/news/gavin-mckenna-connor-bedard-mutual-respect-ahead-of-first-nhl-meeting",
-"w": 2
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "Daily Faceoff",
-"t": "Gavin McKenna’s usage with Leafs continues to be frustrating",
-"u": "https://www.dailyfaceoff.com/news/gavin-mckenna-toronto-maple-leafs-jim-hiller-ice-time-usage-tavares-roslovic-power-play",
 "w": 2
 }
 ],
@@ -2492,9 +2496,9 @@
 },
 "sources": [
 {
-"n": 89,
+"n": 88,
 "name": "NHL.com stories by player",
-"note": "490 players asked",
+"note": "484 players asked",
 "ok": true,
 "url": "https://www.nhl.com/news"
 },
@@ -2529,7 +2533,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -2711,14 +2715,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "5 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -2732,14 +2736,14 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "4 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -2842,5 +2846,5 @@
 "url": "https://recruitscouting.com/feed/"
 }
 ],
-"tracked": 636
+"tracked": 630
 }

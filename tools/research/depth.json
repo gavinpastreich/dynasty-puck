@@ -4,20 +4,20 @@
  "teams": {
   "ANA": {
    "team": "Anaheim Ducks",
-   "updated": "2026-11-18",
-   "source": "Last Game (2026-11-17)",
+   "updated": "2026-11-19",
+   "source": "Zach Cavanagh",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "pp1": [
-    "Judd Caulfield",
+    "Beckett Sennecke",
     "Leo Carlsson",
     "Mikael Granlund",
     "Jackson Lacombe",
     "Cutter Gauthier"
    ],
    "pp2": [
-    "Alex Killorn",
+    "Judd Caulfield",
     "Nikita Nesterenko",
-    "Roger McQueen",
+    "Alex Killorn",
     "Troy Terry",
     "Tristan Luneau"
    ],
@@ -41,16 +41,17 @@
    "f2": [
     "Jeff Malott",
     "Mikael Granlund",
-    "Troy Terry"
+    "Beckett Sennecke"
    ],
    "f3": [
     "Alex Killorn",
-    "Tim Washe"
+    "Tim Washe",
+    "Troy Terry"
    ],
    "f4": [
     "Nikita Nesterenko",
     "Roger McQueen",
-    "Sam Colangelo"
+    "Frank Vatrano"
    ],
    "d1": [
     "Jackson Lacombe",
@@ -58,11 +59,11 @@
    ],
    "d2": [
     "Pavel Mintyukov",
-    "Tristan Luneau"
+    "Noah Warren"
    ],
    "d3": [
-    "Drew Helleson",
-    "Noah Warren"
+    "Tyson Hinds",
+    "Tristan Luneau"
    ],
    "goalies": [
     "Lukas Dostal",
@@ -412,7 +413,7 @@
   "COL": {
    "team": "Colorado Avalanche",
    "updated": "2026-11-19",
-   "source": "Last Game (2026-11-18)",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "pp1": [
     "T.J. Hughes",
@@ -451,9 +452,9 @@
     "T.J. Hughes"
    ],
    "f3": [
-    "Gabriel Landeskog",
+    "Adam Beckman",
     "Nicolas Roy",
-    "Gavin Brindley"
+    "Gabriel Landeskog"
    ],
    "f4": [
     "Parker Kelly",
@@ -818,8 +819,8 @@
   },
   "LAK": {
    "team": "Los Angeles Kings",
-   "updated": "2026-11-18",
-   "source": "Last Game (2026-11-17)",
+   "updated": "2026-11-19",
+   "source": "Zach Dooley",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "pp1": [
     "Kevin Fiala",
@@ -837,7 +838,7 @@
    ],
    "pk1": [
     "Erik Haula",
-    "Trevor Moore",
+    "Joel Armia",
     "Mikey Anderson",
     "Drew Doughty"
    ],
@@ -858,13 +859,13 @@
     "Mats Zuccarello"
    ],
    "f3": [
-    "Trevor Moore",
+    "Scott Laughton",
     "Erik Haula",
     "Joel Armia"
    ],
    "f4": [
     "Andre Lee",
-    "Scott Laughton",
+    "Samuel Helenius",
     "Corey Perry"
    ],
    "d1": [
@@ -955,19 +956,19 @@
   "MTL": {
    "team": "Montreal Canadiens",
    "updated": "2026-11-19",
-   "source": "Last Game (2026-11-18)",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "pp1": [
     "Juraj Slafkovsky",
     "Nick Suzuki",
-    "Zack Bolduc",
+    "Alexandre Texier",
     "Cole Caufield",
     "Lane Hutson"
    ],
    "pp2": [
     "Kirby Dach",
     "Oliver Kapanen",
-    "Alexandre Texier",
+    "Brett Berard",
     "Noah Dobson",
     "Alex Newhook"
    ],
@@ -994,12 +995,12 @@
     "Alex Newhook"
    ],
    "f3": [
-    "Zack Bolduc",
+    "Brett Berard",
     "Phillip Danault",
     "Kirby Dach"
    ],
    "f4": [
-    "Brett Berard",
+    "Florian Xhekaj",
     "Oliver Kapanen",
     "Owen Beck"
    ],
@@ -1973,8 +1974,8 @@
   },
   "VGK": {
    "team": "Vegas Golden Knights",
-   "updated": "2026-11-18",
-   "source": "Last Game (2026-11-17)",
+   "updated": "2026-11-19",
+   "source": "@SinBinVegas",
    "url": "https://www.dailyfaceoff.com/teams/vegas-golden-knights/line-combinations",
    "pp1": [
     "Mark Stone",
@@ -2018,9 +2019,9 @@
     "Victor Olofsson"
    ],
    "f4": [
-    "Raphael Lavoie",
+    "Braeden Bowman",
     "Nic Dowd",
-    "Braeden Bowman"
+    "Marc Gatcomb"
    ],
    "d1": [
     "Brayden McNabb",
