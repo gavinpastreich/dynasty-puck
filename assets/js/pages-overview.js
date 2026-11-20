@@ -159,7 +159,8 @@
           live = '<a class="yw-live" href="#/live"><div class="yw-k">' + (nLv ? '<span class="badge bad livedot">● LIVE</span> ' : '') + 'Week ' + sc.week + (sc.final ? ' final' : ' so far') + '</div>' +
             '<div class="yw-score">' + U.teamBadge(me) + '<b class="num">' + ls[0] + '</b><span class="muted">–</span><b class="num">' + ls[1] + '</b>' + U.teamBadge(lo) + '</div>' +
             '<div class="small">vs ' + esc(U.teamName(lo)) + (ls[2] ? ' · ' + ls[2] + ' tied' : '') + '</div>' +
-            (od && !sc.final ? '<div class="yw-bar" title="Chance to win the week (the rest of it simulated)"><span style="width:' + (od.win * 100).toFixed(0) + '%"></span></div><div class="small muted">' + U.pct(od.win) + ' to win the week</div>' : '') + '</a>';
+            (od && !sc.final ? '<div class="yw-bar" title="Chance to win the week (the rest of it simulated)"><span style="width:' + (od.win * 100).toFixed(0) + '%"></span></div><div class="small muted">' + U.pct(od.win) + ' to win the week</div>' : '') +
+            '<div class="yw-flow" data-ywf="' + sc.week + '|' + esc(me) + '|' + esc(lo) + '"></div></a>';
         }
         // next lock + to-do list
         var chk = wiL !== null ? E.lineupCheck(me, wiL) : null, todo = [];
@@ -181,12 +182,12 @@
         if (mine.length) todo.push(['warn', '🎓', 'Graduation watch: ' + mine.slice(0, 3).map(function (x) { return esc(x[0].n) + ' ' + x[1].cgp + '/' + x[1].thr + ' GP (~wk ' + (x[1].week + 1) + ')'; }).join(', ') + (mine.length > 3 ? ' +' + (mine.length - 3) : ''), '#/offseason']);
         if (dlDays !== null && dlDays <= 75) todo.push([dlDays <= 14 ? 'warn' : '', '⏳', 'Trade deadline in ' + dlDays + ' day' + (dlDays === 1 ? '' : 's') + ' (' + esc(E.deadlineText()) + ')', '#/finder']);
         h += '<div class="hero yw" style="--tc:' + U.teamColor(me) + '"><div class="yw-id">' + U.teamBadge(me, 'xl') + '<div class="hero-tx"><h2>' + esc(U.teamName(me)) + '</h2>' +
-          '<p class="sub">' + (arec ? '<b class="num">' + arec.W + '-' + arec.L + '-' + arec.T + '</b> · ' + U.ord(aRank) + ' of 14 · ' : '') + 'power rank #' + s.prank + '</p>' +
+          '<p class="sub">' + (arec ? '<b class="num">' + arec.W + '-' + arec.L + '-' + arec.T + '</b> · ' + U.ord(aRank) + ' of 14 · ' : '') + 'dynasty power #' + s.prank + '</p>' +
           '<p class="sub">' + (wiL !== null ? '🔒 ' + (E.weeks[wiL].po ? 'Playoffs R' + E.weeks[wiL].po : 'Week ' + E.weeks[wiL].n) + ' ' + esc(DP.lockText(wiL)) + (opp ? ' · vs ' + esc(U.teamName(opp)) + (pr !== null ? ' (expected ' + U.fmt(pr, 1) + ' of 15 cats)' : '') : '') : 'No lineup locks left this season') + '</p></div></div>' +
           live + '<ul class="yw-todo">' + todo.map(function (x) { return '<li class="' + x[0] + '"><a href="' + x[3] + '"><span class="ic" aria-hidden="true">' + x[1] + '</span><span>' + x[2] + '</span></a></li>'; }).join('') + '</ul>' +
           '<p class="yw-links small"><a href="#/team/' + encodeURIComponent(me) + '">Team Hub →</a><a href="#/scout">🔭 Scout your opponent</a><a href="' + U.hash('matchup', null, { w: nm ? nm[0] : 1, a: me, b: opp }) + '">Matchup sim</a><a href="#/weekly">🗞️ Last week\'s recap</a><a href="#/fa">Best FA fits</a><a href="#/finder">Trade ideas</a><a href="#/luck">Buy low / sell high</a><a href="#/alerts">🔔 Alerts</a></p></div>';
         h += '<div class="stats stats6">' +
-          DP.statTile('Power rank', '#' + s.prank, 'now + dynasty + prospects') +
+          DP.statTile('Dynasty power', '#' + s.prank, 'now + dynasty + prospects') +
           DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' cats') +
           '<div class="stat"><div class="l">Playoff odds</div><div class="v" data-sim="po" data-t="' + esc(me) + '">…</div><div class="d">8 of 14 make it</div></div>' +
           DP.statTile('Cap space', U.m(s.space), U.m(s.pay) + ' of ' + U.m(s.cap[0].cap, s.cap[0].adj ? 1 : 0) + (s.cap[0].adj ? ' (' + U.sm(s.cap[0].adj, 1) + ' traded)' : '') + (s.ir ? ' · IR relief ' + U.m(s.ir) : '')) +
@@ -209,7 +210,7 @@
       }
 
       h += '<div class="grid g2">';
-      h += '<div class="card flush span2"><h2>Power rankings & projected standings</h2><div class="hint">Projected category record from every weekly matchup on the real Fantrax schedule (weekly-lock optimal lineups). Playoff and title odds from a Monte Carlo season sim, loading below. Power = 55% this season, 35% dynasty value, 10% prospect pool.</div><div id="pr-table" style="padding:0 12px 12px"></div></div>';
+      h += '<div class="card flush span2"><h2>Dynasty power & projected standings <a class="btn sm" href="#/power" style="margin-left:auto">Weekly Power Rankings →</a></h2><div class="hint">Projected category record from every weekly matchup on the real Fantrax schedule (weekly-lock optimal lineups). Playoff and title odds from a Monte Carlo season sim, loading below. Power = 55% this season, 35% dynasty value, 10% prospect pool.</div><div id="pr-table" style="padding:0 12px 12px"></div></div>';
       h += '<div class="card"><h2>🟢 Best bargains</h2><div class="hint">Biggest contract surplus in 2026-27 (market value − salary). MNR players at $0 excluded.</div><div id="bargains"></div></div>';
       h += '<div class="card"><h2>🔴 Toughest contracts</h2><div class="hint">Largest negative surplus in 2026-27. Dropping costs 50% of each remaining year.</div><div id="worst"></div></div>';
       h += '<div class="card"><h2>🎓 About to graduate</h2><div class="hint">MNR players projected to reach ' + E.RULES.gradSkater + ' career NHL GP (' + E.RULES.gradGoalie + ' for goalies) soonest.</div><div id="grads"></div><p><a href="#/prospects">Full graduation tracker →</a></p></div>';
@@ -218,6 +219,18 @@
       h += '<div class="card span2"><h2>📈 Projected category leaders (2026-27)</h2><div class="hint">Top 5 projected totals in each category (goalies: 30+ GP for GAA/SV%). ★ = owned by your team.</div><div id="leaders" class="grid g4"></div></div>';
       h += '</div>';
       el.innerHTML = h;
+      // your matchup day by day (win chance after each day, from data/weeks/dNN.js)
+      var ywf = U.qs('[data-ywf]', el);
+      if (ywf && DP.loadDays && DP.matchFlow) {
+        var yp = ywf.dataset.ywf.split('|');
+        DP.loadDays(+yp[0], function (D) {
+          if (!D || !document.body.contains(ywf)) return;
+          var F = DP.matchFlow(+yp[0], yp[1], yp[2], 600); if (!F || F.pts.length < 3) return;
+          var w = 150, hh = 34, k = F.pts.length - 1, pts = F.pts.map(function (p, i) { return [(4 + i / k * (w - 8)).toFixed(1), (3 + (1 - p.win - p.tie / 2) * (hh - 6)).toFixed(1)]; });
+          ywf.innerHTML = '<svg width="' + w + '" height="' + hh + '" viewBox="0 0 ' + w + ' ' + hh + '" aria-label="Win chance after each day"><line x1="0" x2="' + w + '" y1="' + (hh / 2) + '" y2="' + (hh / 2) + '" stroke="var(--line)" stroke-dasharray="3 3"/><polyline points="' + pts.map(function (q) { return q.join(','); }).join(' ') + '" fill="none" stroke="var(--tc, var(--accent))" stroke-width="2"/>' +
+            pts.map(function (q) { return '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="2.4" fill="var(--tc, var(--accent))"/>'; }).join('') + '</svg><span class="small muted">win chance day by day</span>';
+        });
+      }
 
       // power table
       var rows = DP._ts.order.map(function (t) { return TS[t]; });
@@ -295,7 +308,7 @@
         aRank = 1 + E.teams.filter(function (u) { var r = act.rec[u]; return r && pctOf(r) > pctOf(arec); }).length;
       }
       h += '<div class="hero" style="--tc:' + U.teamColor(t) + '"><div class="hero-id">' + U.teamBadge(t, 'xl') + '<div class="hero-tx"><h1>' + esc(U.teamName(t)) + '</h1>' +
-        '<p class="sub">' + (U.teamName(t) !== t ? 'GM ' + esc(t) + ' · ' : '') + (divs[t] ? esc(divs[t]) + ' division · ' : '') + ros.length + ' players (' + s.nMnr + ' MNR) · power rank #' + s.prank + '</p></div></div>' +
+        '<p class="sub">' + (U.teamName(t) !== t ? 'GM ' + esc(t) + ' · ' : '') + (divs[t] ? esc(divs[t]) + ' division · ' : '') + ros.length + ' players (' + s.nMnr + ' MNR) · dynasty power #' + s.prank + '</p></div></div>' +
         '<div class="hero-rec">' + (arec ? '<div class="big num">' + arec.W + '-' + arec.L + '-' + arec.T + '</div><div class="small">' + U.ord(aRank) + ' of ' + E.teams.length + ' · ' + act.done + ' week' + (act.done === 1 ? '' : 's') + ' played</div>' : '<div class="small muted">Season not started</div>') + '</div>' +
         '<label class="hero-sel small muted">Team ' + ui.teamSelect('tsel', t) + '</label></div>';
       h += '<nav class="jump" aria-label="Sections of this page">' + [['lineup', 'Lineup'], ['season', 'Season'], ['strat', 'Strategy'], ['cats', 'Categories'], ['slots', 'Roster by slot'], ['cap', 'Cap'], ['pipe', 'Prospects'], ['roster', 'Full roster']].map(function (x) { return '<button type="button" data-jump="tj-' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</nav>';

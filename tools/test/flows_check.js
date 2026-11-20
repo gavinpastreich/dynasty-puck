@@ -243,6 +243,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     await go('weekly?w=' + lastWk, 5000);
     ok(await page.evaluate(() => /Comeback|Upset|No real comebacks/.test(document.querySelector('#wk-swing').innerText)), 'the weekly: comeback / upset line');
   }
+  await go('power', 3500);
+  ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && [...document.querySelectorAll('.pw-blurb')].every((b) => b.innerText.length > 10)), 'power rankings: every team with a line');
   await go('moves', 4500);
   ok(await page.evaluate(() => document.querySelectorAll('.fmlist li').length >= 3 && document.querySelectorAll('#mv-log tbody tr').length > 10), 'transactions: best pickups and the full log');
   await go('history', 3500);

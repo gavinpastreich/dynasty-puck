@@ -593,3 +593,13 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .pct-k { color: var(--muted); font-size: .8rem; min-width: 62px; }
 .flow { width: 100%; max-width: 640px; height: auto; display: block; }
 .h-since:not(:empty) { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+/* Power Rankings */
+.pwlist li { display: grid; grid-template-columns: 38px 34px 1fr; gap: 8px; align-items: start; padding: 12px 14px; border-bottom: 1px solid var(--line); border-left: 4px solid var(--tc); }
+.pwlist li.mine { background: var(--mine-bg, color-mix(in srgb, var(--accent) 8%, transparent)); }
+.pw-rk { font-size: 1.5rem; font-weight: 800; text-align: right; line-height: 1.2; }
+.pw-mv { padding-top: 6px; }
+.pw-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pw-blurb { margin-top: 4px; color: var(--ink); opacity: .9; }
+@media (max-width: 640px) { .pwlist li { grid-template-columns: 30px 28px 1fr; padding: 10px; } .pw-rk { font-size: 1.2rem; } }
+.yw-flow { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.yw-flow:empty { display: none; }

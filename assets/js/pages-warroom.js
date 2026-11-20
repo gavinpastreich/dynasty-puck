@@ -170,7 +170,7 @@
     var recV = real ? act.rec[t].W + '-' + act.rec[t].L + '-' + act.rec[t].T : U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0);
     var tile = function (l, v, d) { return DP.statTile(l, v, d); };
     var strengths = E.CATS.map(function (c, i) { return [c.l, s.rank[i]]; }).sort(function (a, b) { return a[1] - b[1]; });
-    return '<div class="stats">' + tile('Category record', recV, real ? 'so far (Fantrax)' : 'projected for the season') + tile('Power rank', '#' + s.prank, 'now + dynasty + prospects') +
+    return '<div class="stats">' + tile('Category record', recV, real ? 'so far (Fantrax)' : 'projected for the season') + tile('Dynasty power', '#' + s.prank, 'now + dynasty + prospects') +
       tile('MVP', mvp ? esc(mvp.n) : '–', mvp ? U.fmt(mvp.WAR, 1) + ' WAR' : '') + tile('Best bargain', bargain ? esc(bargain.n) : '–', bargain ? U.sm(bargain.surplus) + ' surplus' : '') +
       tile('Top prospect', prospect ? esc(prospect.n) : '–', prospect ? 'DV ' + U.fmt(prospect.DV, 1) : '') + tile('Trades', myTrades.length, myTrades.length ? 'net ' + U.sgn(net, 1) + ' value' : 'none yet') +
       tile('Roster moves', mv.length, 'adds, drops, contract changes') + tile('Graduations', grads, 'MNR players reaching the line') +

@@ -34,7 +34,7 @@
       { l: 'Playoff odds', a: A.c.po, b: B.c.po, better: 'hi', f: function (v) { return U.pct(v, 0); } },
       { l: 'Title odds', a: A.c.champ, b: B.c.champ, better: 'hi', f: function (v) { return U.pct(v, 1); } },
       { l: 'Starters\' ' + Y[0] + ' WAR', a: A.s.war, b: B.s.war, better: 'hi', f: function (v) { return U.fmt(v, 1); } },
-      { l: 'Power rank', a: A.s.prank, b: B.s.prank, better: 'lo', f: function (v) { return U.ord(v); } },
+      { l: 'Dynasty power rank', a: A.s.prank, b: B.s.prank, better: 'lo', f: function (v) { return U.ord(v); } },
       { g: 'Dynasty' },
       { l: 'Dynasty value (roster)', a: A.s.dv, b: B.s.dv, better: 'hi', f: function (v) { return U.fmt(v, 0); } },
       { l: 'Core strength ' + Y[1], a: A.ws[1], b: B.ws[1], better: 'hi', f: function (v) { return U.fmt(v, 1) + ' <span class="faint">WAR</span>'; } },

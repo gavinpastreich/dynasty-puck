@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -277,6 +277,17 @@ if (V) {
   const id0 = Object.keys(V.p)[0];
   ok(DP.valueAt(id0, '2000-01-01') === V.p[id0].v[0] && DP.valueAt(id0, '2999-01-01') === V.p[id0].v[V.dates.length - 1] && DP.valueAt(id0, V.dates[2]) === V.p[id0].v[2], 'valueAt: first night on or after a date');
 }
+
+// ---- Power Rankings
+HW.filter((w) => w.games && w.games.length).forEach((w) => {
+  const P = DP.powerAfter(w.n);
+  ok(P && P.rows.length === E.teams.length && P.rows.map((r) => r.rank).join() === E.teams.map((_, i) => i + 1).join(), `power week ${w.n}: every team ranked once`);
+  ok(P.rows.every((r, i) => !i || P.rows[i - 1].score >= r.score), `power week ${w.n}: sorted by score`);
+  ok(P.rows.every((r) => near(r.score, 0.45 * r.season + 0.25 * r.recent + 0.30 * r.proj, 1e-12) && r.season >= 0 && r.season <= 1 && r.recent >= 0 && r.recent <= 1), `power week ${w.n}: score = 45/25/30`);
+  const t0 = E.teams[0], aps = HW.filter((x) => x.n <= w.n && x.ap && x.ap[t0]).map((x) => E.sum(x.ap[t0]) / x.ap[t0].length);
+  ok(near(P.by[t0].season, E.sum(aps) / aps.length, 1e-12) && near(P.by[t0].recent, E.sum(aps.slice(-3)) / aps.slice(-3).length, 1e-12), `power week ${w.n}: all-play averages`);
+  ok(E.teams.every((t) => DP.powerBlurb(t, w.n, P, null, DP.weekDetail[w.n]).length > 10), `power week ${w.n}: every team gets a line`);
+});
 
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');

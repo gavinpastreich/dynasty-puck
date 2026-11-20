@@ -45,6 +45,7 @@
     ]],
     ['For fun', 'Bragging rights, with receipts.', [
       ['weekly', '🗞️', 'The Weekly', 'An auto-written recap of every finished week, shareable as an image.'],
+      ['power', '⚡', 'Power Rankings', 'Every team ranked each week from the results, with movement and a line on each.'],
       ['rivals', '⚔️', 'Rivalries', 'The standings race and who has whose number in all-play.'],
       ['records', '📚', 'Record Book', 'Best weeks, biggest wins, streaks and individual highs.'],
       ['awards', '🏅', 'Awards & Wrapped', 'Season awards and your team\'s year in review.']

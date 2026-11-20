@@ -131,4 +131,5 @@ as you ship them, and add any new ideas you come up with.
       team value through the season, value trend and line moves on every player card.
 - [x] Batch 6 (2026-11-20): Transactions page (best pickups with production since, drops that got away, GM activity),
       value since each trade, best single days, value trends on Compare.
+- [x] Batch 7 (2026-11-20): weekly Power Rankings with movement and written lines; Dashboard day-by-day sparkline.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

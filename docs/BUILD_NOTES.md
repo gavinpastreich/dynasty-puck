@@ -421,3 +421,9 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     (pages-trade.js) fills `.h-since` per trade after `DP.loadValues` (players only).
   - Record Book: `DP.dayRecords(weekDays)` best single-day team totals (counting categories) from data/weeks/dNN.js.
   - Compare: value through the season (`#cmp-vt`, C.lines over `DP.values` dates).
+
+- Batch 7 (2026-11-20):
+  - pages-power.js: Power Rankings (`power?w=`, `DP.powerAfter(n, proj)` = 45% season all-play + 25% last 3 weeks + 30%
+    rest-of-season projection rank percentile (E.teamCats z over the weeks left), `DP.powerBlurb`). The older blended
+    rank from `DP.teamSummary` (55% expected win % / 35% DV / 10% prospects) is now labelled "dynasty power".
+  - Dashboard: your matchup's win chance day by day (`[data-ywf]`, DP.matchFlow on the week in progress).
