@@ -665,6 +665,38 @@ def season_to_date(players, sk_hist, cor_est, sched, season_start):
     return n
 
 
+def recent_form(players, cor_est, days=14):
+    """Each player's NHL games over the last `days` days through yesterday -> p['l14'] (skaters in the ytd order,
+    goalies [GP, W, GAA, SV%, SHO, GA, SA]), for Hot & Cold. Same NHL reports and parsers as the live scoreboard."""
+    today = dt.date.fromisoformat(os.environ.get("DP_TODAY", dt.date.today().isoformat()))
+    end = today - dt.timedelta(days=1)
+    start = end - dt.timedelta(days=days - 1)
+    try:
+        sk, gk = SB.range_stats(start.isoformat(), end.isoformat(), max_age_days=0.5)
+    except Exception as e:  # an incomplete NHL report: leave recent form out rather than publish part of it
+        log(f"  ! recent form ({start}..{end}) not built: {e}")
+        return None
+    n = 0
+    for p in players.values():
+        nid = p.get("nhl")
+        if not nid:
+            continue
+        if p["kind"] == "S":
+            h = sk.get(nid)
+            if not h or not h["gp"]:
+                continue
+            p["l14"] = [h["gp"], h["g"] + h["a"] if p["pos"] == "D" else 0, h["g"], h["a"], h["pim"], h["sog"], h["stp"],
+                        h["hit"], h["blk"], h["tk"], round(cor_est(h), 1)]
+        else:
+            h = gk.get(nid)
+            if not h or not h["gp"]:
+                continue
+            p["l14"] = [h["gp"], h["w"], round(h["gaa"] or 0, 3), round(h["sv"] or 0, 4), h["sho"], h["ga"], h["sa"]]
+        n += 1
+    log(f"Recent form {start}..{end}: {n} players with games")
+    return {"from": start.isoformat(), "to": end.isoformat(), "days": days, "n": n} if n else None
+
+
 def attach_locks(weeks, snap):
     """Lineup-lock time of each week = the start of its Fantrax period (first puck drop). Needed before anything
     asks which week is being played."""
@@ -1460,12 +1492,14 @@ def main():
         log(f"  ! team strength fetch failed: {e}")
 
     ros_n = season_to_date(players, sk, cor_est, sched, season_start)
+    form = recent_form(players, cor_est)
     score, hist = weekly_results(players, weeks, fx_snap, beta_cor)
     attach_depth(players)
     league = load_trades(players)
     league["score"] = score
     league["hist"] = hist
     league["ros"] = {"n": ros_n, "k": ROS_K, "kG": ROS_K_G, "season": ROS_SEASON}
+    league["form"] = form
     apply_fantrax_league(league, weeks, players, fx_snap, fx_moves)
     league["penalties"] = cap_penalties(players, sheet, fx_moves)
     league["drafts"] = load_drafts(players)
@@ -1697,7 +1731,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
         o = {k: p[k] for k in ("id", "n", "t", "pos", "gm", "ct", "sal", "fxage", "s25", "p26", "fx", "fxp", "cgp") if k in p}
         for k in ("nhl", "fd", "wv", "rk", "dob", "sh", "ht", "wt", "nat", "hs", "nt", "slug", "dr", "car", "h", "tkc",
-                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew", "ytd", "pre"):
+                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew", "ytd", "pre", "l14"):
             if p.get(k) not in (None, 0, [], ""):
                 o[k] = p[k]
         o["s25"] = [round(x, 3) for x in o["s25"]]

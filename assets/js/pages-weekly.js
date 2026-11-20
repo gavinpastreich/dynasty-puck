@@ -172,6 +172,12 @@
     s.onload = function () { done(DP.weekDetail[n] || null); }; s.onerror = function () { done(null); };
     document.head.appendChild(s);
   }
+  DP.loadWeek = loadWeek;
+  // every finished week's player lines, then done(list of weekDetail)
+  DP.loadWeeks = function (ns, done) {
+    var out = [], i = 0;
+    (function next() { if (i >= ns.length) return done(out); loadWeek(ns[i++], function (d) { if (d) out.push(d); next(); }); })();
+  };
 
   DP.pages.weekly = {
     title: 'The Weekly',

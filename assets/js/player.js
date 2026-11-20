@@ -99,6 +99,7 @@
       }
     });
     h += '</tbody></table></div>';
+    if (DP.formLine) h += DP.formLine(p);
     if (p.tkc) h += '<p class="note">Tk/Cor projection: per-GP rates ' + U.fmt(p.tkc[0], 2) + ' Tk and ' + U.fmt(p.tkc[1], 1) + ' Cor, blended from ' + U.fmt(p.tkc[4], 0) + ' weighted NHL games with a role prior of ' + U.fmt(p.tkc[2], 2) + ' / ' + U.fmt(p.tkc[3], 1) + '.</p>';
     h += '</div>';
 

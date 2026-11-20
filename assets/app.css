@@ -509,3 +509,35 @@ table.t th { font-size: .8rem; }
 .catcell.lo { border-color: color-mix(in srgb, var(--bad) 50%, transparent); background: var(--bad-bg); }
 .catcell .num { font-size: 1.05rem; font-weight: 700; }
 .catcell .small.num { font-size: .72rem; font-weight: 400; }
+.fmlist li { align-items: center; }
+.fmlist .fml { flex: 1; min-width: 0; }
+.fmlist .fmd { margin: 2px 0 0 31px; }
+.fmlist .fmr { text-align: right; white-space: nowrap; margin-left: 10px; line-height: 1.25; }
+
+/* standings race (bump chart) and the all-play matrix */
+.bump { width: 100%; height: auto; display: block; }
+.bump .bl { transition: opacity .15s; cursor: pointer; }
+.bump:hover .bl { opacity: .18; }
+.bump .bl:hover, .bump:hover .bl.me:hover { opacity: 1; }
+.bump .bl.me { filter: drop-shadow(0 0 3px rgba(0,0,0,.35)); }
+.h2hmx th.c { text-align: center; padding: 6px 2px; }
+.h2hmx td.hc { min-width: 34px; text-align: center; font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--ink); }
+.h2hmx td.self { background: var(--card2); }
+.h2hmx td:first-child { white-space: nowrap; }
+
+/* record book */
+.recgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.rec { border: 1px solid var(--line2); border-radius: 10px; padding: 9px 11px; background: var(--card2); min-width: 0; }
+.rec.mine { border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
+.rec .rl { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.rec .rv { font-size: 1.5rem; font-weight: 800; line-height: 1.15; }
+.rec .rt { margin: 2px 0; font-size: .85rem; }
+.recind li { align-items: flex-start; }
+.recind .rk { width: 150px; flex: none; color: var(--muted); font-size: .82rem; padding-top: 1px; }
+.recind .who { flex: 1; min-width: 0; }
+
+/* watchlist stars and the last-visit card */
+.btn.star.on { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 55%, transparent); }
+.btn.star.mini { padding: 1px 6px; min-height: 22px; }
+.since li { align-items: flex-start; }
+.since .ic { width: 20px; flex: none; text-align: center; }

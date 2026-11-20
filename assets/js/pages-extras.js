@@ -107,6 +107,7 @@
       else if (act.odd) h += '<div class="callout warn">The Fantrax standings don\'t add up to 15 categories per week, so the sim is projecting from scratch.</div>';
       else h += '<div class="callout">' + act.done + ' of ' + E.REG_WEEKS + ' regular-season weeks played.</div>';
       h += '<div class="card flush"><div id="st-table" style="padding:12px"></div></div><div class="grid g2" style="margin-top:14px" id="st-divs"></div>';
+      if (DP.bumpChart && act && !act.odd && act.done >= 2) h += '<div class="card" style="margin-top:14px"><h2>📈 The race so far <a class="btn sm" href="#/rivals" style="margin-left:auto">Rivalries →</a></h2><div class="hint">Every team\'s place after each week (rebuilt from the weekly category results). Dashed line = the playoff cut.</div>' + DP.bumpChart(me) + '</div>';
       el.innerHTML = h;
       var rows = E.teams.map(function (t) { var a = act && !act.odd ? act.rec[t] : null; return { t: t, a: a, div: div[t] || '', pct: a ? (a.W + a.T / 2) / Math.max(1, a.W + a.L + a.T) : null }; });
       var tbl = ui.table(U.qs('#st-table', el), {

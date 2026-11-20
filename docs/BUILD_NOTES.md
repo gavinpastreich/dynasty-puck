@@ -358,3 +358,16 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     `E.tradeUse` (~2 ms each after the first), shown when they turn the loser's use value to ≥ +0.3.
   - Tests: tools/test/check_season.js (also in the nightly sanity step); new flows and routes in the browser suites.
 
+- Batch 3 (2026-11-20):
+  - NHL stats API: since 2026-11-19 it returns at most 100 rows per request; `tools/nhl_api.py` `get_paged()` pages every
+    report (sorted by playerId, checks the total, raises on a partial report). `build_data.py` stops before writing
+    data/league.js if this season's stats would cover under 60% of the players the last build had (DP_ALLOW_SHRINK=1).
+  - `recent_form()` in build_data.py: NHL range reports for the last 14 days through yesterday (same parsers as the
+    live scoreboard) → `p.l14` (skaters in the ytd order; goalies [GP, W, GAA, SV%, SHO, GA, SA]) and `DP.league.form`.
+  - pages-pickup.js (`pickup`, `DP.pickupData`, `DP.faSalary`), pages-form.js (`form`, `DP.formOf`, `DP.formBadge`,
+    `DP.formLine` on the player card), pages-rivals.js (`rivals`, `DP.raceData`, `DP.bumpChart` also on Standings,
+    `DP.allPlayH2H`), pages-records.js (`records`, `DP.recordData`, `DP.playerRecords` over `DP.loadWeeks`),
+    pages-me.js (`DP.watch` in `dp_watch`, Radar Watchlist tab and stars, `DP.noteVisit` / `DP.sinceCard` with
+    `dp_visitAt` / `dp_visitSince`). Dashboard to-do adds the best pickup when it's worth 0.15+ expected cats.
+  - Tests: check_season.js grew to cover pickups, form, race, all-play, records and the last-visit digest.
+

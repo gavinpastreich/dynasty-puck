@@ -135,11 +135,12 @@
         DP.statTile('In the NHL right now', String(rows.filter(function (r) { return r.nhlNow; }).length), 'played an NHL game in the last 14 days') +
         DP.statTile('Moved 10+ spots this week', String(rows.filter(function (r) { return r.d['7'] && Math.abs(r.d['7'].dr) >= 10 && r.rank <= 200; }).length), 'inside the top 200') +
         DP.statTile('Headlines this week', String(n7), R ? okSrc + ' of ' + R.sources.length + ' sources read' : 'not built yet') + '</div>';
-      h += '<div class="tabs" role="tablist">' + [['stock', 'Stock watch'], ['rank', 'Rankings'], ['news', 'News wire']].map(function (t) { return '<button role="tab" aria-selected="' + (t[0] === tab) + '" class="' + (t[0] === tab ? 'on' : '') + '" data-tab="' + t[0] + '">' + esc(t[1]) + '</button>'; }).join('') + '</div><div id="rd-body"></div>';
+      h += '<div class="tabs" role="tablist">' + [['stock', 'Stock watch'], ['rank', 'Rankings'], ['news', 'News wire'], ['watch', '⭐ Watchlist' + (DP.watch && Object.keys(DP.watch.all()).length ? ' (' + Object.keys(DP.watch.all()).length + ')' : '')]].map(function (t) { return '<button role="tab" aria-selected="' + (t[0] === tab) + '" class="' + (t[0] === tab ? 'on' : '') + '" data-tab="' + t[0] + '">' + esc(t[1]) + '</button>'; }).join('') + '</div><div id="rd-body"></div>';
       el.innerHTML = h;
       U.qsa('[data-tab]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('radar', null, { tab: b.dataset.tab, scope: scope, w: q.w }); }); });
       var body = U.qs('#rd-body', el), set = function (o) { DP.go('radar', null, Object.assign({ tab: tab, scope: scope, w: q.w, tag: q.tag }, o)); };
-      if (tab === 'rank') rankings(body, V, scope, me);
+      if (tab === 'watch' && DP.watchTab) DP.watchTab(body);
+      else if (tab === 'rank') rankings(body, V, scope, me);
       else if (tab === 'news') newsTab(body, V, scope, me, q.tag || '', set);
       else stockTab(body, V, scope, me, w, set);
     }
@@ -206,7 +207,7 @@
         { k: 'pn', l: 'P(NHL)', cls: 'num', v: function (r) { return r.pros.p === undefined ? null : r.pros.p; }, f: function (r) { return r.pros.p === undefined ? '–' : U.pct(r.pros.p); } },
         { k: 'eta', l: 'ETA', cls: 'num', v: function (r) { return r.pros.eta === undefined ? null : r.pros.eta; }, f: function (r) { return etaTxt(r.pros); }, asc: true },
         { k: 'dr', l: 'Drafted', cls: 'nw', v: function (r) { return r.p.dr && r.p.dr[2] ? r.p.dr[0] * 1000 + r.p.dr[2] : 9e6; }, f: function (r) { return r.p.dr && r.p.dr[2] ? '<span class="small">' + r.p.dr[0] + ' #' + r.p.dr[2] + '</span>' : '<span class="faint small">undrafted</span>'; }, csv: function (r) { return r.p.dr && r.p.dr[2] ? r.p.dr[0] + ' #' + r.p.dr[2] : ''; }, asc: true },
-        { k: 'news', l: 'News', cls: 'nw', title: 'Headlines in the last 14 days', v: function (r) { return r.news14.length; }, f: function (r) { var k = {}; r.news14.forEach(function (it) { (it.k || []).forEach(function (t) { k[t] = 1; }); }); return r.news14.length ? '<a class="small" href="' + U.hash('radar', null, { p: r.key }) + '">' + r.news14.length + '</a> ' + Object.keys(k).slice(0, 2).map(tagHtml).join(' ') : ''; }, csv: function (r) { return r.news14.length; } }]
+        { k: 'news', l: 'News', cls: 'nw', title: 'Headlines in the last 14 days', v: function (r) { return r.news14.length; }, f: function (r) { var k = {}; r.news14.forEach(function (it) { (it.k || []).forEach(function (t) { k[t] = 1; }); }); return r.news14.length ? '<a class="small" href="' + U.hash('radar', null, { p: r.key }) + '">' + r.news14.length + '</a> ' + Object.keys(k).slice(0, 2).map(tagHtml).join(' ') : ''; }, csv: function (r) { return r.news14.length; } }, { k: 'star', l: '☆', v: function (r) { return DP.watch && DP.watch.has(r.key) ? 1 : 0; }, csv: false, f: function (r) { var on = DP.watch && DP.watch.has(r.key); return '<button type="button" class="btn sm star mini' + (on ? ' on' : '') + '" data-watch="' + esc(r.key) + '" aria-pressed="' + !!on + '" title="Watchlist">' + (on ? '★' : '☆') + '</button>'; } }]
     });
   }
   // first date from which the history has a point every night
@@ -247,7 +248,7 @@
     var h = '<p><a href="#/radar">← Prospect Radar</a></p><div class="phead">' + DP.headshot(p) + '<div style="flex:1;min-width:220px"><h2>' + esc(p.n) + ' ' + ui.pos(p) + '</h2><div class="muted">' + esc(p.t || '') + ' · ' + esc(bio.join(' · ')) + '</div>' +
       '<div style="margin-top:6px">' + (row.x.owned ? 'Owned by ' + U.teamChip(p.gm, { b: 1 }) + ' (' + esc(p.gm) + ') ' + ui.pill('MNR') : row.x.inPool ? '<span class="badge info">Unowned</span> in the Fantrax pool' : '<span class="badge warn">Not in Fantrax yet</span> 2026 NHL draft pick; can\'t be rostered until Fantrax adds him') +
       (row.where ? ' · playing in <b>' + esc(row.where.lg) + '</b>' + (row.where.team && row.where.lg !== 'NHL' ? ' (' + esc(row.where.team) + ')' : '') : '') + '</div></div>' +
-      '<div style="display:flex;gap:6px;flex-wrap:wrap">' + (row.x.inPool ? '<a class="btn sm" href="#/player/' + encodeURIComponent(p.id) + '">Full player page</a>' : '') + (p.nhl ? '<a class="btn sm" target="_blank" rel="noopener" href="https://www.nhl.com/player/' + p.nhl + '">NHL.com</a>' : '') + '</div></div>';
+      '<div style="display:flex;gap:6px;flex-wrap:wrap">' + (DP.watch ? DP.watch.btn(key) : '') + (row.x.inPool ? '<a class="btn sm" href="#/player/' + encodeURIComponent(p.id) + '">Full player page</a>' : '') + (p.nhl ? '<a class="btn sm" target="_blank" rel="noopener" href="https://www.nhl.com/player/' + p.nhl + '">NHL.com</a>' : '') + '</div></div>';
     var dtile = function (w, lab) { var d = row.d[w]; return DP.statTile(lab, d ? '<span class="' + (d.dv > 0.05 ? 'good' : d.dv < -0.05 ? 'bad' : '') + '">' + U.sgn(d.dv, 1) + '</span>' : '–', d ? (d.dr > 0 ? 'up ' + d.dr : d.dr < 0 ? 'down ' + (-d.dr) : 'same rank') + ' (was #' + d.r0 + ')' : 'not tracked then'); };
     h += '<div class="stats" style="margin-top:14px">' + DP.statTile('Radar rank', '#' + row.rank, 'of ' + V.rows.length + ' prospects') + DP.statTile('Stock', U.fmt(row.stock, 1), 'value as an MNR asset', 'Dynasty value with a full 2026-27 counted, as if held on an MNR deal.') +
       dtile('7', 'Last 7 days') + dtile('30', 'Last 30 days') + dtile('s', 'Since ' + (R ? day(R.dates[0]) : 'the start')) + '</div><div class="grid g2">';

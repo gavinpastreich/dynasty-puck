@@ -171,6 +171,10 @@
           if (chk && chk.gFailSet > 0.12) todo.push(['bad', '🥅', U.pct(chk.gFailSet) + ' chance of missing the 2-goalie-GP minimum with your set lineup', '#/team/' + encodeURIComponent(me)]);
         }
         if (DP.irTodo) todo = todo.concat(DP.irTodo(me));
+        if (DP.pickupData && wiL !== null && E.opponent(me, wiL)) { // the best free-agent add for the next lock, when it really helps
+          var pk = DP.pickupData(me, wiL, 40), top = pk && pk.rows[0];
+          if (top && top.gain >= 0.15) todo.push(['', '📥', 'Best pickup for ' + (E.weeks[wiL].po ? 'the playoffs' : 'week ' + E.weeks[wiL].n) + ': ' + esc(top.p.n) + ' (' + top.g + ' games, ' + U.sgn(top.gain, 1) + ' expected cats vs ' + esc(U.teamName(pk.opp)) + ')', '#/pickup']);
+        }
         var mine = E.rosters[me].filter(function (p) { return p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; })
           .filter(function (x) { return x[1].week !== null && x[1].week < 10; }).sort(function (a, b) { return a[1].week - b[1].week; });
         if (mine.length) todo.push(['warn', '🎓', 'Graduation watch: ' + mine.slice(0, 3).map(function (x) { return esc(x[0].n) + ' ' + x[1].cgp + '/' + x[1].thr + ' GP (~wk ' + (x[1].week + 1) + ')'; }).join(', ') + (mine.length > 3 ? ' +' + (mine.length - 3) : ''), '#/offseason']);
@@ -190,6 +194,7 @@
       } else {
         h += '<div class="callout">👋 Welcome! <button class="btn sm primary" data-act="pick-team">Pick your team</button> to get your matchup, needs and targets. Everything else works without it.</div>';
       }
+      if (DP.sinceCard) h += DP.sinceCard(me);
       // every matchup this week, at a glance
       if (scGames.length) {
         h += '<div class="card" style="margin-bottom:14px"><h2>📺 Week ' + sc.week + (sc.final ? ' final' : ' around the league') + ' <a class="btn sm" href="' + U.hash('live', null, { w: sc.week }) + '" style="margin-left:auto">Scoreboard →</a></h2><div class="mini-board">' + scGames.map(function (g) {

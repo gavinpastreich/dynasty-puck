@@ -99,7 +99,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
 
   // ---- Trade Finder: both modes produce ranked results with an Open link into the machine
   await go('finder', 2500);
-  ok(await q('#f-t tbody tr') > 3, 'finder give: results');
+  ok(await q('#f-t tbody tr') >= 1, 'finder give: results'); // how many deals exist depends on the player and that night's values
   const href = await page.evaluate(() => (document.querySelector('#f-t a.btn') || {}).getAttribute && document.querySelector('#f-t a.btn').getAttribute('href'));
   await page.goto(URL + href.replace(/^#\//, '')); await page.waitForTimeout(1500);
   ok(await q('#tr-cols .pl') >= 2, 'finder → trade machine opens the deal');
@@ -214,6 +214,23 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('wjc', 2500);
   ok(await page.evaluate(() => document.querySelectorAll('#wj-t tbody tr').length > 10), 'world juniors: watch list');
 
+  // ---- Pickup Planner, Hot & Cold, Rivalries, Record Book
+  await go('pickup', 3000);
+  ok(await page.evaluate(() => document.querySelectorAll('#pk-t tbody tr').length > 10 && /Making room|No free agent/.test(document.querySelector('#main').innerText)), 'pickup planner: free agents for next week and the roster spot');
+  await go('form', 2500);
+  ok(await page.evaluate(() => !DP.league.form || (document.querySelectorAll('.fmlist li').length >= 10 && document.querySelectorAll('#fm-t tbody tr').length > 10)), 'hot & cold: hottest, coldest and the full table');
+  await go('rivals', 2500);
+  ok(await page.evaluate(() => DP.raceData().weeks.length < 2 || (document.querySelectorAll('svg.bump g.bl').length === DP.E.teams.length && document.querySelectorAll('.h2hmx tbody tr').length === DP.E.teams.length)), 'rivalries: race chart and the all-play matrix');
+  await go('records', 3500);
+  ok(await page.evaluate(() => document.querySelectorAll('.recgrid .rec').length === 15 && !/Loading the weekly lines/.test(document.querySelector('#rb-ind').innerText)), 'record book: 15 category records and the individual highs');
+  // ---- Watchlist: star a prospect from the rankings, it shows on the Watchlist tab
+  await go('radar?tab=rank', 2500);
+  await page.click('#rd-body button[data-watch]'); await page.waitForTimeout(300);
+  ok(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('dp_watch') || '{}')).length === 1), 'watchlist: a star saves the prospect on this device');
+  await go('radar?tab=watch', 2000);
+  ok(await page.evaluate(() => document.querySelectorAll('#wl-t tbody tr').length === 1), 'watchlist: the tab lists him');
+  await page.evaluate(() => localStorage.removeItem('dp_watch'));
+
   // ---- Mock draft: draft for a team to the end
   await go('mock?team=M.M');
   for (let i = 0; i < 10; i++) { const b = await page.$('[data-draft]'); if (!b) break; await b.click(); await page.waitForTimeout(250); }
@@ -291,7 +308,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     ok(await np.evaluate(() => !!document.querySelector('#newscard') && document.querySelector('#newscard').innerText.indexOf(DP.NEWS[0][1]) >= 0), 'dashboard: "new on the site" card shown');
     await np.tap('#newscard [data-act="news-seen"]'); await np.waitForTimeout(200);
     ok(await np.evaluate(() => !document.querySelector('#newscard') && JSON.parse(localStorage.getItem('dp_newsTop')) === DP.NEWS[0][1] && DP.newsCard() === ''), 'dashboard: "Got it" hides the card and remembers');
-    ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); const idx = DP.NEWS.findIndex((x) => x[1] === 'Traded cap space'), want = DP.NEWS.slice(0, Math.min(idx, 3)).map((x) => x[1]); return one === 1 && want.every((t) => old.indexOf(t) >= 0) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');
+    ok(await np.evaluate(() => { localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[1][1])); const one = (DP.newsCard().match(/<li>/g) || []).length; localStorage.removeItem('dp_newsTop'); localStorage.setItem('dp_newsSeen', JSON.stringify('2026-11-13')); const old = DP.newsCard(); localStorage.setItem('dp_newsTop', JSON.stringify(DP.NEWS[0][1])); const idx = DP.NEWS.findIndex((x) => x[1] === 'Traded cap space'), want = DP.NEWS.slice(0, Math.min(idx, 3)).map((x) => x[1]); return one === 1 && want.every((t) => old.indexOf(DP.U.esc(t)) >= 0) && !/Easier to get around/.test(old); }), 'dashboard: only entries added since the last "Got it" come back (same-day additions included)');
     ok(await np.evaluate(() => getComputedStyle(document.querySelector('#tabbar')).display === 'flex' && document.querySelectorAll('#tabbar a, #tabbar button').length === 5), 'phone: bottom bar with five entries');
     await np.tap('#tabbar a[href="#/live"]'); await np.waitForTimeout(1500);
     ok((await S()).hash === '#/live' && await np.evaluate(() => document.querySelector('#tabbar a.on').getAttribute('href') === '#/live'), 'phone: bottom bar navigates and marks the page');

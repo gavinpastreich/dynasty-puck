@@ -8,7 +8,8 @@ global.document = { addEventListener() {}, querySelector() { return null; }, que
 const opt = (f) => (fs.existsSync(path.join(ROOT, f)) ? [f] : []);
 load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('data/draft.js'), opt('data/research.js'))
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
-    'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js']));
+    'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
+    'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js']));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -109,6 +110,61 @@ ok(CK.teams.length === E.teams.length && CK.teams.every((r) => near(r.space, E.t
 ok(CK.gmiss.every((x) => { const w = DP.league.hist.find((h) => h.n === x.n); return w && (w.teams[x.t].GGP || 0) < CK.minGP; }), 'checks: goalie-minimum misses come from the weekly results');
 ok(CK.irHealthy.every((x) => x.p.fs === 'IR' && !x.p.inj), 'checks: IR players not on the injury list');
 ok(CK.grads.every((x) => x.p.ct === 'MNR' && x.p.cgp >= x.p.gradThr), 'checks: graduated MNR players');
+
+// ---- Pickup Planner
+if (lw !== null) ['M.M', 'ROO', 'SPG'].forEach((t) => {
+  const X = DP.pickupData(t, lw); if (!X) return;
+  const ros = E.rosters[t], B = X.B, exp = (P) => E.sum(P.map((x) => x.w + x.t / 2));
+  ok(X.rows.every((r) => !r.p.gm && r.p.r && r.g > 0 && !E.injuredOut(r.p, lw)), `${t}: pickups are healthy free agents with games that week`);
+  ok(X.rows.every((r, i) => i === 0 || r.gain <= X.rows[i - 1].gain), `${t}: best gain first`);
+  X.rows.slice(0, 3).forEach((r) => ok(near(r.gain, exp(E.matchupProbs(E.teamWeek(ros.concat([r.p]), lw, { injuries: true }), B)) - X.e0, 1e-9), `${t}: ${r.p.n} gain = expected cats with him − without`));
+  ok(X.drops.every((d) => !(d.p.ct === 'MNR' && d.p.cgp >= d.p.gradThr) || d.how === 'IR'), `${t}: never suggests sending a graduated player down`);
+  ok(X.drops.every((d) => near(d.free + d.dead, d.how === 'drop' ? d.p.sal26 || 0 : d.free)), `${t}: drop frees salary minus dead cap`);
+});
+
+// ---- Hot & Cold (last 14 days, published nightly as p.l14)
+if (DP.league.form) {
+  const withL = E.P.filter((p) => p.l14);
+  ok(withL.length > 100 && withL.length === DP.league.form.n, `hot & cold: ${withL.length} players with recent games`);
+  ok(withL.every((p) => p.l14[0] >= 1 && p.l14[0] <= 9), 'hot & cold: at most 9 games in 14 days');
+  ok(withL.every((p) => !p.ytd || p.l14[0] <= p.ytd[0]), 'hot & cold: 14-day games never exceed the season\'s');
+  ok(withL.filter((p) => !p.G && p.ytd).every((p) => [2, 3, 5, 7, 8].every((i) => p.l14[i] <= p.ytd[i])), 'hot & cold: 14-day goals/assists/shots/hits/blocks within the season totals');
+  withL.slice(0, 200).forEach((p) => {
+    const f = DP.formOf(p); if (!f) return;
+    if (f.kind === 'S') ok(f.pct === null || near(f.pct, f.v14 / f.vP - 1, 1e-9), `${p.n}: form % = 14-day value / projected value − 1`);
+    else ok(near(f.gsax, f.sa * (f.sv - f.svP), 1e-9) && f.svP > 0.8 && f.svP < 1, `${p.n}: goals saved vs a real save %`);
+  });
+}
+
+// ---- standings race and the all-play matrix
+const race = DP.raceData(), A2 = DP.allPlayH2H();
+ok(race.weeks.length === fin.length && race.weeks.every((wn, i) => E.teams.map((t) => race.place[t][i]).sort((a, b) => a - b).join() === E.teams.map((_, k) => k + 1).join()), 'race: every week is a full 1..14 order');
+if (fin.length) ok(E.teams.every((t) => race.place[t][race.weeks.length - 1] === DP._weekly.standingsAfter(H, fin[fin.length - 1].n).by[t].rank), 'race: last week = the standings');
+E.teams.forEach((a) => E.teams.forEach((b) => {
+  if (a === b) return;
+  const x = A2.M[a][b], y = A2.M[b][a];
+  ok(x.W + x.L + x.T === A2.weeks * E.NC && x.T === y.T && x.W <= y.L && x.wk[0] === y.wk[1] && x.wk[0] + x.wk[1] + x.wk[2] === A2.weeks, `all-play ${a} v ${b}: consistent`);
+}));
+ok(A2.real.length === fin.length * E.teams.length / 2, 'rivalries: every real meeting listed');
+
+// ---- Record Book
+const RB = DP.recordData();
+const gi = E.CATS.findIndex((c) => c.k === 'G');
+const maxG = Math.max(...fin.flatMap((w) => E.teams.map((t) => w.vec[t][gi])));
+ok(RB.cats[gi].best && RB.cats[gi].best.v === maxG, 'records: most goals in a week is the real maximum');
+ok(RB.cats.filter((x) => E.CATS[x.c].grp === 'G' && x.best).every((x) => { const w = fin.find((q) => q.n === x.best.n); return (w.tot[x.best.t].GGP || 0) >= (E.RULES.goalieMinGP || 2); }), 'records: goalie records only from weeks that met the minimum');
+ok(RB.streaks.every((x) => { const R = DP.seasonRows(x.t); let run = 0, best = 0; R.forEach((r) => { run = r.res === 'W' ? run + 1 : 0; best = Math.max(best, run); }); return best === x.bestW; }), 'records: winning streaks');
+const wfiles = fs.readdirSync(path.join(ROOT, 'data', 'weeks')).filter((f) => /^w\d+\.js$/.test(f));
+wfiles.forEach((f) => load(['data/weeks/' + f]));
+const PR = DP.playerRecords(Object.values(DP.weekDetail || {}));
+const goals = PR.sk.find((r) => r.l === 'Goals');
+let mx = 0; Object.values(DP.weekDetail || {}).forEach((d) => Object.values(d.teams).forEach((T) => (T.active || []).forEach((id) => { const l = T.pl[id], p = E.byId[id]; if (l && p && !p.G) mx = Math.max(mx, l[1]); })));
+ok(!wfiles.length || (goals.top.length && goals.top[0].v === mx), `records: most goals by a starter in a week = ${mx}`);
+
+// ---- since your last visit (league-wide parts)
+const SD = DP.sinceData(null, Date.now() - 7 * 864e5);
+ok(SD.items.every((it) => it.html && it.ic), 'since: items render');
+ok((DP.league.trades || []).filter((t) => t.date >= SD.d0).length === 0 || SD.items.some((it) => it.ic === '🔁'), 'since: recent trades are listed');
 
 console.log(`${n - fails}/${n} checks passed`);
 process.exit(fails ? 1 : 0);
