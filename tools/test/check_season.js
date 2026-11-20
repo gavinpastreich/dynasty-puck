@@ -9,7 +9,8 @@ const opt = (f) => (fs.existsSync(path.join(ROOT, f)) ? [f] : []);
 load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('data/draft.js'), opt('data/research.js'))
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
-    'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js']));
+    'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -165,6 +166,76 @@ ok(!wfiles.length || (goals.top.length && goals.top[0].v === mx), `records: most
 const SD = DP.sinceData(null, Date.now() - 7 * 864e5);
 ok(SD.items.every((it) => it.html && it.ic), 'since: items render');
 ok((DP.league.trades || []).filter((t) => t.date >= SD.d0).length === 0 || SD.items.some((it) => it.ic === '🔁'), 'since: recent trades are listed');
+
+// ---- Market Movers (data/values.js from tools/value_history.js)
+const V = DP.values;
+if (V) {
+  const nD = V.dates.length - 1, lastT = Date.parse(V.dates[nD] + 'T12:00:00Z');
+  ok(V.ref[0] === nD && V.ref[V.ref.length - 1] === 0, 'movers: comparison dates run from tonight back to the first night');
+  V.windows.forEach((d, k) => ok(Date.parse(V.dates[V.ref[k + 1]] + 'T12:00:00Z') <= lastT - d * 864e5 || V.ref[k + 1] === 0, `movers: the ${d}-day comparison is at least ${d} days back`));
+  ok(V.dates.every((d, i) => !i || d > V.dates[i - 1]), 'movers: dates in order');
+  const same = V.dates[nD] === String(DP.meta.built).slice(0, 10);
+  let close = 0, tot = 0;
+  Object.keys(V.p).forEach((id) => {
+    const o = V.p[id], p = E.byId[id];
+    ok(o.v.length === V.dates.length && o.m.length === V.ref.length, `movers ${id}: series aligned with the dates`);
+    if (same && p && o.v[nD] !== null) { tot++; if (Math.abs(o.v[nD] - p.DV) < 0.011 && (o.m[0][1] || '') === (p.gm || '')) close++; }
+  });
+  ok(!same || close >= tot * 0.98, `movers: tonight's value and owner match the app's own (${close}/${tot})`);
+  [1, 2, 3, 4].forEach((j) => {
+    const R = Object.keys(V.p).map((id) => DP.moverRow(id, j)).filter(Boolean);
+    ok(R.every((r) => near(r.d, r.v1 - r.v0, 1e-9) && (r.pct === null || near(r.pct, r.v1 / r.v0 - 1, 1e-9))), `movers window ${j}: change = now - then`);
+    ok(R.every((r) => !r.own0 || !r.own1 || r.own0 === r.own1 || r.why.some((w) => /moved|picked up|dropped/.test(w))), `movers window ${j}: an owner change is named`);
+    const TV = DP.teamValueMoves(j);
+    ok(TV.every((x) => near(x.d, x.held + x.moves, 1e-6)), `movers window ${j}: team change = held players + moves`);
+    ok(TV.every((x) => near(x.now, E.sum(Object.keys(V.p).filter((id) => V.p[id].m[0] && V.p[id].m[0][1] === x.t && V.p[id].v[nD] !== null).map((id) => V.p[id].v[nD])), 1e-6)), `movers window ${j}: team value now = its players tonight`);
+  });
+}
+
+// ---- Line & PP changes (data/depthlog.js)
+const LG = DP.depthLog;
+const syn = [{ d: '2026-11-01', t: 'T', n: 'A', k: 'line', from: 'F3', to: 'F2', up: true }, { d: '2026-11-02', t: 'T', n: 'A', k: 'line', from: 'F2', to: 'F3', up: false },
+  { d: '2026-11-01', t: 'T', n: 'B', k: 'pp', from: '', to: 'PP2', up: true }, { d: '2026-11-03', t: 'T', n: 'B', k: 'pp', from: 'PP2', to: 'PP1', up: true },
+  { d: '2026-11-01', t: 'T', n: 'C', k: 'line', from: 'F2', to: 'F3', up: false }, { d: '2026-11-02', t: 'T', n: 'C', k: 'line', from: 'F3', to: 'F1', up: true },
+  { d: '2026-11-02', t: 'T', n: 'D', k: 'g', from: 'G1', to: 'G2', up: false }];
+const NET = DP.lineNet(syn), net = (nm) => NET.filter((e) => e.n === nm);
+ok(!net('A').length, 'line net: a move undone in the window nets out');
+ok(net('B').length === 1 && net('B')[0].from === '' && net('B')[0].to === 'PP1' && net('B')[0].up && net('B')[0].n0 === 2, 'line net: two promotions = none -> PP1');
+ok(!net('C').length, 'line net: F2 -> F1 over the window is a shuffle inside the top six');
+ok(net('D').length === 1 && !net('D')[0].up, 'line net: G1 -> G2 is a demotion');
+if (LG && LG.events.length) {
+  [3, 7, 30].forEach((d) => {
+    const ev = DP.lineEvents(LG, d), last = LG.events[LG.events.length - 1].d;
+    ok(ev.every((e) => (Date.parse(last) - Date.parse(e.d)) / 864e5 < d), `lines: the ${d}-day window`);
+    ok(ev.filter((e) => e.p).every((e) => U.esc(e.p.n).length && (e.p.nt || e.p.t || e.t)), `lines ${d}d: matched players`);
+    const nt = DP.lineNet(ev.filter((e) => e.p));
+    ok(nt.every((e) => e.from !== e.to), `lines ${d}d: every net row is a real move`);
+  });
+  const m7 = DP.lineEvents(LG, 7), hit = m7.filter((e) => e.p).length;
+  ok(hit >= m7.length * 0.5, `lines: most names match a player in the pool (${hit}/${m7.length})`);
+}
+
+// ---- Tale of the Tape
+const TS = DP.teamSummary();
+for (let i = 0; i < 4; i++) {
+  const a = E.teams[i], b = E.teams[E.teams.length - 1 - i], X = DP.tapeData(a, b), Y = DP.tapeData(b, a);
+  ok(X.edge.a === Y.edge.b && X.edge.b === Y.edge.a, `tape ${a}-${b}: edges are the same from either side`);
+  ok(X.edge.a + X.edge.b === X.rows.filter((r) => r.win).length, `tape ${a}-${b}: edge count = highlighted lines`);
+  ok(X.rows.filter((r) => r.win).every((r) => (r.better === 'hi') === (r.win === 'a' ? r.a > r.b : r.b > r.a)), `tape ${a}-${b}: the highlighted side is the better one`);
+  const dv = X.rows.find((r) => /Dynasty value/.test(r.l || ''));
+  ok(dv && near(dv.a, TS[a].dv) && near(dv.b, TS[b].dv), `tape ${a}-${b}: dynasty value = Team Hub's`);
+  const pk = X.rows.find((r) => /Draft picks/.test(r.l || ''));
+  ok(pk && X.A.picks === E.picksOf(a).length, `tape ${a}-${b}: picks owned`);
+  const M = DP.tapeMeetings(a, b);
+  ok(!M.sim || near(M.sim.win + M.sim.loss + M.sim.tie, 1, 1e-9), `tape ${a}-${b}: next-meeting odds add to 100%`);
+  ok(M.real.every((g) => g.s.W + g.s.L + g.s.T <= E.NC), `tape ${a}-${b}: real meetings`);
+  const sched = DP.meta.h2h.filter((g) => (g[1] === a && g[2] === b) || (g[1] === b && g[2] === a)).length;
+  ok(M.real.length + M.next.length <= sched, `tape ${a}-${b}: meetings come from the schedule`);
+}
+
+// ---- Start Here tour: every link is a page in the menu
+const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
+DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));
 
 console.log(`${n - fails}/${n} checks passed`);
 process.exit(fails ? 1 : 0);

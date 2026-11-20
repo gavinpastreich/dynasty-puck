@@ -125,4 +125,6 @@ as you ship them, and add any new ideas you come up with.
       Opponent Scouting with a tuned lineup, Trade Machine counteroffers, World Juniors watch list, Commissioner Checks.
 - [x] Batch 3 (2026-11-20): Pickup Planner, Hot & Cold (last 14 days, real NHL stats), Rivalries (standings race,
       all-play head-to-head), Record Book, prospect watchlist, "since your last visit".
+- [x] Batch 4 (2026-11-20): Market Movers (nightly dynasty value history, risers/fallers with the reason, team value
+      change), Line & PP Changes (Daily Faceoff depth charts night to night), Tale of the Tape (any two teams), Start Here.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

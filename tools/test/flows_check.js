@@ -223,6 +223,25 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => DP.raceData().weeks.length < 2 || (document.querySelectorAll('svg.bump g.bl').length === DP.E.teams.length && document.querySelectorAll('.h2hmx tbody tr').length === DP.E.teams.length)), 'rivalries: race chart and the all-play matrix');
   await go('records', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('.recgrid .rec').length === 15 && !/Loading the weekly lines/.test(document.querySelector('#rb-ind').innerText)), 'record book: 15 category records and the individual highs');
+  // ---- Market Movers, Line & PP Changes, Tale of the Tape, Start Here
+  await go('movers', 2500);
+  ok(await page.evaluate(() => !DP.values || (document.querySelectorAll('.fmlist li').length >= 10 && document.querySelectorAll('#mv-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'market movers: risers, fallers and the table (footer kept)');
+  await page.click('[data-w="30"]'); await page.waitForTimeout(1500);
+  ok(/w=30/.test(await page.evaluate(() => location.hash)) && await page.evaluate(() => document.querySelector('[data-w="30"]').classList.contains('on')), 'market movers: 30-day window');
+  await go('lines', 2500);
+  ok(await page.evaluate(() => !DP.depthLog || (document.querySelectorAll('#ln-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'line changes: one row per player who moved');
+  const netRows = await page.evaluate(() => document.querySelector('#ln-t').innerText.match(/(\d+) rows/));
+  await go('lines?all=1', 2500);
+  const allRows = await page.evaluate(() => document.querySelector('#ln-t').innerText.match(/(\d+) rows/));
+  ok(netRows && allRows && +allRows[1] >= +netRows[1], 'line changes: every nightly change >= one row per player');
+  await go('tape?a=ROO&b=SPG', 2500);
+  ok(await page.evaluate(() => document.querySelectorAll('.tp-row.cat').length === 15 && document.querySelectorAll('.tp-pl li').length === 20), 'tale of the tape: 15 categories and both top tens');
+  await page.click('#tp-swap'); await page.waitForTimeout(1200);
+  ok(/a=SPG&b=ROO/.test(await page.evaluate(() => location.hash)), 'tale of the tape: swap sides');
+  await page.evaluate(() => { const e = document.querySelector('#tp-b'); e.value = 'SPG'; e.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(1200);
+  ok(/a=ROO&b=SPG/.test(await page.evaluate(() => location.hash)), 'tale of the tape: picking the same team on both sides swaps instead');
+  await go('tour', 1500);
+  ok(await page.evaluate(() => document.querySelectorAll('.tour-step').length === 7 && [...document.querySelectorAll('a.tour-item')].every((a) => DP.pages[a.getAttribute('href').slice(2)])), 'start here: every step and link works');
   // ---- Watchlist: star a prospect from the rankings, it shows on the Watchlist tab
   await go('radar?tab=rank', 2500);
   await page.click('#rd-body button[data-watch]'); await page.waitForTimeout(300);

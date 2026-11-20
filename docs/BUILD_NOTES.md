@@ -371,3 +371,28 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     `dp_visitAt` / `dp_visitSince`). Dashboard to-do adds the best pickup when it's worth 0.15+ expected cats.
   - Tests: check_season.js grew to cover pickups, form, race, all-play, records and the last-visit digest.
 
+- Batch 4 (2026-11-20):
+  - Market Movers: `tools/value_history.js` (nightly, after the Prospect Radar) scores tonight's players with the app's
+    own engine (vm context, same as the browser) into raw/<season>/values/history.json (per player id: v = DV, w = WAR,
+    o = owner, c = contract + 2026-27 salary; every night for 21 days, Mondays before that) and writes data/values.js
+    (values at every kept date; WAR/owner/contract only at the comparison dates `ref` = now, 1, 7, 30 days, first).
+    The history records the engine.js hash; when it differs, the script unshallows the checkout and re-scores every
+    night from the git history of data/league.js + data/prospects.js (`--backfill` does the same by hand), so old and
+    new nights always use the same valuation. Page: pages-movers.js (`movers`, `DP.loadValues` lazy-loads the file,
+    `DP.moverRow` with the reason: owner change, contract change, projection ±WAR, injury; `DP.teamValueMoves` splits a
+    team's change into held players vs moves; `DP.valueSpark`).
+  - Line & PP changes: `tools/research/depth_log.py` (nightly, right after scrape_dfo.py) diffs tonight's Daily Faceoff
+    depth.json against the committed one (HEAD): line (F1-F4, D1-D3), PP unit and goalie order. Ignored as noise: teams
+    whose chart wasn't refreshed, F <-> D listing quirks, shuffles inside the top six F / top four D or inside the
+    bottom of the lineup. Two runs on one day merge (start of day -> end of day; an undone move drops). Keeps 60 days in
+    raw/<season>/depth/log.json, publishes 30 in data/depthlog.js. `--backfill` rebuilds from every night in git.
+    Page: pages-lines.js (`lines`, `DP.lineEvents`, `DP.lineNet` = one row per player and kind over the window, a
+    flip-flop nets out; `?all=1` shows each night's change).
+  - Lazy pages (movers, lines) render into a `.lz` box so the router's footer survives the async fill.
+  - Tale of the Tape: pages-tape.js (`tape?a=&b=`, `DP.tapeData` lines with a better side and the edge count,
+    `DP.tapeMeetings` = real meetings, all-play, next scheduled meeting simulated 3,000 times; trade fit from
+    `E.partnerFit`; share as image).
+  - Start Here: pages-tour.js (`tour`, `DP.tourSteps`), linked from the Dashboard when no team is picked.
+  - Tests: check_season.js covers the value history (alignment, tonight = the app's own DV and owner, change math, team
+    split), line nets, the tape (symmetry, edges, meetings) and the tour links; tools/test/check_depthlog.py covers the
+    diff rules, same-day merges and the published log (also in the nightly sanity step).

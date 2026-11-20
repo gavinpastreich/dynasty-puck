@@ -30,11 +30,13 @@ tracker behind the Draft Center and Mock Draft (`tools/research/draft_tracker.py
 (`config/league.json` teams[].color/abbr), the offline copy (`sw.js`), share-as-image (`assets/js/share.js`), and
 `assets/js/pages-season.js` (IR check, Trade Deadline, Playoff Picture, Commissioner Checks, World Juniors from
 `tools/research/wjc.json`) and `assets/js/pages-scout.js` (Opponent Scouting). Added 2026-11-20: pages-pickup.js, pages-form.js (last 14 days =
-`p.l14` from `recent_form()` in the build), pages-rivals.js, pages-records.js, pages-me.js (watchlist, last visit). The NHL
+`p.l14` from `recent_form()` in the build), pages-rivals.js, pages-records.js, pages-me.js (watchlist, last visit). Added later on 2026-11-20: Market Movers
+(`tools/value_history.js` -> data/values.js; re-scores the whole history itself when engine.js changes), Line & PP
+Changes (`tools/research/depth_log.py` -> data/depthlog.js), pages-tape.js (Tale of the Tape), pages-tour.js (Start Here). The NHL
 stats API caps responses at 100 rows: always fetch reports through `get_paged()` in `tools/nhl_api.py`. If you change the prospect model in
 `assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
 Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`,
-`check_draft.js`, `check_weekly.js`, `check_season.js`, `python tools/test/check_fantrax.py`, and the browser runs in `tools/test/` (they need Playwright).
+`check_draft.js`, `check_weekly.js`, `check_season.js`, `python tools/test/check_fantrax.py`, `check_depthlog.py`, and the browser runs in `tools/test/` (they need Playwright).
 
 ## League facts (quick reference)
 - 15 weekly H2H categories. Skaters: Pt-D, G, A, 2G+A, PIM, SOG, STP, Hit, Blk, Tk, Cor.

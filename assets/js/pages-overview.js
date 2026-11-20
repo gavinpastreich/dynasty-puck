@@ -139,6 +139,7 @@
         (days > 0 ? 'Week 1 starts ' + U.date(new Date(E.weeks[0].start + 'T12:00:00Z')) + ' (' + days + ' day' + (days === 1 ? '' : 's') + ')' : 'season underway') +
         (dlDays !== null ? ' · trade deadline ' + esc(E.deadlineText()) : '') + '</p></div>';
       if (DP.newsCard) h += DP.newsCard();
+      if (!me) h += '<div class="callout info">New here? <a href="#/tour"><b>Start here</b></a>: a two-minute tour of what the site does and when to use each page. Then pick your team at the top right.</div>';
       var sc = DP.league.score, scGames = sc && sc.week && sc.teams ? DP.meta.h2h.filter(function (m) { return m[0] === sc.week; }) : [];
       // categories each side leads right now (the scoreboard's own count) and the odds with the rest of the week simulated
       var liveOf = function (a, b) { var od = DP.liveOdds ? DP.liveOdds(a, b) : null; return od ? { od: od, ls: E.liveScore(od) } : null; };
