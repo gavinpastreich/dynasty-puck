@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20T11:32+00:00",
+"fetched": "2026-11-20T14:04+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -36,6 +36,16 @@
 "s": "McKeen's Hockey",
 "t": "NHL PROSPECTS: WHL Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step-whl/",
+"w": 1
+}
+],
+"d27:brockengland": [
+{
+"d": "2026-11-20",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL PROSPECTS: WHL Early Season Favourites, Part Two – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-whl-early-season-favourites-part-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
 }
 ],
@@ -2317,6 +2327,14 @@
 "w": 2
 },
 {
+"d": "2026-11-20",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Jim Hiller says he wants to make sure Gavin McKenna is ‘ready’ before giving him shifts in overtime",
+"u": "https://theleafsnation.com/news/jim-hiller-wants-make-sure-gavin-mckenna-ready-shifts-overtime",
+"w": 2
+},
+{
 "d": "2026-11-19",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -2389,14 +2407,6 @@
 "t": "Tuesday Habs Headlines: Rookies, Reports, and Records",
 "u": "https://www.habseyesontheprize.com/habs-headlines-fowler-currently-leads-rookies-calder-consideration-mcdavid-ties-gretzky-assist-record-canadiens-injuries/",
 "w": 1
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "NHL.com",
-"t": "Gavin McKenna Watch: No. 1 pick, Maple Leafs face Bedard in Chicago",
-"u": "https://www.nhl.com/news/gavin-mckenna-watch-maple-leafs-set-to-face-connor-bedard-blackhawks",
-"w": 2
 }
 ],
 "n8486072": [
@@ -2610,7 +2620,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2792,7 +2802,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
