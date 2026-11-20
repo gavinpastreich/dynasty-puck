@@ -263,6 +263,11 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => { const t = (document.querySelector('#pv-text') || {}).value || ''; return /Playoff odds at stake|preview/.test(t); }), 'weekly preview: stakes in the text');
   await go('power', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && [...document.querySelectorAll('.pw-blurb')].every((b) => b.innerText.length > 10)), 'power rankings: every team with a line');
+  await go('grades', 6000);
+  ok(await page.evaluate(() => document.querySelectorAll('.grtab tbody tr').length === DP.E.teams.length && document.querySelectorAll('.grcard').length === DP.E.teams.length && [...document.querySelectorAll('.grtab tbody tr')].every((tr) => tr.querySelectorAll('.gr').length >= 5)), 'report cards: a row and a card for every team');
+  ok(await page.evaluate(() => (!DP.state.team || !!document.querySelector('.grtab tr.mine')) && /Lineup calls/.test(document.querySelector('#main').innerText)), 'report cards: my team highlighted');
+  await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent('*04dwk*'); }); await page.waitForTimeout(3000);
+  ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /Moves in Dynasty Puck/.test(h.innerText)) && /Traded from/.test(document.querySelector('.pmoves').innerText)), 'player page: moves in the league');
   await go('moves', 4500);
   ok(await page.evaluate(() => document.querySelectorAll('.fmlist li').length >= 3 && document.querySelectorAll('#mv-log tbody tr').length > 10), 'transactions: best pickups and the full log');
   await go('history', 3500);
@@ -273,6 +278,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => /instead of|aren't published/.test(document.querySelector('#rb-regret').innerText)), 'record book: biggest lineup regrets');
   await go('team/ROO', 7000);
   ok(await page.evaluate(() => document.querySelectorAll('.wkchip .wkflow svg').length >= Math.min(3, DP.E.history().weeks.length)), 'team hub: day-by-day line in each week');
+  ok(await page.evaluate(() => { const g = document.querySelector('#t-grade'); return !!g && !g.hidden && /GM report card/.test(g.innerText) && g.querySelectorAll('.gr').length === 6; }), 'team hub: GM report card line');
   ok(await page.evaluate(() => { const b = document.querySelector('#t-regret'); return !!b && /weeks had|clean sheet|After the first week/.test(b.innerText) && document.querySelectorAll('#t-regret li').length === DP.teamRegrets('ROO', DP.E.history().weeks.map((w) => w.n)).length; }), 'team hub: lineup regrets');
   ok(await page.evaluate(() => !DP.values || !DP.values.odds || [...document.querySelectorAll('#tj-season h3')].some((h) => /Playoff odds through the season/.test(h.innerText))), 'team hub: playoff odds through the season');
   await page.evaluate(() => { location.hash = '#/compare?ids=' + encodeURIComponent(DP.E.P.filter((p) => p.gm).slice(0, 2).map((p) => p.id).join(',')); }); await page.waitForTimeout(2500);

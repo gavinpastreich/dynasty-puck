@@ -609,3 +609,41 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .pc-next { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
 .pc-g { border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; background: var(--card2); white-space: nowrap; }
 .pc-g.b2b { border-color: color-mix(in srgb, var(--warn) 50%, transparent); }
+/* GM Report Cards */
+.gr { display: inline-block; min-width: 2.1em; padding: 1px 6px; border-radius: 6px; font-weight: 800; text-align: center; font-variant-numeric: tabular-nums; border: 1px solid transparent; }
+.gr-A { background: var(--good-bg); color: var(--good); border-color: color-mix(in srgb, var(--good) 35%, transparent); }
+.gr-B { background: var(--info-bg); color: var(--link); border-color: color-mix(in srgb, var(--link) 30%, transparent); }
+.gr-C { background: var(--warn-bg); color: var(--warn); border-color: color-mix(in srgb, var(--warn) 35%, transparent); }
+.gr-D { background: var(--bad-bg); color: var(--bad); border-color: color-mix(in srgb, var(--bad) 35%, transparent); }
+.gr-none { color: var(--faint); }
+.grtab td { vertical-align: middle; }
+.grcard { border-left: 4px solid var(--tc); }
+.grcard.mine { background: color-mix(in srgb, var(--accent) 6%, var(--card, transparent)); }
+.grcard h2 { display: flex; align-items: center; gap: 8px; }
+.grcard h2 .gr { font-size: 1.15rem; }
+.grrow { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px; margin: 6px 0 4px; }
+.grcell { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
+.grcell .small { overflow-wrap: anywhere; }
+.grnotes { margin: 8px 0 0; padding-left: 18px; }
+.grnotes li { margin-bottom: 4px; }
+.pmoves li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.pmoves li:last-child { border-bottom: 0; }
+/* Model Scorecard calibration chart */
+.calib { width: 100%; max-width: 420px; display: block; margin: 6px auto 10px; }
+.calib .gl { stroke: var(--grid, var(--line)); stroke-width: 1; }
+.calib .ax { fill: var(--muted); font-size: 10px; }
+.calib .diag { stroke: var(--faint); stroke-dasharray: 4 4; stroke-width: 1.5; }
+.calib .dot { fill: var(--link); fill-opacity: .75; stroke: var(--link); }
+/* trade network (Trade History) */
+.tnet-wrap { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.tnet { width: 100%; height: auto; display: block; }
+.tnet .te { fill: none; stroke: var(--ink2, var(--muted)); stroke-opacity: .45; stroke-linecap: round; }
+.tnet .te.mine { stroke: var(--accent); stroke-opacity: .95; }
+.tnet .te.dim { stroke-opacity: .18; }
+.tnet .tn circle { stroke: var(--bg, #0d1117); stroke-width: 2; }
+.tnet .tn.mine circle { stroke: var(--accent); stroke-width: 3; }
+.tnet .tab { fill: #fff; font-size: 10px; font-weight: 800; pointer-events: none; }
+.tnet .tl { fill: var(--ink); font-size: 11px; }
+.tnet .tc { fill: var(--muted); font-weight: 700; }
+.tnet a:hover .tl { text-decoration: underline; }
+@media (max-width: 760px) { .tnet-wrap { grid-template-columns: 1fr; } .tnet .tl { font-size: 13px; } }

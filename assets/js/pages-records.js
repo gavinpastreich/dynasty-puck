@@ -6,6 +6,35 @@
   var DP = window.DP, U = DP.U, ui = DP.ui, esc = U.esc;
   DP.pages = DP.pages || {};
 
+  // category streaks: weeks in a row each team won (or lost) each category, from the weekly results.
+  // A goalie category forfeited under the goalie minimum counts as a loss (it is one in the standings); a tie ends a streak.
+  DP.catStreaks = function () {
+    var E = DP.E, W = E.history().weeks.filter(function (w) { return w.games && w.games.length; }), seq = {};
+    E.teams.forEach(function (t) { seq[t] = E.CATS.map(function () { return []; }); });
+    W.forEach(function (w) {
+      w.games.forEach(function (g) {
+        [[g.a, g.b], [g.b, g.a]].forEach(function (pr) {
+          if (!seq[pr[0]]) return;
+          E.catResults(w.vec[pr[0]], w.vec[pr[1]]).forEach(function (r, c) { seq[pr[0]][c].push({ n: w.n, r: r === 1 ? 'W' : r === 0 ? 'T' : 'L' }); });
+        });
+      });
+    });
+    var cur = [], best = [];
+    E.teams.forEach(function (t) {
+      seq[t].forEach(function (a, c) {
+        if (!a.length) return;
+        var k = a[a.length - 1].r, n = 0;
+        for (var i = a.length - 1; i >= 0 && a[i].r === k; i--) n++;
+        if (k !== 'T') cur.push({ t: t, c: c, k: k, n: n, from: a[a.length - n].n, to: a[a.length - 1].n });
+        var run = 0, bw = null;
+        a.forEach(function (x, j) { run = x.r === 'W' ? run + 1 : 0; if (run && (!bw || run > bw.n)) bw = { t: t, c: c, n: run, from: a[j - run + 1].n, to: x.n }; });
+        if (bw) best.push(bw);
+      });
+    });
+    cur.sort(function (a, b) { return b.n - a.n || (a.k === 'W' ? -1 : 1); });
+    best.sort(function (a, b) { return b.n - a.n || b.to - a.to; });
+    return { cur: cur, best: best, weeks: W.length };
+  };
   DP.recordData = function () {
     var E = DP.E, H = E.history(), W = H.weeks.filter(function (w) { return w.games && w.games.length; }), minG = E.RULES.goalieMinGP || 2;
     var cats = E.CATS.map(function (cat, c) {
@@ -140,6 +169,13 @@
       var perCat = {}; cc = cc.filter(function (x) { perCat[x.c] = (perCat[x.c] || 0) + 1; return perCat[x.c] <= 2; });   // at most two per category
       if (cc.length) h += '<div class="card" style="margin-top:14px"><h2>🤏 Closest calls</h2><div class="hint">Categories won by the smallest margins of the season, measured against how spread out the league was in that category that week. Ties not included.</div><ul class="list-plain">' +
         cc.slice(0, 8).map(function (x) { return '<li><span class="small">' + DP.closeTxt(x) + '</span><span class="small muted" style="margin-left:auto">' + wk(x.n) + '</span></li>'; }).join('') + '</ul></div>';
+      var CS = DP.catStreaks(), cl = function (c) { return esc(E.CATS[c].l || E.CATS[c].k); };
+      var csW = CS.cur.filter(function (x) { return x.k === 'W' && x.n >= 3; }), csL = CS.cur.filter(function (x) { return x.k === 'L' && x.n >= 3; });
+      var csLi = function (x, lost) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small" style="margin-left:auto">' + (lost ? 'lost ' : 'won ') + '<b>' + cl(x.c) + '</b> <b class="num ' + (lost ? 'bad' : 'good') + '">' + x.n + '</b> weeks running</span></li>'; };
+      h += '<div class="card" style="margin-top:14px" id="rb-cstreak"><h2>🧩 Category streaks</h2><div class="hint">Weeks in a row a team won (or lost) a category in its matchup. A goalie category forfeited under the goalie minimum counts as lost; a tie ends a streak.</div><div class="grid g3">' +
+        '<div><h3 class="small">Winning runs now</h3>' + (csW.length ? '<ul class="list-plain">' + csW.slice(0, 8).map(function (x) { return csLi(x); }).join('') + '</ul>' : '<p class="small muted">None of 3+ weeks.</p>') + '</div>' +
+        '<div><h3 class="small">Losing runs now</h3>' + (csL.length ? '<ul class="list-plain">' + csL.slice(0, 8).map(function (x) { return csLi(x, 1); }).join('') + '</ul>' : '<p class="small muted">None of 3+ weeks.</p>') + '</div>' +
+        '<div><h3 class="small">Longest this season</h3><ul class="list-plain">' + CS.best.slice(0, 8).map(function (x) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small" style="margin-left:auto"><b>' + cl(x.c) + '</b> <b class="num good">' + x.n + '</b> <span class="faint">wk ' + x.from + '–' + x.to + '</span></span></li>'; }).join('') + '</ul></div></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>🏆 MVP race</h2><div class="hint">The most category impact from locked starters this season: each week\'s line measured against how spread out the 14 teams were in each category that week, summed over the weeks he started (see Rules & Methods).</div><div id="rb-mvp"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>🪑 Biggest lineup regrets</h2><div class="hint">The one swap that would have changed a week most: a bench player (or a minor-leaguer who played NHL games that week) in place of a starter at the same position, the week re-scored like the standings.</div><div id="rb-regret"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📅 Best single days</h2><div class="hint">The best one-day team total in each counting category (one NHL game day, the locked starters), next to the average team day.</div><div id="rb-days"><p class="small muted">Loading the days…</p></div></div>';

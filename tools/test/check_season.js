@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -406,6 +406,52 @@ HW.forEach((w) => {
   ok(RG.every((r, i) => !i || RG[i - 1].flip > r.flip || (RG[i - 1].flip === r.flip && RG[i - 1].gain >= r.gain)), `regrets week ${w.n}: flips first, then by gain`);
 });
 ok(nReg > 0, `lineup regrets found (${nReg})`);
+
+// ---- GM report cards: each grade from the documented numbers
+if (DP.values) {
+  const details = Object.values(DP.weekDetail || {}), G = DP.gmReport(details), LET = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'D'];
+  ok(G.rows.length === E.teams.length && new Set(G.rows.map((r) => r.t)).size === E.teams.length, 'report cards: one per team');
+  DP.GRADE_KEYS.forEach(([k]) => {
+    const has = G.rows.filter((r) => r[k] !== null && r[k] !== undefined), low = k === 'lin';
+    ok(has.every((r) => r.g[k] && LET.includes(r.g[k].l)) && G.rows.filter((r) => r[k] === null || r[k] === undefined).every((r) => !r.g[k]), `report cards ${k}: a letter for every team with a number, none without`);
+    ok(has.every((a) => has.every((b) => !(low ? a[k] < b[k] - 1e-9 : a[k] > b[k] + 1e-9) || a.g[k].pts >= b.g[k].pts)), `report cards ${k}: a better number never gets a worse grade`);
+    ok(!has.length || has.some((r) => r.g[k].l === 'A'), `report cards ${k}: the best gets an A`);
+  });
+  let nw = 0; const lt = {};
+  HW.forEach((w) => { const R = DP.lineupRegrets(w.n); if (!R) return; nw++; R.forEach((x) => { lt[x.t] = (lt[x.t] || 0) + x.gain / 2; }); });
+  ok(G.rows.every((r) => (nw ? near(r.lin, (lt[r.t] || 0) / nw) : r.lin === null)), 'report cards: lineup calls = category points the regrets would have added, per week');
+  const tr = G.rows.filter((r) => r.trd !== null);
+  ok(tr.length > 0 && near(E.sum(tr.map((r) => r.trd)), 0, 1e-6), 'report cards: trade value nets to zero across the league');
+  ok(G.rows.every((r) => { const v = DP.values.teams[r.t]; return near(r.val, v[v.length - 1] - v[0]); }), 'report cards: roster value = change since the first night');
+  const X = DP.transactions(details), wv = {}; E.teams.forEach((t) => { wv[t] = 0; });
+  X.adds.forEach((a) => { if (a.m.to in wv) wv[a.m.to] += (a.kept && a.v1 !== null ? a.v1 : 0) + 0.6 * (a.st ? a.st.wk : 0); });
+  X.drops.forEach((d) => { if (d.m.from in wv && d.d !== null && d.d > 0 && d.gm !== d.m.from) wv[d.m.from] -= d.d; });
+  ok(G.rows.every((r) => near(r.wav, wv[r.t])), 'report cards: waiver wire score');
+  ok(G.rows.every((r) => { const gs = DP.GRADE_KEYS.map((k) => r.g[k[0]]).filter(Boolean); return near(r.gpa, E.sum(gs.map((g) => g.pts)) / gs.length) && r.overall === DP.letterFromGpa(r.gpa); }), 'report cards: overall = the average grade');
+  ok(G.rows.every((r, i) => !i || G.rows[i - 1].gpa >= r.gpa), 'report cards: ordered by overall grade');
+  ok(G.rows.every((r) => r.notes.every((x) => typeof x === 'string' && x.length > 10)), 'report cards: notes');
+}
+
+// ---- a player's moves in the league: every add and every trade shows up once, newest first
+(DP.league.moves || []).filter((m) => m.type === 'add' || m.type === 'drop').forEach((m) => {
+  const p = E.byId[m.id]; if (!p) return;
+  const M = DP.playerMoves(p);
+  ok(M.some((x) => x.k === m.type && x.d === m.d && (x.to || x.from) === (m.to || m.from)), `player moves ${p.n}: ${m.type} on ${m.d}`);
+  ok(M.every((x, i) => !i || M[i - 1].d >= x.d), `player moves ${p.n}: newest first`);
+});
+(DP.league.trades || []).forEach((t) => t.moves.filter((m) => m.kind === 'player' && E.byId[m.id]).forEach((m) => {
+  const M = DP.playerMoves(E.byId[m.id]).filter((x) => x.k === 'trade' && x.d === t.date && x.from === m.from && x.to === m.to);
+  ok(M.length === 1, `player moves: ${m.label} traded ${t.date} (once)`);
+}));
+
+// ---- category streaks: recount from the weekly results
+{
+  const CS = DP.catStreaks(), FW = HW.filter((w) => w.games && w.games.length);
+  const res = (t, c) => FW.map((w) => { const g = w.games.find((x) => x.a === t || x.b === t); if (!g) return null; const o = g.a === t ? g.b : g.a, r = E.catResults(w.vec[t], w.vec[o])[c]; return r === 1 ? 'W' : r === 0 ? 'T' : 'L'; }).filter((x) => x);
+  CS.cur.forEach((x) => { const a = res(x.t, x.c); let n = 0; for (let i = a.length - 1; i >= 0 && a[i] === x.k; i--) n++; ok(n === x.n && x.k !== 'T' && (a.length === n || a[a.length - n - 1] !== x.k), `category streak ${x.t} ${E.CATS[x.c].k}: ${x.k} ${x.n} running`); });
+  CS.best.forEach((x) => { const a = res(x.t, x.c); let run = 0, b = 0; a.forEach((r) => { run = r === 'W' ? run + 1 : 0; b = Math.max(b, run); }); ok(b === x.n && x.to - x.from + 1 === x.n, `category streak ${x.t} ${E.CATS[x.c].k}: best run ${x.n}`); });
+  ok(CS.best.every((x, i) => !i || CS.best[i - 1].n >= x.n) && CS.cur.every((x, i) => !i || CS.cur[i - 1].n >= x.n), 'category streaks: longest first');
+}
 
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');

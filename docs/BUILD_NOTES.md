@@ -466,3 +466,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     `DP.lineupRegrets(n)` (pages-regret.js) tries every bench/minors-for-starter swap at the same position (F/D/G),
     rebuilds the week totals with the real lines and re-scores with `E.weekVec` + `E.catResults`; `gmin` marks swaps
     that reach the goalie minimum. Shown on The Weekly (`#wk-regret`), Team Hub (`#tj-regret`), Record Book (`#rb-regret`).
+  - GM Report Cards (pages-grades.js): `DP.gmReport(details)` (needs data/values.js + week files) builds Results
+    (all-play), Lineup calls (`DP.lineupRegrets`), Waiver wire (`DP.transactions`), Trades (`DP.tradeNets`, exposed from
+    pages-warroom.js with `DP.luckMeter`) and Roster value (`DP.values.teams`); letters by rank (`grade()`), overall =
+    mean points. Team Hub `#t-grade` line. Player page: `DP.playerMoves(p)` + `movesCard()` in player.js.
+  - `DP.catStreaks()` (pages-records.js): per team and category, the run of W or L still going and the best W run, from
+    `E.catResults` week by week. Record Book `#rb-cstreak`, Team Hub category card. Prospects & MNR: "In the NHL now"
+    tile, Slot and Last 14 days columns, NHL filter (`?nhl=now`), from `p.l14`.

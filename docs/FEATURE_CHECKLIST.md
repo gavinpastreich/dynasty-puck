@@ -134,4 +134,5 @@ as you ship them, and add any new ideas you come up with.
 - [x] Batch 7 (2026-11-20): weekly Power Rankings with movement and written lines; Dashboard day-by-day sparkline.
 - [x] Batch 8 (2026-11-20): this week's and next week's stakes, playoff odds through the season, odds movers, line
       moves since your last visit, lineup regrets (the bench swap that would have changed each matchup).
+- [x] Batch 9 (2026-11-20): GM Report Cards, a player's moves in the league, category streaks, MNR players in the NHL now.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

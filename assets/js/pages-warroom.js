@@ -132,6 +132,7 @@
     });
     return E.teams.map(function (t) { var a = act.rec[t] || { W: 0, T: 0 }; return { t: t, act: a.W + a.T / 2, exp: exp[t], luck: a.W + a.T / 2 - exp[t] }; }).sort(function (a, b) { return b.luck - a.luck; });
   }
+  DP.tradeNets = tradeNets; DP.luckMeter = luck;   // for the GM Report Cards
   DP.pages.awards = {
     title: 'Awards & Wrapped',
     render: function (el, hsh) {

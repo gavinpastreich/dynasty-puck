@@ -186,6 +186,36 @@
     U.toast('Added to Compare (' + DP.cmp.length + '/4). Open the Compare page to see them side by side.');
   });
 
+  // every add, drop and trade involving a player in this league (Fantrax moves log this season, trade log since 2025-26)
+  DP.playerMoves = function (p) {
+    var out = [], T = (DP.league && DP.league.trades) || [], tdays = {};
+    T.forEach(function (tr, i) {
+      tr.moves.forEach(function (m) {
+        if (m.kind !== 'player' || m.id !== p.id) return;
+        tdays[tr.date] = 1;
+        var with_ = tr.moves.filter(function (o) { return o !== m && o.to === m.from; }).map(function (o) { return o.label; });
+        out.push({ d: tr.date, k: 'trade', from: m.from, to: m.to, teams: tr.teams, back: with_, season: tr.season, i: i });
+      });
+    });
+    ((DP.league && DP.league.moves) || []).forEach(function (m) {
+      if (m.id !== p.id) return;
+      if (m.type === 'add') out.push({ d: m.d, k: 'add', to: m.to, ct: m.ct, sal: m.sal });
+      else if (m.type === 'drop') out.push({ d: m.d, k: 'drop', from: m.from, ct: m.ct, sal: m.sal });
+      else if (m.type === 'move' && !tdays[m.d]) out.push({ d: m.d, k: 'trade', from: m.from, to: m.to, teams: [m.from, m.to], back: [] });
+    });
+    return out.sort(function (a, b) { return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
+  };
+  function movesCard(p) {
+    var M = DP.playerMoves(p); if (!M.length) return '';
+    var tn = function (t) { return U.teamChip(t, { link: 1 }); }, dt = function (d) { return esc(U.date(new Date(d + 'T12:00:00Z'))); };
+    var li = function (x) {
+      var what = x.k === 'add' ? '🛒 Added by ' + tn(x.to) + (x.ct ? ' <span class="faint">' + esc(x.ct) + (x.sal ? ' ' + U.m(x.sal / 1e6, 1) : '') + '</span>' : '')
+        : x.k === 'drop' ? '🗑️ Dropped by ' + tn(x.from)
+        : '🤝 Traded from ' + tn(x.from) + ' to ' + tn(x.to) + (x.teams.length > 2 ? ' <span class="faint">(' + x.teams.length + '-team trade)</span>' : '') + (x.back.length ? '<br><span class="small muted">' + esc(U.teamName(x.from)) + ' got back: ' + esc(x.back.slice(0, 5).join(', ')) + (x.back.length > 5 ? ' +' + (x.back.length - 5) + ' more' : '') + '</span>' : '');
+      return '<li><span class="small muted nw" style="min-width:86px">' + dt(x.d) + '</span><span>' + what + '</span></li>';
+    };
+    return '<div class="card" style="margin-top:14px"><h2>🧾 Moves in Dynasty Puck</h2><div class="hint">Every add, drop and trade involving him in the Fantrax logs (adds and drops this season, trades since 2025-26). <a href="#/history">Trade History</a> values each trade.</div><ul class="list-plain pmoves">' + M.map(li).join('') + '</ul></div>';
+  }
   DP.pages.player = {
     title: 'Player',
     render: function (el, h) {
@@ -197,6 +227,7 @@
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
       similarCard(p, el);
       seasonLog(p, el);
+      var mc = movesCard(p); if (mc) el.insertAdjacentHTML('beforeend', mc);
       if (DP.fillTrends) DP.fillTrends(el);
     }
   };
