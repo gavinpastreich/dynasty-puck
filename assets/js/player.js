@@ -183,9 +183,49 @@
       if (DP.noteRecent) DP.noteRecent(p.id);
       el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (DP.radarBrief ? DP.radarBrief(p) : '') + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
+      seasonLog(p, el);
       if (DP.fillTrends) DP.fillTrends(el);
     }
   };
+  // this season in the league: every finished week he was in a locked lineup, with his real lines (data/weeks/wNN.js),
+  // plus the week in progress from the live scoreboard
+  DP.playerSeasonLog = function (p, details) {
+    var rows = [];
+    details.forEach(function (W) {
+      Object.keys(W.teams || {}).forEach(function (t) {
+        var T = W.teams[t]; if ((T.active || []).indexOf(p.id) < 0) return;
+        rows.push({ n: W.n, t: t, l: (T.pl || {})[p.id] || null });
+      });
+    });
+    var sc = DP.league.score;
+    if (sc && sc.week && sc.teams && !rows.some(function (r) { return r.n === sc.week; })) Object.keys(sc.teams).forEach(function (t) {
+      var T = sc.teams[t]; if ((T.active || []).indexOf(p.id) >= 0) rows.push({ n: sc.week, t: t, l: (T.pl || {})[p.id] || null, live: !sc.final });
+    });
+    return rows.sort(function (a, b) { return a.n - b.n; });
+  };
+  function seasonLog(p, el) {
+    var E = DP.E, ns = E.history().weeks.map(function (w) { return w.n; });
+    if (!DP.loadWeeks) return;
+    var card = document.createElement('div'); card.className = 'card'; card.style.marginTop = '14px';
+    card.innerHTML = '<h2>🏒 This season in Dynasty Puck</h2><p class="small muted">Loading the weekly lines…</p>';
+    el.appendChild(card);   // before the router adds the footer
+    DP.loadWeeks(ns, function (details) {
+      if (!document.body.contains(card)) return;
+      var R = DP.playerSeasonLog(p, details);
+      if (!R.length) { card.innerHTML = '<h2>🏒 This season in Dynasty Puck</h2><p class="small muted">Not in anyone\'s locked lineup in a week played so far.</p>'; return; }
+      var G = p.G, heads = G ? ['GP', 'W', 'GA', 'SA', 'SV%', 'SO'] : ['GP', 'G', 'A', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor'];
+      var tot = null, cell = function (l) {
+        if (!l) return heads.map(function () { return '<td class="num muted">0</td>'; }).join('');
+        if (G) return [l[0], l[1], l[2], l[3], l[3] ? U.rate(1 - l[2] / l[3]) : '–', l[4]].map(function (v) { return '<td class="num">' + v + '</td>'; }).join('');
+        return l.map(function (v, i) { return '<td class="num">' + U.fmt(v, i === 9 ? 1 : 0) + '</td>'; }).join('');
+      };
+      R.forEach(function (r) { if (!r.l || r.live) return; if (!tot) tot = r.l.map(function () { return 0; }); r.l.forEach(function (v, i) { tot[i] += v; }); });
+      card.innerHTML = '<h2>🏒 This season in Dynasty Puck</h2><div class="hint">Every week he was in a locked Fantrax lineup, with what he did in NHL games that week (the lines that counted). ' + R.filter(function (r) { return !r.live; }).length + ' of ' + ns.length + ' weeks played.</div>' +
+        '<div class="tbl-wrap"><table class="t small"><thead><tr><th>Week</th><th>Team</th>' + heads.map(function (x) { return '<th class="num">' + x + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        R.map(function (r) { return '<tr><td><a href="' + U.hash('live', null, { w: r.n }) + '">W' + r.n + '</a>' + (r.live ? ' <span class="badge warn">so far</span>' : '') + '</td><td>' + U.teamLabel(r.t) + '</td>' + cell(r.l) + '</tr>'; }).join('') +
+        (tot ? '<tr class="tot"><td colspan="2"><b>Total</b> (finished weeks)</td>' + cell(tot) + '</tr>' : '') + '</tbody></table></div>';
+    });
+  }
   // what the player is worth to each team (roster fit x window) vs to his current team
   function market(p, box) {
     if (!box) return;

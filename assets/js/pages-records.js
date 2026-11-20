@@ -103,6 +103,11 @@
         st.slice(0, 4).map(function (x) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small muted" style="margin-left:auto">longest winning streak <b class="num">' + x.bestW + '</b></span></li>'; }).join('') + '</ul>' +
         '<h3 class="small" style="margin-top:12px">On a run right now</h3>' + (cur.length ? '<ul class="list-plain">' + cur.map(function (x) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small ' + (x.curK === 'W' ? 'good' : 'bad') + '" style="margin-left:auto">' + (x.curK === 'W' ? 'won ' : 'lost ') + x.cur + ' straight</span></li>'; }).join('') + '</ul>' : '<p class="small muted">Nobody has two in a row right now.</p>') + '</div>';
       h += '<div class="card"><h2>⭐ Individual weekly highs</h2><div class="hint">The best single weeks by players in a locked starting lineup (the lines that counted).</div><div id="rb-ind"><p class="small muted">Loading the weekly lines…</p></div></div></div>';
+      var cc = []; R.weeks.forEach(function (w) { cc = cc.concat(DP.closeCalls ? DP.closeCalls(w) : []); });
+      cc.sort(function (a, b) { return a.z - b.z; });
+      var perCat = {}; cc = cc.filter(function (x) { perCat[x.c] = (perCat[x.c] || 0) + 1; return perCat[x.c] <= 2; });   // at most two per category
+      if (cc.length) h += '<div class="card" style="margin-top:14px"><h2>🤏 Closest calls</h2><div class="hint">Categories won by the smallest margins of the season, measured against how spread out the league was in that category that week. Ties not included.</div><ul class="list-plain">' +
+        cc.slice(0, 8).map(function (x) { return '<li><span class="small">' + DP.closeTxt(x) + '</span><span class="small muted" style="margin-left:auto">' + wk(x.n) + '</span></li>'; }).join('') + '</ul></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📅 Best single days</h2><div class="hint">The best one-day team total in each counting category (one NHL game day, the locked starters), next to the average team day.</div><div id="rb-days"><p class="small muted">Loading the days…</p></div></div>';
       el.innerHTML = h;
       DP.loadWeeks(R.weeks.map(function (w) { return w.n; }), function (details) {

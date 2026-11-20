@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -287,6 +287,22 @@ HW.filter((w) => w.games && w.games.length).forEach((w) => {
   const t0 = E.teams[0], aps = HW.filter((x) => x.n <= w.n && x.ap && x.ap[t0]).map((x) => E.sum(x.ap[t0]) / x.ap[t0].length);
   ok(near(P.by[t0].season, E.sum(aps) / aps.length, 1e-12) && near(P.by[t0].recent, E.sum(aps.slice(-3)) / aps.slice(-3).length, 1e-12), `power week ${w.n}: all-play averages`);
   ok(E.teams.every((t) => DP.powerBlurb(t, w.n, P, null, DP.weekDetail[w.n]).length > 10), `power week ${w.n}: every team gets a line`);
+});
+
+// ---- closest calls and the player season log
+HW.filter((w) => w.games && w.games.length).forEach((w) => {
+  const CC = DP.closeCalls(w);
+  ok(CC.every((x, i) => (!i || CC[i - 1].z <= x.z) && x.z >= 0), `close calls week ${w.n}: sorted by margin`);
+  ok(CC.every((x) => { const low = E.CATS[x.c].low; return low ? x.vw < x.vl : x.vw > x.vl; }), `close calls week ${w.n}: the winner has the better number`);
+  ok(CC.every((x) => w.games.some((g) => (g.a === x.win && g.b === x.lose) || (g.b === x.win && g.a === x.lose))), `close calls week ${w.n}: real matchups`);
+});
+['G', 'S'].forEach((kind) => {
+  const pl = E.P.filter((p) => p.gm && (kind === 'G') === !!p.G).sort((a, b) => b.DV - a.DV).slice(0, 5);
+  pl.forEach((p) => {
+    const R = DP.playerSeasonLog(p, details).filter((r) => !r.live);
+    let n0 = 0, gp = 0; details.forEach((W) => Object.values(W.teams).forEach((T) => { if ((T.active || []).indexOf(p.id) >= 0) { n0++; gp += ((T.pl || {})[p.id] || [0])[0]; } }));
+    ok(R.length === n0 && E.sum(R.map((r) => (r.l || [0])[0])) === gp, `season log ${p.n}: ${n0} weeks, ${gp} GP`);
+  });
 });
 
 // ---- Start Here tour: every link is a page in the menu

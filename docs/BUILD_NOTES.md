@@ -427,3 +427,7 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     rest-of-season projection rank percentile (E.teamCats z over the weeks left), `DP.powerBlurb`). The older blended
     rank from `DP.teamSummary` (55% expected win % / 35% DV / 10% prospects) is now labelled "dynasty power".
   - Dashboard: your matchup's win chance day by day (`[data-ywf]`, DP.matchFlow on the week in progress).
+  - Player page: `DP.playerSeasonLog(p, details)` + `seasonLog()` in player.js (weeks in a locked lineup, from the week
+    files, plus the week in progress from `DP.league.score`).
+  - `DP.closeCalls(w)` / `DP.closeTxt` in pages-weekly.js: decided categories ranked by margin / that week's league SD
+    (ties and goalie-minimum forfeits excluded). Used by The Weekly (top 3) and the Record Book (top 8, two per cat).

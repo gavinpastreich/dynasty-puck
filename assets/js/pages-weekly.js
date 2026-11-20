@@ -28,6 +28,31 @@
   // the week's strength (all-play: share of the other 13 teams each team's numbers would have beaten), 0..1
   function strength(w, t) { var a = w.ap && w.ap[t]; return a ? DP.E.sum(a) / a.length : null; }
 
+  // categories decided by a hair: the margin relative to how spread out the 14 teams were in that category that week
+  // (standard deviation), ties and goalie-minimum forfeits left out
+  DP.closeCalls = function (w) {
+    var E = DP.E, minG = E.RULES.goalieMinGP || 2, out = [];
+    var sd = E.CATS.map(function (cat, c) {
+      var v = E.teams.map(function (t) { return w.vec[t][c]; }).filter(function (x) { return x !== null && x !== undefined && !isNaN(x); });
+      var m = E.sum(v) / Math.max(1, v.length); return Math.sqrt(E.sum(v.map(function (x) { return (x - m) * (x - m); })) / Math.max(1, v.length)) || 1;
+    });
+    (w.games || []).forEach(function (g) {
+      var under = (w.tot[g.a].GGP || 0) < minG || (w.tot[g.b].GGP || 0) < minG;
+      E.CATS.forEach(function (cat, c) {
+        var r = g.r[c], a = w.vec[g.a][c], b = w.vec[g.b][c];
+        if (r !== 1 && r !== -1) return;
+        if (cat.grp === 'G' && under) return;
+        if (a === null || b === null) return;
+        out.push({ n: w.n, c: c, win: r === 1 ? g.a : g.b, lose: r === 1 ? g.b : g.a, vw: r === 1 ? a : b, vl: r === 1 ? b : a, z: Math.abs(a - b) / sd[c] });
+      });
+    });
+    return out.sort(function (x, y) { return x.z - y.z; });
+  };
+  DP.closeTxt = function (x) {
+    var c = x.c, f = function (v) { return c === 12 ? v.toFixed(2) : c === 13 ? U.rate(v) : U.fmt(v, c === 10 ? 1 : 0); };
+    return esc(DP.E.CATS[c].l) + ' ' + f(x.vw) + ' vs ' + f(x.vl) + ' (' + esc(U.teamName(x.win)) + ' over ' + esc(U.teamName(x.lose)) + ')';
+  };
+
   DP.weeklyData = function (n) {
     var E = DP.E, H = E.history(), w = H.weeks.filter(function (x) { return x.n === n && x.games && x.games.length; })[0];
     if (!w) return null;
@@ -206,7 +231,7 @@
       S.push('<b>Standings:</b> ' + esc(tn(lead.t)) + ' lead' + (lead.t.slice(-1) === 's' ? '' : 's') + ' at ' + lead.W + '-' + lead.L + '-' + lead.T + '.' + (D.up ? ' Biggest climb: ' + esc(tn(D.up.t)) + ' (' + U.ord(D.up.from) + ' → ' + U.ord(D.up.to) + ').' : '') + (D.down ? ' Biggest drop: ' + esc(tn(D.down.t)) + ' (' + U.ord(D.down.from) + ' → ' + U.ord(D.down.to) + ').' : ''));
       var ck = D.cats.filter(function (x) { return /^(G|Hit|SOG|SV|GAA)$/.test(x.cat.k) && x.top; }).map(function (x) { var v = x.top.v; return esc(x.cat.l) + ' ' + esc(x.top.t) + ' (' + (x.cat.k === 'SV' ? U.rate(v) : x.cat.k === 'GAA' ? U.fmt(v, 2) : U.fmt(v, 0)) + ')'; });
       if (ck.length) S.push('<b>League highs:</b> ' + ck.join(' · ') + '.');
-      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li><li id="wk-swing" hidden></li></ul></div></div><div id="wk-flow"></div>';
+      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li><li id="wk-swing" hidden></li>' + (function () { var cc = DP.closeCalls(D.w).slice(0, 3); return cc.length ? '<li style="margin-bottom:6px"><b>Closest calls:</b> ' + cc.map(DP.closeTxt).join('; ') + '.</li>' : ''; })() + '</ul></div></div><div id="wk-flow"></div>';
       // moves
       var M = [];
       D.trades.forEach(function (tr) { var tk = tradeTake(tr); M.push('<b>Trade:</b> ' + tr.teams.map(function (t) { return esc(tn(t)); }).join(' / ') + ' (' + tr.moves.filter(function (m) { return m.kind === 'player'; }).map(function (m) { return esc(m.label); }).join(', ') + (tr.moves.some(function (m) { return m.kind === 'pick'; }) ? ' and picks' : '') + (tr.moves.some(function (m) { return m.kind === 'cap'; }) ? ' and cap space' : '') + '). By today\'s model ' + esc(tk.best) + ' came out ahead. <a href="#/history">Trade History →</a>'); });
