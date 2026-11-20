@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20T05:22+00:00",
+"fetched": "2026-11-20T05:53+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -1569,6 +1569,16 @@
 ],
 "n8484800": [
 {
+"d": "2026-11-20",
+"k": [
+"hot"
+],
+"s": "Sportsnet",
+"t": "Kraken’s Catton tallies first career NHL hat trick in win over Canucks",
+"u": "https://www.sportsnet.ca/nhl/video/krakens-catton-tallies-first-career-nhl-hat-trick-in-win-over-canucks/",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "NHL.com (team site)",
@@ -2554,10 +2564,10 @@
 "url": "https://thehockeynews.com/feed"
 },
 {
-"n": 8,
+"n": 0,
 "name": "The Hockey Writers",
-"note": "0 new matches",
-"ok": true,
+"note": "HTTP Error 403: Forbidden",
+"ok": false,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
@@ -2808,7 +2818,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2841,7 +2851,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 12,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
