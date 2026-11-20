@@ -334,6 +334,21 @@ MVP.sk.slice(0, 5).concat(MVP.gk.slice(0, 3)).forEach((o) => {
 const SD2 = DP.sinceData(E.teams[0], Date.parse(HW[HW.length - 1].to + 'T00:00:00Z') - 864e5);
 ok(!HW.length || SD2.items.some((it) => it.ic === '⚡' && new RegExp(U.ord(DP.powerAfter(HW[HW.length - 1].n).by[E.teams[0]].rank)).test(it.html)), 'since: newest power ranking');
 
+// ---- next 7 days on the player card, games left in the live matchups
+E.P.filter((p) => p.gm && p.nt26).slice(0, 30).forEach((p) => {
+  const html = DP.nextGames(p), n = (html.match(/class="pc-g/g) || []).length;
+  const today = E.dayIndex(E.now().toLocaleDateString('en-CA', { timeZone: 'America/New_York' }));
+  ok(n === DP.nhl.sched[p.nt26].filter((r) => r[0] >= today && r[0] < today + 7).length && n <= 7, `next games ${p.n}: ${n} in the next 7 days`);
+});
+const SCW = DP.league.score;
+if (SCW && SCW.week && SCW.teams && !SCW.final) {
+  DP.meta.h2h.filter((m) => m[0] === SCW.week).forEach((m) => {
+    const o = E.liveOdds(m[1], m[2], SCW, 300);
+    ok(o.left && o.left.every((x) => x.sk >= 0 && x.sk <= 18 * 7 && x.g >= 0 && x.g <= 2 * 7), `live ${m[1]}-${m[2]}: games left in range`);
+    ok(near(o.left[0].g, o.restA.m.GGP) && near(o.left[1].g, o.restB.m.GGP), `live ${m[1]}-${m[2]}: goalie starts = the simulation's`);
+  });
+}
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));

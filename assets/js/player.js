@@ -100,6 +100,7 @@
     });
     h += '</tbody></table></div>';
     if (DP.formLine) h += DP.formLine(p);
+    h += DP.nextGames ? DP.nextGames(p) : '';
     h += '<div class="pc-trend" data-trend="' + esc(p.id) + '"></div>';
     if (p.tkc) h += '<p class="note">Tk/Cor projection: per-GP rates ' + U.fmt(p.tkc[0], 2) + ' Tk and ' + U.fmt(p.tkc[1], 1) + ' Cor, blended from ' + U.fmt(p.tkc[4], 0) + ' weighted NHL games with a role prior of ' + U.fmt(p.tkc[2], 2) + ' / ' + U.fmt(p.tkc[3], 1) + '.</p>';
     h += '</div>';
@@ -154,6 +155,17 @@
   }
   DP.statTile = stat;
 
+  // his NHL team's games in the next 7 days (Eastern dates), back-to-backs marked
+  DP.nextGames = function (p) {
+    var E = DP.E, sc = p.nt26 && DP.nhl.sched[p.nt26]; if (!sc) return '';
+    var today = E.dayIndex(E.now().toLocaleDateString('en-CA', { timeZone: 'America/New_York' }));
+    var g = sc.filter(function (r) { return r[0] >= today && r[0] < today + 7; });
+    var day = function (d) { var t = new Date(E.seasonStart + d * 864e5); return t.toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' }) + ' ' + (t.getUTCMonth() + 1) + '/' + t.getUTCDate(); };
+    var has = {}; sc.forEach(function (r) { has[r[0]] = 1; });
+    return '<div class="pc-next small"><span class="pct-k">📅 Next 7 days</span>' + (g.length ? g.map(function (r) {
+      return '<span class="pc-g' + (has[r[0] - 1] ? ' b2b' : '') + '" title="' + (has[r[0] - 1] ? 'Second night of a back-to-back' : '') + '">' + esc(day(r[0])) + ' ' + (r[2] ? 'vs' : '@') + ' <b>' + esc(r[1]) + '</b>' + (has[r[0] - 1] ? ' <span class="faint">B2B</span>' : '') + '</span>';
+    }).join('') : '<span class="muted">no games</span>') + '</div>';
+  };
   DP.openPlayer = function (id) {
     var p = DP.E.byId[id];
     if (!p) return;

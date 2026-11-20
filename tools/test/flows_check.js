@@ -233,6 +233,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => !DP.values || /30 days/.test([...document.querySelectorAll('.stat')].find((x) => /Dynasty value/.test(x.innerText)).innerText)), 'team hub: dynasty value tile shows the 30-day change');
   await page.evaluate(() => { const p = DP.E.P.filter((x) => DP.values && DP.values.p[x.id])[0]; if (p) DP.openPlayer(p.id); }); await page.waitForTimeout(1500);
   ok(await page.evaluate(() => !DP.values || /Value/.test((document.querySelector('#modal-bg .pc-trend.on') || {}).innerText || '')), 'player card: value trend');
+  ok(await page.evaluate(() => /Next 7 days/.test((document.querySelector('#modal-bg .pc-next') || {}).innerText || '')), 'player card: next 7 days');
   await page.evaluate(() => DP.ui.closeModal());
   // day-by-day flow on a finished week and the comeback line in The Weekly
   const lastWk = await page.evaluate(() => { const H = DP.E.history().weeks; return H.length ? H[H.length - 1].n : 0; });

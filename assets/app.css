@@ -606,3 +606,6 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .wkflow { display: inline-flex; margin-left: 4px; opacity: .85; }
 .wkflow:empty { display: none; }
 .mvp li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.pc-next { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
+.pc-g { border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; background: var(--card2); white-space: nowrap; }
+.pc-g.b2b { border-color: color-mix(in srgb, var(--warn) 50%, transparent); }

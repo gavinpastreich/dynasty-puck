@@ -441,3 +441,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     day-by-day sparkline (`DP.fillWeekFlows`, `[data-wf]`).
   - Pickup Planner `?cat=` focus (column + sort on `r.by[cat]`); "since your last visit" adds the newest Power Ranking
     after a finished week.
+  - `E.liveOdds` returns `left` (per side: scheduled skater games still to play, expected goalie starts); the Live
+    Scoreboard shows it. Player cards: `DP.nextGames(p)` (team games in the next 7 Eastern days, B2B marked).

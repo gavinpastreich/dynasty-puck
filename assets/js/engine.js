@@ -1756,7 +1756,11 @@
       cats: E.CATS.map(function (cat, c) {
         return { a: now(ca, rA, c), b: now(cb, rB, c), pa: cntA[c] ? sumA[c] / cntA[c] : null, pb: cntB[c] ? sumB[c] / cntB[c] : null, pw: catW[c] / n, pt: catT[c] / n };
       }),
-      win: win / n, loss: loss / n, tie: tie / n, ggpA: ca.GGP, ggpB: cb.GGP, restA: ra, restB: rb
+      win: win / n, loss: loss / n, tie: tie / n, ggpA: ca.GGP, ggpB: cb.GGP, restA: ra, restB: rb,
+      left: [ra, rb].map(function (rest) { // games still to play this week: skater games (scheduled) and expected goalie starts
+        var sk = 0; rest.lu.F.concat(rest.lu.D).forEach(function (x) { sk += E.gamesFrom(x.p, wi, d0, today).N; });
+        return { sk: Math.round(sk * 10) / 10, g: rest.m.GGP };
+      })
     };
   };
   E.liveScore = function (odds) { // current category score (who leads each category right now)

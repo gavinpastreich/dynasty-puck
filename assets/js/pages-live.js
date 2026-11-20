@@ -178,6 +178,7 @@
           '<td class="num ' + (lead < 0 ? 'good' : '') + '">' + (lead < 0 ? '<b>' + fmt(c, x.b) + '</b>' : fmt(c, x.b)) + '</td></tr>';
       }).join('') + '</tbody></table></div>';
     var gm = E.RULES.goalieMinGP;
+    if (!fin && o.left) h += '<p class="small" style="margin:6px 0 0"><b>Games left this week</b>: ' + esc(a) + ' ' + U.fmt(o.left[0].sk, 0) + ' skater games · ' + U.fmt(o.left[0].g, 1) + ' goalie starts; ' + esc(b) + ' ' + U.fmt(o.left[1].sk, 0) + ' · ' + U.fmt(o.left[1].g, 1) + (Math.abs(o.left[0].sk - o.left[1].sk) >= 3 ? ' <span class="badge ' + (o.left[0].sk > o.left[1].sk ? 'good' : 'warn') + '">' + esc(o.left[0].sk > o.left[1].sk ? a : b) + ' +' + U.fmt(Math.abs(o.left[0].sk - o.left[1].sk), 0) + ' games</span>' : '') + '</p>';
     h += '<p class="small muted">Goalie GP' + (fin ? '' : ' so far') + ': ' + esc(a) + ' ' + o.ggpA + ', ' + esc(b) + ' ' + o.ggpB + ' (minimum ' + gm + ').' + (fin ? '' : ' Tie odds ' + U.pct(o.tie) + '.') + ' <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button> <button class="btn sm ghost" data-flowbtn="f' + id + '">📈 Day by day</button> <a class="btn sm ghost" href="' + U.hash('matchup', null, { w: sc.week, a: a, b: b, set: '1' }) + '">Full matchup</a></p>';
     h += '<div id="' + id + '"' + (open[key] ? '' : ' hidden') + '>' + lines(a, sc.teams[a], sc) + lines(b, sc.teams[b], sc) + '</div>';
     h += '<div id="f' + id + '" data-week="' + sc.week + '" data-a="' + esc(a) + '" data-b="' + esc(b) + '" hidden></div>';
