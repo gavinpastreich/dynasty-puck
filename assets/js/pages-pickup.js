@@ -48,7 +48,8 @@
       var lw = E.lockWeek(), wi = q.w ? +q.w - 1 : lw;
       if (wi === null || wi === undefined) { el.innerHTML = h + '<div class="callout">No lineup locks left this season.</div>'; return; }
       var weeks = E.weeks.map(function (w, i) { return i; }).filter(function (i) { return i >= lw && E.opponent(me, i); }).slice(0, 4);
-      h += '<div class="controls"><label>Team ' + ui.teamSelect('pk-team', me) + '</label><label>Week <select id="pk-w">' + weeks.map(function (i) { var w = E.weeks[i]; return '<option value="' + (i + 1) + '"' + (i === wi ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' · vs ' + esc(U.teamName(E.opponent(me, i))) + '</option>'; }).join('') + '</select></label></div>';
+      h += '<div class="controls"><label>Team ' + ui.teamSelect('pk-team', me) + '</label><label>Week <select id="pk-w">' + weeks.map(function (i) { var w = E.weeks[i]; return '<option value="' + (i + 1) + '"' + (i === wi ? ' selected' : '') + '>' + (w.po ? 'Playoffs R' + w.po : 'Week ' + w.n) + ' · vs ' + esc(U.teamName(E.opponent(me, i))) + '</option>'; }).join('') + '</select></label>' +
+        '<label>Focus on <select id="pk-cat"><option value="">All categories</option>' + E.CATS.map(function (c, k) { return '<option value="' + k + '"' + (String(k) === q.cat ? ' selected' : '') + '>' + esc(c.l) + ' (' + esc(c.name) + ')</option>'; }).join('') + '</select></label></div>';
       var X = DP.pickupData(me, wi);
       if (!X) { el.innerHTML = h + '<div class="callout">No opponent that week.</div>'; return; }
       var w = E.weeks[wi], best = X.rows.filter(function (r) { return r.gain > 0.01; }).slice(0, 5);
@@ -69,22 +70,25 @@
       } else h += '<div class="callout">No free agent with games that week raises your expected category wins against ' + esc(U.teamName(X.opp)) + '. Your lineup is already as good as the pool allows.</div>';
       h += '<div class="card flush" style="margin-top:14px"><h2>Every free agent with games that week</h2><div class="hint">Δ cats = change in expected category wins against ' + esc(U.teamName(X.opp)) + ' with him added and your lineup re-optimized (0 = he wouldn\'t crack your lineup). "Cap after" assumes the first move under Making room when your roster is full.</div><div id="pk-t" style="padding:0 12px 12px"></div></div>';
       el.innerHTML = h;
+      var fc = q.cat !== undefined && q.cat !== '' && E.CATS[+q.cat] ? +q.cat : null;
+      var focusCol = fc === null ? [] : [{ k: 'fc', l: 'Δ ' + E.CATS[fc].l + ' win', cls: 'num', v: function (r) { return r.by[fc]; }, f: function (r) { return Math.abs(r.by[fc]) >= 0.005 ? '<b>' + ui.delta(r.by[fc] * 100, 0) + '%</b>' : '<span class="faint">0</span>'; } }];
       ui.table(U.qs('#pk-t', el), {
-        rows: X.rows, sort: 'gain', csv: 'pickups-week-' + w.n + '.csv', search: function (r) { return r.p.n + ' ' + r.p.t; },
+        rows: X.rows, sort: fc === null ? 'gain' : 'fc', csv: 'pickups-week-' + w.n + '.csv', search: function (r) { return r.p.n + ' ' + r.p.t; },
         filters: [{ l: 'Pos', opts: [['', 'All'], ['F', 'F'], ['D', 'D'], ['G', 'G']], fn: function (r, v) { return r.p.slot === v || (v === 'D' && r.p.fd); } }, { l: 'Show', opts: [['', 'All'], ['in', 'Would start'], ['wv', 'On waivers']], fn: function (r, v) { return v === 'in' ? r.starts : r.p.wv; } }],
         cols: [
           { k: 'n', l: 'Player', v: function (r) { return r.p.n; }, f: function (r) { return ui.pcell(r.p, { pos: 1 }); } },
           { k: 'g', l: 'Games', cls: 'num', v: function (r) { return r.g; } },
-          { k: 'gain', l: 'Δ cats', cls: 'num', v: function (r) { return r.gain; }, f: function (r) { return r.gain > 0.005 ? '<b>' + ui.delta(r.gain, 2) + '</b>' : '<span class="faint">0</span>'; } },
+          { k: 'gain', l: 'Δ cats', cls: 'num', v: function (r) { return r.gain; }, f: function (r) { return r.gain > 0.005 ? '<b>' + ui.delta(r.gain, 2) + '</b>' : '<span class="faint">0</span>'; } }].concat(focusCol).concat([
           { k: 'helps', l: 'Moves', v: null, f: function (r) { return '<span class="small">' + r.by.map(function (x, k) { return [k, x]; }).filter(function (x) { return Math.abs(x[1]) >= 0.02; }).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 3).map(function (x) { return '<span class="' + (x[1] > 0 ? 'good' : 'bad') + '">' + esc(E.CATS[x[0]].l) + ' ' + U.sgn(x[1] * 100, 0) + '%</span>'; }).join(' · ') + '</span>'; } },
           { k: 'bump', l: 'Replaces', v: null, f: function (r) { return r.bumped ? '<span class="small">' + esc(r.bumped.n) + '</span>' : '<span class="faint small">–</span>'; } },
           { k: 'sal', l: 'Salary', cls: 'num', v: function (r) { return r.sal; }, f: function (r) { return U.m(r.sal); } },
           { k: 'room', l: 'Cap after', cls: 'num', v: function (r) { return r.room; }, f: function (r) { return '<span class="' + (r.room < 0 ? 'bad' : '') + '">' + U.m(r.room) + '</span>'; } },
           { k: 'war', l: 'Season WAR', cls: 'num', v: function (r) { return r.p.WAR; }, f: function (r) { return ui.warCell(r.p.WAR); } }
-        ]
+        ])
       });
+      U.qs('#pk-cat', el).addEventListener('change', function (e) { DP.go('pickup', null, { team: q.team, w: q.w, cat: e.target.value || undefined }); });
       U.qs('#pk-team', el).addEventListener('change', function (e) { DP.go('pickup', null, { team: e.target.value === DP.state.team ? undefined : e.target.value }); });
-      U.qs('#pk-w', el).addEventListener('change', function (e) { DP.go('pickup', null, { team: q.team, w: e.target.value }); });
+      U.qs('#pk-w', el).addEventListener('change', function (e) { DP.go('pickup', null, { team: q.team, w: e.target.value, cat: q.cat }); });
     }
   };
 })();

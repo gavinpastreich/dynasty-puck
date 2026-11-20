@@ -330,6 +330,10 @@ MVP.sk.slice(0, 5).concat(MVP.gk.slice(0, 3)).forEach((o) => {
   ok(one && near(one.v, v, 1e-9), 'mvp: one skater-week by hand');
 })();
 
+// ---- since your last visit: the Power Rankings item after a finished week
+const SD2 = DP.sinceData(E.teams[0], Date.parse(HW[HW.length - 1].to + 'T00:00:00Z') - 864e5);
+ok(!HW.length || SD2.items.some((it) => it.ic === '⚡' && new RegExp(U.ord(DP.powerAfter(HW[HW.length - 1].n).by[E.teams[0]].rank)).test(it.html)), 'since: newest power ranking');
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));

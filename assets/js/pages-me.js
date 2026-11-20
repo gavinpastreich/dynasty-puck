@@ -71,6 +71,12 @@
         var s = g.a === me ? g.sa : g.sb, o = g.a === me ? g.b : g.a;
         out.items.push({ ic: s.W > s.L ? '✅' : s.W < s.L ? '❌' : '➖', html: 'Week ' + w.n + ': ' + (s.W > s.L ? 'beat ' : s.W < s.L ? 'lost to ' : 'tied ') + esc(U.teamName(o)) + ' ' + s.W + '-' + s.L + '-' + s.T, href: U.hash('weekly', null, { w: w.n }) });
       });
+      // the newest Power Rankings, if a week finished since the last visit
+      var lastW = wk.length ? wk[wk.length - 1].n : null;
+      if (lastW && DP.powerAfter) {
+        var P1 = DP.powerAfter(lastW), P0 = lastW > 1 ? DP.powerAfter(lastW - 1) : null, r1 = P1 && P1.by[me];
+        if (r1) { var dd = P0 && P0.by[me] ? P0.by[me].rank - r1.rank : 0; out.items.push({ ic: '⚡', html: 'Power Rankings after week ' + lastW + ': <b>' + U.ord(r1.rank) + '</b>' + (dd > 0 ? ' <span class="good">▲' + dd + '</span>' : dd < 0 ? ' <span class="bad">▼' + (-dd) + '</span>' : ''), href: U.hash('power', null, { w: lastW }) }); }
+      }
     }
     // prospect stock: yours and your watchlist, from the nightly radar history
     var V = DP.radarView ? DP.radarView() : null, R = V && V.R;

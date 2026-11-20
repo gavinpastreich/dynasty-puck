@@ -246,6 +246,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && !p.G).sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3500);
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /This season in Dynasty Puck/.test(h.innerText)) && /Total/.test(document.querySelector('#main').innerText)), 'player page: this season in the league');
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /Plays like/.test(h.innerText))), 'player page: similar players');
+  await go('pickup?cat=7', 3500);
+  ok(await page.evaluate(() => { const th = [...document.querySelectorAll('#pk-t th')].map((x) => x.innerText); return th.some((t) => /Δ Hit win/.test(t)); }), 'pickup planner: category focus column');
   await go('power', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && [...document.querySelectorAll('.pw-blurb')].every((b) => b.innerText.length > 10)), 'power rankings: every team with a line');
   await go('moves', 4500);
