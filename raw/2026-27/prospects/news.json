@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20T05:53+00:00",
+"fetched": "2026-11-20T09:38+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -1579,6 +1579,36 @@
 "w": 2
 },
 {
+"d": "2026-11-20",
+"k": [
+"hot"
+],
+"s": "Davy Jones Locker Room (SEA)",
+"t": "Berkly Catton With Hat Trick in 5-1 WIN! Over the Vancouver Canucks",
+"u": "https://www.davyjoneslockerroom.com/berkly-catton-with-hat-trick-in-5-1-win-over-the-vancouver-canucks/",
+"w": 2
+},
+{
+"d": "2026-11-20",
+"k": [
+"hot"
+],
+"s": "Sportsnet",
+"t": "Berkly Catton scores hat trick as Kraken beat Canucks",
+"u": "https://www.sportsnet.ca/nhl/article/berkly-catton-scores-hat-trick-as-kraken-beat-canucks/",
+"w": 2
+},
+{
+"d": "2026-11-19",
+"k": [
+"hot"
+],
+"s": "RotoWire NHL player news",
+"t": "Berkly Catton: Earns first career hat trick",
+"u": "https://www.rotowire.com//hockey/player/berkly-catton-7132",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "NHL.com (team site)",
@@ -2564,10 +2594,10 @@
 "url": "https://thehockeynews.com/feed"
 },
 {
-"n": 0,
+"n": 8,
 "name": "The Hockey Writers",
-"note": "HTTP Error 403: Forbidden",
-"ok": false,
+"note": "0 new matches",
+"ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
@@ -2734,7 +2764,7 @@
 {
 "n": 10,
 "name": "Davy Jones Locker Room (SEA)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.davyjoneslockerroom.com/rss/index.xml"
 },
@@ -2851,7 +2881,7 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 12,
+"n": 0,
 "name": "ESPN NHL",
 "note": "0 new matches",
 "ok": true,
@@ -2867,7 +2897,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
