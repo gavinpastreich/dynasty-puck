@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20T09:38+00:00",
+"fetched": "2026-11-20T10:21+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -2764,7 +2764,7 @@
 {
 "n": 10,
 "name": "Davy Jones Locker Room (SEA)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.davyjoneslockerroom.com/rss/index.xml"
 },
@@ -2848,7 +2848,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -2897,7 +2897,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
