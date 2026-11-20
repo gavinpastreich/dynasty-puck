@@ -121,9 +121,16 @@
           { k: 'proj', l: 'Proj final', cls: 'num', v: function (r) { return r.sim ? r.sim.pct : null; }, f: function (r) { return r.sim ? U.fmt(r.sim.W, 0) + '-' + U.fmt(r.sim.L, 0) + '-' + U.fmt(r.sim.T, 0) : '…'; } },
           { k: 'seed', l: 'Avg seed', cls: 'num', v: function (r) { return r.sim ? -r.sim.avgSeed : null; }, f: function (r) { return r.sim ? U.fmt(r.sim.avgSeed, 1) : '…'; } },
           { k: 'po', l: 'Playoffs', cls: 'num', v: function (r) { return r.sim ? r.sim.po : null; }, f: function (r) { return r.sim ? U.pct(r.sim.po) : '…'; } },
+          { k: 'otr', l: 'Odds, 30 days', cls: 'num', title: 'Playoff odds over the last 30 days (nightly season sim; Playoff Picture)', v: function (r) { return r.od; }, f: function (r) { return r.od === undefined || r.od === null ? '' : (DP.oddsSpark ? DP.oddsSpark(r.t, 30, 64, 24) : '') + ' <span class="small">' + ui.delta(r.od * 100, 0) + '</span>'; } },
           { k: 'champ', l: 'Title', cls: 'num', v: function (r) { return r.sim ? r.sim.champ : null; }, f: function (r) { return r.sim ? U.pct(r.sim.champ, 1) : '…'; } },
           { k: 'p1', l: '#1 pick', cls: 'num', v: function (r) { return r.sim ? r.sim.slot[0] : null; }, f: function (r) { return r.sim ? U.pct(r.sim.slot[0], 1) : '…'; }, title: 'Chance of the worst record = first pick in the 2027 league draft' }
         ]
+      });
+      if (DP.loadValues) DP.loadValues(function (V) {
+        if (!V || !V.odds || !document.body.contains(el)) return;
+        var n = V.dates.length - 1, j = V.ref[3];
+        rows.forEach(function (r) { var o = V.odds[r.t]; r.od = o && o.po[n] !== null && o.po[j] !== null ? o.po[n] - o.po[j] : null; });
+        tbl.update();
       });
       DP.getSim(function (sim) {
         var by = {}; sim.forEach(function (r) { by[r.t] = r; });

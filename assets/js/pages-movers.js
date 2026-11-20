@@ -39,11 +39,11 @@
     });
     return E.teams.map(function (t) { var x = out[t]; x.d = x.now - x.then; x.moves = x.d - x.held; return x; });
   };
-  function spark(v, w, h) {
+  function spark(v, w, h, fixLo, fixHi) {
     w = w || 90; h = h || 22;
     var pts = []; (v || []).forEach(function (x, i) { if (x !== null) pts.push([i, x]); });
     if (pts.length < 2) return '';
-    var lo = Math.min.apply(null, pts.map(function (q) { return q[1]; })), hi = Math.max.apply(null, pts.map(function (q) { return q[1]; })), n = v.length - 1;
+    var lo = fixLo !== undefined ? fixLo : Math.min.apply(null, pts.map(function (q) { return q[1]; })), hi = fixHi !== undefined ? fixHi : Math.max.apply(null, pts.map(function (q) { return q[1]; })), n = v.length - 1;
     var d = pts.map(function (q, k) { return (k ? 'L' : 'M') + (q[0] / n * (w - 2) + 1).toFixed(1) + ',' + (h - 2 - (q[1] - lo) / (hi - lo || 1) * (h - 4)).toFixed(1); }).join('');
     var up = pts[pts.length - 1][1] >= pts[0][1];
     return '<svg class="spark" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="var(--' + (up ? 'good' : 'bad') + ')" stroke-width="1.6"/></svg>';
@@ -151,6 +151,12 @@
         b.innerHTML = '· <span class="' + (d > 0 ? 'good' : 'bad') + '" title="Dynasty value ' + U.fmt(o.v[j], 1) + ' → ' + U.fmt(o.v[n], 1) + ' over 30 days (Market Movers)">30d ' + U.sgn(d, 1) + (pct !== null && Math.abs(pct) >= 0.15 ? (d > 0 ? ' rising' : ' falling') : '') + '</span>';
       });
     });
+  };
+  // a team's playoff odds over the last `days` nights on file, as a sparkline
+  DP.oddsSpark = function (t, days, w, h) {
+    var V = DP.values, o = V && V.odds && V.odds[t]; if (!o) return '';
+    var lastT = Date.parse(V.dates[V.dates.length - 1] + 'T12:00:00Z'), v = o.po.filter(function (_, i) { return lastT - Date.parse(V.dates[i] + 'T12:00:00Z') <= (days || 30) * 864e5; });
+    return spark(v.map(function (x) { return x === null ? null : x * 100; }), w, h, 0, 100);
   };
   DP.valueSpark = function (id, w, h) { var o = DP.values && DP.values.p[id]; return o ? spark(o.v, w, h) : ''; };
 

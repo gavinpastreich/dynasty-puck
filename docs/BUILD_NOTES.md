@@ -459,3 +459,4 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     (generic), `DP.teamValueChart`, `DP.oddsChart` (Playoff Picture); Team Hub odds tile adds the 30-day change.
   - `DP.oddsBetween(from, to)` (pages-movers.js): playoff odds on the nights nearest two dates; The Weekly (`#wk-odds`)
     and the Power Rankings lines use it.
+  - Standings: "Odds, 30 days" column (`DP.oddsSpark`, fixed 0-100 scale; filled via `tbl.update()` after the history loads).

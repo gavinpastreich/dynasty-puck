@@ -253,6 +253,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => !DP.values || /30d|steady/.test((document.querySelector('#tr-cols [data-vt]') || {}).innerText || '')), 'trade machine: 30-day value trend on each player');
   await go('pickup?cat=7', 3500);
   ok(await page.evaluate(() => { const th = [...document.querySelectorAll('#pk-t th')].map((x) => x.innerText); return th.some((t) => /Δ Hit win/.test(t)); }), 'pickup planner: category focus column');
+  await go('standings', 4000);
+  ok(await page.evaluate(() => !DP.values || !DP.values.odds || [...document.querySelectorAll('#st-table th')].some((t) => /Odds, 30 days/.test(t.innerText)) && document.querySelectorAll('#st-table tbody svg.spark').length === DP.E.teams.length), 'standings: 30-day odds trend for every team');
   await go('playoffs', 4500);
   ok(await page.evaluate(() => !DP.values || !DP.values.odds || document.querySelectorAll('#po-hist svg g.bl').length === DP.E.teams.length), 'playoff picture: odds through the season');
   ok(await page.evaluate(() => { const r = document.querySelectorAll('#po-stakes tbody tr').length; return r === 0 ? /No regular-season week/.test(document.querySelector('#po-stakes').innerText) : r === DP.E.teams.length; }), "playoff picture: this week's stakes for every team");
