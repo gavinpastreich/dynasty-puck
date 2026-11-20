@@ -231,7 +231,7 @@
       S.push('<b>Standings:</b> ' + esc(tn(lead.t)) + ' lead' + (lead.t.slice(-1) === 's' ? '' : 's') + ' at ' + lead.W + '-' + lead.L + '-' + lead.T + '.' + (D.up ? ' Biggest climb: ' + esc(tn(D.up.t)) + ' (' + U.ord(D.up.from) + ' → ' + U.ord(D.up.to) + ').' : '') + (D.down ? ' Biggest drop: ' + esc(tn(D.down.t)) + ' (' + U.ord(D.down.from) + ' → ' + U.ord(D.down.to) + ').' : ''));
       var ck = D.cats.filter(function (x) { return /^(G|Hit|SOG|SV|GAA)$/.test(x.cat.k) && x.top; }).map(function (x) { var v = x.top.v; return esc(x.cat.l) + ' ' + esc(x.top.t) + ' (' + (x.cat.k === 'SV' ? U.rate(v) : x.cat.k === 'GAA' ? U.fmt(v, 2) : U.fmt(v, 0)) + ')'; });
       if (ck.length) S.push('<b>League highs:</b> ' + ck.join(' · ') + '.');
-      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li><li id="wk-swing" hidden></li><li id="wk-odds" hidden></li>' + (function () { var cc = DP.closeCalls(D.w).slice(0, 3); return cc.length ? '<li style="margin-bottom:6px"><b>Closest calls:</b> ' + cc.map(DP.closeTxt).join('; ') + '.</li>' : ''; })() + '</ul></div></div><div id="wk-flow"></div>';
+      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li><li id="wk-swing" hidden></li><li id="wk-odds" hidden></li><li id="wk-regret" hidden></li>' + (function () { var cc = DP.closeCalls(D.w).slice(0, 3); return cc.length ? '<li style="margin-bottom:6px"><b>Closest calls:</b> ' + cc.map(DP.closeTxt).join('; ') + '.</li>' : ''; })() + '</ul></div></div><div id="wk-flow"></div>';
       // moves
       var M = [];
       D.trades.forEach(function (tr) { var tk = tradeTake(tr); M.push('<b>Trade:</b> ' + tr.teams.map(function (t) { return esc(tn(t)); }).join(' / ') + ' (' + tr.moves.filter(function (m) { return m.kind === 'player'; }).map(function (m) { return esc(m.label); }).join(', ') + (tr.moves.some(function (m) { return m.kind === 'pick'; }) ? ' and picks' : '') + (tr.moves.some(function (m) { return m.kind === 'cap'; }) ? ' and cap space' : '') + '). By today\'s model ' + esc(tk.best) + ' came out ahead. <a href="#/history">Trade History →</a>'); });
@@ -269,6 +269,9 @@
         li.className = '';
         li.innerHTML = '<b>Players of the week</b> (locked starters): ' + parts.map(function (x) { return x[0] + ': ' + ui.plink(x[1].p) + ' (' + esc(x[1].t) + '), ' + esc(lineTxt(x[1])); }).join('; ') + '.';
         starsTxt = parts.map(function (x) { return x[0] + ': ' + x[1].p.n + ' (' + x[1].t + '), ' + lineTxt(x[1]); });
+        // lineup regret of the week: the one swap that would have changed a result most
+        var RG = DP.lineupRegrets ? DP.lineupRegrets(n) : null, rg = RG && RG[0], rli = U.qs('#wk-regret', el);
+        if (rli && rg && rg.gain >= 2) { rli.hidden = false; rli.innerHTML = '<b>Lineup regret of the week:</b> ' + DP.regretText(rg) + ' <span class="muted">(' + RG.filter(function (x) { return x.flip; }).length + ' matchup' + (RG.filter(function (x) { return x.flip; }).length === 1 ? '' : 's') + ' a single swap would have flipped)</span>'; }
         // playoff odds movers over the week (odds history in data/values.js)
         if (DP.loadValues && DP.oddsBetween) DP.loadValues(function () {
           var oi = U.qs('#wk-odds', el), O = DP.oddsBetween(addDays(D.w.from, -1), addDays(D.w.to, 1)); if (!oi || !O) return;

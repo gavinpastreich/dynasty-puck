@@ -319,7 +319,7 @@
         '<p class="sub">' + (U.teamName(t) !== t ? 'GM ' + esc(t) + ' · ' : '') + (divs[t] ? esc(divs[t]) + ' division · ' : '') + ros.length + ' players (' + s.nMnr + ' MNR) · dynasty power #' + s.prank + '</p></div></div>' +
         '<div class="hero-rec">' + (arec ? '<div class="big num">' + arec.W + '-' + arec.L + '-' + arec.T + '</div><div class="small">' + U.ord(aRank) + ' of ' + E.teams.length + ' · ' + act.done + ' week' + (act.done === 1 ? '' : 's') + ' played</div>' : '<div class="small muted">Season not started</div>') + '</div>' +
         '<label class="hero-sel small muted">Team ' + ui.teamSelect('tsel', t) + '</label></div>';
-      h += '<nav class="jump" aria-label="Sections of this page">' + [['lineup', 'Lineup'], ['season', 'Season'], ['strat', 'Strategy'], ['cats', 'Categories'], ['slots', 'Roster by slot'], ['cap', 'Cap'], ['pipe', 'Prospects'], ['roster', 'Full roster']].map(function (x) { return '<button type="button" data-jump="tj-' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</nav>';
+      h += '<nav class="jump" aria-label="Sections of this page">' + [['lineup', 'Lineup'], ['season', 'Season'], ['regret', 'Regrets'], ['strat', 'Strategy'], ['cats', 'Categories'], ['slots', 'Roster by slot'], ['cap', 'Cap'], ['pipe', 'Prospects'], ['roster', 'Full roster']].map(function (x) { return '<button type="button" data-jump="tj-' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</nav>';
       h += '<div class="stats stats6">' +
         DP.statTile('Projected finish', U.ord(s.exp.rank), U.fmt(s.exp.W, 0) + '-' + U.fmt(s.exp.L, 0) + '-' + U.fmt(s.exp.T, 0) + ' category record') +
         '<div class="stat"><div class="l">Playoff odds</div><div class="v" id="t-po">…</div><div class="d" id="t-champ">title odds …</div></div>' +
@@ -330,6 +330,7 @@
       h += '<div class="grid g2">';
       h += '<div class="card span2" id="tj-lineup"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
       h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. The small line in each week = your chance to win it after each day. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
+      h += '<div class="card span2" id="tj-regret"><h2>🪑 Lineup regrets</h2><div class="hint">Each week played, the one swap that would have helped most: a bench player (or a minor-leaguer who played NHL games) in place of a starter at the same position, with the week re-scored like the standings.</div><div id="t-regret"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card span2" id="tj-strat"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
       h += '<div class="card" id="tj-cats"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
@@ -347,6 +348,17 @@
       U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
       DP.jumpNav(el);
       if (DP.fillWeekFlows) DP.fillWeekFlows(el);
+      if (DP.teamRegrets && DP.loadWeeks) {
+        var rns = E.history().weeks.map(function (w) { return w.n; });
+        DP.loadWeeks(rns, function () {
+          var box = U.qs('#t-regret', el); if (!box) return;
+          var RR = DP.teamRegrets(t, rns).sort(function (a, b) { return b.n - a.n; });
+          var flips = RR.filter(function (x) { return x.flip; }).length, cats = E.sum(RR.map(function (x) { return x.gain / 2; }));
+          box.innerHTML = !rns.length ? '<p class="small muted">After the first week.</p>' : !RR.length ? '<p class="small">No week where a bench swap would have helped. A clean sheet.</p>' :
+            '<p class="small"><b>' + RR.length + '</b> of ' + rns.length + ' weeks had a better option on the bench or in the minors; one swap would have flipped <b>' + flips + '</b> matchup' + (flips === 1 ? '' : 's') + ' (about ' + U.fmt(cats, 1) + ' categories in all).</p><ul class="list-plain">' +
+            RR.map(function (x) { return '<li><span class="wkchip ' + (x.flip ? 'L' : 'T') + '"><span class="wk">W' + x.n + '</span>' + (x.flip ? '<b>flip</b>' : '+' + U.fmt(x.gain / 2, 1)) + '</span><span class="small">' + DP.regretText(x, { team: false }) + '</span></li>'; }).join('') + '</ul>';
+        });
+      }
       if (DP.teamValueTrend) { var dvTile = U.qsa('.stat', el).filter(function (x) { return /Dynasty value/.test((U.qs('.l', x) || {}).textContent || ''); })[0]; if (dvTile && U.qs('.d', dvTile)) { var dvBox = document.createElement('span'); U.qs('.d', dvTile).appendChild(dvBox); DP.teamValueTrend(t, dvBox); } }
 
       DP.getSim(function (sim) {

@@ -243,6 +243,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     ok(await page.evaluate(() => document.querySelectorAll('svg.flow circle').length >= 3), 'live scoreboard: day-by-day chart for a finished week');
     await go('weekly?w=' + lastWk, 5000);
     ok(await page.evaluate(() => /Comeback|Upset|No real comebacks/.test(document.querySelector('#wk-swing').innerText)), 'the weekly: comeback / upset line');
+    ok(await page.evaluate(() => { const R = DP.lineupRegrets(DP.E.history().weeks.slice(-1)[0].n) || [], li = document.querySelector('#wk-regret'); return R.length && R[0].gain >= 2 ? !li.hidden && /Lineup regret of the week/.test(li.innerText) && /instead of/.test(li.innerText) : li.hidden; }), 'the weekly: lineup regret of the week');
   }
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && !p.G).sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3500);
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /This season in Dynasty Puck/.test(h.innerText)) && /Total/.test(document.querySelector('#main').innerText)), 'player page: this season in the league');
@@ -269,8 +270,10 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('records', 6000);
   ok(await page.evaluate(() => !DP.weekDays || document.querySelectorAll('#rb-days .rec').length === 13), 'record book: best single days');
   ok(await page.evaluate(() => document.querySelectorAll('#rb-mvp li').length >= 12), 'record book: MVP race');
+  ok(await page.evaluate(() => /instead of|aren't published/.test(document.querySelector('#rb-regret').innerText)), 'record book: biggest lineup regrets');
   await go('team/ROO', 7000);
   ok(await page.evaluate(() => document.querySelectorAll('.wkchip .wkflow svg').length >= Math.min(3, DP.E.history().weeks.length)), 'team hub: day-by-day line in each week');
+  ok(await page.evaluate(() => { const b = document.querySelector('#t-regret'); return !!b && /weeks had|clean sheet|After the first week/.test(b.innerText) && document.querySelectorAll('#t-regret li').length === DP.teamRegrets('ROO', DP.E.history().weeks.map((w) => w.n)).length; }), 'team hub: lineup regrets');
   ok(await page.evaluate(() => !DP.values || !DP.values.odds || [...document.querySelectorAll('#tj-season h3')].some((h) => /Playoff odds through the season/.test(h.innerText))), 'team hub: playoff odds through the season');
   await page.evaluate(() => { location.hash = '#/compare?ids=' + encodeURIComponent(DP.E.P.filter((p) => p.gm).slice(0, 2).map((p) => p.id).join(',')); }); await page.waitForTimeout(2500);
   ok(await page.evaluate(() => !DP.values || !!document.querySelector('#cmp-vt svg')), 'compare: value through the season');

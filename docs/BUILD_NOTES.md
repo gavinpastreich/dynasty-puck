@@ -460,3 +460,9 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - `DP.oddsBetween(from, to)` (pages-movers.js): playoff odds on the nights nearest two dates; The Weekly (`#wk-odds`)
     and the Power Rankings lines use it.
   - Standings: "Odds, 30 days" column (`DP.oddsSpark`, fixed 0-100 scale; filled via `tbl.update()` after the history loads).
+  - Lineup regrets: `tools/scoreboard.py` `add_bench()` stores each finished week's bench and minors lines
+    (`period_bench` reads Fantrax `getTeamRosters?period=N`, statuses RESERVE and MINORS; `bench_lines` scores them like the starters) in
+    raw/2026-27/weekly/week_NN.json and data/weeks/wNN.js (`bench`, `minors`), backfilling saved weeks that lack them.
+    `DP.lineupRegrets(n)` (pages-regret.js) tries every bench/minors-for-starter swap at the same position (F/D/G),
+    rebuilds the week totals with the real lines and re-scores with `E.weekVec` + `E.catResults`; `gmin` marks swaps
+    that reach the goalie minimum. Shown on The Weekly (`#wk-regret`), Team Hub (`#tj-regret`), Record Book (`#rb-regret`).

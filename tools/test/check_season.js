@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -383,6 +383,29 @@ if (V && V.odds) {
   ok(OB && OB._from <= V.dates[1] && OB._to === V.dates[V.dates.length - 1] && E.teams.every((t) => !OB[t] || near(OB[t].d, OB[t].b - OB[t].a)), 'odds between two dates');
   ok(DP.oddsBetween('2099-01-01', '2099-01-02') === null || true, 'odds between: dates past the history do not throw');
 }
+
+// ---- lineup regrets: the starters' lines add up to the week, so swapping lines is the same as rebuilding the week
+let nReg = 0;
+HW.forEach((w) => {
+  const W = DP.weekDetail[w.n]; if (!W || !w.games || !w.games.length) return;
+  E.teams.forEach((t) => {
+    const T = W.teams[t]; if (!T || !T.bench) return;
+    const s = { G: 0, A: 0, SOG: 0, Hit: 0, GGP: 0, SA: 0 };
+    (T.active || []).forEach((id) => { const l = (T.pl || {})[id], p = E.byId[id]; if (!l || !p) return; if (p.G) { s.GGP += l[0]; s.SA += l[3]; } else { s.G += l[1]; s.A += l[2]; s.SOG += l[4]; s.Hit += l[6]; } });
+    ok(Object.keys(s).every((k) => s[k] === (w.tot[t][k] || 0)), `regrets week ${w.n} ${t}: the starters' lines add up to the week's totals`);
+  });
+  const RG = DP.lineupRegrets(w.n) || [];
+  nReg += RG.length;
+  RG.forEach((r) => {
+    const T = W.teams[r.t], g = (p) => (p.G ? 'G' : p.pos === 'D' ? 'D' : 'F');
+    ok(r.gain > 0 && r.s1[0] + r.s1[1] + r.s1[2] === E.NC && g(r.inP) === g(r.outP), `regret week ${w.n} ${r.t}: a better result at the same position`);
+    ok(T.active.indexOf(r.outP.id) >= 0 && T.active.indexOf(r.inP.id) < 0 && (T[r.from] || {})[r.inP.id] && r.inL[0] > 0, `regret week ${w.n} ${r.t}: a starter out, a ${r.from} player who played in`);
+    ok(r.flip === (r.s0[0] <= r.s0[1] && r.s1[0] > r.s1[1]), `regret week ${w.n} ${r.t}: flip flag`);
+    ok(DP.regretText(r).indexOf('instead of') > 0, `regret week ${w.n} ${r.t}: text`);
+  });
+  ok(RG.every((r, i) => !i || RG[i - 1].flip > r.flip || (RG[i - 1].flip === r.flip && RG[i - 1].gain >= r.gain)), `regrets week ${w.n}: flips first, then by gain`);
+});
+ok(nReg > 0, `lineup regrets found (${nReg})`);
 
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');

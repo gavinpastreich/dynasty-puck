@@ -97,6 +97,65 @@ def period_lineups(period, teams, snap=None):
     return None
 
 
+def period_bench(period, teams):
+    """{team code: {'bench': [(fantrax id, position)], 'minors': [...]}} for a Fantrax period: the players who were not in
+    the locked lineup (Reserve = bench, Minors), for the "lineup regrets" (what a swap would have changed)."""
+    import fantrax_api as FX
+    code = lambda tid: (teams.get(tid) or {}).get("code") or tid
+    if API.OFFLINE:
+        return None
+    try:
+        d = FX._fetch(f"getTeamRosters?leagueId={FX.LEAGUE_ID}&period={period}")
+    except Exception as e:
+        print(f"  ! Fantrax rosters for period {period} failed: {e}")
+        return None
+    out = {}
+    for tid, t in (d.get("rosters") or {}).items():
+        items = t.get("rosterItems", [])
+        out[code(tid)] = {"bench": [(it["id"], it.get("position")) for it in items if it.get("status") == "RESERVE"],
+                          "minors": [(it["id"], it.get("position")) for it in items if it.get("status") == "MINORS"]}
+    return out if out else None
+
+
+def bench_lines(bench, lookup, sk, gk, cor_est):
+    """{team: {'bench': {app id: line}, 'minors': {app id: line}}}: lines of the players outside the lineup who played."""
+    out = {}
+    for c, b in (bench or {}).items():
+        out[c] = {k: team_totals(b.get(k) or [], lookup, sk, gk, cor_est)[0]["pl"] for k in ("bench", "minors")}
+    return out
+
+
+def add_bench(weeks, lookup, cor_model, teams, raw_dir=None, log=print):
+    """Adds bench / minors lines to saved finished weeks that don't have them yet (weeks frozen before this existed)."""
+    if not raw_dir:
+        with open(os.path.join(ROOT, "config", "league.json"), encoding="utf-8") as f:
+            raw_dir = os.path.join(ROOT, *json.load(f).get("rawFolder", "raw/2026-27").split("/"), "weekly")
+    cor_est = lambda h: cor_model[0] * h["sat"] + cor_model[1] * h["pp"] + cor_model[2] * h["shtoi"] + cor_model[3] * h["gp"]
+    n = 0
+    for w in weeks:
+        path = os.path.join(raw_dir, f"week_{w['n']:02d}.json")
+        if not os.path.exists(path) or API.OFFLINE:
+            continue
+        with open(path, encoding="utf-8") as f:
+            rec = json.load(f)
+        if all("bench" in t for t in rec["teams"].values()):
+            continue
+        bench = period_bench(w["n"], teams)
+        if not bench:
+            continue
+        sk, gk = range_stats(rec["from"], rec["to"], max_age_days=3650 if rec.get("final") else 0.25)
+        if not sk:
+            continue
+        for c, b in bench_lines(bench, lookup, sk, gk, cor_est).items():
+            if c in rec["teams"]:
+                rec["teams"][c].update(b)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(rec, f, separators=(",", ":"), sort_keys=True)
+        n += 1
+    if n:
+        log(f"Lineup regrets: bench lines added to {n} saved week(s)")
+
+
 # ----------------------------------------------------------------------------- live game day
 def _sec(t):
     try:
@@ -362,6 +421,9 @@ def history(weeks, lookup, cor_model, teams, snap=None, now=None, raw_dir=None, 
                     rec = {"n": w["n"], "from": w["start"], "to": w["end"], "final": (day - end).days >= 3,
                            "computed": now.isoformat(timespec="minutes"),
                            "teams": {c: team_totals(lu, lookup, sk, gk, cor_est)[0] for c, lu in lineups.items()}}
+                    for c, b in bench_lines(period_bench(w["n"], teams), lookup, sk, gk, cor_est).items():
+                        if c in rec["teams"]:
+                            rec["teams"][c].update(b)
                     os.makedirs(raw_dir, exist_ok=True)
                     with open(path, "w", encoding="utf-8") as f:
                         json.dump(rec, f, separators=(",", ":"), sort_keys=True)

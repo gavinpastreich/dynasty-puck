@@ -141,6 +141,7 @@
       if (cc.length) h += '<div class="card" style="margin-top:14px"><h2>🤏 Closest calls</h2><div class="hint">Categories won by the smallest margins of the season, measured against how spread out the league was in that category that week. Ties not included.</div><ul class="list-plain">' +
         cc.slice(0, 8).map(function (x) { return '<li><span class="small">' + DP.closeTxt(x) + '</span><span class="small muted" style="margin-left:auto">' + wk(x.n) + '</span></li>'; }).join('') + '</ul></div>';
       h += '<div class="card" style="margin-top:14px"><h2>🏆 MVP race</h2><div class="hint">The most category impact from locked starters this season: each week\'s line measured against how spread out the 14 teams were in each category that week, summed over the weeks he started (see Rules & Methods).</div><div id="rb-mvp"><p class="small muted">Loading the weekly lines…</p></div></div>';
+      h += '<div class="card" style="margin-top:14px"><h2>🪑 Biggest lineup regrets</h2><div class="hint">The one swap that would have changed a week most: a bench player (or a minor-leaguer who played NHL games that week) in place of a starter at the same position, the week re-scored like the standings.</div><div id="rb-regret"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📅 Best single days</h2><div class="hint">The best one-day team total in each counting category (one NHL game day, the locked starters), next to the average team day.</div><div id="rb-days"><p class="small muted">Loading the days…</p></div></div>';
       el.innerHTML = h;
       DP.loadWeeks(R.weeks.map(function (w) { return w.n; }), function (details) {
@@ -148,6 +149,12 @@
         var P = DP.playerRecords(details);
         var one = function (r, fmt) { return r.top.length ? '<li><span class="rk">' + esc(r.l) + '</span><span class="who">' + r.top.map(function (x, i) { return (i ? '<span class="faint small">' : '<b>') + '<span class="num">' + (fmt ? fmt(x.v) : x.v) + '</span> ' + ui.plink(x.p) + ' <span class="small muted">' + esc(x.t) + ', wk ' + x.n + '</span>' + (i ? '</span>' : '</b>'); }).join('<br>') + '</span></li>' : ''; };
         box.innerHTML = '<ul class="list-plain recind">' + P.sk.map(function (r) { return one(r); }).join('') + P.gk.map(function (r, i) { return one(r, i === 3 ? U.rate : null); }).join('') + '</ul>';
+        var rgb = U.qs('#rb-regret', el);
+        if (rgb && DP.lineupRegrets) {
+          var all = []; R.weeks.forEach(function (w) { (DP.lineupRegrets(w.n) || []).forEach(function (x) { all.push(x); }); });
+          all.sort(function (a, b) { return (b.flip - a.flip) || b.gain - a.gain || b.n - a.n; });
+          rgb.innerHTML = all.length ? '<ul class="list-plain">' + all.slice(0, 6).map(function (x) { return '<li><span class="small">' + DP.regretText(x) + '</span><span class="small muted" style="margin-left:auto;white-space:nowrap">' + wk(x.n) + '</span></li>'; }).join('') + '</ul><p class="small muted">' + all.filter(function (x) { return x.flip; }).length + ' matchups this season would have flipped with one different start.</p>' : '<p class="small muted">Bench lines aren\'t published for these weeks yet.</p>';
+        }
         var mb = U.qs('#rb-mvp', el);
         if (mb) {
           var MV = DP.mvpRace(R.weeks, details), row = function (o, i) { return '<li><div class="fml">' + ui.pcell(o.p, { pos: 1 }) + '<div class="fmd small muted">' + (i + 1) + '. ' + o.teams.map(function (t) { return U.teamLabel(t); }).join(', ') + ' · ' + o.wk + ' weeks · ' + o.gp + ' GP</div></div><span class="fmr num"><b>' + U.fmt(o.v, 1) + '</b><br><span class="faint small">' + U.fmt(o.per, 2) + '/wk</span></span></li>'; };
