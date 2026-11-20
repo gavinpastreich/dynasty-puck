@@ -178,6 +178,12 @@
           '<td class="num ' + (lead < 0 ? 'good' : '') + '">' + (lead < 0 ? '<b>' + fmt(c, x.b) + '</b>' : fmt(c, x.b)) + '</td></tr>';
       }).join('') + '</tbody></table></div>';
     var gm = E.RULES.goalieMinGP;
+    // the categories still in the balance (25-75%), closest first, with the current gap in the counting ones
+    var swing = fin ? [] : o.cats.map(function (x, c) { return { x: x, c: c }; }).filter(function (s) { return s.x.pw > 0.25 && s.x.pw < 0.75; }).sort(function (p, q) { return Math.abs(p.x.pw - 0.5) - Math.abs(q.x.pw - 0.5); });
+    if (swing.length) h += '<p class="small lv-swing" style="margin:6px 0 0"><b>Up for grabs</b> (25–75%): ' + swing.map(function (s) {
+      var cat = E.CATS[s.c], ratio = cat.k === 'GAA' || cat.k === 'SV', d = ratio || s.x.a === null || s.x.b === null ? null : s.x.a - s.x.b;
+      return '<b>' + esc(cat.l) + '</b> <span class="muted">(' + esc(a) + ' ' + U.pct(s.x.pw) + (d === null ? '' : Math.abs(d) < 1e-9 ? ', level' : ', ' + esc(d > 0 ? a : b) + ' up ' + fmt(s.c, Math.abs(d))) + ')</span>';
+    }).join(', ') + '.</p>';
     if (!fin && o.left) h += '<p class="small" style="margin:6px 0 0"><b>Games left this week</b>: ' + esc(a) + ' ' + U.fmt(o.left[0].sk, 0) + ' skater games · ' + U.fmt(o.left[0].g, 1) + ' goalie starts; ' + esc(b) + ' ' + U.fmt(o.left[1].sk, 0) + ' · ' + U.fmt(o.left[1].g, 1) + (Math.abs(o.left[0].sk - o.left[1].sk) >= 3 ? ' <span class="badge ' + (o.left[0].sk > o.left[1].sk ? 'good' : 'warn') + '">' + esc(o.left[0].sk > o.left[1].sk ? a : b) + ' +' + U.fmt(Math.abs(o.left[0].sk - o.left[1].sk), 0) + ' games</span>' : '') + '</p>';
     h += '<p class="small muted">Goalie GP' + (fin ? '' : ' so far') + ': ' + esc(a) + ' ' + o.ggpA + ', ' + esc(b) + ' ' + o.ggpB + ' (minimum ' + gm + ').' + (fin ? '' : ' Tie odds ' + U.pct(o.tie) + '.') + ' <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button> <button class="btn sm ghost" data-flowbtn="f' + id + '">📈 Day by day</button> <a class="btn sm ghost" href="' + U.hash('matchup', null, { w: sc.week, a: a, b: b, set: '1' }) + '">Full matchup</a></p>';
     h += '<div id="' + id + '"' + (open[key] ? '' : ' hidden') + '>' + lines(a, sc.teams[a], sc) + lines(b, sc.teams[b], sc) + '</div>';

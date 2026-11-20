@@ -268,6 +268,10 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => (!DP.state.team || !!document.querySelector('.grtab tr.mine')) && /Lineup calls/.test(document.querySelector('#main').innerText)), 'report cards: my team highlighted');
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent('*04dwk*'); }); await page.waitForTimeout(3000);
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /Moves in Dynasty Puck/.test(h.innerText)) && /Traded from/.test(document.querySelector('.pmoves').innerText)), 'player page: moves in the league');
+  await go('scorecard', 4000);
+  ok(await page.evaluate(() => !DP.values || !DP.values.calls || (document.querySelectorAll('#sc-t tbody tr').length === DP.modelCalls().length && !!document.querySelector('svg.calib') && /Favorites won/.test(document.querySelector('#main').innerText))), 'model scorecard: tiles, calibration and every call');
+  await go('history', 3500);
+  ok(await page.evaluate(() => document.querySelectorAll('#th-net svg.tnet circle').length === DP.E.teams.length && document.querySelectorAll('#th-net path.te').length === DP.tradePairs().pairs.length), 'trade history: who trades with whom');
   await go('moves', 4500);
   ok(await page.evaluate(() => document.querySelectorAll('.fmlist li').length >= 3 && document.querySelectorAll('#mv-log tbody tr').length > 10), 'transactions: best pickups and the full log');
   await go('history', 3500);

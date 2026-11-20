@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -451,6 +451,50 @@ if (DP.values) {
   CS.cur.forEach((x) => { const a = res(x.t, x.c); let n = 0; for (let i = a.length - 1; i >= 0 && a[i] === x.k; i--) n++; ok(n === x.n && x.k !== 'T' && (a.length === n || a[a.length - n - 1] !== x.k), `category streak ${x.t} ${E.CATS[x.c].k}: ${x.k} ${x.n} running`); });
   CS.best.forEach((x) => { const a = res(x.t, x.c); let run = 0, b = 0; a.forEach((r) => { run = r === 'W' ? run + 1 : 0; b = Math.max(b, run); }); ok(b === x.n && x.to - x.from + 1 === x.n, `category streak ${x.t} ${E.CATS[x.c].k}: best run ${x.n}`); });
   ok(CS.best.every((x, i) => !i || CS.best[i - 1].n >= x.n) && CS.cur.every((x, i) => !i || CS.cur[i - 1].n >= x.n), 'category streaks: longest first');
+}
+
+// ---- Model Scorecard: every finished matchup with a recorded call, scored against the real result
+if (DP.values && DP.values.calls) {
+  const M = DP.modelCalls(), S = DP.modelScore(M), C = DP.values.calls;
+  const withCall = HW.filter((w) => w.games && w.games.length && C[w.n]);
+  ok(M.length === E.sum(withCall.map((w) => w.games.length)), `scorecard: every matchup of the ${withCall.length} called weeks is scored (${M.length})`);
+  Object.keys(C).forEach((n) => {
+    const c = C[n], w = E.weeks[n - 1], lt = E.lockTime(n - 1);
+    ok(c.g.length === DP.meta.h2h.filter((g) => g[0] === +n).length && c.g.every((g) => g[2] >= 0 && g[3] >= 0 && g[2] + g[3] <= 1 + 1e-9 && g[4] >= 0 && g[4] <= 15), `scorecard week ${n}: one call per scheduled matchup, valid odds`);
+    ok(!lt || new Date(c.t + ':00Z').getTime() < lt.getTime(), `scorecard week ${n}: recorded before the lock (${c.t} UTC)`);
+    ok(c.g.every((g) => DP.meta.h2h.some((h) => h[0] === +n && ((h[1] === g[0] && h[2] === g[1]) || (h[1] === g[1] && h[2] === g[0])))), `scorecard week ${n}: the scheduled pairs`);
+  });
+  M.forEach((m) => {
+    const w = HW.find((x) => x.n === m.n), g = w.games.find((x) => (x.a === m.fav && x.b === m.dog) || (x.b === m.fav && x.a === m.dog)), sf = g.a === m.fav ? g.sa : g.sb;
+    ok(m.pf >= m.pd && near(m.p, m.pf + m.pt / 2) && m.res === (sf.W > sf.L ? 1 : sf.W < sf.L ? 0 : 0.5) && near(m.actF, sf.W + sf.T / 2), `scorecard week ${m.n} ${m.fav}: favorite, chance and result`);
+  });
+  if (S) {
+    ok(near(S.brier, E.sum(M.map((m) => (m.p - m.res) ** 2)) / M.length) && near(S.skill, 1 - S.brier / 0.25), 'scorecard: Brier score');
+    ok(S.bins.reduce((a, b) => a + b.n, 0) === M.length && S.bins.every((b) => !b.n || (b.pred >= b.lo - 1e-9 && b.pred < b.hi + 1e-9)), 'scorecard: calibration bins hold every matchup');
+    ok(S.favW + (S.dec - S.favW) + S.ties === S.n && S.upsets.length === S.dec - S.favW, 'scorecard: wins, losses, ties');
+  }
+}
+
+// ---- trade network: pairs and per-team counts from the trade log
+{
+  const N = DP.tradePairs(), T = DP.league.trades || [];
+  ok(N.trades === T.length && E.teams.every((t) => N.per[t] === T.filter((tr) => tr.teams.includes(t)).length), 'trade network: trades per team');
+  ok(N.pairs.every((p) => p.n === T.filter((tr) => tr.teams.includes(p.a) && tr.teams.includes(p.b)).length && p.a < p.b), 'trade network: trades per pair');
+  ok(E.sum(N.pairs.map((p) => p.n)) === E.sum(T.map((tr) => tr.teams.length * (tr.teams.length - 1) / 2)), 'trade network: every pair of every trade counted once');
+  E.teams.forEach((t) => { const P = DP.tradePartners(t); ok(P.with.length + P.never.length === E.teams.length - 1 && P.total === N.per[t], `trade network ${t}: partners + never = everyone else`); });
+  ok(/<svg/.test(DP.tradeNetworkSvg('ROO')) && (DP.tradeNetworkSvg('ROO').match(/<circle/g) || []).length === E.teams.length, 'trade network: one node per team');
+}
+
+// ---- My Page: share links carry the whole layout; junk and unknown widgets are dropped
+{
+  const L = { w: [{ k: 'matchup', s: 2, o: {} }, { k: 'standings', s: 1, o: { n: 5 } }, { k: 'movers', s: 1, o: { team: '*', n: 10 } }, { k: 'note', s: 1, o: { text: 'Trade ideas: ask M.M about \u00e9\u00e8 & "quotes"\nline 2' } }, { k: 'tracker', s: 2, o: { ids: E.P.slice(0, 3).map((p) => p.id) } }, { k: 'links', s: 1, o: { pages: ['live', 'trade'] } }, { k: 'lineup', s: 1, o: { team: 'M.M' } }] };
+  const R = DP.decodeLayout(DP.encodeLayout(L));
+  ok(R && JSON.stringify(R.w) === JSON.stringify(L.w), 'my page: share link round trip (team, count, text, players, pages)');
+  ok(/^[A-Za-z0-9_-]+$/.test(DP.encodeLayout(L)), 'my page: the link is URL-safe');
+  ok(DP.decodeLayout('not-a-layout') === null, 'my page: a broken link is ignored');
+  ok(DP.decodeLayout(DP.encodeLayout({ w: [{ k: 'nope', s: 1, o: {} }, { k: 'odds', s: 3, o: {} }] })).w.map((x) => x.k + x.s).join() === 'odds1', 'my page: unknown widgets dropped, sizes clamped');
+  Object.keys(DP.MYPAGE_PRESETS).forEach((k) => ok(DP.MYPAGE_PRESETS[k].w.every((x) => DP.WIDGETS[x[0]]), `my page preset ${k}: every widget exists`));
+  ok(Object.keys(DP.WIDGETS).every((k) => { const w = DP.WIDGETS[k]; return w.name && w.ic && w.desc && w.cat && typeof w.render === 'function'; }), `my page: ${Object.keys(DP.WIDGETS).length} widgets, each with a name, icon, description and category`);
 }
 
 // ---- Start Here tour: every link is a page in the menu

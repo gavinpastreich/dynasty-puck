@@ -476,12 +476,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Model Scorecard logging (live from 2026-11-20): `tools/value_history.js` `score()` also records `call` = every
     matchup of the next lineup lock (E.simWeek 6000, optimal lineups with injuries benched; [a, b, win, tie, expected
     cats for a]); `put()` keeps the latest pre-lock night per week in `history.calls` / `DP.values.calls`.
-  - WORK IN PROGRESS (files committed, NOT loaded by index.html yet; finish, test and wire them):
-    - assets/js/pages-scorecard.js: Model Scorecard page (`DP.modelCalls`, `DP.modelScore`, calibration chart, upsets,
-      every call). Needs: `node tools/value_history.js --backfill` in a full clone so weeks 1-8 get calls, a script tag,
-      NAV entry (Simulators), PAGE_WORDS, Rules & Methods 41, NEWS, check_season + flows tests.
-    - assets/js/pages-network.js: trade network (`DP.tradePairs`, `DP.tradePartners`, `DP.tradeNetworkSvg`,
-      `DP.tradeNetworkCard(me)`). Needs: script tag, call it from the Trade History page (pages-trade.js) and maybe the
-      Team Hub, tests, docs. CSS for both (.calib, .tnet) is already in assets/app.css.
-    - Next on the list: live per-category swing line (pages-live.js card()), title path search (E.simSeason with
-      `weeks: E.weeksFor(...)`, ~1.3 s per candidate at 400 seasons), NHL team stacks, faster first load on phones.
+  - Model Scorecard (pages-scorecard.js): `DP.modelCalls()` joins `DP.values.calls` with `E.history()` (favorite's side),
+    `DP.modelScore(M)` = Brier, calibration bins, upsets. Weeks still open show their calls (frozen at the lock or still
+    updating). Backfilled for weeks 1-8 with `node tools/value_history.js --backfill` (3.5 min locally).
+  - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
+    `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

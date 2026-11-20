@@ -647,3 +647,48 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .tnet .tc { fill: var(--muted); font-weight: 700; }
 .tnet a:hover .tl { text-decoration: underline; }
 @media (max-width: 760px) { .tnet-wrap { grid-template-columns: 1fr; } .tnet .tl { font-size: 13px; } }
+/* My Page (build-your-own) */
+.mp-bar { flex-wrap: wrap; gap: 8px; }
+.mp-bar .btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.mp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.mp-grid .mw { margin: 0; min-width: 0; }
+.mp-grid .mw.wide { grid-column: 1 / -1; }
+.mp-grid.editing .mw { outline: 2px dashed color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: -2px; }
+@media (max-width: 760px) { .mp-grid { grid-template-columns: 1fr; } }
+.mw-head { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 8px; flex-wrap: wrap; }
+.mw-head .mw-ic { font-size: 1.1rem; }
+.mw-head .mw-go, .mw-head .mw-ctl { margin-left: auto; font-weight: 400; }
+.mw-ctl { display: inline-flex; gap: 2px; flex-wrap: wrap; }
+.mw-ctl .btn { padding: 2px 7px; min-width: 30px; }
+.mwlist li { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--line2, var(--line)); }
+.mwlist li:last-child { border-bottom: 0; }
+.mwlist li.mine { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.mw-l { min-width: 0; overflow-wrap: anywhere; }
+.mw-r { margin-left: auto; text-align: right; color: var(--muted); }
+.mw-r .gr { margin-left: 2px; font-size: .8rem; padding: 0 4px; min-width: 1.8em; }
+.mw-rk { display: inline-block; min-width: 1.8em; }
+.mw-h { margin: 8px 0 2px; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.mw-score { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.4rem; }
+.mw-score .small { font-size: .85rem; }
+.mw-cats { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.mw-cat { font-size: .75rem; padding: 2px 6px; border-radius: 6px; border: 1px solid var(--line); }
+.mw-cat.W { background: var(--good-bg); color: var(--good); }
+.mw-cat.L { background: var(--bad-bg); color: var(--bad); }
+.mw-cat.T { color: var(--muted); }
+.mw-note { white-space: normal; line-height: 1.45; }
+.mw-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.mw-set { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 8px; margin-bottom: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--card2, transparent); }
+.mw-pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 2px 10px; max-height: 220px; overflow: auto; }
+.mw-pill { display: inline-flex; align-items: center; gap: 2px; padding: 1px 4px 1px 8px; margin: 2px 4px 2px 0; border: 1px solid var(--line); border-radius: 999px; }
+.mwnews li { margin-bottom: 6px; }
+.mp-gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; margin-bottom: 10px; }
+.mp-wg { display: flex; gap: 10px; align-items: flex-start; text-align: left; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card2, transparent); color: var(--ink); cursor: pointer; font: inherit; }
+.mp-wg:hover, .mp-wg:focus-visible { border-color: var(--accent); }
+.mp-wg .mw-ic { font-size: 1.4rem; }
+.mp-wg b { display: block; }
+.mp-wg .small { display: block; margin-top: 2px; }
+/* NHL Team Stacks grid */
+.stk th.stk-t { text-align: center; padding: 4px 2px; }
+.stk th.stk-t.mine { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.stk td.stk-c { text-align: center; padding: 2px; min-width: 30px; }
+.stk td.stk-c span { display: inline-block; min-width: 24px; padding: 2px 0; border-radius: 5px; background: color-mix(in srgb, var(--link) calc(var(--a) * 100%), transparent); color: var(--ink); font-weight: 700; }
