@@ -23,7 +23,7 @@ const DAILY_DAYS = 21, SERIES = ['v', 'w', 'o', 'c'], WINDOWS = [1, 7, 30];
 const r2 = (x) => Math.round(x * 100) / 100;
 
 // one night's data files -> { date, rows: { id: [DV, WAR, owner, contract + salary] } }
-function score(leagueSrc, prospectsSrc, pinNow) {
+function score(leagueSrc, prospectsSrc, pinNow, simN) {
   const ctx = vm.createContext({ console });
   ctx.window = ctx; ctx.self = ctx;
   vm.runInContext(leagueSrc, ctx, { filename: 'data/league.js' });
@@ -33,20 +33,30 @@ function score(leagueSrc, prospectsSrc, pinNow) {
   if (pinNow) ctx.DP.nowOverride = built + ':00Z';
   const E = ctx.DP.E; E.init();
   const rows = {};
+  // the season simulation as of that night (today's engine): playoff and title odds per team
+  const odds = {};
+  if (simN !== 0) try { (simN ? E.simSeason({ n: simN }) : E.baseSim()).forEach((r) => { odds[r.t] = [Math.round(r.po * 1000) / 1000, Math.round(r.champ * 1000) / 1000]; }); } catch (e) { /* a night the sim can't run: no odds */ }
   E.P.forEach((p) => {
     if (typeof p.DV !== 'number' || isNaN(p.DV)) return;
     if (!p.gm && p.DV < 0.5) return;   // unowned players with next to no value: left out to keep the file small
     rows[p.id] = [r2(p.DV), Math.round((p.WAR || 0) * 10) / 10, p.gm || '', (p.ct || '') + (p.sal26 ? ' ' + p.sal26 : '')];
   });
-  return { date: built.slice(0, 10), rows };
+  return { date: built.slice(0, 10), rows, odds };
 }
 function put(hist, snap) {
+  hist.odds = hist.odds || {};
   let i = hist.dates.indexOf(snap.date);
   if (i < 0) {
     i = hist.dates.findIndex((d) => d > snap.date); if (i < 0) i = hist.dates.length;
     hist.dates.splice(i, 0, snap.date);
     Object.values(hist.p).forEach((o) => SERIES.forEach((k) => o[k].splice(i, 0, null)));
+    Object.values(hist.odds).forEach((o) => { o.po.splice(i, 0, null); o.ch.splice(i, 0, null); });
   }
+  const nn = hist.dates.length;
+  Object.keys(snap.odds || {}).forEach((t) => {
+    const o = hist.odds[t] || (hist.odds[t] = { po: new Array(nn).fill(null), ch: new Array(nn).fill(null) });
+    o.po[i] = snap.odds[t][0]; o.ch[i] = snap.odds[t][1];
+  });
   const n = hist.dates.length;
   Object.keys(snap.rows).forEach((id) => {
     const o = hist.p[id] || (hist.p[id] = {});
@@ -58,6 +68,7 @@ function thin(hist) {
   const last = new Date(hist.dates[hist.dates.length - 1] + 'T12:00:00Z');
   const keep = hist.dates.map((d, i) => i === 0 || (last - new Date(d + 'T12:00:00Z')) / 864e5 <= DAILY_DAYS || new Date(d + 'T12:00:00Z').getUTCDay() === 1);
   hist.dates = hist.dates.filter((_, i) => keep[i]);
+  Object.values(hist.odds || {}).forEach((o) => { o.po = o.po.filter((_, i) => keep[i]); o.ch = o.ch.filter((_, i) => keep[i]); });
   Object.keys(hist.p).forEach((id) => {
     SERIES.forEach((k) => { hist.p[id][k] = hist.p[id][k].filter((_, i) => keep[i]); });
     if (hist.p[id].v.every((x) => x === null)) delete hist.p[id];
@@ -67,8 +78,8 @@ function save(hist) {
   const ids = Object.keys(hist.p).sort();
   const body = ids.map((k) => '    ' + JSON.stringify(k) + ': ' + JSON.stringify(hist.p[k])).join(',\n');
   fs.mkdirSync(RAW, { recursive: true });
-  fs.writeFileSync(HIST, '{\n  "_what": ' + JSON.stringify('Market Movers history (tools/value_history.js). Per Fantrax player id, aligned with "dates": v = dynasty value, w = projected 2026-27 WAR, o = owner (team code, empty = free agent), c = contract type and 2026-27 salary. Every date is scored with the engine version in "engine".') +
-    ',\n  "engine": ' + JSON.stringify(hist.engine) + ',\n  "dates": ' + JSON.stringify(hist.dates) + ',\n  "p": {\n' + body + '\n  }\n}\n');
+  fs.writeFileSync(HIST, '{\n  "_what": ' + JSON.stringify('Market Movers history (tools/value_history.js). Per Fantrax player id, aligned with "dates": v = dynasty value, w = projected 2026-27 WAR, o = owner (team code, empty = free agent), c = contract type and 2026-27 salary; "odds" = every team\'s playoff and title odds from the season simulation that night. Every date is scored with the engine version in "engine".') +
+    ',\n  "engine": ' + JSON.stringify(hist.engine) + ',\n  "dates": ' + JSON.stringify(hist.dates) + ',\n  "odds": ' + JSON.stringify(hist.odds || {}) + ',\n  "p": {\n' + body + '\n  }\n}\n');
 }
 function backfill(hist) {
   const git = (c) => execSync('git ' + c, { cwd: ROOT, maxBuffer: 3e8 }).toString();
@@ -76,9 +87,12 @@ function backfill(hist) {
   const byDay = {};
   git('log --format=%H_%cd --date=short -- data/league.js').trim().split('\n').forEach((l) => { const [h, d] = l.split('_'); if (!byDay[d]) byDay[d] = h; });
   const days = Object.keys(byDay).sort();
+  // odds only for the nights the history keeps (every night for 21 days, Mondays before, the first night), 800 seasons each
+  const lastT = Date.parse(days[days.length - 1] + 'T12:00:00Z');
+  const kept = (d) => d === days[0] || (lastT - Date.parse(d + 'T12:00:00Z')) / 864e5 <= DAILY_DAYS || new Date(d + 'T12:00:00Z').getUTCDay() === 1;
   let ok = 0;
   days.forEach((d) => {
-    try { put(hist, score(git('show ' + byDay[d] + ':data/league.js'), git('show ' + byDay[d] + ':data/prospects.js'), true)); ok++; }
+    try { put(hist, score(git('show ' + byDay[d] + ':data/league.js'), git('show ' + byDay[d] + ':data/prospects.js'), true, kept(d) ? 800 : 0)); ok++; }
     catch (e) { console.log('  ! ' + d + ' (' + byDay[d].slice(0, 7) + ') could not be scored: ' + String(e.message).slice(0, 120)); }
   });
   console.log('  backfill: ' + ok + ' of ' + days.length + ' nights re-scored (' + days[0] + ' to ' + days[days.length - 1] + ')');
@@ -120,7 +134,7 @@ function main() {
     o.o.forEach((t, i) => { if (t && o.v[i] !== null) { (teams[t] = teams[t] || new Array(n).fill(0))[i] += o.v[i]; } });
   });
   Object.keys(teams).forEach((t) => { teams[t] = teams[t].map((x) => Math.round(x * 10) / 10); });
-  const out = { built: new Date().toISOString().slice(0, 16), engine: ENGINE_V, stale: stale, dates: hist.dates, ref: ref, windows: WINDOWS, teams: teams, p: P };
+  const out = { built: new Date().toISOString().slice(0, 16), engine: ENGINE_V, stale: stale, dates: hist.dates, ref: ref, windows: WINDOWS, teams: teams, odds: hist.odds || {}, p: P };
   const js = '/* generated by tools/value_history.js - do not edit */\nwindow.DP=window.DP||{};DP.values=' + JSON.stringify(out) + ';\n';
   const strip = (s) => s.replace(/"built":"[^"]*"/, '');
   if (!fs.existsSync(OUT) || strip(fs.readFileSync(OUT, 'utf8')) !== strip(js)) fs.writeFileSync(OUT, js);

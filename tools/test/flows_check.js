@@ -254,6 +254,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('pickup?cat=7', 3500);
   ok(await page.evaluate(() => { const th = [...document.querySelectorAll('#pk-t th')].map((x) => x.innerText); return th.some((t) => /Δ Hit win/.test(t)); }), 'pickup planner: category focus column');
   await go('playoffs', 4500);
+  ok(await page.evaluate(() => !DP.values || !DP.values.odds || document.querySelectorAll('#po-hist svg g.bl').length === DP.E.teams.length), 'playoff picture: odds through the season');
   ok(await page.evaluate(() => { const r = document.querySelectorAll('#po-stakes tbody tr').length; return r === 0 ? /No regular-season week/.test(document.querySelector('#po-stakes').innerText) : r === DP.E.teams.length; }), "playoff picture: this week's stakes for every team");
   await page.evaluate(() => { location.hash = '#/preview?w=' + (DP.E.lockWeek() + 1); }); await page.waitForTimeout(6000);
   ok(await page.evaluate(() => { const t = (document.querySelector('#pv-text') || {}).value || ''; return /Playoff odds at stake|preview/.test(t); }), 'weekly preview: stakes in the text');

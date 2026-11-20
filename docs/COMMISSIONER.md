@@ -32,8 +32,9 @@ Prospect Radar → News wire → Sources. Nothing else needs upkeep.
 
 **Market Movers and Line & PP Changes.** The nightly job also keeps `raw/2026-27/values/history.json` (every
 player's dynasty value each night) and `raw/2026-27/depth/log.json` (line, power-play and goalie-order changes from
-Daily Faceoff, 60 days). Neither needs upkeep. When the valuation code changes, the job re-scores the whole value
-history by itself (it fetches the repository's history first, so that night's run takes a minute longer).
+Daily Faceoff, 60 days). Neither needs upkeep. The value history also keeps every team's playoff and title odds night
+by night (the Playoff Picture chart). When the valuation code changes, the job re-scores the whole history by itself
+(it fetches the repository's history first, so that night's run takes about two minutes longer).
 
 During games the page shows numbers that are usually 2 to 5 minutes behind the ice: the job re-scores every 3
 minutes and the page checks for a new file every 2.5. Cor for a game in progress can trail further, because the NHL

@@ -48,32 +48,51 @@
     var up = pts[pts.length - 1][1] >= pts[0][1];
     return '<svg class="spark" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="var(--' + (up ? 'good' : 'bad') + ')" stroke-width="1.6"/></svg>';
   }
-  // every team's total dynasty value on each night on file (team colors; hover a line to pick it out)
-  DP.teamValueChart = function (me) {
-    var V = DP.values, E = DP.E; if (!V || !V.teams || V.dates.length < 2) return '';
-    var T = E.teams.filter(function (t) { return V.teams[t]; }), n = V.dates.length;
-    var all = []; T.forEach(function (t) { all = all.concat(V.teams[t]); });
-    var step = Math.max.apply(null, all) - Math.min.apply(null, all) > 160 ? 50 : 25;
-    var lo = Math.floor(Math.min.apply(null, all) / step) * step, hi = Math.ceil(Math.max.apply(null, all) / step) * step;
+  // one line per team over the nights on file (team colors; hover a line to pick it out). series = {team: [values]},
+  // opts: { me, fmt(v) for labels and tips, step (gridline step), lo, hi, label(t, v) }
+  DP.teamLinesChart = function (dates, series, opts) {
+    opts = opts || {};
+    var E = DP.E, me = opts.me, T = E.teams.filter(function (t) { return series[t]; }), n = dates.length; if (n < 2 || !T.length) return '';
+    var fmt = opts.fmt || function (v) { return String(Math.round(v)); }, all = [];
+    T.forEach(function (t) { series[t].forEach(function (v) { if (v !== null && v !== undefined) all.push(v); }); });
+    var step = opts.step || (Math.max.apply(null, all) - Math.min.apply(null, all) > 160 ? 50 : 25);
+    var lo = opts.lo !== undefined ? opts.lo : Math.floor(Math.min.apply(null, all) / step) * step, hi = opts.hi !== undefined ? opts.hi : Math.ceil(Math.max.apply(null, all) / step) * step;
     var W = 900, H = 400, padL = 42, padR = 150, padT = 12, padB = 26;
-    var t0 = Date.parse(V.dates[0] + 'T12:00:00Z'), t1 = Date.parse(V.dates[n - 1] + 'T12:00:00Z');
-    var px = function (i) { return padL + (Date.parse(V.dates[i] + 'T12:00:00Z') - t0) / Math.max(1, t1 - t0) * (W - padL - padR); };
-    var py = function (v) { return padT + (1 - (v - lo) / Math.max(1, hi - lo)) * (H - padT - padB); };
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="bump" role="img" aria-label="Total dynasty value of every team, night by night">';
-    for (var g = lo; g <= hi; g += step) s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(g).toFixed(1) + '" y2="' + py(g).toFixed(1) + '"/><text class="axis" x="' + (padL - 6) + '" y="' + (py(g) + 4).toFixed(1) + '" text-anchor="end">' + Math.round(g) + '</text>';
+    var t0 = Date.parse(dates[0] + 'T12:00:00Z'), t1 = Date.parse(dates[n - 1] + 'T12:00:00Z');
+    var px = function (i) { return padL + (Date.parse(dates[i] + 'T12:00:00Z') - t0) / Math.max(1, t1 - t0) * (W - padL - padR); };
+    var py = function (v) { return padT + (1 - (v - lo) / Math.max(1e-9, hi - lo)) * (H - padT - padB); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="bump" role="img" aria-label="' + esc(opts.title || 'Every team, night by night') + '">';
+    for (var g = lo; g <= hi + 1e-9; g += step) s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(g).toFixed(1) + '" y2="' + py(g).toFixed(1) + '"/><text class="axis" x="' + (padL - 6) + '" y="' + (py(g) + 4).toFixed(1) + '" text-anchor="end">' + esc(fmt(g)) + '</text>';
     var lastLab = -1;
-    V.dates.forEach(function (d, i) { var x = px(i); if (i === 0 || i === n - 1 || x - lastLab > 70) { if (i === n - 1 && x - lastLab < 50 && lastLab >= 0) return; s += '<text class="axis" x="' + x.toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(day(d).replace(/,.*/, '')) + '</text>'; lastLab = x; } });
-    // end labels, nudged apart so they don't overlap
-    var ends = T.map(function (t) { return { t: t, y: py(V.teams[t][n - 1]) }; }).sort(function (a, b) { return a.y - b.y; });
+    dates.forEach(function (d, i) { var x = px(i); if (i === 0 || i === n - 1 || x - lastLab > 70) { if (i === n - 1 && x - lastLab < 50 && lastLab >= 0) return; s += '<text class="axis" x="' + x.toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(day(d).replace(/,.*/, '')) + '</text>'; lastLab = x; } });
+    var lastOf = function (t) { var v = series[t]; for (var k = v.length - 1; k >= 0; k--) if (v[k] !== null && v[k] !== undefined) return v[k]; return lo; };
+    var ends = T.map(function (t) { return { t: t, y: py(lastOf(t)) }; }).sort(function (a, b) { return a.y - b.y; });
     for (var k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
+    // labels pushed past the bottom: pull the stack back up so every label stays on the chart
+    var floorY = H - padB + 2;
+    if (ends.length && ends[ends.length - 1].y > floorY) { ends[ends.length - 1].y = floorY; for (k = ends.length - 2; k >= 0; k--) if (ends[k + 1].y - ends[k].y < 13) ends[k].y = ends[k + 1].y - 13; }
     var labY = {}; ends.forEach(function (e) { labY[e.t] = e.y; });
     T.slice().sort(function (a, b) { return (a === me) - (b === me); }).forEach(function (t) {
-      var col = U.teamColor(t), v = V.teams[t], d = v.map(function (x, i) { return (i ? 'L' : 'M') + px(i).toFixed(1) + ',' + py(x).toFixed(1); }).join('');
-      var j30 = V.ref[3], tip = '<div class="tv">' + esc(U.teamName(t)) + '</div><div class="tl">' + U.fmt(v[n - 1], 0) + ' now · ' + U.sgn(v[n - 1] - v[j30], 1) + ' in 30 days · ' + U.sgn(v[n - 1] - v[0], 1) + ' since ' + esc(day(V.dates[0])) + '</div>';
+      var col = U.teamColor(t), v = series[t], pen = false, d = '';
+      v.forEach(function (x, i) { if (x === null || x === undefined) { pen = false; return; } d += (pen ? 'L' : 'M') + px(i).toFixed(1) + ',' + py(x).toFixed(1); pen = true; });
+      var tip = '<div class="tv">' + esc(U.teamName(t)) + '</div><div class="tl">' + esc(opts.tip ? opts.tip(t, v) : fmt(lastOf(t)) + ' now') + '</div>';
       s += '<g class="bl' + (t === me ? ' me' : '') + '" data-tip="' + esc(tip) + '"><path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + (t === me ? 4.5 : 2.6) + '" stroke-linejoin="round" stroke-linecap="round"/>' +
-        '<text x="' + (W - padR + 8) + '" y="' + (labY[t] + 4).toFixed(1) + '" style="fill:' + col + ';font-size:12px;font-weight:' + (t === me ? 800 : 600) + '">' + Math.round(v[n - 1]) + ' ' + esc(U.teamName(t).length > 15 ? U.teamName(t).slice(0, 14) + '…' : U.teamName(t)) + '</text></g>';
+        '<text x="' + (W - padR + 8) + '" y="' + (labY[t] + 4).toFixed(1) + '" style="fill:' + col + ';font-size:12px;font-weight:' + (t === me ? 800 : 600) + '">' + esc(fmt(lastOf(t))) + ' ' + esc(U.teamName(t).length > 15 ? U.teamName(t).slice(0, 14) + '…' : U.teamName(t)) + '</text></g>';
     });
     return '<div class="chart">' + s + '</svg></div>';
+  };
+  // every team's total dynasty value on each night on file
+  DP.teamValueChart = function (me) {
+    var V = DP.values; if (!V || !V.teams || V.dates.length < 2) return '';
+    var j30 = V.ref[3];
+    return DP.teamLinesChart(V.dates, V.teams, { me: me, title: 'Total dynasty value of every team, night by night', tip: function (t, v) { var n = v.length - 1; return Math.round(v[n]) + ' now · ' + U.sgn(v[n] - v[j30], 1) + ' in 30 days · ' + U.sgn(v[n] - v[0], 1) + ' since ' + day(V.dates[0]); } });
+  };
+  // every team's playoff odds on each night on file (season sim with that night's standings and rosters)
+  DP.oddsChart = function (me, key) {
+    var V = DP.values; if (!V || !V.odds || V.dates.length < 2) return '';
+    var ser = {}; Object.keys(V.odds).forEach(function (t) { ser[t] = V.odds[t][key || 'po'].map(function (x) { return x === null ? null : x * 100; }); });
+    return DP.teamLinesChart(V.dates, ser, { me: me, lo: 0, hi: 100, step: 25, title: 'Playoff odds of every team, night by night', fmt: function (v) { return Math.round(v) + '%'; },
+      tip: function (t, v) { var n = v.length - 1, j = V.ref[3]; return Math.round(v[n]) + '% now' + (v[j] !== null ? ' · ' + Math.round(v[j]) + '% 30 days ago' : '') + (v[0] !== null ? ' · ' + Math.round(v[0]) + '% on ' + day(V.dates[0]) : ''); } });
   };
   // fills the Team Hub's dynasty value tile with the 30-day change
   DP.teamValueTrend = function (t, box) {

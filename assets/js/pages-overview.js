@@ -353,6 +353,12 @@
         var r = sim.find(function (x) { return x.t === t; });
         var a = U.qs('#t-po', el), b = U.qs('#t-champ', el);
         if (a) a.textContent = U.pct(r.po); if (b) b.textContent = 'title odds ' + U.pct(r.champ, 1) + ' · avg seed ' + U.fmt(r.avgSeed, 1);
+        // 30 days ago, from the nightly odds history (Playoff Picture chart)
+        if (b && DP.loadValues) DP.loadValues(function (V) {
+          var o = V && V.odds && V.odds[t]; if (!o || !document.body.contains(b)) return;
+          var x = o.po[V.ref[3]]; if (x === null || x === undefined) return;
+          b.insertAdjacentHTML('beforeend', '<br><a href="#/playoffs">30 days ago ' + U.pct(x) + '</a> ' + ui.delta((r.po - x) * 100, 0) + ' pts');
+        });
       });
 
       // lineup

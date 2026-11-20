@@ -368,6 +368,19 @@ if (ST) {
   ok(DP.stakes(SIM, ST.n + 5) === null, 'stakes: weeks the sim did not split come back empty');
 }
 
+// ---- playoff odds through the season (nightly season sim in the value history)
+if (V && V.odds) {
+  ok(Object.keys(V.odds).length === E.teams.length && Object.values(V.odds).every((o) => o.po.length === V.dates.length && o.ch.length === V.dates.length), 'odds history: every team, aligned with the dates');
+  ok(Object.values(V.odds).every((o) => o.po.concat(o.ch).every((x) => x === null || (x >= 0 && x <= 1))), 'odds history: probabilities');
+  const nD = V.dates.length - 1;
+  ok(Object.values(V.odds).every((o) => o.ch.every((x, i) => x === null || o.po[i] === null || x <= o.po[i] + 1e-9)), 'odds history: title odds never above playoff odds');
+  if (V.dates[nD] === String(DP.meta.built).slice(0, 10) && V.engine && !V.stale) {
+    const now = {}; E.baseSim().forEach((r) => { now[r.t] = r; });
+    ok(E.teams.every((t) => Math.abs(V.odds[t].po[nD] - now[t].po) < 0.0015), "odds history: tonight's point = the app's own playoff odds");
+  }
+  ok((DP.oddsChart('ROO').match(/<g class="bl/g) || []).length === E.teams.length, 'odds chart: one line per team');
+}
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));

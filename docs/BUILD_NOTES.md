@@ -453,3 +453,7 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     Weekly Preview adds "Playoff odds at stake" lines and the matchup of the week (card and chat text).
   - "Since your last visit": `DP.fillSinceLines(root, me)` (pages-lines.js) fills `[data-since-lines]` from data/depthlog.js
     after the Dashboard renders.
+  - Odds history: `tools/value_history.js` also runs the season sim for each night (`E.baseSim()` tonight, 800 seasons
+    for backfilled nights, only for the nights the history keeps) into `history.odds` / `DP.values.odds`
+    ({team: {po, ch}} aligned with dates). A full re-score now takes about 2 minutes. Charts: `DP.teamLinesChart`
+    (generic), `DP.teamValueChart`, `DP.oddsChart` (Playoff Picture); Team Hub odds tile adds the 30-day change.
