@@ -219,6 +219,7 @@
       h += '<div class="card span2"><h2>📈 Projected category leaders (2026-27)</h2><div class="hint">Top 5 projected totals in each category (goalies: 30+ GP for GAA/SV%). ★ = owned by your team.</div><div id="leaders" class="grid g4"></div></div>';
       h += '</div>';
       el.innerHTML = h;
+      if (DP.fillSinceLines) DP.fillSinceLines(el, me);
       // what this week is worth: playoff odds if you win it vs lose it (season sim)
       var stb = U.qs('[data-stakes]', el);
       if (stb && DP.stakes) DP.getSim(function (sim) {

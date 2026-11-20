@@ -98,6 +98,6 @@
     var X = DP.sinceData(me, since); if (!X.items.length) return '';
     var when = new Date(since).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
     return '<div class="card since" style="margin-bottom:14px"><h2>🕒 Since your last visit <span class="small muted">' + esc(when) + '</span></h2><ul class="list-plain">' +
-      X.items.map(function (it) { return '<li><span class="ic" aria-hidden="true">' + it.ic + '</span><span>' + it.html + '</span>' + (it.href ? '<a class="small" style="margin-left:auto" href="' + it.href + '">→</a>' : '') + '</li>'; }).join('') + '</ul></div>';
+      X.items.map(function (it) { return '<li><span class="ic" aria-hidden="true">' + it.ic + '</span><span>' + it.html + '</span>' + (it.href ? '<a class="small" style="margin-left:auto" href="' + it.href + '">→</a>' : '') + '</li>'; }).join('') + '<li data-since-lines="' + esc(new Date(since).toISOString().slice(0, 10)) + '" hidden></li></ul></div>';
   };
 })();

@@ -44,6 +44,23 @@
     return out.sort(function (a, b) { return a.d < b.d ? -1 : a.d > b.d ? 1 : 0; });
   };
 
+  // "since your last visit" (Dashboard): your players' moves and free agents moving up since that day
+  DP.fillSinceLines = function (root, me) {
+    var li = U.qs('[data-since-lines]', root); if (!li) return;
+    DP.loadDepthLog(function (L) {
+      if (!L || !L.events.length || !document.body.contains(li)) return;
+      var d0 = li.dataset.sinceLines, last = L.events[L.events.length - 1].d, days = Math.max(1, Math.round((Date.parse(last) - Date.parse(d0)) / 864e5) + 1);
+      var net = DP.lineNet(DP.lineEvents(L, Math.min(days, 30)).filter(function (e) { return e.p && e.d >= d0; }));
+      var promo = function (e) { return e.up && ((e.k === 'pp' && e.to === 'PP1') || (e.k === 'line' && (e.to === 'F1' || e.to === 'F2' || e.to === 'D1')) || (e.k === 'g' && e.to === 'G1')); };
+      var mine = me ? net.filter(function (e) { return e.p.gm === me; }) : [], fa = net.filter(function (e) { return !e.p.gm && promo(e); }).sort(function (a, b) { return (b.p.WAR || 0) - (a.p.WAR || 0); });
+      if (!mine.length && !fa.length) return;
+      var one = function (e) { return ui.plink(e.p) + ' ' + chip(e); };
+      li.hidden = false;
+      li.innerHTML = '<span class="ic" aria-hidden="true">🔀</span><span>' + (mine.length ? 'Your players\' line moves: ' + mine.slice(0, 4).map(one).join(', ') + (mine.length > 4 ? ' +' + (mine.length - 4) + ' more' : '') : '') +
+        (mine.length && fa.length ? '. ' : '') + (fa.length ? 'Free agents moving up: ' + fa.slice(0, 3).map(one).join(', ') : '') + '</span><a class="small" style="margin-left:auto" href="#/lines">→</a>';
+    });
+  };
+
   DP.pages.lines = {
     title: 'Line & PP Changes',
     render: function (el, hsh) {

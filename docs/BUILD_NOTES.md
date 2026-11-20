@@ -451,3 +451,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     Playoff Picture and the Dashboard (when the swing is 3+ points).
   - The sim also splits the week after (`r.stakesNext`, playoff odds only); `DP.stakes(sim, week)` picks either. The
     Weekly Preview adds "Playoff odds at stake" lines and the matchup of the week (card and chat text).
+  - "Since your last visit": `DP.fillSinceLines(root, me)` (pages-lines.js) fills `[data-since-lines]` from data/depthlog.js
+    after the Dashboard renders.
