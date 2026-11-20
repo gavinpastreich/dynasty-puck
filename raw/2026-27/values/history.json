@@ -1,6 +1,6 @@
 {
   "_what": "Market Movers history (tools/value_history.js). Per Fantrax player id, aligned with \"dates\": v = dynasty value, w = projected 2026-27 WAR, o = owner (team code, empty = free agent), c = contract type and 2026-27 salary. Every date is scored with the engine version in \"engine\".",
-  "engine": "c66542e15c",
+  "engine": "91b7ea6bd1",
   "dates": ["2026-09-26","2026-09-28","2026-10-05","2026-10-12","2026-10-19","2026-10-26","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-14","2026-11-15","2026-11-16","2026-11-17","2026-11-18","2026-11-19","2026-11-20"],
   "p": {
     "*003kg*": {"v":[1.6,1.59,1.3,1.27,1.25,1.38,1.11,1.11,1.28,1.28,0.99,1.01,0.6,0.23,0.22,0,0,0,0,0,0.03,0.03,0.23,0.21,0.21,0.23,0.24,0.39],"w":[1.6,1.6,1.3,1.4,1.4,1.6,1.4,1.4,1.6,1.6,1.3,1.3,0.8,0.3,0.3,-0.2,-0.2,-0.2,-0.2,-0.2,0,0,0.3,0.3,0.3,0.3,0.3,0.6],"o":["BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES","BULLIES"],"c":["BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1","BID 1"]},

@@ -176,6 +176,26 @@
     });
     return out;
   };
+  // this week's stakes: each matchup of the first unplayed week, with both teams' playoff and title odds if they win or
+  // lose it (counted inside the season simulation) and the chance to win it (live odds while the week is being played)
+  DP.stakes = function (sim) {
+    var E = DP.E, by = {}; sim.forEach(function (r) { by[r.t] = r; });
+    var any = sim.filter(function (r) { return r.stakes; })[0]; if (!any) return null;
+    var n = any.stakes.wk + 1, sc = DP.league.score, live = sc && sc.week === n && !sc.final && sc.teams && DP.liveOdds;
+    var side = function (t, o, k) {
+      var x = by[t].stakes; if (!x) return null;
+      var pw = live && o ? (k === 0 ? o.win + o.tie / 2 : o.loss + o.tie / 2) : x.pW;
+      return { t: t, pw: pw, po: by[t].po, poW: x.poW, poL: x.poL, sw: x.poW - x.poL, chW: x.chW, chL: x.chL };
+    };
+    var games = DP.meta.h2h.filter(function (m) { return m[0] === n; }).map(function (m) {
+      var o = live ? DP.liveOdds(m[1], m[2]) : null, A = side(m[1], o, 0), B = side(m[2], o, 1);
+      // what's riding on it (playoff swings + title swings x3), times how open it still is (1 at 50/50, 0 when decided)
+      return A && B ? { a: A, b: B, stake: Math.abs(A.sw) + Math.abs(B.sw) + 3 * (Math.abs(A.chW - A.chL) + Math.abs(B.chW - B.chL)), open: 4 * A.pw * (1 - A.pw) } : null;
+    }).filter(Boolean);
+    games.forEach(function (g) { g.sw = g.stake * Math.max(0, Math.min(1, g.open)); });
+    games.sort(function (x, y) { return y.sw - x.sw; });
+    return { n: n, live: !!live, games: games };
+  };
   DP.pages.playoffs = {
     title: 'Playoff Picture',
     render: function (el) {
@@ -183,6 +203,7 @@
       var PO = DP.meta.playoffs || {}, wks = (PO.weeks || [25, 26, 27]).map(function (n) { return n - 1; });
       var h = '<div class="page-head"><h1>🏆 Playoff Picture</h1><p class="sub">The projected bracket, each team\'s odds round by round (from simulated seasons that start from the real standings), what is already settled for sure, and who has the most NHL games in the playoff weeks. ' + esc(PO.note || '') + '</p></div>';
       h += '<div class="card"><h2>Projected bracket</h2><div class="hint">Seeds = each team\'s most likely finish across the simulated seasons (average seed). Percentages: chance to make the playoffs, then to reach each round and win it all.</div><div id="po-br"><p class="muted small">Simulating the season…</p></div></div>';
+      h += '<div class="card" style="margin-top:14px"><h2>🎯 This week\'s stakes</h2><div class="hint">Each matchup of the week being decided: both teams\' playoff odds if they win it and if they lose it (from the same simulated seasons), and the title odds for teams that have any. Sorted by how much is riding on it and how open it still is.</div><div id="po-stakes"><p class="small muted">Simulating…</p></div></div>';
       h += '<div class="card flush" style="margin-top:14px"><h2>Odds by round</h2><div class="hint">' + (act && !act.odd ? act.done + ' of ' + E.REG_WEEKS + ' weeks played, ' + (M ? M[E.teams[0]].left : 0) + ' category decisions left for every team. ' : '') + '"Settled" only when the math rules it in or out no matter what happens. "Clinch on its own" = category points (W + ½T) that would guarantee a top-' + (PO.teams || 8) + ' finish whatever the other teams do.</div><div id="po-tbl" style="padding:0 12px 12px"><p class="muted small">…</p></div></div>';
       h += '<div class="card flush" style="margin-top:14px"><h2>📅 Playoff-week schedule</h2><div class="hint">NHL games for each team\'s current optimal lineup (12F / 6D / 2G) in the playoff weeks, from the real NHL schedule. More games = more counting stats in a one-week matchup. Rosters as they are today.</div><div id="po-sch" style="padding:0 12px 12px"></div></div>';
       el.innerHTML = h;
@@ -217,6 +238,14 @@
         b += '<div class="bcol"><div class="bh">Champion</div><div class="bm champ">' + cell(champ, 'champ', 'title odds') + '</div></div></div>';
         b += '<p class="small muted">Later rounds show the more likely team from each pair, with its chance to get that far; a projection, not a forecast of any one matchup.</p>';
         U.qs('#po-br', el).innerHTML = b;
+        var ST = DP.stakes(sim), sb = U.qs('#po-stakes', el);
+        if (sb) sb.innerHTML = !ST || !ST.games.length ? '<p class="small muted">No regular-season week left to decide.</p>' :
+          '<p class="small">Week ' + ST.n + (ST.live ? ' (in progress: chances to win are the live odds)' : '') + '.</p><div class="tbl-wrap"><table class="t"><thead><tr><th>Matchup</th><th>Team</th><th class="num">Chance to win</th><th class="num">Playoffs now</th><th class="num">If they win</th><th class="num">If they lose</th><th class="num">Swing</th><th class="num">Title win / lose</th></tr></thead><tbody>' +
+          ST.games.map(function (g, i) {
+            return [g.a, g.b].map(function (x, k) {
+              return '<tr class="' + (x.t === me ? 'mine' : '') + '">' + (k ? '' : '<td rowspan="2" class="small">' + (i === 0 ? '<span class="badge warn">Matchup of the week</span>' : '#' + (i + 1)) + '</td>') + '<td>' + U.teamChip(x.t, { link: 1 }) + '</td><td class="num">' + U.pct(x.pw) + '</td><td class="num">' + U.pct(x.po) + '</td><td class="num good">' + U.pct(x.poW) + '</td><td class="num bad">' + U.pct(x.poL) + '</td><td class="num"><b>' + (x.sw >= 0.005 ? '±' + U.fmt(x.sw * 100, 0) : '0') + '</b></td><td class="num small">' + (x.chW + x.chL > 0.002 ? U.pct(x.chW, 1) + ' / ' + U.pct(x.chL, 1) : '–') + '</td></tr>';
+            }).join('');
+          }).join('') + '</tbody></table></div><p class="small muted">Swing = playoff odds if they win minus if they lose, in points. From ' + (E._bsim ? E._bsim.n : 1500) + ' simulated seasons, so small differences are noise.</p>';
         var rows = E.teams.map(function (t) { return { t: t, s: by[t], m: M ? M[t] : null, a: act && !act.odd ? act.rec[t] : null }; });
         ui.table(U.qs('#po-tbl', el), {
           rows: rows, sort: 'po', csv: 'playoff-odds.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },

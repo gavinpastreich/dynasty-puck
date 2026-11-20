@@ -349,6 +349,19 @@ if (SCW && SCW.week && SCW.teams && !SCW.final) {
   });
 }
 
+// ---- this week's stakes (conditional odds counted in the season sim)
+const SIM = E.baseSim(), ST = DP.stakes(SIM);
+if (ST) {
+  ok(ST.games.length === DP.meta.h2h.filter((m) => m[0] === ST.n).length, `stakes: every matchup of week ${ST.n}`);
+  ST.games.forEach((g) => [g.a, g.b].forEach((x) => {
+    ok(x.poW >= 0 && x.poW <= 1 && x.poL >= 0 && x.poL <= 1 && near(x.sw, x.poW - x.poL), `stakes ${x.t}: probabilities`);
+    const r = SIM.find((y) => y.t === x.t), s0 = r.stakes;
+    // the overall odds are the mix of the two conditional ones (ties are rare and sit outside both)
+    ok(Math.abs(r.po - (s0.pW * s0.poW + (1 - s0.pW) * s0.poL)) < 0.03, `stakes ${x.t}: playoffs = P(win) x if-win + P(lose) x if-lose`);
+  }));
+  ok(ST.games.every((g, i) => !i || ST.games[i - 1].sw >= g.sw), 'stakes: sorted by what is riding on it');
+}
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));

@@ -445,3 +445,7 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     Scoreboard shows it. Player cards: `DP.nextGames(p)` (team games in the next 7 Eastern days, B2B marked).
   - Trade Machine: `DP.fillValueTrends(root)` fills `[data-vt]` with the 30-day value change. Free Agents: "Last 14 days"
     column from `DP.formOf` / `DP.formBadge`.
+  - Stakes: `E.simSeason` counts, for the first unplayed week, each team's playoff / title outcomes split by winning or
+    losing that matchup (`r.stakes` = {wk, pW, poW, poL, chW, chL}); `DP.stakes(sim)` in pages-season.js orders the
+    matchups by (playoff swings + 3 x title swings) x 4p(1-p), with live odds while the week is played. Shown on the
+    Playoff Picture and the Dashboard (when the swing is 3+ points).

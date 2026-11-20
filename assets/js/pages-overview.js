@@ -160,7 +160,7 @@
             '<div class="yw-score">' + U.teamBadge(me) + '<b class="num">' + ls[0] + '</b><span class="muted">–</span><b class="num">' + ls[1] + '</b>' + U.teamBadge(lo) + '</div>' +
             '<div class="small">vs ' + esc(U.teamName(lo)) + (ls[2] ? ' · ' + ls[2] + ' tied' : '') + '</div>' +
             (od && !sc.final ? '<div class="yw-bar" title="Chance to win the week (the rest of it simulated)"><span style="width:' + (od.win * 100).toFixed(0) + '%"></span></div><div class="small muted">' + U.pct(od.win) + ' to win the week</div>' : '') +
-            '<div class="yw-flow" data-ywf="' + sc.week + '|' + esc(me) + '|' + esc(lo) + '"></div></a>';
+            '<div class="yw-flow" data-ywf="' + sc.week + '|' + esc(me) + '|' + esc(lo) + '"></div><div class="small" data-stakes></div></a>';
         }
         // next lock + to-do list
         var chk = wiL !== null ? E.lineupCheck(me, wiL) : null, todo = [];
@@ -219,6 +219,13 @@
       h += '<div class="card span2"><h2>📈 Projected category leaders (2026-27)</h2><div class="hint">Top 5 projected totals in each category (goalies: 30+ GP for GAA/SV%). ★ = owned by your team.</div><div id="leaders" class="grid g4"></div></div>';
       h += '</div>';
       el.innerHTML = h;
+      // what this week is worth: playoff odds if you win it vs lose it (season sim)
+      var stb = U.qs('[data-stakes]', el);
+      if (stb && DP.stakes) DP.getSim(function (sim) {
+        if (!document.body.contains(stb)) return;
+        var ST = DP.stakes(sim), g = ST && ST.games.filter(function (x) { return x.a.t === me || x.b.t === me; })[0], x = g && (g.a.t === me ? g.a : g.b);
+        if (x && ST.n === sc.week && x.sw >= 0.03) stb.innerHTML = 'Stakes: win → <b class="good">' + U.pct(x.poW) + '</b> playoff odds, lose → <b class="bad">' + U.pct(x.poL) + '</b>';
+      });
       // your matchup day by day (win chance after each day, from data/weeks/dNN.js)
       var ywf = U.qs('[data-ywf]', el);
       if (ywf && DP.loadDays && DP.matchFlow) {
