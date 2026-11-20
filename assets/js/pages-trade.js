@@ -107,7 +107,7 @@
     var E = DP.E, v = E.assetValue(a, L);
     if (a.kind === 'player') {
       var p = a.p;
-      return ui.pos(p) + '<span>' + ui.plink(p) + ' <span class="faint small">' + esc(p.t) + ' · ' + Math.floor(p.age || 0) + 'y</span><br><span class="small muted">' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + ' · WAR ' + U.fmt(p.WAR, 1) + '</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
+      return ui.pos(p) + '<span>' + ui.plink(p) + ' <span class="faint small">' + esc(p.t) + ' · ' + Math.floor(p.age || 0) + 'y</span><br><span class="small muted">' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + ' · WAR ' + U.fmt(p.WAR, 1) + ' <span data-vt="' + esc(p.id) + '"></span></span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
     }
     if (a.kind === 'pick') return '<span class="pos">PK</span><span>' + esc(E.pickLabel(a.pk)) + '<br><span class="small muted">~#' + E.pickOverall(a.pk) + ' overall</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
     return '<span class="pos">$</span><span>Cap space <span class="nw">$<input type="number" class="capamt" data-cap="' + esc(a.from || '') + '" value="' + a.amt + '" min="0.1" max="60" step="0.1" inputmode="decimal" aria-label="Cap space sent, $ millions">M</span><br><span class="small muted">2026-27 cap room · no salary moves</span></span><span class="num" style="margin-left:auto"><b>' + U.fmt(v, 1) + '</b></span>';
@@ -178,6 +178,7 @@
       h += '</div><div id="tr-res" style="margin-top:14px"></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📊 How this league values things</h2><div id="tr-league"></div></div>';
       el.innerHTML = h;
+      if (DP.fillValueTrends) DP.fillValueTrends(el);
 
       U.qsa('[data-team]', el).forEach(function (s) {
         s.addEventListener('change', function () {

@@ -109,6 +109,20 @@
     var lab = function (x) { return x || (e.k === 'line' ? 'out' : e.k === 'pp' ? 'no PP' : '–'); };
     return '<span class="lchip ' + (e.up ? 'up' : 'dn') + '">' + esc(lab(e.from)) + ' → <b>' + esc(lab(e.to)) + '</b></span>';
   }
+  // fills <span data-vt="ID"> with the player's 30-day value change (Trade Machine): rising / falling flagged at 15%
+  DP.fillValueTrends = function (root) {
+    if (!root || !U.qs('[data-vt]', root)) return;
+    DP.loadValues(function (V) {
+      if (!V) return;
+      var n = V.dates.length - 1, j = V.ref[3];
+      U.qsa('[data-vt]', root).forEach(function (b) {
+        var o = V.p[b.dataset.vt]; if (!o || o.v[j] === null || o.v[n] === null) return;
+        var d = o.v[n] - o.v[j], pct = Math.abs(o.v[j]) > 1 ? d / Math.abs(o.v[j]) : null;
+        if (Math.abs(d) < 0.1) { b.innerHTML = '· <span class="faint">steady over 30 days</span>'; return; }
+        b.innerHTML = '· <span class="' + (d > 0 ? 'good' : 'bad') + '" title="Dynasty value ' + U.fmt(o.v[j], 1) + ' → ' + U.fmt(o.v[n], 1) + ' over 30 days (Market Movers)">30d ' + U.sgn(d, 1) + (pct !== null && Math.abs(pct) >= 0.15 ? (d > 0 ? ' rising' : ' falling') : '') + '</span>';
+      });
+    });
+  };
   DP.valueSpark = function (id, w, h) { var o = DP.values && DP.values.p[id]; return o ? spark(o.v, w, h) : ''; };
 
   DP.pages.movers = {

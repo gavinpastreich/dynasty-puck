@@ -443,3 +443,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     after a finished week.
   - `E.liveOdds` returns `left` (per side: scheduled skater games still to play, expected goalie starts); the Live
     Scoreboard shows it. Player cards: `DP.nextGames(p)` (team games in the next 7 Eastern days, B2B marked).
+  - Trade Machine: `DP.fillValueTrends(root)` fills `[data-vt]` with the 30-day value change. Free Agents: "Last 14 days"
+    column from `DP.formOf` / `DP.formBadge`.

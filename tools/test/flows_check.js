@@ -247,6 +247,10 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && !p.G).sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3500);
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /This season in Dynasty Puck/.test(h.innerText)) && /Total/.test(document.querySelector('#main').innerText)), 'player page: this season in the league');
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /Plays like/.test(h.innerText))), 'player page: similar players');
+  await go('fa', 2500);
+  ok(await page.evaluate(() => [...document.querySelectorAll('th')].some((t) => /Last 14 days/.test(t.innerText))), 'free agents: last 14 days column');
+  await go('trade?t=M.M,ROO&a=p:*04lc0*>M.M', 3500);
+  ok(await page.evaluate(() => !DP.values || /30d|steady/.test((document.querySelector('#tr-cols [data-vt]') || {}).innerText || '')), 'trade machine: 30-day value trend on each player');
   await go('pickup?cat=7', 3500);
   ok(await page.evaluate(() => { const th = [...document.querySelectorAll('#pk-t th')].map((x) => x.innerText); return th.some((t) => /Δ Hit win/.test(t)); }), 'pickup planner: category focus column');
   await go('power', 3500);
