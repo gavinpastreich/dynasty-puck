@@ -353,11 +353,14 @@
         var r = sim.find(function (x) { return x.t === t; });
         var a = U.qs('#t-po', el), b = U.qs('#t-champ', el);
         if (a) a.textContent = U.pct(r.po); if (b) b.textContent = 'title odds ' + U.pct(r.champ, 1) + ' · avg seed ' + U.fmt(r.avgSeed, 1);
-        // 30 days ago, from the nightly odds history (Playoff Picture chart)
+        // 30 days ago, from the nightly odds history (Playoff Picture chart); the season's line under the season strip
         if (b && DP.loadValues) DP.loadValues(function (V) {
           var o = V && V.odds && V.odds[t]; if (!o || !document.body.contains(b)) return;
-          var x = o.po[V.ref[3]]; if (x === null || x === undefined) return;
-          b.insertAdjacentHTML('beforeend', '<br><a href="#/playoffs">30 days ago ' + U.pct(x) + '</a> ' + ui.delta((r.po - x) * 100, 0) + ' pts');
+          var x = o.po[V.ref[3]]; if (x !== null && x !== undefined) b.insertAdjacentHTML('beforeend', '<br><a href="#/playoffs">30 days ago ' + U.pct(x) + '</a> ' + ui.delta((r.po - x) * 100, 0) + ' pts');
+          var sc = U.qs('#tj-season', el);
+          if (sc && V.dates.length > 2) sc.insertAdjacentHTML('beforeend', '<h3 class="small" style="margin-top:12px">Playoff odds through the season</h3>' +
+            C.lines(V.dates.map(function (d) { return U.date(new Date(d + 'T12:00:00Z')).replace(/,.*/, ''); }), [{ name: 'Playoff odds', values: o.po.map(function (p) { return p === null ? null : Math.round(p * 1000) / 10; }), color: U.teamColor(t), area: true, dots: false }], { height: 150, width: 760, min: 0, max: 100, maxLabels: 8, tickFmt: function (v) { return v + '%'; }, title: 'Playoff odds through the season' }) +
+            '<p class="small muted">The season simulation re-run on each night\'s standings, rosters and projections. <a href="#/playoffs">Every team</a></p>');
         });
       });
 

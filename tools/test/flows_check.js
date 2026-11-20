@@ -271,6 +271,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('#rb-mvp li').length >= 12), 'record book: MVP race');
   await go('team/ROO', 7000);
   ok(await page.evaluate(() => document.querySelectorAll('.wkchip .wkflow svg').length >= Math.min(3, DP.E.history().weeks.length)), 'team hub: day-by-day line in each week');
+  ok(await page.evaluate(() => !DP.values || !DP.values.odds || [...document.querySelectorAll('#tj-season h3')].some((h) => /Playoff odds through the season/.test(h.innerText))), 'team hub: playoff odds through the season');
   await page.evaluate(() => { location.hash = '#/compare?ids=' + encodeURIComponent(DP.E.P.filter((p) => p.gm).slice(0, 2).map((p) => p.id).join(',')); }); await page.waitForTimeout(2500);
   ok(await page.evaluate(() => !DP.values || !!document.querySelector('#cmp-vt svg')), 'compare: value through the season');
   await go('lines', 2500);
