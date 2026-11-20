@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -615,18 +615,6 @@
    "holdout": false
   },
   {
-   "name": "Jean-Gabriel Pageau",
-   "team": "NYI",
-   "status": "DTD",
-   "injury": "lower-body",
-   "ret": "",
-   "detail": "Pageau (lower-body) is a game-time decision in Winnipeg on Thursday.",
-   "date": "2026-11-19",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Logan Stanley",
    "team": "NYI",
    "status": "DTD",
@@ -929,7 +917,7 @@
   {
    "name": "Brandon Hagel",
    "team": "TBL",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
    "detail": "Hagel (lower-body) has been placed on IR retroactive to November 15th.",

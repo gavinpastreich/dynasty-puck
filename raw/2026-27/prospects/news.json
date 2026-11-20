@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-19T22:08+00:00",
+"fetched": "2026-11-20T04:48+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -1683,6 +1683,18 @@
 "w": 2
 }
 ],
+"n8484859": [
+{
+"d": "2026-11-20",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Ducks Recall Stian Solberg",
+"u": "https://www.prohockeyrumors.com/2026/11/ducks-recall-stian-solberg.html",
+"w": 2
+}
+],
 "n8484860": [
 {
 "d": "2026-11-15",
@@ -2249,6 +2261,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-20",
+"k": [],
+"s": "Maple Leafs Hot Stove (TOR)",
+"t": "Jim Hiller on Gavin McKenna not seeing the ice in OT in the Leafs’ loss to LA: “I just want to make sure he’s ready for that”",
+"u": "https://mapleleafshotstove.com/2026/11/20/jim-hiller-on-gavin-mckenna-not-seeing-the-ice-in-ot-in-the-leafs-loss-to-la/",
+"w": 2
+},
+{
 "d": "2026-11-19",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -2280,6 +2300,14 @@
 "s": "Daily Faceoff",
 "t": "Can Porter Martone, Gavin McKenna work their way back into Calder conversation?",
 "u": "https://www.dailyfaceoff.com/news/calder-trophy-race-odds-gavin-mckenna-porter-martone-jacob-fowler-leafs-flyers-canadiens",
+"w": 2
+},
+{
+"d": "2026-11-19",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Gavin McKenna earns major vote of confidence in latest lineup update",
+"u": "https://editorinleaf.com/gavin-mckenna-earns-major-vote-of-confidence-in-latest-lineup-update?utm_source=RSS",
 "w": 2
 },
 {
@@ -2328,22 +2356,6 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Gavin McKenna admits limited ice time is making it harder to contribute",
 "u": "https://editorinleaf.com/gavin-mckenna-admits-limited-ice-time-is-making-it-harder-to-contribute?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Gavin McKenna says it’s time for Maple Leafs to ‘dig in’ heading into Tuesday’s contest vs. Blackhawks",
-"u": "https://theleafsnation.com/news/gavin-mckenna-says-time-toronto-maple-leafs-dig-in-tuesday-blackhawks",
-"w": 2
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "NHL.com",
-"t": "Bedard, McKenna share mutual respect as No. 1 picks in NHL Draft",
-"u": "https://www.nhl.com/news/gavin-mckenna-connor-bedard-mutual-respect-ahead-of-first-nhl-meeting",
 "w": 2
 }
 ],
@@ -2514,7 +2526,7 @@
 },
 "sources": [
 {
-"n": 89,
+"n": 84,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2551,7 +2563,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -2572,7 +2584,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2584,21 +2596,21 @@
 "url": "https://www.fantraxhq.com/feed/"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Broad Street Hockey (PHI)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Second City Hockey (CHI)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.secondcityhockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Habs Eyes on the Prize (MTL)",
 "note": "0 new matches",
 "ok": true,
@@ -2612,14 +2624,14 @@
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Arctic Ice Hockey (WPG)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.arcticicehockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Fear the Fin (SJS)",
 "note": "0 new matches",
 "ok": true,
@@ -2640,14 +2652,14 @@
 "url": "https://www.milehighhockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Defending Big D (DAL)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.defendingbigd.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Winging It in Motown (DET)",
 "note": "0 new matches",
 "ok": true,
@@ -2675,49 +2687,49 @@
 "url": "https://www.canescountry.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Raw Charge (TBL)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Litter Box Cats (FLA)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.litterboxcats.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Die by the Blade (BUF)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.diebytheblade.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "On the Forecheck (NSH)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.ontheforecheck.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Knights on Ice (VGK)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.knightsonice.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Davy Jones Locker Room (SEA)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.davyjoneslockerroom.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "The Cannon (CBJ)",
 "note": "0 new matches",
 "ok": true,
@@ -2733,7 +2745,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "5 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2747,7 +2759,7 @@
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
