@@ -433,3 +433,6 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     (ties and goalie-minimum forfeits excluded). Used by The Weekly (top 3) and the Record Book (top 8, two per cat).
   - Player page "Plays like": `DP.similarPlayers(p, n)` in player.js (z-scored per-game rest-of-season rates within F / D /
     G regulars with 20+ projected GP, Euclidean distance; cached per engine version).
+  - Record Book MVP race: `DP.mvpRace(weeks, details)` (category units = a starter's weekly number / that week's SD of
+    the 14 team totals; goalies W, SHO and 2 x goals saved above the week's league SV%). Team Hub week chips carry a
+    day-by-day sparkline (`DP.fillWeekFlows`, `[data-wf]`).

@@ -112,6 +112,29 @@
     if (DP.weekDetail && DP.weekDetail[n]) return go();
     if (DP.loadWeek) DP.loadWeek(n, go); else go();
   };
+  // tiny day-by-day sparklines inside the Team Hub's week chips: <span data-wf="n|team|opponent">
+  DP.fillWeekFlows = function (root) {
+    var boxes = U.qsa('[data-wf]', root); if (!boxes.length || !DP.loadWeeks) return;
+    var ns = U.uniq(boxes.map(function (b) { return +b.dataset.wf.split('|')[0]; }));
+    DP.loadWeeks(ns, function () {
+      var i = 0;
+      (function next() {
+        if (i >= ns.length) return;
+        var n = ns[i++];
+        DP.loadDays(n, function (D) {
+          if (D) boxes.filter(function (b) { return +b.dataset.wf.split('|')[0] === n; }).forEach(function (b) {
+            if (!document.body.contains(b)) return;
+            var x = b.dataset.wf.split('|'), F = DP.matchFlow(n, x[1], x[2], 400); if (!F || F.pts.length < 3) return;
+            var w = 54, h = 16, k = F.pts.length - 1;
+            b.innerHTML = '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><line x1="0" x2="' + w + '" y1="' + h / 2 + '" y2="' + h / 2 + '" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="2 2"/><polyline points="' +
+              F.pts.map(function (p, j) { return (1 + j / k * (w - 2)).toFixed(1) + ',' + (1 + (1 - p.win - p.tie / 2) * (h - 2)).toFixed(1); }).join(' ') + '" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+            b.title = 'Win chance after each day';
+          });
+          setTimeout(next, 0);
+        });
+      })();
+    });
+  };
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-flowbtn]'); if (!b) return;
     var box = document.getElementById(b.dataset.flowbtn); if (!box) return;

@@ -77,6 +77,38 @@
     return out;
   };
 
+  // MVP race: every starter's weekly lines in "category units" (his number divided by the spread of the 14 teams' weekly
+  // totals in that category that week), summed over the weeks he was in a locked lineup. Skaters: G, A, 2G+A, PIM, SOG,
+  // STP, Hit, Blk, Tk, Cor (+ Pt-D for defensemen). Goalies: W, SHO and goals saved above that week's league save % (x2:
+  // it drives both GAA and SV%).
+  DP.mvpRace = function (weeks, details) {
+    var E = DP.E, by = {}, keyOf = {}, sdOf = function (vals) { var m = E.sum(vals) / vals.length; return Math.sqrt(E.sum(vals.map(function (x) { return (x - m) * (x - m); })) / vals.length) || 1; };
+    E.CATS.forEach(function (c, i) { keyOf[c.k] = i; });
+    details.forEach(function (W) {
+      var w = weeks.filter(function (x) { return x.n === W.n; })[0]; if (!w) return;
+      var col = function (k) { return E.teams.map(function (t) { return w.tot[t][k] || 0; }); };
+      var sd = {}; ['G', 'A', 'GA2', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor', 'PtD', 'W', 'SHO'].forEach(function (k) { sd[k] = sdOf(col(k)); });
+      var SA = E.sum(col('SA')), GA = E.sum(col('GA')), lg = SA ? 1 - GA / SA : 0.9;
+      sd.GSAX = sdOf(E.teams.map(function (t) { var x = w.tot[t]; return (x.SA || 0) * ((x.SA ? 1 - (x.GA || 0) / x.SA : lg) - lg); }));
+      Object.keys(W.teams || {}).forEach(function (t) {
+        var T = W.teams[t];
+        (T.active || []).forEach(function (id) {
+          var p = E.byId[id], l = (T.pl || {})[id]; if (!p || !l) return;
+          var v;
+          if (p.G) v = l[1] / sd.W + l[4] / sd.SHO + 2 * ((l[3] - l[2]) - l[3] * lg) / sd.GSAX;
+          else {
+            v = l[1] / sd.G + l[2] / sd.A + (2 * l[1] + l[2]) / sd.GA2 + l[3] / sd.PIM + l[4] / sd.SOG + l[5] / sd.STP + l[6] / sd.Hit + l[7] / sd.Blk + l[8] / sd.Tk + l[9] / sd.Cor;
+            if (p.pos === 'D') v += (l[1] + l[2]) / sd.PtD;
+          }
+          var o = by[id] || (by[id] = { p: p, v: 0, wk: 0, teams: {}, gp: 0 });
+          o.v += v; o.wk++; o.teams[t] = 1; o.gp += l[0];
+        });
+      });
+    });
+    var all = Object.keys(by).map(function (k) { var o = by[k]; o.per = o.v / o.wk; o.teams = Object.keys(o.teams); return o; });
+    return { sk: all.filter(function (o) { return !o.p.G; }).sort(function (a, b) { return b.v - a.v; }), gk: all.filter(function (o) { return o.p.G; }).sort(function (a, b) { return b.v - a.v; }) };
+  };
+
   DP.pages.records = {
     title: 'Record Book',
     render: function (el) {
@@ -108,6 +140,7 @@
       var perCat = {}; cc = cc.filter(function (x) { perCat[x.c] = (perCat[x.c] || 0) + 1; return perCat[x.c] <= 2; });   // at most two per category
       if (cc.length) h += '<div class="card" style="margin-top:14px"><h2>🤏 Closest calls</h2><div class="hint">Categories won by the smallest margins of the season, measured against how spread out the league was in that category that week. Ties not included.</div><ul class="list-plain">' +
         cc.slice(0, 8).map(function (x) { return '<li><span class="small">' + DP.closeTxt(x) + '</span><span class="small muted" style="margin-left:auto">' + wk(x.n) + '</span></li>'; }).join('') + '</ul></div>';
+      h += '<div class="card" style="margin-top:14px"><h2>🏆 MVP race</h2><div class="hint">The most category impact from locked starters this season: each week\'s line measured against how spread out the 14 teams were in each category that week, summed over the weeks he started (see Rules & Methods).</div><div id="rb-mvp"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card" style="margin-top:14px"><h2>📅 Best single days</h2><div class="hint">The best one-day team total in each counting category (one NHL game day, the locked starters), next to the average team day.</div><div id="rb-days"><p class="small muted">Loading the days…</p></div></div>';
       el.innerHTML = h;
       DP.loadWeeks(R.weeks.map(function (w) { return w.n; }), function (details) {
@@ -115,6 +148,11 @@
         var P = DP.playerRecords(details);
         var one = function (r, fmt) { return r.top.length ? '<li><span class="rk">' + esc(r.l) + '</span><span class="who">' + r.top.map(function (x, i) { return (i ? '<span class="faint small">' : '<b>') + '<span class="num">' + (fmt ? fmt(x.v) : x.v) + '</span> ' + ui.plink(x.p) + ' <span class="small muted">' + esc(x.t) + ', wk ' + x.n + '</span>' + (i ? '</span>' : '</b>'); }).join('<br>') + '</span></li>' : ''; };
         box.innerHTML = '<ul class="list-plain recind">' + P.sk.map(function (r) { return one(r); }).join('') + P.gk.map(function (r, i) { return one(r, i === 3 ? U.rate : null); }).join('') + '</ul>';
+        var mb = U.qs('#rb-mvp', el);
+        if (mb) {
+          var MV = DP.mvpRace(R.weeks, details), row = function (o, i) { return '<li><div class="fml">' + ui.pcell(o.p, { pos: 1 }) + '<div class="fmd small muted">' + (i + 1) + '. ' + o.teams.map(function (t) { return U.teamLabel(t); }).join(', ') + ' · ' + o.wk + ' weeks · ' + o.gp + ' GP</div></div><span class="fmr num"><b>' + U.fmt(o.v, 1) + '</b><br><span class="faint small">' + U.fmt(o.per, 2) + '/wk</span></span></li>'; };
+          mb.innerHTML = '<div class="grid g2"><div><h3 class="small">Skaters</h3><ol class="list-plain fmlist">' + MV.sk.slice(0, 10).map(row).join('') + '</ol></div><div><h3 class="small">Goalies</h3><ol class="list-plain fmlist">' + MV.gk.slice(0, 6).map(row).join('') + '</ol></div></div>';
+        }
         if (!DP.loadDays) return;
         var ns = R.weeks.map(function (w) { return w.n; }), sc = DP.league.score; if (sc && sc.week && ns.indexOf(sc.week) < 0) ns.push(sc.week);
         var got = [], i = 0;

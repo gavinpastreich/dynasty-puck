@@ -321,7 +321,7 @@
         DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') + '</div>';
       h += '<div class="grid g2">';
       h += '<div class="card span2" id="tj-lineup"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
-      h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
+      h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. The small line in each week = your chance to win it after each day. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
       h += '<div class="card span2" id="tj-strat"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
       h += '<div class="card" id="tj-cats"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + '</div>';
       h += '<div class="card"><h2>What this team should do</h2><div id="recs"><p class="muted">Crunching recommendations…</p></div></div>';
@@ -338,6 +338,7 @@
       el.innerHTML = h;
       U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
       DP.jumpNav(el);
+      if (DP.fillWeekFlows) DP.fillWeekFlows(el);
       if (DP.teamValueTrend) { var dvTile = U.qsa('.stat', el).filter(function (x) { return /Dynasty value/.test((U.qs('.l', x) || {}).textContent || ''); })[0]; if (dvTile && U.qs('.d', dvTile)) { var dvBox = document.createElement('span'); U.qs('.d', dvTile).appendChild(dvBox); DP.teamValueTrend(t, dvBox); } }
 
       DP.getSim(function (sim) {

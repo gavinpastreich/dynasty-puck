@@ -603,3 +603,6 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 @media (max-width: 640px) { .pwlist li { grid-template-columns: 30px 28px 1fr; padding: 10px; } .pw-rk { font-size: 1.2rem; } }
 .yw-flow { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .yw-flow:empty { display: none; }
+.wkflow { display: inline-flex; margin-left: 4px; opacity: .85; }
+.wkflow:empty { display: none; }
+.mvp li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 5px 0; border-bottom: 1px solid var(--line); }

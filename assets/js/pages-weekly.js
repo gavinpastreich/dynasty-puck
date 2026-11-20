@@ -178,7 +178,7 @@
     });
     s += '</svg>';
     var chips = '<div class="wkchips">' + R.map(function (r) {
-      return '<a class="wkchip ' + r.res + '" href="' + U.hash('weekly', null, { w: r.n }) + '" title="' + esc('Week ' + r.n + ' recap') + '"><span class="wk">W' + r.n + '</span><b>' + r.res + '</b> <span class="num">' + r.W + '-' + r.L + '-' + r.T + '</span> ' + U.teamBadge(r.opp, 'sm') + '</a>';
+      return '<a class="wkchip ' + r.res + '" href="' + U.hash('weekly', null, { w: r.n }) + '" title="' + esc('Week ' + r.n + ' recap') + '"><span class="wk">W' + r.n + '</span><b>' + r.res + '</b> <span class="num">' + r.W + '-' + r.L + '-' + r.T + '</span> ' + U.teamBadge(r.opp, 'sm') + '<span class="wkflow" data-wf="' + r.n + '|' + esc(t) + '|' + esc(r.opp) + '"></span></a>';
     }).join('') + '</div>';
     var w = R.filter(function (r) { return r.res === 'W'; }).length, l = R.filter(function (r) { return r.res === 'L'; }).length, tt = R.length - w - l;
     var streak = 1; for (var i = R.length - 2; i >= 0 && R[i].res === R[R.length - 1].res; i--) streak++;

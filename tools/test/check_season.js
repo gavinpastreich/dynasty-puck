@@ -313,6 +313,23 @@ E.P.filter((p) => p.r && p.gm).slice(0, 40).forEach((p) => {
 const sim0 = E.P.filter((p) => p.r && !p.G && p.p26[0] >= 20)[0];
 ok(DP.similarPlayers(sim0, 1000).length === E.P.filter((q) => q.r && !q.G && (q.slot === 'D') === (sim0.slot === 'D') && q.p26 && q.p26[0] >= 20).length - 1, 'similar: compares against every regular in the group');
 
+// ---- MVP race
+const MVP = DP.mvpRace(HW, details);
+ok(MVP.sk.length > 100 && MVP.gk.length > 10 && MVP.sk.every((o, i) => !o.p.G && (!i || MVP.sk[i - 1].v >= o.v)) && MVP.gk.every((o) => o.p.G), 'mvp: skaters and goalies, sorted');
+MVP.sk.slice(0, 5).concat(MVP.gk.slice(0, 3)).forEach((o) => {
+  const R = DP.playerSeasonLog(o.p, details).filter((r) => !r.live && r.l);
+  ok(o.wk === R.length && o.gp === E.sum(R.map((r) => r.l[0])) && near(o.per, o.v / o.wk), `mvp ${o.p.n}: weeks, games and per-week match the season log`);
+});
+// one skater-week by hand
+(function () {
+  const W = details[0], w = HW.find((x) => x.n === W.n), t = Object.keys(W.teams)[0], id = W.teams[t].active.find((x) => E.byId[x] && !E.byId[x].G && W.teams[t].pl[x]);
+  const l = W.teams[t].pl[id], sd = (k) => { const v = E.teams.map((u) => w.tot[u][k] || 0), m = E.sum(v) / v.length; return Math.sqrt(E.sum(v.map((x) => (x - m) * (x - m))) / v.length) || 1; };
+  let v = l[1] / sd('G') + l[2] / sd('A') + (2 * l[1] + l[2]) / sd('GA2') + l[3] / sd('PIM') + l[4] / sd('SOG') + l[5] / sd('STP') + l[6] / sd('Hit') + l[7] / sd('Blk') + l[8] / sd('Tk') + l[9] / sd('Cor');
+  if (E.byId[id].pos === 'D') v += (l[1] + l[2]) / sd('PtD');
+  const one = DP.mvpRace(HW, [{ n: W.n, teams: { [t]: { active: [id], pl: { [id]: l } } } }]).sk[0];
+  ok(one && near(one.v, v, 1e-9), 'mvp: one skater-week by hand');
+})();
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));
