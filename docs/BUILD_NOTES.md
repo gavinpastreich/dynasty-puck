@@ -449,3 +449,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     losing that matchup (`r.stakes` = {wk, pW, poW, poL, chW, chL}); `DP.stakes(sim)` in pages-season.js orders the
     matchups by (playoff swings + 3 x title swings) x 4p(1-p), with live odds while the week is played. Shown on the
     Playoff Picture and the Dashboard (when the swing is 3+ points).
+  - The sim also splits the week after (`r.stakesNext`, playoff odds only); `DP.stakes(sim, week)` picks either. The
+    Weekly Preview adds "Playoff odds at stake" lines and the matchup of the week (card and chat text).

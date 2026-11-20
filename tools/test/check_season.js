@@ -360,6 +360,12 @@ if (ST) {
     ok(Math.abs(r.po - (s0.pW * s0.poW + (1 - s0.pW) * s0.poL)) < 0.03, `stakes ${x.t}: playoffs = P(win) x if-win + P(lose) x if-lose`);
   }));
   ok(ST.games.every((g, i) => !i || ST.games[i - 1].sw >= g.sw), 'stakes: sorted by what is riding on it');
+  const ST2 = DP.stakes(SIM, ST.n + 1);
+  if (ST2) {
+    ok(ST2.n === ST.n + 1 && ST2.games.length === DP.meta.h2h.filter((m) => m[0] === ST2.n).length, `stakes: next week (${ST2.n}) too`);
+    SIM.forEach((r) => { const x = r.stakesNext; if (x) ok(Math.abs(r.po - (x.pW * x.poW + (1 - x.pW) * x.poL)) < 0.03, `stakes next ${r.t}: playoffs = the win/lose mix`); });
+  }
+  ok(DP.stakes(SIM, ST.n + 5) === null, 'stakes: weeks the sim did not split come back empty');
 }
 
 // ---- Start Here tour: every link is a page in the menu

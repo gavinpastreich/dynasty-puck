@@ -1553,10 +1553,11 @@
     var T0 = teams.map(function (t) { return act && act.rec[t] ? act.rec[t].T : 0; });
     var res = teams.map(function () {
       return { W: 0, L: 0, T: 0, seed: new Array(nt).fill(0), po: 0, r2: 0, fin: 0, champ: 0, first: 0, last: 0, slot: new Array(nt).fill(0),
-        lvW: 0, lvWpo: 0, lvWch: 0, lvL: 0, lvLpo: 0, lvLch: 0 };
+        lvW: 0, lvWpo: 0, lvWch: 0, lvL: 0, lvLpo: 0, lvLch: 0, lv2W: 0, lv2Wpo: 0, lv2L: 0, lv2Lpo: 0 };
     });
-    // stakes: playoff and title odds conditional on winning or losing the first unplayed week's matchup
-    var lev = done < E.REG_WEEKS ? done : -1, levRes = new Array(nt).fill(0);
+    // stakes: playoff and title odds conditional on winning or losing the first unplayed week's matchup (and playoff odds
+    // for the week after it, for the Weekly Preview)
+    var lev = done < E.REG_WEEKS ? done : -1, levRes = new Array(nt).fill(0), lev2 = done + 1 < E.REG_WEEKS ? done + 1 : -1, levRes2 = new Array(nt).fill(0);
     var minGP = E.RULES.goalieMinGP;
     var sample = function (pp, t, eps) { // one team-week draw -> 15 values (null ratio when no goalie games)
       var v = new Array(E.NC), mu = pp.mu, sd = pp.sd;
@@ -1612,11 +1613,12 @@
     for (var s = 0; s < N; s++) {
       for (var t = 0; t < nt; t++) eps[t] = noise * nrm();
       var W = W0.slice(), L = L0.slice(), T = T0.slice();
-      levRes.fill(0);
+      levRes.fill(0); levRes2.fill(0);
       for (var gi = 0; gi < games.length; gi++) {
         var g = games[gi], a = sample(P[g[1]][g[0]], g[1], eps), b = sample(P[g[2]][g[0]], g[2], eps);
         var r = compare(a, b), lost = E.NC - r[0] - r[1] - r[2];
         if (g[0] === lev) { levRes[g[1]] = r[0] > r[1] ? 1 : r[0] < r[1] ? -1 : 0; levRes[g[2]] = -levRes[g[1]]; }
+        else if (g[0] === lev2) { levRes2[g[1]] = r[0] > r[1] ? 1 : r[0] < r[1] ? -1 : 0; levRes2[g[2]] = -levRes2[g[1]]; }
         W[g[1]] += r[0]; W[g[2]] += r[1]; T[g[1]] += r[2]; T[g[2]] += r[2];
         L[g[1]] += E.NC - r[0] - r[2]; L[g[2]] += E.NC - r[1] - r[2];
         void lost;
@@ -1634,6 +1636,7 @@
         var seeds = seedOrder.slice(0, nPO);
         seeds.forEach(function (ti) { res[ti].po++; });
         if (lev >= 0) for (t = 0; t < nt; t++) { var inPO = seeds.indexOf(t) >= 0; if (levRes[t] === 1) { res[t].lvW++; if (inPO) res[t].lvWpo++; } else if (levRes[t] === -1) { res[t].lvL++; if (inPO) res[t].lvLpo++; } }
+        if (lev2 >= 0) for (t = 0; t < nt; t++) { var inPO2 = seeds.indexOf(t) >= 0; if (levRes2[t] === 1) { res[t].lv2W++; if (inPO2) res[t].lv2Wpo++; } else if (levRes2[t] === -1) { res[t].lv2L++; if (inPO2) res[t].lv2Lpo++; } }
         var play = function (x, y, wi) { // x = higher seed
           var a2 = sample(P[x][wi], x, eps), b2 = sample(P[y][wi], y, eps), r2 = compare(a2, b2);
           return r2[1] > r2[0] ? y : x;
@@ -1679,7 +1682,8 @@
         seed: r.seed.map(function (x) { return x / N; }), po: r.po / N, r2: r.r2 / N, fin: r.fin / N, champ: r.champ / N,
         first: r.first / N, last: r.last / N, slot: r.slot.map(function (x) { return x / N; }),
         avgSeed: r.seed.reduce(function (a, x, k) { return a + x * (k + 1); }, 0) / N,
-        stakes: lev >= 0 && r.lvW && r.lvL ? { wk: lev, pW: r.lvW / N, poW: r.lvWpo / r.lvW, poL: r.lvLpo / r.lvL, chW: r.lvWch / r.lvW, chL: r.lvLch / r.lvL } : null };
+        stakes: lev >= 0 && r.lvW && r.lvL ? { wk: lev, pW: r.lvW / N, poW: r.lvWpo / r.lvW, poL: r.lvLpo / r.lvL, chW: r.lvWch / r.lvW, chL: r.lvLch / r.lvL } : null,
+        stakesNext: lev2 >= 0 && r.lv2W && r.lv2L ? { wk: lev2, pW: r.lv2W / N, poW: r.lv2Wpo / r.lv2W, poL: r.lv2Lpo / r.lv2L, chW: 0, chL: 0 } : null };
     }).sort(function (a, b) { return b.pct - a.pct; });
     out.done = done;
     return out;

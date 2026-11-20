@@ -178,12 +178,14 @@
   };
   // this week's stakes: each matchup of the first unplayed week, with both teams' playoff and title odds if they win or
   // lose it (counted inside the season simulation) and the chance to win it (live odds while the week is being played)
-  DP.stakes = function (sim) {
+  DP.stakes = function (sim, week) {
     var E = DP.E, by = {}; sim.forEach(function (r) { by[r.t] = r; });
     var any = sim.filter(function (r) { return r.stakes; })[0]; if (!any) return null;
-    var n = any.stakes.wk + 1, sc = DP.league.score, live = sc && sc.week === n && !sc.final && sc.teams && DP.liveOdds;
+    var key = week && any.stakesNext && week === any.stakesNext.wk + 1 ? 'stakesNext' : 'stakes';
+    if (week && week !== any[key].wk + 1) return null;
+    var n = any[key].wk + 1, sc = DP.league.score, live = sc && sc.week === n && !sc.final && sc.teams && DP.liveOdds;
     var side = function (t, o, k) {
-      var x = by[t].stakes; if (!x) return null;
+      var x = by[t][key]; if (!x) return null;
       var pw = live && o ? (k === 0 ? o.win + o.tie / 2 : o.loss + o.tie / 2) : x.pW;
       return { t: t, pw: pw, po: by[t].po, poW: x.poW, poL: x.poL, sw: x.poW - x.poL, chW: x.chW, chL: x.chL };
     };

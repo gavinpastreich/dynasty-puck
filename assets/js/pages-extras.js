@@ -153,6 +153,9 @@
       setTimeout(function () {
         var games = DP.meta.h2h.filter(function (g) { return g[0] === w; }), cards = [], text = ['Dynasty Puck: Week ' + w + ' preview (' + U.date(new Date(wk.start + 'T12:00:00Z')) + ' – ' + U.date(new Date(wk.end + 'T12:00:00Z')) + ')', ''];
         var gradsThisWeek = E.P.filter(function (p) { return p.gm && p.ct === 'MNR'; }).map(function (p) { return [p, E.graduation(p)]; }).filter(function (x) { return x[1].week === wi; });
+        // what each matchup is worth (season sim: playoff odds if each side wins or loses it)
+        var ST = DP.stakes && wi < E.REG_WEEKS ? DP.stakes(E.baseSim(), w) : null, stOf = {}, motw = ST && ST.games.length && ST.games[0].sw > 0.04 ? ST.games[0] : null;
+        if (ST) ST.games.forEach(function (x) { stOf[x.a.t + '|' + x.b.t] = x; stOf[x.b.t + '|' + x.a.t] = x; });
         games.forEach(function (g, gi) {
           var A = E.teamWeek(E.rosters[g[1]], wi, { injuries: true }), B = E.teamWeek(E.rosters[g[2]], wi, { injuries: true });
           var pr = E.matchupProbs(A, B), mc = E.simWeek(A, B, 3000, w * 97 + gi), ea = E.sum(pr.map(function (x) { return x.w + x.t / 2; }));
@@ -170,6 +173,11 @@
             '   Skater games: ' + gA + ' vs ' + gB + (Math.abs(gA - gB) >= 5 ? ' (big schedule edge to ' + (gA > gB ? g[1] : g[2]) + ')' : '') + '.' + (A.r.gFail > 0.12 || B.r.gFail > 0.12 ? ' Goalie-minimum risk: ' + g[1] + ' ' + U.pct(A.r.gFail) + ', ' + g[2] + ' ' + U.pct(B.r.gFail) + '.' : '')
           ];
           if (inj.length) lines.push('   Missing: ' + inj.map(function (p) { return p.n + ' (' + p.gm + ')'; }).join(', ') + '.');
+          var sx = stOf[g[1] + '|' + g[2]];
+          if (sx) {
+            var stl = [sx.a, sx.b].filter(function (x) { return x.sw >= 0.03; }).map(function (x) { return x.t + ' ' + U.pct(x.poW) + ' with a win, ' + U.pct(x.poL) + ' with a loss'; });
+            if (stl.length) lines.push('   Playoff odds at stake: ' + stl.join('; ') + '.' + (motw === sx ? ' Matchup of the week.' : ''));
+          }
           text = text.concat(lines);
           cards.push('<div class="card" style="margin-bottom:12px"><h3>' + U.teamBadge(g[1]) + ' ' + esc(U.teamName(g[1])) + ' <span class="muted">at</span> ' + esc(U.teamName(g[2])) + ' <span class="badge ' + (tone === 'coin flip' ? 'warn' : 'good') + '">' + esc(tone === 'coin flip' ? 'coin flip' : fav + ' ' + U.pct(favP)) + '</span> <a class="btn sm" style="margin-left:auto" href="' + U.hash('matchup', null, { w: w, a: g[1], b: g[2] }) + '">Open matchup</a></h3>' +
             '<p class="small">' + lines.map(function (l) { return esc(l.trim()); }).join('<br>') + '</p></div>');
