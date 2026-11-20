@@ -44,6 +44,18 @@ const SHOTS = [
   ['radarrank', 'radar?tab=rank', 'CGN', { h: 700 }],
   ['radarreport', 'radar?p=n8484170', 'TommyG10', { h: 960 }],
   ['radarteam', 'team/ROO', 'ROO', { card: 'Prospect Radar: this week' }],
+  // added 2026-11-20
+  ['flow', 'live?w=1', 'mcianfra', { clickFirst: '[data-flowbtn]', sel: 'div[id^="fp"]:not([hidden]) svg.flow', wait: 3000 }],
+  ['pickup', 'pickup', 'PuckLuck', { card: 'Best adds this week' }],
+  ['scout', 'scout', 'SPG', { card: 'Category battle' }],
+  ['form', 'form', 'ROO', { card: 'Hottest' }],
+  ['lines', 'lines', 'CGN', { card: 'Free agents moving up', wait: 3500 }],
+  ['movers', 'movers', 'mcianfra', { card: 'Team value through the season', wait: 3500 }],
+  ['power', 'power', 'M.M', { h: 700 }],
+  ['weekly', 'weekly', 'SPG', { card: 'The story', wait: 5000 }],
+  ['mvp', 'records', 'TommyG10', { card: 'MVP race', wait: 5000 }],
+  ['moves', 'moves', 'Wags8210', { card: 'Best pickups of the season', wait: 5000 }],
+  ['tape', 'tape?a=SPG&b=CGN', 'SPG', { card: 'The tale', w: 1040 }],
   ['phone_home', 'home', 'BHHC', { phone: true }],
   ['phone_team', 'team/mertin', 'mertin', { phone: true, scrollTo: 'Fantrax lineup check' }],
 ];
@@ -53,7 +65,7 @@ const SHOTS = [
   const browser = await chromium.launch(process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {});
   for (const [name, route, team, o] of SHOTS) {
     if (ONLY.length && !ONLY.includes(name)) continue;
-    const ctx = await browser.newContext(o.phone ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2.5, isMobile: true, hasTouch: true } : { viewport: { width: 1360, height: o.h || 900 }, deviceScaleFactor: 2 });
+    const ctx = await browser.newContext(o.phone ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2.5, isMobile: true, hasTouch: true } : { viewport: { width: o.w || 1360, height: o.h || 900 }, deviceScaleFactor: 2 });
     await ctx.route('https://www.fantrax.com/**', (r) => {
       try { r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: require('child_process').execFileSync('curl', ['-sS', '--max-time', '20', r.request().url()]) }); } catch (e) { r.abort(); }
     });
@@ -87,7 +99,11 @@ const SHOTS = [
     if (o.clickFirst) { const b = await page.$(o.clickFirst); if (b) { await b.click(); await page.waitForTimeout(800); } }
     if (o.scrollTo) { await page.evaluate((t) => { const h = [...document.querySelectorAll('h2')].find((x) => x.textContent.includes(t)); if (h) h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -70); }, o.scrollTo); await page.waitForTimeout(400); }
     const file = path.join(OUT, name + '.jpg');
-    if (o.card) {
+    if (o.sel) {
+      await page.waitForTimeout(1500);
+      const e = await page.$(o.sel);
+      if (e) await e.screenshot({ path: file, type: 'jpeg', quality: 86 }); else console.log('  ! element not found', name);
+    } else if (o.card) {
       const el = o.card.startsWith('.') ? await page.$('#live-games ' + o.card) : await page.evaluateHandle((t) => { const h = [...document.querySelectorAll('h2,h3')].find((x) => x.textContent.includes(t)); return h ? h.closest('.card') : null; }, o.card);
       const e = el && el.asElement ? el.asElement() : el;
       if (e) await e.screenshot({ path: file, type: 'jpeg', quality: 86 }); else console.log('  ! card not found', name);

@@ -31,10 +31,10 @@ def main():
             continue
         name = fn[:-4]
         im = Image.open(os.path.join(shots, fn)).convert("RGB")
-        w = 900 if name.startswith("phone") else 1700
+        w = 800 if name.startswith("phone") else 1400
         if im.width > w:
             im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
-        im.save(os.path.join(out, "img", fn), "JPEG", quality=80, optimize=True, progressive=True)
+        im.save(os.path.join(out, "img", fn), "JPEG", quality=74, optimize=True, progressive=True)
         html = html.replace("{{img:%s}}" % name, "img/" + fn)
     segno.make(SITE, error="m").save(os.path.join(out, "qr.svg"), scale=6, border=1, dark="#0d1117")
     html = html.replace("{{qr}}", "qr.svg").replace("{{site}}", SITE)

@@ -97,9 +97,12 @@ Contract rules from the commissioner (2026-09-26, with screenshots of the consti
   post-ELC players. Numbers for 2027 not final; commissioner: base them on this past summer's (+$1M) formula.
 
 ## League guide PDF (assets/Dynasty-Puck-HQ-Guide.pdf)
-Regenerate after big changes: `node tools/guide/shoot.js <work>/shots` (the 'live' shot needs a temporary
-`DP_SCORE_TEST=2026-03-02:2026-03-05:7` build, restored afterwards), then `python3 tools/guide/build_guide.py <work> --font Inter-latin.woff2`.
-Text lives in tools/guide/guide.html. Linked from the site menu.
+Regenerate after big changes: `node tools/guide/shoot.js <work>/shots [names...]` (outside the season the 'live' shot
+needs a temporary `DP_SCORE_TEST=2026-03-02:2026-03-05:7` build, restored afterwards), then
+`python3 tools/guide/build_guide.py <work> --font Inter-latin.woff2`. Text lives in tools/guide/guide.html (19 pages;
+footers are numbered by hand). Shot options: `card` (heading text), `sel` (any element), `w`/`h` (window), `clickFirst`.
+Images are downsized to 1400 px (phones 800) at JPEG quality 74, about 6 MB in all. Last rebuilt 2026-11-20 with the
+in-season pages (pages 5-8). Linked from the site menu.
 
 Scoreboard + weekly history (2026-11-09):
 - Bug: the Live Scoreboard was empty all season. `week_scoreboard` looked for weeks whose lock time had passed, but
