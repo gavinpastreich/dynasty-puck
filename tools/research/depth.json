@@ -1433,7 +1433,7 @@
   "PIT": {
    "team": "Pittsburgh Penguins",
    "updated": "2026-11-20",
-   "source": "DFO Projections",
+   "source": "Pens Inside Scoop",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "pp1": [
     "Rickard Rakell",
@@ -1467,12 +1467,12 @@
     "Rickard Rakell"
    ],
    "f2": [
-    "Rutger McGroarty",
+    "Andrei Kuzmenko",
     "Ben Kindel",
     "Egor Chinakhov"
    ],
    "f3": [
-    "Andrei Kuzmenko",
+    "Rutger McGroarty",
     "Hendrix Lapierre",
     "Ville Koivunen"
    ],
@@ -1482,15 +1482,15 @@
     "Avery Hayes"
    ],
    "d1": [
-    "Spencer Stastney",
-    "Erik Karlsson"
+    "Erik Karlsson",
+    "Kaedan Korczak"
    ],
    "d2": [
     "Samuel Girard",
-    "Kaedan Korczak"
+    "Trevor van Riemsdyk"
    ],
    "d3": [
-    "Trevor van Riemsdyk",
+    "Spencer Stastney",
     "Kris Letang"
    ],
    "goalies": [
