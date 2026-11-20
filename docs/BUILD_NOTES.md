@@ -431,3 +431,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     files, plus the week in progress from `DP.league.score`).
   - `DP.closeCalls(w)` / `DP.closeTxt` in pages-weekly.js: decided categories ranked by margin / that week's league SD
     (ties and goalie-minimum forfeits excluded). Used by The Weekly (top 3) and the Record Book (top 8, two per cat).
+  - Player page "Plays like": `DP.similarPlayers(p, n)` in player.js (z-scored per-game rest-of-season rates within F / D /
+    G regulars with 20+ projected GP, Euclidean distance; cached per engine version).

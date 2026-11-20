@@ -183,10 +183,46 @@
       if (DP.noteRecent) DP.noteRecent(p.id);
       el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (DP.radarBrief ? DP.radarBrief(p) : '') + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
+      similarCard(p, el);
       seasonLog(p, el);
       if (DP.fillTrends) DP.fillTrends(el);
     }
   };
+  // players with the closest per-game category profile (rest-of-season rates), same position group. Each rate is
+  // standardized over the group's regulars (20+ projected games); distance = Euclidean over the standardized rates.
+  var SK = ['G', 'A', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor'], GK = ['w', 'sv', 'gaa', 'sho'], simCache = {};
+  function group(p) { return p.G ? 'G' : p.slot === 'D' ? 'D' : 'F'; }
+  function stats(g) {
+    var E = DP.E, key = g + ':' + E.version; if (simCache[key]) return simCache[key];
+    var ks = g === 'G' ? GK : SK, pool = E.P.filter(function (q) { return q.r && group(q) === g && q.p26 && q.p26[0] >= 20; });
+    var m = ks.map(function (k) { return E.sum(pool.map(function (q) { return q.r[k] || 0; })) / Math.max(1, pool.length); });
+    var sd = ks.map(function (k, i) { return Math.sqrt(E.sum(pool.map(function (q) { var d = (q.r[k] || 0) - m[i]; return d * d; })) / Math.max(1, pool.length)) || 1; });
+    return (simCache[key] = { ks: ks, m: m, sd: sd, pool: pool });
+  }
+  DP.similarPlayers = function (p, n) {
+    if (!p || !p.r) return [];
+    var S = stats(group(p)), z = function (q) { return S.ks.map(function (k, i) { return ((q.r[k] || 0) - S.m[i]) / S.sd[i]; }); }, zp = z(p);
+    return S.pool.filter(function (q) { return q.id !== p.id; }).map(function (q) {
+      var zq = z(q), d = Math.sqrt(DP.E.sum(zq.map(function (v, i) { return (v - zp[i]) * (v - zp[i]); })));
+      return { p: q, d: d };
+    }).sort(function (a, b) { return a.d - b.d; }).slice(0, n || 8);
+  };
+  function similarCard(p, el) {
+    var L = DP.similarPlayers(p, 8); if (!L.length) return;
+    var me = DP.state.team, prof = function (q) {
+      var r = q.r;
+      return q.G ? U.rate(r.sv) + ' SV% · ' + U.fmt(r.gaa, 2) + ' GAA · ' + U.fmt(r.w, 2) + ' W/GP' : U.fmt(r.G + r.A, 2) + ' P · ' + U.fmt(r.SOG, 1) + ' SOG · ' + U.fmt(r.Hit + r.Blk, 1) + ' Hit+Blk per game';
+    };
+    var cost = function (q) { return q.ct === 'MNR' ? 'MNR $0' : q.sal26 ? esc(q.ct || '') + ' ' + U.m(q.sal26, 1) : q.gm ? esc(q.ct || '') : 'FA'; };
+    var card = document.createElement('div'); card.className = 'card'; card.style.marginTop = '14px';
+    card.innerHTML = '<h2>👯 Plays like</h2><div class="hint">The closest per-game profiles in our categories among ' + (p.G ? 'goalies' : p.slot === 'D' ? 'defensemen' : 'forwards') + ' (rest-of-season projected rates). ' + esc(p.n) + ': ' + esc(prof(p)) + '. Useful for finding a cheaper or available version of the same player.</div>' +
+      '<div class="tbl-wrap"><table class="t"><thead><tr><th>Player</th><th>Owner</th><th>Per game</th><th>Match</th><th class="num">Value</th><th>Contract</th></tr></thead><tbody>' +
+      L.map(function (x) {
+        var q = x.p, cheaper = (p.sal26 || 0) - (q.sal26 || 0);
+        return '<tr class="' + (q.gm && q.gm === me ? 'mine' : '') + '"><td>' + ui.pcell(q, { pos: 1 }) + '</td><td>' + ui.owner(q) + '</td><td class="small">' + esc(prof(q)) + '</td><td class="small nw">' + (x.d < 1.2 ? '<b class="good">very close</b>' : x.d < 2 ? 'close' : x.d < 3 ? 'similar' : '<span class="muted">loosely</span>') + '</td><td class="num">' + U.fmt(q.DV, 1) + '</td><td class="small">' + cost(q) + (cheaper >= 1 ? ' <span class="good">' + U.m(cheaper, 1) + ' less</span>' : '') + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+    el.appendChild(card);
+  }
   // this season in the league: every finished week he was in a locked lineup, with his real lines (data/weeks/wNN.js),
   // plus the week in progress from the live scoreboard
   DP.playerSeasonLog = function (p, details) {

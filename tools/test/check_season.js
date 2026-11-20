@@ -305,6 +305,14 @@ HW.filter((w) => w.games && w.games.length).forEach((w) => {
   });
 });
 
+// ---- similar players: same position group, sorted by distance, never the player himself
+E.P.filter((p) => p.r && p.gm).slice(0, 40).forEach((p) => {
+  const L = DP.similarPlayers(p, 8), g = (q) => (q.G ? 'G' : q.slot === 'D' ? 'D' : 'F');
+  ok(L.length === 8 && L.every((x, i) => x.p.id !== p.id && g(x.p) === g(p) && (!i || L[i - 1].d <= x.d)), `similar ${p.n}: 8 of the same group, closest first`);
+});
+const sim0 = E.P.filter((p) => p.r && !p.G && p.p26[0] >= 20)[0];
+ok(DP.similarPlayers(sim0, 1000).length === E.P.filter((q) => q.r && !q.G && (q.slot === 'D') === (sim0.slot === 'D') && q.p26 && q.p26[0] >= 20).length - 1, 'similar: compares against every regular in the group');
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));
