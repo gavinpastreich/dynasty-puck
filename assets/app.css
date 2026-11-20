@@ -592,3 +592,4 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .pct-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .pct-k { color: var(--muted); font-size: .8rem; min-width: 62px; }
 .flow { width: 100%; max-width: 640px; height: auto; display: block; }
+.h-since:not(:empty) { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }

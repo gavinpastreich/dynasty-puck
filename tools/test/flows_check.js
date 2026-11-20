@@ -222,7 +222,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('rivals', 2500);
   ok(await page.evaluate(() => DP.raceData().weeks.length < 2 || (document.querySelectorAll('svg.bump g.bl').length === DP.E.teams.length && document.querySelectorAll('.h2hmx tbody tr').length === DP.E.teams.length)), 'rivalries: race chart and the all-play matrix');
   await go('records', 3500);
-  ok(await page.evaluate(() => document.querySelectorAll('.recgrid .rec').length === 15 && !/Loading the weekly lines/.test(document.querySelector('#rb-ind').innerText)), 'record book: 15 category records and the individual highs');
+  ok(await page.evaluate(() => document.querySelector('.recgrid').querySelectorAll('.rec').length === 15 && !/Loading the weekly lines/.test(document.querySelector('#rb-ind').innerText)), 'record book: 15 category records and the individual highs');
   // ---- Market Movers, Line & PP Changes, Tale of the Tape, Start Here
   await go('movers', 2500);
   ok(await page.evaluate(() => !DP.values || (document.querySelectorAll('.fmlist li').length >= 10 && document.querySelectorAll('#mv-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'market movers: risers, fallers and the table (footer kept)');
@@ -243,6 +243,14 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
     await go('weekly?w=' + lastWk, 5000);
     ok(await page.evaluate(() => /Comeback|Upset|No real comebacks/.test(document.querySelector('#wk-swing').innerText)), 'the weekly: comeback / upset line');
   }
+  await go('moves', 4500);
+  ok(await page.evaluate(() => document.querySelectorAll('.fmlist li').length >= 3 && document.querySelectorAll('#mv-log tbody tr').length > 10), 'transactions: best pickups and the full log');
+  await go('history', 3500);
+  ok(await page.evaluate(() => !DP.values || [...document.querySelectorAll('.h-since')].some((x) => /Since the trade/.test(x.innerText))), 'trade history: value since the trade');
+  await go('records', 6000);
+  ok(await page.evaluate(() => !DP.weekDays || document.querySelectorAll('#rb-days .rec').length === 13), 'record book: best single days');
+  await page.evaluate(() => { location.hash = '#/compare?ids=' + encodeURIComponent(DP.E.P.filter((p) => p.gm).slice(0, 2).map((p) => p.id).join(',')); }); await page.waitForTimeout(2500);
+  ok(await page.evaluate(() => !DP.values || !!document.querySelector('#cmp-vt svg')), 'compare: value through the season');
   await go('lines', 2500);
   ok(await page.evaluate(() => !DP.depthLog || (document.querySelectorAll('#ln-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'line changes: one row per player who moved');
   const netRows = await page.evaluate(() => document.querySelector('#ln-t').innerText.match(/(\d+) rows/));

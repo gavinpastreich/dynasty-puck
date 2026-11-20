@@ -524,9 +524,27 @@
               var name = a.kind === 'player' ? ui.plink(a.p) + sub([frm, now]) : a.kind === 'pick' ? esc(x.m.label) + sub([frm]) : a.kind === 'usedpick' ? esc(x.m.label) + sub([frm, 'used']) : a.kind === 'cap' ? '<span class="pos">$</span> Cap space ' + U.m(a.amt) + sub(['from ' + x.m.from, tr.season === DP.meta.season ? '2026-27 cap' : 'that season\'s cap']) : esc(x.m.label) + sub([frm, 'no longer in data']);
               return '<div class="pl"><span>' + name + '</span><span class="num" style="margin-left:auto">' + U.fmt(val, 1) + '</span></div>';
             }).join('') + '<div class="small muted" style="margin-top:6px">Total: model <b>' + U.fmt(s.m, 1) + '</b> · league lens <b>' + U.fmt(s.l, 1) + '</b></div></div>';
-          }).join('') + '</div></div>';
+          }).join('') + '</div><div class="small h-since" data-since="' + T.indexOf(tr) + '"></div></div>';
       }).join('') || '<p class="muted">No trades for this team.</p>';
       U.qs('#h-team', el).addEventListener('change', function (e) { DP.go('history', null, { team: e.target.value }); });
+      // since the trade: each side's players, valued the night of the trade vs tonight (Market Movers history)
+      if (DP.loadValues && DP.valueAt) DP.loadValues(function (V) {
+        if (!V) return;
+        U.qsa('[data-since]', el).forEach(function (box) {
+          var c = cards[+box.dataset.since]; if (!c || c.tr.date < V.dates[0]) return;
+          var n = V.dates.length - 1, parts = Object.keys(c.sides).map(function (t) {
+            var v0 = 0, v1 = 0, k = 0;
+            c.sides[t].items.forEach(function (x) {
+              if (x.a.kind !== 'player') return;
+              var o = V.p[x.a.p.id], a = DP.valueAt(x.a.p.id, c.tr.date); if (!o || a === null || o.v[n] === null) return;
+              v0 += a; v1 += o.v[n]; k++;
+            });
+            return k ? { t: t, v0: v0, v1: v1 } : null;
+          }).filter(Boolean);
+          if (!parts.length) return;
+          box.innerHTML = '<b>Since the trade</b> (players received, valued the night of the trade → tonight): ' + parts.map(function (x) { return U.teamLabel(x.t) + ' ' + U.fmt(x.v0, 1) + ' → ' + U.fmt(x.v1, 1) + ' (' + ui.delta(x.v1 - x.v0, 1) + ')'; }).join(' · ') + ' <a href="#/movers?w=s">Market Movers</a>';
+        });
+      });
     }
   };
 

@@ -131,7 +131,14 @@
       }
       h += '</tbody></table></div><p class="small muted">Green = best in the row.</p></div>';
       h += '<div class="card" style="margin-top:14px"><h2>Dynasty curves</h2><div class="hint">Projected WAR per season.</div>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), ps.map(function (p, i) { return { name: p.n, values: p.yWar.map(function (x) { return +x.toFixed(2); }), color: C.SERIES[i] }; }), { height: 240, width: 900, title: 'Projected WAR by season' }) + '</div>';
+      h += '<div class="card" style="margin-top:14px"><h2>Dynasty value through the season</h2><div class="hint">Each player\'s dynasty value on every night on file (every night for the last three weeks, Mondays before that), scored with today\'s model (Market Movers).</div><div id="cmp-vt"><p class="small muted">Loading the value history…</p></div></div>';
       el.innerHTML = h;
+      if (DP.loadValues) DP.loadValues(function (V) {
+        var box = U.qs('#cmp-vt', el); if (!box) return;
+        var have = V ? ps.filter(function (p) { return V.p[p.id]; }) : [];
+        if (!have.length) { box.innerHTML = '<p class="small muted">No value history for these players (unowned players with next to no value aren\'t tracked).</p>'; return; }
+        box.innerHTML = C.lines(V.dates.map(function (d) { return U.date(new Date(d + 'T12:00:00Z')).replace(/,.*/, ''); }), have.map(function (p) { return { name: p.n, values: V.p[p.id].v, color: C.SERIES[ps.indexOf(p)], dots: false }; }), { height: 220, width: 900, zero: false, maxLabels: 8, title: 'Dynasty value by night' });
+      });
       wire();
       function wire() {
         var inp = U.qs('#c-q', el);

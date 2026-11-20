@@ -61,6 +61,22 @@
     return { sk: sk, gk: gk };
   };
 
+  // best single-day team totals (data/weeks/dNN.js: each day of each week scored on its own)
+  var DAYCATS = [['PtD', 'Pt-D'], ['G', 'G'], ['A', 'A'], ['GA2', '2G+A'], ['PIM', 'PIM'], ['SOG', 'SOG'], ['STP', 'STP'], ['Hit', 'Hit'], ['Blk', 'Blk'], ['Tk', 'Tk'], ['Cor', 'Cor'], ['W', 'W'], ['SHO', 'SHO']];
+  DP.dayRecords = function (weeks) {
+    var out = DAYCATS.map(function (c) { return { k: c[0], l: c[1], best: null, sum: 0, n: 0 }; });
+    weeks.forEach(function (W) {
+      (W.days || []).forEach(function (x) {
+        Object.keys(x.teams).forEach(function (t) {
+          var T = x.teams[t];
+          out.forEach(function (r) { var v = T[r.k] || 0; r.sum += v; r.n++; if (!r.best || v > r.best.v) { r.best = { v: v, t: t, d: x.d, n: W.n }; r.ties = 1; } else if (v === r.best.v) r.ties++; });
+        });
+      });
+    });
+    out.forEach(function (r) { r.avg = r.n ? r.sum / r.n : 0; });
+    return out;
+  };
+
   DP.pages.records = {
     title: 'Record Book',
     render: function (el) {
@@ -87,12 +103,25 @@
         st.slice(0, 4).map(function (x) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small muted" style="margin-left:auto">longest winning streak <b class="num">' + x.bestW + '</b></span></li>'; }).join('') + '</ul>' +
         '<h3 class="small" style="margin-top:12px">On a run right now</h3>' + (cur.length ? '<ul class="list-plain">' + cur.map(function (x) { return '<li>' + U.teamChip(x.t, { link: 1 }) + '<span class="small ' + (x.curK === 'W' ? 'good' : 'bad') + '" style="margin-left:auto">' + (x.curK === 'W' ? 'won ' : 'lost ') + x.cur + ' straight</span></li>'; }).join('') + '</ul>' : '<p class="small muted">Nobody has two in a row right now.</p>') + '</div>';
       h += '<div class="card"><h2>⭐ Individual weekly highs</h2><div class="hint">The best single weeks by players in a locked starting lineup (the lines that counted).</div><div id="rb-ind"><p class="small muted">Loading the weekly lines…</p></div></div></div>';
+      h += '<div class="card" style="margin-top:14px"><h2>📅 Best single days</h2><div class="hint">The best one-day team total in each counting category (one NHL game day, the locked starters), next to the average team day.</div><div id="rb-days"><p class="small muted">Loading the days…</p></div></div>';
       el.innerHTML = h;
       DP.loadWeeks(R.weeks.map(function (w) { return w.n; }), function (details) {
         var box = U.qs('#rb-ind', el); if (!box) return;
         var P = DP.playerRecords(details);
         var one = function (r, fmt) { return r.top.length ? '<li><span class="rk">' + esc(r.l) + '</span><span class="who">' + r.top.map(function (x, i) { return (i ? '<span class="faint small">' : '<b>') + '<span class="num">' + (fmt ? fmt(x.v) : x.v) + '</span> ' + ui.plink(x.p) + ' <span class="small muted">' + esc(x.t) + ', wk ' + x.n + '</span>' + (i ? '</span>' : '</b>'); }).join('<br>') + '</span></li>' : ''; };
         box.innerHTML = '<ul class="list-plain recind">' + P.sk.map(function (r) { return one(r); }).join('') + P.gk.map(function (r, i) { return one(r, i === 3 ? U.rate : null); }).join('') + '</ul>';
+        if (!DP.loadDays) return;
+        var ns = R.weeks.map(function (w) { return w.n; }), sc = DP.league.score; if (sc && sc.week && ns.indexOf(sc.week) < 0) ns.push(sc.week);
+        var got = [], i = 0;
+        (function next() {
+          if (i < ns.length) return DP.loadDays(ns[i++], function (D) { if (D) got.push(D); next(); });
+          var db = U.qs('#rb-days', el); if (!db) return;
+          if (!got.length) { db.innerHTML = '<p class="small muted">Day-by-day numbers aren\'t published yet.</p>'; return; }
+          db.innerHTML = '<div class="recgrid">' + DP.dayRecords(got).map(function (r) {
+            var b = r.best; if (!b) return '';
+            return '<div class="rec' + (b.t === me ? ' mine' : '') + '"><div class="rl">' + esc(r.l) + '</div><div class="rv num">' + U.fmt(b.v, r.k === 'Cor' ? 1 : 0) + '</div><div class="rt">' + U.teamChip(b.t, { link: 1 }) + '</div><div class="small muted">' + esc(U.date(new Date(b.d + 'T12:00:00Z'))) + (r.ties > 1 ? ' (first of ' + r.ties + ')' : '') + ' · avg ' + U.fmt(r.avg, 1) + '</div></div>';
+          }).join('') + '</div>';
+        })();
       });
     }
   };

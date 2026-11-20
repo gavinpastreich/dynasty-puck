@@ -28,6 +28,7 @@
       ['trade', '🔁', 'Trade Machine', '2 to 4 teams, players, picks and cap space: value under different lenses, category impact, cap and odds. Share the link to propose it.'],
       ['tape', '📏', 'Tale of the Tape', 'Any two teams side by side: record, value, cap, all 15 categories, head to head and trade fit.'],
       ['values', '💎', 'Trade Value Chart', 'Every player and pick on one dynasty value scale.'],
+      ['moves', '🧾', 'Transactions', 'Every add, drop and trade this season, the best pickups and the drops that got away.'],
       ['deadline', '⏳', 'Trade Deadline', 'Countdown, buyers and sellers, rentals, and the hometown discount.']
     ]],
     ['The long game', 'Dynasty means next season matters too.', [

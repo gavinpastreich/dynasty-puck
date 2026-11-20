@@ -414,3 +414,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     draws it (`DP.teamValueChart`); the Team Hub's dynasty value tile adds the 30-day change (`DP.teamValueTrend`);
     every player card / page gets value and line-move rows (`DP.fillTrends`, loads data/values.js and data/depthlog.js
     on demand).
+
+- Batch 6 (2026-11-20):
+  - pages-wire.js: Transactions (`moves`, `DP.transactions(details)`, `DP.valueAt(id, date)`, `DP.startsFor(id, team,
+    from, details)` = finished weeks in that team's locked lineup since the add with the summed lines). Trade History
+    (pages-trade.js) fills `.h-since` per trade after `DP.loadValues` (players only).
+  - Record Book: `DP.dayRecords(weekDays)` best single-day team totals (counting categories) from data/weeks/dNN.js.
+  - Compare: value through the season (`#cmp-vt`, C.lines over `DP.values` dates).

@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -254,6 +254,29 @@ HW.forEach((w) => {
   });
 });
 ok(!HW.length || dfiles.length >= HW.length, 'flow: a day file for every week played');
+
+// ---- best single days (Record Book) = the real maximum over every day file
+const DR = DP.dayRecords(Object.values(DP.weekDays));
+DR.forEach((r) => {
+  let mxv = -Infinity; Object.values(DP.weekDays).forEach((W) => W.days.forEach((x) => Object.values(x.teams).forEach((T) => { mxv = Math.max(mxv, T[r.k] || 0); })));
+  ok(r.best && r.best.v === mxv && r.best.v >= r.avg && r.ties >= 1, `day records ${r.k}: best single day = ${mxv}`);
+});
+
+// ---- Transactions
+const details = Object.values(DP.weekDetail || {});
+const TX = DP.transactions(details), MV = DP.league.moves || [];
+ok(TX.adds.length === MV.filter((m) => m.type === 'add').length && TX.drops.length === MV.filter((m) => m.type === 'drop').length, 'transactions: every add and drop');
+ok(E.sum(TX.act.map((a) => a.add)) === MV.filter((m) => m.type === 'add' && E.rosters[m.to]).length, 'transactions: adds per GM add up');
+ok(Math.abs(E.sum(TX.act.map((a) => a.cap))) < 1e-9, 'transactions: cap space sent = cap space received');
+TX.adds.forEach((a) => {
+  ok(a.st.wk === details.filter((W) => E.weeks[W.n - 1].end >= a.m.d && W.teams[a.m.to] && (W.teams[a.m.to].active || []).indexOf(a.m.id) >= 0).length, `transactions ${a.m.n}: weeks started for ${a.m.to} since the add`);
+  ok(!a.st.line || a.st.line[0] <= a.st.wk * 5, `transactions ${a.m.n}: games in those weeks`);
+  ok(a.v0 === null || a.v1 === null || near(a.d, a.v1 - a.v0), `transactions ${a.m.n}: value change`);
+});
+if (V) {
+  const id0 = Object.keys(V.p)[0];
+  ok(DP.valueAt(id0, '2000-01-01') === V.p[id0].v[0] && DP.valueAt(id0, '2999-01-01') === V.p[id0].v[V.dates.length - 1] && DP.valueAt(id0, V.dates[2]) === V.p[id0].v[2], 'valueAt: first night on or after a date');
+}
 
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
