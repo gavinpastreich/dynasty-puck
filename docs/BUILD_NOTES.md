@@ -457,3 +457,5 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     for backfilled nights, only for the nights the history keeps) into `history.odds` / `DP.values.odds`
     ({team: {po, ch}} aligned with dates). A full re-score now takes about 2 minutes. Charts: `DP.teamLinesChart`
     (generic), `DP.teamValueChart`, `DP.oddsChart` (Playoff Picture); Team Hub odds tile adds the 30-day change.
+  - `DP.oddsBetween(from, to)` (pages-movers.js): playoff odds on the nights nearest two dates; The Weekly (`#wk-odds`)
+    and the Power Rankings lines use it.

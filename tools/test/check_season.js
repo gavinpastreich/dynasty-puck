@@ -379,6 +379,9 @@ if (V && V.odds) {
     ok(E.teams.every((t) => Math.abs(V.odds[t].po[nD] - now[t].po) < 0.0015), "odds history: tonight's point = the app's own playoff odds");
   }
   ok((DP.oddsChart('ROO').match(/<g class="bl/g) || []).length === E.teams.length, 'odds chart: one line per team');
+  const OB = DP.oddsBetween(V.dates[1], V.dates[V.dates.length - 1]);
+  ok(OB && OB._from <= V.dates[1] && OB._to === V.dates[V.dates.length - 1] && E.teams.every((t) => !OB[t] || near(OB[t].d, OB[t].b - OB[t].a)), 'odds between two dates');
+  ok(DP.oddsBetween('2099-01-01', '2099-01-02') === null || true, 'odds between: dates past the history do not throw');
 }
 
 // ---- Start Here tour: every link is a page in the menu

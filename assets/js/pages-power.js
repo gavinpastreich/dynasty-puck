@@ -33,7 +33,7 @@
     return { n: n, rows: rows, by: rows.reduce(function (o, r) { o[r.t] = r; return o; }, {}) };
   };
   // one auto-written line per team: last week's result, form, the week's standout and moves, what's next
-  DP.powerBlurb = function (t, n, P, prev, W) {
+  DP.powerBlurb = function (t, n, P, prev, W, O) {
     var E = DP.E, H = E.history(), w = H.weeks.filter(function (x) { return x.n === n; })[0], r = P.by[t], bits = [];
     var g = w && w.games.filter(function (x) { return x.a === t || x.b === t; })[0];
     if (g) {
@@ -50,6 +50,7 @@
     if (r.recentRank <= 3 && P.rows.length > 6) bits.push('Top-3 form over the last ' + RECENT + ' weeks.');
     else if (r.recentRank >= P.rows.length - 2) bits.push('Bottom-3 form over the last ' + RECENT + ' weeks.');
     if (prev && prev.by[t]) { var d = prev.by[t].rank - r.rank; if (Math.abs(d) >= 3) bits.push(d > 0 ? 'Up ' + d + ' spots.' : 'Down ' + (-d) + ' spots.'); }
+    if (O && O[t] && Math.abs(O[t].d) >= 0.05) bits.push('Playoff odds ' + U.pct(O[t].a) + ' → ' + U.pct(O[t].b) + ' over the week.');
     var nx = DP.meta.h2h.filter(function (m) { return m[0] === n + 1 && (m[1] === t || m[2] === t); })[0];
     if (nx && E.baseline && E.baseline[t] && E.weeks[n]) {
       var o = nx[1] === t ? nx[2] : nx[1], pr = E.matchupProbs(E.baseline[t][n], E.baseline[o][n]), ex = E.sum(pr.map(function (x) { return x.w + x.t / 2; }));
@@ -79,7 +80,12 @@
       el.innerHTML = h;
       U.qs('#pw-w', el).addEventListener('change', function (e) { DP.go('power', null, { w: e.target.value }); });
       // the week's standouts need the week's player lines
-      if (DP.loadWeek) DP.loadWeek(n, function (W) { if (!W) return; U.qsa('[data-blurb]', el).forEach(function (b) { b.innerHTML = DP.powerBlurb(b.dataset.blurb, n, P, prev, W); }); });
+      var wk = E.weeks[n - 1], addD = function (d, k) { return new Date(Date.parse(d + 'T12:00:00Z') + k * 864e5).toISOString().slice(0, 10); };
+      if (DP.loadWeek) DP.loadWeek(n, function (W) {
+        var fill = function (O) { U.qsa('[data-blurb]', el).forEach(function (b) { b.innerHTML = DP.powerBlurb(b.dataset.blurb, n, P, prev, W, O); }); };
+        fill(null);
+        if (DP.loadValues && DP.oddsBetween) DP.loadValues(function () { if (U.qs('[data-blurb]', el)) fill(DP.oddsBetween(addD(wk.start, -1), addD(wk.end, 1))); });
+      });
       var mvTxt = function (r) { var d = prev && prev.by[r.t] ? prev.by[r.t].rank - r.rank : 0; return !prev ? '' : d > 0 ? ' (▲' + d + ')' : d < 0 ? ' (▼' + (-d) + ')' : ' (–)'; };
       U.qs('#pw-copy', el).addEventListener('click', function () {
         var txt = 'Dynasty Puck power rankings after week ' + n + '\n' + P.rows.map(function (r) { var b = U.qs('[data-blurb="' + r.t + '"]', el); return r.rank + '. ' + U.teamName(r.t) + mvTxt(r) + (b ? ': ' + b.textContent : ''); }).join('\n') + '\n' + location.href;

@@ -87,6 +87,16 @@
     var j30 = V.ref[3];
     return DP.teamLinesChart(V.dates, V.teams, { me: me, title: 'Total dynasty value of every team, night by night', tip: function (t, v) { var n = v.length - 1; return Math.round(v[n]) + ' now · ' + U.sgn(v[n] - v[j30], 1) + ' in 30 days · ' + U.sgn(v[n] - v[0], 1) + ' since ' + day(V.dates[0]); } });
   };
+  // playoff odds of every team on the nights nearest two dates (from the odds history): {team: {a, b, d}}
+  DP.oddsBetween = function (from, to) {
+    var V = DP.values; if (!V || !V.odds) return null;
+    var at = function (d, after) { var k = -1; V.dates.forEach(function (x, i) { if (after ? (k < 0 && x >= d) : x <= d) k = i; }); return k; };
+    var i0 = at(from, false), i1 = at(to, true); if (i0 < 0) i0 = 0; if (i1 < 0) i1 = V.dates.length - 1;
+    if (i1 <= i0) return null;
+    var out = {}; Object.keys(V.odds).forEach(function (t) { var a = V.odds[t].po[i0], b = V.odds[t].po[i1]; if (a !== null && b !== null) out[t] = { a: a, b: b, d: b - a }; });
+    out._from = V.dates[i0]; out._to = V.dates[i1];
+    return out;
+  };
   // every team's playoff odds on each night on file (season sim with that night's standings and rosters)
   DP.oddsChart = function (me, key) {
     var V = DP.values; if (!V || !V.odds || V.dates.length < 2) return '';
