@@ -325,6 +325,7 @@
       el.innerHTML = h;
       U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
       DP.jumpNav(el);
+      if (DP.teamValueTrend) { var dvTile = U.qsa('.stat', el).filter(function (x) { return /Dynasty value/.test((U.qs('.l', x) || {}).textContent || ''); })[0]; if (dvTile && U.qs('.d', dvTile)) { var dvBox = document.createElement('span'); U.qs('.d', dvTile).appendChild(dvBox); DP.teamValueTrend(t, dvBox); } }
 
       DP.getSim(function (sim) {
         var r = sim.find(function (x) { return x.t === t; });

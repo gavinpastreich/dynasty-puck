@@ -206,7 +206,7 @@
       S.push('<b>Standings:</b> ' + esc(tn(lead.t)) + ' lead' + (lead.t.slice(-1) === 's' ? '' : 's') + ' at ' + lead.W + '-' + lead.L + '-' + lead.T + '.' + (D.up ? ' Biggest climb: ' + esc(tn(D.up.t)) + ' (' + U.ord(D.up.from) + ' → ' + U.ord(D.up.to) + ').' : '') + (D.down ? ' Biggest drop: ' + esc(tn(D.down.t)) + ' (' + U.ord(D.down.from) + ' → ' + U.ord(D.down.to) + ').' : ''));
       var ck = D.cats.filter(function (x) { return /^(G|Hit|SOG|SV|GAA)$/.test(x.cat.k) && x.top; }).map(function (x) { var v = x.top.v; return esc(x.cat.l) + ' ' + esc(x.top.t) + ' (' + (x.cat.k === 'SV' ? U.rate(v) : x.cat.k === 'GAA' ? U.fmt(v, 2) : U.fmt(v, 0)) + ')'; });
       if (ck.length) S.push('<b>League highs:</b> ' + ck.join(' · ') + '.');
-      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li></ul></div></div>';
+      h += '<div class="card"><h2>The story</h2><ul class="small" style="padding-left:18px;margin:0">' + S.map(function (s) { return '<li style="margin-bottom:6px">' + s + '</li>'; }).join('') + '<li id="wk-stars" class="muted">Loading the players of the week…</li><li id="wk-swing" hidden></li></ul></div></div><div id="wk-flow"></div>';
       // moves
       var M = [];
       D.trades.forEach(function (tr) { var tk = tradeTake(tr); M.push('<b>Trade:</b> ' + tr.teams.map(function (t) { return esc(tn(t)); }).join(' / ') + ' (' + tr.moves.filter(function (m) { return m.kind === 'player'; }).map(function (m) { return esc(m.label); }).join(', ') + (tr.moves.some(function (m) { return m.kind === 'pick'; }) ? ' and picks' : '') + (tr.moves.some(function (m) { return m.kind === 'cap'; }) ? ' and cap space' : '') + '). By today\'s model ' + esc(tk.best) + ' came out ahead. <a href="#/history">Trade History →</a>'); });
@@ -244,6 +244,22 @@
         li.className = '';
         li.innerHTML = '<b>Players of the week</b> (locked starters): ' + parts.map(function (x) { return x[0] + ': ' + ui.plink(x[1].p) + ' (' + esc(x[1].t) + '), ' + esc(lineTxt(x[1])); }).join('; ') + '.';
         starsTxt = parts.map(function (x) { return x[0] + ': ' + x[1].p.n + ' (' + x[1].t + '), ' + lineTxt(x[1]); });
+        // the day-by-day swings: biggest comeback and who led wire to wire (data/weeks/dNN.js)
+        if (DP.loadDays) DP.loadDays(n, function (Dd) {
+          var sw = U.qs('#wk-swing', el); if (!sw || !Dd) return;
+          var F = D.sorted.map(function (x) { var f = DP.matchFlow(n, x.g.a, x.g.b, 1000); return f && f.ok && f.done ? { f: f, s: DP.flowSwing(f), x: x } : null; }).filter(function (y) { return y && y.s && y.s.low; });
+          if (!F.length) return;
+          F.sort(function (p, q) { return p.s.low.p - q.s.low.p; });
+          var cb = F[0], ww = F.filter(function (y) { return y.s.low.p >= 0.5; }).sort(function (p, q) { return q.s.low.p - p.s.low.p; })[0], g = cb.x.g, lose = cb.s.t === g.a ? g.b : g.a, sc = cb.s.t === g.a ? [g.sa.W, g.sb.W] : [g.sb.W, g.sa.W];
+          var DOWS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          var when = function (d) { return 'after ' + DOWS[new Date(d + 'T12:00:00Z').getUTCDay()] + '\'s games'; };
+          sw.hidden = false;
+          sw.innerHTML = (cb.s.low.p >= 0.35 ? '<b>No real comebacks:</b> every winner was at least ' + U.pct(cb.s.low.p) + ' to win all week.'
+            : cb.s.low.d === null ? '<b>Upset of the week:</b> ' + esc(tn(cb.s.t)) + ' had a ' + U.pct(cb.s.low.p) + ' chance before the week started and beat ' + esc(tn(lose)) + ' ' + sc[0] + '-' + sc[1] + '.'
+            : '<b>Comeback of the week:</b> ' + esc(tn(cb.s.t)) + ' was down to a ' + U.pct(cb.s.low.p) + ' chance ' + esc(when(cb.s.low.d)) + ' and still beat ' + esc(tn(lose)) + ' ' + sc[0] + '-' + sc[1] + '.') +
+            (ww && ww !== cb ? ' <b>Wire to wire:</b> ' + esc(tn(ww.s.t)) + ' never dropped below ' + U.pct(ww.s.low.p) + '.' : '') + ' <span class="muted">(win odds rebuilt after each day; <a href="#/live?w=' + n + '">day by day on the scoreboard</a>)</span>';
+          if (cb.s.low.p < 0.35) { var fb = U.qs('#wk-flow', el); if (fb) fb.innerHTML = '<div class="card" style="margin-top:14px"><h2>📈 ' + (cb.s.low.d === null ? 'How the upset happened' : 'How the comeback happened') + '</h2><div class="hint">' + esc(tn(cb.f.a)) + '\'s chance to win after each day (above the line = ' + esc(U.teamAbbr(cb.f.a)) + ' favored). Numbers under the days = categories each side led.</div>' + DP.flowChart(cb.f) + '</div>'; }
+        });
       });
       U.qs('#wk-copy', el).addEventListener('click', function () { U.copy(chatText(D, X, starsTxt), 'The Weekly copied. Paste it in the league chat.'); });
       U.qs('#wk-img', el).addEventListener('click', function () {

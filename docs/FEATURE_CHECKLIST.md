@@ -127,4 +127,6 @@ as you ship them, and add any new ideas you come up with.
       all-play head-to-head), Record Book, prospect watchlist, "since your last visit".
 - [x] Batch 4 (2026-11-20): Market Movers (nightly dynasty value history, risers/fallers with the reason, team value
       change), Line & PP Changes (Daily Faceoff depth charts night to night), Tale of the Tape (any two teams), Start Here.
+- [x] Batch 5 (2026-11-20): day-by-day win odds for every matchup (Live Scoreboard, The Weekly's comeback of the week),
+      team value through the season, value trend and line moves on every player card.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

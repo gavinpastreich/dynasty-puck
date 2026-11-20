@@ -32,7 +32,8 @@ tracker behind the Draft Center and Mock Draft (`tools/research/draft_tracker.py
 `tools/research/wjc.json`) and `assets/js/pages-scout.js` (Opponent Scouting). Added 2026-11-20: pages-pickup.js, pages-form.js (last 14 days =
 `p.l14` from `recent_form()` in the build), pages-rivals.js, pages-records.js, pages-me.js (watchlist, last visit). Added later on 2026-11-20: Market Movers
 (`tools/value_history.js` -> data/values.js; re-scores the whole history itself when engine.js changes), Line & PP
-Changes (`tools/research/depth_log.py` -> data/depthlog.js), pages-tape.js (Tale of the Tape), pages-tour.js (Start Here). The NHL
+Changes (`tools/research/depth_log.py` -> data/depthlog.js), pages-tape.js (Tale of the Tape), pages-tour.js (Start Here), pages-flow.js (day-by-day win odds from
+`SB.week_days()` -> data/weeks/dNN.js). The NHL
 stats API caps responses at 100 rows: always fetch reports through `get_paged()` in `tools/nhl_api.py`. If you change the prospect model in
 `assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
 Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`,

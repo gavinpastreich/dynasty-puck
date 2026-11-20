@@ -373,6 +373,44 @@ def history(weeks, lookup, cor_model, teams, snap=None, now=None, raw_dir=None, 
     return out
 
 
+def week_days(w, lookup, cor_model, teams, snap=None, raw_dir=None, now=None, freeze_after=3, log=print):
+    """Each day's category totals for every team's locked lineup in one fantasy week (single-day NHL reports), for the
+    day-by-day flow of each matchup: {"n", "days": {date: {team code: totals}}}, saved in raw/<season>/weekly/
+    days_NN.json. A day is re-read until it is `freeze_after` days old (stat corrections), then kept. Days with no NHL
+    games simply have no entry (nothing to add)."""
+    now = now or now_utc()
+    today = game_day(now)
+    if not raw_dir:
+        with open(os.path.join(ROOT, "config", "league.json"), encoding="utf-8") as f:
+            raw_dir = os.path.join(ROOT, *json.load(f).get("rawFolder", "raw/2026-27").split("/"), "weekly")
+    path = os.path.join(raw_dir, f"days_{w['n']:02d}.json")
+    rec = {"n": w["n"], "days": {}}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            rec = json.load(f)
+    cor_est = lambda h: cor_model[0] * h["sat"] + cor_model[1] * h["pp"] + cor_model[2] * h["shtoi"] + cor_model[3] * h["gp"]
+    d, last = dt.date.fromisoformat(w["start"]), min(dt.date.fromisoformat(w["end"]), today - dt.timedelta(days=1))
+    lineups, changed = None, False
+    while d <= last and not API.OFFLINE:
+        key = str(d)
+        if key not in rec["days"] or (today - d).days <= freeze_after:
+            if lineups is None:
+                lineups = period_lineups(w["n"], teams, snap) or {}
+            if not lineups:
+                break
+            sk, gk = range_stats(key, key, max_age_days=0.25)
+            if sk or gk:
+                rec["days"][key] = {c: team_totals(lu, lookup, sk, gk, cor_est)[0]["tot"] for c, lu in lineups.items()}
+                changed = True
+        d += dt.timedelta(days=1)
+    if changed:
+        rec["days"] = dict(sorted(rec["days"].items()))
+        os.makedirs(raw_dir, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(rec, f, separators=(",", ":"), sort_keys=True)
+    return rec if rec["days"] else None
+
+
 # ----------------------------------------------------------------------------- standalone (live Action)
 def _published():
     """Players, weeks and the Cor model from the published data file, so the live job needs no full build."""

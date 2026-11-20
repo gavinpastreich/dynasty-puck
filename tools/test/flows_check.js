@@ -228,6 +228,21 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => !DP.values || (document.querySelectorAll('.fmlist li').length >= 10 && document.querySelectorAll('#mv-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'market movers: risers, fallers and the table (footer kept)');
   await page.click('[data-w="30"]'); await page.waitForTimeout(1500);
   ok(/w=30/.test(await page.evaluate(() => location.hash)) && await page.evaluate(() => document.querySelector('[data-w="30"]').classList.contains('on')), 'market movers: 30-day window');
+  ok(await page.evaluate(() => !DP.values || !DP.values.teams || document.querySelectorAll('svg.bump g.bl').length === DP.E.teams.length), 'market movers: team value chart, one line per team');
+  await go('team/ROO', 3500);
+  ok(await page.evaluate(() => !DP.values || /30 days/.test([...document.querySelectorAll('.stat')].find((x) => /Dynasty value/.test(x.innerText)).innerText)), 'team hub: dynasty value tile shows the 30-day change');
+  await page.evaluate(() => { const p = DP.E.P.filter((x) => DP.values && DP.values.p[x.id])[0]; if (p) DP.openPlayer(p.id); }); await page.waitForTimeout(1500);
+  ok(await page.evaluate(() => !DP.values || /Value/.test((document.querySelector('#modal-bg .pc-trend.on') || {}).innerText || '')), 'player card: value trend');
+  await page.evaluate(() => DP.ui.closeModal());
+  // day-by-day flow on a finished week and the comeback line in The Weekly
+  const lastWk = await page.evaluate(() => { const H = DP.E.history().weeks; return H.length ? H[H.length - 1].n : 0; });
+  if (lastWk) {
+    await go('live?w=' + lastWk, 2500);
+    await page.click('[data-flowbtn]'); await page.waitForTimeout(3000);
+    ok(await page.evaluate(() => document.querySelectorAll('svg.flow circle').length >= 3), 'live scoreboard: day-by-day chart for a finished week');
+    await go('weekly?w=' + lastWk, 5000);
+    ok(await page.evaluate(() => /Comeback|Upset|No real comebacks/.test(document.querySelector('#wk-swing').innerText)), 'the weekly: comeback / upset line');
+  }
   await go('lines', 2500);
   ok(await page.evaluate(() => !DP.depthLog || (document.querySelectorAll('#ln-t tbody tr').length > 10 && !!document.querySelector('.foot'))), 'line changes: one row per player who moved');
   const netRows = await page.evaluate(() => document.querySelector('#ln-t').innerText.match(/(\d+) rows/));

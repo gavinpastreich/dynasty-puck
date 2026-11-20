@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -232,6 +232,28 @@ for (let i = 0; i < 4; i++) {
   const sched = DP.meta.h2h.filter((g) => (g[1] === a && g[2] === b) || (g[1] === b && g[2] === a)).length;
   ok(M.real.length + M.next.length <= sched, `tape ${a}-${b}: meetings come from the schedule`);
 }
+
+// ---- day-by-day matchup flow (data/weeks/dNN.js): the days add up to the week, and the last point is the real result
+const dfiles = fs.readdirSync(path.join(ROOT, 'data', 'weeks')).filter((f) => /^d\d+\.js$/.test(f));
+dfiles.forEach((f) => load(['data/weeks/' + f]));
+const HW = E.history().weeks;
+HW.forEach((w) => {
+  if (!DP.weekDays[w.n]) return;
+  const nd = DP.weekDays[w.n].days.length, wk = E.weeks[w.n - 1];
+  ok(nd >= 1 && nd <= wk.days && DP.weekDays[w.n].days.every((x) => x.d >= wk.start && x.d <= wk.end), `flow week ${w.n}: ${nd} days inside the week`);
+  w.games.forEach((g) => {
+    const F = DP.matchFlow(w.n, g.a, g.b, 300);
+    ok(F && F.ok, `flow week ${w.n} ${g.a}-${g.b}: the days add up to the week's totals`);
+    if (!F) return;
+    const last = F.pts[F.pts.length - 1];
+    ok(F.done && last.ls[0] === g.sa.W && last.ls[1] === g.sb.W, `flow week ${w.n} ${g.a}-${g.b}: last day = the real ${g.sa.W}-${g.sb.W}`);
+    ok(near(last.win, g.sa.W > g.sb.W ? 1 : 0) && near(last.loss, g.sb.W > g.sa.W ? 1 : 0), `flow week ${w.n} ${g.a}-${g.b}: odds end at the result`);
+    ok(F.pts.every((p) => p.win >= 0 && p.loss >= 0 && near(p.win + p.loss + p.tie, 1, 1e-9)), `flow week ${w.n} ${g.a}-${g.b}: odds are probabilities`);
+    const sw = DP.flowSwing(F);
+    ok(!sw || (sw.t === (g.sa.W > g.sb.W ? g.a : g.b) && sw.low.p <= (sw.t === g.a ? F.pts[0].win : F.pts[0].loss)), `flow week ${w.n} ${g.a}-${g.b}: the winner's low point`);
+  });
+});
+ok(!HW.length || dfiles.length >= HW.length, 'flow: a day file for every week played');
 
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');

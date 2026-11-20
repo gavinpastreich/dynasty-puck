@@ -396,3 +396,21 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Tests: check_season.js covers the value history (alignment, tonight = the app's own DV and owner, change math, team
     split), line nets, the tape (symmetry, edges, meetings) and the tour links; tools/test/check_depthlog.py covers the
     diff rules, same-day merges and the published log (also in the nightly sanity step).
+
+- Batch 5 (2026-11-20):
+  - Day-by-day matchup flow: `SB.week_days()` in tools/scoreboard.py scores each day of a week separately (single-day NHL
+    range reports × the week's locked Fantrax lineup, same `team_totals` as the scoreboard) into
+    raw/<season>/weekly/days_NN.json (a day is re-read until 3 days old, then kept; days without NHL games have no
+    entry). `weekly_results()` in build_data.py refreshes the week in progress and the one before every night, reads
+    older weeks from their file (computing a missing one once) and writes data/weeks/dNN.js (`DP.weekDays[n]`).
+    Verified: the days add up exactly to every week's totals (0 mismatches over weeks 1-7).
+  - pages-flow.js: `DP.loadDays`, `DP.matchFlow(n, a, b)` (cumulative totals after each day -> `E.liveOdds` with
+    `sc.hist` so the rest of the week is projected from the locked lineup's own players, `E.restWeek(..., asLocked)`;
+    the last day is scored with `E.weekVec` + `E.catResults` like the standings, goalie minimum included; `ok` = the
+    days add up to the week), `DP.flowSwing` (the winner's lowest odds), `DP.flowChart` (SVG). Used by the Live
+    Scoreboard ("Day by day" on every matchup, finished weeks and the one in progress with a "Now" point) and The
+    Weekly (comeback / upset of the week, wire to wire, the chart of the comeback).
+  - Value trends: value_history.js publishes `DP.values.teams` (each team's total on every kept night). Market Movers
+    draws it (`DP.teamValueChart`); the Team Hub's dynasty value tile adds the 30-day change (`DP.teamValueTrend`);
+    every player card / page gets value and line-move rows (`DP.fillTrends`, loads data/values.js and data/depthlog.js
+    on demand).

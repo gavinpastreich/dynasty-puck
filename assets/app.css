@@ -587,3 +587,8 @@ a.tour-item, button.tour-item { cursor: pointer; }
 a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color: var(--accent); }
 .tour-item b { display: block; margin-bottom: 2px; }
 .tour-ic { font-size: 1.4rem; line-height: 1; }
+.pc-trend { display: none; margin: 10px 0 2px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card2); }
+.pc-trend.on { display: grid; gap: 6px; }
+.pct-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pct-k { color: var(--muted); font-size: .8rem; min-width: 62px; }
+.flow { width: 100%; max-width: 640px; height: auto; display: block; }

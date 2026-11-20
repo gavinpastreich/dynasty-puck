@@ -48,6 +48,67 @@
     var up = pts[pts.length - 1][1] >= pts[0][1];
     return '<svg class="spark" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path d="' + d + '" fill="none" stroke="var(--' + (up ? 'good' : 'bad') + ')" stroke-width="1.6"/></svg>';
   }
+  // every team's total dynasty value on each night on file (team colors; hover a line to pick it out)
+  DP.teamValueChart = function (me) {
+    var V = DP.values, E = DP.E; if (!V || !V.teams || V.dates.length < 2) return '';
+    var T = E.teams.filter(function (t) { return V.teams[t]; }), n = V.dates.length;
+    var all = []; T.forEach(function (t) { all = all.concat(V.teams[t]); });
+    var step = Math.max.apply(null, all) - Math.min.apply(null, all) > 160 ? 50 : 25;
+    var lo = Math.floor(Math.min.apply(null, all) / step) * step, hi = Math.ceil(Math.max.apply(null, all) / step) * step;
+    var W = 900, H = 400, padL = 42, padR = 150, padT = 12, padB = 26;
+    var t0 = Date.parse(V.dates[0] + 'T12:00:00Z'), t1 = Date.parse(V.dates[n - 1] + 'T12:00:00Z');
+    var px = function (i) { return padL + (Date.parse(V.dates[i] + 'T12:00:00Z') - t0) / Math.max(1, t1 - t0) * (W - padL - padR); };
+    var py = function (v) { return padT + (1 - (v - lo) / Math.max(1, hi - lo)) * (H - padT - padB); };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="bump" role="img" aria-label="Total dynasty value of every team, night by night">';
+    for (var g = lo; g <= hi; g += step) s += '<line class="gridl" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + py(g).toFixed(1) + '" y2="' + py(g).toFixed(1) + '"/><text class="axis" x="' + (padL - 6) + '" y="' + (py(g) + 4).toFixed(1) + '" text-anchor="end">' + Math.round(g) + '</text>';
+    var lastLab = -1;
+    V.dates.forEach(function (d, i) { var x = px(i); if (i === 0 || i === n - 1 || x - lastLab > 70) { if (i === n - 1 && x - lastLab < 50 && lastLab >= 0) return; s += '<text class="axis" x="' + x.toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(day(d).replace(/,.*/, '')) + '</text>'; lastLab = x; } });
+    // end labels, nudged apart so they don't overlap
+    var ends = T.map(function (t) { return { t: t, y: py(V.teams[t][n - 1]) }; }).sort(function (a, b) { return a.y - b.y; });
+    for (var k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 13) ends[k].y = ends[k - 1].y + 13;
+    var labY = {}; ends.forEach(function (e) { labY[e.t] = e.y; });
+    T.slice().sort(function (a, b) { return (a === me) - (b === me); }).forEach(function (t) {
+      var col = U.teamColor(t), v = V.teams[t], d = v.map(function (x, i) { return (i ? 'L' : 'M') + px(i).toFixed(1) + ',' + py(x).toFixed(1); }).join('');
+      var j30 = V.ref[3], tip = '<div class="tv">' + esc(U.teamName(t)) + '</div><div class="tl">' + U.fmt(v[n - 1], 0) + ' now · ' + U.sgn(v[n - 1] - v[j30], 1) + ' in 30 days · ' + U.sgn(v[n - 1] - v[0], 1) + ' since ' + esc(day(V.dates[0])) + '</div>';
+      s += '<g class="bl' + (t === me ? ' me' : '') + '" data-tip="' + esc(tip) + '"><path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + (t === me ? 4.5 : 2.6) + '" stroke-linejoin="round" stroke-linecap="round"/>' +
+        '<text x="' + (W - padR + 8) + '" y="' + (labY[t] + 4).toFixed(1) + '" style="fill:' + col + ';font-size:12px;font-weight:' + (t === me ? 800 : 600) + '">' + Math.round(v[n - 1]) + ' ' + esc(U.teamName(t).length > 15 ? U.teamName(t).slice(0, 14) + '…' : U.teamName(t)) + '</text></g>';
+    });
+    return '<div class="chart">' + s + '</svg></div>';
+  };
+  // fills the Team Hub's dynasty value tile with the 30-day change
+  DP.teamValueTrend = function (t, box) {
+    DP.loadValues(function (V) {
+      if (!V || !V.teams || !V.teams[t] || !box || !document.body.contains(box)) return;
+      var v = V.teams[t], n = v.length - 1, j = V.ref[3];
+      box.innerHTML = '<br><a href="#/movers?w=30">30 days ' + ui.delta(v[n] - v[j], 1) + '</a> ' + spark(v, 64, 16);
+    });
+  };
+  // player card / page: value trend (data/values.js) and recent line moves (data/depthlog.js), both loaded on demand
+  DP.fillTrends = function (root) {
+    if (!root) return;
+    U.qsa('[data-trend]', root).forEach(function (box) {
+      var id = box.dataset.trend, p = DP.E.byId[id]; if (!p || box.dataset.done) return; box.dataset.done = '1';
+      var parts = { v: '', l: '' }, show = function () { box.innerHTML = parts.v + parts.l; box.classList.toggle('on', !!(parts.v || parts.l)); };
+      DP.loadValues(function (V) {
+        var o = V && V.p[id]; if (!o) return;
+        var n = V.dates.length - 1, now = o.v[n], at = function (j) { var x = o.v[V.ref[j]]; return x === null || x === undefined ? null : now - x; };
+        var bits = [[2, '7 days'], [3, '30 days'], [4, 'since ' + day(V.dates[0]).replace(/,.*/, '')]].map(function (b) { var d = at(b[0]); return d === null ? '' : esc(b[1]) + ' ' + ui.delta(d, 1); }).filter(Boolean);
+        parts.v = '<div class="pct-row"><span class="pct-k">📈 Value</span><b class="num">' + U.fmt(now, 1) + '</b> ' + spark(o.v, 96, 20) + ' <span class="small">' + bits.join(' · ') + '</span> <a class="small" href="#/movers">Market Movers</a></div>';
+        show();
+      });
+      DP.loadDepthLog(function (L) {
+        if (!L) return;
+        var ev = DP.lineEvents(L, 30).filter(function (e) { return e.p === p; }).reverse().slice(0, 4);
+        if (!ev.length) return;
+        parts.l = '<div class="pct-row"><span class="pct-k">🔀 Lines</span>' + ev.map(function (e) { return lineChip(e) + ' <span class="faint small">' + esc(day(e.d).replace(/,.*/, '')) + '</span>'; }).join(' ') + ' <a class="small" href="#/lines?days=30">Line changes</a></div>';
+        show();
+      });
+    });
+  };
+  function lineChip(e) {
+    var lab = function (x) { return x || (e.k === 'line' ? 'out' : e.k === 'pp' ? 'no PP' : '–'); };
+    return '<span class="lchip ' + (e.up ? 'up' : 'dn') + '">' + esc(lab(e.from)) + ' → <b>' + esc(lab(e.to)) + '</b></span>';
+  }
   DP.valueSpark = function (id, w, h) { var o = DP.values && DP.values.p[id]; return o ? spark(o.v, w, h) : ''; };
 
   DP.pages.movers = {
@@ -71,6 +132,7 @@
         var dn = rows.filter(function (r) { return r.d < -0.05; }).sort(function (a, b) { return a.d - b.d; });
         hh += '<div class="grid g2"><div class="card"><h2>📈 Risers</h2><div class="hint">Biggest gains in dynasty value.</div><ul class="list-plain fmlist">' + up.slice(0, 12).map(li).join('') + '</ul></div>' +
           '<div class="card"><h2>📉 Fallers</h2><div class="hint">Biggest drops.</div><ul class="list-plain fmlist">' + dn.slice(0, 12).map(li).join('') + '</ul></div></div>';
+        if (V.teams) hh += '<div class="card" style="margin-top:14px"><h2>📊 Team value through the season</h2><div class="hint">Each team\'s total dynasty value on every night on file (every player it owned that night, scored with today\'s model). Hover a line to pick a team out' + (me ? '; yours is the thick one' : '') + '.</div>' + DP.teamValueChart(me) + '</div>';
         var TV = DP.teamValueMoves(j).sort(function (a, b) { return b.d - a.d; });
         hh += '<div class="card flush" style="margin-top:14px"><h2>💼 Team value</h2><div class="hint">Total dynasty value of each roster now vs ' + esc(day(from)) + '. "Held players" = value change of the players a team had both then and now; "moves" = what trades, adds and drops changed.</div><div class="tbl-wrap" style="padding:0 12px 12px"><table class="t"><thead><tr><th>Team</th><th class="num">Then</th><th class="num">Now</th><th class="num">Change</th><th class="num">Held players</th><th class="num">Moves</th></tr></thead><tbody>' +
           TV.map(function (x) { return '<tr class="' + (x.t === me ? 'mine' : '') + '"><td>' + U.teamChip(x.t, { link: 1 }) + '</td><td class="num">' + U.fmt(x.then, 0) + '</td><td class="num">' + U.fmt(x.now, 0) + '</td><td class="num"><b>' + ui.delta(x.d, 1) + '</b></td><td class="num">' + ui.delta(x.held, 1) + '</td><td class="num">' + ui.delta(x.moves, 1) + '</td></tr>'; }).join('') + '</tbody></table></div></div>';

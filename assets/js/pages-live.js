@@ -178,8 +178,9 @@
           '<td class="num ' + (lead < 0 ? 'good' : '') + '">' + (lead < 0 ? '<b>' + fmt(c, x.b) + '</b>' : fmt(c, x.b)) + '</td></tr>';
       }).join('') + '</tbody></table></div>';
     var gm = E.RULES.goalieMinGP;
-    h += '<p class="small muted">Goalie GP' + (fin ? '' : ' so far') + ': ' + esc(a) + ' ' + o.ggpA + ', ' + esc(b) + ' ' + o.ggpB + ' (minimum ' + gm + ').' + (fin ? '' : ' Tie odds ' + U.pct(o.tie) + '.') + ' <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button> <a class="btn sm ghost" href="' + U.hash('matchup', null, { w: sc.week, a: a, b: b, set: '1' }) + '">Full matchup</a></p>';
+    h += '<p class="small muted">Goalie GP' + (fin ? '' : ' so far') + ': ' + esc(a) + ' ' + o.ggpA + ', ' + esc(b) + ' ' + o.ggpB + ' (minimum ' + gm + ').' + (fin ? '' : ' Tie odds ' + U.pct(o.tie) + '.') + ' <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button> <button class="btn sm ghost" data-flowbtn="f' + id + '">📈 Day by day</button> <a class="btn sm ghost" href="' + U.hash('matchup', null, { w: sc.week, a: a, b: b, set: '1' }) + '">Full matchup</a></p>';
     h += '<div id="' + id + '"' + (open[key] ? '' : ' hidden') + '>' + lines(a, sc.teams[a], sc) + lines(b, sc.teams[b], sc) + '</div>';
+    h += '<div id="f' + id + '" data-week="' + sc.week + '" data-a="' + esc(a) + '" data-b="' + esc(b) + '" hidden></div>';
     return h + '</div>';
   }
   function playing(t, sc) {
@@ -218,8 +219,9 @@
           var r = g.r[c];
           return '<tr><td><b title="' + esc(cat.name) + '">' + esc(cat.l) + '</b></td><td class="num ' + (r === 1 ? 'good' : '') + '">' + (r === 1 ? '<b>' + fmt(c, va[c]) + '</b>' : fmt(c, va[c])) + '</td><td class="num ' + (r === -1 ? 'good' : '') + '">' + (r === -1 ? '<b>' + fmt(c, vb[c]) + '</b>' : fmt(c, vb[c])) + '</td><td class="num muted">' + U.pct(W.ap[g.a][c]) + '</td><td class="num muted">' + U.pct(W.ap[g.b][c]) + '</td></tr>';
         }).join('') + '</tbody></table></div>' +
-        '<p class="small muted">Goalie GP: ' + esc(g.a) + ' ' + va.ggp + ', ' + esc(g.b) + ' ' + vb.ggp + ' (minimum ' + E.RULES.goalieMinGP + '). <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button></p>' +
-        '<div id="' + id + '" data-week="' + W.n + '" data-a="' + esc(g.a) + '" data-b="' + esc(g.b) + '"' + (open[key] ? '' : ' hidden') + '><p class="small muted">Loading…</p></div></div>';
+        '<p class="small muted">Goalie GP: ' + esc(g.a) + ' ' + va.ggp + ', ' + esc(g.b) + ' ' + vb.ggp + ' (minimum ' + E.RULES.goalieMinGP + '). <button class="btn sm ghost" data-lines="' + id + '" data-key="' + esc(key) + '">Player lines</button> <button class="btn sm ghost" data-flowbtn="f' + id + '">📈 Day by day</button></p>' +
+        '<div id="' + id + '" data-week="' + W.n + '" data-a="' + esc(g.a) + '" data-b="' + esc(g.b) + '"' + (open[key] ? '' : ' hidden') + '><p class="small muted">Loading…</p></div>' +
+        '<div id="f' + id + '" data-week="' + W.n + '" data-a="' + esc(g.a) + '" data-b="' + esc(g.b) + '" hidden></div></div>';
     });
     return h;
   }

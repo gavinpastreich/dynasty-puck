@@ -100,6 +100,7 @@
     });
     h += '</tbody></table></div>';
     if (DP.formLine) h += DP.formLine(p);
+    h += '<div class="pc-trend" data-trend="' + esc(p.id) + '"></div>';
     if (p.tkc) h += '<p class="note">Tk/Cor projection: per-GP rates ' + U.fmt(p.tkc[0], 2) + ' Tk and ' + U.fmt(p.tkc[1], 1) + ' Cor, blended from ' + U.fmt(p.tkc[4], 0) + ' weighted NHL games with a role prior of ' + U.fmt(p.tkc[2], 2) + ' / ' + U.fmt(p.tkc[3], 1) + '.</p>';
     h += '</div>';
 
@@ -158,6 +159,7 @@
     if (!p) return;
     if (DP.noteRecent) DP.noteRecent(p.id);
     ui.modal(DP.playerHtml(p, false));
+    if (DP.fillTrends) DP.fillTrends(document.getElementById('modal-bg'));
   };
 
   // compare list (shared with the Compare page)
@@ -181,6 +183,7 @@
       if (DP.noteRecent) DP.noteRecent(p.id);
       el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (DP.radarBrief ? DP.radarBrief(p) : '') + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
+      if (DP.fillTrends) DP.fillTrends(el);
     }
   };
   // what the player is worth to each team (roster fit x window) vs to his current team

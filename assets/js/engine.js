@@ -1693,9 +1693,10 @@
     var a = p.avail; return { m: N * a, v: N * a * (1 - a), N: N, Ni: Ni };
   };
   // the rest of the week for the players active in Fantrax this period (weekly lock: the lineup can't change)
-  E.restWeek = function (team, wi, d0, activeIds, today) {
+  // asLocked: build it from the locked lineup's own players (a past week: some may have been traded since)
+  E.restWeek = function (team, wi, d0, activeIds, today, asLocked) {
     var only = {}; (activeIds || []).forEach(function (id) { only[id] = 1; });
-    var ros = E.rosters[team] || [], lu = E.lineup(ros, wi, activeIds && activeIds.length ? { only: only } : null), agg = emptyAgg();
+    var ros = asLocked && activeIds && activeIds.length ? activeIds.map(function (id) { return E.byId[id]; }).filter(Boolean) : E.rosters[team] || [], lu = E.lineup(ros, wi, activeIds && activeIds.length ? { only: only } : null), agg = emptyAgg();
     lu.F.concat(lu.D).forEach(function (x) { addSkater(agg, x.p, E.gamesFrom(x.p, wi, d0, today)); });
     lu.G.forEach(function (x) { addGoalie(agg, x.p, E.gamesFrom(x.p, wi, d0, today)); });
     agg.r = ratios(agg); agg.lu = lu;
@@ -1713,7 +1714,7 @@
     var TA = sc.teams[a] || { tot: {}, active: [] }, TB = sc.teams[b] || { tot: {}, active: [] };
     var zero = { PtD: 0, G: 0, A: 0, GA2: 0, PIM: 0, SOG: 0, STP: 0, Hit: 0, Blk: 0, Tk: 0, Cor: 0, W: 0, GA: 0, SA: 0, SHO: 0, GGP: 0, GTOI: 0 };
     var ca = Object.assign({}, zero, TA.tot), cb = Object.assign({}, zero, TB.tot);
-    var ra = E.restWeek(a, wi, d0, TA.active, today), rb = E.restWeek(b, wi, d0, TB.active, today);
+    var ra = E.restWeek(a, wi, d0, TA.active, today, sc.hist), rb = E.restWeek(b, wi, d0, TB.active, today, sc.hist);
     var rand = E.rng(sc.week * 1009 + 17), nrm = E.normalSampler(rand), minGP = E.RULES.goalieMinGP;
     n = n || 4000;
     var cdf = function (pm) { var acc = 0; return pm.map(function (x) { acc += x; return acc; }); };
