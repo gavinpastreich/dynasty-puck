@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Dynasty Puck HQ opt-in alerts. Run every hour by .github/workflows/alerts.yml (GitHub Actions, no Claude involved).
  *  lock   - a few hours before every lineup lock: each team's Fantrax lineup check -> that team's ntfy topic
- *  daily  - once a day (after the nightly data refresh): roster moves and new injuries -> team topics; trades -> league topic
+ *  daily  - once a day (after the nightly data refresh): roster moves, new injuries and line/PP moves -> team topics;
+ *           trades -> league topic
  *  deadline - the day before the trade deadline: a reminder to every team topic and the league topic
  *  weekly - Monday morning: writes tools/out/digest.{txt,html} + subject.txt for tools/alerts_email.py to email
  * Topics: <alerts.ntfyPrefix>-<team code letters> (e.g. dynastypuck-7q2-MM) and <prefix>-league.
@@ -20,6 +21,7 @@ for (const f of ['data/league.js', 'data/prospects.js', 'data/research.js', 'ass
   vm.runInThisContext(fs.readFileSync(path.join(ROOT, f), 'utf8'), { filename: f });
 }
 const DP = global.DP, E = DP.E, U = DP.U;
+try { vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'data', 'depthlog.js'), 'utf8'), { filename: 'data/depthlog.js' }); } catch (e) { /* no line changes in the alerts */ }
 if (NOW) DP.nowOverride = NOW;
 const SITE = A.siteUrl || '', PREFIX = A.ntfyPrefix || 'dynastypuck';
 const topicOf = (code) => PREFIX + '-' + String(code).replace(/[^A-Za-z0-9]/g, '');
@@ -103,6 +105,10 @@ async function doDaily() {
   for (const t of E.teams) {
     const lines = moves.filter((x) => x.from === t || x.to === t).map(desc);
     E.rosters[t].filter((p) => p.inj && p.inj[3] >= yday && p.r).forEach((p) => lines.push(`Injury: ${p.n} ${p.inj[0]}${p.inj[1] ? ' (' + p.inj[1] + ')' : ''}${p.inj[2] ? ', ' + p.inj[2] : ''}`));
+    // line and power-play moves for this roster since yesterday (Daily Faceoff depth charts, data/depthlog.js)
+    const kind = { line: 'line', pp: 'power play', g: 'net' };
+    ((DP.depthLog && DP.depthLog.events) || []).filter((ev) => ev.d >= yday && ev.d <= today && E.rosters[t].some((p) => p.n === ev.n && (p.nt || p.t) === ev.t))
+      .forEach((ev) => lines.push(`${ev.up ? 'Up' : 'Down'}: ${ev.n} ${kind[ev.k] || ev.k} ${ev.from || 'out'} → ${ev.to || 'out'}`));
     E.rosters[t].filter((p) => p.ct === 'MNR').forEach((p) => {
       const g = E.graduation(p);
       if (g.status !== 'graduated' && g.need > 0 && g.need <= 3) lines.push(`Graduation watch: ${p.n} is ${g.need} NHL GP from ${g.thr}.`);
