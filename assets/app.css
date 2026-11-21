@@ -113,6 +113,8 @@ main { flex: 1; min-width: 0; padding: 18px 22px 60px; }
 .callout.warn { background: var(--warn-bg); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
 .callout.bad { background: var(--bad-bg); border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
 .callout.good { background: var(--good-bg); border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+/* faint text on a tinted callout falls under 4.5:1: use the secondary ink there */
+.callout .faint, .callout .fs { color: var(--ink2); }
 
 /* ---------- controls */
 .controls { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin: 0 0 12px; }
