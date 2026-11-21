@@ -84,6 +84,7 @@ rows = [{"id": "02f9l", "ADP": 1.6}, {"id": "04lc0", "ADP": 13.8}, {"id": "x1", 
 m = FX.adp_map(rows)
 ok(m == {"02f9l": 1.6, "04lc0": 13.8, "x6": 279.99}, f"adp_map keeps real draft positions only ({m})")
 ok(FX.adp_map(None) == {} and FX.adp_map([]) == {}, "adp_map: nothing in, nothing out")
+ok(FX.adp_map({"error": "rate limited"}) == {} and FX.adp_map(["x", None, {"id": "a1", "ADP": 3}]) == {"a1": 3.0}, "adp_map: an error object or junk rows")
 ok(FX.adp_map(rows, max_adp=10) == {"02f9l": 1.6}, "adp_map: cutoff")
 
 print(f"{n - fails}/{n} checks passed")

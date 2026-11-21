@@ -42,7 +42,11 @@ ADP_MAX = 280  # Fantrax ADP from here up bunches at the end of drafts (rarely o
 def adp_map(rows, max_adp=ADP_MAX):
     """getAdp?sport=NHL rows -> {fantrax id: ADP} for players drafted on average before pick max_adp."""
     out = {}
-    for r in rows or []:
+    if not isinstance(rows, list):  # an error object instead of the list: no ADP tonight
+        return out
+    for r in rows:
+        if not isinstance(r, dict):
+            continue
         fid, a = r.get("id"), r.get("ADP")
         if fid and isinstance(a, (int, float)) and not isinstance(a, bool) and 0 < a < max_adp:
             out[fid] = round(float(a), 2)
