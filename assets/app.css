@@ -2,9 +2,9 @@
 :root {
   color-scheme: dark;
   --bg: #0d1117; --card: #161b22; --card2: #1c2330; --line: #30363d; --line2: #21262d;
-  --ink: #e6edf3; --ink2: #b1bac4; --muted: #8b949e; --faint: #6e7681;
+  --ink: #e6edf3; --ink2: #b1bac4; --muted: #8b949e; --faint: #868f9b; --on-accent: #0d1117;
   --accent: #f0883e; --accent2: #a371f7; --link: #58a6ff;
-  --good: #3fb950; --good-bg: rgba(46,160,67,.15); --bad: #f85149; --bad-bg: rgba(248,81,73,.13);
+  --good: #3fb950; --good-bg: rgba(46,160,67,.15); --bad: #ff6b63; --bad-bg: rgba(248,81,73,.13);
   --warn: #d29922; --warn-bg: rgba(210,153,34,.15); --info-bg: rgba(56,139,253,.12);
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
   --seq0: #1c2330; --seq1: #184f95; --seq2: #256abf; --seq3: #3987e5; --seq4: #6da7ec; --seq5: #b7d3f6;
@@ -15,10 +15,10 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #f6f8fa; --card: #ffffff; --card2: #f3f4f6; --line: #d0d7de; --line2: #e5e7eb;
-  --ink: #1f2328; --ink2: #3b4250; --muted: #59636e; --faint: #818b98;
-  --accent: #bc4c00; --accent2: #8250df; --link: #0969da;
-  --good: #1a7f37; --good-bg: rgba(31,136,61,.12); --bad: #cf222e; --bad-bg: rgba(207,34,46,.10);
-  --warn: #9a6700; --warn-bg: rgba(212,167,44,.18); --info-bg: rgba(9,105,218,.08);
+  --ink: #1f2328; --ink2: #3b4250; --muted: #59636e; --faint: #5f6773; --on-accent: #ffffff;
+  --accent: #bc4c00; --accent2: #8250df; --link: #0a5cc2;
+  --good: #14692f; --good-bg: rgba(31,136,61,.12); --bad: #b31d28; --bad-bg: rgba(207,34,46,.10);
+  --warn: #7d4e00; --warn-bg: rgba(212,167,44,.18); --info-bg: rgba(9,105,218,.08);
   --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
   --seq0: #eef2f7; --seq1: #cde2fb; --seq2: #9ec5f4; --seq3: #5598e7; --seq4: #256abf; --seq5: #104281;
   --grid: #e1e0d9; --axis: #c3c2b7; --shadow: 0 8px 30px rgba(0,0,0,.12);
@@ -123,7 +123,7 @@ input[type=number] { width: 90px; }
 textarea { width: 100%; min-height: 120px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82rem; }
 .btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; min-height: 32px; border-radius: 7px; border: 1px solid var(--line); background: var(--card2); cursor: pointer; white-space: nowrap; }
 .btn:hover { border-color: var(--accent); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.08); }
 .btn.sm { padding: 3px 8px; min-height: 26px; font-size: .82rem; }
 .btn.ghost { background: none; }
@@ -131,7 +131,7 @@ textarea { width: 100%; min-height: 120px; font-family: ui-monospace, SFMono-Reg
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .seg button { border: 0; background: var(--card); padding: 5px 11px; cursor: pointer; border-right: 1px solid var(--line); }
 .seg button:last-child { border-right: 0; }
-.seg button.on { background: var(--accent); color: #fff; }
+.seg button.on { background: var(--accent); color: var(--on-accent); }
 .tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); margin-bottom: 14px; overflow-x: auto; }
 .tabs button { background: none; border: 0; padding: 8px 12px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
 .tabs button.on { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
@@ -421,7 +421,7 @@ span.av.noimg { display: inline-grid; place-items: center; font-size: .58rem; fo
 .jump::-webkit-scrollbar { display: none; }
 .jump button { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--ink2); border-radius: 999px; padding: 3px 11px; font-size: .8rem; cursor: pointer; }
 .jump button:hover { border-color: var(--accent); color: var(--ink); }
-.jump button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.jump button.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 [id^="tj-"] { scroll-margin-top: 104px; }
 @media (max-width: 860px) { .jump { margin: 0 -16px 12px; padding: 7px 16px; } }
 /* six even tiles */
@@ -650,7 +650,7 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 @media (max-width: 760px) { .tnet-wrap { grid-template-columns: 1fr; } .tnet .tl { font-size: 13px; } }
 /* My Page (build-your-own) */
 .mp-bar { flex-wrap: wrap; gap: 8px; }
-.mp-bar .btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.mp-bar .btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .mp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
 .mp-grid .mw { margin: 0; min-width: 0; }
 .mp-grid .mw.wide { grid-column: 1 / -1; }
@@ -709,21 +709,22 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 /* Season Grid */
 .sgrid td.sg { text-align: center; padding: 2px 3px; min-width: 38px; line-height: 1.1; }
 .sgrid td.sg b { display: block; font-size: .72rem; }
-.sgrid td.sg span { display: block; font-size: .68rem; color: var(--muted); }
+.sgrid td.sg span { display: block; font-size: .68rem; color: var(--ink2); }
 .sgrid td.sg a { color: inherit; text-decoration: none; display: block; }
 .sgrid td.sg.W { background: var(--good-bg); }
 .sgrid td.sg.W b { color: var(--good); }
 .sgrid td.sg.L { background: var(--bad-bg); }
 .sgrid td.sg.L b { color: var(--bad); }
 .sgrid td.sg.T { background: color-mix(in srgb, var(--muted) 15%, transparent); }
-.sgrid td.sg.P { background: color-mix(in srgb, var(--link) calc(var(--p) * 55%), transparent); }
+.sgrid td.sg.P { background: color-mix(in srgb, var(--link) calc(var(--p) * 42%), transparent); }
+.sgrid td.sg.P span { color: var(--ink); }
 /* Weekly Calendar */
 .cal th.cal-d { text-align: center; line-height: 1.1; }
 .cal th.cal-d span, .cal th.cal-d b { display: block; }
 .cal td.cal-g { text-align: center; background: color-mix(in srgb, var(--link) 16%, transparent); font-weight: 600; white-space: nowrap; }
 .cal td.cal-g.b2b { background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .cal td.cal-x { background: transparent; }
-.cal tr.cal-bench td { opacity: .7; }
+.cal tr.cal-bench td:first-child { color: var(--muted); font-style: italic; }
 .cal tr.cal-sum td { border-bottom: 2px solid var(--line); }
 /* menu favorites (☆ on every menu item; a Favorites group at the top) */
 nav.side .navi { position: relative; }
@@ -760,7 +761,7 @@ nav.side .navi .fav.on { color: var(--accent); }
 .rkhub .rk-n.top { background: var(--good-bg); color: var(--good); }
 .rkhub .rk-n.bot { background: var(--bad-bg); color: var(--bad); }
 /* Category Outlook heatmap */
-.olk td.olc { text-align: center; font-variant-numeric: tabular-nums; background: color-mix(in srgb, var(--link) calc((var(--v) - 0.2) * 110%), transparent); min-width: 34px; }
+.olk td.olc { text-align: center; font-variant-numeric: tabular-nums; background: color-mix(in srgb, var(--link) calc((var(--v) - 0.2) * 72%), transparent); min-width: 34px; }
 .olk tr.opp td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
 /* dynasty floor / ceiling (player page) */
 .dvr { margin: 8px 0 12px; }
@@ -802,7 +803,11 @@ nav.side .navi .fav.on { color: var(--accent); }
 .pc-ageout:empty { display: none; }
 
 /* category correlation map */
-.ccmap td.ccm { text-align: center; font-variant-numeric: tabular-nums; min-width: 38px; background: color-mix(in srgb, var(--c) calc(var(--a) * 70%), transparent); }
+.ccmap td.ccm { text-align: center; font-variant-numeric: tabular-nums; min-width: 38px; background: color-mix(in srgb, var(--c) calc(var(--a) * 52%), transparent); }
 .ccmap tbody th { text-align: left; white-space: nowrap; }
 
 td.adr { background: color-mix(in srgb, var(--c) calc(var(--a) * 45%), transparent); white-space: nowrap; }
+
+/* links inside running text: underlined, so they don't rely on color alone */
+#main a:not([class]), .foot a:not([class]) { text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-underline-offset: 2px; }
+.yw-todo a, .yw-todo a:hover { text-decoration: none; }

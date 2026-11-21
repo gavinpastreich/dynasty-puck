@@ -32,7 +32,7 @@
     var W = 660, H = 450, cx = W / 2, cy = H / 2, R = 165, pos = {}, k = teams.length;
     teams.forEach(function (t, i) { var a = -Math.PI / 2 + 2 * Math.PI * (i % 2 ? k - (i + 1) / 2 : i / 2) / k; pos[t] = { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a), a: a }; });
     var mx = Math.max.apply(null, N.pairs.map(function (p) { return p.n; }).concat([1]));
-    var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="tnet" role="img" aria-label="Who trades with whom">';
+    var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="tnet" role="group" aria-label="Who trades with whom">';
     N.pairs.slice().reverse().forEach(function (p) {
       var A = pos[p.a], B = pos[p.b]; if (!A || !B) return;
       var mine = me && (p.a === me || p.b === me), qx = cx + (A.x + B.x - 2 * cx) * 0.25, qy = cy + (A.y + B.y - 2 * cy) * 0.25;

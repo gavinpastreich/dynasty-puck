@@ -51,7 +51,7 @@
       var h = '<div class="page-head"><h1>🔥 Hot & Cold</h1><p class="sub">Every player\'s last 14 days of NHL games against his own projection, weighed in this league\'s 15 categories (a hit and a goal count the way our categories score them). Real NHL stats; Cor estimated from shot attempts as everywhere on the site.</p></div>';
       if (!F) { el.innerHTML = h + '<div class="callout">No recent games published yet. This fills in with the nightly build once games are played.</div>'; return; }
       h += '<div class="callout small">Window: <b>' + esc(U.date(new Date(F.from + 'T12:00:00Z'))) + ' – ' + esc(U.date(new Date(F.to + 'T12:00:00Z'))) + '</b> (' + F.n + ' players with games). Two weeks is a small sample: most streaks fade. For whether a scoring run is shooting luck, see <a href="#/luck">Buy Low / Sell High</a>; for next week\'s adds, the <a href="#/pickup">Pickup Planner</a>.</div>';
-      h += '<div class="controls"><div class="seg" role="tablist"><button data-k="S" class="' + (k === 'S' ? 'on' : '') + '">Skaters</button><button data-k="G" class="' + (k === 'G' ? 'on' : '') + '">Goalies</button></div></div>';
+      h += '<div class="controls"><div class="seg" role="group"><button data-k="S" class="' + (k === 'S' ? 'on' : '') + '">Skaters</button><button data-k="G" class="' + (k === 'G' ? 'on' : '') + '">Goalies</button></div></div>';
       var rows = E.P.map(function (p) { var f = DP.formOf(p); return f && f.kind === k ? { p: p, f: f } : null; }).filter(Boolean);
       var line = function (r) {
         var f = r.f, p = r.p;

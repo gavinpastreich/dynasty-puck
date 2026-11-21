@@ -10,7 +10,7 @@
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, view = q.view || 'value';
       var h = '<div class="page-head"><h1>📋 Players</h1><p class="sub">Every rostered player plus every free agent with 2025-26 NHL games or a 2026-27 projection (' + E.P.length + ' players). Click a name for the full card. Values are model estimates (see Rules & Methods).</p></div>';
-      h += '<div class="controls"><div class="seg" role="tablist">' + [['value', 'Value & contract'], ['proj', '2026-27 projection'], ['last', '2025-26 actual'], ['rates', 'Per-game rates']].map(function (v) { return '<button data-view="' + v[0] + '" class="' + (view === v[0] ? 'on' : '') + '">' + v[1] + '</button>'; }).join('') + '</div></div><div id="pl-t"></div>';
+      h += '<div class="controls"><div class="seg" role="group">' + [['value', 'Value & contract'], ['proj', '2026-27 projection'], ['last', '2025-26 actual'], ['rates', 'Per-game rates']].map(function (v) { return '<button data-view="' + v[0] + '" class="' + (view === v[0] ? 'on' : '') + '">' + v[1] + '</button>'; }).join('') + '</div></div><div id="pl-t"></div>';
       el.innerHTML = h;
       U.qsa('[data-view]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('players', null, { view: b.dataset.view }); }); });
       var ownerF = { l: 'Owner', opts: [['', 'All'], ['__owned', 'Owned'], ['__fa', 'Free agents']].concat(DP.meta.gms.map(function (g) { return [g.code, g.code]; })), fn: function (p, v) { return v === '__owned' ? !!p.gm : v === '__fa' ? !p.gm : p.gm === v; } };

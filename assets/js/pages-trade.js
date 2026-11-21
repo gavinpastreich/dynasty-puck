@@ -362,7 +362,7 @@
       var mode = q.mode || (target && target.gm !== me ? 'get' : 'give');
       var LS = DP.lenses(q), lensKey = q.lens || 'model', L = LS[lensKey] || LS.model;
       var mine = E.rosters[me].slice().sort(U.by(function (p) { return E.dvWith(p, L); }, true));
-      h += '<div class="controls"><div class="seg" role="tablist"><button data-mode="give" class="' + (mode === 'give' ? 'on' : '') + '">Trade away one of mine</button><button data-mode="get" class="' + (mode === 'get' ? 'on' : '') + '">Acquire a target</button></div>' +
+      h += '<div class="controls"><div class="seg" role="group"><button data-mode="give" class="' + (mode === 'give' ? 'on' : '') + '">Trade away one of mine</button><button data-mode="get" class="' + (mode === 'get' ? 'on' : '') + '">Acquire a target</button></div>' +
         '<label>Lens <select id="f-lens">' + ['model', 'league'].map(function (k) { return '<option value="' + k + '"' + (k === lensKey ? ' selected' : '') + '>' + esc(LS[k].name) + '</option>'; }).join('') + '</select></label></div>';
       // no player in the link: the one picked last time on this device, else a sensible first choice
       var last = E.byId[U.store.get('finder_' + mode, '')];

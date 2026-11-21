@@ -173,7 +173,7 @@
         var from = V.dates[V.ref[j]], to = V.dates[V.dates.length - 1];
         var rows = Object.keys(V.p).map(function (id) { return DP.moverRow(id, j); }).filter(function (r) { return r && r.p; });
         var hh = (V.stale ? '<div class="callout warn">The valuation changed since this history was scored; older nights may not compare exactly until it is re-scored.</div>' : '');
-        hh += '<div class="controls"><div class="seg" role="tablist">' + WIN.map(function (x) { return '<button data-w="' + x[0] + '" class="' + (x === wk ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><span class="small muted">' + esc(day(from)) + ' → ' + esc(day(to)) + ' · ' + V.dates.length + ' nights on file since ' + esc(day(V.dates[0])) + '</span></div>';
+        hh += '<div class="controls"><div class="seg" role="group">' + WIN.map(function (x) { return '<button data-w="' + x[0] + '" class="' + (x === wk ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div><span class="small muted">' + esc(day(from)) + ' → ' + esc(day(to)) + ' · ' + V.dates.length + ' nights on file since ' + esc(day(V.dates[0])) + '</span></div>';
         var li = function (r) {
           return '<li><div class="fml">' + ui.pcell(r.p, { pos: 1 }) + '<div class="fmd small muted">' + U.fmt(r.v0, 1) + ' → <b>' + U.fmt(r.v1, 1) + '</b>' + (r.own1 ? ' · ' + U.teamLabel(r.own1) : ' · FA') + (r.why.length ? ' · ' + esc(r.why.join('; ')) : '') + '</div></div><span class="fmr">' + DP.valueSpark(r.id, 70, 20) + '<br><b class="' + (r.d > 0 ? 'good' : 'bad') + '">' + U.sgn(r.d, 1) + '</b></span></li>';
         };

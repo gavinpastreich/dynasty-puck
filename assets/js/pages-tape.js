@@ -77,7 +77,7 @@
       var h = '<div class="page-head"><h1>📏 Tale of the Tape</h1><p class="sub">Any two teams side by side: this season, the dynasty picture, all 15 categories, every meeting and the best players. Projections and values are model estimates (see Rules & Methods).</p></div>';
       h += '<div class="controls"><label>Team ' + ui.teamSelect('tp-a', a) + '</label><button class="btn sm" id="tp-swap" title="Swap sides">⇄</button><label>vs ' + ui.teamSelect('tp-b', b) + '</label><button class="btn sm" id="tp-share">🖼️ Share as image</button></div>';
       var head = function (X, side) {
-        return '<div class="tp-team ' + side + '" style="--tc:' + U.teamColor(X.t) + '"><a href="#/team/' + encodeURIComponent(X.t) + '">' + U.teamBadge(X.t, 'xl') + '</a><div><div class="tp-name">' + esc(U.teamName(X.t)) + '</div><div class="small muted">' + (X.rec ? X.rec.W + '-' + X.rec.L + '-' + X.rec.T + ' · ' : '') + DP.tierBadge(X.t) + '</div></div></div>';
+        return '<div class="tp-team ' + side + '" style="--tc:' + U.teamColor(X.t) + '"><a href="#/team/' + encodeURIComponent(X.t) + '" aria-label="' + esc(U.teamName(X.t)) + ' Team Hub">' + U.teamBadge(X.t, 'xl') + '</a><div><div class="tp-name">' + esc(U.teamName(X.t)) + '</div><div class="small muted">' + (X.rec ? X.rec.W + '-' + X.rec.L + '-' + X.rec.T + ' · ' : '') + DP.tierBadge(X.t) + '</div></div></div>';
       };
       h += '<div class="card tp-head">' + head(A, 'l') + '<div class="tp-vs"><b>' + D.edge.a + '</b><span>edges</span><b>' + D.edge.b + '</b></div>' + head(B, 'r') + '</div>';
       // the tale

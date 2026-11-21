@@ -540,3 +540,7 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - What wins each category (pages-thresholds.js): `DP.catThresholds()` (percentiles of the 7-day-scaled team-week
     totals, `.team(t)` = a team's average and the share of team-weeks it beats), `DP.catThresholdCard(me)` on
     Category Insights, `DP.pctile(sorted, q)`.
+  - Accessibility (2026-11-21, axe-core WCAG 2 AA scan of every menu page in both themes: 6,379 + 1,987 contrast
+    failures down to under 10): `--faint` raised (#868f9b dark, #5f6773 light), light-theme status colors darkened,
+    dark `--bad` #ff6b63, `--on-accent` for text on orange, heat text by step in `C.heatInk`, capped heat mixes,
+    underlined text links (`#main a:not([class])`), `.seg` toggles are role="group", labels on unlabeled controls.

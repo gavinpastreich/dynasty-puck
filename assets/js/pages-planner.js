@@ -105,7 +105,7 @@
       var t = q.team !== undefined && (E.rosters[q.team] || q.team === '') ? q.team : (me || '');
       var go = function (o) { DP.go('offseason', null, Object.assign({ tab: tab === 'plan' ? '' : tab, team: t === (me || '') ? undefined : t, s: q.s, mode: q.mode }, o || {})); };
       var h = '<div class="page-head"><h1>📅 Offseason Planner</h1><p class="sub">Plan the roster past this season: who is signed and for how long, which MNR players graduate and need an ELC, every re-sign decision as a what-if, and what it all leaves in cap space and roster spots. Plus the league\'s contracts by season and what comes off the books each summer.</p></div>';
-      h += '<div class="controls"><div class="seg" role="tablist">' + [['plan', 'Roster planner'], ['league', 'League outlook'], ['dec', 'Decisions & auction']].map(function (x) { return '<button data-tab="' + x[0] + '" class="' + (tab === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+      h += '<div class="controls"><div class="seg" role="group">' + [['plan', 'Roster planner'], ['league', 'League outlook'], ['dec', 'Decisions & auction']].map(function (x) { return '<button data-tab="' + x[0] + '" class="' + (tab === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div>' +
         (tab !== 'league' ? '<label>Team ' + ui.teamSelect('os-team', t, tab === 'dec' ? 'All teams' : 'Choose a team…') + '</label>' : '') + '</div><div id="os-body"></div>';
       el.innerHTML = h;
       U.qsa('[data-tab]', el).forEach(function (b) { b.addEventListener('click', function () { go({ tab: b.dataset.tab === 'plan' ? '' : b.dataset.tab }); }); });

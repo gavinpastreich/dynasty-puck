@@ -172,7 +172,7 @@
     var steps = ['var(--seq0)', 'var(--seq1)', 'var(--seq2)', 'var(--seq3)', 'var(--seq4)', 'var(--seq5)'];
     return steps[Math.round(t * (steps.length - 1))];
   };
-  C.heatInk = function (t) { return t > 0.62 ? (document.documentElement.dataset.theme === 'light' ? '#fff' : '#0d1117') : 'var(--ink)'; };
+  C.heatInk = function (t) { var k = Math.round(U.clamp(t, 0, 1) * 5); return document.documentElement.dataset.theme === 'light' ? (k >= 4 ? '#fff' : 'var(--ink)') : (k >= 3 ? '#0d1117' : 'var(--ink)'); };
 
   // category profile: diverging bars for z-scores by category (team strengths/weaknesses)
   C.catProfile = function (z, ranks, o) {

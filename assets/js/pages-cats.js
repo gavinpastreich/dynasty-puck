@@ -74,7 +74,7 @@
       var state = function (o) { return Object.assign({ v: mode, show: show, cat: q.cat, team: q.team, ccpos: q.ccpos }, o || {}); };
       var h = '<div class="page-head"><h1>🧩 Category Insights</h1><p class="sub">Where every team is strong and weak across the 15 categories, and who lines up as a trade partner. ' +
         (H.nReg ? 'Actual numbers are rebuilt from each week\'s locked Fantrax lineup and NHL stats (' + H.nReg + ' week' + (H.nReg > 1 ? 's' : '') + ' played).' : 'Actual results appear after Week 1.') + '</p></div>';
-      h += '<div class="controls"><div class="seg" role="tablist" aria-label="Basis">' + MODES.map(function (m) { return '<button data-mode="' + m[0] + '" class="' + (m[0] === mode ? 'on' : '') + '">' + esc(m[1]) + '</button>'; }).join('') + '</div>' +
+      h += '<div class="controls"><div class="seg" role="group" aria-label="Basis">' + MODES.map(function (m) { return '<button data-mode="' + m[0] + '" class="' + (m[0] === mode ? 'on' : '') + '">' + esc(m[1]) + '</button>'; }).join('') + '</div>' +
         '<label>Cells show <select id="ct-show"><option value="rank"' + (show === 'rank' ? ' selected' : '') + '>Rank (1 = best)</option><option value="val"' + (show === 'val' ? ' selected' : '') + '>Per-week number</option>' + (H.nReg ? '<option value="rec"' + (show === 'rec' ? ' selected' : '') + '>Category record (W-L-T)</option>' : '') + '</select></label>' +
         '<label>My team ' + ui.teamSelect('ct-team', me, 'Nobody') + '</label></div>';
       h += '<p class="small muted" style="margin-top:-6px">' + esc(modeNote(S)) + '</p>';
