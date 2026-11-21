@@ -496,5 +496,9 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Season Grid (pages-grid.js): `DP.gridData()` (cached per engine version; E.simWeek 1000 per future pairing).
     Menu favorites (`dp_favs`, `DP.favs/setFavs`, a Favorites group + ☆ per item in app.js navHtml) and the phone tab
     bar (`dp_tabs`, `DP.tabRoutes/setTabs`), both editable in My Page → Customize. Widgets magic, rounds, random.
+  - Scenario Builder (pages-scenarios.js): `E.simSeason({force: {'week|a|b': 1|-1}})` re-draws a picked matchup until the
+    picked side wins (identical random stream without picks). `DP.encodePicks/decodePicks` (`#/scenarios?f=`),
+    `DP.runScenario(P, n)`. Goalie minimum watch: `DP.goalieWatch(sc)` / `DP.goalieWatchHtml` (pages-live.js).
+  - Weekly Calendar (pages-calendar.js): `DP.calendarData(t, wi)`. Player Rater (pages-rater.js): `DP.raterData()`.
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

@@ -1535,6 +1535,9 @@
   E.simSeason = function (opts) {
     opts = opts || {};
     var N = opts.n || 2000, weeksBy = opts.weeks || E.baseline, rand = E.rng(opts.seed || 20262027), nrm = E.normalSampler(rand);
+    // opts.force = { 'week|teamA|teamB': 1 (A wins) or -1 (B wins) }: that matchup is re-drawn until the picked side wins
+    // (Scenario Builder). Without it the random stream is exactly the same as before.
+    var force = opts.force || null;
     var nPO = opts.playoffTeams || DP.meta.playoffs.teams, noise = opts.noise === undefined ? 0.035 : opts.noise;
     var teams = E.teams, nt = teams.length, idx = {};
     teams.forEach(function (t, i) { idx[t] = i; });
@@ -1615,8 +1618,10 @@
       var W = W0.slice(), L = L0.slice(), T = T0.slice();
       levRes.fill(0); levRes2.fill(0);
       for (var gi = 0; gi < games.length; gi++) {
-        var g = games[gi], a = sample(P[g[1]][g[0]], g[1], eps), b = sample(P[g[2]][g[0]], g[2], eps);
-        var r = compare(a, b), lost = E.NC - r[0] - r[1] - r[2];
+        var g = games[gi], fk = force ? force[(g[0] + 1) + '|' + teams[g[1]] + '|' + teams[g[2]]] : 0, a, b, r, tries = 0;
+        do { a = sample(P[g[1]][g[0]], g[1], eps); b = sample(P[g[2]][g[0]], g[2], eps); r = compare(a, b); tries++; }
+        while (fk && tries < 80 && (fk === 1 ? !(r[0] > r[1]) : !(r[0] < r[1])));
+        var lost = E.NC - r[0] - r[1] - r[2];
         if (g[0] === lev) { levRes[g[1]] = r[0] > r[1] ? 1 : r[0] < r[1] ? -1 : 0; levRes[g[2]] = -levRes[g[1]]; }
         else if (g[0] === lev2) { levRes2[g[1]] = r[0] > r[1] ? 1 : r[0] < r[1] ? -1 : 0; levRes2[g[2]] = -levRes2[g[1]]; }
         W[g[1]] += r[0]; W[g[2]] += r[1]; T[g[1]] += r[2]; T[g[2]] += r[2];

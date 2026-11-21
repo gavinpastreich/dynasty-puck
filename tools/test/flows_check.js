@@ -312,6 +312,9 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => /Carried by/.test(document.querySelector('#t-carry').innerText) && document.querySelectorAll('#t-carry tbody tr').length === 14), 'team hub: category carriers');
   ok(await page.evaluate(() => !DP.values || !!document.querySelector('#t-troph .tro') || document.querySelector('#t-troph').hidden), 'team hub: trophy case line');
   ok(await page.evaluate(() => !DP.simPre || DP.simPre.built !== DP.meta.built || DP.simPre.lw !== DP.E.lockWeek() || DP.E.version > 1 || !!(DP.E._bsim && DP.E._bsim.pre)), 'boot: the precomputed season simulation is used when it matches');
+  await go('scenarios', 3000);
+  await page.click('.scn-b[data-v="1"]'); await page.waitForTimeout(6000);
+  ok(await page.evaluate(() => /f=/.test(location.hash) && document.querySelectorAll('#sc-out tbody tr').length === DP.E.teams.length && document.querySelectorAll('.scn-b.on[data-v="1"]').length === 1), 'scenario builder: a pick re-simulates the season and stays in the link');
   await go('calendar', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('.cal th.cal-d').length >= 6 && document.querySelectorAll('.cal td.cal-g').length > 20), 'weekly calendar: players by night');
   await go('rater', 3000);

@@ -137,4 +137,7 @@ as you ship them, and add any new ideas you come up with.
 - [x] Batch 9 (2026-11-20): GM Report Cards, a player's moves in the league, category streaks, MNR players in the NHL now.
 - [x] Batch 10 (2026-11-20/21): Model Scorecard (pre-lock odds logged nightly), trade network, live swing categories,
       My Page (build-your-own, 40 widgets, share links), Title Path, NHL Team Stacks.
+- [x] Batch 11-13 (2026-11-21): Trophy Case, trade grades, category carriers, precomputed season sim, menu favorites
+      and a custom phone tab bar, Season Grid, Player Rater, Weekly Calendar, goalie-minimum watch, Scenario Builder,
+      more My Page widgets (clinch numbers, odds by round, did you know?).
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

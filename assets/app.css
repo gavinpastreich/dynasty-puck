@@ -748,4 +748,17 @@ nav.side .navi .fav.on { color: var(--accent); }
 .scn-g .scn-b[data-v="0"] { justify-content: center; }
 .scn-g .scn-b[data-v="0"].on { border-color: var(--line); background: transparent; color: var(--muted); }
 .scn-g .scn-b[data-v="-1"] { justify-content: flex-end; text-align: right; }
-@media (max-width: 640px) { .scn-g { grid-template-columns: 1fr; } .scn-g .scn-b[data-v="-1"] { justify-content: flex-start; } }
+@media (max-width: 640px) { .scn-g { grid-template-columns: 1fr 52px 1fr; gap: 4px; } .scn-b { padding: 6px 7px; gap: 4px; } .scn-b .scn-nm { display: none; } .scn-g .scn-b[data-v="0"] .small { font-size: 0; } .scn-g .scn-b[data-v="0"] .small::after { content: '–'; font-size: .9rem; } }
+/* Elo & Luck */
+.luckbars { display: inline-flex; align-items: center; gap: 2px; height: 30px; }
+.luckbars .lb { display: inline-block; width: 7px; border-radius: 2px; }
+.luckbars .lb.up { background: var(--good); align-self: flex-end; margin-bottom: 15px; }
+.luckbars .lb.dn { background: var(--bad); align-self: flex-start; margin-top: 15px; }
+/* Rankings Hub */
+.rkhub th a { color: inherit; }
+.rkhub .rk-n { display: inline-block; min-width: 1.7em; padding: 1px 5px; border-radius: 6px; font-weight: 700; text-align: center; }
+.rkhub .rk-n.top { background: var(--good-bg); color: var(--good); }
+.rkhub .rk-n.bot { background: var(--bad-bg); color: var(--bad); }
+/* Category Outlook heatmap */
+.olk td.olc { text-align: center; font-variant-numeric: tabular-nums; background: color-mix(in srgb, var(--link) calc((var(--v) - 0.2) * 110%), transparent); min-width: 34px; }
+.olk tr.opp td:first-child { box-shadow: inset 3px 0 0 var(--warn); }

@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -566,6 +566,19 @@ if (DP.simPre && DP.simPre.built === DP.meta.built && DP.simPre.lw === E.lockWee
   ok(G.rows.every((r) => { const s = DP.seasonRows(r.t); return r.rec.W === s.filter((x) => x.res === 'W').length && r.rec.L === s.filter((x) => x.res === 'L').length; }), 'season grid: records match the season rows');
 }
 ok(['magic', 'rounds', 'random', 'trophies', 'carriers'].every((k) => DP.WIDGETS[k]), 'my page: playoff and fun widgets registered');
+// ---- Scenario Builder: picks are kept in the link; a forced matchup is always won by the picked side; no picks = same sim
+{
+  const wk = DP.scenarioWeeks()[0], g = wk && DP.meta.h2h.find((x) => x[0] === wk);
+  if (g) {
+    const P = {}; P[wk + '|' + g[1] + '|' + g[2]] = -1;
+    ok(JSON.stringify(DP.decodePicks(DP.encodePicks(P))) === JSON.stringify(P), 'scenarios: picks survive the link');
+    ok(JSON.stringify(E.simSeason({ n: 300, seed: 5 })) === JSON.stringify(E.simSeason({ n: 300, seed: 5, force: {} })), 'scenarios: no picks = the same simulation');
+    const base = E.simSeason({ n: 600, seed: 9 }), forced = E.simSeason({ n: 600, seed: 9, force: P });
+    const po = (R, t) => R.find((r) => r.t === t).po;
+    ok(po(forced, g[2]) >= po(base, g[2]) - 0.03 && po(forced, g[1]) <= po(base, g[1]) + 0.03, `scenarios: ${g[2]} winning week ${wk} helps ${g[2]} and not ${g[1]}`);
+    ok(near(E.sum(forced.map((r) => r.po)), DP.meta.playoffs.teams, 1e-6), 'scenarios: still 8 playoff teams per season');
+  }
+}
 // ---- Weekly Calendar: games per player = the engine's schedule count for the week
 E.teams.slice(0, 4).forEach((t) => {
   const wi = Math.max(0, E.nowWeek()), C = DP.calendarData(t, wi);

@@ -29,11 +29,13 @@
       var E = DP.E, me = DP.state.team, P = DP.decodePicks(hsh.q.f), weeks = DP.scenarioWeeks();
       var h = '<div class="page-head"><h1>🔮 Scenario Builder</h1><p class="sub">Pick the winners of the next matchups and see what it does to every team\'s playoff and title odds. Each picked matchup is simulated so the picked team wins it (its categories still come from the model), and the rest of the season is played out ' + N.toLocaleString() + ' times. The link keeps your picks, so you can send a scenario to the chat.</p></div>';
       if (!weeks.length) { el.innerHTML = h + '<div class="callout">No regular-season weeks left to pick.</div>'; return; }
+      var sc = DP.league.score;
       h += weeks.map(function (n) {
-        var G = DP.meta.h2h.filter(function (g) { return g[0] === n; });
-        return '<div class="card" style="margin-bottom:12px"><h2>Week ' + n + '</h2><div class="scn">' + G.map(function (g) {
-          var k = n + '|' + g[1] + '|' + g[2], v = P[k] || 0, A = E.baseline[g[1]][n - 1], B = E.baseline[g[2]][n - 1], mc = E.simWeek(A, B, 800, (n - 1) * 31 + 7);
-          var btn = function (val, t, pct) { return '<button class="scn-b' + (v === val ? ' on' : '') + '" data-k="' + esc(k) + '" data-v="' + val + '">' + (t ? U.teamBadge(t) + ' <span>' + esc(U.teamName(t)) + '</span> <span class="faint small">' + U.pct(pct) + '</span>' : '<span class="small">no pick</span>') + '</button>'; };
+        var G = DP.meta.h2h.filter(function (g) { return g[0] === n; }), live = sc && sc.week === n && sc.teams && DP.liveOdds;
+        return '<div class="card" style="margin-bottom:12px"><h2>Week ' + n + (live ? ' <span class="badge warn">being played</span>' : '') + '</h2>' + (live ? '<div class="hint">The percentages are the Live Scoreboard\'s chances with the week so far. The season simulation plays this week out from the projections, so pick the result you expect.</div>' : '') + '<div class="scn">' + G.map(function (g) {
+          var k = n + '|' + g[1] + '|' + g[2], v = P[k] || 0, od = live ? DP.liveOdds(g[1], g[2]) : null;
+          var mc = od ? { win: od.win, loss: od.loss } : E.simWeek(E.baseline[g[1]][n - 1], E.baseline[g[2]][n - 1], 800, (n - 1) * 31 + 7);
+          var btn = function (val, t, pct) { return '<button class="scn-b' + (v === val ? ' on' : '') + '" data-k="' + esc(k) + '" data-v="' + val + '"' + (t ? ' title="' + esc(U.teamName(t)) + ' wins"' : ' title="No pick: simulated"') + '>' + (t ? U.teamBadge(t) + ' <span class="scn-nm">' + esc(U.teamName(t)) + '</span> <span class="faint small">' + U.pct(pct) + '</span>' : '<span class="small">no pick</span>') + '</button>'; };
           return '<div class="scn-g' + (g[1] === me || g[2] === me ? ' mine' : '') + '">' + btn(1, g[1], mc.win) + btn(0) + btn(-1, g[2], mc.loss) + '</div>';
         }).join('') + '</div></div>';
       }).join('');
@@ -50,7 +52,7 @@
           if (!document.body.contains(out)) return;
           var R = DP.runScenario(P);
           out.innerHTML = '<div class="card flush" style="margin-top:12px"><div class="tbl-wrap"><table class="t"><thead><tr><th>Team</th><th class="num">Playoffs</th><th class="num">change</th><th class="num">Title</th><th class="num">change</th><th class="num">Avg seed</th></tr></thead><tbody>' + R.map(function (r) {
-            return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + U.teamChip(r.t, { link: 1 }) + '</td><td class="num"><b>' + U.pct(r.po) + '</b></td><td class="num">' + (np ? ui.delta(r.dPo * 100, 0) : '') + '</td><td class="num">' + U.pct(r.ch, 1) + '</td><td class="num">' + (np ? ui.delta(r.dCh * 100, 1) : '') + '</td><td class="num">' + U.fmt(r.seed, 1) + '</td></tr>';
+            return '<tr class="' + (r.t === me ? 'mine' : '') + '"><td>' + U.teamChip(r.t, { link: 1 }) + '</td><td class="num"><b>' + U.pct(r.po) + '</b></td><td class="num">' + (np ? ui.delta(Math.round(r.dPo * 100) || 0, 0) : '') + '</td><td class="num">' + U.pct(r.ch, 1) + '</td><td class="num">' + (np ? ui.delta(Math.round(r.dCh * 1000) / 10 || 0, 1) : '') + '</td><td class="num">' + U.fmt(r.seed, 1) + '</td></tr>';
           }).join('') + '</tbody></table></div></div><p class="small muted">Changes = with your picks minus without them, both ' + N.toLocaleString() + ' seasons with the same random seed; differences under 1 point are noise. The percentages on each pick are that team\'s projected chance to win the matchup.</p>';
         }, 30);
       };
