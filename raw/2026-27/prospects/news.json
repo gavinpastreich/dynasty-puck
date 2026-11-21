@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-20T18:39+00:00",
+"fetched": "2026-11-20T23:58+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -2207,6 +2207,16 @@
 "w": 1
 }
 ],
+"n8486016": [
+{
+"d": "2026-11-20",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "How Canucks fans can watch Caleb Malhotra, Niklas Aaram-Olsen, Aiden Celebrini, and the BU Terriers tonight",
+"u": "https://canucksarmy.com/news/how-vancouver-canucks-fans-watch-caleb-malhotra-niklas-aaram-olsen-aiden-celebrini-bu-terriers-tonight",
+"w": 2
+}
+],
 "n8486024": [
 {
 "d": "2026-11-17",
@@ -2279,6 +2289,16 @@
 "w": 1
 }
 ],
+"n8486050": [
+{
+"d": "2026-11-20",
+"k": [],
+"s": "The Hockey News",
+"t": "Prospect Watch: How Panthers' Ignatavicius' Lithuanian Background Molded A Unique Path To The NHL",
+"u": "https://thehockeynews.com/news/latest-news/prospect-watch-how-panthers-ignatavicius-lithuanian-background-molded-a-unique-path-to-the-nhl",
+"w": 2
+}
+],
 "n8486051": [
 {
 "d": "2026-11-16",
@@ -2308,6 +2328,14 @@
 }
 ],
 "n8486065": [
+{
+"d": "2026-11-20",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "How Canucks fans can watch Caleb Malhotra, Niklas Aaram-Olsen, Aiden Celebrini, and the BU Terriers tonight",
+"u": "https://canucksarmy.com/news/how-vancouver-canucks-fans-watch-caleb-malhotra-niklas-aaram-olsen-aiden-celebrini-bu-terriers-tonight",
+"w": 2
+},
 {
 "d": "2026-11-19",
 "k": [],
@@ -2367,6 +2395,14 @@
 "w": 2
 },
 {
+"d": "2026-11-20",
+"k": [],
+"s": "Maple Leafs Hot Stove (TOR)",
+"t": "Jim Hiller on Gavin McKenna bailing on a board battle vs. LA: “He’s got to make that decision, if he feels vulnerable… That might have been one where it was a good decision”",
+"u": "https://mapleleafshotstove.com/2026/11/20/jim-hiller-on-gavin-mckenna-bailing-on-a-board-battle-vs-la/",
+"w": 2
+},
+{
 "d": "2026-11-19",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -2422,14 +2458,6 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Gavin McKenna just received the ultimate vote of confidence",
 "u": "https://editorinleaf.com/gavin-mckenna-just-received-the-ultimate-vote-of-confidence?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-17",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna just said the 3 words no Maple Leafs fan wanted to hear",
-"u": "https://editorinleaf.com/gavin-mckenna-just-said-the-3-words-no-maple-leafs-fan-wanted-to-hear?utm_source=RSS",
 "w": 2
 }
 ],
@@ -2532,6 +2560,16 @@
 "s": "The Hockey News",
 "t": "Will Keaton Verhoeff Need Time In The NCAA Beyond This Season?: The Hockey News Future Watch Show",
 "u": "https://thehockeynews.com/news/podcast/will-keaton-verhoeff-need-time-in-the-ncaa-beyond-this-season-the-hockey-news-future-watch-show",
+"w": 2
+}
+],
+"n8486222": [
+{
+"d": "2026-11-20",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Don’t sleep on Russian forward prospect Alan Shaikhlislamov",
+"u": "https://flamesnation.ca/news/calgary-flames-prospect-report-alan-shaikhlislamov-nov-2026",
 "w": 2
 }
 ],
@@ -2833,7 +2871,7 @@
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
@@ -2847,14 +2885,14 @@
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -2868,7 +2906,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
