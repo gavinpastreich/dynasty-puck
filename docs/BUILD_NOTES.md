@@ -550,6 +550,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`. `DP.puntSwaps(team, keys, n)`: swap
     ideas (give one of your six biggest punted-category producers, get a player within the Trade Finder's p.DV band;
     g = your WAR gain without the punts, h = their full-WAR gain, score = min(g, h) + 0.25(g + h), two per player).
+  - Season Simulator (pages-sims.js) opens on tonight's run (`E.baseSim()`, n 1500, default settings: instant when
+    data/sim.js is current, and the same odds as every other page); "Run again" or any other setting draws a fresh sim.
   - Ice Time per 60 (pages-usage.js): `DP.per60(p)` = {p60, g60, sog60, phys60} from p.ytd and p.ice[0] (10+ GP);
     `DP.underused()` = P/60 >= the group's 75th percentile (F or D) and TOI/gp < the group's median, by P/60.
   - Weekly Preview (pages-extras.js) waits for `DP.loadDepthLog` and adds a "Waiver watch" line (top three free

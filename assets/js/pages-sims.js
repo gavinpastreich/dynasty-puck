@@ -97,9 +97,9 @@
     title: 'Season Simulator',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, me = DP.state.team;
-      var n = +(q.n || 2000), po = +(q.po || 8), noise = q.noise !== undefined ? +q.noise : 3.5;
+      var n = +(q.n || 1500), po = +(q.po || 8), noise = q.noise !== undefined ? +q.noise : 3.5;
       var h = '<div class="page-head"><h1>🎲 Season Simulator</h1><p class="sub">Monte Carlo of the full 24-week Fantrax schedule and an 8-team playoff (1v8, 4v5, 3v6, 2v7; weeks 25-27). Each week every category is drawn from its projected distribution; standings = total category W-L-T. A per-team strength shock (± projection error) is drawn each season.</p></div>';
-      h += '<div class="controls"><label>Simulations <select id="s-n">' + [500, 1000, 2000, 5000].map(function (x) { return '<option' + (x === n ? ' selected' : '') + '>' + x + '</option>'; }).join('') + '</select></label>' +
+      h += '<div class="controls"><label>Simulations <select id="s-n">' + [500, 1000, 1500, 2000, 5000].map(function (x) { return '<option' + (x === n ? ' selected' : '') + '>' + x + '</option>'; }).join('') + '</select></label>' +
         '<label>Playoff teams <select id="s-po">' + [[8, '8 (league format)'], [6, '6 (what-if: top-2 byes)'], [4, '4 (what-if)']].map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === po ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
         '<label title="Standard deviation of a season-long team strength shock">Projection uncertainty <select id="s-noise">' + [[0, 'none'], [2, 'low'], [3.5, 'medium'], [6, 'high']].map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === noise ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
         '<button class="btn primary" id="s-run">Run again</button><span class="small muted" id="s-status"></span></div>';
@@ -107,12 +107,16 @@
       h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>Seed distribution</h2><div class="hint">Share of simulations finishing in each regular-season position.</div><div id="s-seeds"></div></div>';
       h += '<div class="card"><h2>' + (me ? esc(U.teamName(me)) + ' week by week' : 'Pick your team for a week-by-week view') + '</h2><div id="s-weeks"></div></div></div>';
       el.innerHTML = h;
+      // first view on the default settings: tonight's run (E.baseSim, the one every other page uses; instant when the
+      // precomputed data/sim.js is current). "Run again" or any other setting draws a fresh simulation.
+      var first = true;
       var run = function () {
+        var base = first && n === 1500 && po === 8 && noise === 3.5; first = false;
         U.qs('#s-status', el).textContent = 'Running ' + n + ' seasons…';
-        setTimeout(function () {
-          var t0 = Date.now(), res = E.simSeason({ n: n, playoffTeams: po, noise: noise / 100, seed: (Date.now() % 100000) });
-          if (po === 8 && n >= 1500 && noise === 3.5) DP.simCache = { v: E.version, n: n, res: res };
-          U.qs('#s-status', el).textContent = n + ' seasons in ' + ((Date.now() - t0) / 1000).toFixed(1) + 's';
+        var draw = function () {
+          var t0 = Date.now(), res = base ? E.baseSim() : E.simSeason({ n: n, playoffTeams: po, noise: noise / 100, seed: (Date.now() % 100000) });
+          if (!base && po === 8 && n >= 1500 && noise === 3.5) DP.simCache = { v: E.version, n: n, res: res };
+          U.qs('#s-status', el).textContent = base ? n.toLocaleString() + ' seasons: tonight\'s run, the one the other pages use. Run again for a fresh draw.' : n.toLocaleString() + ' seasons in ' + ((Date.now() - t0) / 1000).toFixed(1) + 's';
           ui.table(U.qs('#s-table', el), {
             rows: res, sort: 'pct', csv: 'season-sim.csv', rowCls: function (r) { return r.t === me ? 'mine' : ''; },
             cols: [
@@ -138,7 +142,8 @@
             void nt;
           });
           U.qs('#s-seeds', el).innerHTML = sh + '</tbody></table></div><p class="small muted">Cells show % of seasons; more intense shading = more likely. Top ' + po + ' make the playoffs.</p>';
-        }, 30);
+        };
+        if (base && E._bsim && E._bsim.v === E.version) draw(); else setTimeout(draw, 30);
       };
       run();
       if (me) {
