@@ -267,25 +267,13 @@
    "holdout": false
   },
   {
-   "name": "Albert Johansson",
-   "team": "DET",
-   "status": "IR",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Johansson (undisclosed) will return vs. the Islanders on Saturday.",
-   "date": "2026-11-20",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Dylan Larkin",
    "team": "DET",
    "status": "OUT",
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-19",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -813,7 +801,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/pittsburgh-penguins/line-combinations",
    "holdout": false

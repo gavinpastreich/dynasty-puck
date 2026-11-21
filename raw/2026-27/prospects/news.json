@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-21T02:23+00:00",
+"fetched": "2026-11-21T04:47+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -2565,6 +2565,16 @@
 "w": 1
 }
 ],
+"n8486101": [
+{
+"d": "2026-11-21",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers prospect Maksim Sokolovskii returns and immediately gets his season back on track",
+"u": "https://www.broadstreethockey.com/post/flyers-prospect-maksim-sokolovskii-returns-and-immediately-gets-his-season-back-on-track/",
+"w": 2
+}
+],
 "n8486103": [
 {
 "d": "2026-10-21",
@@ -2732,7 +2742,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -2879,7 +2889,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "7 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2928,7 +2938,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
