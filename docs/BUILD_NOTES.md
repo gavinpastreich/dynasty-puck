@@ -479,5 +479,14 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Model Scorecard (pages-scorecard.js): `DP.modelCalls()` joins `DP.values.calls` with `E.history()` (favorite's side),
     `DP.modelScore(M)` = Brier, calibration bins, upsets. Weeks still open show their calls (frozen at the lock or still
     updating). Backfilled for weeks 1-8 with `node tools/value_history.js --backfill` (3.5 min locally).
+  - My Page (pages-mypage.js): widget registry `DP.WIDGETS` (reg(k, {name, ic, cat, desc, team, anyTeam, ns, n, size,
+    link, render(box, o, t)})), presets `DP.MYPAGE_PRESETS`, layout in localStorage `dp_mypage` ({v, w: [{k, s, o}]}),
+    share links `DP.encodeLayout` / `DP.decodeLayout` (URL-safe base64 JSON in `#/mypage?l=`), start page option
+    (`dp_startPage`, read in app.js before the first render). To add a widget: one reg() call.
+  - Title Path (pages-path.js): `DP.pathCandidates`, `DP.pathBase(n)`, `DP.pathEval(t, p, base, n)` (E.weeksFor + E.simSeason
+    with a fixed seed). NHL Team Stacks (pages-stacks.js): `DP.stacksData(all)`.
+  - League Feed (pages-feed.js): `DP.feedItems({values, lines})`, `DP.feedFilter(items, {team, kinds, since})`,
+    `DP.feedHtml`, `DP.loadFeed(cb)`. Extra My Page widgets in pages-mywidgets.js via `DP.regWidget` and
+    `DP.myWidgetHelpers` (pages-mypage.js redraws with `reload()`: the router only redraws when the hash changes).
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

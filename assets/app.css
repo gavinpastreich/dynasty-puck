@@ -692,3 +692,15 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .stk th.stk-t.mine { background: color-mix(in srgb, var(--accent) 14%, transparent); }
 .stk td.stk-c { text-align: center; padding: 2px; min-width: 30px; }
 .stk td.stk-c span { display: inline-block; min-width: 24px; padding: 2px 0; border-radius: 5px; background: color-mix(in srgb, var(--link) calc(var(--a) * 100%), transparent); color: var(--ink); font-weight: 700; }
+/* League Feed */
+.feed-kinds { gap: 12px; flex-wrap: wrap; }
+.feed-day { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 16px 0 4px; }
+.feed li { display: flex; gap: 10px; align-items: flex-start; padding: 7px 10px; border-left: 3px solid var(--line); margin-bottom: 4px; background: var(--card); border-radius: 0 8px 8px 0; }
+.feed li.mine { border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
+.feed li.feed-trade { border-left-color: var(--accent2); }
+.feed li.feed-result { border-left-color: var(--link); }
+.feed .feed-ic { font-size: 1rem; line-height: 1.3; }
+/* Trophy Case */
+.troph { display: flex; flex-wrap: wrap; gap: 6px; }
+.tro { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 3px 6px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: color-mix(in srgb, var(--accent) 8%, transparent); font-size: .82rem; cursor: help; }
+.tro-ic { font-size: 1rem; }

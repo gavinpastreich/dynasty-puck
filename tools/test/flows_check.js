@@ -272,6 +272,43 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => !DP.values || !DP.values.calls || (document.querySelectorAll('#sc-t tbody tr').length === DP.modelCalls().length && !!document.querySelector('svg.calib') && /Favorites won/.test(document.querySelector('#main').innerText))), 'model scorecard: tiles, calibration and every call');
   await go('history', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('#th-net svg.tnet circle').length === DP.E.teams.length && document.querySelectorAll('#th-net path.te').length === DP.tradePairs().pairs.length), 'trade history: who trades with whom');
+  // My Page: the default layout, add a widget, edit (move, remove, settings), share link round trip, every widget renders
+  await page.evaluate(() => { try { localStorage.removeItem('dp_mypage'); } catch (e) {} });
+  await go('mypage', 4000);
+  ok(await page.evaluate(() => document.querySelectorAll('#mp-grid .mw').length === DP.MYPAGE_PRESETS.starter.w.length), 'my page: the starter layout');
+  await page.click('#mp-add'); await page.waitForTimeout(400);
+  ok(await page.evaluate(() => document.querySelectorAll('#mp-gal .mp-wg').length === Object.keys(DP.WIDGETS).length), 'my page: the widget gallery lists every widget');
+  await page.click('#mp-gal [data-add="grades"]'); await page.waitForTimeout(3500);
+  ok(await page.evaluate(() => { const L = JSON.parse(localStorage.getItem('dp_mypage')); return L.w.length === DP.MYPAGE_PRESETS.starter.w.length + 1 && L.w[L.w.length - 1].k === 'grades' && document.querySelectorAll('#mp-grid .mw').length === L.w.length; }), 'my page: adding a widget saves it');
+  await go('mypage?edit=1', 3000);
+  const first0 = await page.evaluate(() => JSON.parse(localStorage.getItem('dp_mypage')).w[0].k);
+  await page.click('#mp-grid .mw[data-i="0"] [data-mv="1"]'); await page.waitForTimeout(1500);
+  ok(await page.evaluate((f) => JSON.parse(localStorage.getItem('dp_mypage')).w[1].k === f, first0), 'my page: moving a widget');
+  const nBefore = await page.evaluate(() => JSON.parse(localStorage.getItem('dp_mypage')).w.length);
+  await page.click('#mp-grid .mw:last-child [data-rm]'); await page.waitForTimeout(1500);
+  ok(await page.evaluate((n) => JSON.parse(localStorage.getItem('dp_mypage')).w.length === n - 1, nBefore), 'my page: removing a widget');
+  const si = await page.evaluate(() => JSON.parse(localStorage.getItem('dp_mypage')).w.findIndex((x) => x.k === 'standings'));
+  if (si >= 0) {
+    await page.click('#mp-grid .mw[data-i="' + si + '"] [data-set]'); await page.waitForTimeout(300);
+    await page.selectOption('#mp-grid .mw[data-i="' + si + '"] select[data-o="n"]', '5');
+    await page.click('#mp-grid .mw[data-i="' + si + '"] [data-done]'); await page.waitForTimeout(1500);
+    ok(await page.evaluate((i) => document.querySelectorAll('#mp-grid .mw[data-i="' + i + '"] .mwlist li').length === 5, si), 'my page: widget settings (show 5)');
+  }
+  const all = await page.evaluate(() => DP.encodeLayout({ w: Object.keys(DP.WIDGETS).map((k) => ({ k, s: DP.WIDGETS[k].size, o: {} })) }));
+  await page.evaluate((l) => { location.hash = '#/mypage?l=' + l; }, all); await page.waitForTimeout(9000);
+  ok(await page.evaluate(() => /A shared layout/.test(document.querySelector('#main').innerText) && document.querySelectorAll('#mp-grid .mw').length === Object.keys(DP.WIDGETS).length && ![...document.querySelectorAll('.mw-body')].some((b) => /could not load/.test(b.innerText))), 'my page: a shared layout with every widget renders');
+  await page.click('#mp-use'); await page.waitForTimeout(1500);
+  ok(await page.evaluate(() => JSON.parse(localStorage.getItem('dp_mypage')).w.length === Object.keys(DP.WIDGETS).length && !/A shared layout/.test(document.querySelector('#main').innerText)), 'my page: "use it" saves the shared layout');
+  await page.evaluate(() => { try { localStorage.removeItem('dp_mypage'); } catch (e) {} });
+  await go('feed', 4000);
+  ok(await page.evaluate(() => document.querySelectorAll('.feed li').length > 10 && document.querySelectorAll('.feed-day').length >= 2), 'league feed: items grouped by day');
+  await go('feed?team=ROO&days=all&k=trade', 4000);
+  ok(await page.evaluate(() => [...document.querySelectorAll('.feed li')].every((li) => li.classList.contains('feed-trade')) && document.querySelectorAll('.feed li').length === (DP.league.trades || []).filter((t) => t.teams.includes('ROO')).length), 'league feed: team and kind filters');
+  await go('stacks', 3000);
+  ok(await page.evaluate(() => document.querySelectorAll('.stk tbody tr').length === DP.stacksData(false).clubs.length && document.querySelectorAll('.stk thead .stk-t').length === DP.E.teams.length), 'nhl team stacks: a row per club, a column per team');
+  await go('path?n=500', 2500);
+  await page.click('#pt-go'); await page.waitForFunction(() => /Done:/.test((document.querySelector('#pt-prog') || {}).innerText || ''), null, { timeout: 90000 }).catch(() => {});
+  ok(await page.evaluate(() => document.querySelectorAll('#pt-tab tbody tr').length === 36 && /Baseline:/.test(document.querySelector('#pt-prog').innerText)), 'title path: the search runs and ranks 36 players');
   await go('moves', 4500);
   ok(await page.evaluate(() => document.querySelectorAll('.fmlist li').length >= 3 && document.querySelectorAll('#mv-log tbody tr').length > 10), 'transactions: best pickups and the full log');
   await go('history', 3500);

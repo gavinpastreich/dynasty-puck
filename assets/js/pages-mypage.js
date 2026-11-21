@@ -318,7 +318,7 @@
   function fromPreset(k) { return { v: 1, w: PRESETS[k].w.map(function (x) { return { k: x[0], s: x[1], o: {} }; }) }; }
   function clean(L) {
     if (!L || !Array.isArray(L.w)) return null;
-    return { v: 1, w: L.w.filter(function (x) { return x && W[x.k]; }).slice(0, 40).map(function (x) { return { k: x.k, s: x.s === 2 ? 2 : 1, o: x.o && typeof x.o === 'object' ? x.o : {} }; }) };
+    return { v: 1, w: L.w.filter(function (x) { return x && W[x.k]; }).slice(0, 80).map(function (x) { return { k: x.k, s: x.s === 2 ? 2 : 1, o: x.o && typeof x.o === 'object' ? x.o : {} }; }) };
   }
   DP.myLayout = function () { var L = clean(U.store.get(KEY, null)); return L || fromPreset('starter'); };
   function save(L) { U.store.set(KEY, L); }
@@ -334,6 +334,10 @@
     } catch (e) { return null; }
   };
 
+  // re-draw My Page with these query params (the router only redraws when the address changes)
+  function reload(q) { var h = U.hash('mypage', null, q || {}); if (location.hash === h || (h === '#/mypage' && location.hash === '#/mypage')) DP.render(); else location.hash = h; }
+  DP.regWidget = reg;
+  DP.myWidgetHelpers = { alive: alive, list: list, li: li, finished: finished, lastWeek: lastWeek, roster: roster, liveGame: liveGame, catChips: catChips };
   function teamOf(spec, o) { return o.team && o.team !== '*' ? o.team : DP.state.team || null; }
   function renderWidget(cell, x, i, edit) {
     var spec = W[x.k], o = x.o || {}, t = teamOf(spec, o), body = U.qs('.mw-body', cell);
@@ -370,9 +374,9 @@
       el.innerHTML = h;
       var grid = U.qs('#mp-grid', el);
       U.qsa('.mw', grid).forEach(function (cell) { var i = +cell.dataset.i; renderWidget(cell, L.w[i], i, edit); });
-      var commit = function (keepEdit) { save(L); DP.go('mypage', null, keepEdit ? { edit: '1' } : {}); };
-      if (shared) { U.qs('#mp-use', el).addEventListener('click', function () { save(shared); U.toast('Saved as your page'); DP.go('mypage'); }); return; }
-      U.qs('#mp-edit', el).addEventListener('click', function () { DP.go('mypage', null, edit ? {} : { edit: '1' }); });
+      var commit = function (keepEdit) { save(L); reload(keepEdit ? { edit: '1' } : {}); };
+      if (shared) { U.qs('#mp-use', el).addEventListener('click', function () { save(shared); U.toast('Saved as your page'); reload({}); }); return; }
+      U.qs('#mp-edit', el).addEventListener('click', function () { reload(edit ? {} : { edit: '1' }); });
       U.qs('#mp-start', el).addEventListener('change', function (e) { U.store.set('startPage', e.target.checked ? 'mypage' : ''); if (e.target.checked && !hasOwn) save(L); U.toast(e.target.checked ? 'The site will open on My Page on this device' : 'The site will open on the Dashboard'); });
       U.qs('#mp-share', el).addEventListener('click', function () { var url = location.href.split('#')[0] + '#/mypage?l=' + DP.encodeLayout(L); U.copy(url, 'Link copied. Open it on another device (or send it to a leaguemate) to use this layout.'); });
       U.qs('#mp-preset', el).addEventListener('change', function (e) {
@@ -388,7 +392,7 @@
           return '<h3 class="small">' + esc(c[1]) + '</h3><div class="mp-gal">' + ks.map(function (k) { var n = L.w.filter(function (x) { return x.k === k; }).length; return '<button class="mp-wg" data-add="' + k + '"><span class="mw-ic">' + W[k].ic + '</span><span><b>' + esc(W[k].name) + '</b>' + (n ? ' <span class="badge good">on your page</span>' : '') + '<span class="small muted">' + esc(W[k].desc) + '</span></span></button>'; }).join('') + '</div>';
         }).join('') + '</div>';
         U.qs('#mp-galx', gal).addEventListener('click', function () { gal.hidden = true; });
-        U.qsa('[data-add]', gal).forEach(function (b) { b.addEventListener('click', function () { L.w.push({ k: b.dataset.add, s: W[b.dataset.add].size, o: {} }); save(L); U.toast(W[b.dataset.add].name + ' added at the bottom'); DP.go('mypage', null, edit ? { edit: '1' } : {}); }); });
+        U.qsa('[data-add]', gal).forEach(function (b) { b.addEventListener('click', function () { L.w.push({ k: b.dataset.add, s: W[b.dataset.add].size, o: {} }); save(L); U.toast(W[b.dataset.add].name + ' added at the bottom'); reload(edit ? { edit: '1' } : {}); }); });
       });
       if (!edit) return;
       U.qsa('.mw', grid).forEach(function (cell) {

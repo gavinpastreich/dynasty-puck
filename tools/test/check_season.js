@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js']).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -495,6 +495,66 @@ if (DP.values && DP.values.calls) {
   ok(DP.decodeLayout(DP.encodeLayout({ w: [{ k: 'nope', s: 1, o: {} }, { k: 'odds', s: 3, o: {} }] })).w.map((x) => x.k + x.s).join() === 'odds1', 'my page: unknown widgets dropped, sizes clamped');
   Object.keys(DP.MYPAGE_PRESETS).forEach((k) => ok(DP.MYPAGE_PRESETS[k].w.every((x) => DP.WIDGETS[x[0]]), `my page preset ${k}: every widget exists`));
   ok(Object.keys(DP.WIDGETS).every((k) => { const w = DP.WIDGETS[k]; return w.name && w.ic && w.desc && w.cat && typeof w.render === 'function'; }), `my page: ${Object.keys(DP.WIDGETS).length} widgets, each with a name, icon, description and category`);
+}
+
+// ---- NHL Team Stacks: every active-roster player counted once, under his club and his team
+{
+  const S = DP.stacksData(false), act = E.P.filter((p) => p.gm && p.nt && (p.fs === 'A' || p.fs === 'R'));
+  ok(E.sum(S.clubs.map((c) => c.n)) === act.length && E.sum(E.teams.map((t) => S.team[t].n)) === act.length, `stacks: ${act.length} active-roster players, each counted once`);
+  ok(S.clubs.every((c) => E.sum(Object.values(c.by).map((x) => x.n)) === c.n), 'stacks: club rows add up');
+  ok(E.teams.every((t) => { const T = S.team[t]; return near(E.sum(T.top.map((x) => x.share)), T.war > 0 ? 1 : 0, 1e-6) && T.top.every((x, i) => !i || T.top[i - 1].war >= x.war); }), 'stacks: shares add to 100%, biggest first');
+  ok(E.sum(DP.stacksData(true).clubs.map((c) => c.n)) >= act.length, 'stacks: the whole roster has at least as many');
+}
+
+// ---- Title Path: a candidate added to the roster, same random numbers as the baseline
+{
+  const base = DP.pathBase(200), C = DP.pathCandidates('ROO', 3, 3);
+  ok(C.length === 6 && C.slice(0, 3).every((p) => !p.gm) && C.slice(3).every((p) => p.gm && p.gm !== 'ROO'), 'title path: free agents and other teams\' players');
+  const r1 = DP.pathEval('ROO', C[3], base, 200);
+  ok(isFinite(r1.dCh) && isFinite(r1.dPo) && r1.from && r1.from.t === C[3].gm && near(r1.po - r1.dPo, base.ROO.po), 'title path: odds with him, his old team without him');
+  ok(near(DP.pathEval('ROO', C[3], base, 200).dCh, r1.dCh), 'title path: same seed, same answer');
+  ok(E.rosters.ROO.every((p) => p.id !== C[3].id) && E.rosters[C[3].gm].some((p) => p.id === C[3].id), 'title path: the real rosters are left alone');
+}
+
+// ---- League Feed: every trade, every team-day of adds and drops, every finished matchup; newest first
+{
+  const F = DP.feedItems({ values: DP.values, lines: DP.depthLog }), by = (k) => F.filter((x) => x.k === k);
+  const M = (DP.league.moves || []).filter((m) => m.type === 'add' || m.type === 'drop');
+  ok(by('trade').length === (DP.league.trades || []).length, 'feed: one item per trade');
+  ok(by('move').length === new Set(M.map((m) => m.d + '|' + (m.type === 'add' ? m.to : m.from))).size, 'feed: one item per team and day of adds/drops');
+  ok(by('result').length === E.sum(HW.filter((w) => w.games).map((w) => w.games.length)), 'feed: one item per finished matchup');
+  ok(F.every((x, i) => !i || F[i - 1].d >= x.d), 'feed: newest first');
+  ok(!DP.depthLog || by('line').length > 0, 'feed: line moves when the depth log is there');
+  ok(by('value').every((x) => /Value swings/.test(x.html)), 'feed: value swings');
+  const me = 'ROO', mine = DP.feedFilter(F, { team: me });
+  ok(mine.length > 0 && mine.every((x) => x.teams.includes(me)), 'feed: the team filter');
+  ok(DP.feedFilter(F, { kinds: ['trade'] }).every((x) => x.k === 'trade'), 'feed: the kind filter');
+}
+ok(['feed', 'catprofile', 'ranges', 'upcoming', 'outlook', 'rivals', 'topassets'].every((k) => DP.WIDGETS[k]), 'my page: the extra widgets are registered');
+
+// ---- Trophy Case: every badge comes with its reason, and the ones that can be recounted are
+{
+  const T = DP.trophies(Object.values(DP.weekDetail || {}));
+  ok(E.teams.every((t) => Array.isArray(T[t]) && T[t].every((b) => b.k && b.ic && b.name && b.why && b.why.length > 10)), 'trophies: every badge has an icon, a name and a reason');
+  let perfect = 0; HW.forEach((w) => (w.games || []).forEach((g) => [g.sa, g.sb].forEach((s) => { if (s.L === 0 && s.W >= 13) perfect++; })));
+  ok(E.sum(E.teams.map((t) => T[t].filter((b) => b.k === 'perfect').length)) === perfect, `trophies: clean sweeps (${perfect})`);
+  ok(E.sum(E.teams.map((t) => T[t].filter((b) => b.k === 'totw').length)) === HW.filter((w) => w.games && w.games.length).length, 'trophies: one team of the week per week');
+  ok(E.sum(E.teams.map((t) => T[t].filter((b) => b.k === 'catrec').length)) === DP.recordData().cats.filter((c) => c.best).length, 'trophies: one record holder per category');
+  if (DP.values && DP.values.calls) ok(E.sum(E.teams.map((t) => T[t].filter((b) => b.k === 'heist').length)) === DP.modelCalls().filter((m) => m.res === 0 && m.pd <= 0.25).length, 'trophies: heists = upsets from 25% or less');
+}
+
+// ---- Category carriers: the starters' lines add up to the team's season totals
+E.teams.forEach((t) => {
+  const C = DP.carriers(t, Object.values(DP.weekDetail || {})), g = (k) => C.cats.find((c) => c.k === k);
+  const tot = (k) => E.sum(HW.filter((w) => w.games && w.games.length && DP.weekDetail[w.n]).map((w) => w.tot[t][k] || 0));
+  ok(g('G').tot === tot('G') && g('A').tot === tot('A') && g('Hit').tot === tot('Hit') && g('W').tot === tot('W') && g('SHO').tot === tot('SHO'), `carriers ${t}: totals match the season`);
+  ok(C.cats.every((c) => !c.ps.length || near(E.sum(c.ps.map((x) => x.share)), 1, 1e-9)), `carriers ${t}: shares add to 100%`);
+});
+
+// ---- precomputed season simulation (tools/presim.js): identical to running it here, when it applies
+if (DP.simPre && DP.simPre.built === DP.meta.built && DP.simPre.lw === E.lockWeek() && DP.simPre.nw === E.nowWeek()) {
+  E._bsim = null;
+  ok(JSON.stringify(E.baseSim()) === JSON.stringify(DP.simPre.res), 'presim: data/sim.js = a fresh 1,500-season simulation');
 }
 
 // ---- Start Here tour: every link is a page in the menu

@@ -9,6 +9,7 @@
     ['Set up once', 'Thirty seconds and the whole site is about your team.', [
       ['pick', '🧢', 'Pick your team', 'Top right. Every page then highlights your players, your matchup and your cap. Stored on this device only.'],
       ['home', '🏠', 'Dashboard', 'Your week at a glance: this matchup, the to-do list (lineup, IR, pickups), news and what changed since your last visit.'],
+      ['mypage', '🛠️', 'My Page', 'Build your own page from nearly 50 widgets; keep it on your phone, share the layout with a link.'],
       ['install', '📱', 'Add it to your home screen', 'On a phone: Share → Add to Home Screen (iPhone) or ⋮ → Install app (Android). It opens like an app and keeps working offline with the last data it loaded.']
     ]],
     ['Before the Monday lock', 'Lineups lock for the whole week, so this is the one moment that counts.', [
@@ -18,6 +19,7 @@
       ['team', '🧢', 'Team Hub', 'Your roster, the best lineup by games played, the IR and cap check, and your season so far.']
     ]],
     ['During the week', 'Follow along and spot the next move early.', [
+      ['feed', '📣', 'League Feed', 'Everything that happened, on one timeline: trades, moves, line changes, value swings, results.'],
       ['live', '📺', 'Live Scoreboard', 'Every matchup with live NHL stats, updating during games, and the odds with the rest of the week simulated.'],
       ['form', '🔥', 'Hot & Cold', 'The last 14 days against each player\'s projection: who is running hot, who is cold, hot free agents.'],
       ['lines', '🔀', 'Line & PP Changes', 'Night-to-night moves in NHL depth charts: who got promoted to PP1 or the top six, who got scratched, which goalie took the net.'],
@@ -30,7 +32,8 @@
       ['tape', '📏', 'Tale of the Tape', 'Any two teams side by side: record, value, cap, all 15 categories, head to head and trade fit.'],
       ['values', '💎', 'Trade Value Chart', 'Every player and pick on one dynasty value scale.'],
       ['moves', '🧾', 'Transactions', 'Every add, drop and trade this season, the best pickups and the drops that got away.'],
-      ['deadline', '⏳', 'Trade Deadline', 'Countdown, buyers and sellers, rentals, and the hometown discount.']
+      ['deadline', '⏳', 'Trade Deadline', 'Countdown, buyers and sellers, rentals, and the hometown discount.'],
+      ['path', '🗺️', 'Title Path', 'Which one player would raise your title odds the most, re-simulated player by player.']
     ]],
     ['The long game', 'Dynasty means next season matters too.', [
       ['cap', '💰', 'Contracts & Cap', 'Every contract, cap space by season (traded cap and IR relief included) and dead cap.'],
