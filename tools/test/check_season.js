@@ -694,6 +694,11 @@ if (DP.aging) {
   ok(CV.F.peak.g <= CV.F.peak.a, `aging: forwards' goals peak (${CV.F.peak.g}) no later than assists (${CV.F.peak.a})`);
   const vet = E.P.find((p) => !p.G && p.age >= 30 && p.age < 33 && p.pos !== 'D'), nx = DP.agingNext(vet, CV);
   ok(nx && nx.age === Math.floor(vet.age) && near(nx.g, CV.F.step.g[nx.age], 1e-12), `aging: next season for ${vet.n} (${nx && nx.age})`);
+  // survivor bias: counting players who left the NHL (as falling to replacement level, never above their own rate)
+  const CS = DP.agingCurves(A, true);
+  ok(A.dropouts > 500 && CS !== CV && DP.agingCurves(A, true) === CS, `aging: ${A.dropouts} drop-outs, a separate cached curve`);
+  ['F', 'D'].forEach((pos) => { const keys = Object.keys(A[pos]).filter((a) => A[pos][a].dn); ok(keys.length > 10 && keys.every((a) => A[pos][a].db.every((v, i) => v <= A[pos][a].da[i] + 1e-6)), `aging ${pos}: a drop-out never gets better`); });
+  ok(CS.F.cur.g[33] < CV.F.cur.g[33] && CS.F.cur.a[33] < CV.F.cur.a[33], `aging: counting drop-outs steepens the decline (goals at 33: ${(CV.F.cur.g[33] * 100).toFixed(0)}% -> ${(CS.F.cur.g[33] * 100).toFixed(0)}%)`);
   // ten seasons (six from raw/nhl-history) and goalie curves: save % and wins per game
   ok(A.seasons.length >= 10 && A.seasons.every((s, i) => !i || s === A.seasons[i - 1] + 10001), `aging: ${A.seasons.length} straight seasons`);
   ok(JSON.stringify(A.gkeys) === JSON.stringify(['w', 'sv']) && A.goalies >= 80, `aging: goalie curves from ${A.goalies} goalies`);

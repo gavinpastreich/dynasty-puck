@@ -59,8 +59,12 @@ curves, punt swaps, points per 60, linemates, waiver watch in the Weekly Preview
 
 ## Possible next
 - Comps for prospects (would need junior / AHL seasons for past players: not in the NHL bulk reports).
-- Use the empirical aging curves (category mix per player) in the dynasty values instead of the one curve per
-  position (E.AGE): a model change that moves every value, so it needs a side-by-side first.
+- ~~Use the empirical aging curves in the dynasty values~~ **checked 2026-11-21, not adopted.** A side-by-side (each
+  owned player's next-five-season outlook, discounted 0.85, under E.AGE vs the delta-method curves weighted by his
+  WAR category mix) moves 33+ players up ~22% and teenagers down ~30%. Both are known biases of the delta method on
+  NHL-only data, not real mispricing: teens already in the NHL are elite and grow less than prospects in general, and
+  players who decline leave the league and drop out of the sample (survivor bias). A sound version would need a
+  survival adjustment (count leaving the NHL as a fall to replacement) before it could touch the values.
 - Injury return tracker: thin today (Daily Faceoff rarely gives a return date); revisit if a feed with dates appears.
 - ~~Aging curves for goalies~~ **done 2026-11-21** with ten seasons (raw/nhl-history): save % and wins, regression-adjusted. Was: four seasons gave only 70 goalies / 173 season pairs (3-19 per age),
   too noisy to show. Needs more seasons in the bulk history (HIST_SEASONS) first.

@@ -23,12 +23,16 @@
   };
 
   // { F: {ages, n, cur: {key: {age: 0..1}}, peak: {key: age}, step: {key: {age: ratio age -> age+1}}}, D: ... }
-  DP.agingCurves = function (A) {
+  // surv = also count players who left the NHL (fewer than 20 games the next season) as falling to replacement level
+  // (the "d" sums from the build): corrects the survivor bias, steeper late-career declines
+  DP.agingCurves = function (A, surv) {
     if (!A) return null;
-    if (A._c) return A._c;
+    var ck = surv ? '_cs' : '_c'; if (A[ck]) return A[ck];
     var out = {};
     ['F', 'D', 'G'].forEach(function (pos) {
-      var T = A[pos] || {}, KEYS = pos === 'G' ? A.gkeys || [] : A.keys, ages = Object.keys(T).map(Number).filter(function (a) { return T[a].n >= MIN_N; }).sort(function (a, b) { return a - b; });
+      var T0 = A[pos] || {}, T = {}, KEYS = pos === 'G' ? A.gkeys || [] : A.keys;
+      Object.keys(T0).forEach(function (a) { var t = T0[a]; T[a] = surv && t.dn && pos !== 'G' ? { n: t.n + t.dn, a: t.a.map(function (v, i) { return v + t.da[i]; }), b: t.b.map(function (v, i) { return v + t.db[i]; }) } : t; });
+      var ages = Object.keys(T).map(Number).filter(function (a) { return T[a].n >= MIN_N; }).sort(function (a, b) { return a - b; });
       // the longest run of consecutive ages
       var best = [], run = [];
       ages.forEach(function (a) { if (run.length && a !== run[run.length - 1] + 1) run = []; run.push(a); if (run.length > best.length) best = run.slice(); });
@@ -53,7 +57,7 @@
       });
       out[pos] = o;
     });
-    A._c = out;
+    A[ck] = out;
     return out;
   };
 
@@ -98,12 +102,13 @@
     render: function (el, hsh) {
       var q = hsh.q, pos = q.pos === 'D' || q.pos === 'G' ? q.pos : 'F', me = DP.state.team, G = pos === 'G';
       var h = '<div class="page-head"><h1>📉 Aging Curves</h1><p class="sub">When do players peak in each of our categories, and how fast do they fall off? Built from every NHL player with two straight seasons of 20+ games over the last ten seasons (goalies too), compared with the curve the dynasty values use. Goals, assists and the banger stats age differently, and that matters when you trade for a 29-year-old.</p></div>';
-      h += '<div class="controls"><div class="seg" role="group" aria-label="Position"><button data-pos="F" class="' + (pos === 'F' ? 'on' : '') + '">Forwards</button><button data-pos="D" class="' + (pos === 'D' ? 'on' : '') + '">Defense</button><button data-pos="G" class="' + (pos === 'G' ? 'on' : '') + '">Goalies</button></div></div>';
+      h += '<div class="controls"><div class="seg" role="group" aria-label="Position"><button data-pos="F" class="' + (pos === 'F' ? 'on' : '') + '">Forwards</button><button data-pos="D" class="' + (pos === 'D' ? 'on' : '') + '">Defense</button><button data-pos="G" class="' + (pos === 'G' ? 'on' : '') + '">Goalies</button></div>' + (G ? '' : '<label class="small" title="Players who drop out of the NHL never give a second season, so the survivors make aging look gentler than it is. On: a player with 20+ games one season and fewer (or none) the next counts as falling to replacement level."><input type="checkbox" id="ag-surv"' + (q.surv === '1' ? ' checked' : '') + '> Count players who leave the NHL</label>') + '</div>';
       el.innerHTML = h + '<div class="lz"><p class="muted small">Loading ten seasons of NHL data…</p></div>';
-      U.qsa('[data-pos]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('aging', null, { pos: b.dataset.pos === 'F' ? undefined : b.dataset.pos }); }); });
+      U.qsa('[data-pos]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('aging', null, { pos: b.dataset.pos === 'F' ? undefined : b.dataset.pos, surv: q.surv }); }); });
+      var sv = U.qs('#ag-surv', el); if (sv) sv.addEventListener('change', function () { DP.go('aging', null, { pos: q.pos, surv: sv.checked ? '1' : undefined }); });
       DP.loadAging(function (A) { (DP.loadComps || function (cb) { cb(null); })(function (CP) {
         var box = U.qs('.lz', el); if (!box) return;
-        var CV = DP.agingCurves(A);
+        var SV = q.surv === '1' && !G, CV = DP.agingCurves(A, SV);
         if (!CV || !CV[pos] || !CV[pos].ages.length) { box.innerHTML = '<div class="callout">The aging data arrives with the next nightly update.</div>'; return; }
         var o = CV[pos], ages = o.ages, labs = ages.map(String), C = DP.C, model = modelCurve(pos, ages), KEYS = G ? A.gkeys : A.keys;
         var ser = function (k, color, dash) { return { name: LAB[k], values: ages.map(function (a) { return o.cur[k][a] === undefined ? null : +(o.cur[k][a] * 100).toFixed(1); }), color: color, dash: dash, dots: false }; };
@@ -137,7 +142,7 @@
               vets.map(function (x) { var sl = x.p.G ? 'G' : x.p.pos === 'D' ? 'D' : 'F', m = DP.E.ageMult(sl, x.nx.age + 1) / DP.E.ageMult(sl, x.nx.age); return '<tr><td>' + ui.pcell(x.p, { pos: 1 }) + '</td><td class="num">' + x.nx.age + '</td>' + VK.map(function (k) { return '<td class="num">' + (k === 'sv' ? svCell(x.nx.sv) : pctCell(x.nx[k])) + '</td>'; }).join('') + '<td class="num">' + pctCell(m) + '</td><td class="num">' + compsFell(CP, x.p) + '</td></tr>'; }).join('') + '</tbody></table></div></div>';
           }
         }
-        hh += '<p class="small muted">Method: ' + A.players + ' skaters' + (A.goalies ? ' and ' + A.goalies + ' goalies' : '') + ', seasons ' + esc(U.season(A.seasons[0])) + ' to ' + esc(U.season(A.seasons[A.seasons.length - 1])) + '. For every player with two straight seasons of ' + A.minGP + '+ games, his per-game rate in each category, relative to the league\'s that season (so league-wide changes don\'t look like aging), second season over first, weighted by the two seasons\' games; averaged by position and age on Dec 31; smoothed over neighbouring ages and chained into a curve (peak = 100; ages need ' + MIN_N + '+ pairs). Players who drop out of the NHL never give a second season, so the decline is if anything understated. STP for defensemen is a small sample. Corsi is left out (it can be negative). Goalies: save % and wins per game relative to the league\'s goalies (20+ games) that season; because a goalie keeps his job after a good year and then falls back, his first season is shrunk toward the league first (save % by shots faced, half signal at 3,000; wins by games, half at 40). Fewer goalies, so their curves are noisier. The dashed line is the age curve the dynasty values use (Rules &amp; Methods).</p>';
+        hh += '<p class="small muted">Method: ' + A.players + ' skaters' + (A.goalies ? ' and ' + A.goalies + ' goalies' : '') + ', seasons ' + esc(U.season(A.seasons[0])) + ' to ' + esc(U.season(A.seasons[A.seasons.length - 1])) + '. For every player with two straight seasons of ' + A.minGP + '+ games, his per-game rate in each category, relative to the league\'s that season (so league-wide changes don\'t look like aging), second season over first, weighted by the two seasons\' games; averaged by position and age on Dec 31; smoothed over neighbouring ages and chained into a curve (peak = 100; ages need ' + MIN_N + '+ pairs). Players who drop out of the NHL never give a second season, so the decline is if anything understated' + (A.dropouts ? '; tick “Count players who leave the NHL” to add the ' + A.dropouts.toLocaleString() + ' cases where a player with 20+ games had fewer (or none) the next season, counted as falling to replacement level (the average rate of the bottom quarter by ice time at his position that season)' + (SV ? ' (on now)' : '') : '') + '. STP for defensemen is a small sample. Corsi is left out (it can be negative). Goalies: save % and wins per game relative to the league\'s goalies (20+ games) that season; because a goalie keeps his job after a good year and then falls back, his first season is shrunk toward the league first (save % by shots faced, half signal at 3,000; wins by games, half at 40). Fewer goalies, so their curves are noisier. The dashed line is the age curve the dynasty values use (Rules &amp; Methods).</p>';
         box.innerHTML = hh;
       }); });
     }

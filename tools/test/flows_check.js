@@ -382,6 +382,9 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => !DP.comps || !document.querySelector('.lz .card.flush h3') || ![...document.querySelectorAll('.lz h3')].some((h) => /your veterans/.test(h.textContent)) || [...document.querySelectorAll('.lz th')].some((t) => /Comps fell/.test(t.innerText))), 'aging curves: comps column for your veterans');
   await page.click('[data-pos="D"]'); await page.waitForTimeout(2000);
   ok(await page.evaluate(() => /pos=D/.test(location.hash) && /Defensemen/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: defense');
+  const gBefore = await page.evaluate(() => [...document.querySelectorAll('.olk tbody tr')].find((r) => /^Goals/.test(r.innerText)).innerText);
+  await page.click('#ag-surv'); await page.waitForTimeout(1800);
+  ok(await page.evaluate((b) => /surv=1/.test(location.hash) && document.querySelector('#ag-surv').checked && [...document.querySelectorAll('.olk tbody tr')].find((r) => /^Goals/.test(r.innerText)).innerText !== b, gBefore), 'aging curves: counting players who leave the NHL changes the curves');
   await page.click('[data-pos="G"]'); await page.waitForTimeout(2000);
   ok(await page.evaluate(() => /pos=G/.test(location.hash) && /save % peaks at/.test(document.querySelector('.lz .callout').innerText) && document.querySelectorAll('.lz svg').length >= 2 && document.querySelectorAll('.olk tbody tr').length === 4), 'aging curves: goalies');
   await go('rater', 3000);
