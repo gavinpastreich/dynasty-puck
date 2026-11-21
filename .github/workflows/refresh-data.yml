@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "dynasty-puck-bot"
           git config user.email "dynasty-puck-bot@users.noreply.github.com"
-          git add data raw/2026-27/fantrax raw/2026-27/weekly raw/2026-27/prospects raw/2026-27/draft raw/2026-27/values raw/2026-27/depth tools/research/injuries.json tools/research/depth.json tools/build_report.txt
+          git add data raw/nhl-history raw/2026-27/fantrax raw/2026-27/weekly raw/2026-27/prospects raw/2026-27/draft raw/2026-27/values raw/2026-27/depth tools/research/injuries.json tools/research/depth.json tools/build_report.txt
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
             git commit -m "Nightly data refresh $(date -u +%Y-%m-%d)"
             # if someone pushed to main while this job was building: put this build on top of their commit; if the

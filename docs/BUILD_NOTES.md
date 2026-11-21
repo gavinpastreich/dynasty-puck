@@ -554,6 +554,9 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     raw/nhl-history/<season>.json (fetched once by `python tools/research/aging_history.py 2016 2021`; past seasons
     never change, so re-run only to add older ones). Goalies get A.G with A.gkeys = [w, sv] (wins per game, save %,
     league-relative, first season shrunk toward the league: AGING_G_KSHOTS 3000 shots, AGING_G_KGP 40 games).
+    At a season rollover HIST_SEASONS moves up and the season it drops would leave a gap: `fill_history_gaps()`
+    (called by merged_history) fetches any missing season into raw/nhl-history once, and the nightly workflow
+    commits it (raw/nhl-history is in its git add list).
     Survivor bias: skater ages also carry dn/dw/da/db, the drop-outs (20+ GP, then fewer or none) with season-2 rates
     at replacement level (bottom quarter by TOI/gp, capped at the player's own rate); `DP.agingCurves(A, true)` adds
     them (page option `?surv=1`, cached as A._cs). Everything else (age drift, outlooks) uses the survivors' curves.

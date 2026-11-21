@@ -1692,6 +1692,37 @@ AGING_HIST = os.path.join(ROOT, "raw", "nhl-history")
 AGING_G_KSHOTS, AGING_G_KGP = 3000, 40  # shots / games at which one goalie season is half signal, half noise
 
 
+def fill_history_gaps():
+    """Keep the stored history joined to the nightly window: when HIST_SEASONS moves on (a new season), the season that
+    drops out of it is fetched once into raw/nhl-history (the nightly workflow commits it), so the ten seasons stay
+    consecutive."""
+    if not os.path.isdir(AGING_HIST):
+        return
+    have = sorted(int(fn[:-5]) for fn in os.listdir(AGING_HIST) if fn.endswith(".json") and fn[:-5].isdigit())
+    if not have:
+        return
+    want = list(range(have[0], HIST_SEASONS[0], 10001))
+    missing = [s for s in want if s not in have]
+    if not missing:
+        return
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("aging_history", os.path.join(ROOT, "tools", "research", "aging_history.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    for s in missing:
+        try:
+            doc = mod.fetch(s)
+        except Exception as e:  # network trouble: try again tomorrow, the curves just skip that pair
+            log(f"  ! history season {s} not fetched: {e}")
+            continue
+        if len(doc["sk"]) < 500:
+            log(f"  ! history season {s}: only {len(doc['sk'])} skaters; not stored")
+            continue
+        with open(os.path.join(AGING_HIST, f"{s}.json"), "w", encoding="utf-8") as fh:
+            json.dump(doc, fh, separators=(",", ":"))
+        log(f"History: stored season {s} in raw/nhl-history ({len(doc['sk'])} skaters)")
+
+
 def aging_history():
     """Older seasons for the aging curves (raw/nhl-history/<season>.json from tools/research/aging_history.py; past
     seasons don't change). -> (sk {pid: {season: row}}, gk {pid: {season: row}}, bios {pid: {dob, pos}})."""
@@ -1715,6 +1746,7 @@ def aging_history():
 
 def merged_history(sk, gk, bios):
     """The nightly four seasons plus the stored older ones -> (sk_all, gk_all, bio, seasons)."""
+    fill_history_gaps()
     hsk, hgk, hbios = aging_history()
     sk_all, gk_all = defaultdict(dict), defaultdict(dict)
     for src, dst in ((hsk, sk_all), (sk, sk_all), (hgk, gk_all), (gk or {}, gk_all)):
