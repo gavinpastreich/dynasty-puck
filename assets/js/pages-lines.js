@@ -13,6 +13,19 @@
     s.onload = function () { done(DP.depthLog || null); }; s.onerror = function () { done(null); };
     document.head.appendChild(s);
   };
+  // linemates from tonight's Daily Faceoff depth chart (p.dep): same NHL team and line (F1-F4 / D1-D3), same PP unit
+  DP.linemates = function (p) {
+    var d = p && p.dep, t = p && (p.nt || p.t); if (!d || !t || p.G || (!d.ln && !d.pp)) return null;
+    var team = DP.E.P.filter(function (x) { return x !== p && !x.G && x.dep && (x.nt || x.t) === t; });
+    return { ln: d.ln || null, line: d.ln ? team.filter(function (x) { return x.dep.ln === d.ln; }) : [], pp: d.pp || null, ppu: d.pp ? team.filter(function (x) { return x.dep.pp === d.pp; }) : [] };
+  };
+  DP.mateLine = function (p) {
+    var M = DP.linemates(p); if (!M || (!M.line.length && !M.ppu.length)) return '';
+    var nm = function (x) { return ui.plink(x) + ' <span class="faint small">' + (x.gm ? esc(U.teamAbbr(x.gm)) : 'FA') + '</span>'; }, bits = [];
+    if (M.line.length) bits.push((M.ln[0] === 'D' ? 'Pair ' + M.ln : 'Line ' + M.ln.replace('F', '')) + ' with ' + M.line.map(nm).join(', '));
+    if (M.ppu.length) bits.push('PP' + M.pp + ' with ' + M.ppu.map(nm).join(', '));
+    return '<p class="small" style="margin-top:6px"><b>🤝 Linemates</b> (Daily Faceoff depth chart): ' + bits.join(' · ') + '</p>';
+  };
   var norm = function (s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, ''); };
   var idx = null;
   function who(name, team) {

@@ -264,6 +264,7 @@
   // What changed on the site, newest first: [date, title, what it does, route to open]. The Dashboard shows the
   // entries a visitor hasn't dismissed yet; the full list lives on Data & Updates.
   DP.NEWS = [
+    ['2026-11-21', 'Linemates on player pages', 'Every skater\'s page now lists who he plays with tonight: his line or defense pair and his power-play unit from the Daily Faceoff depth chart, each with his fantasy owner.', 'lines'],
     ['2026-11-21', 'Market Check', 'A new page puts our 15 categories next to Fantrax ADP, the average draft position across every Fantrax NHL draft. It lists the players our categories like more than the typical drafter (often hits, blocks and PIM) and the ones drafters like more, with the categories behind each gap. Every player page shows his ADP too.', 'adp'],
     ['2026-11-21', 'Points per 60 and underused scorers', 'Ice Time now shows points per 60 minutes for every skater (also on the player pages) and a list of underused scorers: players producing like top-quarter scorers while playing less than the median minutes. If their minutes go up, the points usually follow.', 'usage'],
     ['2026-11-21', 'Punt swaps', 'The Punt Planner now suggests trades for your build: give a player whose value comes from the categories you punt, get one of about the same market value who helps the categories you keep, with a flag when the other team is weak in what you send. Each swap opens in the Trade Machine.', 'punt'],

@@ -353,6 +353,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => DP.E.nowWeek() === null || DP.E.nowWeek() < 0 || [...document.querySelectorAll('.yw-todo li')].some((li) => /^🌙\s*Today:/.test(li.innerText.trim())) || !document.querySelector('.yw-todo')), 'dashboard: who plays today');
   await go('fa', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('#fa-rise .uslist li').length > 0), 'free agents: on the rise');
+  await go('player/' + encodeURIComponent(await page.evaluate(() => DP.E.P.find((p) => !p.G && p.dep && p.dep.ln === 'F1' && DP.linemates(p).line.length === 2).id)), 2000);
+  ok(await page.evaluate(() => [...document.querySelectorAll('#main p')].some((x) => /Linemates/.test(x.textContent) && x.querySelectorAll('a').length >= 2)), 'player page: linemates from the depth chart');
   await go('adp', 2500);
   ok(await page.evaluate(() => { const D = DP.marketData(); return /Market Check/.test(document.title) && (D.n > 0 ? document.querySelectorAll('#mk-t tbody tr').length > 10 && document.querySelectorAll('.uslist li').length > 0 : /next nightly update/.test(document.querySelector('#main').innerText)); }), 'market check: lists and the table (or the wait-for-data note)');
   await go('punt?p=Hit,PIM', 4000);

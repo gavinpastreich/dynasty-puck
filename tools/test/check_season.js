@@ -765,6 +765,15 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
   ok(DP.puntSwaps(E.teams[0], [], 8).length === 0, 'punt swaps: nothing without a punt');
 }
 
+// ---- linemates: same NHL team and line / PP unit on the depth chart
+{
+  const S = E.P.filter((p) => !p.G && p.dep && (p.dep.ln || p.dep.pp));
+  ok(S.every((p) => { const M = DP.linemates(p), t = p.nt || p.t; return M && M.line.concat(M.ppu).every((x) => x !== p && (x.nt || x.t) === t) && M.line.every((x) => x.dep.ln === p.dep.ln) && M.ppu.every((x) => x.dep.pp === p.dep.pp); }), `linemates: same team, line and unit (${S.length} skaters)`);
+  ok(S.every((p) => { const M = DP.linemates(p); return M.line.length <= (p.dep.ln && p.dep.ln[0] === 'D' ? 2 : 3) && M.ppu.length <= 5; }), 'linemates: at most a line of three, a pair, a five-man unit');
+  const f1 = S.find((p) => p.dep.ln === 'F1' && DP.linemates(p).line.length === 2); if (f1) ok(DP.mateLine(f1).indexOf('Line 1 with') > 0, `linemates: player-page line (${f1.n})`);
+  ok(DP.linemates({ G: 1, dep: { g: 1 } }) === null && DP.mateLine({}) === '', 'linemates: none for goalies or players off the chart');
+}
+
 // ---- Market Check: Fantrax ADP rank vs our WAR rank within the drafted players
 {
   const D = DP.marketData(), pool = E.P.filter((p) => p.adp > 0 && p.war && p.r);

@@ -550,6 +550,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`. `DP.puntSwaps(team, keys, n)`: swap
     ideas (give one of your six biggest punted-category producers, get a player within the Trade Finder's p.DV band;
     g = your WAR gain without the punts, h = their full-WAR gain, score = min(g, h) + 0.25(g + h), two per player).
+  - Linemates (pages-lines.js): `DP.linemates(p)` = skaters with the same NHL team and p.dep.ln (line / pair) and the
+    same p.dep.pp unit from the Daily Faceoff depth chart; `DP.mateLine(p)` on the player page.
   - Market Check (pages-market.js, route `adp`): the build's `apply_adp()` reads Fantrax `getAdp?sport=NHL` (cached a day
     as tools/cache/fantrax_adp.json) through `FX.adp_map()` -> `p.adp` for ADP < `FX.ADP_MAX` (280; above that is
     the undrafted bunch). `DP.marketData()` ranks the drafted pool by ADP (aR) and by p.WAR (wR), gap = aR - wR, and the
