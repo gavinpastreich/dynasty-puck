@@ -550,6 +550,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`. `DP.puntSwaps(team, keys, n)`: swap
     ideas (give one of your six biggest punted-category producers, get a player within the Trade Finder's p.DV band;
     g = your WAR gain without the punts, h = their full-WAR gain, score = min(g, h) + 0.25(g + h), two per player).
+  - Aging curves read ten seasons: write_aging(sk, bios, gk) merges the nightly four (HIST_SEASONS) with the six in
+    raw/nhl-history/<season>.json (fetched once by `python tools/research/aging_history.py 2016 2021`; past seasons
+    never change, so re-run only to add older ones). Goalies get A.G with A.gkeys = [w, sv] (wins per game, save %,
+    league-relative, first season shrunk toward the league: AGING_G_KSHOTS 3000 shots, AGING_G_KGP 40 games).
   - Linemates (pages-lines.js): `DP.linemates(p)` = skaters with the same NHL team and p.dep.ln (line / pair) and the
     same p.dep.pp unit from the Daily Faceoff depth chart; `DP.mateLine(p)` on the player page.
   - Market Check (pages-market.js, route `adp`): the build's `apply_adp()` reads Fantrax `getAdp?sport=NHL` (cached a day

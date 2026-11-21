@@ -37,7 +37,7 @@ Changes (`tools/research/depth_log.py` -> data/depthlog.js), pages-tape.js (Tale
 stats API caps responses at 100 rows: always fetch reports through `get_paged()` in `tools/nhl_api.py`. If you change the prospect model in
 `assets/js/engine.js`, bump `E.PROSPECT_MODEL` and run `node tools/prospect_radar.js --backfill` in a full clone.
 Nightly also runs `node tools/presim.js` (precomputed 1,500-season sim -> data/sim.js; regenerate it after a local data build). Added 2026-11-21: Ice Time (`p.ice`/`p.i14` from the build, pages-usage.js) and Aging Curves (data/aging.js from
-`write_aging()` in the build, pages-aging.js). Also: pages-draftrace.js (Draft Race), pages-teamrange.js, pages-catmap.js,
+`write_aging()` in the build, pages-aging.js; ten seasons: the six oldest in raw/nhl-history from `tools/research/aging_history.py`, goalies included). Also: pages-draftrace.js (Draft Race), pages-teamrange.js, pages-catmap.js,
 pages-thresholds.js, pages-agedrift.js, pages-market.js (Market Check: Fantrax ADP `p.adp` from `apply_adp()` in the build). The guide PDF is rebuilt with tools/guide (shoot.js, then build_guide.py). Checks to run before pushing: `node tools/test/check_trade.js`, `check_scoreboard.js`, `check_radar.js`,
 `check_draft.js`, `check_weekly.js`, `check_season.js`, `python tools/test/check_fantrax.py`, `check_depthlog.py`, and the browser runs in `tools/test/` (they need Playwright).
 

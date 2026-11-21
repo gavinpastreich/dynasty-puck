@@ -375,6 +375,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('td.adr').length === DP.E.teams.length * (DP.AGEDRIFT_MAP.length + 1)), 'aging curves: age drift for every team');
   await page.click('[data-pos="D"]'); await page.waitForTimeout(2000);
   ok(await page.evaluate(() => /pos=D/.test(location.hash) && /Defensemen/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: defense');
+  await page.click('[data-pos="G"]'); await page.waitForTimeout(2000);
+  ok(await page.evaluate(() => /pos=G/.test(location.hash) && /save % peaks at/.test(document.querySelector('.lz .callout').innerText) && document.querySelectorAll('.lz svg').length >= 2 && document.querySelectorAll('.olk tbody tr').length === 4), 'aging curves: goalies');
   await go('rater', 3000);
   ok(await page.evaluate(() => [...document.querySelectorAll('#rt-t th')].some((t) => /vs preseason/.test(t.innerText))), 'player rater: vs preseason column');
   await go('scenarios', 3000);

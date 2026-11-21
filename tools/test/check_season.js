@@ -694,7 +694,15 @@ if (DP.aging) {
   ok(CV.F.peak.g <= CV.F.peak.a, `aging: forwards' goals peak (${CV.F.peak.g}) no later than assists (${CV.F.peak.a})`);
   const vet = E.P.find((p) => !p.G && p.age >= 30 && p.age < 33 && p.pos !== 'D'), nx = DP.agingNext(vet, CV);
   ok(nx && nx.age === Math.floor(vet.age) && near(nx.g, CV.F.step.g[nx.age], 1e-12), `aging: next season for ${vet.n} (${nx && nx.age})`);
-  ok(DP.agingNext(E.P.find((p) => p.G), CV) === null, 'aging: no skater curve for goalies');
+  // ten seasons (six from raw/nhl-history) and goalie curves: save % and wins per game
+  ok(A.seasons.length >= 10 && A.seasons.every((s, i) => !i || s === A.seasons[i - 1] + 10001), `aging: ${A.seasons.length} straight seasons`);
+  ok(JSON.stringify(A.gkeys) === JSON.stringify(['w', 'sv']) && A.goalies >= 80, `aging: goalie curves from ${A.goalies} goalies`);
+  const og = CV.G, agG = og.ages;
+  ok(agG.length >= 10 && agG.every((a, i) => !i || a === agG[i - 1] + 1), `aging G: ${agG[0]}-${agG[agG.length - 1]}, consecutive ages`);
+  A.gkeys.forEach((k) => { const v = agG.map((a) => og.cur[k][a]); ok(near(Math.max(...v), 1, 1e-12) && v.every((x) => x > 0 && x <= 1 + 1e-12), `aging G ${k}: the peak is 100 (age ${og.peak[k]})`); });
+  ok(og.peak.sv >= 22 && og.peak.sv <= 30 && agG.filter((a) => a >= 33).every((a) => og.cur.sv[a] > 0.9 && og.cur.sv[a] < 1), `aging G: save % peaks at ${og.peak.sv} and slips slowly (${(og.cur.sv[33] * 100).toFixed(1)}% of peak at 33)`);
+  const gl = E.P.find((p) => p.G && p.age >= 26 && p.age < 34), gnx = DP.agingNext(gl, CV);
+  ok(gnx && near(gnx.sv, og.step.sv[gnx.age], 1e-12) && near(gnx.w, og.step.w[gnx.age], 1e-12), `aging: next season for goalie ${gl.n} (${gnx && gnx.age})`);
   const AD = DP.ageDrift(CV), t0 = E.teams[0];
   const g0 = E.rosters[t0].filter((p) => !p.G && p.p26 && p.p26[0] > 0), gNow = E.sum(g0.map((p) => p.p26[2])), gNext = E.sum(g0.map((p) => { const nx = DP.agingNext(p, CV); return p.p26[2] * (nx && nx.g ? nx.g : 1); }));
   ok(near(AD[t0].G, gNext / gNow - 1, 1e-12), `age drift ${t0}: goals ${(AD[t0].G * 100).toFixed(1)}% = the roster's goals one year older`);

@@ -1555,7 +1555,7 @@ def main():
     build_prospects(players, act27, hist26, bios, leagues)
     write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_cor, league)
     write_calendars(weeks, h2h)
-    write_aging(sk, bios)
+    write_aging(sk, bios, gk)
     with open(os.path.join(ROOT, "tools", "build_report.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(REPORT) + "\n")
     print("wrote tools/build_report.txt")
@@ -1686,19 +1686,62 @@ def team_slug(code):
 AGING_KEYS = ["pts", "g", "a", "pim", "sog", "stp", "hit", "blk", "tk", "toi"]
 
 
-def write_aging(sk, bios, min_gp=20):
-    """Aging curves for our categories (the delta method): every NHL skater with two straight seasons of 20+ GP in the
-    bulk reports (HIST_SEASONS), grouped by position and age on Dec 31 of the first season. For each age, the weighted
-    sums of his per-game rates in the first and the second season (weight = harmonic mean of the two GPs), so the page
-    can chain the ratios into a curve. Rates are relative to the league's that season and position. Everyone who played is in it (not just players on today's rosters), but a player
-    has to stay in the NHL for the second season to count, so decline is understated. -> data/aging.js"""
-    out = {"F": {}, "D": {}}
-    seen = set()
+AGING_GKEYS = ["w", "sv"]  # goalies: wins per game and save % (GAA and shutouts depend mostly on the team: their curves are noise)
+AGING_HIST = os.path.join(ROOT, "raw", "nhl-history")
+AGING_G_KSHOTS, AGING_G_KGP = 3000, 40  # shots / games at which one goalie season is half signal, half noise
+
+
+def aging_history():
+    """Older seasons for the aging curves (raw/nhl-history/<season>.json from tools/research/aging_history.py; past
+    seasons don't change). -> (sk {pid: {season: row}}, gk {pid: {season: row}}, bios {pid: {dob, pos}})."""
+    sk, gk, bios = defaultdict(dict), defaultdict(dict), {}
+    if not os.path.isdir(AGING_HIST):
+        return sk, gk, bios
+    for fn in sorted(os.listdir(AGING_HIST)):
+        if not fn.endswith(".json"):
+            continue
+        with open(os.path.join(AGING_HIST, fn), encoding="utf-8") as fh:
+            d = json.load(fh)
+        s, fs, fg = d["season"], d["fields"]["sk"], d["fields"]["g"]
+        for pid, row in d["sk"].items():
+            sk[int(pid)][s] = dict(zip(fs, row))
+        for pid, row in d["g"].items():
+            gk[int(pid)][s] = dict(zip(fg, row))
+        for pid, b in d["bios"].items():
+            bios.setdefault(int(pid), {"dob": b[0], "pos": b[1]})
+    return sk, gk, bios
+
+
+def _goalie_rates(x):
+    """Per-game wins and shutouts, save %, GAA from a season row (None without shots or minutes)."""
+    if not x.get("sa") or not x.get("toi") or not x.get("gp"):
+        return None
+    return {"w": x["w"] / x["gp"], "sho": x["sho"] / x["gp"], "sv": 1 - x["ga"] / x["sa"], "gaa": x["ga"] * 60.0 / x["toi"]}
+
+
+def write_aging(sk, bios, gk=None, min_gp=20):
+    """Aging curves for our categories (the delta method): every NHL player with two straight seasons of 20+ GP, from
+    the nightly bulk reports (HIST_SEASONS) plus the older seasons in raw/nhl-history, grouped by position (F, D, G)
+    and age on Dec 31 of the first season. For each age, the weighted sums of his per-game rates in the first and the
+    second season (weight = harmonic mean of the two GPs), so the page can chain the ratios into a curve. Rates are
+    relative to the league's that season and position (goalies: wins per game and save %, relative to the league's goalies; the first season shrunk toward the league
+    for regression to the mean). Everyone who played is in it (not just players on today's rosters), but a player has to stay in
+    the NHL for the second season to count, so decline is understated. -> data/aging.js"""
+    hsk, hgk, hbios = aging_history()
+    sk_all, gk_all = defaultdict(dict), defaultdict(dict)
+    for src, dst in ((hsk, sk_all), (sk, sk_all), (hgk, gk_all), (gk or {}, gk_all)):
+        for pid, by in src.items():
+            dst[pid].update(by)
+    bio = dict(hbios)
+    bio.update(bios)
+    seasons = sorted({s for by in sk_all.values() for s in by})
+    out = {"F": {}, "D": {}, "G": {}}
+    seen, seen_g = set(), set()
     # league rate per game by season and position (20+ GP): rates are divided by it, so league-wide changes in
     # scoring or in how a stat is recorded (takeaways, hits) aren't read as aging
     tot = defaultdict(lambda: [0.0] * (len(AGING_KEYS) + 1))
-    for pid, by in sk.items():
-        b = bios.get(pid) or {}
+    for pid, by in sk_all.items():
+        b = bio.get(pid) or {}
         if b.get("pos") in (None, "G"):
             continue
         pos = "D" if b.get("pos") == "D" else "F"
@@ -1709,35 +1752,73 @@ def write_aging(sk, bios, min_gp=20):
                     t[i] += x[k]
                 t[-1] += x["gp"]
     lg = {key: [v / t[-1] if t[-1] else 0 for v in t[:-1]] for key, t in tot.items()}
-    for pid, by in sk.items():
-        b = bios.get(pid) or {}
-        if not b.get("dob") or b.get("pos") == "G":
+
+    def add(pos, age, w, ra, rb):
+        t = out[pos].setdefault(str(age), {"n": 0, "w": 0.0, "a": [0.0] * len(ra), "b": [0.0] * len(rb)})
+        t["n"] += 1
+        t["w"] += w
+        for i in range(len(ra)):
+            t["a"][i] += w * ra[i]
+            t["b"][i] += w * rb[i]
+
+    for pid, by in sk_all.items():
+        b = bio.get(pid) or {}
+        if not b.get("dob") or b.get("pos") in (None, "G"):
             continue
         pos = "D" if b.get("pos") == "D" else "F"
-        for s in HIST_SEASONS[:-1]:
+        for s in seasons:
             x, y = by.get(s), by.get(s + 10001)
             if not x or not y or x["gp"] < min_gp or y["gp"] < min_gp:
                 continue
-            age = int(age_on(b["dob"], f"{s // 10000}-12-31"))
-            w = 2.0 / (1.0 / x["gp"] + 1.0 / y["gp"])
-            t = out[pos].setdefault(str(age), {"n": 0, "w": 0.0, "a": [0.0] * len(AGING_KEYS), "b": [0.0] * len(AGING_KEYS)})
-            t["n"] += 1
-            t["w"] += w
             la, lb = lg[(s, pos)], lg[(s + 10001, pos)]
-            for i, k in enumerate(AGING_KEYS):
-                t["a"][i] += w * x[k] / x["gp"] / la[i] if la[i] else 0
-                t["b"][i] += w * y[k] / y["gp"] / lb[i] if lb[i] else 0
+            add(pos, int(age_on(b["dob"], f"{s // 10000}-12-31")), 2.0 / (1.0 / x["gp"] + 1.0 / y["gp"]),
+                [x[k] / x["gp"] / la[i] if la[i] else 0 for i, k in enumerate(AGING_KEYS)],
+                [y[k] / y["gp"] / lb[i] if lb[i] else 0 for i, k in enumerate(AGING_KEYS)])
             seen.add(pid)
+    # goalies: league rates over goalies with 20+ GP that season (save % and GAA from the totals)
+    gt = defaultdict(lambda: {"gp": 0, "w": 0, "sho": 0, "ga": 0, "sa": 0, "toi": 0.0})
+    for pid, by in gk_all.items():
+        for s, x in by.items():
+            if x.get("gp", 0) >= min_gp and x.get("sa") and x.get("toi"):
+                t = gt[s]
+                for k in t:
+                    t[k] += x[k]
+    glg = {s: {"w": t["w"] / t["gp"], "sho": t["sho"] / t["gp"], "sv": 1 - t["ga"] / t["sa"], "gaa": t["ga"] * 60.0 / t["toi"]}
+           for s, t in gt.items() if t["gp"]}
+
+    def grel(r, L):
+        return [r["w"] / L["w"] if L["w"] else 0, r["sv"] / L["sv"]]
+
+    for pid, by in gk_all.items():
+        b = bio.get(pid) or {}
+        if not b.get("dob"):
+            continue
+        for s in seasons:
+            x, y = by.get(s), by.get(s + 10001)
+            if not x or not y or x.get("gp", 0) < min_gp or y.get("gp", 0) < min_gp or s not in glg or s + 10001 not in glg:
+                continue
+            ra, rb = _goalie_rates(x), _goalie_rates(y)
+            if not ra or not rb:
+                continue
+            # regression to the mean: a goalie keeps his 20+ games after a good season and then falls back, which would
+            # read as decline at every age. The first season is shrunk toward the league (save % and GAA by shots faced,
+            # about half signal at AGING_G_KSHOTS shots; wins by games, half at AGING_G_KGP) before the ratio.
+            rs, rg = x["sa"] / (x["sa"] + AGING_G_KSHOTS), x["gp"] / (x["gp"] + AGING_G_KGP)
+            a1 = grel(ra, glg[s])
+            a1 = [1 + rg * (a1[0] - 1), 1 + rs * (a1[1] - 1)]
+            add("G", int(age_on(b["dob"], f"{s // 10000}-12-31")), 2.0 / (1.0 / x["gp"] + 1.0 / y["gp"]), a1, grel(rb, glg[s + 10001]))
+            seen_g.add(pid)
     for pos in out:
         for t in out[pos].values():
             t["w"] = round(t["w"], 2)
-            t["a"] = [round(v, 3) for v in t["a"]]
-            t["b"] = [round(v, 3) for v in t["b"]]
-    doc = {"built": dt.datetime.now().strftime("%Y-%m-%dT%H:%M"), "seasons": HIST_SEASONS, "minGP": min_gp, "rel": True,
-           "keys": AGING_KEYS, "players": len(seen), "F": out["F"], "D": out["D"]}
+            t["a"] = [round(v, 4) for v in t["a"]]
+            t["b"] = [round(v, 4) for v in t["b"]]
+    doc = {"built": dt.datetime.now().strftime("%Y-%m-%dT%H:%M"), "seasons": seasons, "minGP": min_gp, "rel": True,
+           "keys": AGING_KEYS, "gkeys": AGING_GKEYS, "players": len(seen), "goalies": len(seen_g), "F": out["F"], "D": out["D"], "G": out["G"]}
     with open(os.path.join(OUT, "aging.js"), "w", encoding="utf-8") as f:
         f.write("/* generated by tools/build_data.py - do not edit */\nwindow.DP=window.DP||{};DP.aging=" + json.dumps(doc, separators=(",", ":")) + ";\n")
-    log(f"Aging curves: {len(seen)} skaters, {sum(t['n'] for p in out.values() for t in p.values())} season pairs")
+    log(f"Aging curves: {len(seen)} skaters and {len(seen_g)} goalies over {len(seasons)} seasons, "
+        f"{sum(t['n'] for p in ('F', 'D') for t in out[p].values())} skater / {sum(t['n'] for t in out['G'].values())} goalie season pairs")
 
 
 def write_calendars(weeks, h2h):
