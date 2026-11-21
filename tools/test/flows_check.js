@@ -261,6 +261,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => { const r = document.querySelectorAll('#po-stakes tbody tr').length; return r === 0 ? /No regular-season week/.test(document.querySelector('#po-stakes').innerText) : r === DP.E.teams.length; }), "playoff picture: this week's stakes for every team");
   await page.evaluate(() => { location.hash = '#/preview?w=' + (DP.E.lockWeek() + 1); }); await page.waitForTimeout(6000);
   ok(await page.evaluate(() => { const t = (document.querySelector('#pv-text') || {}).value || ''; return /Playoff odds at stake|preview/.test(t); }), 'weekly preview: stakes in the text');
+  // waiver watch: shown for the week being set, matches the Free Agents "on the rise" signal (only when someone qualifies)
+  ok(await page.evaluate(() => { const t = (document.querySelector('#pv-text') || {}).value || ''; const B = DP.breakoutData && DP.depthLog ? DP.breakoutData(DP.depthLog, { maxAge: 99, fa: true }).filter((x) => x.score > 1) : []; return B.length ? t.indexOf('Waiver watch: ' + B[0].p.n) >= 0 : !/Waiver watch/.test(t); }), 'weekly preview: waiver watch line matches the free agents on the rise');
   await go('power', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && [...document.querySelectorAll('.pw-blurb')].every((b) => b.innerText.length > 10)), 'power rankings: every team with a line');
   await go('grades', 6000);
