@@ -337,6 +337,8 @@
   // re-draw My Page with these query params (the router only redraws when the address changes)
   function reload(q) { var h = U.hash('mypage', null, q || {}); if (location.hash === h || (h === '#/mypage' && location.hash === '#/mypage')) DP.render(); else location.hash = h; }
   DP.regWidget = reg;
+  // widgets from files that loaded before this one (pages-usage.js, pages-draftrace.js, pages-mywidgets2.js)
+  (DP._wq || []).forEach(function (x) { reg(x[0], x[1]); }); DP._wq = null;
   DP.myWidgetHelpers = { alive: alive, list: list, li: li, finished: finished, lastWeek: lastWeek, roster: roster, liveGame: liveGame, catChips: catChips };
   function teamOf(spec, o) { return o.team && o.team !== '*' ? o.team : DP.state.team || null; }
   function renderWidget(cell, x, i, edit) {

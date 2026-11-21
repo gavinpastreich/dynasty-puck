@@ -278,6 +278,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('#mp-grid .mw').length === DP.MYPAGE_PRESETS.starter.w.length), 'my page: the starter layout');
   await page.click('#mp-add'); await page.waitForTimeout(400);
   ok(await page.evaluate(() => document.querySelectorAll('#mp-gal .mp-wg').length === Object.keys(DP.WIDGETS).length), 'my page: the widget gallery lists every widget');
+  ok(await page.evaluate(() => ['ice', 'draftrace', 'breakout', 'elo', 'rater', 'tonight', 'agedrift', 'wins', 'range'].every((k) => DP.WIDGETS[k]) && !DP._wq), 'my page: widgets from files loaded before My Page are registered in the browser');
   await page.click('#mp-gal [data-add="grades"]'); await page.waitForTimeout(3500);
   ok(await page.evaluate(() => { const L = JSON.parse(localStorage.getItem('dp_mypage')); return L.w.length === DP.MYPAGE_PRESETS.starter.w.length + 1 && L.w[L.w.length - 1].k === 'grades' && document.querySelectorAll('#mp-grid .mw').length === L.w.length; }), 'my page: adding a widget saves it');
   await go('mypage?edit=1', 3000);

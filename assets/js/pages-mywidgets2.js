@@ -4,8 +4,9 @@
 (function () {
   'use strict';
   var DP = window.DP, U = DP.U, ui = DP.ui, esc = U.esc;
-  if (!DP.regWidget) return;
-  var reg = DP.regWidget, H = DP.myWidgetHelpers;
+  // pages-mypage.js may load after this file: queue the widgets until it does
+  var reg = DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); };
+  var H = { list: function (a, b) { return DP.myWidgetHelpers.list(a, b); }, li: function (a, b, c) { return DP.myWidgetHelpers.li(a, b, c); } };
 
   reg('breakout', { name: 'Breakout watch', ic: '🚀', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Young skaters with the strongest signs of a breakout: production above projection, a bigger role, more ice time, a hot two weeks.', link: function () { return '#/breakout'; },
     render: function (box, o, t) {

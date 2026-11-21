@@ -93,7 +93,7 @@
   };
 
   // My Page widget: the biggest jumps in ice time per game vs last season (your roster or everyone)
-  if (DP.regWidget) DP.regWidget('ice', { name: 'Ice time risers', ic: '🕒', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Skaters playing the most extra minutes a game compared with last season, on your roster or anywhere.', link: function () { return '#/usage?sort=dS'; },
+  (DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); })('ice', { name: 'Ice time risers', ic: '🕒', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Skaters playing the most extra minutes a game compared with last season, on your roster or anywhere.', link: function () { return '#/usage?sort=dS'; },
     render: function (box, o, t) {
       var H = DP.myWidgetHelpers, R = DP.usageData().filter(function (x) { return x.o.dS !== null && (o.team === '*' ? true : x.p.gm === t); }).sort(function (a, b) { return b.o.dS - a.o.dS; });
       box.innerHTML = R.length ? H.list(R.slice(0, o.n || 6).map(function (x) { return H.li(ui.plink(x.p) + ' <span class="faint small">' + (o.team === '*' ? esc(x.p.gm || 'FA') + ' · ' : '') + DP.mmss(x.o.toi) + '</span>', '<b class="' + (x.o.dS >= 0 ? 'good' : 'bad') + '">' + dmm(x.o.dS) + '</b>'); })) : '<p class="small muted">No ice-time data yet.</p>';

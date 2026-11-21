@@ -101,7 +101,7 @@
   };
 
   // My Page widget: the top of the draft race
-  if (DP.regWidget) DP.regWidget('draftrace', { name: 'Draft race', ic: '🏁', cat: 'prospects', ns: [4, 6, 14], n: 5, desc: 'The teams heading for the top ' + YEAR + ' picks: expected slot, the chance at #1 and who owns the 1st.', link: function () { return '#/draftrace'; },
+  (DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); })('draftrace', { name: 'Draft race', ic: '🏁', cat: 'prospects', ns: [4, 6, 14], n: 5, desc: 'The teams heading for the top ' + YEAR + ' picks: expected slot, the chance at #1 and who owns the 1st.', link: function () { return '#/draftrace'; },
     render: function (box, o) {
       var H = DP.myWidgetHelpers;
       DP.getSim(function (sim) {
