@@ -17,6 +17,19 @@
       });
     } });
 
+  reg('underused', { name: 'Underused scorers', ic: '⚡', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Top-quarter points per 60 minutes on below-median ice time: if the minutes go up, the points usually follow (Ice Time).', link: function () { return '#/usage'; },
+    render: function (box, o, t) {
+      var R = DP.underused ? DP.underused().filter(function (x) { return o.team === '*' ? true : x.p.gm === t; }) : [];
+      box.innerHTML = H.list(R.slice(0, o.n || 6).map(function (x) { return H.li(ui.plink(x.p) + ' <span class="faint small">' + (o.team === '*' ? esc(x.p.gm || 'FA') + ' · ' : '') + DP.mmss(x.s.toi) + '</span>', '<b>' + U.fmt(x.s.p60, 2) + '</b> <span class="faint small">P/60</span>'); }), o.team === '*' ? 'Nobody yet (needs 10+ games).' : 'None of your skaters is underused right now.');
+    } });
+
+  reg('market', { name: 'Market check', ic: '🏷️', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Fantrax ADP rank vs our categories\' rank: who the wider fantasy market rates higher or lower than our league\'s scoring does.', link: function () { return '#/adp'; },
+    render: function (box, o, t) {
+      var D = DP.marketData ? DP.marketData() : null; if (!D || !D.n) { box.innerHTML = H.list([], 'The Fantrax ADP arrives with the nightly update.'); return; }
+      var R = D.rows.filter(function (r) { return o.team === '*' ? r.gap > 0 && r.wR <= 150 && !(r.p.inj && /OUT|IR|Injured/i.test(r.p.inj[0])) : r.p.gm === t; }).sort(function (a, b) { return o.team === '*' ? b.gap - a.gap : Math.abs(b.gap) - Math.abs(a.gap); });
+      box.innerHTML = H.list(R.slice(0, o.n || 6).map(function (r) { return H.li(ui.plink(r.p) + ' <span class="faint small">' + (o.team === '*' ? esc(r.p.gm || 'FA') + ' · ' : '') + 'ADP #' + r.aR + ', ours #' + r.wR + '</span>', '<b class="' + (r.gap >= 30 ? 'good' : r.gap <= -30 ? 'bad' : 'muted') + '">' + (r.gap > 0 ? '+' : r.gap < 0 ? '−' : '') + Math.abs(r.gap) + '</b>'); }), o.team === '*' ? 'No gaps yet.' : 'None of your players is in the Fantrax drafted pool.');
+    } });
+
   reg('elo', { name: 'Elo ratings', ic: '📐', cat: 'league', ns: [5, 8, 14], n: 8, desc: 'Every team rated from its weekly results alone (everyone started at 1,500).', link: function () { return '#/elo'; },
     render: function (box, o) {
       var D = DP.eloData ? DP.eloData() : null;

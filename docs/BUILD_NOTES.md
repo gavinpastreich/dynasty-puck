@@ -565,4 +565,4 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     doesn't exist yet); use `(DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); })(key, spec)`
     and pages-mypage.js registers the queue when it loads. Read `DP.myWidgetHelpers` inside `render`, not at load.
     (Before 2026-11-21 the Ice Time and Draft Race widgets silently never registered in the browser because of this.)
-  - pages-mywidgets2.js: widgets breakout, elo, rater, tonight, agedrift, wins, range.
+  - pages-mywidgets2.js: widgets breakout, elo, rater, tonight, agedrift, wins, range, underused, market.
