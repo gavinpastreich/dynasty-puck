@@ -278,7 +278,13 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('#mp-grid .mw').length === DP.MYPAGE_PRESETS.starter.w.length), 'my page: the starter layout');
   await page.click('#mp-add'); await page.waitForTimeout(400);
   ok(await page.evaluate(() => document.querySelectorAll('#mp-gal .mp-wg').length === Object.keys(DP.WIDGETS).length), 'my page: the widget gallery lists every widget');
-  ok(await page.evaluate(() => ['ice', 'draftrace', 'breakout', 'elo', 'rater', 'tonight', 'agedrift', 'wins', 'range'].every((k) => DP.WIDGETS[k]) && !DP._wq), 'my page: widgets from files loaded before My Page are registered in the browser');
+  {
+    // every widget key in the source (reg('k', ...) / regWidget ... ('k', ...)) must be registered in the browser
+    const fsx = require('fs'), px = require('path'), dir = px.join(__dirname, '..', '..', 'assets', 'js'), keys = new Set();
+    fsx.readdirSync(dir).filter((f) => f.endsWith('.js')).forEach((f) => { const src = fsx.readFileSync(px.join(dir, f), 'utf8'); (src.match(/\breg\('([a-z0-9]+)',\s*\{/g) || []).concat(src.match(/\}\)\('([a-z0-9]+)',\s*\{/g) || []).forEach((m) => keys.add(m.match(/'([a-z0-9]+)'/)[1])); });
+    const missing = await page.evaluate((ks) => ks.filter((k) => !DP.WIDGETS[k]), [...keys]);
+    ok(keys.size > 60 && !missing.length && await page.evaluate(() => !DP._wq), `my page: all ${keys.size} widgets in the source are registered in the browser` + (missing.length ? ' (missing: ' + missing.join(', ') + ')' : ''));
+  }
   await page.click('#mp-gal [data-add="grades"]'); await page.waitForTimeout(3500);
   ok(await page.evaluate(() => { const L = JSON.parse(localStorage.getItem('dp_mypage')); return L.w.length === DP.MYPAGE_PRESETS.starter.w.length + 1 && L.w[L.w.length - 1].k === 'grades' && document.querySelectorAll('#mp-grid .mw').length === L.w.length; }), 'my page: adding a widget saves it');
   await go('mypage?edit=1', 3000);
