@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-21T12:45:57
+Dynasty Puck HQ build 2026-11-21T12:55:16
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -84,7 +84,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-21T12:45:58+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
+Fantrax sync (2026-11-21T12:55:17+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
 Fantrax ADP: 281 players drafted on average before pick 280 (of 972 listed)
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1297 players (620 rostered)
@@ -181,4 +181,4 @@ Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 
 wrote data/league.js (1.98 MB, 1297 players)
 wrote data/cal/*.ics (14 team feeds + league feed)
 Aging curves: 1138 skaters and 104 goalies over 10 seasons, 5188 skater / 423 goalie season pairs
-Historical comps: 709 skaters, 6205 candidate seasons
+Historical comps: 709 skaters and 64 goalies, 6205 skater / 523 goalie candidate seasons
