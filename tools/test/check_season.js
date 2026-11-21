@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js', 'assets/js/pages-agedrift.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-draftrace.js', 'assets/js/pages-teamrange.js', 'assets/js/pages-catmap.js', 'assets/js/pages-thresholds.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js', 'assets/js/pages-agedrift.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-draftrace.js', 'assets/js/pages-teamrange.js', 'assets/js/pages-catmap.js', 'assets/js/pages-thresholds.js', 'assets/js/pages-punt.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -731,6 +731,17 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
   ok(T.cats.every((o) => o.q.every((x, j) => !j || (o.c.low ? x <= o.q[j - 1] + 1e-12 : x >= o.q[j - 1] - 1e-12))), 'category thresholds: the percentiles climb (fall for GAA)');
   ok(near(DP.pctile([1, 2, 3, 4], 0.5), 2.5, 1e-12) && near(DP.pctile([5], 0.9), 5, 1e-12), 'category thresholds: percentile interpolation');
   const m = T.team(E.teams[0]); ok(m.every((x) => x.beat === null || (x.beat >= 0 && x.beat <= 1)), 'category thresholds: a team\'s share of weeks beaten');
+}
+
+// ---- Punt Planner: value without the punted categories = WAR minus their parts; punting never raises the weekly odds
+{
+  const P = E.P.filter((p) => p.r && p.war);
+  ok(P.every((p) => near(DP.puntValue(p, []), p.WAR, 1e-9)), 'punt: no punts = WAR');
+  ok(P.every((p) => near(DP.puntValue(p, ['Hit', 'PIM']), p.WAR - (p.war.Hit || 0) - (p.war.PIM || 0), 1e-9)), 'punt: Hit and PIM taken out');
+  ok(near(DP.weekWin(new Array(15).fill(0.5)), 0.5, 1e-12) && near(DP.weekWin(new Array(15).fill(1)), 1, 1e-12) && near(DP.weekWin([1, 0]), 0.5, 1e-12), 'punt: chance to win the week');
+  const O = DP.outlookData(Math.max(0, E.lockWeek() === null ? 0 : E.lockWeek())), ps = O.by[E.teams[0]].p, W = DP.puntWeek(ps, [7, 4]);
+  ok(W.after <= W.base + 1e-12 && W.exp1 <= W.exp0 + 1e-12 && (W.need === null || W.need >= 0), `punt: giving up Hit and PIM costs ${E.teams[0]} ${((W.base - W.after) * 100).toFixed(0)} points a week`);
+  if (W.need) { const back = DP.weekWin(ps.map((p, c) => ([7, 4].indexOf(c) >= 0 ? 0 : Math.min(1, p + W.need)))); ok(back >= W.base - 1e-6, 'punt: the uplift gets the weekly odds back'); }
 }
 
 // ---- Start Here tour: every link is a page in the menu
