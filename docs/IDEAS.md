@@ -53,7 +53,14 @@ league-relative, per category) with age drift and a player-page age outlook, dev
 "ahead of the curve" list, Draft Race (slot odds, pick holders, what a win costs), team dynasty range, what wins
 each category, category correlation map.
 
+## Built 2026-11-21 (batch 16)
+Market Check (Fantrax ADP), historical comps for skaters and goalies (ten seasons in raw/nhl-history), goalie aging
+curves, punt swaps, points per 60, linemates, waiver watch in the Weekly Preview.
+
 ## Possible next
+- Comps for prospects (would need junior / AHL seasons for past players: not in the NHL bulk reports).
+- Use the empirical aging curves (category mix per player) in the dynasty values instead of the one curve per
+  position (E.AGE): a model change that moves every value, so it needs a side-by-side first.
 - Injury return tracker: thin today (Daily Faceoff rarely gives a return date); revisit if a feed with dates appears.
 - ~~Aging curves for goalies~~ **done 2026-11-21** with ten seasons (raw/nhl-history): save % and wins, regression-adjusted. Was: four seasons gave only 70 goalies / 173 season pairs (3-19 per age),
   too noisy to show. Needs more seasons in the bulk history (HIST_SEASONS) first.

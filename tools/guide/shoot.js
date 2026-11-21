@@ -82,6 +82,8 @@ const SHOTS = [
   ['market', 'adp', 'ROO', { sel: '.grid.g2', wait: 3000, w: 1200 }],
   ['puntswap', 'punt?p=Hit,PIM', 'TommyG10', { card: 'Swap ideas', wait: 4000, w: 860 }],
   ['underused', 'usage', 'SPG', { card: 'Underused scorers', wait: 3000, w: 900 }],
+  ['comps', 'home', 'ROO', { card: 'seasons like his', wait: 3500, w: 1000, pick: "(() => DP.E.P.find((p) => p.n === 'Lane Hutson').id)()" }],
+  ['agingG', 'aging?pos=G', 'ROO', { sel: '.lz .grid.g2', wait: 3500, w: 1200 }],
   ['phone_home', 'home', 'BHHC', { phone: true }],
   ['phone_team', 'team/mertin', 'mertin', { phone: true, scrollTo: 'Fantrax lineup check' }],
 ];
