@@ -246,6 +246,11 @@
       var mc = movesCard(p); if (mc) el.insertAdjacentHTML('beforeend', mc);
       if (DP.fillTrends) DP.fillTrends(el);
       if (DP.fillAgeOutlook) DP.fillAgeOutlook(el);
+      // a row of section chips at the top (the page is long on a phone); rebuilt once the slower cards have loaded
+      var jump = document.createElement('div'); jump.className = 'pjump'; jump.setAttribute('role', 'navigation'); jump.setAttribute('aria-label', 'Sections on this page');
+      var back = el.querySelector('p'); if (back) back.insertAdjacentElement('afterend', jump);
+      var build = function () { if (document.body.contains(jump)) DP.playerJump(el, jump); };
+      setTimeout(build, 600); setTimeout(build, 2500);
     }
   };
   // players with the closest per-game category profile (rest-of-season rates), same position group. Each rate is
@@ -259,6 +264,17 @@
     var sd = ks.map(function (k, i) { return Math.sqrt(E.sum(pool.map(function (q) { var d = (q.r[k] || 0) - m[i]; return d * d; })) / Math.max(1, pool.length)) || 1; });
     return (simCache[key] = { ks: ks, m: m, sd: sd, pool: pool });
   }
+  // section chips for the player page: one per card heading, short labels for the usual ones
+  var JUMP = [[/so far vs projection|projection/i, 'This season'], [/Dynasty outlook/i, 'Outlook'], [/contract decision/i, 'Contract'], [/category history/i, 'Stats history'], [/Development curve/i, 'Development'], [/Career by league/i, 'Career'], [/Trade market/i, 'Market'], [/Plays like/i, 'Plays like'], [/seasons like his/i, 'Comps'], [/in Dynasty Puck/i, 'In our league'], [/moves in the league|transactions/i, 'Moves']];
+  DP.playerJump = function (el, box) {
+    var hs = U.qsa('.card h2, .card h3', el).filter(function (h) { var c = h.closest('.card'); return c && h === c.querySelector('h2, h3'); });
+    if (hs.length < 4) { box.innerHTML = ''; return; }
+    box.innerHTML = hs.map(function (h, i) {
+      var t = h.textContent.replace(/^[^A-Za-z0-9]+/, '').trim(), m = JUMP.filter(function (j) { return j[0].test(t); })[0];
+      return '<button type="button" class="chip" data-jump="' + i + '">' + esc(m ? m[1] : t.split(/[:·(]/)[0].trim().split(' ').slice(0, 3).join(' ')) + '</button>';
+    }).join('');
+    U.qsa('[data-jump]', box).forEach(function (b) { b.addEventListener('click', function () { var h = hs[+b.dataset.jump]; if (h) h.closest('.card').scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+  };
   DP.similarPlayers = function (p, n) {
     if (!p || !p.r) return [];
     var S = stats(group(p)), z = function (q) { return S.ks.map(function (k, i) { return ((q.r[k] || 0) - S.m[i]) / S.sd[i]; }); }, zp = z(p);

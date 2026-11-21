@@ -825,3 +825,9 @@ td.adr { background: color-mix(in srgb, var(--c) calc(var(--a) * 45%), transpare
 .punt-cats .pc.pu { background: var(--line2); color: var(--muted); text-decoration: line-through; }
 #fa-rise .uslist .us-o { max-width: 22em; }
 .mk-why { display: block; font-weight: 400; }
+.pjump { display: flex; gap: 6px; overflow-x: auto; padding: 2px 0 10px; scrollbar-width: none; }
+.pjump:empty { display: none; }
+.pjump::-webkit-scrollbar { display: none; }
+.pjump .chip { flex: 0 0 auto; cursor: pointer; font: inherit; font-size: .78rem; color: var(--ink2); padding: 4px 10px; min-height: 28px; }
+.pjump .chip:hover { border-color: var(--accent); color: var(--ink); }
+.card { scroll-margin-top: 64px; }

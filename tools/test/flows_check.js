@@ -356,6 +356,10 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('#fa-rise .uslist li').length > 0), 'free agents: on the rise');
   await go('player/' + encodeURIComponent(await page.evaluate(() => DP.E.P.find((p) => !p.G && p.dep && p.dep.ln === 'F1' && DP.linemates(p).line.length === 2).id)), 2000);
   ok(await page.evaluate(() => [...document.querySelectorAll('#main p')].some((x) => /Linemates/.test(x.textContent) && x.querySelectorAll('a').length >= 2)), 'player page: linemates from the depth chart');
+  await page.waitForTimeout(2600);
+  ok(await page.evaluate(() => document.querySelectorAll('.pjump .chip').length >= 4), 'player page: section chips');
+  await page.evaluate(() => scrollTo(0, 0)); await page.click('.pjump .chip >> nth=-1'); await page.waitForTimeout(1200);
+  ok(await page.evaluate(() => scrollY > 300 && /#\/player\//.test(location.hash)), 'player page: a section chip scrolls to its card and keeps the page');
   ok(await page.evaluate(() => { const id = decodeURIComponent(location.hash.split('/')[2] || ''), c = DP.comps && DP.comps.by[id]; const h = [...document.querySelectorAll('#main h2')].find((x) => /seasons like his/.test(x.textContent)); return c ? !!h && h.closest('.card').querySelectorAll('tbody tr').length === c.c.length : !h; }), 'player page: historical comps');
   await go('adp', 2500);
   ok(await page.evaluate(() => { const D = DP.marketData(); return /Market Check/.test(document.title) && (D.n > 0 ? document.querySelectorAll('#mk-t tbody tr').length > 10 && document.querySelectorAll('.uslist li').length > 0 : /next nightly update/.test(document.querySelector('#main').innerText)); }), 'market check: lists and the table (or the wait-for-data note)');
