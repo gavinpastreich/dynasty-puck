@@ -144,4 +144,6 @@ as you ship them, and add any new ideas you come up with.
       Ice Time (TOI and PP time per game: season, last season, last 14 days; in the Breakout signal), Aging Curves for
       every category (four NHL seasons, delta method), Draft Race (slot odds, pick holders, what a win costs), Elo &
       Luck, Rankings Hub, Category Outlook, guide PDF refresh.
+- [x] Batch 15 (2026-11-21): Punt Planner, accessibility pass (contrast in both themes, underlined text links,
+      ARIA roles and labels), Draft Race, team dynasty range, category thresholds and correlations, age drift.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

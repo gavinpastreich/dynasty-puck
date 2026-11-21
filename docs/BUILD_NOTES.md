@@ -544,3 +544,7 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     failures down to under 10): `--faint` raised (#868f9b dark, #5f6773 light), light-theme status colors darkened,
     dark `--bad` #ff6b63, `--on-accent` for text on orange, heat text by step in `C.heatInk`, capped heat mixes,
     underlined text links (`#main a:not([class])`), `.seg` toggles are role="group", labels on unlabeled controls.
+  - Punt Planner (pages-punt.js): `DP.puntValue(p, keys)` = p.WAR minus the punted parts of p.war (E.warOf's
+    per-category split), `DP.weekWin(ps)` (Poisson-binomial chance to win the week, 8+ of 15, half for 7.5),
+    `DP.puntWeek(ps, idx)` (weekly cost with the punted categories at 0 and the uniform uplift that restores it,
+    by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`.

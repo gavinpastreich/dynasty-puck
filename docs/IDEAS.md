@@ -57,5 +57,5 @@ each category, category correlation map.
 - Injury return tracker: thin today (Daily Faceoff rarely gives a return date); revisit if a feed with dates appears.
 - Aging curves for goalies: tried 2026-11-21; four seasons give only 70 goalies / 173 season pairs (3-19 per age),
   too noisy to show. Needs more seasons in the bulk history (HIST_SEASONS) first.
-- A "punt planner": pick categories to give up and see the weekly win odds and the trade targets that follow
-  (the correlation map shows which categories travel together).
+- ~~A "punt planner"~~ **built 2026-11-21** (Punt Planner). Next on it: suggest trades that swap the punted
+  categories' producers for the kept ones (the Trade Finder with a punt lens).
