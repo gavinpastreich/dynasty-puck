@@ -34,12 +34,34 @@
     return o;
   };
 
+  // production per 60 minutes of ice time this season (10+ GP): points, goals, shots, hits + blocks. A player who scores a
+  // lot in few minutes is the classic "if his minutes go up" candidate.
+  var MIN_GP60 = 10;
+  DP.per60 = function (p) {
+    var o = DP.iceOf(p); if (!o || o.gp < MIN_GP60 || !(o.toi > 0)) return null;
+    var y = p.ytd, min = o.gp * o.toi, r = function (x) { return x * 60 / min; };
+    return { p60: r(y[2] + y[3]), g60: r(y[2]), sog60: r(y[5]), phys60: r(y[7] + y[8]), toi: o.toi, gp: o.gp };
+  };
+  // underused scorers: points per 60 in the top quarter of their position group (F or D, 10+ GP), ice time per game
+  // below that group's median. Sorted by points per 60.
+  DP.underused = function () {
+    var R = DP.E.P.filter(function (p) { return !p.G && p.ice; }).map(function (p) { return { p: p, s: DP.per60(p) }; }).filter(function (x) { return x.s; }), out = [];
+    ['F', 'D'].forEach(function (g) {
+      var G = R.filter(function (x) { return (x.p.pos === 'D') === (g === 'D'); }); if (G.length < 8) return;
+      var q = function (arr, k) { var s = arr.slice().sort(function (a, b) { return a - b; }); return DP.pctile ? DP.pctile(s, k) : s[Math.floor((s.length - 1) * k)]; };
+      var p75 = q(G.map(function (x) { return x.s.p60; }), 0.75), med = q(G.map(function (x) { return x.s.toi; }), 0.5);
+      G.forEach(function (x) { if (x.s.p60 >= p75 && x.s.toi < med) out.push(Object.assign({ grp: g, p75: p75, med: med }, x)); });
+    });
+    return out.sort(function (a, b) { return b.s.p60 - a.s.p60; });
+  };
+
   // one line for the player page
   DP.iceLine = function (p) {
     var o = DP.iceOf(p); if (!o) return '';
     var bits = ['<b>' + DP.mmss(o.toi) + '</b> a game (power play ' + DP.mmss(o.pp) + ')'];
     if (o.toi14 !== null && o.gp14 >= 2) bits.push('last 14 days ' + DP.mmss(o.toi14) + ' ' + dcell(o.d14, 1) + ', PP ' + DP.mmss(o.pp14));
     if (o.last !== null) bits.push(U.season(DP.meta.seasonId - 10001) + ': ' + DP.mmss(o.last) + ' (PP ' + DP.mmss(o.lastPp) + ') ' + dcell(o.dS, 1));
+    var s6 = DP.per60(p); if (s6) bits.push(U.fmt(s6.p60, 2) + ' points per 60 minutes');
     return '<p class="small" style="margin-top:6px"><b>🕒 Ice time</b>: ' + bits.join(' · ') + ' <a href="#/usage">Ice Time →</a></p>';
   };
 
@@ -67,8 +89,11 @@
         '<div class="card"><h3>🔥 Rising in the last 14 days</h3><div class="hint">Last 14 days minus his season average (2+ games in the stretch).</div>' + topList(R.filter(function (x) { return x.o.gp14 >= 2; }), 'd14', 8, function (x) { return '<b class="good">' + dmm(x.o.d14) + '</b> <span class="faint small">' + DP.mmss(x.o.toi14) + '</span>'; }) + '</div>' +
         '<div class="card"><h3>🛒 Free agents on the power play</h3><div class="hint">Unowned skaters with the most power-play time per game, last 14 days (season if no games).</div>' + topList(fa.map(function (x) { return { p: x.p, o: Object.assign({}, x.o, { ppk: x.o.gp14 >= 2 && x.o.pp14 !== null ? x.o.pp14 : x.o.pp }) }; }), 'ppk', 8, function (x) { return '<b>' + DP.mmss(x.o.ppk) + '</b> <span class="faint small">PP/gp</span>'; }) + '</div>' +
         '</div>';
+      var UU = DP.underused();
+      h += '<div class="card" style="margin-bottom:14px"><h3>⚡ Underused scorers</h3><div class="hint">Points per 60 minutes in the top quarter of their position (forwards or defense, 10+ games) while playing less than the median ice time. If the minutes go up, the points usually follow: a record of this season, not a projection.</div>' +
+        (UU.length ? '<ol class="list-plain uslist">' + UU.slice(0, 12).map(function (x) { return '<li class="' + (x.p.gm && x.p.gm === DP.state.team ? 'mine' : '') + '"><span class="us-p">' + ui.pcell(x.p, { pos: 1 }) + '</span><span class="us-o small">' + ui.owner(x.p) + '</span><span class="us-v num"><b>' + U.fmt(x.s.p60, 2) + '</b> <span class="faint small">P/60 · ' + DP.mmss(x.s.toi) + '</span></span></li>'; }).join('') + '</ol>' : '<p class="small muted">Nobody yet (needs 10+ games).</p>') + '</div>';
       h += '<div class="card"><h3>🌱 Young players getting more power-play time</h3><div class="hint">25 and under: power-play time per game this season minus ' + esc(last) + '. One of the signals Breakout Watch adds up.</div>' + topList(young, 'dPp', 10, function (x) { return '<b class="good">' + dmm(x.o.dPp) + '</b> <span class="faint small">PP ' + DP.mmss(x.o.pp) + '</span>'; }) + '</div>';
-      el.innerHTML = h + '<div id="us-t" style="margin-top:14px"></div><p class="small muted">Minutes:seconds per game. Δ = change; green = up a minute or more (a game), red = down a minute or more. Last season needs 10+ games then; the last 14 days needs 2+ games.</p>';
+      el.innerHTML = h + '<div id="us-t" style="margin-top:14px"></div><p class="small muted">Minutes:seconds per game. Δ = change; green = up a minute or more (a game), red = down a minute or more. Last season needs 10+ games then; the last 14 days needs 2+ games. P/60 = goals + assists per 60 minutes on the ice (10+ games).</p>';
       ui.table(U.qs('#us-t', el), {
         rows: R, sort: q.sort || 'toi', csv: 'ice-time.csv', search: function (x) { return x.p.n + ' ' + (x.p.nt || '') + ' ' + (x.p.gm || ''); },
         rowCls: function (x) { return x.p.gm && x.p.gm === me ? 'mine' : ''; },
@@ -86,6 +111,7 @@
           { k: 'pp', l: 'PP/gp', cls: 'num', v: function (x) { return x.o.pp; }, f: function (x) { return DP.mmss(x.o.pp); } },
           { k: 'dPp', l: 'Δ PP', cls: 'num', v: function (x) { return x.o.dPp === null ? -99 : x.o.dPp; }, f: function (x) { return dcell(x.o.dPp, 0.5); }, title: 'Power-play time per game, this season minus last' },
           { k: 'pp14', l: 'PP 14 d', cls: 'num', v: function (x) { return x.o.pp14 === null ? -1 : x.o.pp14; }, f: function (x) { return x.o.pp14 === null ? '<span class="faint">–</span>' : DP.mmss(x.o.pp14); } },
+          { k: 'p60', l: 'P/60', cls: 'num', v: function (x) { var s = DP.per60(x.p); return s ? s.p60 : -1; }, f: function (x) { var s = DP.per60(x.p); return s ? U.fmt(s.p60, 2) : '<span class="faint">–</span>'; }, title: 'Goals + assists per 60 minutes of ice time this season (10+ GP)' },
           { k: 'dv', l: 'Dynasty', cls: 'num', v: function (x) { return x.p.DV; }, f: function (x) { return U.fmt(x.p.DV, 1); } }
         ]
       });

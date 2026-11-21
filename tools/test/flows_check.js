@@ -339,6 +339,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('#bo-dev tbody tr').length > 5), 'breakout watch: ahead of the development curve');
   await go('usage', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('#us-t tbody tr').length > 10 && document.querySelectorAll('.uslist li').length >= 10), 'ice time: lists and the table');
+  ok(await page.evaluate(() => { const h = [...document.querySelectorAll('#main h3')].find((x) => /Underused scorers/.test(x.textContent)); return h && h.closest('.card').querySelectorAll('li').length === Math.min(12, DP.underused().length) && [...document.querySelectorAll('#us-t th')].some((t) => /P\/60/.test(t.innerText)); }), 'ice time: underused scorers and the P/60 column');
   await go('cats', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('.ccmap tbody tr').length === DP.CATMAP_KEYS.length), 'category insights: which categories come together');
   ok(await page.evaluate(() => [...document.querySelectorAll('.card h2')].some((h) => /What wins each category/.test(h.innerText))), 'category insights: what wins each category');

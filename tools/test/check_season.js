@@ -665,6 +665,13 @@ E.teams.slice(0, 4).forEach((t) => {
     ok(R.length > 200, `ice time: ${R.length} skaters`);
     ok(R.every((x) => x.o.toi > 3 && x.o.toi < 32 && x.o.pp >= 0 && x.o.pp < x.o.toi), 'ice time: sane minutes (3-32 a game, PP below all situations)');
     const mcd = E.P.find((p) => p.n === 'Connor McDavid'); if (mcd && mcd.ice) ok(mcd.ice[0] > 18 && mcd.ice[1] > 2, `ice time: McDavid plays ${DP.mmss(mcd.ice[0])} with ${DP.mmss(mcd.ice[1])} on the PP`);
+    // per 60 minutes: (G + A) x 60 / (GP x TOI per game), 10+ GP only
+    const S6 = E.P.filter((p) => !p.G && p.ice && p.ytd).map((p) => [p, DP.per60(p)]);
+    ok(S6.every(([p, s]) => (s === null) === (p.ytd[0] < 10 || !(p.ice[0] > 0))), 'per 60: 10+ GP only');
+    ok(S6.filter(([, s]) => s).every(([p, s]) => near(s.p60, (p.ytd[2] + p.ytd[3]) * 60 / (p.ytd[0] * p.ice[0]), 1e-9) && near(s.sog60, p.ytd[5] * 60 / (p.ytd[0] * p.ice[0]), 1e-9) && s.p60 >= 0 && s.p60 < 12), 'per 60: points and shots per 60 minutes');
+    const UU = DP.underused();
+    ok(UU.length > 0 && UU.every((x, i) => x.s.p60 >= x.p75 && x.s.toi < x.med && (!i || UU[i - 1].s.p60 >= x.s.p60) && (x.p.pos === 'D') === (x.grp === 'D')), `underused scorers: top-quarter P/60, below-median minutes, sorted (${UU.length}, first ${UU[0] && UU[0].p.n})`);
+    ['F', 'D'].forEach((g) => { const G = S6.filter(([p, s]) => s && (p.pos === 'D') === (g === 'D')).map(([, s]) => s.p60).sort((a, b) => a - b); const x = UU.find((u) => u.grp === g); if (x) ok(near(x.p75, DP.pctile(G, 0.75), 1e-9), `underused scorers: ${g} 75th percentile of P/60`); });
   }
 }
 // ---- Aging curves: chained, smoothed ratios with the peak at 100
