@@ -548,3 +548,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     per-category split), `DP.weekWin(ps)` (Poisson-binomial chance to win the week, 8+ of 15, half for 7.5),
     `DP.puntWeek(ps, idx)` (weekly cost with the punted categories at 0 and the uniform uplift that restores it,
     by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`.
+  - My Page widget registration: a file loaded before pages-mypage.js must not call `DP.regWidget` directly (it
+    doesn't exist yet); use `(DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); })(key, spec)`
+    and pages-mypage.js registers the queue when it loads. Read `DP.myWidgetHelpers` inside `render`, not at load.
+    (Before 2026-11-21 the Ice Time and Draft Race widgets silently never registered in the browser because of this.)
+  - pages-mywidgets2.js: widgets breakout, elo, rater, tonight, agedrift, wins, range.
