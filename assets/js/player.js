@@ -241,6 +241,7 @@
       el.innerHTML = '<p><a href="#/players">← Players</a></p>' + DP.playerHtml(p, true) + (DP.radarBrief ? DP.radarBrief(p) : '') + (p.gm ? '<div class="card" style="margin-top:14px"><h2>💱 Trade market</h2><div id="p-market"><p class="muted small">Pricing him for every team…</p></div></div>' : '');
       if (p.gm) setTimeout(function () { market(p, U.qs('#p-market', el)); }, 30);
       similarCard(p, el);
+      if (DP.compsCard) DP.compsCard(p, el);
       seasonLog(p, el);
       var mc = movesCard(p); if (mc) el.insertAdjacentHTML('beforeend', mc);
       if (DP.fillTrends) DP.fillTrends(el);

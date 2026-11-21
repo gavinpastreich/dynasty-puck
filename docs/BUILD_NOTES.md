@@ -554,6 +554,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     raw/nhl-history/<season>.json (fetched once by `python tools/research/aging_history.py 2016 2021`; past seasons
     never change, so re-run only to add older ones). Goalies get A.G with A.gkeys = [w, sv] (wins per game, save %,
     league-relative, first season shrunk toward the league: AGING_G_KSHOTS 3000 shots, AGING_G_KGP 40 games).
+  - Historical comps: `write_comps(players, sk, bios, gk)` (build) -> data/comps.js (lazy, `DP.loadComps`):
+    {base, seasons, n, names: {nhlId: name}, by: {playerId: {age, pts, gp, c: [[nhl, season, age, pts/gp,
+    next, next2, team, dist]]}}}; next/next2 = points per game, -1 = under 20 GP or out, null = not played yet.
+    `DP.compsCard(p, el)` / `DP.compSummary(c)` in pages-comps.js; on player pages after "Plays like".
   - Linemates (pages-lines.js): `DP.linemates(p)` = skaters with the same NHL team and p.dep.ln (line / pair) and the
     same p.dep.pp unit from the Daily Faceoff depth chart; `DP.mateLine(p)` on the player page.
   - Market Check (pages-market.js, route `adp`): the build's `apply_adp()` reads Fantrax `getAdp?sport=NHL` (cached a day

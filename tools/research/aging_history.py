@@ -16,12 +16,12 @@ from scoreboard import skater_rows, goalie_rows  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, "raw", "nhl-history")
-SK_KEYS = ["gp", "pts", "g", "a", "pim", "sog", "stp", "hit", "blk", "tk", "toi"]
+SK_KEYS = ["gp", "pts", "g", "a", "pim", "sog", "stp", "hit", "blk", "tk", "toi", "team"]
 G_KEYS = ["gp", "gs", "w", "ga", "sa", "sho", "toi"]
 
 
 def _row(x, keys):
-    return [round(x.get(k) or 0, 2) if isinstance(x.get(k), float) else (x.get(k) or 0) for k in keys]
+    return [round(x.get(k) or 0, 2) if isinstance(x.get(k), float) else (x.get(k) if x.get(k) is not None else 0) for k in keys]
 
 
 def fetch(season):
@@ -31,11 +31,11 @@ def fetch(season):
     gk = goalie_rows(API.stats_report("goalie", "summary", season))
     bios = {}
     for r in API.stats_report("skater", "bios", season):
-        bios[str(r["playerId"])] = [r.get("birthDate"), r.get("positionCode")]
+        bios[str(r["playerId"])] = [r.get("birthDate"), r.get("positionCode"), r.get("skaterFullName")]
     for r in API.stats_report("goalie", "bios", season):
-        bios[str(r["playerId"])] = [r.get("birthDate"), "G"]
+        bios[str(r["playerId"])] = [r.get("birthDate"), "G", r.get("goalieFullName")]
     return {"season": season, "source": "NHL stats API bulk reports (skater summary, realtime, summaryshooting, timeonice, bios; goalie summary, bios)",
-            "fields": {"sk": SK_KEYS, "g": G_KEYS, "bios": ["dob", "pos"]},
+            "fields": {"sk": SK_KEYS, "g": G_KEYS, "bios": ["dob", "pos", "name"]},
             "sk": {str(pid): _row(x, SK_KEYS) for pid, x in sk.items() if x.get("gp")},
             "g": {str(pid): _row(x, G_KEYS) for pid, x in gk.items() if x.get("gp")},
             "bios": bios}
