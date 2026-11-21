@@ -336,6 +336,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('breakout', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('#bo-t tbody tr').length > 10), 'breakout watch: the table');
   ok(await page.evaluate(() => [...document.querySelectorAll('#bo-t th')].some((t) => /Ice vs LY/.test(t.innerText))), 'breakout watch: the ice time column');
+  ok(await page.evaluate(() => { const th = [...document.querySelectorAll('#bo-t th')].map((t) => t.innerText.replace(/[▾▴]/g, '').trim()), i = th.indexOf('History'); return i > 0 && [...document.querySelectorAll('#bo-t tbody tr')].some((r) => /^\d\/\d$/.test(r.children[i].innerText.trim())); }), 'breakout watch: history column from the comps');
   ok(await page.evaluate(() => document.querySelectorAll('#bo-dev tbody tr').length > 5), 'breakout watch: ahead of the development curve');
   await go('usage', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('#us-t tbody tr').length > 10 && document.querySelectorAll('.uslist li').length >= 10), 'ice time: lists and the table');

@@ -42,7 +42,7 @@
       var me = DP.state.team, q = hsh.q;
       var h = '<div class="page-head"><h1>🚀 Breakout Watch</h1><p class="sub">Young skaters (25 and under, 5+ NHL games) showing the signs that come before a breakout: producing above their preseason projection in our categories, a bigger role on the depth chart, promotions in the last 30 days, more ice time than last season and a hot last two weeks. A documented signal to look closer at, not a forecast (the weights are under the table).</p></div>';
       el.innerHTML = h + '<div class="lz"><p class="muted small">Loading the depth charts…</p></div>';
-      DP.loadDepthLog(function (L) {
+      DP.loadDepthLog(function (L) { (DP.loadComps || function (cb) { cb(null); })(function (CP) {
         var box = U.qs('.lz', el); if (!box) return;
         var B = DP.breakoutData(L);
         box.innerHTML = '<div id="bo-t"></div><p class="small muted">Signal = ' + Wt.prod + ' × production vs projection (half the Player Rater difference per game, −2.5 to +2.5) + ' + Wt.role + ' × role now (top-six / top pair +1, PP1 +1, PP2 +½) + ' + Wt.trend + ' × role trend (net promotions to PP1, the top six or the top pair in the last 30 days) + ' + Wt.form + ' × the last 14 days against his projection (−100% to +100%) + ' + Wt.ice + ' × ice time (minutes a game more than last season, halved, −1 to +1; 0 without 10+ NHL games last season). Rookies with no projection are measured against the average regular at their position.</p>' +
@@ -62,6 +62,7 @@
             { k: 'trend', l: '30-day moves', v: function (x) { return x.trend; }, f: function (x) { return x.ev.length ? x.ev.map(function (e) { return '<span class="lchip ' + (e.up ? 'up' : 'dn') + '">' + esc(e.from || 'out') + ' → <b>' + esc(e.to || 'out') + '</b></span>'; }).join(' ') : '<span class="faint">–</span>'; } },
             { k: 'ice', l: 'Ice vs LY', cls: 'num', v: function (x) { return x.io && x.io.dS !== null ? x.io.dS : -99; }, f: function (x) { return x.io && x.io.dS !== null ? '<span class="' + (x.io.dS >= 1 ? 'good' : x.io.dS <= -1 ? 'bad' : 'muted') + '">' + (x.io.dS >= 0 ? '+' : '−') + DP.mmss(Math.abs(x.io.dS)) + '</span> <span class="faint small">' + DP.mmss(x.io.toi) + '</span>' : '<span class="faint">–</span>'; }, title: 'Ice time per game, this season minus last season, then this season' },
             { k: 'form', l: 'Last 14 d', cls: 'num', v: function (x) { return x.form; }, f: function (x) { return x.form ? ui.delta(x.form * 100, 0) + '%' : '<span class="faint">–</span>'; } },
+            { k: 'hist', l: 'History', cls: 'num', title: 'Of his eight historical comps (similar seasons at his age, player page), how many rose 20%+ in points per game the next season. Not part of the signal.', v: function (x) { var c = CP && CP.by[x.p.id], S = c ? DP.compSummary(c) : null; return S && S.known ? S.up / S.known : -1; }, f: function (x) { var c = CP && CP.by[x.p.id], S = c ? DP.compSummary(c) : null; return S && S.known ? '<span class="' + (S.up / S.known >= 0.5 ? 'good' : S.up / S.known <= 0.15 ? 'muted' : '') + '">' + S.up + '/' + S.known + '</span>' : '<span class="faint">–</span>'; } },
             { k: 'dv', l: 'Dynasty', cls: 'num', v: function (x) { return x.p.DV; }, f: function (x) { return U.fmt(x.p.DV, 1); } }
           ]
         });
@@ -82,7 +83,7 @@
             { k: 'dv', l: 'Dynasty', cls: 'num', v: function (x) { return x.p.DV; }, f: function (x) { return U.fmt(x.p.DV, 1); } }
           ]
         });
-      });
+      }); });
     }
   };
 })();

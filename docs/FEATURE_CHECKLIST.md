@@ -146,4 +146,9 @@ as you ship them, and add any new ideas you come up with.
       Luck, Rankings Hub, Category Outlook, guide PDF refresh.
 - [x] Batch 15 (2026-11-21): Punt Planner, accessibility pass (contrast in both themes, underlined text links,
       ARIA roles and labels), Draft Race, team dynasty range, category thresholds and correlations, age drift.
+- [x] Batch 16 (2026-11-21): Market Check (Fantrax ADP vs our categories, nightly getAdp), historical comps on player
+      pages (ten NHL seasons: similar seasons at the same age and what happened next), Aging Curves on ten seasons with
+      goalie curves (save %, wins; regression-adjusted), Punt Planner swap ideas, points per 60 and underused scorers,
+      linemates and PP unit on player pages, Weekly Preview waiver watch, free agents on the rise, Season Simulator opens
+      on tonight's run, My Page widgets (underused scorers, market check), contrast fixes, guide page 17.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).
