@@ -36,6 +36,14 @@
     var label = rel >= 0.15 ? 'ahead' : rel <= -0.15 ? 'behind' : 'on';
     return { rows: rows, trend: { from: a, to: b, d: d, rel: rel, label: label, jump: jump } };
   };
+  // every skater 25 or under (owned, or a free agent the model values) whose age-adjusted estimate rose 15%+ from his
+  // last season at the same level, with 20+ GP in the newer season and an estimate of 10+ before (a jump from almost
+  // nothing is noise); biggest gain in points per 82 first. Prospects in junior, college or Europe included
+  DP.devLeaders = function () {
+    return DP.E.P.filter(function (p) { return !p.G && p.age && p.age <= 25.99 && p.car && (p.gm || (p.DV || 0) > 0.5); }).map(function (p) { return { p: p, d: DP.devCurve(p) }; })
+      .filter(function (x) { return x.d && x.d.trend && x.d.trend.label === 'ahead' && x.d.trend.to.gp >= 20 && x.d.trend.from.adj >= 10; })
+      .sort(function (a, b) { return b.d.trend.d - a.d.trend.d; });
+  };
   DP.devCurveCard = function (p) {
     var D = DP.devCurve(p); if (!D || !D.rows.length || (p.age || 30) > 25.99) return '';
     var C = DP.C, labs = D.rows.map(function (o) { return U.season(o.season); });
@@ -45,7 +53,7 @@
       var t = D.trend;
       if (t.label === 'jump') h += '<p class="small" style="margin:6px 0"><span class="badge good">Made the jump</span> ' + U.fmt(t.to.pace, 0) + ' NHLe pts/82 in the NHL in ' + esc(U.season(t.to.season)) + (t.to.age ? ' at ' + Math.floor(t.to.age) : '') + ', after ' + U.fmt(t.from.pace, 0) + ' in ' + esc(t.from.lg.join(' + ')) + '. Junior and pro lines use different age factors, so the two estimates aren\'t compared.</p>';
       else h += '<p class="small" style="margin:6px 0">' + (t.label === 'ahead' ? '<span class="badge good">Ahead of the curve</span> ' : t.label === 'behind' ? '<span class="badge warn">Behind the curve</span> ' : '<span class="badge info">On the curve</span> ') +
-        'Age-adjusted estimate ' + U.fmt(t.from.adj, 0) + ' → <b>' + U.fmt(t.to.adj, 0) + '</b> pts/82 from ' + esc(U.season(t.from.season)) + ' to ' + esc(U.season(t.to.season)) + ' (' + (t.d >= 0 ? '+' : '') + Math.round(t.rel * 100) + '%), ' + esc(t.to.lg.join(' + ')) + ', ' + t.to.gp + ' GP.' + (t.jump ? ' He has since made the jump to the NHL.' : '') + '</p>';
+        'Age-adjusted estimate ' + U.fmt(t.from.adj, 0) + ' → <b>' + U.fmt(t.to.adj, 0) + '</b> pts/82 from ' + esc(U.season(t.from.season)) + ' to ' + esc(U.season(t.to.season)) + ' (' + (t.d >= 0 ? '+' : '') + Math.round(t.rel * 100) + '%), ' + esc(t.to.lg.join(' + ')) + ', ' + t.to.gp + ' GP' + (t.to.gp < 30 ? ' <span class="muted">(a small sample so far: treat it as a first sign)</span>' : '') + '.' + (t.jump ? ' He has since made the jump to the NHL.' : '') + '</p>';
     }
     h += '<div class="tbl-wrap"><table class="t small"><thead><tr><th>Season</th><th class="num">Age</th><th>Leagues</th><th class="num">GP</th><th class="num">NHLe</th><th class="num">× age</th><th class="num">Estimate</th></tr></thead><tbody>' + D.rows.map(function (o) {
       return '<tr><td>' + esc(U.season(o.season)) + '</td><td class="num">' + (o.age === null ? '–' : U.fmt(o.age, 1)) + '</td><td class="small">' + esc(o.lg.join(', ')) + '</td><td class="num">' + o.gp + '</td><td class="num">' + U.fmt(o.pace, 1) + '</td><td class="num">' + U.fmt(o.mult, 2) + '</td><td class="num"><b>' + U.fmt(o.adj, 0) + '</b></td></tr>';

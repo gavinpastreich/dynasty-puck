@@ -140,4 +140,8 @@ as you ship them, and add any new ideas you come up with.
 - [x] Batch 11-13 (2026-11-21): Trophy Case, trade grades, category carriers, precomputed season sim, menu favorites
       and a custom phone tab bar, Season Grid, Player Rater, Weekly Calendar, goalie-minimum watch, Scenario Builder,
       more My Page widgets (clinch numbers, odds by round, did you know?).
+- [x] Batch 14 (2026-11-21): dynasty floor/ceiling, development curves, Breakout Watch "ahead of the curve" table,
+      Ice Time (TOI and PP time per game: season, last season, last 14 days; in the Breakout signal), Aging Curves for
+      every category (four NHL seasons, delta method), Draft Race (slot odds, pick holders, what a win costs), Elo &
+      Luck, Rankings Hub, Category Outlook, guide PDF refresh.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

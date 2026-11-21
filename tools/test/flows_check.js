@@ -316,6 +316,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && !!document.querySelector('#elo-chart svg') && document.querySelectorAll('.luckbars').length === DP.E.teams.length), 'elo & luck: ratings, chart and luck table');
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && p.ct === 'MNR').sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3000);
   ok(await page.evaluate(() => !!document.querySelector('.dvr .dvr-r') && /Floor/.test(document.querySelector('.dvr').innerText) && /Ceiling/.test(document.querySelector('.dvr').innerText)), 'player page: dynasty floor and ceiling');
+  await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && !p.G && p.age < 22 && DP.devCurve(p)).sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3000);
+  ok(await page.evaluate(() => [...document.querySelectorAll('.card h3')].some((h) => /Development curve/.test(h.innerText)) && /curve|jump/i.test(document.querySelector('#main').innerText)), 'player page: development curve for a young skater');
   await go('values?lens=model', 4000);
   ok(await page.evaluate(() => [...document.querySelectorAll('#v-t th')].some((t) => /Floor – ceiling/.test(t.innerText))), 'trade value chart: floor and ceiling column');
   await go('outlook', 4000);
@@ -324,6 +326,14 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('.rkhub tbody tr').length === DP.E.teams.length && document.querySelectorAll('.rkhub .rk-n.top').length >= 9), 'rankings hub: every team, every ranking');
   await go('breakout', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('#bo-t tbody tr').length > 10), 'breakout watch: the table');
+  ok(await page.evaluate(() => [...document.querySelectorAll('#bo-t th')].some((t) => /Ice vs LY/.test(t.innerText))), 'breakout watch: the ice time column');
+  ok(await page.evaluate(() => document.querySelectorAll('#bo-dev tbody tr').length > 5), 'breakout watch: ahead of the development curve');
+  await go('usage', 3000);
+  ok(await page.evaluate(() => document.querySelectorAll('#us-t tbody tr').length > 10 && document.querySelectorAll('.uslist li').length >= 10), 'ice time: lists and the table');
+  await go('aging', 3500);
+  ok(await page.evaluate(() => document.querySelectorAll('.olk tbody tr').length >= 12 && document.querySelectorAll('.lz svg').length >= 2 && /goals peak at/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: findings, charts and heatmap');
+  await page.click('[data-pos="D"]'); await page.waitForTimeout(2000);
+  ok(await page.evaluate(() => /pos=D/.test(location.hash) && /Defensemen/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: defense');
   await go('rater', 3000);
   ok(await page.evaluate(() => [...document.querySelectorAll('#rt-t th')].some((t) => /vs preseason/.test(t.innerText))), 'player rater: vs preseason column');
   await go('scenarios', 3000);

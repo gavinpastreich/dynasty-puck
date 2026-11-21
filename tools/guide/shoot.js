@@ -56,6 +56,29 @@ const SHOTS = [
   ['mvp', 'records', 'TommyG10', { card: 'MVP race', wait: 5000 }],
   ['moves', 'moves', 'Wags8210', { card: 'Best pickups of the season', wait: 5000 }],
   ['tape', 'tape?a=SPG&b=CGN', 'SPG', { card: 'The tale', w: 1040 }],
+  // added 2026-11-21
+  ['mypage', 'mypage', 'SPG', { h: 1100, wait: 6000, layout: [['reportcard', 1], ['cap', 1], ['value', 2], ['movers', 1], ['picks', 1], ['mnr', 1], ['partners', 1], ['oddschart', 2]] }],
+  ['feed', 'feed', 'ROO', { h: 1000, wait: 4000, w: 900 }],
+  ['grades', 'grades', 'CGN', { h: 900, wait: 6000 }],
+  ['trophies', 'trophies', 'M.M', { h: 820, wait: 5000, w: 1000 }],
+  ['elo', 'elo', 'SPG', { card: 'Schedule luck', w: 1360 }],
+  ['rankings', 'rankings', 'TommyG10', { h: 760, wait: 6000 }],
+  ['scenarios', 'scenarios', 'PuckLuck', { h: 980, wait: 6000, w: 1000 }],
+  ['path', 'path', 'mertin', { h: 900, wait: 20000, w: 1000 }],
+  ['outlook', 'outlook', 'SPG', { h: 820, wait: 5000 }],
+  ['scorecard', 'scorecard', 'M.M', { card: 'Calibration', wait: 5000, w: 1000 }],
+  ['fixtures', 'fixtures', 'ROO', { h: 760, wait: 5000 }],
+  ['calendar', 'calendar', 'CGN', { h: 860, w: 1100 }],
+  ['stacks', 'stacks', 'BHHC', { h: 860, w: 1100 }],
+  ['dvr', 'home', 'TommyG10', { card: 'Dynasty outlook', w: 900, pick: "(() => { const E = DP.E; return E.P.filter((p) => p.gm && p.ct === 'MNR' && !p.G).sort((a, b) => b.DV - a.DV)[0].id; })()" }],
+  ['devcurve', 'home', 'nebsnave', { card: 'Development curve', w: 900, pick: "(() => { const E = DP.E; const c = E.P.filter((p) => p.gm && !p.G && p.age && p.age < 24 && DP.devCurve(p) && DP.devCurve(p).trend && DP.devCurve(p).trend.label === 'ahead' && DP.devCurve(p).rows.length >= 3).sort((a, b) => b.DV - a.DV); return (c[0] || {}).id; })()" }],
+  ['breakout', 'breakout', 'Wags8210', { h: 860, wait: 4000 }],
+  ['rater', 'rater', 'ROO', { h: 860, wait: 3000 }],
+  ['usage', 'usage', 'SPG', { h: 760, wait: 3000 }],
+  ['aging', 'aging', 'TommyG10', { h: 860, wait: 3000 }],
+  ['draftrace', 'draftrace', 'CGN', { sel: '.dr-t', wait: 5000, w: 1200 }],
+  ['winc', 'draftrace', 'CGN', { card: 'What a win costs', wait: 6000, w: 1200 }],
+  ['tickets', 'draftrace', 'CGN', { card: 'Who holds the tickets', wait: 5000, w: 1200 }],
   ['phone_home', 'home', 'BHHC', { phone: true }],
   ['phone_team', 'team/mertin', 'mertin', { phone: true, scrollTo: 'Fantrax lineup check' }],
 ];
@@ -88,6 +111,12 @@ const SHOTS = [
       const lw = await page.evaluate(() => DP.E.lockWeek());
       if (lw !== null) r = route + '?w=' + (lw + 1);
     }
+    if (o.pick) { // a player id picked from the live data (a JS expression run on the page)
+      await page.goto(URL + 'home'); await page.waitForTimeout(1500);
+      const id = await page.evaluate(o.pick);
+      if (id) r = 'player/' + encodeURIComponent(id); else console.log('  ! no player picked', name);
+    }
+    if (o.layout) await ctx.addInitScript((w) => { try { localStorage.setItem('dp_mypage', JSON.stringify({ v: 1, w: w.map((x) => ({ k: x[0], s: x[1], o: {} })) })); } catch (e) {} }, o.layout);
     if (o.lookup) { // resolve a player id by name
       await page.goto(URL + 'home'); await page.waitForTimeout(800);
       const id = await page.evaluate((n) => (DP.E.P.find((p) => p.n === n) || {}).id, o.lookup);

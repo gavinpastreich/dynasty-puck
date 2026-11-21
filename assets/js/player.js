@@ -101,6 +101,7 @@
     });
     h += '</tbody></table></div>';
     if (DP.formLine) h += DP.formLine(p);
+    if (DP.iceLine) h += DP.iceLine(p);
     h += DP.nextGames ? DP.nextGames(p) : '';
     h += '<div class="pc-trend" data-trend="' + esc(p.id) + '"></div>';
     if (p.tkc) h += '<p class="note">Tk/Cor projection: per-GP rates ' + U.fmt(p.tkc[0], 2) + ' Tk and ' + U.fmt(p.tkc[1], 1) + ' Cor, blended from ' + U.fmt(p.tkc[4], 0) + ' weighted NHL games with a role prior of ' + U.fmt(p.tkc[2], 2) + ' / ' + U.fmt(p.tkc[3], 1) + '.</p>';
@@ -144,6 +145,7 @@
       h += '<div class="card"><h3>NHL goalie history</h3><div class="tbl-wrap"><table class="t"><thead><tr><th>Season</th><th>Tm</th><th class="num">GP</th><th class="num">W</th><th class="num">GAA</th><th class="num">SV%</th><th class="num">SHO</th></tr></thead><tbody>' +
         p.h.map(function (r) { return '<tr><td>' + U.season(r[0]) + '</td><td>' + esc(r[7]) + '</td><td class="num">' + r[1] + '</td><td class="num">' + r[2] + '</td><td class="num">' + r[3].toFixed(2) + '</td><td class="num">' + U.rate(r[4]) + '</td><td class="num">' + r[5] + '</td></tr>'; }).join('') + '</tbody></table></div></div>';
     }
+    if (DP.devCurveCard) h += DP.devCurveCard(p);
     if (nhlRows.length || other.length) {
       var rows = (p.car || []).slice().reverse();
       h += '<div class="card"><h3>Career by league</h3><div class="hint">NHL API player landing (regular season). NHLe = points pace translated to 82 NHL games with league factors.</div><div class="tbl-wrap" style="max-height:340px;overflow:auto"><table class="t"><thead><tr><th>Season</th><th>League</th><th>Team</th><th class="num">GP</th>' +

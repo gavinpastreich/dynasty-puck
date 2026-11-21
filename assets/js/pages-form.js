@@ -87,6 +87,7 @@
         { k: 'sog', l: 'SOG/gp', cls: 'num', v: function (r) { return r.f.r14[4]; }, f: function (r) { return pg(r, 4, 1); } },
         { k: 'hit', l: 'Hit/gp', cls: 'num', v: function (r) { return r.f.r14[6]; }, f: function (r) { return pg(r, 6, 1); } },
         { k: 'blk', l: 'Blk/gp', cls: 'num', v: function (r) { return r.f.r14[7]; }, f: function (r) { return pg(r, 7, 1); } },
+        { k: 'toi', l: 'TOI', cls: 'num', v: function (r) { return r.p.i14 ? r.p.i14[0] : -1; }, f: function (r) { var o = DP.iceOf ? DP.iceOf(r.p) : null; return o && o.toi14 !== null ? DP.mmss(o.toi14) + ' <span class="faint small">' + DP.mmss(o.toi) + '</span>' : '<span class="faint">–</span>'; }, title: 'Ice time per game, last 14 days, then his season average' },
         { k: 'pct', l: 'vs proj', cls: 'num', v: function (r) { return r.f.pct; }, f: function (r) { return r.f.pct === null ? '–' : '<b class="' + (r.f.pct > 0 ? 'good' : 'bad') + '">' + U.sgn(r.f.pct * 100, 0) + '%</b>'; }, title: 'Category value per game, last 14 days vs his projection' },
         { k: 'extra', l: 'Form', cls: 'num', v: function (r) { return r.f.extra; }, f: function (r) { return ui.delta(r.f.extra * 10, 1); }, title: 'Category value above projection over the stretch (×10)' }
       ];

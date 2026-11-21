@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -595,7 +595,7 @@ ok(['magic', 'rounds', 'random', 'trophies', 'carriers'].every((k) => DP.WIDGETS
   ok(R.every((r) => near(r.vs, r.pg - r.projPg, 1e-9)), 'rater: vs preseason = value per game minus the projection\'s');
   const B = DP.breakoutData(DP.depthLog || null), w = DP.BREAKOUT.w;
   ok(B.length > 10 && B.every((x) => x.p.age <= 25.99 && x.r.gp >= 5 && !x.p.G), `breakout: ${B.length} young skaters with 5+ GP`);
-  ok(B.every((x) => near(x.score, w.prod * x.prod + w.role * x.role + w.trend * x.trend + w.form * x.form, 1e-9) && Math.abs(x.prod) <= 2.5 && near(x.prod, Math.max(-2.5, Math.min(2.5, x.r.vs / 2)), 1e-9) && Math.abs(x.form) <= 1), 'breakout: signal = the weighted sum, clipped');
+  ok(B.every((x) => near(x.score, w.prod * x.prod + w.role * x.role + w.trend * x.trend + w.form * x.form + w.ice * x.ice, 1e-9) && Math.abs(x.ice) <= 1 && (x.io && x.io.dS !== null ? near(x.ice, Math.max(-1, Math.min(1, x.io.dS / 2)), 1e-9) : x.ice === 0) && Math.abs(x.prod) <= 2.5 && near(x.prod, Math.max(-2.5, Math.min(2.5, x.r.vs / 2)), 1e-9) && Math.abs(x.form) <= 1), 'breakout: signal = the weighted sum, clipped');
   ok(B.every((x, i) => !i || B[i - 1].score >= x.score), 'breakout: strongest first');
 }
 // ---- Rankings Hub: ranks are permutations, consensus = the mean of the four season ranks
@@ -623,6 +623,19 @@ if (E.lockWeek() !== null) {
   ok(all.filter((x) => x.p._pros).every((x) => near(x.r.pNhl, x.p._pros.p, 1e-12)), 'dynasty range: the prospect career chance is the model\'s');
   ok(DP.WIDGETS.upside, 'my page: upside widget');
 }
+// ---- development curve: same-level comparisons only; the estimate = NHLe x the age factor
+{
+  const D = E.P.filter((p) => !p.G && (p.age || 30) <= 22 && p.car && p.car.length).map((p) => ({ p, d: DP.devCurve(p) })).filter((x) => x.d && x.d.trend);
+  ok(D.length > 50, `development curve: ${D.length} young skaters with a trend`);
+  ok(D.every((x) => x.d.rows.every((o) => near(o.adj, o.pace * o.mult, 1e-9) && o.gp >= 10)), 'development curve: estimate = NHLe x age factor, 10+ GP seasons');
+  ok(D.filter((x) => x.d.trend.label !== 'jump').every((x) => x.d.trend.from.nhl === x.d.trend.to.nhl), 'development curve: ahead/behind only within the same level');
+  ok(D.filter((x) => x.d.trend.label === 'ahead').every((x) => x.d.trend.rel >= 0.15) && D.filter((x) => x.d.trend.label === 'behind').every((x) => x.d.trend.rel <= -0.15), 'development curve: the 15% thresholds');
+}
+{
+  const L = DP.devLeaders();
+  ok(L.length > 5 && L.every((x) => x.p.age <= 25.99 && !x.p.G && x.d.trend.label === 'ahead' && x.d.trend.rel >= 0.15 && x.d.trend.to.gp >= 20 && x.d.trend.from.adj >= 10), `ahead of the curve: ${L.length} young skaters, 15%+ up from 10+, 20+ GP`);
+  ok(L.every((x, i) => !i || L[i - 1].d.trend.d >= x.d.trend.d), 'ahead of the curve: biggest gain first');
+}
 // ---- Weekly Calendar: games per player = the engine's schedule count for the week
 E.teams.slice(0, 4).forEach((t) => {
   const wi = Math.max(0, E.nowWeek()), C = DP.calendarData(t, wi);
@@ -638,6 +651,41 @@ E.teams.slice(0, 4).forEach((t) => {
   ok(S.filter((r) => r.p.pos !== 'D').every((r) => r.z.PtD === 0), 'rater: forwards get nothing for Pt-D');
   ok(S.every((r) => r.p.ytd[0] >= 3) && D.rows.filter((r) => r.kind === 'G').length > 20, 'rater: skaters with 3+ GP, the goalies');
   const top = S.slice().sort((a, b) => b.tot - a.tot)[0]; ok(top.totRank === 1, `rater: ranks (#1 ${top.p.n})`);
+}
+
+// ---- Ice time: the page's numbers are the build's minutes per game
+{
+  ok(DP.mmss(18.4) === '18:24' && DP.mmss(2.5) === '2:30' && DP.mmss(-1.5) === '−1:30' && DP.mmss(null) === '–' && DP.mmss(0.999) === '1:00', 'ice time: minutes:seconds');
+  const R = DP.usageData();
+  ok(R.every((x) => !x.p.G && x.p.ytd[0] >= 5), 'ice time: skaters with 5+ GP');
+  ok(R.every((x) => near(x.o.toi, x.p.ice[0], 1e-9) && near(x.o.pp, x.p.ice[1], 1e-9) && (x.p.ice.length > 2 ? near(x.o.dS, x.p.ice[0] - x.p.ice[2], 1e-9) && near(x.o.dPp, x.p.ice[1] - x.p.ice[3], 1e-9) : x.o.dS === null) && (x.p.i14 ? near(x.o.d14, x.p.i14[0] - x.p.ice[0], 1e-9) : x.o.d14 === null)), 'ice time: deltas = this season minus last, last 14 days minus the season');
+  if (E.P.some((p) => p.ice)) {
+    ok(R.length > 200, `ice time: ${R.length} skaters`);
+    ok(R.every((x) => x.o.toi > 3 && x.o.toi < 32 && x.o.pp >= 0 && x.o.pp < x.o.toi), 'ice time: sane minutes (3-32 a game, PP below all situations)');
+    const mcd = E.P.find((p) => p.n === 'Connor McDavid'); if (mcd && mcd.ice) ok(mcd.ice[0] > 18 && mcd.ice[1] > 2, `ice time: McDavid plays ${DP.mmss(mcd.ice[0])} with ${DP.mmss(mcd.ice[1])} on the PP`);
+  }
+}
+// ---- Aging curves: chained, smoothed ratios with the peak at 100
+if (DP.aging) {
+  const A = DP.aging, CV = DP.agingCurves(A);
+  ['F', 'D'].forEach((pos) => {
+    const o = CV[pos], ag = o.ages;
+    ok(ag.length >= 12 && ag.every((a, i) => !i || a === ag[i - 1] + 1), `aging ${pos}: ${ag[0]}-${ag[ag.length - 1]}, consecutive ages`);
+    A.keys.forEach((k) => {
+      const v = ag.map((a) => o.cur[k][a]);
+      ok(near(Math.max(...v), 1, 1e-12) && v.every((x) => x > 0 && x <= 1 + 1e-12) && near(o.cur[k][o.peak[k]], 1, 1e-12), `aging ${pos} ${k}: the peak is 100 (age ${o.peak[k]})`);
+      ok(ag.slice(0, -1).every((a) => near(o.cur[k][a + 1] / o.cur[k][a], o.step[k][a], 1e-9)), `aging ${pos} ${k}: the curve chains the yearly ratios`);
+    });
+    // one smoothed step recomputed from the raw sums
+    const i = A.keys.indexOf('g'), a = ag[Math.floor(ag.length / 2)], T = A[pos], lr = (x) => Math.log(T[x].b[i] / T[x].a[i]);
+    const ws = [[a - 1, 1], [a, 2], [a + 1, 1]].filter((x) => T[x[0]] && T[x[0]].n >= 8);
+    ok(near(Math.log(o.step.g[a]), E.sum(ws.map((x) => x[1] * T[x[0]].n * lr(x[0]))) / E.sum(ws.map((x) => x[1] * T[x[0]].n)), 1e-9), `aging ${pos}: the 1-2-1 smoothing at ${a}`);
+    ok(o.peak.pts >= 22 && o.peak.pts <= 31, `aging ${pos}: points peak at ${o.peak.pts}`);
+  });
+  ok(CV.F.peak.g <= CV.F.peak.a, `aging: forwards' goals peak (${CV.F.peak.g}) no later than assists (${CV.F.peak.a})`);
+  const vet = E.P.find((p) => !p.G && p.age >= 30 && p.age < 33 && p.pos !== 'D'), nx = DP.agingNext(vet, CV);
+  ok(nx && nx.age === Math.floor(vet.age) && near(nx.g, CV.F.step.g[nx.age], 1e-12), `aging: next season for ${vet.n} (${nx && nx.age})`);
+  ok(DP.agingNext(E.P.find((p) => p.G), CV) === null, 'aging: no skater curve for goalies');
 }
 
 // ---- Start Here tour: every link is a page in the menu

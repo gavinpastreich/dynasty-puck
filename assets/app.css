@@ -768,3 +768,11 @@ nav.side .navi .fav.on { color: var(--accent); }
 .dvr-r { position: absolute; top: 0; bottom: 0; border-radius: 6px; background: color-mix(in srgb, var(--link) 45%, transparent); }
 .dvr-m { position: absolute; top: -3px; width: 3px; height: 18px; margin-left: -1px; background: var(--accent); border-radius: 2px; }
 .dvr-l { display: flex; justify-content: space-between; gap: 8px; }
+
+/* Ice Time lists */
+.uslist li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.uslist li:last-child { border-bottom: 0; }
+.uslist li.mine { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.uslist .us-o { max-width: 9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.uslist .us-v { white-space: nowrap; text-align: right; }
+@media (max-width: 520px) { .uslist .us-o { display: none; } }

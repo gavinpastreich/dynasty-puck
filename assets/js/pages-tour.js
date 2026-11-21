@@ -39,6 +39,8 @@
     ['The long game', 'Dynasty means next season matters too.', [
       ['cap', '💰', 'Contracts & Cap', 'Every contract, cap space by season (traded cap and IR relief included) and dead cap.'],
       ['offseason', '📅', 'Offseason Planner', 'Your roster season by season: ELC choices, RFA prices, who to keep and the cap that leaves.'],
+      ['aging', '📉', 'Aging Curves', 'When players peak in each of our categories and how fast they decline, from four NHL seasons.'],
+      ['usage', '🕒', 'Ice Time', 'Who is getting more minutes and power-play time than last season and over the last two weeks.'],
       ['breakout', '🚀', 'Breakout Watch', 'Young players with a bigger role, promotions and production above their projection.'],
       ['movers', '📈', 'Market Movers', 'Every player\'s dynasty value night by night: risers, fallers and why.'],
       ['windows', '📈', 'Contention Windows', 'Which teams are built for this season and which for later.']

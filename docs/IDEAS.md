@@ -34,7 +34,7 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
 - **Monte Carlo "what would it take to win the title?"** Search trades and FA adds that raise title odds the most per
   unit of dynasty value spent. (Partly there since 2026-09-26: win-now weights come from the title odds and the Team Hub
   lists buy targets; a full search that re-simulates the season per candidate is the next step.)
-- **Tank math.** Extra wins cost a bad team draft position; the win-now weight ignores that today. The sim already
+- ~~**Tank math.**~~ **Draft Race done 2026-11-21** (slot odds, pick holders, what a win costs). Extra wins cost a bad team draft position; the win-now weight ignores that today. The sim already
   gives each team's draft-slot distribution, so the value of losing could be priced for non-contenders.
 - **Injury-adjusted everything.** Feed Daily Faceoff injury status and line changes into weekly projections
   automatically (the plumbing exists; lineups can already auto-bench injured players).
@@ -47,3 +47,14 @@ draft grades, graduation delay from injuries/holdouts, nightly auto-refresh work
   allows automated reads; EliteProspects refused), guided tour for new GMs, prospect watchlist and call-up tracker,
   live auction-day mode, dead-cap ledger, multi-year cap retention.
 
+## Built 2026-11-21 (batch 14)
+Ice Time (TOI/PP per game, last 14 days, vs last season; in the Breakout signal), Aging Curves (four NHL seasons,
+league-relative, per category) with age drift and a player-page age outlook, development curves and an
+"ahead of the curve" list, Draft Race (slot odds, pick holders, what a win costs), team dynasty range, what wins
+each category, category correlation map.
+
+## Possible next
+- Injury return tracker: thin today (Daily Faceoff rarely gives a return date); revisit if a feed with dates appears.
+- Aging curves for goalies (SV% by age) once more seasons of goalie data are in the build.
+- A "punt planner": pick categories to give up and see the weekly win odds and the trade targets that follow
+  (the correlation map shows which categories travel together).

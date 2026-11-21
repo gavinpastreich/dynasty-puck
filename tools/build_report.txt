@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-21T02:20:49
+Dynasty Puck HQ build 2026-11-21T04:24:21
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -84,7 +84,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-21T02:20:50+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
+Fantrax sync (2026-11-21T04:24:23+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1297 players (620 rostered)
 NHL id match: {'index': 1178, 'search': 116, None: 3}; unmatched 3 (rostered: 0)
@@ -177,5 +177,6 @@ Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 
   ~ 2026 draft: dropped a wrong name match: Kent Sauer (#136) matched NHL id 8467413, born 1979-05-10, drafted 1998
   ~ 2026 draft: dropped a wrong name match: Ryan Brown (#155) matched NHL id 8459531, born 1974-09-19, drafted 1993
   ~ scouted pre-draft but not drafted / name mismatch: ['ripa zajic', 'braidy wassilyn', 'jean cristoph lemieux', 'viktor fyodorov', 'landon amrhein', 'maxim isaksson', 'casper juustovaara karlsson', 'parker vaughan', 'alexey vlasov', 'ossi tukio', 'callum croskery', 'niko tournas', 'dayne beuker', 'axel brongel larsson', 'layne gallacher', 'cameron chartrand']
-wrote data/league.js (1.94 MB, 1297 players)
+wrote data/league.js (1.97 MB, 1297 players)
 wrote data/cal/*.ics (14 team feeds + league feed)
+Aging curves: 757 skaters, 1802 season pairs

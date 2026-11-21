@@ -506,5 +506,37 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Dynasty floor/ceiling: `E.dvRange(p)` in engine.js ({lo, hi, pNhl}, cached per engine version) via `scenarioWar`
     and the shared `valueYears` loop (dynastyOf uses the same loop; values unchanged). Player page `.dvr`, Trade Value
     Chart "Floor – ceiling" column, My Page widget `upside`.
+  - Development curve (pages-devcurve.js): `DP.devCurve(p)` / `DP.devCurveCard(p)` on player pages (skaters <= 25).
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().
+  - Ice time (pages-usage.js): the build writes `p.ice` = [TOI/gp, PP/gp, last season TOI/gp, PP/gp, GP] (minutes;
+    last season only with 10+ GP) in `season_to_date()` and `p.i14` = [TOI/gp, PP/gp] in `recent_form()`, from the
+    NHL "timeonice" report that `skater_rows()` already reads. `DP.iceOf(p)`, `DP.iceLine(p)` (player page),
+    `DP.usageData()`, `DP.mmss(min)`, page `usage`, My Page widget `ice`, Hot & Cold "TOI" column. Breakout Watch adds
+    0.75 x clip(ΔTOI vs last season / 2, -1, 1) (`DP.BREAKOUT.w.ice`).
+  - Aging curves (pages-aging.js): `write_aging(sk, bios)` in build_data.py -> data/aging.js (lazy, `DP.loadAging`):
+    per position and age, the GP-weighted sums of league-relative per-game rates in season 1 and season 2 for each key
+    in `AGING_KEYS`. `DP.agingCurves(A)` smooths the log ratios (1-2-1 x pairs, ages with 8+ pairs, longest run of
+    consecutive ages), chains them and scales the peak to 1; `DP.agingNext(p, CV)` = the ratio at floor(age). The
+    dynasty values still use E.AGE (shown dashed for comparison).
+  - Ahead of the curve: `DP.devLeaders()` (pages-devcurve.js), second table on Breakout Watch (`#bo-dev`).
+  - Guide PDF: tools/guide/shoot.js has a `pick` option (a JS expression run on the page that returns a player id)
+    and `layout` (a My Page layout put in localStorage before the page loads).
+  - Draft Race (pages-draftrace.js): `DP.draftRaceData(sim)` (rows by expected slot from the base sim's `r.slot`,
+    `holders` = every 2027 pick valued for its current owner), `DP.slotPickValue(slotOdds, round)` (= E.pickValue for
+    2027 picks), `DP.winCost(t, n)` (next matchup forced as a win and as a loss, seed 9091, 1,000 seasons each).
+    My Page widget `draftrace`.
+  - Team dynasty range (pages-teamrange.js): `DP.teamRange(t)` ({v, lo, hi, top}) and `DP.teamRangeCard(me)` on
+    Contention Windows; players independent, separate downside/upside spreads from `E.dvRange`.
+  - Category correlation map (pages-catmap.js): `DP.catCorr(pos)` (Pearson on projected per-game rates, top 12 F / 6 D
+    per team by WAR), `DP.catCorrCard(pos)` on Category Insights (`?ccpos=D`), `DP.pearson(x, y)`.
+  - Player page age outlook: `DP.fillAgeOutlook(root)` (pages-aging.js) fills `.pc-ageout[data-ageout]` once
+    data/aging.js loads (player page and card).
+  - Menu: group "Models & Sims" (was Simulators) holds Aging Curves; unique icons (🥇 Leaderboards, 🪟 Contention
+    Windows, 🎁 Awards, 👋 Start Here); every page heading carries its menu icon.
+  - Age drift (pages-agedrift.js): `DP.ageDrift(CV)` / `DP.ageDriftCard(CV, me)` on Aging Curves: projected totals of
+    each roster with every skater a year older (DP.agingNext ratios), per category.
+  - Compare: dynasty floor/ceiling and ice-time rows.
+  - What wins each category (pages-thresholds.js): `DP.catThresholds()` (percentiles of the 7-day-scaled team-week
+    totals, `.team(t)` = a team's average and the share of team-weeks it beats), `DP.catThresholdCard(me)` on
+    Category Insights, `DP.pctile(sorted, q)`.
