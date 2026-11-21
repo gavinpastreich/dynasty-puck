@@ -78,5 +78,13 @@ ok(FX.diff_moves({"rosters": {}, "picks": []}, {"rosters": {}, "picks": [], "cap
 ok(pairs(FX.diff_moves({"rosters": {}, "picks": [], "caps": base}, {"rosters": {}, "picks": [], "caps": caps(A=-4, B=4)}, "d")) ==
    [("A", "B", 4_000_000)], "diff_moves includes cap moves")
 
+# ADP: draft positions under the cutoff only (from 280 up = rarely or never drafted), ids kept as Fantrax gives them
+rows = [{"id": "02f9l", "ADP": 1.6}, {"id": "04lc0", "ADP": 13.8}, {"id": "x1", "ADP": 290.5}, {"id": "x2", "ADP": 10000.0},
+        {"id": "x3", "ADP": None}, {"id": "x4", "ADP": "12"}, {"id": "", "ADP": 5}, {"id": "x5", "ADP": True}, {"id": "x6", "ADP": 279.994}]
+m = FX.adp_map(rows)
+ok(m == {"02f9l": 1.6, "04lc0": 13.8, "x6": 279.99}, f"adp_map keeps real draft positions only ({m})")
+ok(FX.adp_map(None) == {} and FX.adp_map([]) == {}, "adp_map: nothing in, nothing out")
+ok(FX.adp_map(rows, max_adp=10) == {"02f9l": 1.6}, "adp_map: cutoff")
+
 print(f"{n - fails}/{n} checks passed")
 sys.exit(1 if fails else 0)

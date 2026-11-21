@@ -36,6 +36,19 @@ def _fetch(ep):
         return json.loads(r.read().decode("utf-8"))
 
 
+ADP_MAX = 280  # Fantrax ADP from here up bunches at the end of drafts (rarely or never picked): not a draft position
+
+
+def adp_map(rows, max_adp=ADP_MAX):
+    """getAdp?sport=NHL rows -> {fantrax id: ADP} for players drafted on average before pick max_adp."""
+    out = {}
+    for r in rows or []:
+        fid, a = r.get("id"), r.get("ADP")
+        if fid and isinstance(a, (int, float)) and not isinstance(a, bool) and 0 < a < max_adp:
+            out[fid] = round(float(a), 2)
+    return out
+
+
 def _load(path, default):
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:

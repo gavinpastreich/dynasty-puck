@@ -244,6 +244,22 @@ def load_fantrax():
     return players
 
 
+def apply_adp(players, offline=False):
+    """Fantrax ADP (average draft position across Fantrax NHL drafts; public API getAdp) -> p['adp'] for players
+    drafted on average before pick FX.ADP_MAX. A market signal next to our values, not part of any model."""
+    rows = None if offline else API.get(FX.BASE + "getAdp?sport=NHL", "fantrax_adp", max_age_days=1)
+    if not rows:
+        log("Fantrax ADP: none" + (" (offline)" if offline else ""))
+        return
+    m, n = FX.adp_map(rows), 0
+    for fid, a in m.items():
+        p = players.get(f"*{fid}*")
+        if p is not None:
+            p["adp"] = a
+            n += 1
+    log(f"Fantrax ADP: {n} players drafted on average before pick {FX.ADP_MAX} (of {len(rows)} listed)")
+
+
 def apply_fantrax(players, snap):
     """Live Fantrax rosters override the CSV exports' owner / contract / salary, and add each player's lineup slot."""
     if not snap:
@@ -1260,6 +1276,7 @@ def main():
     players = load_fantrax()
     fx_snap, fx_moves = FX.sync(offline="--no-fantrax" in sys.argv, log=log)
     apply_fantrax(players, fx_snap)
+    apply_adp(players, offline="--no-fantrax" in sys.argv)
     sheet, act27, hist26 = load_contracts()
     weeks, h2h = load_h2h()
     log(f"Fantrax: {len(players)} players; contract sheet: {len(sheet)} rows; H2H: {len(weeks)} periods, {len(h2h)} games")
@@ -1821,7 +1838,7 @@ def write_league(players, weeks, h2h, sched, tstr, sheet, act27, hist26, beta_co
     for p in sorted(players.values(), key=lambda p: (p["gm"] is None, -(p["fxp"][0] or 0), p["n"])):
         o = {k: p[k] for k in ("id", "n", "t", "pos", "gm", "ct", "sal", "fxage", "s25", "p26", "fx", "fxp", "cgp") if k in p}
         for k in ("nhl", "fd", "wv", "rk", "dob", "sh", "ht", "wt", "nat", "hs", "nt", "slug", "dr", "car", "h", "tkc",
-                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew", "ytd", "pre", "l14", "ice", "i14"):
+                  "c", "act27", "cgps", "dep", "inj", "fs", "fxnew", "ytd", "pre", "l14", "ice", "i14", "adp"):
             if p.get(k) not in (None, 0, [], ""):
                 o[k] = p[k]
         o["s25"] = [round(x, 3) for x in o["s25"]]

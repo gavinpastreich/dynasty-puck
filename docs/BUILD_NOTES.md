@@ -550,6 +550,11 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`. `DP.puntSwaps(team, keys, n)`: swap
     ideas (give one of your six biggest punted-category producers, get a player within the Trade Finder's p.DV band;
     g = your WAR gain without the punts, h = their full-WAR gain, score = min(g, h) + 0.25(g + h), two per player).
+  - Market Check (pages-market.js, route `adp`): the build's `apply_adp()` reads Fantrax `getAdp?sport=NHL` (cached a day
+    as tools/cache/fantrax_adp.json) through `FX.adp_map()` -> `p.adp` for ADP < `FX.ADP_MAX` (280; above that is
+    the undrafted bunch). `DP.marketData()` ranks the drafted pool by ADP (aR) and by p.WAR (wR), gap = aR - wR, and the
+    categories where p.war[k] is furthest from the pool mean in SDs (skaters / goalies apart). Players out now are
+    left out of the two lists (their projection is cut for missed games). `DP.adpLine(p)` on the player page.
   - Season Simulator (pages-sims.js) opens on tonight's run (`E.baseSim()`, n 1500, default settings: instant when
     data/sim.js is current, and the same odds as every other page); "Run again" or any other setting draws a fresh sim.
   - Ice Time per 60 (pages-usage.js): `DP.per60(p)` = {p60, g60, sog60, phys60} from p.ytd and p.ice[0] (10+ GP);

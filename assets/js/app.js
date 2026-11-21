@@ -10,7 +10,7 @@
   var NAV = [
     ['Overview', [['home', '🏠', 'Dashboard'], ['mypage', '🛠️', 'My Page'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['weekly', '🗞️', 'The Weekly'], ['standings', '📊', 'Standings'], ['playoffs', '🏆', 'Playoff Picture']]],
     ['Players', [['players', '📋', 'Players'], ['rater', '⭐', 'Player Rater'], ['breakout', '🚀', 'Breakout Watch'], ['fa', '🛒', 'Free Agents'], ['pickup', '📥', 'Pickup Planner'], ['form', '🔥', 'Hot & Cold'], ['movers', '📈', 'Market Movers'], ['luck', '🎰', 'Buy Low / Sell High'], ['compare', '⚖️', 'Compare'], ['leaders', '🥇', 'Leaderboards'], ['injuries', '🩹', 'Injuries & Depth'], ['lines', '🔀', 'Line & PP Changes'], ['usage', '🕒', 'Ice Time']]],
-    ['Trades', [['deadline', '⏳', 'Trade Deadline'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['values', '💎', 'Trade Value Chart'], ['history', '📜', 'Trade History'], ['moves', '🧾', 'Transactions'], ['picks', '🎟️', 'Draft Picks']]],
+    ['Trades', [['deadline', '⏳', 'Trade Deadline'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['values', '💎', 'Trade Value Chart'], ['adp', '🏷️', 'Market Check'], ['history', '📜', 'Trade History'], ['moves', '🧾', 'Transactions'], ['picks', '🎟️', 'Draft Picks']]],
     ['Models & Sims', [['scout', '🔭', 'Opponent Scouting'], ['matchup', '🥊', 'Weekly Matchup'], ['outlook', '🌡️', 'Category Outlook'], ['season', '🎲', 'Season Sim'], ['scenarios', '🔮', 'Scenario Builder'], ['path', '🗺️', 'Title Path'], ['punt', '🎯', 'Punt Planner'], ['scorecard', '🧮', 'Model Scorecard'], ['aging', '📉', 'Aging Curves'], ['signing', '✍️', 'Signing Sim']]],
     ['League', [['rankings', '🧭', 'Rankings Hub'], ['feed', '📣', 'League Feed'], ['power', '⚡', 'Power Rankings'], ['elo', '📐', 'Elo & Luck'], ['rivals', '⚔️', 'Rivalries'], ['tape', '📏', 'Tale of the Tape'], ['records', '📚', 'Record Book'], ['grades', '📝', 'GM Report Cards'], ['trophies', '🏅', 'Trophy Case'], ['cats', '🧩', 'Category Insights'], ['windows', '🪟', 'Contention Windows'], ['awards', '🎁', 'Awards & Wrapped']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', 'Offseason Planner'], ['auction', '🔨', 'Auction War Room']]],
@@ -23,7 +23,7 @@
   var FAMS = [
     [['weekly', 'Last week'], ['live', 'This week (live)'], ['preview', 'Next week'], ['scout', 'Scout your opponent'], ['matchup', 'Matchup sim'], ['outlook', 'Category outlook'], ['scorecard', 'How good are the odds?']],
     [['players', 'Players'], ['rater', 'Player Rater'], ['breakout', 'Breakout Watch'], ['fa', 'Free Agents'], ['pickup', 'Pickup Planner'], ['form', 'Hot & Cold'], ['lines', 'Line Changes'], ['usage', 'Ice Time'], ['movers', 'Market Movers'], ['luck', 'Buy Low / Sell High'], ['compare', 'Compare'], ['leaders', 'Leaderboards']],
-    [['deadline', 'Deadline'], ['trade', 'Trade Machine'], ['finder', 'Trade Finder'], ['values', 'Value Chart'], ['history', 'Trade History'], ['moves', 'Transactions'], ['picks', 'Draft Picks']],
+    [['deadline', 'Deadline'], ['trade', 'Trade Machine'], ['finder', 'Trade Finder'], ['values', 'Value Chart'], ['adp', 'Market Check'], ['history', 'Trade History'], ['moves', 'Transactions'], ['picks', 'Draft Picks']],
     [['standings', 'Standings'], ['rankings', 'Rankings Hub'], ['power', 'Power Rankings'], ['elo', 'Elo & Luck'], ['playoffs', 'Playoff Picture'], ['rivals', 'Rivalries'], ['tape', 'Tale of the Tape'], ['records', 'Record Book'], ['grades', 'GM Report Cards'], ['trophies', 'Trophy Case'], ['season', 'Season Sim'], ['cats', 'Category Insights'], ['windows', 'Contention Windows'], ['awards', 'Awards & Wrapped']],
     [['cap', 'Contracts & Cap'], ['offseason', 'Offseason Planner'], ['auction', 'Auction War Room'], ['signing', 'Signing Sim']],
     [['radar', 'Prospect Radar'], ['prospects', 'Prospects & MNR'], ['wjc', 'World Juniors'], ['draft', 'Draft Center'], ['mock', 'Mock Draft'], ['draftrace', 'Draft Race']]
@@ -178,7 +178,7 @@
 
   // ------------------------------------------------------------ global search: players, teams and pages
   // extra words people type for a page that aren't in its name
-  var PAGE_WORDS = { live: 'score scoreboard games tonight', fa: 'waivers pickups add', cap: 'salary salaries payroll space dead penalties', offseason: 'rfa ufa elc re-sign extension roster planner future contracts expiring 2027 next season',
+  var PAGE_WORDS = { adp: 'adp average draft position fantrax market drafters undervalued overvalued consensus', live: 'score scoreboard games tonight', fa: 'waivers pickups add', cap: 'salary salaries payroll space dead penalties', offseason: 'rfa ufa elc re-sign extension roster planner future contracts expiring 2027 next season',
     auction: 'bid ufa budget', trade: 'simulator analyzer three team cap space', finder: 'ideas partners targets', history: 'trades log roster moves', picks: 'draft picks', cats: 'categories needs strengths partners',
     radar: 'prospects news risers fallers rankings', prospects: 'mnr graduation minors pipeline', draft: 'rookie draft board', mock: 'mock draft', matchup: 'h2h weekly lineup odds', season: 'playoff odds simulation',
     standings: 'record seeds playoffs', values: 'trade value chart rankings', windows: 'contender rebuild title odds', preview: 'matchups lineup watch', schedule: 'streaming games off-nights playoffs',

@@ -5,8 +5,8 @@ lineup-usage table, trade balancer, salary-vs-WAR bargain chart, league-implied 
 draft grades, graduation delay from injuries/holdouts, nightly auto-refresh workflow.
 
 ## Next up (high value, feasible)
-1. ~~Fantrax auto-sync~~ **done 2026-09-26** (nightly + live). Next on top of it: Fantrax ADP (`getAdp`) as a
-   market signal next to our values, and a transactions timeline with dead-cap bookkeeping from the moves log.
+1. ~~Fantrax auto-sync~~ **done 2026-09-26** (nightly + live). ~~Fantrax ADP as a market signal~~ **Market Check done
+   2026-11-21.** Still open: a transactions timeline with dead-cap bookkeeping from the moves log.
 2. ~~Live weekly scoreboard~~ **done 2026-09-26.** During the season, pull NHL game logs for every starter each night and show the
    current category score of every matchup plus the projected final (the rest of the week simulated).
 3. ~~Rest-of-season projections~~ **done 2026-09-26.** Blend each player's 2026-27 stats-to-date with the preseason projection

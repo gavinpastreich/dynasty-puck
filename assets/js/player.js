@@ -102,6 +102,7 @@
     h += '</tbody></table></div>';
     if (DP.formLine) h += DP.formLine(p);
     if (DP.iceLine) h += DP.iceLine(p);
+    if (DP.adpLine) h += DP.adpLine(p);
     if (!p.G && p.age) h += '<div class="small pc-ageout" data-ageout="' + esc(p.id) + '"></div>';
     h += DP.nextGames ? DP.nextGames(p) : '';
     h += '<div class="pc-trend" data-trend="' + esc(p.id) + '"></div>';

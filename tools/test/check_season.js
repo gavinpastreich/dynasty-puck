@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js', 'assets/js/pages-agedrift.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-draftrace.js', 'assets/js/pages-teamrange.js', 'assets/js/pages-catmap.js', 'assets/js/pages-thresholds.js', 'assets/js/pages-punt.js', 'assets/js/pages-mywidgets2.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js', 'assets/js/pages-agedrift.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-draftrace.js', 'assets/js/pages-teamrange.js', 'assets/js/pages-catmap.js', 'assets/js/pages-thresholds.js', 'assets/js/pages-punt.js', 'assets/js/pages-market.js', 'assets/js/pages-mywidgets2.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -763,6 +763,23 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
   });
   ok(nSw > 0, `punt swaps: ideas found across the league (${nSw})`);
   ok(DP.puntSwaps(E.teams[0], [], 8).length === 0, 'punt swaps: nothing without a punt');
+}
+
+// ---- Market Check: Fantrax ADP rank vs our WAR rank within the drafted players
+{
+  const D = DP.marketData(), pool = E.P.filter((p) => p.adp > 0 && p.war && p.r);
+  ok(D.n === pool.length && D.rows.length === pool.length, `market: one row per drafted player (${D.n})`);
+  if (D.n) {
+    ok(pool.every((p) => p.adp > 0 && p.adp < 280), 'market: ADP only under the cutoff');
+    const ranks = (k) => D.rows.map((r) => r[k]).sort((a, b) => a - b).every((x, i) => x === i + 1);
+    ok(ranks('aR') && ranks('wR'), 'market: both ranks run 1..n');
+    ok(D.rows.every((r) => r.gap === r.aR - r.wR && D.rows.filter((x) => x.adp < r.adp).length + 1 <= r.aR && D.rows.filter((x) => x.p.WAR > r.p.WAR).length + 1 <= r.wR), 'market: ranks and gap');
+    ok(D.rows.every((r) => r.up.length <= 2 && r.dn.length <= 2 && r.up.every((x) => x.z > 0.5) && r.dn.every((x) => x.z < -0.5) && r.up.concat(r.dn).every((x) => (E.CATS.find((c) => c.k === x.k).grp === 'G') === !!r.p.G)), 'market: "stands out in" = own-group categories past half a standard deviation');
+    const mcd = D.rows.find((r) => r.p.n === 'Connor McDavid'); if (mcd) ok(mcd.aR <= 5 && mcd.wR <= 25, `market: McDavid Fantrax #${mcd.aR}, ours #${mcd.wR}`);
+    ok(DP.marketData() === DP.marketData(), 'market: cached per engine version');
+    const nOutIn = D.rows.filter((r) => r.p.inj && /OUT|IR|Injured/i.test(r.p.inj[0])).length; ok(nOutIn >= 0, `market: ${nOutIn} drafted players out now (kept in the table, left out of the lists)`);
+    const r0 = D.rows[0]; ok(DP.adpLine(r0.p).indexOf('#' + r0.aR + ' of ' + D.n) > 0 && DP.adpLine({}) === '', 'market: player-page line');
+  }
 }
 
 // ---- this week's widgets: registered, and the synchronous ones render the page's own numbers
