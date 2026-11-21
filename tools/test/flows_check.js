@@ -341,6 +341,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('.trg li').length === DP.E.teams.length && document.querySelectorAll('.trg-m').length === DP.E.teams.length), 'contention windows: dynasty range for every team');
   await go('punt?p=Hit,PIM', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('#pp-t tbody tr').length > 10 && /Chance to win the week/.test(document.querySelector('#main').innerText) && document.querySelectorAll('.punt-pick .btn.on').length === 2), 'punt planner: re-valued players and the weekly cost');
+  ok(await page.evaluate(() => { const d = document.createElement('div'); d.className = 'lz'; d.textContent = 'Loading the test…'; document.querySelector('#main').prepend(d); DP.stuckError('test error'); return /Something went wrong/.test(d.innerText) && !!d.querySelector('button'); }), 'a page stuck on "Loading" after an error shows a message and a reload button');
+  ok(await page.evaluate(() => /Rank change/.test(document.querySelector('#pp-t').innerText) && [...document.querySelectorAll('.uslist a[href*="finder"]')].length > 0), 'punt planner: links to the Trade Finder');
   await go('draftrace', 5000);
   ok(await page.evaluate(() => document.querySelectorAll('.dr-t tbody tr').length === DP.E.teams.length && document.querySelectorAll('.dr-heat i').length === DP.E.teams.length * DP.E.teams.length && document.querySelectorAll('.drh li').length > 5), 'draft race: table, slot odds and holders');
   ok(await page.evaluate(() => /If they win/.test(document.querySelector('#dr-wc').innerText) || /No regular-season/.test(document.querySelector('#dr-wc').innerText)), 'draft race: what a win costs');

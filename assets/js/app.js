@@ -160,6 +160,20 @@
     main.insertAdjacentHTML('beforeend', '<div class="foot">Dynasty Puck HQ · ' + esc(DP.meta.season) + ' · data updated ' + esc(U.builtText()) + ' · Fantrax league data (' + (DP.live && DP.live.state === 'ok' ? 'live' : 'nightly') + ') + contract sheet + NHL public APIs · projections are model estimates, not facts · <a href="#/rules">methods</a> · <a href="#/data">data</a></div>');
   }
   DP.render = render;
+  // an error in a page's delayed work (a simulation, lazily loaded data) would leave its "Loading…" text up for good:
+  // replace it with a message and a reload button instead
+  function stuckError(msg) {
+    try {
+      var box = U.qs('#main .lz');
+      if (!box || box.dataset.err || !/(Loading|Simulating|Projecting|Crunching|Counting|Reading)/i.test(box.textContent || '') || box.textContent.length > 200) return;
+      box.dataset.err = '1';
+      box.innerHTML = '<div class="callout bad"><b>Something went wrong on this page.</b> <span class="small">' + esc(msg || 'Unknown error') + '</span> <button class="btn sm" type="button">Reload</button></div>';
+      U.qs('button', box).addEventListener('click', function () { location.reload(); });
+    } catch (e) { /* nothing more to do */ }
+  }
+  DP.stuckError = stuckError;
+  window.addEventListener('error', function (ev) { stuckError(ev && ev.message); });
+  window.addEventListener('unhandledrejection', function (ev) { stuckError(ev && ev.reason && ev.reason.message); });
   DP.go = function (route, arg, q) { location.hash = U.hash(route, arg, q); };
 
   // ------------------------------------------------------------ global search: players, teams and pages
