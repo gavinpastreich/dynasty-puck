@@ -817,12 +817,13 @@ if (DP.comps) {
 
 // ---- this week's widgets: registered, and the synchronous ones render the page's own numbers
 {
-  ok(['breakout', 'elo', 'rater', 'tonight', 'agedrift', 'wins', 'range', 'underused', 'market'].every((k) => DP.WIDGETS[k] && DP.WIDGETS[k].render), 'my page: this week\'s widgets are registered');
+  ok(['breakout', 'elo', 'rater', 'tonight', 'agedrift', 'wins', 'range', 'underused', 'market', 'comps'].every((k) => DP.WIDGETS[k] && DP.WIDGETS[k].render), 'my page: this week\'s widgets are registered');
   const t = E.teams[0], box = (k, o) => { const b = {}; DP.WIDGETS[k].render(b, o || {}, t); return b.innerHTML || ''; };
   const D = DP.eloData(); ok(!D.weeks.length || box('elo', { n: 5 }).indexOf(String(Math.round(D.rows[0].r))) >= 0, 'my page: Elo widget shows the top rating');
   const R = DP.teamRange(t); ok(box('range').indexOf(U.fmt(R.v, 0)) >= 0 && box('range').indexOf(U.fmt(R.hi, 0)) >= 0, 'my page: dynasty range widget shows the floor, value and ceiling');
   const th = box('wins'); ok(/median/.test(th) && (th.match(/<li/g) || []).length === E.NC, 'my page: what-wins widget lists all 15 categories');
   const rt = box('rater', { team: '*', n: 5 }); ok((rt.match(/<li/g) || []).length === 5, 'my page: top producers widget');
+  if (DP.comps) { const cb = box('comps', { n: 4 }); ok((cb.match(/<li/g) || []).length > 0 && /▲\d+/.test(cb), 'my page: history-says widget'); }
   const uu = DP.underused(), ub = box('underused', { team: '*', n: 4 }); ok((ub.match(/<li/g) || []).length === Math.min(4, uu.length) && (!uu.length || ub.indexOf(U.fmt(uu[0].s.p60, 2)) >= 0), 'my page: underused scorers widget');
   const MD = DP.marketData(), mb = box('market', { team: '*', n: 4 }); ok(MD.n ? (mb.match(/<li/g) || []).length > 0 : /nightly update/.test(mb), 'my page: market check widget');
 }

@@ -557,7 +557,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Historical comps: `write_comps(players, sk, bios, gk)` (build) -> data/comps.js (lazy, `DP.loadComps`):
     {base, seasons, n, names: {nhlId: name}, by: {playerId: {age, pts, gp, c: [[nhl, season, age, pts/gp,
     next, next2, team, dist]]}}}; next/next2 = points per game, -1 = under 20 GP or out, null = not played yet.
-    `DP.compsCard(p, el)` / `DP.compSummary(c)` in pages-comps.js; on player pages after "Plays like".
+    `DP.compsCard(p, el)` / `DP.compSummary(c)` in pages-comps.js; on player pages after "Plays like". Goalies
+    (c.g): comps by save % and wins a game (league-relative) and workload, values = save % minus the league's.
+    Also used by Breakout Watch (History column), Aging Curves (Comps fell, your veterans) and the My Page widget
+    `comps` (History says).
   - Linemates (pages-lines.js): `DP.linemates(p)` = skaters with the same NHL team and p.dep.ln (line / pair) and the
     same p.dep.pp unit from the Daily Faceoff depth chart; `DP.mateLine(p)` on the player page.
   - Market Check (pages-market.js, route `adp`): the build's `apply_adp()` reads Fantrax `getAdp?sport=NHL` (cached a day

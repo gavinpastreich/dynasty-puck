@@ -375,6 +375,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('aging', 3500);
   ok(await page.evaluate(() => document.querySelectorAll('.olk tbody tr').length >= 12 && document.querySelectorAll('.lz svg').length >= 2 && /goals peak at/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: findings, charts and heatmap');
   ok(await page.evaluate(() => document.querySelectorAll('td.adr').length === DP.E.teams.length * (DP.AGEDRIFT_MAP.length + 1)), 'aging curves: age drift for every team');
+  ok(await page.evaluate(() => !DP.comps || !document.querySelector('.lz .card.flush h3') || ![...document.querySelectorAll('.lz h3')].some((h) => /your veterans/.test(h.textContent)) || [...document.querySelectorAll('.lz th')].some((t) => /Comps fell/.test(t.innerText))), 'aging curves: comps column for your veterans');
   await page.click('[data-pos="D"]'); await page.waitForTimeout(2000);
   ok(await page.evaluate(() => /pos=D/.test(location.hash) && /Defensemen/.test(document.querySelector('.lz .callout').innerText)), 'aging curves: defense');
   await page.click('[data-pos="G"]'); await page.waitForTimeout(2000);

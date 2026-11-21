@@ -87,6 +87,8 @@
       });
     });
   };
+  // of a player's historical comps (data/comps.js), how many fell off the next season: "3/8"
+  var compsFell = function (CP, p) { var c = CP && CP.by && CP.by[p.id], S = c && DP.compSummary ? DP.compSummary(c) : null; if (!S || !S.known) return '<span class="faint">–</span>'; var f = S.down + S.out; return '<span class="' + (f / S.known >= 0.5 ? 'bad' : f / S.known <= 0.2 ? 'good' : 'muted') + '">' + f + '/' + S.known + '</span>'; };
   // save % ratio -> change in saves per 1,000 shots at a .905 save %
   var svCell = function (r) { if (r === undefined || r === null) return '<span class="faint">–</span>'; var d = (r - 1) * 905; return '<span class="' + (d >= 2 ? 'good' : d <= -2 ? 'bad' : 'muted') + '">' + (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + '</span>'; };
   var pctCell = function (r) { if (r === undefined || r === null) return '<span class="faint">–</span>'; var d = (r - 1) * 100; return '<span class="' + (d >= 3 ? 'good' : d <= -3 ? 'bad' : 'muted') + '">' + (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(0) + '%</span>'; };
@@ -99,7 +101,7 @@
       h += '<div class="controls"><div class="seg" role="group" aria-label="Position"><button data-pos="F" class="' + (pos === 'F' ? 'on' : '') + '">Forwards</button><button data-pos="D" class="' + (pos === 'D' ? 'on' : '') + '">Defense</button><button data-pos="G" class="' + (pos === 'G' ? 'on' : '') + '">Goalies</button></div></div>';
       el.innerHTML = h + '<div class="lz"><p class="muted small">Loading ten seasons of NHL data…</p></div>';
       U.qsa('[data-pos]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('aging', null, { pos: b.dataset.pos === 'F' ? undefined : b.dataset.pos }); }); });
-      DP.loadAging(function (A) {
+      DP.loadAging(function (A) { (DP.loadComps || function (cb) { cb(null); })(function (CP) {
         var box = U.qs('.lz', el); if (!box) return;
         var CV = DP.agingCurves(A);
         if (!CV || !CV[pos] || !CV[pos].ages.length) { box.innerHTML = '<div class="callout">The aging data arrives with the next nightly update.</div>'; return; }
@@ -131,13 +133,13 @@
           var vets = DP.E.rosters[me].filter(function (p) { return !!p.G === G && p.age >= 27; }).map(function (p) { return { p: p, nx: DP.agingNext(p, CV) }; }).filter(function (x) { return x.nx; }).sort(function (a, b) { return b.p.DV - a.p.DV; });
           if (vets.length) {
             var VK = G ? ['sv', 'w'] : ['g', 'a', 'sog', 'hit', 'blk', 'pim', 'toi'];
-            hh += '<div class="card flush" style="margin-top:14px"><h3 style="padding:12px 14px 0">' + esc(U.teamName(me)) + ': your veterans next season</h3><div class="hint" style="padding:0 14px">The average change from this age to the next for a player of his position, per game (data above), next to the change the dynasty values assume. A typical player, not a projection for him.</div><div class="tbl-wrap"><table class="t small"><thead><tr><th>Player</th><th class="num">Age</th>' + VK.map(function (k) { return '<th class="num">' + (k === 'sv' ? 'Saves per 1,000 shots' : esc(LAB[k])) + '</th>'; }).join('') + '<th class="num">Model</th></tr></thead><tbody>' +
-              vets.map(function (x) { var sl = x.p.G ? 'G' : x.p.pos === 'D' ? 'D' : 'F', m = DP.E.ageMult(sl, x.nx.age + 1) / DP.E.ageMult(sl, x.nx.age); return '<tr><td>' + ui.pcell(x.p, { pos: 1 }) + '</td><td class="num">' + x.nx.age + '</td>' + VK.map(function (k) { return '<td class="num">' + (k === 'sv' ? svCell(x.nx.sv) : pctCell(x.nx[k])) + '</td>'; }).join('') + '<td class="num">' + pctCell(m) + '</td></tr>'; }).join('') + '</tbody></table></div></div>';
+            hh += '<div class="card flush" style="margin-top:14px"><h3 style="padding:12px 14px 0">' + esc(U.teamName(me)) + ': your veterans next season</h3><div class="hint" style="padding:0 14px">The average change from this age to the next for a player of his position, per game (data above), next to the change the dynasty values assume. A typical player, not a projection for him.</div><div class="tbl-wrap"><table class="t small"><thead><tr><th>Player</th><th class="num">Age</th>' + VK.map(function (k) { return '<th class="num">' + (k === 'sv' ? 'Saves per 1,000 shots' : esc(LAB[k])) + '</th>'; }).join('') + '<th class="num">Model</th><th class="num" title="Of his eight historical comps (similar seasons at his age, on his page): how many fell 20%+ in points per game (goalies: .005+ in save % against the league) or played under 20 games the next season">Comps fell</th></tr></thead><tbody>' +
+              vets.map(function (x) { var sl = x.p.G ? 'G' : x.p.pos === 'D' ? 'D' : 'F', m = DP.E.ageMult(sl, x.nx.age + 1) / DP.E.ageMult(sl, x.nx.age); return '<tr><td>' + ui.pcell(x.p, { pos: 1 }) + '</td><td class="num">' + x.nx.age + '</td>' + VK.map(function (k) { return '<td class="num">' + (k === 'sv' ? svCell(x.nx.sv) : pctCell(x.nx[k])) + '</td>'; }).join('') + '<td class="num">' + pctCell(m) + '</td><td class="num">' + compsFell(CP, x.p) + '</td></tr>'; }).join('') + '</tbody></table></div></div>';
           }
         }
         hh += '<p class="small muted">Method: ' + A.players + ' skaters' + (A.goalies ? ' and ' + A.goalies + ' goalies' : '') + ', seasons ' + esc(U.season(A.seasons[0])) + ' to ' + esc(U.season(A.seasons[A.seasons.length - 1])) + '. For every player with two straight seasons of ' + A.minGP + '+ games, his per-game rate in each category, relative to the league\'s that season (so league-wide changes don\'t look like aging), second season over first, weighted by the two seasons\' games; averaged by position and age on Dec 31; smoothed over neighbouring ages and chained into a curve (peak = 100; ages need ' + MIN_N + '+ pairs). Players who drop out of the NHL never give a second season, so the decline is if anything understated. STP for defensemen is a small sample. Corsi is left out (it can be negative). Goalies: save % and wins per game relative to the league\'s goalies (20+ games) that season; because a goalie keeps his job after a good year and then falls back, his first season is shrunk toward the league first (save % by shots faced, half signal at 3,000; wins by games, half at 40). Fewer goalies, so their curves are noisier. The dashed line is the age curve the dynasty values use (Rules &amp; Methods).</p>';
         box.innerHTML = hh;
-      });
+      }); });
     }
   };
 })();

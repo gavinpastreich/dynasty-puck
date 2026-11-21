@@ -30,6 +30,16 @@
       box.innerHTML = H.list(R.slice(0, o.n || 6).map(function (r) { return H.li(ui.plink(r.p) + ' <span class="faint small">' + (o.team === '*' ? esc(r.p.gm || 'FA') + ' · ' : '') + 'ADP #' + r.aR + ', ours #' + r.wR + '</span>', '<b class="' + (r.gap >= 30 ? 'good' : r.gap <= -30 ? 'bad' : 'muted') + '">' + (r.gap > 0 ? '+' : r.gap < 0 ? '−' : '') + Math.abs(r.gap) + '</b>'); }), o.team === '*' ? 'No gaps yet.' : 'None of your players is in the Fantrax drafted pool.');
     } });
 
+  reg('comps', { name: 'History says', ic: '📜', cat: 'players', team: 1, ns: [5, 8, 12], n: 6, desc: 'Your players whose historical comps (the most similar seasons at the same age since 2016-17) most often broke out or fell off the next season.', link: function (t) { return '#/team/' + encodeURIComponent(t || ''); },
+    render: function (box, o, t) {
+      if (!DP.loadComps || !DP.compSummary) { box.innerHTML = H.list([]); return; }
+      DP.loadComps(function (CP) {
+        var R = (DP.E.rosters[t] || []).map(function (p) { var c = CP && CP.by && CP.by[p.id], S = c ? DP.compSummary(c) : null; return S && S.known ? { p: p, S: S, v: (S.up - S.down - S.out) / S.known } : null; }).filter(Boolean)
+          .sort(function (a, b) { return Math.abs(b.v) - Math.abs(a.v); });
+        box.innerHTML = H.list(R.slice(0, o.n || 6).map(function (x) { return H.li(ui.plink(x.p) + ' <span class="faint small">' + Math.floor(x.p.age || 0) + 'y</span>', '<span class="good">▲' + x.S.up + '</span> <span class="bad">▼' + (x.S.down + x.S.out) + '</span> <span class="faint small">of ' + x.S.known + '</span>'); }), 'No comps for this roster yet.');
+      });
+    } });
+
   reg('elo', { name: 'Elo ratings', ic: '📐', cat: 'league', ns: [5, 8, 14], n: 8, desc: 'Every team rated from its weekly results alone (everyone started at 1,500).', link: function () { return '#/elo'; },
     render: function (box, o) {
       var D = DP.eloData ? DP.eloData() : null;
