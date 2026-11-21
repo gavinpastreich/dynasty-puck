@@ -311,7 +311,7 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   await go('team/ROO', 7000);
   ok(await page.evaluate(() => /Carried by/.test(document.querySelector('#t-carry').innerText) && document.querySelectorAll('#t-carry tbody tr').length === 14), 'team hub: category carriers');
   ok(await page.evaluate(() => !DP.values || !!document.querySelector('#t-troph .tro') || document.querySelector('#t-troph').hidden), 'team hub: trophy case line');
-  ok(await page.evaluate(() => !DP.simPre || DP.simPre.built !== DP.meta.built || DP.simPre.lw !== DP.E.lockWeek() || DP.E.version > 1 || !!(DP.E._bsim && DP.E._bsim.pre)), 'boot: the precomputed season simulation is used when it matches');
+  ok(await page.evaluate(() => !DP.simPre || DP.simPre.built !== DP.meta.built || DP.simPre.lw !== DP.E.lockWeek() || DP.simPre.nw !== DP.E.nowWeek() || DP.simPre.day !== new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(DP.E.now()) || DP.E.version > 1 || !!(DP.E._bsim && DP.E._bsim.pre)), 'boot: the precomputed season simulation is used when it matches');
   await go('elo', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('.pwlist li').length === DP.E.teams.length && !!document.querySelector('#elo-chart svg') && document.querySelectorAll('.luckbars').length === DP.E.teams.length), 'elo & luck: ratings, chart and luck table');
   await page.evaluate(() => { location.hash = '#/player/' + encodeURIComponent(DP.E.P.filter((p) => p.gm && p.ct === 'MNR').sort((a, b) => b.DV - a.DV)[0].id); }); await page.waitForTimeout(3000);
