@@ -818,3 +818,4 @@ td.adr { background: color-mix(in srgb, var(--c) calc(var(--a) * 45%), transpare
 .punt-cats { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .punt-cats .pc { display: inline-flex; flex-direction: column; align-items: center; min-width: 52px; padding: 4px 6px; border-radius: 8px; font-size: .78rem; background: color-mix(in srgb, var(--link) calc((var(--v) - 0.2) * 70%), var(--card2)); }
 .punt-cats .pc.pu { background: var(--line2); color: var(--muted); text-decoration: line-through; }
+#fa-rise .uslist .us-o { max-width: 22em; }

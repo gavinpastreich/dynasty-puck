@@ -18,7 +18,9 @@
   var RANK = { F1: 1, F2: 2, F3: 3, F4: 4, D1: 1, D2: 2, D3: 3, PP1: 1, PP2: 2 };
   var clip = function (x, a, b) { return Math.max(a, Math.min(b, x)); };
 
-  DP.breakoutData = function (L) {
+  // o.maxAge (default 25.99) and o.fa (free agents only): the Free Agents page uses the same signal for every age
+  DP.breakoutData = function (L, o) {
+    o = o || {}; var maxAge = o.maxAge || MAX_AGE;
     var E = DP.E, R = DP.raterData ? DP.raterData() : null; if (!R) return [];
     var net = {};
     if (L && L.events && DP.lineEvents && DP.lineNet) DP.lineNet(DP.lineEvents(L, 30).filter(function (e) { return e.p; })).forEach(function (e) {
@@ -26,7 +28,7 @@
       if (e.k === 'g' || !top) return;
       var o = net[e.p.id] || (net[e.p.id] = { v: 0, ev: [] }); o.v += up; o.ev.push(e);
     });
-    return R.rows.filter(function (r) { return r.kind === 'S' && r.p.age && r.p.age <= MAX_AGE && r.gp >= MIN_GP && r.vs !== null && r.vs !== undefined; }).map(function (r) {
+    return R.rows.filter(function (r) { return r.kind === 'S' && r.p.age && r.p.age <= maxAge && (!o.fa || !r.p.gm) && r.gp >= MIN_GP && r.vs !== null && r.vs !== undefined; }).map(function (r) {
       var p = r.p, dep = p.dep || {}, role = (dep.ln === 'F1' || dep.ln === 'F2' || dep.ln === 'D1' ? 1 : 0) + (dep.pp === 1 ? 1 : dep.pp === 2 ? 0.5 : 0);
       var f = DP.formOf ? DP.formOf(p) : null, form = f && f.pct !== null && f.pct !== undefined ? clip(f.pct, -1, 1) : 0, tr = net[p.id] ? clip(net[p.id].v, -2, 2) : 0, prod = clip(r.vs / 2, -2.5, 2.5);
       var io = DP.iceOf ? DP.iceOf(p) : null, ice = io && io.dS !== null ? clip(io.dS / 2, -1, 1) : 0;

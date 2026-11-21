@@ -53,8 +53,16 @@
         var s = DP.teamSummary()[me], order = E.CATS.map(function (c, i) { return i; }).sort(function (a, b) { return s.z[a] - s.z[b]; });
         h += '<div class="callout">Weakest categories for ' + esc(me) + ': ' + order.slice(0, 5).map(function (c) { return '<b>' + esc(E.CATS[c].l) + '</b> (' + U.ord(s.rank[c]) + ')'; }).join(', ') + '. The fit score already weights these by how often they swing your matchups.</div><div id="fa-ctx"></div>';
       }
-      h += '<div id="fa-t"></div>';
+      h += '<div id="fa-rise"></div><div id="fa-t"></div>';
       el.innerHTML = h;
+      // free agents on the rise: the Breakout Watch signal for every age (role, promotions, ice time, form, production)
+      if (DP.breakoutData && DP.loadDepthLog) DP.loadDepthLog(function (L) {
+        var box = U.qs('#fa-rise', el); if (!box) return;
+        var B = DP.breakoutData(L, { maxAge: 99, fa: true }).filter(function (x) { return x.score > 1; }).slice(0, 8);
+        if (!B.length) return;
+        box.innerHTML = '<div class="card" style="margin-bottom:14px"><h2>📈 Free agents on the rise</h2><div class="hint">The Breakout Watch signal for every age: producing above their projection, a bigger role on the depth chart, recent promotions, more ice time than last season and a hot two weeks. A reason to look closer, not a forecast.</div><ul class="list-plain uslist">' +
+          B.map(function (x) { var d = x.p.dep || {}, io = x.io; return '<li><span class="us-p">' + ui.pcell(x.p, { pos: 1 }) + '</span><span class="us-o small muted">' + esc([d.ln, d.pp ? 'PP' + d.pp : ''].filter(Boolean).join(' · ') || '–') + (io && io.dS !== null ? ' · ice ' + (io.dS >= 0 ? '+' : '−') + DP.mmss(Math.abs(io.dS)) : '') + '</span><span class="us-v num">signal <b>' + U.fmt(x.score, 1) + '</b></span></li>'; }).join('') + '</ul><p class="small"><a href="' + U.hash('breakout', null, { owner: 'fa' }) + '">Breakout Watch (25 and under) →</a></p></div>';
+      });
       if (me) DP.getSim(function () {
         var box = U.qs('#fa-ctx', el), c = E.contention()[me]; if (!box || !c) return;
         box.innerHTML = c.tier === 'contender' ? '<div class="callout good">' + DP.tierBadge(me) + ' ' + esc(me) + ' has ' + U.pct(c.champ, 1) + ' title odds: every 2026-27 category win here is worth ×' + U.fmt(c.k[0], 1) + ' the league average, so stream aggressively.</div>'

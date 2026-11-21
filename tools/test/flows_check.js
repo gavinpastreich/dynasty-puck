@@ -348,6 +348,8 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('.trg li').length === DP.E.teams.length && document.querySelectorAll('.trg-m').length === DP.E.teams.length), 'contention windows: dynasty range for every team');
   await go('home', 4000);
   ok(await page.evaluate(() => DP.E.nowWeek() === null || DP.E.nowWeek() < 0 || [...document.querySelectorAll('.yw-todo li')].some((li) => /^🌙\s*Today:/.test(li.innerText.trim())) || !document.querySelector('.yw-todo')), 'dashboard: who plays today');
+  await go('fa', 4000);
+  ok(await page.evaluate(() => document.querySelectorAll('#fa-rise .uslist li').length > 0), 'free agents: on the rise');
   await go('punt?p=Hit,PIM', 4000);
   ok(await page.evaluate(() => document.querySelectorAll('#pp-t tbody tr').length > 10 && /Chance to win the week/.test(document.querySelector('#main').innerText) && document.querySelectorAll('.punt-pick .btn.on').length === 2), 'punt planner: re-valued players and the weekly cost');
   ok(await page.evaluate(() => { const d = document.createElement('div'); d.className = 'lz'; d.textContent = 'Loading the test…'; document.querySelector('#main').prepend(d); DP.stuckError('test error'); return /Something went wrong/.test(d.innerText) && !!d.querySelector('button'); }), 'a page stuck on "Loading" after an error shows a message and a reload button');

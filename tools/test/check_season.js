@@ -597,6 +597,8 @@ ok(['magic', 'rounds', 'random', 'trophies', 'carriers'].every((k) => DP.WIDGETS
   ok(B.length > 10 && B.every((x) => x.p.age <= 25.99 && x.r.gp >= 5 && !x.p.G), `breakout: ${B.length} young skaters with 5+ GP`);
   ok(B.every((x) => near(x.score, w.prod * x.prod + w.role * x.role + w.trend * x.trend + w.form * x.form + w.ice * x.ice, 1e-9) && Math.abs(x.ice) <= 1 && (x.io && x.io.dS !== null ? near(x.ice, Math.max(-1, Math.min(1, x.io.dS / 2)), 1e-9) : x.ice === 0) && Math.abs(x.prod) <= 2.5 && near(x.prod, Math.max(-2.5, Math.min(2.5, x.r.vs / 2)), 1e-9) && Math.abs(x.form) <= 1), 'breakout: signal = the weighted sum, clipped');
   ok(B.every((x, i) => !i || B[i - 1].score >= x.score), 'breakout: strongest first');
+  const BF = DP.breakoutData(DP.depthLog || null, { maxAge: 99, fa: true });
+  ok(BF.length > 10 && BF.every((x) => !x.p.gm) && BF.some((x) => x.p.age > 26), `breakout signal for free agents of any age: ${BF.length}`);
 }
 // ---- Rankings Hub: ranks are permutations, consensus = the mean of the four season ranks
 {
