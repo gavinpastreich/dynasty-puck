@@ -43,8 +43,8 @@
       ['punt', '🎯', 'Punt Planner', 'Give up a category or two on purpose: who climbs for your build and what it costs each week.'],
       ['draftrace', '🏁', 'Draft Race', 'The race for the top 2027 picks, who owns them and what a win costs a rebuilding team.'],
       ['aging', '📉', 'Aging Curves', 'When players peak in each of our categories and how fast they decline, from ten NHL seasons, goalies included.'],
-      ['usage', '🕒', 'Ice Time', 'Who is getting more minutes and power-play time than last season and over the last two weeks.'],
-      ['breakout', '🚀', 'Breakout Watch', 'Young players with a bigger role, promotions and production above their projection.'],
+      ['usage', '🕒', 'Ice Time', 'Who is getting more minutes and power-play time than last season and over the last two weeks, points per 60 minutes and underused scorers.'],
+      ['breakout', '🚀', 'Breakout Watch', 'Young players with a bigger role, promotions and production above their projection, and how often similar players broke out.'],
       ['movers', '📈', 'Market Movers', 'Every player\'s dynasty value night by night: risers, fallers and why.'],
       ['windows', '🪟', 'Contention Windows', 'Which teams are built for this season and which for later.']
     ]],

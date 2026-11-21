@@ -150,5 +150,8 @@ as you ship them, and add any new ideas you come up with.
       pages (ten NHL seasons: similar seasons at the same age and what happened next), Aging Curves on ten seasons with
       goalie curves (save %, wins; regression-adjusted), Punt Planner swap ideas, points per 60 and underused scorers,
       linemates and PP unit on player pages, Weekly Preview waiver watch, free agents on the rise, Season Simulator opens
-      on tonight's run, My Page widgets (underused scorers, market check), contrast fixes, guide page 17.
+      on tonight's run, My Page widgets (underused scorers, market check, history says), contrast fixes, guide pages
+      17-18. Later the same day: goalie comps (save % against the league), Breakout Watch History column, "Comps fell"
+      for your veterans, Aging Curves option to count players who leave the NHL (survivor bias), jump buttons on
+      player pages, the build fills a missing history season at the rollover.
 - [ ] Next ideas: see docs/IDEAS.md (trade block when a storage option is chosen).

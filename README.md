@@ -3,15 +3,33 @@
 The website for **Dynasty Puck**, a 14-team Fantrax dynasty hockey league:
 **https://gavinpastreich.github.io/dynasty-puck/**
 
-One fast static app (plain HTML/JS, no server, no R) with:
+One fast static app (plain HTML/JS, no server, no R). Rosters, contracts, lineups and standings come live from our
+Fantrax league; NHL stats, schedules, lines, injuries, prospects and values refresh nightly. Every model number is
+explained under **Rules & Methods** in the app, and the **league guide PDF** (`assets/Dynasty-Puck-HQ-Guide.pdf`)
+walks through the main pages with screenshots. Main areas:
 
-- **Dashboard & power rankings**: projected standings on the real H2H schedule, Monte Carlo playoff odds, bargains, graduations, leaders.
-- **Team Hub**: weekly-lock lineup, 15-category profile, needs, FA targets, trade partners, cap chart, prospect pipeline.
-- **Players, Free Agents (fit for your team), Compare, Leaderboards**, plus a player card for everyone (headshot, projections, NHL history, NHLe, dynasty curve, contract path).
-- **Simulators**: weekly matchup (per-category win probabilities, goalie minimum), season (8-team playoff), trade machine (2–4 teams, picks, league-implied valuation lens, cap, playoff odds, share link), trade finder, offseason signing sim.
-- **Cap & contracts**: league cap table 2026-27 → 2032-33, expiries, dead cap, extension calculator, 2027 offseason planner.
-- **Prospects**: MNR graduation tracker (career NHL GP: 84 skaters / 42 goalies), prospect rankings, pipelines; Draft Center with the 2026 NHL draft, the league's own drafts, and 2027–2029 boards.
-- **League history**: every trade judged with today's values, draft-pick ownership replayed from the trade log.
+- **Your team**: Dashboard, My Page (build your own from ~50 boxes), Team Hub (lineup check against Fantrax, needs,
+  cap by season, prospects, trade strategy), alerts (phone, calendar, email; opt-in).
+- **This week**: Live Scoreboard (category score during games, projected finals, win odds by day), Weekly Matchup,
+  Opponent Scouting, Category Outlook, Weekly Calendar, Pickup Planner, Weekly Preview and The Weekly (copy for the chat).
+- **Players**: Players, Player Rater, Free Agents (free agents on the rise), Hot & Cold, Ice Time (points per 60,
+  underused scorers), Breakout Watch, Buy Low / Sell High, Line & PP Changes, Market Movers, Compare, Leaderboards.
+  Every player page: projections, this season, dynasty value with a floor and ceiling, contract path, NHL history,
+  development curve, linemates, Fantrax ADP, "plays like", historical comps (similar seasons at his age and what
+  happened next), season log in our league, moves.
+- **Trades**: Trade Machine (2-4 teams, picks, cap space), Trade Finder, Trade Value Chart, Market Check (our
+  categories vs Fantrax ADP), Trade Deadline hub, Trade History with grades, Transactions, Draft Picks.
+- **Models & sims**: Season Sim, Scenario Builder, Title Path, Punt Planner (with swap ideas), Model Scorecard, Aging
+  Curves (ten NHL seasons, goalies included, optional survivor-bias correction), Signing Sim.
+- **League**: Standings, Playoff Picture, Rankings Hub, Power Rankings, Elo & Luck, Rivalries, Tale of the Tape, Record
+  Book, GM Report Cards, Trophy Case, Category Insights, Contention Windows, Awards, League Feed.
+- **Cap & contracts**: Contracts & Cap (dead cap, IR and minors relief), Offseason Planner, Auction War Room.
+- **Prospects**: Prospect Radar (re-ranked nightly with headlines), Prospects & MNR graduation tracker (84 / 42 career
+  NHL GP), World Juniors, Draft Center (live 2027 board), Mock Draft, Draft Race.
+- **Schedule**: Season Grid, Schedule Tools (games per week, streaming, goalie planner), NHL Team Stacks.
+
+What changed and when is listed under **What's new** on the Data & Updates page; how it is built is in
+`docs/BUILD_NOTES.md`, and upkeep for the commissioner in `docs/COMMISSIONER.md`.
 
 ## Updating the data
 
