@@ -704,3 +704,23 @@ a.tour-item:hover, button.tour-item:hover { text-decoration: none; border-color:
 .troph { display: flex; flex-wrap: wrap; gap: 6px; }
 .tro { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 3px 6px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: color-mix(in srgb, var(--accent) 8%, transparent); font-size: .82rem; cursor: help; }
 .tro-ic { font-size: 1rem; }
+.gr-F { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); }
+/* Season Grid */
+.sgrid td.sg { text-align: center; padding: 2px 3px; min-width: 38px; line-height: 1.1; }
+.sgrid td.sg b { display: block; font-size: .72rem; }
+.sgrid td.sg span { display: block; font-size: .68rem; color: var(--muted); }
+.sgrid td.sg a { color: inherit; text-decoration: none; display: block; }
+.sgrid td.sg.W { background: var(--good-bg); }
+.sgrid td.sg.W b { color: var(--good); }
+.sgrid td.sg.L { background: var(--bad-bg); }
+.sgrid td.sg.L b { color: var(--bad); }
+.sgrid td.sg.T { background: color-mix(in srgb, var(--muted) 15%, transparent); }
+.sgrid td.sg.P { background: color-mix(in srgb, var(--link) calc(var(--p) * 55%), transparent); }
+/* Weekly Calendar */
+.cal th.cal-d { text-align: center; line-height: 1.1; }
+.cal th.cal-d span, .cal th.cal-d b { display: block; }
+.cal td.cal-g { text-align: center; background: color-mix(in srgb, var(--link) 16%, transparent); font-weight: 600; white-space: nowrap; }
+.cal td.cal-g.b2b { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.cal td.cal-x { background: transparent; }
+.cal tr.cal-bench td { opacity: .7; }
+.cal tr.cal-sum td { border-bottom: 2px solid var(--line); }

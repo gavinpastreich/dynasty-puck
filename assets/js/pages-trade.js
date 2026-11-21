@@ -512,14 +512,24 @@
         cols: [{ k: 't', l: 'Team', v: function (r) { return U.teamName(r.t); }, f: function (r) { return U.teamChip(r.t, { b: 1 }); } }, { k: 'n', l: 'Trades', cls: 'num' },
           { k: 'm', l: 'Net (model)', cls: 'num', v: function (r) { return r.m; }, f: function (r) { return ui.delta(r.m, 1); } }, { k: 'l', l: 'Net (league lens)', cls: 'num', v: function (r) { return r.l; }, f: function (r) { return ui.delta(r.l, 1); } }]
       });
+      // a letter per side: net value today (received minus given, model lens) as a share of the deal's size (the average
+      // value a side gave up); +40% or more A, +15% B, within 15% C, -15% D, -40% or worse F
+      DP.tradeGrades = function (c) {
+        var ts = Object.keys(c.sides), give = {}, out = {};
+        ts.forEach(function (t) { give[t] = 0; });
+        ts.forEach(function (t) { c.sides[t].items.forEach(function (x) { if (x.m.from && give[x.m.from] !== undefined) give[x.m.from] += c.v(x, DP.E.LENS_MODEL); }); });
+        var size = Math.max(2, DP.E.sum(ts.map(function (t) { return give[t]; })) / ts.length);
+        ts.forEach(function (t) { var net = c.sides[t].m - give[t], r = net / size; out[t] = { net: net, r: r, l: r >= 0.4 ? 'A' : r >= 0.15 ? 'B' : r > -0.15 ? 'C' : r > -0.4 ? 'D' : 'F' }; });
+        return out;
+      };
       var list = cards.filter(function (c) { return !ft || c.tr.teams.indexOf(ft) >= 0; });
       U.qs('#h-list', el).innerHTML = list.map(function (c) {
         var tr = c.tr, ts = Object.keys(c.sides);
-        var best = ts.slice().sort(function (a, b) { return c.sides[b].m - c.sides[a].m; })[0];
+        var best = ts.slice().sort(function (a, b) { return c.sides[b].m - c.sides[a].m; })[0], grade = DP.tradeGrades ? DP.tradeGrades(c) : {};
         return '<div class="card" style="margin-bottom:12px"><h3>' + esc(U.date(new Date(tr.date + 'T12:00:00Z'))) + ', ' + esc(tr.date.slice(0, 4)) + ' <span class="faint small">' + esc(tr.season) + (tr.obj ? ' · ' + tr.obj + ' objection' + (tr.obj > 1 ? 's' : '') : '') + '</span></h3><div class="grid" style="grid-template-columns:repeat(' + ts.length + ',minmax(0,1fr))">' +
           ts.map(function (t) {
             var s = c.sides[t];
-            return '<div class="tradecol"><h3 class="small">' + U.teamBadge(t) + ' ' + esc(U.teamName(t)) + ' received ' + (t === best && ts.length === 2 ? '<span class="badge good">wins today</span>' : '') + '</h3>' + s.items.map(function (x) {
+            return '<div class="tradecol"><h3 class="small">' + U.teamBadge(t) + ' ' + esc(U.teamName(t)) + ' received ' + (grade[t] ? '<span title="Net ' + U.sgn(grade[t].net, 1) + ' in dynasty value today (model lens), ' + U.sgn(grade[t].r * 100, 0) + '% of the deal\'s size">' + DP.gradeChip(grade[t].l) + '</span> ' : '') + (t === best && ts.length === 2 ? '<span class="badge good">wins today</span>' : '') + '</h3>' + s.items.map(function (x) {
               var a = x.a, val = c.v(x, DP.E.LENS_MODEL), frm = ts.length > 2 && x.m.from ? 'from ' + x.m.from : '';
               var now = a.kind === 'player' ? (a.p.gm === t ? '' : a.p.gm ? 'now ' + a.p.gm : 'now FA') : '';
               var sub = function (bits) { bits = bits.filter(Boolean); return bits.length ? ' <span class="faint small">' + esc(bits.join(' · ')) + '</span>' : ''; };

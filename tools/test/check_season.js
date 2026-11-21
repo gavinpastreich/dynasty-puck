@@ -548,7 +548,7 @@ E.teams.forEach((t) => {
   const C = DP.carriers(t, Object.values(DP.weekDetail || {})), g = (k) => C.cats.find((c) => c.k === k);
   const tot = (k) => E.sum(HW.filter((w) => w.games && w.games.length && DP.weekDetail[w.n]).map((w) => w.tot[t][k] || 0));
   ok(g('G').tot === tot('G') && g('A').tot === tot('A') && g('Hit').tot === tot('Hit') && g('W').tot === tot('W') && g('SHO').tot === tot('SHO'), `carriers ${t}: totals match the season`);
-  ok(C.cats.every((c) => !c.ps.length || near(E.sum(c.ps.map((x) => x.share)), 1, 1e-9)), `carriers ${t}: shares add to 100%`);
+  ok(C.cats.every((c) => !c.ps.length || near(E.sum(c.ps.map((x) => x.v)), c.tot, 1e-6)), `carriers ${t}: players add up to the total`);
 });
 
 // ---- precomputed season simulation (tools/presim.js): identical to running it here, when it applies

@@ -1,6 +1,7 @@
 /* Dynasty Puck HQ - Category carriers: for each team, which players produced its totals in each category this season,
    from the locked lineups' weekly lines (data/weeks/wNN.js, the lines that counted). Goalies: wins, shutouts and saves
-   (the save-% and GAA categories are ratios, so saves and goals against are shown instead). */
+   (the save-% and GAA categories are ratios, so saves and goals against are shown instead). Cor can be negative, so it
+   shows each player's own total rather than a share. */
 (function () {
   'use strict';
   var DP = window.DP, U = DP.U, ui = DP.ui, esc = U.esc;
@@ -29,7 +30,7 @@
   DP.carriersHtml = function (C, n) {
     if (!C.weeks) return '<p class="small muted">After the first week.</p>';
     return '<div class="tbl-wrap"><table class="t small"><thead><tr><th>Cat</th><th class="num">Total</th><th>Carried by</th></tr></thead><tbody>' + C.cats.map(function (c) {
-      return '<tr><td><b>' + esc(c.l) + '</b></td><td class="num">' + U.fmt(c.tot, c.k === 'Cor' ? 1 : 0) + '</td><td>' + (c.ps.length ? c.ps.slice(0, n || 3).map(function (x) { return ui.plink(x.p) + ' <span class="faint">' + U.pct(x.share) + '</span>'; }).join(', ') : '<span class="faint">–</span>') + '</td></tr>';
+      return '<tr><td><b>' + esc(c.l) + '</b></td><td class="num">' + U.fmt(c.tot, c.k === 'Cor' ? 1 : 0) + '</td><td>' + (c.ps.length ? c.ps.slice(0, n || 3).map(function (x) { return ui.plink(x.p) + ' <span class="faint">' + (c.k === 'Cor' ? U.sgn(x.v, 1) : U.pct(x.share)) + '</span>'; }).join(', ') : '<span class="faint">–</span>') + '</td></tr>';
     }).join('') + '</tbody></table></div>';
   };
 })();

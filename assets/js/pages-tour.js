@@ -53,7 +53,8 @@
       ['rivals', '⚔️', 'Rivalries', 'The standings race and who has whose number in all-play.'],
       ['records', '📚', 'Record Book', 'Best weeks, biggest wins, streaks and individual highs.'],
       ['grades', '📝', 'GM Report Cards', 'Every GM graded on results, lineup calls, pickups, trades and roster value.'],
-      ['awards', '🏅', 'Awards & Wrapped', 'Season awards and your team\'s year in review.']
+      ['awards', '🏅', 'Awards & Wrapped', 'Season awards and your team\'s year in review.'],
+      ['trophies', '🏅', 'Trophy Case', 'The badges every team has earned, each from a real result.']
     ]]
   ];
 

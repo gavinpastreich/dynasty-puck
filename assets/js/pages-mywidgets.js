@@ -57,4 +57,8 @@
       box.innerHTML = H.list(P.map(function (x) { return H.li(x.p ? ui.plink(x.p) + ' <span data-vt="' + esc(x.p.id) + '"></span>' : '🎟️ ' + esc(E.pickLabel(x.pk)) + ' pick', '<b class="num">' + U.fmt(x.v, 1) + '</b>'); }));
       if (DP.fillValueTrends) DP.fillValueTrends(box);
     } });
+  reg('trophies', { name: 'Trophy case', ic: '🏅', cat: 'team', team: 1, desc: 'The badges your team has earned this season (perfect weeks, streaks, records, heists...).', link: function () { return '#/trophies'; },
+    render: function (box, o, t) { box.innerHTML = '<p class="small muted">Loading…</p>'; if (DP.loadTrophies) DP.loadTrophies(function (T) { if (H.alive(box)) box.innerHTML = DP.trophyHtml(T[t] || []); }); } });
+  reg('carriers', { name: 'Category carriers', ic: '🏋️', cat: 'team', team: 1, ns: [1, 2, 3], n: 2, size: 2, desc: 'Who produced your totals in each category this season (locked lineups).', link: function (t) { return '#/team/' + encodeURIComponent(t); },
+    render: function (box, o, t) { var ns = H.finished().map(function (w) { return w.n; }); DP.loadWeeks(ns, function (details) { if (H.alive(box) && DP.carriers) box.innerHTML = DP.carriersHtml(DP.carriers(t, details), o.n || 2); }); } });
 })();

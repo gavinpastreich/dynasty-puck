@@ -488,5 +488,10 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - League Feed (pages-feed.js): `DP.feedItems({values, lines})`, `DP.feedFilter(items, {team, kinds, since})`,
     `DP.feedHtml`, `DP.loadFeed(cb)`. Extra My Page widgets in pages-mywidgets.js via `DP.regWidget` and
     `DP.myWidgetHelpers` (pages-mypage.js redraws with `reload()`: the router only redraws when the hash changes).
+  - Trophy Case (pages-trophies.js): `DP.trophies(details)`, `DP.trophyGroups`, `DP.trophyHtml`, `DP.loadTrophies`.
+    Trade grades: `DP.tradeGrades(card)` in pages-trade.js (net / deal size). Category carriers (pages-carriers.js):
+    `DP.carriers(t, details)`, `DP.carriersHtml`. Team Hub `#t-troph`, `#tj-carry`.
+  - Precomputed season sim: `tools/presim.js` (nightly, after value_history) writes data/sim.js (`DP.simPre` = {built,
+    day (ET), lw, nw, n, res}); app.js boot sets `E._bsim` from it when all keys match. `node tools/presim.js --check`.
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

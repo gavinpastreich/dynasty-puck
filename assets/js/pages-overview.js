@@ -329,8 +329,9 @@
         DP.statTile('Prospect pool', s.prosGrade, '#' + s.prosRank + ' of 14 · ' + s.nMnr + ' MNR') + '</div>';
       h += '<div class="grid g2">';
       h += '<div class="card span2" id="tj-lineup"><h2>🔒 Fantrax lineup check</h2><div class="hint">The lineup set in Fantrax right now (Active slots) against the optimal weekly-lock lineup, for the next lock.</div>' + DP.lineupCheckHtml(t) + '</div>';
-      h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><p class="small" id="t-grade" hidden></p><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. The small line in each week = your chance to win it after each day. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
+      h += '<div class="card span2" id="tj-season"><h2>📈 Season so far <a class="btn sm" href="#/weekly" style="margin-left:auto">The Weekly →</a></h2><p class="small" id="t-grade" hidden></p><div class="small" id="t-troph" hidden></div><div class="hint">Place in the standings after each week (rebuilt from the weekly category results) and each matchup. Dot color: won / lost / tied the week. The small line in each week = your chance to win it after each day. Click a week for its recap.</div>' + (DP.seasonStrip ? DP.seasonStrip(t) : '') + '</div>';
       h += '<div class="card span2" id="tj-regret"><h2>🪑 Lineup regrets</h2><div class="hint">Each week played, the one swap that would have helped most: a bench player (or a minor-leaguer who played NHL games) in place of a starter at the same position, with the week re-scored like the standings.</div><div id="t-regret"><p class="small muted">Loading the weekly lines…</p></div></div>';
+      h += '<div class="card span2" id="tj-carry"><h2>🏋️ Category carriers</h2><div class="hint">Who produced this team\'s totals in each category this season: the players in its locked lineups, from their weekly lines. Goalies: wins, shutouts and saves. Cor shows each player\'s own total (it can be negative).</div><div id="t-carry"><p class="small muted">Loading the weekly lines…</p></div></div>';
       h += '<div class="card span2" id="tj-strat"><h2>🧭 Trade strategy <span id="t-tier"></span></h2><div id="t-strat"><p class="muted">Sizing up the market…</p></div></div>';
       h += '<div class="card" id="tj-cats"><h2>Category profile</h2><div class="hint">Average weekly starter totals vs the league (rank of 14). Blue = strength, orange = weakness.</div>' + C.catProfile(s.z, s.rank) + (function () {
         if (!DP.catStreaks) return '';
@@ -356,6 +357,12 @@
         var rns = E.history().weeks.map(function (w) { return w.n; });
         DP.loadWeeks(rns, function (details) {
           var box = U.qs('#t-regret', el); if (!box) return;
+          var cbx = U.qs('#t-carry', el); if (cbx && DP.carriers) cbx.innerHTML = DP.carriersHtml(DP.carriers(t, details));
+          if (DP.trophies && DP.loadValues && rns.length) DP.loadValues(function () {
+            var tb = U.qs('#t-troph', el); if (!tb) return;
+            var T = DP.trophies(details)[t] || []; if (!T.length) return;
+            tb.hidden = false; tb.innerHTML = '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0 8px"><span>🏅 Trophy case:</span>' + DP.trophyHtml(T) + '<a href="#/trophies">All teams →</a></div>';
+          });
           if (DP.gmReport && DP.loadValues && rns.length) DP.loadValues(function () {
             var gb = U.qs('#t-grade', el); if (!gb) return;
             var G = DP.gmReport(details), r = G.by[t]; if (!r || r.gpa === null) return;

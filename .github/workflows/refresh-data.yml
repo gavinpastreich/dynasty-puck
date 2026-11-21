@@ -42,6 +42,7 @@ jobs:
           python tools/research/scrape_news.py || echo "prospect news scrape failed; keeping the previous headlines"
           node tools/prospect_radar.js || echo "prospect radar build failed; keeping the previous file"
           node tools/value_history.js || echo "market movers build failed; keeping the previous file"
+          node tools/presim.js || echo "precomputed season simulation failed; the site simulates on the device instead"
           python tools/research/draft_tracker.py publish || echo "draft tracker publish failed; keeping the previous file"
       - name: Commit if data changed
         id: commit

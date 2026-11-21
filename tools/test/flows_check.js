@@ -304,6 +304,14 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => document.querySelectorAll('.feed li').length > 10 && document.querySelectorAll('.feed-day').length >= 2), 'league feed: items grouped by day');
   await go('feed?team=ROO&days=all&k=trade', 4000);
   ok(await page.evaluate(() => [...document.querySelectorAll('.feed li')].every((li) => li.classList.contains('feed-trade')) && document.querySelectorAll('.feed li').length === (DP.league.trades || []).filter((t) => t.teams.includes('ROO')).length), 'league feed: team and kind filters');
+  await go('trophies', 5000);
+  ok(await page.evaluate(() => document.querySelectorAll('.lz .grid .card').length === DP.E.teams.length && document.querySelectorAll('.tro').length > 10), 'trophy case: a card per team with badges');
+  await go('history', 3500);
+  ok(await page.evaluate(() => [...document.querySelectorAll('#h-list .tradecol h3')].every((h) => !!h.querySelector('.gr'))), 'trade history: a grade for every side');
+  await go('team/ROO', 7000);
+  ok(await page.evaluate(() => /Carried by/.test(document.querySelector('#t-carry').innerText) && document.querySelectorAll('#t-carry tbody tr').length === 14), 'team hub: category carriers');
+  ok(await page.evaluate(() => !DP.values || !!document.querySelector('#t-troph .tro') || document.querySelector('#t-troph').hidden), 'team hub: trophy case line');
+  ok(await page.evaluate(() => !DP.simPre || DP.simPre.built !== DP.meta.built || DP.simPre.lw !== DP.E.lockWeek() || DP.E.version > 1 || !!(DP.E._bsim && DP.E._bsim.pre)), 'boot: the precomputed season simulation is used when it matches');
   await go('stacks', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('.stk tbody tr').length === DP.stacksData(false).clubs.length && document.querySelectorAll('.stk thead .stk-t').length === DP.E.teams.length), 'nhl team stacks: a row per club, a column per team');
   await go('path?n=500', 2500);
