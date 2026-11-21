@@ -57,6 +57,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
 .back h2 { color: #fff; } .back .note { background: #161b22; border-color: #30363d; color: #b1bac4; }
 .back a, .cover a { color: #fff; text-decoration: none; }
 .small { font-size: 8.3pt; color: var(--muted); }
+.shot.crop { object-fit: cover; object-position: top; }
 </style>
 </head>
 <body>
@@ -111,7 +112,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
     <div><b>📡 Prospect Radar · 🌱 Prospects & MNR</b>Every prospect re-ranked nightly with risers, fallers and headlines; MNR graduation tracker.</div>
     <div><b>🎯 Draft Center · 🧪 Mock Draft · 🎁 Awards & Wrapped</b>Draft boards to 2029; mock the 2027 league draft; award races and a team recap.</div>
     <div><b>🗓️ Schedule Tools · 🩹 Injuries & Depth</b>Games per week, streaming and goalie planners; injuries and lines.</div>
-    <div style="grid-column:1/-1"><b>🆕 New this fall (pages 5-16)</b>Pickups, scouting, day-by-day odds, Hot &amp; Cold, line changes, Market Movers, Power Rankings, The Weekly, Record Book, Tale of the Tape, Transactions, 🛠️ My Page, report cards, trophies, Elo, rankings, scenarios, Title Path, category outlook, model scorecard, Season Grid, calendar, floor and ceiling, development curves, Breakout Watch, the Player Rater, 🕒 Ice Time, 📉 Aging Curves and the 🏁 Draft Race.</div>
+    <div style="grid-column:1/-1"><b>🆕 New this fall (pages 5-16)</b>Pickups, scouting, Hot &amp; Cold, line changes, Market Movers, Power Rankings, The Weekly, Record Book, 🛠️ My Page, report cards, Elo, scenarios, Title Path, Season Grid, floor and ceiling, 🕒 Ice Time, 📉 Aging Curves, 🏁 Draft Race and more.</div>
   </div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>2</span></div>
 </section>
@@ -214,8 +215,8 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <p class="lede">Bragging rights with receipts: every number comes from the real weekly results.</p>
   <img class="shot" src="{{img:power}}"><div class="cap">⚡ Power Rankings after every week: 45% season all-play strength, 25% the last three weeks, 30% rest-of-season projection; movement and a line on every team. Copy them into the chat or share as an image.</div>
   <div class="row">
-    <div><img class="shot" src="{{img:weekly}}"><div class="cap">🗞️ The Weekly: an auto-written recap of every finished week: results, luck, the comeback of the week, closest calls, players of the week, moves.</div></div>
-    <div><img class="shot" src="{{img:mvp}}"><div class="cap">📚 Record Book: best weeks and days in every category, biggest wins, streaks, closest calls and the MVP race of locked starters. ⚔️ Rivalries: the standings race and who has whose number.</div></div>
+    <div><img class="shot crop" style="height:3.3in" src="{{img:weekly}}"><div class="cap">🗞️ The Weekly: an auto-written recap of every finished week: results, luck, the comeback of the week, closest calls, players of the week, moves.</div></div>
+    <div><img class="shot crop" style="height:3.3in" src="{{img:mvp}}"><div class="cap">📚 Record Book: best weeks and days in every category, biggest wins, streaks, closest calls and the MVP race of locked starters. ⚔️ Rivalries: the standings race and who has whose number.</div></div>
   </div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>7</span></div>
 </section>
@@ -250,7 +251,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
         <li><b>Trade partners</b>: a real fit runs both ways. A team ranks high only if it is strong where you are weak <i>and</i> wants what you have extra of.</li>
         <li><b>Drill into one category</b>: the players who move it most, on rosters and among free agents.</li>
       </ul>
-      <div class="note">"Build trade" opens the Trade Machine with players from both sides already loaded. Further down: 🎯 <b>what wins each category</b> (how many hits, shots or goals usually win a week) and 🧬 <b>which categories come together</b> (punting one costs you the ones that travel with it).</div>
+      <div class="note">"Build trade" opens the Trade Machine with players from both sides already loaded. Also: 🎯 <b>what wins each category</b> and 🧬 <b>which categories come together</b>.</div>
     </div>
   </div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>9</span></div>
@@ -261,7 +262,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <div class="kicker">Make it yours</div>
   <h2>🛠️ My Page: build your own dashboard</h2>
   <p class="lede">Pick the boxes you care about, size them, put them in your order. It saves on your device; share the layout with a link.</p>
-  <img class="shot" src="{{img:mypage}}">
+  <img class="shot crop" style="height:3.7in" src="{{img:mypage}}">
   <div class="cap">My Page with the "Dynasty GM" starting layout: report card, cap, dynasty value, market movers, picks, MNR players, trade partners and playoff odds through the season.</div>
   <div class="row">
     <div>
@@ -274,7 +275,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
       </ul>
     </div>
     <div>
-      <img class="shot" src="{{img:feed}}"><div class="cap">📣 League Feed: every trade, add and drop, line and power-play move, big value swing and result in one timeline. Filter by team, kind and days.</div>
+      <img class="shot crop" style="height:2.6in" src="{{img:feed}}"><div class="cap">📣 League Feed: every trade, add and drop, line and power-play move, big value swing and result in one timeline. Filter by team, kind and days.</div>
       <div class="tip"><b>★ Favorites</b>: tap the star next to any page in the menu to pin it to the top. On a phone, pick the five pages in the bottom tab bar (My Page → Customize).</div>
     </div>
   </div>
@@ -286,12 +287,12 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <div class="kicker">Bragging rights</div>
   <h2>Report cards, trophies and every ranking</h2>
   <p class="lede">Every grade and badge comes from something that really happened: the weekly results, the Fantrax logs and the nightly values.</p>
-  <img class="shot" src="{{img:grades}}"><div class="cap">📝 GM Report Cards: each GM graded against the other 13 on results (all-play), lineup calls (points left on the bench), the waiver wire, trades and roster value. Luck is shown, not graded.</div>
+  <img class="shot crop" style="height:2.75in" src="{{img:grades}}"><div class="cap">📝 GM Report Cards: each GM graded against the other 13 on results (all-play), lineup calls (points left on the bench), the waiver wire, trades and roster value. Luck is shown, not graded.</div>
   <div class="row">
-    <div><img class="shot" src="{{img:trophies}}"><div class="cap">🏅 Trophy Case: perfect weeks, blowouts, team of the week, streaks, category records, photo finishes, the waiver steal, the heist of the year and more. Each badge says what earned it.</div></div>
-    <div><img class="shot" src="{{img:elo}}"><div class="cap">📐 Elo &amp; Luck: an Elo rating built only from the results, and schedule luck (points got vs what the same numbers would have earned against the average team).</div></div>
+    <div><img class="shot crop" style="height:2.4in" src="{{img:trophies}}"><div class="cap">🏅 Trophy Case: perfect weeks, blowouts, team of the week, streaks, category records, photo finishes, the waiver steal, the heist of the year and more. Each badge says what earned it.</div></div>
+    <div><img class="shot crop" style="height:2.4in" src="{{img:elo}}"><div class="cap">📐 Elo &amp; Luck: an Elo rating built only from the results, and schedule luck (points got vs what the same numbers would have earned against the average team).</div></div>
   </div>
-  <img class="shot" src="{{img:rankings}}"><div class="cap">🧭 Rankings Hub: standings, power, Elo, playoff and title odds, report card, dynasty value, luck and the schedule left, side by side, with a consensus.</div>
+  <img class="shot crop" style="height:2.15in" src="{{img:rankings}}"><div class="cap">🧭 Rankings Hub: standings, power, Elo, playoff and title odds, report card, dynasty value, luck and the schedule left, side by side, with a consensus.</div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>11</span></div>
 </section>
 
@@ -306,7 +307,7 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   </div>
   <div class="row">
     <div style="flex:1.35"><img class="shot" src="{{img:outlook}}"><div class="cap">🌡️ Category Outlook: next week, every team's chance to win each of the 15 categories against the average opponent. Your thinnest categories link straight to the Pickup Planner.</div></div>
-    <div><img class="shot" src="{{img:scorecard}}"><div class="cap">🧮 Model Scorecard: the odds the site gave before each lock against what happened, with a calibration chart. When the model has been too confident, it says so.</div></div>
+    <div><img class="shot crop" style="height:2.9in" src="{{img:scorecard}}"><div class="cap">🧮 Model Scorecard: the odds the site gave before each lock against what happened, with a calibration chart. When the model has been too confident, it says so.</div></div>
   </div>
   <div class="note">All of these are model estimates. Rules &amp; Methods in the app spells out each one (seeds, number of seasons, what is and isn't counted).</div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>12</span></div>
@@ -331,15 +332,12 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <div class="kicker">Dynasty value</div>
   <h2>Floor, ceiling and who's next</h2>
   <p class="lede">A dynasty value is a range, not one number. These show how wide it is and which young players are moving up.</p>
+  <div class="row" style="align-items:center"><div><img class="shot" src="{{img:dvr}}"></div><div class="cap" style="font-size:8.6pt">Floor and ceiling (every player page; here the league's top MNR prospect): the 10th to 90th percentile of the model's outcomes, on the league's scale. Prospects get a wide bar and their chance of an NHL career; established players a narrow one. The 💎 Trade Value Chart has the same floor and ceiling as a column.</div></div>
   <div class="row">
-    <div><img class="shot" src="{{img:dvr}}"><div class="cap">Floor and ceiling (every player page): the 10th to 90th percentile of the model's outcomes on the league's scale. Prospects get a wide bar and their chance of an NHL career; established players a narrow one.</div></div>
-    <div><img class="shot" src="{{img:devcurve}}"><div class="cap">🌱 Development curve (players 25 and under): each season's scoring translated to the NHL, and the age-adjusted estimate the prospect model reads. Climbing season over season = ahead of the curve.</div></div>
+    <div><img class="shot crop" style="height:4.9in" src="{{img:devcurve}}"><div class="cap">🌱 Development curve (players 25 and under): each season's scoring translated to the NHL, and the age-adjusted estimate the prospect model reads. Climbing season over season = ahead of the curve.</div></div>
+    <div><img class="shot" src="{{img:breakout}}"><div class="cap">🚀 Breakout Watch: young skaters producing above their projection, with a bigger role, recent promotions, more ice time and a hot two weeks; plus everyone ahead of the development curve, prospects included.</div>
+      <img class="shot" src="{{img:rater}}"><div class="cap">⭐ Player Rater: who has produced most in our categories this season, and how far ahead of or behind his preseason projection each player is.</div></div>
   </div>
-  <div class="row">
-    <div><img class="shot" src="{{img:breakout}}"><div class="cap">🚀 Breakout Watch: young skaters producing above their preseason projection, with a bigger role, recent promotions and a hot two weeks. A signal to look closer, not a forecast.</div></div>
-    <div><img class="shot" src="{{img:rater}}"><div class="cap">⭐ Player Rater: who has actually produced most in our categories this season (z-scores, totals or per game), and how far ahead of or behind his preseason projection each player is.</div></div>
-  </div>
-  <div class="note">The 💎 Trade Value Chart also has a floor–ceiling column, so you can see whether a trade swaps a sure thing for a lottery ticket.</div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>14</span></div>
 </section>
 
@@ -348,8 +346,8 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <div class="kicker">Usage and age</div>
   <h2>Who plays more, and when players peak</h2>
   <p class="lede">Two more early signs for a dynasty GM: minutes, and the age curve for each of our categories.</p>
-  <img class="shot" src="{{img:usage}}"><div class="cap">🕒 Ice Time: time on ice and power-play time per game this season, over the last 14 days and against last season, with the biggest risers and the free agents getting power-play time. Ice time also feeds Breakout Watch and shows on every player page and on Hot &amp; Cold.</div>
-  <img class="shot" src="{{img:aging}}"><div class="cap">📉 Aging Curves: when players peak in each category, from four NHL seasons. Goals peak earliest; hits, PIM and blocks hold up into the 30s. Compared with the curve the dynasty values use, plus what a typical player your veterans' age does next season.</div>
+  <img class="shot crop" style="height:3.5in" src="{{img:usage}}"><div class="cap">🕒 Ice Time: time on ice and power-play time per game this season, over the last 14 days and against last season, with the biggest risers and the free agents getting power-play time. Ice time also feeds Breakout Watch and shows on every player page and on Hot &amp; Cold.</div>
+  <img class="shot crop" style="height:3.6in" src="{{img:aging}}"><div class="cap">📉 Aging Curves: when players peak in each category, from four NHL seasons. Goals peak earliest; hits, PIM and blocks hold up into the 30s. Compared with the curve the dynasty values use, plus what a typical player your veterans' age does next season.</div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>15</span></div>
 </section>
 
@@ -360,8 +358,8 @@ table.rules tr:nth-child(odd) td { background: #fafbfc; }
   <p class="lede">Our draft runs in reverse order of finish, so every loss moves a team up. The season simulation says where each team is likely to pick, and who owns that pick.</p>
   <img class="shot" src="{{img:draftrace}}"><div class="cap">Every team's chance at each of the 14 first-round slots (darker = likelier), the chance at #1 and the top three, who owns each team's 2027 1st, and the model value of each team's own picks.</div>
   <div class="row">
-    <div><img class="shot" src="{{img:winc}}"><div class="cap">⚖️ What a win costs: a team's next matchup simulated as a win and as a loss: playoff odds against the value of its own 2027 picks.</div></div>
-    <div><img class="shot" src="{{img:tickets}}"><div class="cap">🎟️ Who holds the tickets: every 2027 pick by its current owner, valued with the original team's odds.</div></div>
+    <div><img class="shot crop" style="height:3.3in" src="{{img:winc}}"><div class="cap">⚖️ What a win costs: a team's next matchup simulated as a win and as a loss: playoff odds against the value of its own 2027 picks.</div></div>
+    <div><img class="shot crop" style="height:3.3in" src="{{img:tickets}}"><div class="cap">🎟️ Who holds the tickets: every 2027 pick by its current owner, valued with the original team's odds.</div></div>
   </div>
   <div class="foot"><span>Dynasty Puck HQ · league guide</span><span>16</span></div>
 </section>

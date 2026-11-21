@@ -61,16 +61,16 @@ const SHOTS = [
   ['feed', 'feed', 'ROO', { h: 1000, wait: 4000, w: 900 }],
   ['grades', 'grades', 'CGN', { h: 900, wait: 6000 }],
   ['trophies', 'trophies', 'M.M', { h: 820, wait: 5000, w: 1000 }],
-  ['elo', 'elo', 'SPG', { card: 'Schedule luck', w: 1360 }],
+  ['elo', 'elo', 'SPG', { h: 860, w: 1360 }],
   ['rankings', 'rankings', 'TommyG10', { h: 760, wait: 6000 }],
   ['scenarios', 'scenarios', 'PuckLuck', { h: 980, wait: 6000, w: 1000 }],
-  ['path', 'path', 'mertin', { h: 900, wait: 20000, w: 1000 }],
+  ['path', 'path', 'mertin', { h: 1000, wait: 2500, w: 1000, clickFirst: '#pt-go', after: 45000 }],
   ['outlook', 'outlook', 'SPG', { h: 820, wait: 5000 }],
   ['scorecard', 'scorecard', 'M.M', { card: 'Calibration', wait: 5000, w: 1000 }],
   ['fixtures', 'fixtures', 'ROO', { h: 760, wait: 5000 }],
   ['calendar', 'calendar', 'CGN', { h: 860, w: 1100 }],
   ['stacks', 'stacks', 'BHHC', { h: 860, w: 1100 }],
-  ['dvr', 'home', 'TommyG10', { card: 'Dynasty outlook', w: 900, pick: "(() => { const E = DP.E; return E.P.filter((p) => p.gm && p.ct === 'MNR' && !p.G).sort((a, b) => b.DV - a.DV)[0].id; })()" }],
+  ['dvr', 'home', 'TommyG10', { sel: '.dvr', w: 1100, pick: "(() => { const E = DP.E; return E.P.filter((p) => p.gm && p.ct === 'MNR' && !p.G).sort((a, b) => b.DV - a.DV)[0].id; })()" }],
   ['devcurve', 'home', 'nebsnave', { card: 'Development curve', w: 900, pick: "(() => { const E = DP.E; const c = E.P.filter((p) => p.gm && !p.G && p.age && p.age < 24 && DP.devCurve(p) && DP.devCurve(p).trend && DP.devCurve(p).trend.label === 'ahead' && DP.devCurve(p).rows.length >= 3).sort((a, b) => b.DV - a.DV); return (c[0] || {}).id; })()" }],
   ['breakout', 'breakout', 'Wags8210', { h: 860, wait: 4000 }],
   ['rater', 'rater', 'ROO', { h: 860, wait: 3000 }],
@@ -125,7 +125,7 @@ const SHOTS = [
     await page.goto(URL + r);
     await page.waitForTimeout(o.wait || 2600);
     await page.evaluate(() => { const bg = document.querySelector('#picker-bg'); if (bg) bg.classList.remove('open'); });
-    if (o.clickFirst) { const b = await page.$(o.clickFirst); if (b) { await b.click(); await page.waitForTimeout(800); } }
+    if (o.clickFirst) { const b = await page.$(o.clickFirst); if (b) { await b.click(); await page.waitForTimeout(o.after || 800); } }
     if (o.scrollTo) { await page.evaluate((t) => { const h = [...document.querySelectorAll('h2')].find((x) => x.textContent.includes(t)); if (h) h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -70); }, o.scrollTo); await page.waitForTimeout(400); }
     const file = path.join(OUT, name + '.jpg');
     if (o.sel) {
