@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-21T12:58+00:00",
+"fetched": "2026-11-21T13:31+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -2385,6 +2385,22 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-21",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "One obvious lineup change could unlock Gavin McKenna",
+"u": "https://editorinleaf.com/one-obvious-lineup-change-could-unlock-gavin-mckenna?utm_source=RSS",
+"w": 2
+},
+{
+"d": "2026-11-21",
+"k": [],
+"s": "Sportsnet",
+"t": "Quick Shifts: How should Maple Leafs handle Gavin McKenna?",
+"u": "https://www.sportsnet.ca/nhl/article/quick-shifts-how-should-maple-leafs-handle-gavin-mckenna/",
+"w": 2
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "Maple Leafs Hot Stove (TOR)",
@@ -2464,22 +2480,6 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Gavin McKenna earns major vote of confidence in latest lineup update",
 "u": "https://editorinleaf.com/gavin-mckenna-earns-major-vote-of-confidence-in-latest-lineup-update?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-18",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Former NHLer Matthew Barnaby believes Gavin McKenna should return to Maple Leafs’ top power play unit",
-"u": "https://theleafsnation.com/news/former-nhl-matthew-barnaby-gavin-mckenna-return-toronto-maple-leafs-top-power-play",
-"w": 2
-},
-{
-"d": "2026-11-17",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna just received the ultimate vote of confidence",
-"u": "https://editorinleaf.com/gavin-mckenna-just-received-the-ultimate-vote-of-confidence?utm_source=RSS",
 "w": 2
 }
 ],
@@ -2889,7 +2889,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "5 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2952,7 +2952,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
