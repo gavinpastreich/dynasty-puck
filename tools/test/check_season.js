@@ -754,6 +754,15 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
   const rt = box('rater', { team: '*', n: 5 }); ok((rt.match(/<li/g) || []).length === 5, 'my page: top producers widget');
 }
 
+// ---- link preview and home-screen icons: the files the head tags and the manifest point at exist
+{
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), man = JSON.parse(fs.readFileSync(path.join(ROOT, 'manifest.json'), 'utf8'));
+  const og = (html.match(/property="og:image" content="[^"]*\/(assets\/[^"]+)"/) || [])[1];
+  ok(og && fs.existsSync(path.join(ROOT, og)), `link preview image exists (${og})`);
+  ok(/rel="apple-touch-icon" href="([^"]+)"/.test(html) && fs.existsSync(path.join(ROOT, html.match(/rel="apple-touch-icon" href="([^"]+)"/)[1])), 'apple touch icon exists');
+  ok(man.icons.length >= 3 && man.icons.every((i) => fs.existsSync(path.join(ROOT, i.src))) && man.icons.some((i) => i.sizes === '512x512'), 'manifest icons exist, a 512px one included');
+}
+
 // ---- Start Here tour: every link is a page in the menu
 const navSrc = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'app.js'), 'utf8');
 DP.tourSteps.forEach((s) => s[2].forEach((x) => ok(x[0] === 'pick' || x[0] === 'install' || navSrc.indexOf("['" + x[0] + "', '") >= 0, `tour: ${x[0]} is a page in the menu`)));
