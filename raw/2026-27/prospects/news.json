@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-21T04:47+00:00",
+"fetched": "2026-11-21T10:51+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -2742,7 +2742,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -2889,7 +2889,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "5 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
