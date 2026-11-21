@@ -173,6 +173,11 @@
           if (chk && chk.gFailSet > 0.12) todo.push(['bad', '🥅', U.pct(chk.gFailSet) + ' chance of missing the 2-goalie-GP minimum with your set lineup', '#/team/' + encodeURIComponent(me)]);
         }
         if (DP.irTodo) todo = todo.concat(DP.irTodo(me));
+        if (DP.calendarData && E.nowWeek() !== null && E.nowWeek() >= 0) { // who plays today (Eastern date), during a fantasy week
+          var tday = E.dayIndex(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(E.now()));
+          var cal = DP.calendarData(me, E.nowWeek()), on = cal ? cal.rows.filter(function (r) { return r.by[tday]; }) : [], st = on.filter(function (r) { return r.start; }).length;
+          if (cal && cal.days.indexOf(tday) >= 0) todo.push(['', '🌙', 'Today: ' + (st ? st + ' of your projected starters have a game' : 'none of your projected starters has a game'), '#/calendar']);
+        }
         if (DP.pickupData && wiL !== null && E.opponent(me, wiL)) { // the best free-agent add for the next lock, when it really helps
           var pk = DP.pickupData(me, wiL, 40), top = pk && pk.rows[0];
           if (top && top.gain >= 0.15) todo.push(['', '📥', 'Best pickup for ' + (E.weeks[wiL].po ? 'the playoffs' : 'week ' + E.weeks[wiL].n) + ': ' + esc(top.p.n) + ' (' + top.g + ' games, ' + U.sgn(top.gain, 1) + ' expected cats vs ' + esc(U.teamName(pk.opp)) + ')', '#/pickup']);
