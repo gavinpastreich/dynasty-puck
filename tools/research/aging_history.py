@@ -17,7 +17,7 @@ from scoreboard import skater_rows, goalie_rows  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, "raw", "nhl-history")
 SK_KEYS = ["gp", "pts", "g", "a", "pim", "sog", "stp", "hit", "blk", "tk", "toi", "team"]
-G_KEYS = ["gp", "gs", "w", "ga", "sa", "sho", "toi"]
+G_KEYS = ["gp", "gs", "w", "ga", "sa", "sho", "toi", "team"]
 
 
 def _row(x, keys):

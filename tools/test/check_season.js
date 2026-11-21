@@ -786,9 +786,13 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
 if (DP.comps) {
   const C = DP.comps, ids = Object.keys(C.by);
   ok(ids.length > 400 && C.seasons.length >= 10 && C.base === DP.meta.seasonId - 10001, `comps: ${ids.length} skaters from ${C.seasons.length} seasons`);
-  ok(ids.every((id) => { const c = C.by[id], p = E.byId[id]; return (!p || !p.G) && c.c.length === C.n && new Set(c.c.map((r) => r[0])).size === C.n && c.c.every((r) => Math.abs(r[2] - c.age) <= 1 && r[1] + 10001 <= C.base && (p ? r[0] !== p.nhl : true)); }), 'comps: eight different players, age within a year, an outcome season played, never himself');
+  ok(ids.every((id) => { const c = C.by[id], p = E.byId[id]; return (!p || !!p.G === !!c.g) && c.c.length === C.n && new Set(c.c.map((r) => r[0])).size === C.n && c.c.every((r) => Math.abs(r[2] - c.age) <= 1 && r[1] + 10001 <= C.base && (p ? r[0] !== p.nhl : true)); }), 'comps: eight different players, age within a year, an outcome season played, never himself');
   ok(ids.every((id) => C.by[id].c.every((r, i, a) => !i || a[i - 1][7] <= r[7])), 'comps: closest first');
-  ok(ids.every((id) => C.by[id].c.every((r) => (r[4] === -1 || r[4] >= 0) && (r[5] === null || r[5] === -1 || r[5] >= 0) && (r[1] + 20002 > C.base ? r[5] === null : r[5] !== null))), 'comps: outcomes are points per game, -1 (under 20 GP), or not played yet');
+  ok(ids.every((id) => { const g = C.by[id].g, okv = (v) => v === -1 || (g ? Math.abs(v) < 0.08 : v >= 0); return C.by[id].c.every((r) => okv(r[4]) && (r[5] === null || okv(r[5])) && (r[1] + 20002 > C.base ? r[5] === null : r[5] !== null)); }), 'comps: outcomes are points per game (save % vs the league for goalies), -1 (under 20 GP), or not played yet');
+  const gids = ids.filter((id) => C.by[id].g);
+  ok(gids.length >= 30 && gids.every((id) => { const c = C.by[id]; return c.sv > 0.8 && c.sv < 1 && Math.abs(c.svr) < 0.06 && c.c.every((r) => Math.abs(r[3]) < 0.06 && (r[4] === -1 || Math.abs(r[4]) < 0.08)); }), `comps: ${gids.length} goalies, save % against the league`);
+  const SG = DP.compSummary({ g: 1, c: [[1, 2016, 30, 0.91, 0.917], [2, 2016, 30, 0.91, 0.9], [3, 2016, 30, 0.91, 0.912], [4, 2016, 30, 0.91, -1]] });
+  ok(SG.g && SG.known === 4 && SG.up === 1 && SG.down === 1 && SG.out === 1 && near(SG.med, 0.002, 1e-9), 'comps: goalie summary in save % points');
   const mcd = E.P.find((p) => p.n === 'Connor McDavid'); if (mcd && C.by[mcd.id]) ok(C.by[mcd.id].c.every((r) => r[3] > 1), `comps: McDavid's comps all scored over a point a game (${C.by[mcd.id].c.map((r) => C.names[r[0]]).slice(0, 3).join(', ')})`);
   const S = DP.compSummary({ c: [[1, 2016, 20, 0.5, 0.7, 0.8], [2, 2016, 20, 0.5, 0.3, -1], [3, 2016, 20, 0.5, -1, -1], [4, 2016, 20, 0.5, 0.52, null], [5, 2016, 20, 0.5, null, null]] });
   ok(S.known === 4 && S.up === 1 && S.down === 1 && S.out === 1 && near(S.med, 1.04, 1e-9), 'comps: the summary counts rises, falls and drop-outs');
