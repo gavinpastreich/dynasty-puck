@@ -79,6 +79,9 @@ const SHOTS = [
   ['draftrace', 'draftrace', 'CGN', { sel: '.dr-t', wait: 5000, w: 1200 }],
   ['winc', 'draftrace', 'CGN', { card: 'What a win costs', wait: 6000, w: 1200 }],
   ['tickets', 'draftrace', 'CGN', { card: 'Who holds the tickets', wait: 5000, w: 1200 }],
+  ['market', 'adp', 'ROO', { sel: '.grid.g2', wait: 3000, w: 1200 }],
+  ['puntswap', 'punt?p=Hit,PIM', 'TommyG10', { card: 'Swap ideas', wait: 4000, w: 860 }],
+  ['underused', 'usage', 'SPG', { card: 'Underused scorers', wait: 3000, w: 900 }],
   ['phone_home', 'home', 'BHHC', { phone: true }],
   ['phone_team', 'team/mertin', 'mertin', { phone: true, scrollTo: 'Fantrax lineup check' }],
 ];
