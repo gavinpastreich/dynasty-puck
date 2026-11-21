@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-21T13:28:29+00:00",
+"fetched": "2026-11-21T17:28:19+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -474,11 +474,6 @@
 "pos": "C",
 "t": "COL"
 },
-"01f5z": {
-"n": "Kreider, Chris",
-"pos": "LW",
-"t": "MTL"
-},
 "01f6d": {
 "n": "OReilly, Ryan",
 "pos": "C",
@@ -563,6 +558,11 @@
 "n": "Nugent-Hopkins, Ryan",
 "pos": "LW",
 "t": "EDM"
+},
+"0243e": {
+"n": "Landeskog, Gabriel",
+"pos": "LW",
+"t": "COL"
 },
 "0243f": {
 "n": "Jones, Seth",
@@ -903,11 +903,6 @@
 "n": "Pastrnak, David",
 "pos": "RW",
 "t": "BOS"
-},
-"03dde": {
-"n": "Walman, Jake",
-"pos": "D",
-"t": "EDM"
 },
 "03de2": {
 "n": "Montour, Brandon",
@@ -1863,6 +1858,11 @@
 "n": "Garand, Dylan",
 "pos": "G",
 "t": "NYR"
+},
+"05m17": {
+"n": "Nazar, Frank",
+"pos": "C",
+"t": "CHI"
 },
 "05mwh": {
 "n": "Levi, Devon",
@@ -4510,13 +4510,6 @@
 "sal": 2700000,
 "slot": "A"
 },
-"01f5z": {
-"ct": "FA",
-"gm": "Wags8210",
-"pos": "F",
-"sal": 1000000,
-"slot": "A"
-},
 "01f6d": {
 "ct": "BID",
 "gm": "M.M",
@@ -4599,7 +4592,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 3000000,
-"slot": "IR"
+"slot": "A"
 },
 "01zu5": {
 "ct": "BID",
@@ -4620,7 +4613,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 2340000,
-"slot": "R"
+"slot": "IR"
 },
 "0222k": {
 "ct": "BID",
@@ -4634,6 +4627,13 @@
 "gm": "nebsnave",
 "pos": "F",
 "sal": 3600000,
+"slot": "A"
+},
+"0243e": {
+"ct": "FA",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
 "slot": "A"
 },
 "0243f": {
@@ -4739,7 +4739,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 16200000,
-"slot": "A"
+"slot": "R"
 },
 "02fda": {
 "ct": "BID",
@@ -5111,13 +5111,6 @@
 "pos": "F",
 "sal": 12500000,
 "slot": "A"
-},
-"03dde": {
-"ct": "BID",
-"gm": "Wags8210",
-"pos": "D",
-"sal": 6600000,
-"slot": "R"
 },
 "03de2": {
 "ct": "BID",
@@ -5908,7 +5901,7 @@
 "gm": "Wags8210",
 "pos": "F",
 "sal": 5900000,
-"slot": "A"
+"slot": "R"
 },
 "04osu": {
 "ct": "FA",
@@ -6455,6 +6448,13 @@
 "pos": "G",
 "sal": 0,
 "slot": "M"
+},
+"05m17": {
+"ct": "FA",
+"gm": "Wags8210",
+"pos": "F",
+"sal": 1000000,
+"slot": "A"
 },
 "05mwh": {
 "ct": "FA",

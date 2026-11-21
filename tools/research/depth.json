@@ -140,8 +140,8 @@
   },
   "BUF": {
    "team": "Buffalo Sabres",
-   "updated": "2026-11-20",
-   "source": "Last Game (2026-11-19)",
+   "updated": "2026-11-21",
+   "source": "Rachel Lenzi",
    "url": "https://www.dailyfaceoff.com/teams/buffalo-sabres/line-combinations",
    "pp1": [
     "Josh Doan",
@@ -752,22 +752,22 @@
   },
   "FLA": {
    "team": "Florida Panthers",
-   "updated": "2026-11-19",
-   "source": "Jameson Olive",
+   "updated": "2026-11-21",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/florida-panthers/line-combinations",
    "pp1": [
     "Brady Tkachuk",
-    "Aleksander Barkov",
     "Sam Reinhart",
-    "Seth Jones",
-    "Matthew Tkachuk"
+    "Matthew Tkachuk",
+    "Carter Verhaeghe",
+    "Seth Jones"
    ],
    "pp2": [
+    "Eetu Luostarinen",
     "Sam Bennett",
-    "Anton Lundell",
-    "Brad Marchand",
-    "Carter Verhaeghe",
-    "Aaron Ekblad"
+    "Lars Eller",
+    "Aaron Ekblad",
+    "Anton Lundell"
    ],
    "pk1": [
     "Anton Lundell",
@@ -776,29 +776,29 @@
     "Aaron Ekblad"
    ],
    "pk2": [
-    "Aleksander Barkov",
+    "Lars Eller",
     "Sam Reinhart",
     "Niko Mikkola",
-    "Dmitry Kulikov"
+    "Seth Jones"
    ],
    "f1": [
-    "Carter Verhaeghe",
-    "Aleksander Barkov",
-    "Sam Reinhart"
-   ],
-   "f2": [
     "Brady Tkachuk",
     "Sam Bennett",
     "Matthew Tkachuk"
    ],
-   "f3": [
+   "f2": [
     "Eetu Luostarinen",
     "Anton Lundell",
-    "Brad Marchand"
+    "Sam Reinhart"
+   ],
+   "f3": [
+    "Carter Verhaeghe",
+    "Lars Eller",
+    "Sandis Vilmanis"
    ],
    "f4": [
     "Bokondji Imama",
-    "Lars Eller",
+    "Cole Schwindt",
     "Garnet Hathaway"
    ],
    "d1": [
@@ -810,12 +810,12 @@
     "Seth Jones"
    ],
    "d3": [
-    "Uvis Balinskis",
-    "Dmitry Kulikov"
+    "Dmitry Kulikov",
+    "Radko Gudas"
    ],
    "goalies": [
-    "Akira Schmid",
-    "Jacob Markstrom"
+    "Jacob Markstrom",
+    "Akira Schmid"
    ]
   },
   "LAK": {
@@ -1228,13 +1228,13 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-11-19",
-   "source": "Mollie Walker",
+   "updated": "2026-11-21",
+   "source": "Andrew Crane",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
-    "Gabriel Perreault",
     "J.T. Miller",
+    "Gabriel Perreault",
     "Mika Zibanejad",
     "Adam Fox"
    ],
@@ -1242,8 +1242,8 @@
     "Eeli Tolvanen",
     "Tye Kartye",
     "Will Cuylle",
-    "Oliver Bjorkstrand",
-    "Adam Fox"
+    "Sean Durzi",
+    "Scott Morrow"
    ],
    "pk1": [
     "J.T. Miller",
@@ -1270,12 +1270,11 @@
    "f3": [
     "Eeli Tolvanen",
     "Noah Laba",
-    "Oliver Bjorkstrand"
+    "Jaroslav Chmelar"
    ],
    "f4": [
-    "Jaroslav Chmelar",
-    "Luke Glendening",
-    "Matt Rempe"
+    "Glenn Gawdin",
+    "Taylor Raddysh"
    ],
    "d1": [
     "Vladislav Gavrikov",
@@ -1283,21 +1282,21 @@
    ],
    "d2": [
     "Marcus Pettersson",
-    "Braden Schneider"
+    "Sean Durzi"
    ],
    "d3": [
     "Matthew Robertson",
-    "Scott Morrow"
+    "Braden Schneider"
    ],
    "goalies": [
-    "Joonas Korpisalo",
-    "Dylan Garand"
+    "Dylan Garand",
+    "Joonas Korpisalo"
    ]
   },
   "OTT": {
    "team": "Ottawa Senators",
-   "updated": "2026-11-20",
-   "source": "Last Game (2026-11-19)",
+   "updated": "2026-11-21",
+   "source": "Andrew Wilimek",
    "url": "https://www.dailyfaceoff.com/teams/ottawa-senators/line-combinations",
    "pp1": [
     "Stephen Halliday",
@@ -1343,7 +1342,7 @@
    "f4": [
     "Sammy Blais",
     "Stephen Halliday",
-    "Tyler Boucher"
+    "Nick Cousins"
    ],
    "d1": [
     "Jake Sanderson",
@@ -1704,8 +1703,8 @@
   },
   "TBL": {
    "team": "Tampa Bay Lightning",
-   "updated": "2026-11-20",
-   "source": "Last Game (2026-11-19)",
+   "updated": "2026-11-21",
+   "source": "Benjamin Pierce",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "pp1": [
     "Jake Guentzel",
@@ -1715,7 +1714,7 @@
     "John Carlson"
    ],
    "pp2": [
-    "Gage Goncalves",
+    "Ilya Mikheyev",
     "Anthony Cirelli",
     "Pontus Holmberg",
     "Victor Hedman",
@@ -1772,8 +1771,8 @@
   },
   "TOR": {
    "team": "Toronto Maple Leafs",
-   "updated": "2026-11-20",
-   "source": "Last Game (2026-11-19)",
+   "updated": "2026-11-21",
+   "source": "David Alter",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "pp1": [
     "Gavin McKenna",
@@ -1783,11 +1782,11 @@
     "Auston Matthews"
    ],
    "pp2": [
-    "Jack Roslovic",
-    "Nick Paul",
     "Easton Cowan",
+    "Nick Paul",
+    "Dakota Joshua",
     "Morgan Rielly",
-    "Oliver Ekman-Larsson"
+    "Jack Roslovic"
    ],
    "pk1": [
     "Teddy Blueger",
@@ -1798,7 +1797,7 @@
    "pk2": [
     "Nick Paul",
     "Easton Cowan",
-    "Oliver Ekman-Larsson",
+    "Morgan Rielly",
     "Troy Stecher"
    ],
    "f1": [
@@ -1830,12 +1829,12 @@
     "Chris Tanev"
    ],
    "d3": [
-    "Oliver Ekman-Larsson",
+    "Dakota Mermis",
     "Troy Stecher"
    ],
    "goalies": [
-    "Sergei Bobrovsky",
-    "Anthony Stolarz"
+    "Anthony Stolarz",
+    "Sergei Bobrovsky"
    ]
   },
   "UTA": {
@@ -2112,8 +2111,8 @@
   },
   "WPG": {
    "team": "Winnipeg Jets",
-   "updated": "2026-11-20",
-   "source": "Last Game (2026-11-19)",
+   "updated": "2026-11-21",
+   "source": "Connor Hrabchak",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
    "pp1": [
     "Gabriel Vilardi",
@@ -2139,7 +2138,7 @@
     "Morgan Barron",
     "Alex Iafallo",
     "Mario Ferraro",
-    "Tyrel Bauer"
+    "Elias Salomonsson"
    ],
    "f1": [
     "Kyle Connor",
@@ -2157,7 +2156,7 @@
     "Viggo Björck"
    ],
    "f4": [
-    "Cole Koepke",
+    "Tyrel Bauer",
     "Danny Zhilkin",
     "Alex Iafallo"
    ],
@@ -2167,11 +2166,11 @@
    ],
    "d2": [
     "Dylan Samberg",
-    "Mario Ferraro"
+    "Elias Salomonsson"
    ],
    "d3": [
-    "Henry Thrun",
-    "Tyrel Bauer"
+    "Mario Ferraro",
+    "Henry Thrun"
    ],
    "goalies": [
     "Stuart Skinner",

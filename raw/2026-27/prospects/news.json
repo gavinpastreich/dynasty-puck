@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-21T13:31+00:00",
+"fetched": "2026-11-21T17:30+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -459,6 +459,14 @@
 ],
 "n8482666": [
 {
+"d": "2026-11-21",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Scott Morrow Deserves to Stay in the Rangers’ Lineup",
+"u": "https://thehockeywriters.com/scott-morrow-deserves-to-stay-in-the-rangers-lineup/",
+"w": 2
+},
+{
 "d": "2026-11-17",
 "k": [],
 "s": "Dobber Hockey",
@@ -742,6 +750,16 @@
 "s": "NHL.com (team site)",
 "t": "Kraken Finns Bring The Heat In Cultural Glimpse",
 "u": "https://www.nhl.com/news/finnish-culture-nhl-global-series-finland-ville-ottavainen-jani-nyman",
+"w": 2
+}
+],
+"n8483506": [
+{
+"d": "2026-11-21",
+"k": [],
+"s": "McKeen's Hockey",
+"t": "NHL: CULLEN – 20 FANTASY POINTS – Quinn Hughes and Connor Bedard leave with injuries; Frank Nazar, Sam Rinzel, Simon Holmstrom, Brock Boeser, and so much more!",
+"u": "https://www.mckeenshockey.com/nhl-blog/nhl-cullen-20-fantasy-points-quinn-hughes-connor-bedard-leave-injuries-frank-nazar-sam-rinzel-simon-holmstrom-brock-boeser-more/",
 "w": 2
 }
 ],
@@ -1159,6 +1177,14 @@
 }
 ],
 "n8484220": [
+{
+"d": "2026-11-21",
+"k": [],
+"s": "Sportsnet",
+"t": "Canadiens defenceman David Reinbacher draws in against Flyers",
+"u": "https://www.sportsnet.ca/nhl/article/canadiens-defenceman-david-reinbacher-draws-in-against-flyers/",
+"w": 2
+},
 {
 "d": "2026-11-17",
 "k": [],
@@ -2401,6 +2427,16 @@
 "w": 2
 },
 {
+"d": "2026-11-21",
+"k": [
+"contract"
+],
+"s": "Last Word on Hockey",
+"t": "Early 2026-27 Gavin McKenna Stats a Sign of Leafs Mismanagement",
+"u": "https://lastwordonsports.com/hockey/2026/11/21/gavin-mckenna-stats-2026-27/",
+"w": 2
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "Maple Leafs Hot Stove (TOR)",
@@ -2472,14 +2508,6 @@
 "s": "Daily Faceoff",
 "t": "Can Porter Martone, Gavin McKenna work their way back into Calder conversation?",
 "u": "https://www.dailyfaceoff.com/news/calder-trophy-race-odds-gavin-mckenna-porter-martone-jacob-fowler-leafs-flyers-canadiens",
-"w": 2
-},
-{
-"d": "2026-11-19",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Gavin McKenna earns major vote of confidence in latest lineup update",
-"u": "https://editorinleaf.com/gavin-mckenna-earns-major-vote-of-confidence-in-latest-lineup-update?utm_source=RSS",
 "w": 2
 }
 ],
@@ -2700,7 +2728,7 @@
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -2714,7 +2742,7 @@
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2980,7 +3008,7 @@
 {
 "n": 9,
 "name": "Last Word on Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://lastwordonsports.com/hockey/feed/"
 },

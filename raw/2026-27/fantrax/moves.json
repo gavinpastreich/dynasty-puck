@@ -1241,5 +1241,39 @@
 "to": "BHHC",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-21",
+"id": "01f5z",
+"type": "drop",
+"from": "Wags8210",
+"ct": "FA",
+"sal": 1000000,
+"n": "Kreider, Chris"
+},
+{
+"d": "2026-11-21",
+"id": "0243e",
+"type": "add",
+"to": "Wags8210",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-21",
+"id": "03dde",
+"type": "drop",
+"from": "Wags8210",
+"ct": "BID",
+"sal": 6600000,
+"n": "Walman, Jake"
+},
+{
+"d": "2026-11-21",
+"id": "05m17",
+"type": "add",
+"to": "Wags8210",
+"ct": "FA",
+"sal": 1000000
 }
 ]

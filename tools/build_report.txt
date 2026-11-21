@@ -1,4 +1,5 @@
-Dynasty Puck HQ build 2026-11-21T13:28:28
+Dynasty Puck HQ build 2026-11-21T17:28:18
+Fantrax: 4 roster changes since 2026-11-21T13:28:29+00:00
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -49,10 +50,12 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Tye Kartye: FA -> mcianfra (Fantrax)
   > John Marino: FA -> mcianfra (Fantrax)
   > Artturi Lehkonen: FA -> mcianfra (Fantrax)
+  > Frank Nazar: mcianfra -> Wags8210 (Fantrax)
   > Barrett Hayton: FA -> Wags8210 (Fantrax)
   > Pyotr Kochetkov: FA -> Wags8210 (Fantrax)
   > Taylor Hall: FA -> Wags8210 (Fantrax)
   > Egor Chinakhov: FA -> Wags8210 (Fantrax)
+  > Gabriel Landeskog: nebsnave -> Wags8210 (Fantrax)
   > Adam Klapka: FA -> TommyG10 (Fantrax)
   > Tristan Jarry: FA -> nbracken (Fantrax)
   > Erik Cernak: FA -> nbracken (Fantrax)
@@ -62,16 +65,16 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Adam Edstrom: FA -> SPG (Fantrax)
   < J.J. Moser: dropped by SPG since the CSV export (Fantrax)
   < Ryan Hartman: dropped by mertin since the CSV export (Fantrax)
+  < Chris Kreider: dropped by Wags8210 since the CSV export (Fantrax)
   < Ivan Provorov: dropped by nebsnave since the CSV export (Fantrax)
   < Valeri Nichushkin: dropped by mcianfra since the CSV export (Fantrax)
   < Mackie Samoskevich: dropped by nebsnave since the CSV export (Fantrax)
   < Jake McCabe: dropped by ROO since the CSV export (Fantrax)
-  < Gabriel Landeskog: dropped by nebsnave since the CSV export (Fantrax)
   < Drew Doughty: dropped by ROO since the CSV export (Fantrax)
   < Colton Parayko: dropped by ROO since the CSV export (Fantrax)
-  < Frank Nazar: dropped by mcianfra since the CSV export (Fantrax)
   < Jonathan Marchessault: dropped by Wags8210 since the CSV export (Fantrax)
   < Brett Howden: dropped by SPG since the CSV export (Fantrax)
+  < Jake Walman: dropped by Wags8210 since the CSV export (Fantrax)
   < Arber Xhekaj: dropped by CGN since the CSV export (Fantrax)
   < Noah Laba: dropped by ROO since the CSV export (Fantrax)
   < Frank Vatrano: dropped by BULLIES since the CSV export (Fantrax)
@@ -84,7 +87,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < Sasha Pastujov: dropped by BULLIES since the CSV export (Fantrax)
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-21T13:28:29+00:00): 620 rostered; changes vs CSV: {'owner': 60, 'dropped': 24}
+Fantrax sync (2026-11-21T17:28:19+00:00): 620 rostered; changes vs CSV: {'owner': 62, 'dropped': 24}
 Fantrax ADP: 281 players drafted on average before pick 280 (of 972 listed)
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1297 players (620 rostered)
@@ -103,7 +106,7 @@ Role prior D (n=238): Tk/GP R^2=0.42, Cor/GP R^2=0.41
 Payroll check (2026-27): Fantrax salary vs contract sheet column
   ROO       Fantrax $ 98.70M  sheet $ 99.90M  {'BID': 14, 'ELC1': 1, 'FA': 4, 'MNR': 26}   <- differs by -1.20M (Fantrax is current)  (IR relief $4.90M)
   TommyG10  Fantrax $100.75M  sheet $ 97.25M  {'BID': 18, 'ELC1': 1, 'FA': 3, 'RFA1': 2, 'MNR': 22}   <- differs by +3.50M (Fantrax is current)  (IR relief $6.50M)
-  Wags8210  Fantrax $103.84M  sheet $ 98.84M  {'BID': 20, 'FA': 5, 'RFA1': 1, 'MNR': 20}   <- differs by +5.00M (Fantrax is current)  (IR relief $13.50M)
+  Wags8210  Fantrax $ 98.24M  sheet $ 98.84M  {'BID': 19, 'FA': 6, 'RFA1': 1, 'MNR': 20}   <- differs by -0.60M (Fantrax is current)  (IR relief $12.84M)
   BULLIES   Fantrax $ 86.85M  sheet $ 88.85M  {'BID': 16, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 2}   <- differs by -2.00M (Fantrax is current)  (IR relief $2.50M)
   nbracken  Fantrax $107.72M  sheet $ 99.42M  {'BID': 17, 'RFA1': 3, 'FA': 3, 'ELC1': 1, 'MNR': 21}   <- differs by +8.30M (Fantrax is current)  OVER CAP  (IR relief $1.00M)
   SPG       Fantrax $102.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 2, 'MNR': 21}   <- differs by +2.00M (Fantrax is current)  (IR relief $15.80M)
@@ -115,6 +118,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   PuckLuck  Fantrax $ 96.70M  sheet $ 89.50M  {'BID': 17, 'FA': 4, 'MNR': 22, 'RFA1': 2}   <- differs by +7.20M (Fantrax is current)  (IR relief $16.50M)
   CGN       Fantrax $101.45M  sheet $ 94.95M  {'BID': 12, 'RFA1': 3, 'FA': 8, 'MNR': 22}   <- differs by +6.50M (Fantrax is current)  (IR relief $5.20M)
   mertin    Fantrax $107.60M  sheet $ 99.60M  {'BID': 13, 'FA': 8, 'RFA1': 2, 'MNR': 19, 'ELC1': 1}   <- differs by +8.00M (Fantrax is current)  (IR relief $4.00M)
+  ~ on contract sheet (Wags8210) but not on a Fantrax roster: Jake Walman
   ~ on contract sheet (BULLIES) but not on a Fantrax roster: Frank Vatrano
   ~ on contract sheet (M.M) but not on a Fantrax roster: Mathieu Olivier
   ~ on contract sheet (CGN) but not on a Fantrax roster: Arber Xhekaj
@@ -145,7 +149,7 @@ Season to date (20262027): 859 players with games; rest-of-season projections bl
 Recent form 2026-11-07..2026-11-20: 737 players with games
 Scoreboard: week 8 2026-11-16..2026-11-20 + live 2026-11-21 (14 games, 0 in progress): ROO 26 skater GP, M.M 29 skater GP, mertin 32 skater GP, BHHC 32 skater GP …
 Weekly history: 7 finished weeks (7 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-21): 1209 line/PP/goalie tags; injuries matched 100/100
+Depth (Daily Faceoff, 2026-11-21): 1208 line/PP/goalie tags; injuries matched 100/100
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)
@@ -167,6 +171,7 @@ Trades: 3 new trade(s) picked up from the Fantrax nightly log
   $ cap penalty ROO: Drew Doughty [0.45] (contract sheet)
   $ cap penalty TommyG10: Nils Lundkvist [0.7] (commissioner)
   $ cap penalty TommyG10: Pavel Buchnevich [0.55] (commissioner)
+  $ cap penalty Wags8210: Jake Walman [3.3, 3.3, 3.3] (contract sheet)
   $ cap penalty nebsnave: Jakub Dobes [1.15] (contract sheet)
 2026 rookie draft: 42 picks; unmatched players: []
 2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
