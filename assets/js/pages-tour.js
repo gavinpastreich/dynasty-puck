@@ -23,6 +23,7 @@
       ['live', '📺', 'Live Scoreboard', 'Every matchup with live NHL stats, updating during games, and the odds with the rest of the week simulated.'],
       ['form', '🔥', 'Hot & Cold', 'The last 14 days against each player\'s projection: who is running hot, who is cold, hot free agents.'],
       ['lines', '🔀', 'Line & PP Changes', 'Night-to-night moves in NHL depth charts: who got promoted to PP1 or the top six, who got scratched, which goalie took the net.'],
+      ['fixtures', '📅', 'Season Grid', 'Every team\'s 24 weeks on one screen: results so far and projected odds ahead.'],
       ['injuries', '🩹', 'Injuries & Depth', 'The injury report and each NHL team\'s current lines.'],
       ['playoffs', '🏆', 'Playoff Picture', 'The projected bracket, odds by round and through the season, and what this week\'s matchups are worth.']
     ]],

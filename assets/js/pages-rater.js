@@ -55,7 +55,7 @@
     title: 'Player Rater',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, me = DP.state.team, per = q.per === '1', D = DP.raterData();
-      var h = '<div class="page-head"><h1>🧮 Player Rater</h1><p class="sub">Who has actually produced the most in our categories this season: real 2026-27 NHL stats, each category scored against the league\'s regulars (a z-score) and added up. ' + (per ? 'Per game, so part-timers and injured players are judged on their games.' : 'Season totals, so games played count.') + ' A record of what happened, not a projection: the dynasty values look ahead.</p></div>';
+      var h = '<div class="page-head"><h1>⭐ Player Rater</h1><p class="sub">Who has actually produced the most in our categories this season: real 2026-27 NHL stats, each category scored against the league\'s regulars (a z-score) and added up. ' + (per ? 'Per game, so part-timers and injured players are judged on their games.' : 'Season totals, so games played count.') + ' A record of what happened, not a projection: the dynasty values look ahead.</p></div>';
       h += '<div class="controls"><div class="seg"><button data-per="0" class="' + (per ? '' : 'on') + '">Season totals</button><button data-per="1" class="' + (per ? 'on' : '') + '">Per game</button></div><span class="small muted">Skaters with ' + MIN_SHOW + '+ GP; z-scores against skaters with ' + MIN_REF + '+ GP. League save % ' + U.rate(D.lgSV) + ', GAA ' + U.fmt(D.lgGAA, 2) + '.</span></div><div id="rt-t"></div>';
       el.innerHTML = h;
       U.qsa('[data-per]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('rater', null, { per: b.dataset.per === '1' ? '1' : undefined }); }); });

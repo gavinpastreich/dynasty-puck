@@ -493,5 +493,8 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     `DP.carriers(t, details)`, `DP.carriersHtml`. Team Hub `#t-troph`, `#tj-carry`.
   - Precomputed season sim: `tools/presim.js` (nightly, after value_history) writes data/sim.js (`DP.simPre` = {built,
     day (ET), lw, nw, n, res}); app.js boot sets `E._bsim` from it when all keys match. `node tools/presim.js --check`.
+  - Season Grid (pages-grid.js): `DP.gridData()` (cached per engine version; E.simWeek 1000 per future pairing).
+    Menu favorites (`dp_favs`, `DP.favs/setFavs`, a Favorites group + ☆ per item in app.js navHtml) and the phone tab
+    bar (`dp_tabs`, `DP.tabRoutes/setTabs`), both editable in My Page → Customize. Widgets magic, rounds, random.
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

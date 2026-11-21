@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -555,6 +555,32 @@ E.teams.forEach((t) => {
 if (DP.simPre && DP.simPre.built === DP.meta.built && DP.simPre.lw === E.lockWeek() && DP.simPre.nw === E.nowWeek()) {
   E._bsim = null;
   ok(JSON.stringify(E.baseSim()) === JSON.stringify(DP.simPre.res), 'presim: data/sim.js = a fresh 1,500-season simulation');
+}
+
+// ---- Season Grid: every team has every scheduled week, results match the weekly results, odds are complementary
+{
+  const G = DP.gridData(), nW = DP.meta.h2h.reduce((m, g) => Math.max(m, g[0]), 0);
+  ok(G.rows.length === E.teams.length && G.rows.every((r) => r.cells.length === nW && r.cells.every((c, i) => c.n === i + 1)), `season grid: ${nW} weeks for every team`);
+  const by = {}; G.rows.forEach((r) => { by[r.t] = r; });
+  ok(G.rows.every((r) => r.cells.every((c) => { const o = by[c.o].cells[c.n - 1]; return o.o === r.t && (!c.res || (o.res === (c.res === 'W' ? 'L' : c.res === 'L' ? 'W' : 'T'))) && (c.p === undefined || near(c.p + o.p, 1, 0.2)); })), 'season grid: both sides of every week agree');
+  ok(G.rows.every((r) => { const s = DP.seasonRows(r.t); return r.rec.W === s.filter((x) => x.res === 'W').length && r.rec.L === s.filter((x) => x.res === 'L').length; }), 'season grid: records match the season rows');
+}
+ok(['magic', 'rounds', 'random', 'trophies', 'carriers'].every((k) => DP.WIDGETS[k]), 'my page: playoff and fun widgets registered');
+// ---- Weekly Calendar: games per player = the engine's schedule count for the week
+E.teams.slice(0, 4).forEach((t) => {
+  const wi = Math.max(0, E.nowWeek()), C = DP.calendarData(t, wi);
+  ok(C.days.length === E.weeks[wi].days || C.days.length === E.dayIndex(E.weeks[wi].end) - E.dayIndex(E.weeks[wi].start) + 1, `calendar ${t}: every day of the week`);
+  ok(C.rows.filter((r) => r.p.r && r.p.nt26).every((r) => r.n === (E.wg[r.p.nt26] ? E.wg[r.p.nt26][wi] : 0)), `calendar ${t}: games per player match the schedule`);
+  ok(C.rows.filter((r) => r.start).length === E.baseline[t][wi].lu.F.length + E.baseline[t][wi].lu.D.length + E.baseline[t][wi].lu.G.length, `calendar ${t}: the projected starters`);
+});
+// ---- Player Rater: z-scores sum to the value; the regulars average zero in each category
+{
+  const D = DP.raterData(), S = D.rows.filter((r) => r.kind === 'S'), ref = S.filter((r) => r.gp >= 10);
+  ok(S.every((r) => near(r.tot, E.sum(Object.values(r.z)), 1e-9) && near(r.pg, E.sum(Object.values(r.zp)), 1e-9)), 'rater: value = the sum of the category z-scores');
+  ok(['G', 'Hit', 'Cor'].every((k) => near(E.sum(ref.map((r) => r.z[k])) / ref.length, 0, 1e-6)), 'rater: regulars average zero in each category');
+  ok(S.filter((r) => r.p.pos !== 'D').every((r) => r.z.PtD === 0), 'rater: forwards get nothing for Pt-D');
+  ok(S.every((r) => r.p.ytd[0] >= 3) && D.rows.filter((r) => r.kind === 'G').length > 20, 'rater: skaters with 3+ GP, the goalies');
+  const top = S.slice().sort((a, b) => b.tot - a.tot)[0]; ok(top.totRank === 1, `rater: ranks (#1 ${top.p.n})`);
 }
 
 // ---- Start Here tour: every link is a page in the menu

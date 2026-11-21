@@ -9,20 +9,20 @@
   // family's tab row and from search (PAGE_EXTRA).
   var NAV = [
     ['Overview', [['home', '🏠', 'Dashboard'], ['mypage', '🛠️', 'My Page'], ['team', '🧢', 'Team Hub'], ['live', '📺', 'Live Scoreboard'], ['weekly', '🗞️', 'The Weekly'], ['standings', '📊', 'Standings'], ['playoffs', '🏆', 'Playoff Picture']]],
-    ['Players', [['players', '📋', 'Players'], ['fa', '🛒', 'Free Agents'], ['pickup', '📥', 'Pickup Planner'], ['form', '🔥', 'Hot & Cold'], ['movers', '📈', 'Market Movers'], ['luck', '🎰', 'Buy Low / Sell High'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards'], ['injuries', '🩹', 'Injuries & Depth'], ['lines', '🔀', 'Line & PP Changes']]],
+    ['Players', [['players', '📋', 'Players'], ['rater', '⭐', 'Player Rater'], ['fa', '🛒', 'Free Agents'], ['pickup', '📥', 'Pickup Planner'], ['form', '🔥', 'Hot & Cold'], ['movers', '📈', 'Market Movers'], ['luck', '🎰', 'Buy Low / Sell High'], ['compare', '⚖️', 'Compare'], ['leaders', '🏆', 'Leaderboards'], ['injuries', '🩹', 'Injuries & Depth'], ['lines', '🔀', 'Line & PP Changes']]],
     ['Trades', [['deadline', '⏳', 'Trade Deadline'], ['trade', '🔁', 'Trade Machine'], ['finder', '🔎', 'Trade Finder'], ['values', '💎', 'Trade Value Chart'], ['history', '📜', 'Trade History'], ['moves', '🧾', 'Transactions'], ['picks', '🎟️', 'Draft Picks']]],
     ['Simulators', [['scout', '🔭', 'Opponent Scouting'], ['matchup', '🥊', 'Weekly Matchup'], ['season', '🎲', 'Season Sim'], ['path', '🗺️', 'Title Path'], ['scorecard', '🧮', 'Model Scorecard'], ['signing', '✍️', 'Signing Sim']]],
     ['League', [['feed', '📣', 'League Feed'], ['power', '⚡', 'Power Rankings'], ['rivals', '⚔️', 'Rivalries'], ['tape', '📏', 'Tale of the Tape'], ['records', '📚', 'Record Book'], ['grades', '📝', 'GM Report Cards'], ['trophies', '🏅', 'Trophy Case'], ['cats', '🧩', 'Category Insights'], ['windows', '📈', 'Contention Windows'], ['awards', '🏅', 'Awards & Wrapped']]],
     ['Cap & Contracts', [['cap', '💰', 'Contracts & Cap'], ['offseason', '📅', 'Offseason Planner'], ['auction', '🔨', 'Auction War Room']]],
     ['Prospects', [['radar', '📡', 'Prospect Radar'], ['prospects', '🌱', 'Prospects & MNR'], ['wjc', '🌍', 'World Juniors'], ['draft', '🎯', 'Draft Center'], ['mock', '🧪', 'Mock Draft']]],
-    ['Schedule', [['schedule', '🗓️', 'Schedule Tools'], ['stacks', '🧱', 'NHL Team Stacks']]],
+    ['Schedule', [['calendar', '📆', 'Weekly Calendar'], ['fixtures', '📅', 'Season Grid'], ['schedule', '🗓️', 'Schedule Tools'], ['stacks', '🧱', 'NHL Team Stacks']]],
     ['About', [['tour', '🧭', 'Start Here'], ['alerts', '🔔', 'Alerts'], ['commish', '🧑‍⚖️', 'Commissioner Checks'], ['rules', '📖', 'Rules & Methods'], ['data', '🗂️', 'Data & Updates']]]
   ];
   var PAGE_EXTRA = [['preview', '📰', 'Weekly Preview', 'The Weekly']]; // in search, not in the menu
   // families: related pages share a tab row at the top, so moving between them is one click
   var FAMS = [
     [['weekly', 'Last week'], ['live', 'This week (live)'], ['preview', 'Next week'], ['scout', 'Scout your opponent'], ['matchup', 'Matchup sim'], ['scorecard', 'How good are the odds?']],
-    [['players', 'Players'], ['fa', 'Free Agents'], ['pickup', 'Pickup Planner'], ['form', 'Hot & Cold'], ['lines', 'Line Changes'], ['movers', 'Market Movers'], ['luck', 'Buy Low / Sell High'], ['compare', 'Compare'], ['leaders', 'Leaderboards']],
+    [['players', 'Players'], ['rater', 'Player Rater'], ['fa', 'Free Agents'], ['pickup', 'Pickup Planner'], ['form', 'Hot & Cold'], ['lines', 'Line Changes'], ['movers', 'Market Movers'], ['luck', 'Buy Low / Sell High'], ['compare', 'Compare'], ['leaders', 'Leaderboards']],
     [['deadline', 'Deadline'], ['trade', 'Trade Machine'], ['finder', 'Trade Finder'], ['values', 'Value Chart'], ['history', 'Trade History'], ['moves', 'Transactions'], ['picks', 'Draft Picks']],
     [['standings', 'Standings'], ['power', 'Power Rankings'], ['playoffs', 'Playoff Picture'], ['rivals', 'Rivalries'], ['tape', 'Tale of the Tape'], ['records', 'Record Book'], ['grades', 'GM Report Cards'], ['trophies', 'Trophy Case'], ['season', 'Season Sim'], ['cats', 'Category Insights'], ['windows', 'Contention Windows'], ['awards', 'Awards & Wrapped']],
     [['cap', 'Contracts & Cap'], ['offseason', 'Offseason Planner'], ['auction', 'Auction War Room'], ['signing', 'Signing Sim']],
@@ -39,20 +39,36 @@
 
   // a group can be folded away (remembered on this device); the group holding the page you're on always shows
   var folded = U.store.get('navFold', {});
+  // a page's [route, icon, name] from the menu
+  function pageInfo(r) { for (var i = 0; i < NAV.length; i++) for (var j = 0; j < NAV[i][1].length; j++) if (NAV[i][1][j][0] === r) return NAV[i][1][j]; return null; }
+  DP.pageInfo = pageInfo;
+  // favorites: pages starred in the menu (☆), pinned in a group at the top; kept on this device
+  DP.favs = function () { return (U.store.get('favs', []) || []).filter(function (r) { return pageInfo(r); }); };
+  DP.setFavs = function (a) { U.store.set('favs', a); if (U.qs('#nav')) U.qs('#nav').innerHTML = navHtml(DP._navCur); };
   function navHtml(cur) {
-    return NAV.map(function (g) {
+    var fv = DP.favs(), item = function (it) {
+      var on = fv.indexOf(it[0]) >= 0;
+      return '<div class="navi"><a href="#/' + it[0] + '" class="' + (cur === it[0] ? 'on' : '') + '"' + (cur === it[0] ? ' aria-current="page"' : '') + '><span class="i" aria-hidden="true">' + it[1] + '</span>' + esc(it[2]) + '</a><button type="button" class="fav' + (on ? ' on' : '') + '" data-fav="' + esc(it[0]) + '" aria-pressed="' + on + '" aria-label="' + (on ? 'Remove ' + esc(it[2]) + ' from favorites' : 'Add ' + esc(it[2]) + ' to favorites') + '" title="' + (on ? 'Remove from favorites' : 'Pin to favorites (this device)') + '">' + (on ? '★' : '☆') + '</button></div>';
+    };
+    var groups = (fv.length ? [['★ Favorites', fv.map(pageInfo)]] : []).concat(NAV);
+    return groups.map(function (g) {
       var here = g[1].some(function (it) { return it[0] === cur; }), shut = folded[g[0]] && !here;
-      return '<button type="button" class="grp" data-grp="' + esc(g[0]) + '" aria-expanded="' + !shut + '">' + esc(g[0]) + '<span class="car" aria-hidden="true">' + (shut ? '▸' : '▾') + '</span></button>' + (shut ? '' : g[1].map(function (it) {
-        return '<a href="#/' + it[0] + '" class="' + (cur === it[0] ? 'on' : '') + '"' + (cur === it[0] ? ' aria-current="page"' : '') + '><span class="i" aria-hidden="true">' + it[1] + '</span>' + esc(it[2]) + '</a>';
-      }).join(''));
+      return '<button type="button" class="grp" data-grp="' + esc(g[0]) + '" aria-expanded="' + !shut + '">' + esc(g[0]) + '<span class="car" aria-hidden="true">' + (shut ? '▸' : '▾') + '</span></button>' + (shut ? '' : g[1].map(item).join(''));
     }).join('') + '<a href="assets/Dynasty-Puck-HQ-Guide.pdf" target="_blank" rel="noopener"><span class="i" aria-hidden="true">📘</span>League guide (PDF)</a><div class="grp">Season</div><div class="small muted" style="padding:0 10px">' + esc(DP.meta.season) + ' · data updated ' + esc(U.builtText()) + '</div>';
   }
 
   // phones: the five places people go most, one thumb away (the full menu is the last button)
   var TABS = [['home', '🏠', 'Home'], ['team', '🧢', 'My team'], ['live', '📺', 'Live'], ['trade', '🔁', 'Trade'], ['', '☰', 'More']];
+  var SHORT = { home: 'Home', team: 'My team', live: 'Live', trade: 'Trade', mypage: 'My Page', weekly: 'Weekly', standings: 'Standings', playoffs: 'Playoffs', players: 'Players', fa: 'Free agents', pickup: 'Pickups', form: 'Hot', movers: 'Movers', finder: 'Finder', values: 'Values', history: 'Trades', moves: 'Moves', scout: 'Scout', matchup: 'Matchup', power: 'Power', feed: 'Feed', records: 'Records', grades: 'Grades', trophies: 'Trophies', cap: 'Cap', offseason: 'Offseason', radar: 'Radar', prospects: 'Prospects', draft: 'Draft', schedule: 'Schedule', lines: 'Lines', injuries: 'Injuries' };
+  DP.TAB_DEFAULT = TABS.slice(0, 4).map(function (t) { return t[0]; });
+  // phones: the four pages in the bottom bar can be chosen (My Page → Customize); the menu is always the last button
+  DP.tabRoutes = function () { var a = U.store.get('tabs', null); return Array.isArray(a) && a.length === 4 && a.every(function (r) { return pageInfo(r) || r === 'team'; }) ? a : DP.TAB_DEFAULT; };
+  DP.setTabs = function (a) { U.store.set('tabs', a); tabbar(DP._route || 'home'); };
   function tabbar(route) {
     var el = U.qs('#tabbar'); if (!el) return;
-    el.innerHTML = TABS.map(function (t) {
+    DP._route = route;
+    var T = DP.tabRoutes().map(function (r) { var d = TABS.filter(function (t) { return t[0] === r; })[0], pi = pageInfo(r); return d || [r, pi ? pi[1] : '•', SHORT[r] || (pi ? pi[2] : r)]; }).concat([TABS[4]]);
+    el.innerHTML = T.map(function (t) {
       return t[0] ? '<a href="#/' + t[0] + '" class="' + (route === t[0] ? 'on' : '') + '"' + (route === t[0] ? ' aria-current="page"' : '') + '><span class="i" aria-hidden="true">' + t[1] + '</span>' + t[2] + '</a>'
         : '<button type="button" data-act="menu"><span class="i" aria-hidden="true">' + t[1] + '</span>' + t[2] + '</button>';
     }).join('');
@@ -153,7 +169,7 @@
     radar: 'prospects news risers fallers rankings', prospects: 'mnr graduation minors pipeline', draft: 'rookie draft board', mock: 'mock draft', matchup: 'h2h weekly lineup odds', season: 'playoff odds simulation',
     standings: 'record seeds playoffs', values: 'trade value chart rankings', windows: 'contender rebuild title odds', preview: 'matchups lineup watch', schedule: 'streaming games off-nights playoffs',
     injuries: 'injury ir depth lines', rules: 'methods how it works model glossary', data: 'updates upload sources freshness', alerts: 'email push notifications calendar reminders', compare: 'versus side by side',
-    leaders: 'leaderboards best top', power: 'power rankings ranking rank best team weekly movers who is the best',  moves: 'transactions adds drops pickups waivers log moves best pickups got away activity',  tour: 'start here tour help guide new how to getting started what is',  tape: 'tale of the tape compare teams team vs team head to head side by side matchup',  lines: 'line changes power play pp1 promotion demotion scratch depth chart goalie starter', movers: 'market movers value risers fallers stock trend dynasty value history', trophies: 'trophy case badges achievements perfect week blowout heist streak records', feed: 'league feed timeline activity what happened news recent everything moves trades lines', mypage: 'my page build custom dashboard widgets layout personal home customize', path: 'title path what it takes win the title championship odds best trade target add who would help most', stacks: 'nhl team stacks clubs exposure schedule which teams own oilers', scorecard: 'model scorecard accuracy calibration brier how good are the odds predictions upsets favorites', grades: 'gm report cards grades grade report card manager best gm lineup calls waiver wire trades luck', records: 'record book records best week most goals hits streaks blowout history', rivals: 'rivalries head to head all-play matrix standings race who has my number bump chart', form: 'hot cold streaks last 14 days form trending recent', pickup: 'pickup planner streaming add drop waivers this week free agent matchup', wjc: 'world juniors wjc u20 junior championship international canada usa sweden finland', scout: 'opponent scouting report lineup tuned matchup swing categories', commish: 'commissioner rules checks cap roster limit goalie minimum ir graduation audit', playoffs: 'playoff picture bracket clinch eliminated magic number seeds schedule', deadline: 'trade deadline buyers sellers rentals hometown discount countdown', luck: 'regression luck shooting percentage hot cold sell high buy low trade targets', weekly: 'recap newsletter results last week standings movers players of the week', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
+    leaders: 'leaderboards best top', power: 'power rankings ranking rank best team weekly movers who is the best',  moves: 'transactions adds drops pickups waivers log moves best pickups got away activity',  tour: 'start here tour help guide new how to getting started what is',  tape: 'tale of the tape compare teams team vs team head to head side by side matchup',  lines: 'line changes power play pp1 promotion demotion scratch depth chart goalie starter', movers: 'market movers value risers fallers stock trend dynasty value history', calendar: 'weekly calendar schedule this week days nights back to back who plays when games per day', rater: 'player rater actual production this season z-score best players so far real stats ranking', fixtures: 'season grid schedule fixtures results calendar every week whole season remaining strength of schedule', trophies: 'trophy case badges achievements perfect week blowout heist streak records', feed: 'league feed timeline activity what happened news recent everything moves trades lines', mypage: 'my page build custom dashboard widgets layout personal home customize', path: 'title path what it takes win the title championship odds best trade target add who would help most', stacks: 'nhl team stacks clubs exposure schedule which teams own oilers', scorecard: 'model scorecard accuracy calibration brier how good are the odds predictions upsets favorites', grades: 'gm report cards grades grade report card manager best gm lineup calls waiver wire trades luck', records: 'record book records best week most goals hits streaks blowout history', rivals: 'rivalries head to head all-play matrix standings race who has my number bump chart', form: 'hot cold streaks last 14 days form trending recent', pickup: 'pickup planner streaming add drop waivers this week free agent matchup', wjc: 'world juniors wjc u20 junior championship international canada usa sweden finland', scout: 'opponent scouting report lineup tuned matchup swing categories', commish: 'commissioner rules checks cap roster limit goalie minimum ir graduation audit', playoffs: 'playoff picture bracket clinch eliminated magic number seeds schedule', deadline: 'trade deadline buyers sellers rentals hometown discount countdown', luck: 'regression luck shooting percentage hot cold sell high buy low trade targets', weekly: 'recap newsletter results last week standings movers players of the week', awards: 'wrapped mvp recap', signing: 'sign drop what-if', team: 'roster my team hub', home: 'dashboard start', players: 'all players stats projections' };
   DP.recent = U.store.get('recent', []);
   DP.noteRecent = function (id) { // last few player cards opened, for the empty search box
     DP.recent = [id].concat(DP.recent.filter(function (x) { return x !== id; })).slice(0, 6);
@@ -247,6 +263,15 @@
     });
     U.qs('#menubtn').addEventListener('click', function () { U.qs('#nav').classList.toggle('open'); });
     U.qs('#nav').addEventListener('click', function (e) {
+      var fb = e.target.closest('[data-fav]');
+      if (fb) {
+        e.preventDefault(); e.stopPropagation();
+        var r = fb.dataset.fav, fv = DP.favs(), i = fv.indexOf(r);
+        if (i >= 0) fv.splice(i, 1); else fv.push(r);
+        DP.setFavs(fv); U.toast(i >= 0 ? 'Removed from favorites' : 'Pinned to Favorites at the top of the menu');
+        var again2 = U.qs('#nav [data-fav="' + r.replace(/"/g, '') + '"]'); if (again2) again2.focus();
+        return;
+      }
       var g = e.target.closest('[data-grp]'); if (!g) return;
       e.stopPropagation(); // the menu is redrawn under the tap: don't let the tap-outside check close it on phones
       var k = g.dataset.grp; folded[k] = g.getAttribute('aria-expanded') === 'true'; U.store.set('navFold', folded);

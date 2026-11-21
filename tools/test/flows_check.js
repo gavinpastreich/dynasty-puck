@@ -312,6 +312,23 @@ const ok = (c, m) => { n++; if (!c) { fails++; console.log('FAIL', m); } else co
   ok(await page.evaluate(() => /Carried by/.test(document.querySelector('#t-carry').innerText) && document.querySelectorAll('#t-carry tbody tr').length === 14), 'team hub: category carriers');
   ok(await page.evaluate(() => !DP.values || !!document.querySelector('#t-troph .tro') || document.querySelector('#t-troph').hidden), 'team hub: trophy case line');
   ok(await page.evaluate(() => !DP.simPre || DP.simPre.built !== DP.meta.built || DP.simPre.lw !== DP.E.lockWeek() || DP.E.version > 1 || !!(DP.E._bsim && DP.E._bsim.pre)), 'boot: the precomputed season simulation is used when it matches');
+  await go('calendar', 3000);
+  ok(await page.evaluate(() => document.querySelectorAll('.cal th.cal-d').length >= 6 && document.querySelectorAll('.cal td.cal-g').length > 20), 'weekly calendar: players by night');
+  await go('rater', 3000);
+  ok(await page.evaluate(() => document.querySelectorAll('#rt-t tbody tr').length > 50 && /Value/.test(document.querySelector('#rt-t thead').innerText)), 'player rater: the table');
+  await go('rater?per=1&pos=G', 3000);
+  ok(await page.evaluate(() => /Value \/ game/.test(document.querySelector('#rt-t thead').innerText) && document.querySelectorAll('#rt-t tbody tr').length > 10), 'player rater: goalies per game');
+  await go('fixtures', 6000);
+  ok(await page.evaluate(() => document.querySelectorAll('.sgrid tbody tr').length === DP.E.teams.length && document.querySelectorAll('.sgrid td.sg.W').length === document.querySelectorAll('.sgrid td.sg.L').length), 'season grid: a row per team, wins and losses balance');
+  // favorites: star a page in the menu, it shows in Favorites at the top; the phone tab bar can be changed
+  await page.evaluate(() => { try { localStorage.removeItem('dp_favs'); localStorage.removeItem('dp_tabs'); } catch (e) {} });
+  await go('home', 1500);
+  await page.evaluate(() => { const b = document.querySelector('#nav [data-fav="trophies"]'); b.click(); });
+  await page.waitForTimeout(400);
+  ok(await page.evaluate(() => /favorites/i.test(document.querySelector('#nav .grp').innerText) && document.querySelector('#nav .navi a').getAttribute('href') === '#/trophies' && JSON.parse(localStorage.getItem('dp_favs'))[0] === 'trophies'), 'menu: a starred page is pinned to Favorites');
+  await page.evaluate(() => { DP.setTabs(['home', 'mypage', 'live', 'feed']); });
+  ok(await page.evaluate(() => [...document.querySelectorAll('#tabbar a')].map((a) => a.getAttribute('href')).join() === '#/home,#/mypage,#/live,#/feed'), 'phone tab bar: the chosen pages');
+  await page.evaluate(() => { DP.setFavs([]); DP.setTabs(DP.TAB_DEFAULT.slice()); });
   await go('stacks', 3000);
   ok(await page.evaluate(() => document.querySelectorAll('.stk tbody tr').length === DP.stacksData(false).clubs.length && document.querySelectorAll('.stk thead .stk-t').length === DP.E.teams.length), 'nhl team stacks: a row per club, a column per team');
   await go('path?n=500', 2500);

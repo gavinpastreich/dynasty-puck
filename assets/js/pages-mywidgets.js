@@ -61,4 +61,35 @@
     render: function (box, o, t) { box.innerHTML = '<p class="small muted">Loading…</p>'; if (DP.loadTrophies) DP.loadTrophies(function (T) { if (H.alive(box)) box.innerHTML = DP.trophyHtml(T[t] || []); }); } });
   reg('carriers', { name: 'Category carriers', ic: '🏋️', cat: 'team', team: 1, ns: [1, 2, 3], n: 2, size: 2, desc: 'Who produced your totals in each category this season (locked lineups).', link: function (t) { return '#/team/' + encodeURIComponent(t); },
     render: function (box, o, t) { var ns = H.finished().map(function (w) { return w.n; }); DP.loadWeeks(ns, function (details) { if (H.alive(box) && DP.carriers) box.innerHTML = DP.carriersHtml(DP.carriers(t, details), o.n || 2); }); } });
+  reg('magic', { name: 'Clinch & elimination', ic: '🔢', cat: 'league', ns: [8, 14], n: 14, desc: 'Who has clinched, who is out, and the points each team still needs to clinch on its own.', link: function () { return '#/playoffs'; },
+    render: function (box, o) {
+      var M = DP.playoffMath ? DP.playoffMath() : null; if (!M) { box.innerHTML = '<p class="small muted">After the first week.</p>'; return; }
+      var rows = DP.E.teams.map(function (t) { return { t: t, m: M[t] }; }).sort(function (a, b) { return b.m.pts - a.m.pts; });
+      box.innerHTML = H.list(rows.slice(0, o.n || 14).map(function (r) { var m = r.m; return H.li(U.teamChip(r.t, { link: 1 }) + (m.st === 'in' ? ' <span class="badge good">clinched</span>' : m.st === 'out' ? ' <span class="badge bad">out</span>' : ''), U.fmt(m.pts, 1) + ' pts' + (m.st === 'alive' ? ' · needs ' + U.fmt(m.need, 1) + ' more to clinch alone' : ''), r.t === DP.state.team ? 'mine' : ''); }));
+    } });
+  reg('rounds', { name: 'Odds by round', ic: '🎟️', cat: 'league', ns: [8, 14], n: 8, desc: 'Each team\'s chance to make the playoffs, the semifinal, the final and win it all.', link: function () { return '#/playoffs'; },
+    render: function (box, o) {
+      box.innerHTML = '<p class="small muted">Simulating the season…</p>';
+      DP.getSim(function (res) {
+        if (!H.alive(box)) return;
+        box.innerHTML = '<div class="tbl-wrap"><table class="t small"><thead><tr><th>Team</th><th class="num">Playoffs</th><th class="num">Semis</th><th class="num">Final</th><th class="num">Title</th></tr></thead><tbody>' + res.slice().sort(function (a, b) { return b.champ - a.champ || b.po - a.po; }).slice(0, o.n || 8).map(function (r) { return '<tr class="' + (r.t === DP.state.team ? 'mine' : '') + '"><td>' + U.teamChip(r.t, { link: 1 }) + '</td><td class="num">' + U.pct(r.po) + '</td><td class="num">' + U.pct(r.r2) + '</td><td class="num">' + U.pct(r.fin) + '</td><td class="num"><b>' + U.pct(r.champ, 1) + '</b></td></tr>'; }).join('') + '</tbody></table></div>';
+      });
+    } });
+  reg('random', { name: 'Did you know?', ic: '💡', cat: 'custom', desc: 'A different fact from this season every time you open the page: records, streaks, carriers, close calls.', link: function () { return '#/records'; },
+    render: function (box, o, t) {
+      var E = DP.E, facts = [], R = DP.recordData ? DP.recordData() : null;
+      if (R) R.cats.forEach(function (c) { if (c.best) facts.push('The season\'s best week in ' + E.CATS[c.c].name + ' belongs to ' + U.teamName(c.best.t) + ' (week ' + c.best.n + ').'); });
+      if (R) R.streaks.forEach(function (x) { if (x.bestW >= 3) facts.push(U.teamName(x.t) + ' has won ' + x.bestW + ' matchups in a row this season.'); });
+      if (DP.catStreaks) DP.catStreaks().cur.filter(function (x) { return x.n >= 4; }).forEach(function (x) { facts.push(U.teamName(x.t) + ' has ' + (x.k === 'W' ? 'won' : 'lost') + ' ' + E.CATS[x.c].name + ' ' + x.n + ' weeks running.'); });
+      var lw = H.lastWeek(); if (lw && DP.closeCalls) DP.closeCalls(lw).slice(0, 3).forEach(function (x) { facts.push('Week ' + x.n + ' was decided by a hair in ' + E.CATS[x.c].name + ': ' + U.teamName(x.win) + ' over ' + U.teamName(x.lose) + '.'); });
+      if (DP.tradePairs) { var N = DP.tradePairs(); if (N.pairs[0]) facts.push(U.teamName(N.pairs[0].a) + ' and ' + U.teamName(N.pairs[0].b) + ' have traded ' + N.pairs[0].n + ' times since 2025-26, more than any other pair.'); }
+      if (!facts.length) { box.innerHTML = '<p class="small muted">After week 1.</p>'; return; }
+      var f = facts[Math.floor(Math.random() * facts.length)];
+      box.innerHTML = '<p style="margin:0">' + esc(f) + '</p><p class="small muted" style="margin:6px 0 0">' + facts.length + ' facts in the hat. Reload for another.</p>';
+    } });
+  reg('gmin', { name: 'Goalie minimum watch', ic: '🥅', cat: 'week', desc: 'Teams below the 2-start goalie minimum this week and the starts they have left.', link: function () { return '#/live'; },
+    render: function (box) {
+      var W = DP.goalieWatch ? DP.goalieWatch(DP.league.score) : [];
+      box.innerHTML = W.length ? H.list(W.map(function (x) { return H.li(U.teamChip(x.t, { link: 1 }) + (x.risk === 'high' ? ' <span class="badge bad">at risk</span>' : x.risk === 'some' ? ' <span class="badge warn">tight</span>' : ''), x.gp + ' GP · needs ' + x.need + ' · ~' + U.fmt(x.left, 1) + ' left', x.t === DP.state.team ? 'mine' : ''); })) : '<p class="small muted">Every team in a live matchup has met the minimum (or no week is being played).</p>';
+    } });
 })();

@@ -136,10 +136,32 @@
         games.sort(function (x, y) { return (y[1] === me || y[2] === me ? 1 : 0) - (x[1] === me || x[2] === me ? 1 : 0); });
         setTimeout(function () {
           var box = U.qs('#live-games', el); if (!box) return;
-          box.innerHTML = games.map(function (g) { return card(g[1], g[2], sc, me); }).join('') || '<p class="muted">Playoff pairings come from the final standings; open a matchup from the Weekly Matchup page.</p>';
+          box.innerHTML = (DP.goalieWatchHtml ? DP.goalieWatchHtml(DP.goalieWatch(sc)) : '') + games.map(function (g) { return card(g[1], g[2], sc, me); }).join('') || '<p class="muted">Playoff pairings come from the final standings; open a matchup from the Weekly Matchup page.</p>';
         }, 20);
       } else U.qsa('[data-week]', el).forEach(function (d) { if (!d.hidden) loadLines(d); });
     }
+  };
+
+  // goalie minimum watch: teams in this week's matchups below the minimum, with the starts their projected goalies
+  // still have scheduled (o.left[].g, the scoreboard's own count)
+  DP.goalieWatch = function (sc) {
+    var E = DP.E, min = E.RULES.goalieMinGP || 2; if (!sc || !sc.week || !sc.teams || sc.final) return [];
+    var out = [];
+    DP.meta.h2h.filter(function (g) { return g[0] === sc.week; }).forEach(function (g) {
+      var o = DP.liveOdds(g[1], g[2]); if (!o) return;
+      [[g[1], o.ggpA, o.left && o.left[0]], [g[2], o.ggpB, o.left && o.left[1]]].forEach(function (x) {
+        if (x[1] >= min) return;
+        var need = min - x[1], left = x[2] ? x[2].g : 0;
+        out.push({ t: x[0], gp: x[1], need: need, left: left, risk: left < need + 0.5 ? (left < need ? 'high' : 'some') : 'low' });
+      });
+    });
+    return out.sort(function (a, b) { return (a.left - a.need) - (b.left - b.need); });
+  };
+  DP.goalieWatchHtml = function (W) {
+    if (!W.length) return '';
+    return '<div class="callout ' + (W.some(function (x) { return x.risk === 'high'; }) ? 'warn' : 'info') + ' small" style="margin-bottom:12px"><b>🥅 Goalie minimum watch</b> (' + (DP.E.RULES.goalieMinGP || 2) + ' GP or all four goalie categories are lost): ' + W.map(function (x) {
+      return '<b>' + esc(U.teamName(x.t)) + '</b> ' + x.gp + ' GP, needs ' + x.need + ', about ' + U.fmt(x.left, 1) + ' start' + (Math.abs(x.left - 1) < 0.05 ? '' : 's') + ' left' + (x.risk === 'high' ? ' <span class="badge bad">at risk</span>' : x.risk === 'some' ? ' <span class="badge warn">tight</span>' : '');
+    }).join(' · ') + '.</div>';
   };
 
   // ------------------------------------------------------------ the week in progress
