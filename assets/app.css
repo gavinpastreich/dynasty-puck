@@ -762,3 +762,9 @@ nav.side .navi .fav.on { color: var(--accent); }
 /* Category Outlook heatmap */
 .olk td.olc { text-align: center; font-variant-numeric: tabular-nums; background: color-mix(in srgb, var(--link) calc((var(--v) - 0.2) * 110%), transparent); min-width: 34px; }
 .olk tr.opp td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
+/* dynasty floor / ceiling (player page) */
+.dvr { margin: 8px 0 12px; }
+.dvr-bar { position: relative; height: 12px; border-radius: 6px; background: var(--line2, var(--line)); margin: 6px 0 4px; }
+.dvr-r { position: absolute; top: 0; bottom: 0; border-radius: 6px; background: color-mix(in srgb, var(--link) 45%, transparent); }
+.dvr-m { position: absolute; top: -3px; width: 3px; height: 18px; margin-left: -1px; background: var(--accent); border-radius: 2px; }
+.dvr-l { display: flex; justify-content: space-between; gap: 8px; }

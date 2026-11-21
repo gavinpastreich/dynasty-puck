@@ -829,18 +829,26 @@
 
   // one player's 7-season value: projection, contract path and value per season. rem = share of 2026-27 still to play.
   function dynastyOf(p, rem) {
-    var d = E.DISCOUNT, lam = E.LAMBDA, minS = E.RULES.minSalary;
     var pr = E.projectYears(p);
     p._pros = pr.pros;
     p.yWar = pr.war;
     var cp = E.costPath(p, pr.war);
     p.yCost = cp.cost; p.yStatus = cp.status; p.grad = cp.grad; p.yDec = cp.dec;
-    var dv = 0, sur = 0, tal = 0;
-    p.yVal = [];
+    var v = valueYears(p, pr.war, cp, rem);
+    p.yVal = v.yVal;
+    p.DV = v.dv; p.talent = v.tal; p.dSurplus = v.sur;
+    p.pv = pr.pros ? pr.pros.peak : 0;
+    return p;
+  }
+  // a 7-season WAR path -> dynasty value: each season's WAR net of the cap cost of the contract path, discounted
+  function valueYears(p, war, cp, rem) {
+    var d = E.DISCOUNT, lam = E.LAMBDA, minS = E.RULES.minSalary;
+    var dv = 0, sur = 0, tal = 0, yVal = [];
+    var pr = { war: war };
     for (var y = 0; y < 7; y++) {
       var c = cp.cost[y], w = Math.max(0, pr.war[y]), val = 0;
-      if (c === null && p.gm) { p.yVal.push(0); continue; }           // UFA: rights end
-      if (!p.gm && y > 0) { p.yVal.push(0); continue; }             // free agent: only this season is controllable
+      if (c === null && p.gm) { yVal.push(0); continue; }           // UFA: rights end
+      if (!p.gm && y > 0) { yVal.push(0); continue; }             // free agent: only this season is controllable
       if (c === null) c = minS;                                     // free agent: signable near the minimum
       var cap = Math.max(0, c - minS) / E.dpwY(y);                  // cap cost in win units (a $ buys less as the cap rises)
       val = w - lam * cap;
@@ -848,15 +856,55 @@
       if (cp.status[y] === 'contract' || cp.status[y] === p.ct) {  // can drop: 50% dead cap (free for FA contracts)
         val = Math.max(val, E.deadCapCounts(p) ? -lam * E.RULES.deadCapPct * c / E.dpwY(y) : 0);
       }
-      p.yVal.push(val);
+      yVal.push(val);
       dv += Math.pow(d, y) * val * (y === 0 ? rem : 1);   // 2026-27: only the part of the season still to play
       tal += Math.pow(d, y) * w;
       sur += Math.pow(d, y) * (w * E.dpwY(y) + minS - (c || 0));
     }
-    p.DV = dv; p.talent = tal; p.dSurplus = sur;
-    p.pv = pr.pros ? pr.pros.peak : 0;
-    return p;
+    return { dv: dv, tal: tal, sur: sur, yVal: yVal };
   }
+  // ---------------------------------------------------------------- dynasty range: floor and ceiling
+  // The same valuation run on a bad-case (10th percentile) and a good-case (90th percentile) WAR path:
+  //  - NHL players: this season's projected WAR, aged with the same curve, times exp(z x sigma), where
+  //    sigma = 0.12 + 0.18 x exp(-career GP / 150) (wider for players with little NHL track record) + 0.05 per season ahead;
+  //  - prospects: the prospect model's own spread. A career is a bust with chance 1 - p(NHL career); otherwise the peak
+  //    scoring pace is lognormal (sigma 0.38, 0.22 after 82 NHL games; goalies 0.38) around the model's estimate. The
+  //    10th / 90th percentile of that mixture sets the peak (a bust = no prospect value);
+  //  - the contract path is re-run on each WAR path (RFA prices depend on it). Both paths move together (one z).
+  var Z_LO = -1.2816, Z_HI = 1.2816;
+  function invPhi(q) { var lo = -8, hi = 8; for (var i = 0; i < 60; i++) { var m = (lo + hi) / 2; if (E.Phi(m) < q) lo = m; else hi = m; } return (lo + hi) / 2; }
+  function scenarioWar(p, z) {
+    var years = [], age0 = p.age || 25, m0 = E.ageMult(p.slot, age0), nhlNow = p.r && p.projGP >= 20, cgp = p.cgp || 0;
+    var pros = age0 < 25 && (p.ct === 'MNR' || p.ct === 'ELC1' || !nhlNow || cgp < 150) ? E.prospect(p) : null, peak = 0;
+    if (pros) {
+      var q = E.Phi(z), bust = 1 - pros.p;
+      if (q > bust && pros.p > 0) {
+        var zz = invPhi((q - bust) / pros.p);
+        if (p.slot === 'G') peak = pros.peakRaw * Math.exp(0.38 * zz - 0.38 * 0.38 / 2);
+        else { var fit = E.ptsWar[p.slot] || E.ptsWar.F, sg = cgp >= 82 ? 0.22 : 0.38; peak = Math.max(0, fit.a + fit.b * (pros.peakPts || 0) * Math.exp(sg * zz - sg * sg / 2)); }
+      }
+    }
+    var s0 = 0.12 + 0.18 * Math.exp(-cgp / 150);
+    for (var y = 0; y < 7; y++) {
+      var age = age0 + y, war = 0;
+      if (nhlNow) war = p.WAR * Math.min(1.8, E.ageMult(p.slot, age) / Math.max(0.2, m0)) * (y === 0 ? 1 : Math.exp(z * (s0 + 0.05 * y)));
+      if (pros) {
+        var ramp = y < pros.eta ? 0 : Math.min(1, 0.55 + 0.25 * (y - pros.eta));
+        var pw = peak * ramp * E.ageMult(p.slot, age) / Math.max(E.ageMult(p.slot, 26), 0.5);
+        war = y === 0 ? Math.max(war, nhlNow ? war : 0) : Math.max(war, pw);
+      }
+      years.push(war);
+    }
+    return years;
+  }
+  E.dvRange = function (p) {
+    if (p._rng && p._rng.v === E.version) return p._rng;
+    var rem = E.remFrac(), out = { v: E.version };
+    [['lo', Z_LO], ['hi', Z_HI]].forEach(function (x) { var w = scenarioWar(p, x[1]); out[x[0]] = valueYears(p, w, E.costPath(p, w), rem).dv; });
+    out.lo = Math.min(out.lo, p.DV); out.hi = Math.max(out.hi, p.DV);   // the expected value sits inside its own range
+    out.pNhl = p._pros ? p._pros.p : null;
+    return (p._rng = out);
+  };
   // What a goalie prospect is worth if he makes it: the average value (wins above replacement, floored at 0) of the
   // 64 NHL goalies projected for the most games this season, two per team. A flat "5 WAR" used to stand here, which is
   // a top-ten starter; it rated a goalie drafted 40th about eight times a forward drafted 40th.

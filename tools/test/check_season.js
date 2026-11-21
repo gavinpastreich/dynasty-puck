@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js']).concat(opt('data/sim.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -578,6 +578,50 @@ ok(['magic', 'rounds', 'random', 'trophies', 'carriers'].every((k) => DP.WIDGETS
     ok(po(forced, g[2]) >= po(base, g[2]) - 0.03 && po(forced, g[1]) <= po(base, g[1]) + 0.03, `scenarios: ${g[2]} winning week ${wk} helps ${g[2]} and not ${g[1]}`);
     ok(near(E.sum(forced.map((r) => r.po)), DP.meta.playoffs.teams, 1e-6), 'scenarios: still 8 playoff teams per season');
   }
+}
+// ---- Elo and schedule luck: zero-sum ratings; luck = standings points minus all-play points
+{
+  const D = DP.eloData(), FW = HW.filter((w) => w.games && w.games.length);
+  ok(near(E.sum(D.rows.map((r) => r.r)), 1500 * E.teams.length, 1e-6), 'elo: ratings stay zero-sum around 1500');
+  ok(D.rows.every((r) => D.hist[r.t].length === FW.length + 1 && near(D.hist[r.t][D.hist[r.t].length - 1], r.r)), 'elo: one point per week');
+  ok(D.rows.every((r) => near(r.act, E.sum(DP.seasonRows(r.t).map((x) => x.W + x.T / 2)), 1e-9) || near(r.act, E.sum(FW.map((w) => { const g = w.games.find((x) => x.a === r.t || x.b === r.t); const s = g.a === r.t ? g.sa : g.sb; return s.W + s.T / 2; })))), 'luck: points got = the weekly results');
+  ok(D.rows.every((r) => near(r.exp, E.sum(FW.map((w) => E.sum(w.ap[r.t]))), 1e-6) && near(r.luck, r.act - r.exp, 1e-9)), 'luck: expected = all-play points');
+  ok(Math.abs(E.sum(D.rows.map((r) => r.act - r.exp))) < 2 * FW.length, 'luck: close to zero across the league (goalie categories both teams forfeit go to nobody)');
+  ok(D.right <= D.called && D.called > 0, `elo: picked ${D.right} of ${D.called}`);
+}
+// ---- Player Rater vs preseason, Breakout Watch: the signal is the documented weighted sum
+{
+  const R = DP.raterData().rows.filter((r) => r.kind === 'S');
+  ok(R.every((r) => near(r.vs, r.pg - r.projPg, 1e-9)), 'rater: vs preseason = value per game minus the projection\'s');
+  const B = DP.breakoutData(DP.depthLog || null), w = DP.BREAKOUT.w;
+  ok(B.length > 10 && B.every((x) => x.p.age <= 25.99 && x.r.gp >= 5 && !x.p.G), `breakout: ${B.length} young skaters with 5+ GP`);
+  ok(B.every((x) => near(x.score, w.prod * x.prod + w.role * x.role + w.trend * x.trend + w.form * x.form, 1e-9) && Math.abs(x.prod) <= 2.5 && near(x.prod, Math.max(-2.5, Math.min(2.5, x.r.vs / 2)), 1e-9) && Math.abs(x.form) <= 1), 'breakout: signal = the weighted sum, clipped');
+  ok(B.every((x, i) => !i || B[i - 1].score >= x.score), 'breakout: strongest first');
+}
+// ---- Rankings Hub: ranks are permutations, consensus = the mean of the four season ranks
+{
+  const R = DP.rankingsData(E.baseSim(), null), n = E.teams.length;
+  ['ptsR', 'eloR', 'poR', 'dvR'].forEach((k) => ok(R.map((r) => r[k]).sort((a, b) => a - b).join() === Array.from({ length: n }, (_, i) => i + 1).join(), `rankings: ${k} is 1..${n}`));
+  ok(R.every((r) => near(r.cons, (r.ptsR + r.pwR + r.eloR + r.poR) / 4, 1e-9)), 'rankings: consensus = average of standings, power, Elo, playoffs');
+  ok(R.every((r, i) => !i || R[i - 1].cons <= r.cons), 'rankings: ordered by consensus');
+}
+// ---- Category Outlook: chances are probabilities and balance across the league (each pairing counted from both sides)
+if (E.lockWeek() !== null) {
+  const D = DP.outlookData(E.lockWeek());
+  ok(D.rows.length === E.teams.length && D.rows.every((r) => r.p.length === E.NC && r.p.every((x) => x >= 0 && x <= 1)), 'outlook: 15 chances per team');
+  ok(E.CATS.every((c, i) => c.grp === 'G' || near(E.sum(D.rows.map((r) => r.p[i])) / D.rows.length, 0.5, 1e-6)), 'outlook: skater categories average 50% across the league');
+  ok(D.rows.every((r) => near(r.exp, E.sum(r.p), 1e-9)) && D.rows.every((r, i) => !i || D.rows[i - 1].exp >= r.exp), 'outlook: expected categories, strongest first');
+}
+// ---- dynasty floor and ceiling: the expected value sits inside its range; prospects and young players wider than veterans
+{
+  const all = E.P.map((p) => ({ p, r: E.dvRange(p) }));
+  ok(all.every((x) => x.r.lo <= x.p.DV + 1e-9 && x.r.hi >= x.p.DV - 1e-9 && isFinite(x.r.lo) && isFinite(x.r.hi)), 'dynasty range: floor <= value <= ceiling for every player');
+  ok(all.filter((x) => !x.p.gm).every((x) => x.r.hi - x.r.lo < 0.5), 'dynasty range: free agents (this season only) have a narrow range');
+  const rel = (x) => (x.r.hi - x.r.lo) / Math.max(1, x.p.DV);
+  const vets = all.filter((x) => x.p.gm && (x.p.cgp || 0) >= 500 && x.p.DV > 5), kids = all.filter((x) => x.p.gm && x.p.age < 22 && x.p.DV > 5);
+  ok(vets.length && kids.length && E.sum(kids.map(rel)) / kids.length > E.sum(vets.map(rel)) / vets.length, 'dynasty range: young players have wider ranges than veterans');
+  ok(all.filter((x) => x.p._pros).every((x) => near(x.r.pNhl, x.p._pros.p, 1e-12)), 'dynasty range: the prospect career chance is the model\'s');
+  ok(DP.WIDGETS.upside, 'my page: upside widget');
 }
 // ---- Weekly Calendar: games per player = the engine's schedule count for the week
 E.teams.slice(0, 4).forEach((t) => {

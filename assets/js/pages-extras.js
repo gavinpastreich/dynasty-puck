@@ -16,6 +16,8 @@
       // tiers: new tier when value drops more than 12% below the tier's first asset
       var tier = 1, head = assets.length ? assets[0].v : 0;
       assets.forEach(function (a, i) { if (a.v < head * 0.88 && i > 0) { tier++; head = a.v; } a.tier = tier; a.pts = Math.round(a.v / top * 1000) / 10; a.rank = i + 1; });
+      // floor and ceiling (E.dvRange, model lens) moved onto this lens by the same difference, on the 100 scale
+      assets.forEach(function (a) { if (a.kind !== 'player' || !E.dvRange) { a.up = -1; return; } var r = E.dvRange(a.p); a.lo = Math.max(0, (a.v + r.lo - a.p.DV) / top * 100); a.hi = (a.v + r.hi - a.p.DV) / top * 100; a.up = a.hi - a.pts; });
       var h = '<div class="page-head"><h1>Dynasty Trade Value Chart</h1><p class="sub">Every player and future pick on one scale (100 = most valuable asset). Tiers break when value falls 12% below the top of the tier. Default lens: <b>league-implied</b>, fitted to the league\'s real trades; switch to the model lens to compare.' + (me ? ' <b>Worth to ' + esc(me) + '</b> puts the same assets on the same scale for your roster and window; green = fits you better than most assets do (relative to market), red = worth more to other teams.' : '') + '</p></div>';
       h += '<div class="controls"><label>Lens <select id="v-lens">' + ['league', 'model'].map(function (k) { return '<option value="' + k + '"' + (k === lensKey ? ' selected' : '') + '>' + esc(LS[k].name) + '</option>'; }).join('') + '</select></label><span class="small muted">' + esc(DP.lensText(L)) + '</span></div><div id="v-t"></div>';
       el.innerHTML = h;
@@ -33,6 +35,7 @@
           { k: 'ct', l: 'Contract', v: function (a) { return a.kind === 'player' ? a.p.ct : 'pick'; }, f: function (a) { return a.kind === 'player' ? ui.pill(a.p.ct) + ' ' + (a.p.gm ? U.m(a.p.sal26) : '') : ''; } },
           { k: 'age', l: 'Age', cls: 'num', v: function (a) { return a.kind === 'player' ? a.p.age : null; }, f: function (a) { return a.kind === 'player' && a.p.age ? U.fmt(a.p.age, 1) : ''; } },
           { k: 'pts', l: 'Value (100 = top)', cls: 'num', v: function (a) { return a.pts; }, f: function (a) { return '<div class="pbar">' + ui.meter(a.pts / 100) + '<b class="num" style="width:40px">' + U.fmt(a.pts, 1) + '</b></div>'; } },
+          { k: 'rng', l: 'Floor – ceiling', cls: 'num', title: 'The value in a bad case and a good case (10th and 90th percentile of the model\'s outcomes), on the same 100 scale. Sort for the biggest upside.', v: function (a) { return a.up; }, f: function (a) { return a.kind === 'player' && a.lo !== undefined ? '<span class="small nw"><span class="muted">' + U.fmt(a.lo, 0) + '</span> – <b>' + U.fmt(a.hi, 0) + '</b></span>' : '<span class="faint">–</span>'; } },
           me ? { k: 'you', l: 'Worth to ' + me, cls: 'num', title: 'Use value for your team on the same 100 scale: roster fit x your win-now weight (what you would lose, for your own players). Colored against how you value assets overall.', v: function (a) { return a.you === undefined ? null : a.you; }, f: function (a) {
             if (a.you === undefined) return '<span class="faint">…</span>';
             var r = rel && a.pts > 2 ? a.you / (a.pts * rel) : 1; // vs how this team values assets in general

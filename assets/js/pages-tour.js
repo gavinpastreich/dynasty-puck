@@ -39,6 +39,7 @@
     ['The long game', 'Dynasty means next season matters too.', [
       ['cap', '💰', 'Contracts & Cap', 'Every contract, cap space by season (traded cap and IR relief included) and dead cap.'],
       ['offseason', '📅', 'Offseason Planner', 'Your roster season by season: ELC choices, RFA prices, who to keep and the cap that leaves.'],
+      ['breakout', '🚀', 'Breakout Watch', 'Young players with a bigger role, promotions and production above their projection.'],
       ['movers', '📈', 'Market Movers', 'Every player\'s dynasty value night by night: risers, fallers and why.'],
       ['windows', '📈', 'Contention Windows', 'Which teams are built for this season and which for later.']
     ]],
@@ -50,6 +51,7 @@
     ]],
     ['For fun', 'Bragging rights, with receipts.', [
       ['weekly', '🗞️', 'The Weekly', 'An auto-written recap of every finished week, shareable as an image.'],
+      ['elo', '📐', 'Elo & Luck', 'Ratings from results alone, and how much the schedule has helped or hurt each team.'],
       ['power', '⚡', 'Power Rankings', 'Every team ranked each week from the results, with movement and a line on each.'],
       ['rivals', '⚔️', 'Rivalries', 'The standings race and who has whose number in all-play.'],
       ['records', '📚', 'Record Book', 'Best weeks, biggest wins, streaks and individual highs.'],

@@ -1,7 +1,7 @@
 /* Dynasty Puck HQ - Breakout Watch: young skaters (25 and under) showing the signs that come before a breakout. A
    documented signal, not a forecast: it adds up
-     production: this season's per-game value in our categories minus the preseason projection's, in Player Rater units
-                 (clipped to -3..+3);
+     production: half of this season's per-game value in our categories minus the preseason projection's, in Player
+                 Rater units (clipped to -2.5..+2.5);
      role now:   Daily Faceoff depth chart today (top-six forward or top-pair defense +1, first power-play unit +1,
                  second unit +0.5);
      role trend: net line and power-play moves in the last 30 days (+1 a promotion, -1 a demotion);
@@ -26,7 +26,7 @@
     });
     return R.rows.filter(function (r) { return r.kind === 'S' && r.p.age && r.p.age <= MAX_AGE && r.gp >= MIN_GP && r.vs !== null && r.vs !== undefined; }).map(function (r) {
       var p = r.p, dep = p.dep || {}, role = (dep.ln === 'F1' || dep.ln === 'F2' || dep.ln === 'D1' ? 1 : 0) + (dep.pp === 1 ? 1 : dep.pp === 2 ? 0.5 : 0);
-      var f = DP.formOf ? DP.formOf(p) : null, form = f && f.pct !== null && f.pct !== undefined ? clip(f.pct, -1, 1) : 0, tr = net[p.id] ? clip(net[p.id].v, -2, 2) : 0, prod = clip(r.vs, -3, 3);
+      var f = DP.formOf ? DP.formOf(p) : null, form = f && f.pct !== null && f.pct !== undefined ? clip(f.pct, -1, 1) : 0, tr = net[p.id] ? clip(net[p.id].v, -2, 2) : 0, prod = clip(r.vs / 2, -2.5, 2.5);
       return { r: r, p: p, prod: prod, role: role, trend: tr, form: form, ev: net[p.id] ? net[p.id].ev : [], score: Wt.prod * prod + Wt.role * role + Wt.trend * tr + Wt.form * form };
     }).sort(function (a, b) { return b.score - a.score; });
   };
@@ -40,7 +40,7 @@
       DP.loadDepthLog(function (L) {
         var box = U.qs('.lz', el); if (!box) return;
         var B = DP.breakoutData(L);
-        box.innerHTML = '<div id="bo-t"></div><p class="small muted">Signal = ' + Wt.prod + ' × production vs projection (Player Rater units per game, −3 to +3) + ' + Wt.role + ' × role now (top-six / top pair +1, PP1 +1, PP2 +½) + ' + Wt.trend + ' × role trend (net promotions to PP1, the top six or the top pair in the last 30 days) + ' + Wt.form + ' × the last 14 days against his projection (−100% to +100%). Rookies with no projection are measured against the average regular at their position.</p>';
+        box.innerHTML = '<div id="bo-t"></div><p class="small muted">Signal = ' + Wt.prod + ' × production vs projection (half the Player Rater difference per game, −2.5 to +2.5) + ' + Wt.role + ' × role now (top-six / top pair +1, PP1 +1, PP2 +½) + ' + Wt.trend + ' × role trend (net promotions to PP1, the top six or the top pair in the last 30 days) + ' + Wt.form + ' × the last 14 days against his projection (−100% to +100%). Rookies with no projection are measured against the average regular at their position.</p>';
         ui.table(U.qs('#bo-t', el), {
           rows: B, sort: 'score', csv: 'breakout-watch.csv', search: function (x) { return x.p.n + ' ' + (x.p.nt || '') + ' ' + (x.p.gm || ''); },
           rowCls: function (x) { return x.p.gm && x.p.gm === me ? 'mine' : ''; },

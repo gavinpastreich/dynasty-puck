@@ -92,4 +92,9 @@
       var W = DP.goalieWatch ? DP.goalieWatch(DP.league.score) : [];
       box.innerHTML = W.length ? H.list(W.map(function (x) { return H.li(U.teamChip(x.t, { link: 1 }) + (x.risk === 'high' ? ' <span class="badge bad">at risk</span>' : x.risk === 'some' ? ' <span class="badge warn">tight</span>' : ''), x.gp + ' GP · needs ' + x.need + ' · ~' + U.fmt(x.left, 1) + ' left', x.t === DP.state.team ? 'mine' : ''); })) : '<p class="small muted">Every team in a live matchup has met the minimum (or no week is being played).</p>';
     } });
+  reg('upside', { name: 'Biggest upside', ic: '🎯', cat: 'players', team: 1, anyTeam: 1, ns: [5, 8, 12], n: 6, desc: 'Players whose good-case dynasty value (ceiling) is furthest above their expected value, on your roster or anywhere.', link: function () { return '#/values'; },
+    render: function (box, o, t) {
+      var E = DP.E, R = E.P.filter(function (p) { return (o.team === '*' ? (p.gm || p.DV > 1) : p.gm === t); }).map(function (p) { var r = E.dvRange(p); return { p: p, r: r, up: r.hi - p.DV }; }).sort(function (a, b) { return b.up - a.up; });
+      box.innerHTML = H.list(R.slice(0, o.n || 6).map(function (x) { return H.li(ui.plink(x.p) + ' <span class="faint small">' + Math.floor(x.p.age || 0) + 'y' + (o.team === '*' ? ' · ' + esc(x.p.gm || 'FA') : '') + '</span>', U.fmt(x.r.lo, 0) + ' / <b>' + U.fmt(x.p.DV, 1) + '</b> / ' + U.fmt(x.r.hi, 0)); }));
+    } });
 })();

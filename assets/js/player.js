@@ -70,7 +70,8 @@
     h += stat('Season value (WAR)', p.r ? U.fmt(p.WAR, 1) : '–', p.r ? U.ord(p.posRank) + ' among ' + p.slot + (p.slot === 'F' ? 's' : '') : 'no 2026-27 NHL projection', 'Projected 2026-27 category wins above a replacement ' + p.slot + ' (see Rules & Methods).');
     h += stat('Market value', U.m(p.mkt), 'at ' + U.m(E.dollarPerWAR, 2) + ' per WAR', 'What the league pays per win above replacement, applied to this player.');
     h += stat(p.gm ? 'Contract surplus' : 'Pickup value', U.sm(p.surplus), p.gm ? 'market − salary (2026-27)' : 'vs a $1M signing', '');
-    h += stat('Dynasty value', U.fmt(p.DV, 1), 'discounted wins, 7 seasons', 'Sum of projected WAR 2026-27 to 2032-33 net of ' + (E.LAMBDA * 100) + '% of cap cost, discounted ' + E.DISCOUNT + '/yr, contract rules applied.');
+    var rng = E.dvRange ? E.dvRange(p) : null;
+    h += stat('Dynasty value', U.fmt(p.DV, 1), rng && rng.hi - rng.lo > 0.15 ? 'range ' + U.fmt(rng.lo, 1) + ' to ' + U.fmt(rng.hi, 1) : 'discounted wins, 7 seasons', 'Sum of projected WAR 2026-27 to 2032-33 net of ' + (E.LAMBDA * 100) + '% of cap cost, discounted ' + E.DISCOUNT + '/yr, contract rules applied.');
     if (grad) h += stat('Career NHL GP', (p.cgp || 0) + ' / ' + grad.thr, grad.status === 'graduated' ? 'already graduated' : grad.week !== null ? 'projected to graduate wk ' + (grad.week + 1) + (grad.date ? ' (' + U.date(grad.date) + ')' : '') : 'not projected to graduate in 2026-27', 'MNR graduation uses career NHL regular-season GP: ' + E.RULES.gradSkater + ' skaters / ' + E.RULES.gradGoalie + ' goalies.');
     else h += stat('Career NHL GP', U.fmt(p.cgp || 0), p.cgps === 'est' ? 'estimate (2025-26 only)' : 'regular season, NHL API', '');
     h += '</div>';
@@ -108,6 +109,14 @@
     // dynasty curve + contract timeline
     var yrs = E.YEARS.map(function (y) { return y.slice(2); });
     h += '<div class="card"><h3>Dynasty outlook</h3><div class="hint">Projected WAR by season (age curve' + (p._pros ? ' + prospect model' : '') + ') and value after cap cost. Contract path uses league rules.</div>';
+    if (rng && rng.hi - rng.lo > 0.15) {
+      // on the league's scale: 0 to the highest ceiling of any owned player, so players can be compared at a glance
+      if (!E._dvTop || E._dvTop.v !== E.version) E._dvTop = { v: E.version, x: Math.max.apply(null, E.P.filter(function (q) { return q.gm; }).map(function (q) { return E.dvRange(q).hi; }).concat([1])) };
+      var span = Math.max(1, E._dvTop.x, rng.hi), pos = function (v) { return Math.max(0, Math.min(100, v / span * 100)).toFixed(1); };
+      h += '<div class="dvr"><div class="dvr-bar"><span class="dvr-r" style="left:' + pos(rng.lo) + '%;width:' + (pos(rng.hi) - pos(rng.lo)).toFixed(1) + '%"></span><span class="dvr-m" style="left:' + pos(p.DV) + '%"></span></div>' +
+        '<div class="dvr-l small"><span>Floor <b>' + U.fmt(rng.lo, 1) + '</b></span><span>Expected <b>' + U.fmt(p.DV, 1) + '</b></span><span>Ceiling <b>' + U.fmt(rng.hi, 1) + '</b></span></div>' +
+        '<div class="small muted">10th to 90th percentile of the model\'s outcomes, on the league\'s scale (the bar runs to the best ceiling of any rostered player, ' + U.fmt(span, 0) + ')' + (rng.pNhl !== null && rng.pNhl !== undefined ? '; chance of an NHL career ' + U.pct(rng.pNhl) : '') + (rng.hi - p.DV > Math.max(5, 0.6 * Math.max(1, p.DV)) ? '. <b class="good">Big upside</b>: the good case is worth far more than the expected value.' : rng.hi - rng.lo < 0.3 * Math.max(1, p.DV) ? '. A safe value: a narrow range.' : '.') + ' <a href="#/rules">How it works</a></div></div>';
+    }
     h += C.lines(yrs, [{ name: 'Projected WAR', values: p.yWar.map(function (x) { return +x.toFixed(2); }) }, { name: 'Value net of cap cost', values: p.yVal.map(function (x) { return +x.toFixed(2); }), color: 'var(--s3)' }], { height: 170, title: 'Dynasty outlook' });
     h += '<div class="tbl-wrap"><table class="t"><thead><tr><th>Season</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y.slice(2) + '</th>'; }).join('') + '</tr></thead><tbody>';
     h += '<tr><td>Age</td>' + E.YEARS.map(function (_, y) { return '<td class="num">' + (p.age ? Math.floor(p.age + y) : '–') + '</td>'; }).join('') + '</tr>';

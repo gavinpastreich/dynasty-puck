@@ -500,5 +500,11 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
     picked side wins (identical random stream without picks). `DP.encodePicks/decodePicks` (`#/scenarios?f=`),
     `DP.runScenario(P, n)`. Goalie minimum watch: `DP.goalieWatch(sc)` / `DP.goalieWatchHtml` (pages-live.js).
   - Weekly Calendar (pages-calendar.js): `DP.calendarData(t, wi)`. Player Rater (pages-rater.js): `DP.raterData()`.
+  - Elo & Luck (pages-elo.js): `DP.eloData()` (K 32, category-share score), `DP.eloExpect(a, b)`. Breakout Watch
+    (pages-breakout.js): `DP.breakoutData(depthLog)`, weights in `DP.BREAKOUT`. Player Rater rows carry `projPg` and
+    `vs` (value per game minus the preseason projection's, p.p26).
+  - Dynasty floor/ceiling: `E.dvRange(p)` in engine.js ({lo, hi, pNhl}, cached per engine version) via `scenarioWar`
+    and the shared `valueYears` loop (dynastyOf uses the same loop; values unchanged). Player page `.dvr`, Trade Value
+    Chart "Floor – ceiling" column, My Page widget `upside`.
   - Trade network (pages-network.js): `DP.tradePairs()`, `DP.tradePartners(t)`, `DP.tradeNetworkSvg(me)`,
     `DP.tradeNetworkCard(me)` on Trade History. Live Scoreboard "Up for grabs" line (`.lv-swing`) in card().

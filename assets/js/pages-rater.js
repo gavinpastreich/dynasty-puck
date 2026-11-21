@@ -28,7 +28,10 @@
         if (c[0] === 'PtD' && p.pos !== 'D') { z.PtD = 0; zp.PtD = 0; return; }
         var x = sk(p, c[2]); z[c[0]] = (x - st[c[0]].tot.m) / st[c[0]].tot.sd; zp[c[0]] = (x / gp - st[c[0]].pg.m) / st[c[0]].pg.sd;
       });
-      return { p: p, gp: gp, z: z, zp: zp, tot: E.sum(Object.keys(z).map(function (k) { return z[k]; })), pg: E.sum(Object.keys(zp).map(function (k) { return zp[k]; })), kind: 'S' };
+      var pr = p.p26 && p.p26[0] > 0 ? p.p26 : null, projPg = 0;
+      if (pr) SKC.forEach(function (c) { if (c[0] === 'PtD' && p.pos !== 'D') return; var x = c[2] === -1 ? 2 * pr[2] + pr[3] : pr[c[2]] || 0; projPg += (x / pr[0] - st[c[0]].pg.m) / st[c[0]].pg.sd; });
+      var pgS = E.sum(Object.keys(zp).map(function (k) { return zp[k]; }));
+      return { p: p, gp: gp, z: z, zp: zp, tot: E.sum(Object.keys(z).map(function (k) { return z[k]; })), pg: pgS, projPg: projPg, hasProj: !!pr, vs: pgS - projPg, kind: 'S' };
     });
     // goalies: [GP, W, GAA, SV%, SHO]; shots against estimated from GAA and SV% (GA = GAA x GP, SA = GA / (1 - SV%))
     var refG = G.filter(function (p) { return p.ytd[0] >= 5; });
@@ -40,7 +43,10 @@
     G.forEach(function (p) {
       var x = gx(p), gp = p.ytd[0], z = {}, zp = {};
       GKC.forEach(function (c) { z[c[0]] = (x[c[0]] - stg[c[0]].tot.m) / stg[c[0]].tot.sd; zp[c[0]] = (x[c[0]] / gp - stg[c[0]].pg.m) / stg[c[0]].pg.sd; });
-      rows.push({ p: p, gp: gp, z: z, zp: zp, tot: E.sum(Object.keys(z).map(function (k) { return z[k]; })), pg: E.sum(Object.keys(zp).map(function (k) { return zp[k]; })), kind: 'G' });
+      var pr = p.p26 && p.p26[0] > 0 && p.p26[3] > 0 && p.p26[3] < 1 ? p.p26 : null, projPg = 0;
+      if (pr) { var pga = pr[2], psa = pga / Math.max(0.01, 1 - pr[3]), px = { W: pr[1] / pr[0], SHO: pr[4] / pr[0], GAA: lgGAA - pga, SV: (pr[3] - lgSV) * psa }; GKC.forEach(function (c) { projPg += (px[c[0]] - stg[c[0]].pg.m) / stg[c[0]].pg.sd; }); }
+      var pgG = E.sum(Object.keys(zp).map(function (k) { return zp[k]; }));
+      rows.push({ p: p, gp: gp, z: z, zp: zp, tot: E.sum(Object.keys(z).map(function (k) { return z[k]; })), pg: pgG, projPg: projPg, hasProj: !!pr, vs: pgG - projPg, kind: 'G' });
     });
     ['tot', 'pg'].forEach(function (k) { ['S', 'G'].forEach(function (kind) { rows.filter(function (r) { return r.kind === kind; }).sort(function (a, b) { return b[k] - a[k]; }).forEach(function (r, i) { r[k + 'Rank'] = i + 1; }); }); });
     cache = { v: E.version, d: { rows: rows, lgSV: lgSV, lgGAA: lgGAA } };
@@ -55,7 +61,7 @@
     title: 'Player Rater',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, me = DP.state.team, per = q.per === '1', D = DP.raterData();
-      var h = '<div class="page-head"><h1>⭐ Player Rater</h1><p class="sub">Who has actually produced the most in our categories this season: real 2026-27 NHL stats, each category scored against the league\'s regulars (a z-score) and added up. ' + (per ? 'Per game, so part-timers and injured players are judged on their games.' : 'Season totals, so games played count.') + ' A record of what happened, not a projection: the dynasty values look ahead.</p></div>';
+      var h = '<div class="page-head"><h1>⭐ Player Rater</h1><p class="sub">Who has actually produced the most in our categories this season: real 2026-27 NHL stats, each category scored against the league\'s regulars (a z-score) and added up. ' + (per ? 'Per game, so part-timers and injured players are judged on their games.' : 'Season totals, so games played count.') + ' A record of what happened, not a projection: the dynasty values look ahead. <b>vs preseason</b> = value per game minus what the preseason projection implied per game, on the same scale: sort by it for the season\'s over- and under-achievers.</p></div>';
       h += '<div class="controls"><div class="seg"><button data-per="0" class="' + (per ? '' : 'on') + '">Season totals</button><button data-per="1" class="' + (per ? 'on' : '') + '">Per game</button></div><span class="small muted">Skaters with ' + MIN_SHOW + '+ GP; z-scores against skaters with ' + MIN_REF + '+ GP. League save % ' + U.rate(D.lgSV) + ', GAA ' + U.fmt(D.lgGAA, 2) + '.</span></div><div id="rt-t"></div>';
       el.innerHTML = h;
       U.qsa('[data-per]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('rater', null, { per: b.dataset.per === '1' ? '1' : undefined }); }); });
@@ -71,6 +77,7 @@
           { k: 'own', l: 'Owner', v: function (r) { return r.p.gm || 'zz'; }, f: function (r) { return ui.owner(r.p); }, asc: true },
           { k: 'gp', l: 'GP', cls: 'num', v: function (r) { return r.gp; } },
           { k: k, l: per ? 'Value / game' : 'Value', cls: 'num', v: function (r) { return r[k]; }, f: function (r) { return '<b>' + U.fmt(r[k], 1) + '</b>'; } },
+          { k: 'vs', l: 'vs preseason', cls: 'num', v: function (r) { return r.vs; }, f: function (r) { return (r.hasProj ? '' : '<span class="faint small" title="No preseason projection: measured against the average regular">*</span> ') + ui.delta(r.vs, 1); } },
           { k: 'best', l: 'Best categories', v: function (r) { return best(r, per).length; }, f: function (r) { return best(r, per).map(function (x) { return '<span class="mw-cat W">' + esc(x.l) + ' ' + U.sgn(x.z, 1) + '</span>'; }).join(' '); } },
           { k: 'war', l: 'Proj. WAR', cls: 'num', v: function (r) { return r.p.WAR; }, f: function (r) { return r.p.r ? ui.warCell(r.p.WAR) : '–'; } },
           { k: 'dv', l: 'Dynasty', cls: 'num', v: function (r) { return r.p.DV; }, f: function (r) { return U.fmt(r.p.DV, 1); } }
