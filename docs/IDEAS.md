@@ -57,5 +57,6 @@ each category, category correlation map.
 - Injury return tracker: thin today (Daily Faceoff rarely gives a return date); revisit if a feed with dates appears.
 - Aging curves for goalies: tried 2026-11-21; four seasons give only 70 goalies / 173 season pairs (3-19 per age),
   too noisy to show. Needs more seasons in the bulk history (HIST_SEASONS) first.
-- ~~A "punt planner"~~ **built 2026-11-21** (Punt Planner). Next on it: suggest trades that swap the punted
-  categories' producers for the kept ones (the Trade Finder with a punt lens).
+- ~~A "punt planner"~~ **built 2026-11-21** (Punt Planner), with swap ideas (punted-category producers for kept-category
+  ones at the same market value). Still open: a full punt lens inside the Trade Finder's roster-fit math (E.gain with
+  category weights).

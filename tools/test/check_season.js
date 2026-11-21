@@ -744,6 +744,18 @@ ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1,
   const O = DP.outlookData(Math.max(0, E.lockWeek() === null ? 0 : E.lockWeek())), ps = O.by[E.teams[0]].p, W = DP.puntWeek(ps, [7, 4]);
   ok(W.after <= W.base + 1e-12 && W.exp1 <= W.exp0 + 1e-12 && (W.need === null || W.need >= 0), `punt: giving up Hit and PIM costs ${E.teams[0]} ${((W.base - W.after) * 100).toFixed(0)} points a week`);
   if (W.need) { const back = DP.weekWin(ps.map((p, c) => ([7, 4].indexOf(c) >= 0 ? 0 : Math.min(1, p + W.need)))); ok(back >= W.base - 1e-6, 'punt: the uplift gets the weekly odds back'); }
+  // swap ideas: you give one of yours, get someone else's of similar market value who is worth more without the punts
+  let nSw = 0;
+  E.teams.forEach((t) => {
+    const S = DP.puntSwaps(t, ['Hit', 'PIM'], 8), pv = (p) => DP.puntValue(p, ['Hit', 'PIM']);
+    nSw += S.length;
+    ok(S.length <= 8 && S.every((c) => c.give.gm === t && c.get.gm && c.get.gm !== t && c.t === c.get.gm), `punt swaps ${t}: give mine, get someone else's`);
+    ok(S.every((c) => Math.abs(c.get.DV - c.give.DV) <= Math.max(1.5, 0.2 * Math.abs(c.give.DV)) + 1e-9), `punt swaps ${t}: within the market-value band`);
+    ok(S.every((c) => near(c.g, pv(c.get) - pv(c.give), 1e-9) && c.g > 0.2 && near(c.h, c.give.WAR - c.get.WAR, 1e-9) && near(c.score, Math.min(c.g, c.h) + 0.25 * (c.g + c.h), 1e-9)), `punt swaps ${t}: gains and score`);
+    ok(S.every((c, i) => !i || S[i - 1].score >= c.score) && Object.values(S.reduce((m, c) => { m[c.give.id] = (m[c.give.id] || 0) + 1; return m; }, {})).every((k) => k <= 2), `punt swaps ${t}: sorted, two per player at most`);
+  });
+  ok(nSw > 0, `punt swaps: ideas found across the league (${nSw})`);
+  ok(DP.puntSwaps(E.teams[0], [], 8).length === 0, 'punt swaps: nothing without a punt');
 }
 
 // ---- this week's widgets: registered, and the synchronous ones render the page's own numbers

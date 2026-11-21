@@ -547,7 +547,11 @@ In-season sweep (2026-11-10), bugs that only showed once weeks had been played:
   - Punt Planner (pages-punt.js): `DP.puntValue(p, keys)` = p.WAR minus the punted parts of p.war (E.warOf's
     per-category split), `DP.weekWin(ps)` (Poisson-binomial chance to win the week, 8+ of 15, half for 7.5),
     `DP.puntWeek(ps, idx)` (weekly cost with the punted categories at 0 and the uniform uplift that restores it,
-    by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`.
+    by bisection) from `DP.outlookData(lockWeek)`. Route `#/punt?p=Hit,PIM`. `DP.puntSwaps(team, keys, n)`: swap
+    ideas (give one of your six biggest punted-category producers, get a player within the Trade Finder's p.DV band;
+    g = your WAR gain without the punts, h = their full-WAR gain, score = min(g, h) + 0.25(g + h), two per player).
+  - Weekly Preview (pages-extras.js) waits for `DP.loadDepthLog` and adds a "Waiver watch" line (top three free
+    agents by `DP.breakoutData(L, {maxAge: 99, fa: true})`, score > 1) for the current and next week only.
   - My Page widget registration: a file loaded before pages-mypage.js must not call `DP.regWidget` directly (it
     doesn't exist yet); use `(DP.regWidget || function (k, s) { (DP._wq = DP._wq || []).push([k, s]); })(key, spec)`
     and pages-mypage.js registers the queue when it loads. Read `DP.myWidgetHelpers` inside `render`, not at load.

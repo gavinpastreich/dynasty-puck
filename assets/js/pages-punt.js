@@ -27,6 +27,26 @@
     return v;
   };
 
+  // swap ideas for a punt build: give a player whose projected value comes from the punted categories, get one of about
+  // the same dynasty market value (p.DV, within the Trade Finder's band) who is worth more in the categories you keep.
+  // g = your gain in kept-category WAR, h = the other team's gain in full WAR (they get the categories you punt); ranked
+  // by the Trade Finder's mutual-fit rule, at most two per player you give. A quick screen on 2026-27 WAR: the Trade
+  // Machine does the full roster-fit math.
+  DP.puntSwaps = function (me, punt, n) {
+    var E = DP.E; if (!punt.length || !E.rosters[me]) return [];
+    var pv = function (p) { var v = DP.puntValue(p, punt); return v === null ? p.WAR || 0 : v; };
+    var give = E.rosters[me].filter(function (p) { return p.r && p.war && p.WAR - pv(p) > 0.2; }).sort(function (a, b) { return (b.WAR - pv(b)) - (a.WAR - pv(a)); }).slice(0, 6);
+    var pool = E.P.filter(function (p) { return p.gm && p.gm !== me && p.r && p.war; }), out = [];
+    give.forEach(function (x) {
+      var band = Math.max(1.5, 0.2 * Math.abs(x.DV));
+      out = out.concat(pool.filter(function (p) { return Math.abs(p.DV - x.DV) <= band; }).map(function (p) {
+        var g = pv(p) - pv(x), h = x.WAR - p.WAR;
+        return { give: x, get: p, t: p.gm, g: g, h: h, score: Math.min(g, h) + 0.25 * (g + h) };
+      }).filter(function (c) { return c.g > 0.2; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2));
+    });
+    return out.sort(function (a, b) { return b.score - a.score; }).slice(0, n || 8);
+  };
+
   // weekly effect for a team: {base, after, need (uniform uplift that restores base), exp0, exp1}
   DP.puntWeek = function (ps, puntIdx) {
     var base = weekWin(ps), cut = ps.map(function (p, c) { return puntIdx.indexOf(c) >= 0 ? 0 : p; }), after = weekWin(cut);
@@ -57,8 +77,9 @@
         var box = U.qs('.lz', el); if (!box) return;
         var hh = '', lw = E.lockWeek(), idx = punt.map(function (k) { return E.CATS.map(function (c) { return c.k; }).indexOf(k); });
         // the team's category picture and the weekly cost
+        var O = null;
         if (me && E.rosters[me] && lw !== null && DP.outlookData) {
-          var O = DP.outlookData(lw), M = O.by[me];
+          O = DP.outlookData(lw); var M = O.by[me];
           if (M) {
             var weak = M.p.map(function (x, c) { return { c: c, x: x }; }).sort(function (a, b) { return a.x - b.x; }).slice(0, 3);
             hh += '<div class="card"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ' next week</h2><div class="hint">Chance to win each category against the average opponent (Category Outlook, week ' + (lw + 1) + '). Your three weakest: ' + weak.map(function (x) { return '<b>' + esc(E.CATS[x.c].l) + '</b> ' + U.pct(x.x); }).join(', ') + ' <button class="btn sm" id="pp-weak">Punt these</button></div>' +
@@ -80,6 +101,13 @@
           var tg = rows.filter(function (r) { return r.p.gm !== me && r.r1 <= 150 && r.r0 - r.r1 >= 10; }).sort(function (a, b) { return (b.r0 - b.r1) - (a.r0 - a.r1); }).slice(0, 8);
           hh += '<div class="grid g2" style="margin-top:14px"><div class="card"><h3>📤 Your players who lose the most</h3><div class="hint">Projected value that comes from the punted categories: these players are worth more to a team that wants those categories.</div>' + (mine.length ? '<ul class="list-plain uslist">' + mine.map(function (r) { return '<li><span class="us-p">' + ui.pcell(r.p, { pos: 1 }) + '</span><span class="us-o small muted">' + U.fmt(r.w, 1) + ' → ' + U.fmt(r.v, 1) + ' WAR</span><span class="us-v num"><b class="bad">−' + U.fmt(r.w - r.v, 1) + '</b> <a class="small" href="' + U.hash('finder', null, { mode: 'give', p: r.p.id }) + '" title="Who could you get for him?">shop →</a></span></li>'; }).join('') + '</ul>' : '<p class="small muted">None of your players lean on these categories.</p>') + '</div>' +
             '<div class="card"><h3>📥 Who climbs for your build</h3><div class="hint">Players on other teams or free agents who move up 10+ places into the top 150 once the punted categories don\'t count.</div>' + (tg.length ? '<ul class="list-plain uslist">' + tg.map(function (r) { return '<li><span class="us-p">' + ui.pcell(r.p, { pos: 1 }) + '</span><span class="us-o small">' + ui.owner(r.p) + '</span><span class="us-v num"><b class="good">#' + r.r0 + ' → #' + r.r1 + '</b> <a class="small" href="' + U.hash('finder', null, { mode: 'get', p: r.p.id }) + '" title="What would it take to get him?">deal →</a></span></li>'; }).join('') + '</ul>' : '<p class="small muted">Nobody jumps 10+ places into the top 150.</p>') + '</div></div>';
+          // swap ideas: trade the punted categories' producers for players who help the kept ones
+          var SW = DP.puntSwaps(me, punt, 8), need = function (t) { var m = O && O.by[t]; return m ? idx.filter(function (c) { return m.p[c] < 0.45; }).map(function (c) { return E.CATS[c].l; }) : []; };
+          hh += '<div class="card flush" style="margin-top:14px"><h3 style="padding:12px 14px 0">🔁 Swap ideas for this build</h3><div class="hint" style="padding:0 14px">Trade a player whose value comes from the punted categories for one of about the same dynasty market value who is worth more in the categories you keep. <b>You +</b> = your gain in projected 2026-27 WAR without the punted categories; <b>They +</b> = their gain in full WAR (they get the categories you punt). A quick screen: open a swap in the Trade Machine for the full roster fit, cap and both teams\' windows.</div>' +
+            (SW.length ? '<div class="tbl-wrap"><table class="t small"><thead><tr><th>You give</th><th>You get</th><th class="num" title="Dynasty market value, yours → theirs">Market value</th><th class="num" title="Your gain in 2026-27 WAR without the punted categories">You +</th><th class="num" title="Their gain in full 2026-27 WAR">They +</th><th></th></tr></thead><tbody>' + SW.map(function (c) {
+              var nd = need(c.t);
+              return '<tr><td>' + ui.pcell(c.give, { pos: 1 }) + '</td><td>' + ui.pcell(c.get, { pos: 1 }) + ' <span class="small">' + U.teamLabel(c.t) + '</span>' + (nd.length ? ' <span class="badge info" title="' + esc(c.t + ' is under 45% to win ' + nd.join(', ') + ' next week (Category Outlook)') + '">needs ' + esc(nd.join(', ')) + '</span>' : '') + '</td><td class="num nw">' + U.fmt(c.give.DV, 1) + ' → ' + U.fmt(c.get.DV, 1) + '</td><td class="num">' + ui.delta(c.g, 1) + '</td><td class="num">' + ui.delta(c.h, 1) + '</td><td><a class="btn sm" href="' + U.hash('trade', null, { t: me + ',' + c.t, a: 'p:' + c.give.id + '>' + c.t + '|p:' + c.get.id + '>' + me }) + '">Trade Machine</a></td></tr>';
+            }).join('') + '</tbody></table></div>' : '<p class="small muted" style="padding:0 14px 12px">None of your players gets much of his value from these categories, so there is nothing to swap out.</p>') + '</div>';
         }
         hh += '<div id="pp-t" style="margin-top:14px"></div><p class="small muted">WAR = 2026-27 projected category wins above a replacement player (Rules &amp; Methods), split by category; "Without" drops the punted categories from the sum. This season only: dynasty values, contracts and age are on the player pages.</p>';
         box.innerHTML = hh;
