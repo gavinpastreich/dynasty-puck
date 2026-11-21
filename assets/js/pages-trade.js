@@ -151,7 +151,7 @@
       var state = function (o) { return Object.assign({ t: teams.join(','), a: encode(moves), lens: lensKey }, lensKey === 'custom' ? { lam: L.lam, disc: L.disc, pick: L.pick, now: L.now } : {}, o || {}); };
       var go = function (o) { DP.go('trade', null, state(o)); };
 
-      var h = '<div class="page-head"><h1>Trade Machine</h1><p class="sub">Any 2–4 teams: players, draft picks and cap space. Shows value balance under different valuation lenses, this-season category impact (lineups re-optimized every week), projected standings, multi-year cap and playoff odds. Share the link to propose it.</p></div>'; h += DP.deadlineNote();
+      var h = '<div class="page-head"><h1>🔁 Trade Machine</h1><p class="sub">Any 2–4 teams: players, draft picks and cap space. Shows value balance under different valuation lenses, this-season category impact (lineups re-optimized every week), projected standings, multi-year cap and playoff odds. Share the link to propose it.</p></div>'; h += DP.deadlineNote();
       h += '<div class="controls">' + teams.map(function (t, i) { return '<label>Team ' + (i + 1) + ' <select data-team="' + i + '">' + U.teamOptions(t) + '</select></label>'; }).join('') +
         (teams.length < 4 ? '<button class="btn sm" id="tr-addteam">＋ Add team</button>' : '') + (teams.length > 2 ? '<button class="btn sm ghost" id="tr-rmteam">− Remove last team</button>' : '') +
         '<button class="btn sm ghost" id="tr-clear">Clear</button></div>';
@@ -356,7 +356,7 @@
     title: 'Trade Finder',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, me = DP.state.team;
-      var h = '<div class="page-head"><h1>Trade Finder</h1><p class="sub">"Who could I get for X?" and "What would it take to get Y?": deals that are roughly even in market value, ranked by how much they help <b>both</b> teams for their own situation (roster needs, category fit, and whether they are contending this season or building for later).</p></div>'; h += DP.deadlineNote();
+      var h = '<div class="page-head"><h1>🔎 Trade Finder</h1><p class="sub">"Who could I get for X?" and "What would it take to get Y?": deals that are roughly even in market value, ranked by how much they help <b>both</b> teams for their own situation (roster needs, category fit, and whether they are contending this season or building for later).</p></div>'; h += DP.deadlineNote();
       if (!me) { el.innerHTML = h; ui.needTeam(el.appendChild(document.createElement('div')), 'trade ideas'); return; }
       var target = q.p && E.byId[q.p] ? E.byId[q.p] : null;
       var mode = q.mode || (target && target.gm !== me ? 'get' : 'give');
@@ -472,7 +472,7 @@
     title: 'Trade History',
     render: function (el, hsh) {
       var E = DP.E, T = (DP.league && DP.league.trades) || [], LS = DP.lenses(), me = DP.state.team, ft = hsh.q.team || '';
-      var h = '<div class="page-head"><h1>Trade History</h1><p class="sub">Every trade in the Fantrax log (' + T.length + ' trades), judged with <b>today\'s</b> projections. Old team names mapped to current GMs: ' + Object.keys(DP.league.aliases).filter(function (k) { return DP.league.aliases[k] !== k; }).map(function (k) { return esc(k) + ' = ' + esc(DP.league.aliases[k]); }).join(', ') + '.</p></div>';
+      var h = '<div class="page-head"><h1>📜 Trade History</h1><p class="sub">Every trade in the Fantrax log (' + T.length + ' trades), judged with <b>today\'s</b> projections. Old team names mapped to current GMs: ' + Object.keys(DP.league.aliases).filter(function (k) { return DP.league.aliases[k] !== k; }).map(function (k) { return esc(k) + ' = ' + esc(DP.league.aliases[k]); }).join(', ') + '.</p></div>';
       // scoreboard
       var score = {}; E.teams.forEach(function (t) { score[t] = { t: t, n: 0, m: 0, l: 0 }; });
       var cards = T.map(function (tr) {
@@ -566,7 +566,7 @@
     render: function (el) {
       var E = DP.E, me = DP.state.team, P = DP.league.picks.filter(function (p) { return p.year >= 2027; });
       var years = U.uniq(P.map(function (p) { return p.year; })).sort();
-      var h = '<div class="page-head"><h1>League Draft Picks</h1><p class="sub">3-round league draft; picks exist through ' + years[years.length - 1] + ' and a new year is added after each draft. Ownership is replayed from the Fantrax trade history (each team starts with its own picks; confirmed by the commissioner for M.M). Order: reverse standings, champion picks 14th.</p></div>';
+      var h = '<div class="page-head"><h1>🎟️ League Draft Picks</h1><p class="sub">3-round league draft; picks exist through ' + years[years.length - 1] + ' and a new year is added after each draft. Ownership is replayed from the Fantrax trade history (each team starts with its own picks; confirmed by the commissioner for M.M). Order: reverse standings, champion picks 14th.</p></div>';
       h += '<div class="grid g2"><div class="card span2"><h2>Who owns each team\'s pick</h2><div class="hint">Rows = original team. A highlighted cell = traded; it shows the current owner. Hover for value.</div><div class="tbl-wrap"><table class="t"><thead><tr><th>Original team</th>' + years.map(function (y) { return [1, 2, 3].map(function (r) { return '<th class="num">' + y + ' R' + r + '</th>'; }).join(''); }).join('') + '<th class="num">Exp. 2027 slot</th></tr></thead><tbody>';
       E.teams.forEach(function (t) {
         h += '<tr class="' + (t === me ? 'mine' : '') + '"><td>' + U.teamChip(t, { b: 1 }) + '</td>';

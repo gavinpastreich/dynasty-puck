@@ -126,7 +126,7 @@
       var tab = q.tab || 'stock', scope = q.scope !== undefined ? q.scope : (q.team || ''), w = REF[q.w] ? q.w : '7';
       var rows = V.rows, n7 = wire(rows).filter(function (g) { return R && g.it.d >= R.dates[R.ref[1]]; }).length;
       var okSrc = R ? R.sources.filter(function (s) { return s.ok; }).length : 0;
-      var h = '<div class="page-head"><h1>Prospect Radar</h1><p class="sub">' + rows.length + ' prospects on one scale: rostered MNR players, unowned players 22 or under, and 2026 NHL draft picks Fantrax hasn\'t added yet. ' +
+      var h = '<div class="page-head"><h1>📡 Prospect Radar</h1><p class="sub">' + rows.length + ' prospects on one scale: rostered MNR players, unowned players 22 or under, and 2026 NHL draft picks Fantrax hasn\'t added yet. ' +
         'Re-scored every night from this season\'s games in every league; headlines from NHL.com and ' + (R ? R.sources.length - 1 : 'public') + ' public feeds.' +
         (R ? ' History: ' + esc(day(R.dates[0])) + ' to ' + esc(day(R.dates[V.n - 1])) + ', every night scored with today\'s model.' : '') + '</p></div>';
       if (!R) h += '<div class="callout warn">The nightly history and headlines (data/radar.js) haven\'t been built yet, so trends and news are empty. Rankings below come straight from the model.</div>';

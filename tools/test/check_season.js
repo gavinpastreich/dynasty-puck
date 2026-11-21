@@ -10,7 +10,7 @@ load(['data/league.js', 'data/prospects.js'].concat(opt('data/radar.js'), opt('d
   .concat(['assets/js/util.js', 'assets/js/engine.js', 'assets/js/ui.js', 'assets/js/charts.js', 'assets/js/pages-overview.js', 'assets/js/pages-trade.js',
     'assets/js/pages-radar.js', 'assets/js/pages-weekly.js', 'assets/js/pages-season.js', 'assets/js/pages-scout.js',
     'assets/js/pages-pickup.js', 'assets/js/pages-form.js', 'assets/js/pages-rivals.js', 'assets/js/pages-records.js', 'assets/js/pages-me.js',
-    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
+    'assets/js/pages-movers.js', 'assets/js/pages-lines.js', 'assets/js/pages-tape.js', 'assets/js/pages-tour.js', 'assets/js/pages-flow.js', 'assets/js/pages-wire.js', 'assets/js/pages-power.js', 'assets/js/player.js', 'assets/js/pages-regret.js', 'assets/js/pages-warroom.js', 'assets/js/pages-grades.js', 'assets/js/pages-scorecard.js', 'assets/js/pages-network.js', 'assets/js/pages-mypage.js', 'assets/js/pages-path.js', 'assets/js/pages-stacks.js', 'assets/js/pages-feed.js', 'assets/js/pages-mywidgets.js', 'assets/js/pages-trophies.js', 'assets/js/pages-carriers.js', 'assets/js/pages-grid.js', 'assets/js/pages-rater.js', 'assets/js/pages-calendar.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-elo.js', 'assets/js/pages-breakout.js', 'assets/js/pages-rankings.js', 'assets/js/pages-outlook.js', 'assets/js/pages-devcurve.js', 'assets/js/pages-usage.js', 'assets/js/pages-aging.js', 'assets/js/pages-agedrift.js', 'assets/js/pages-scenarios.js', 'assets/js/pages-draftrace.js', 'assets/js/pages-teamrange.js', 'assets/js/pages-catmap.js', 'assets/js/pages-thresholds.js']).concat(opt('data/sim.js'), opt('data/aging.js')).concat(opt('data/values.js'), opt('data/depthlog.js')));
 const E = DP.E, U = DP.U; E.init();
 let fails = 0, n = 0;
 const ok = (cond, msg) => { n++; if (!cond) { fails++; if (fails <= 25) console.log('FAIL', msg); } };
@@ -686,6 +686,51 @@ if (DP.aging) {
   const vet = E.P.find((p) => !p.G && p.age >= 30 && p.age < 33 && p.pos !== 'D'), nx = DP.agingNext(vet, CV);
   ok(nx && nx.age === Math.floor(vet.age) && near(nx.g, CV.F.step.g[nx.age], 1e-12), `aging: next season for ${vet.n} (${nx && nx.age})`);
   ok(DP.agingNext(E.P.find((p) => p.G), CV) === null, 'aging: no skater curve for goalies');
+  const AD = DP.ageDrift(CV), t0 = E.teams[0];
+  const g0 = E.rosters[t0].filter((p) => !p.G && p.p26 && p.p26[0] > 0), gNow = E.sum(g0.map((p) => p.p26[2])), gNext = E.sum(g0.map((p) => { const nx = DP.agingNext(p, CV); return p.p26[2] * (nx && nx.g ? nx.g : 1); }));
+  ok(near(AD[t0].G, gNext / gNow - 1, 1e-12), `age drift ${t0}: goals ${(AD[t0].G * 100).toFixed(1)}% = the roster's goals one year older`);
+  ok(E.teams.every((t) => Math.abs(AD[t].avg) < 0.15), 'age drift: within ±15% for every team');
+}
+
+// ---- Draft Race: the slot odds give the same pick values as the Trade Value Chart; a win never helps the draft slot
+{
+  const sim = E.baseSim(), D = DP.draftRaceData(sim), P27 = (DP.league.picks || []).filter((p) => p.year === 2027);
+  ok(D.rows.length === E.teams.length && D.rows.every((r, i) => !i || D.rows[i - 1].exp <= r.exp), 'draft race: every team, best expected slot first');
+  ok(D.rows.every((r) => near(E.sum(r.slot), 1, 1e-9) && r.exp >= 1 && r.exp <= E.teams.length && near(r.top3, r.slot[0] + r.slot[1] + r.slot[2], 1e-12)), 'draft race: slot odds add up to 1');
+  ok(P27.every((p) => near(DP.slotPickValue(D.by[p.orig].slot, p.round), E.pickValue(p), 1e-9)), `draft race: ${P27.length} pick values = E.pickValue`);
+  ok(near(E.sum(D.holders.map((o) => o.v)), E.sum(D.rows.map((r) => r.tot)), 1e-6), 'draft race: what the holders own = what the teams gave');
+  ok(near(E.sum(D.rows.map((r) => r.p1)), 1, 1e-9), 'draft race: one #1 pick');
+  const mid = D.rows[Math.floor(D.rows.length / 2)].t, C = DP.winCost(mid, 400);
+  if (C) {
+    ok(C.win.po >= C.loss.po - 0.02 && C.win.exp >= C.loss.exp - 0.05, `draft race: a win helps ${mid}'s odds (${(C.win.po * 100).toFixed(0)}% vs ${(C.loss.po * 100).toFixed(0)}%) and doesn't move its pick up`);
+    ok(C.win.val <= C.loss.val + 0.05, `draft race: and doesn't raise its pick value (${C.win.val.toFixed(2)} vs ${C.loss.val.toFixed(2)})`);
+  }
+}
+
+// ---- team dynasty range: the expected value is the roster's total; independent players narrow the range
+E.teams.forEach((t) => {
+  const r = DP.teamRange(t), R = E.rosters[t], sumLo = E.sum(R.map((p) => p.DV - E.dvRange(p).lo)), sumHi = E.sum(R.map((p) => E.dvRange(p).hi - p.DV));
+  ok(near(r.v, E.sum(R.map((p) => p.DV)), 1e-6) && r.lo <= r.v + 1e-9 && r.hi >= r.v - 1e-9, `team range ${t}: floor ${r.lo.toFixed(0)} · ${r.v.toFixed(0)} · ceiling ${r.hi.toFixed(0)}`);
+  ok(r.v - r.lo <= sumLo + 1e-6 && r.hi - r.v <= sumHi + 1e-6, `team range ${t}: no wider than the players' ranges added up`);
+});
+
+// ---- category correlations: a symmetric matrix of correlations, the scoring categories together
+['F', 'D'].forEach((pos) => {
+  const C = DP.catCorr(pos), k = C.keys, ix = (a) => k.indexOf(a);
+  ok(C.n === (pos === 'D' ? 6 : 12) * E.teams.length, `category map ${pos}: ${C.n} players`);
+  ok(C.m.every((row, i) => row.every((r, j) => near(r, C.m[j][i], 1e-12) && r >= -1 - 1e-12 && r <= 1 + 1e-12) && near(row[i], 1, 1e-12)), `category map ${pos}: symmetric, between -1 and 1`);
+  ok(C.m[ix('G')][ix('SOG')] > 0.5 && C.m[ix('A')][ix('STP')] > 0.5, `category map ${pos}: goals with shots, assists with STP`);
+});
+ok(near(DP.pearson([1, 2, 3, 4], [2, 4, 6, 8]), 1, 1e-12) && near(DP.pearson([1, 2, 3], [3, 2, 1]), -1, 1e-12), 'category map: Pearson correlation');
+
+// ---- what wins each category: percentiles of the scaled team-weeks
+{
+  const T = DP.catThresholds(), nW = E.history().weeks.filter((w) => w.games && w.games.length).length;
+  ok(T.weeks === nW && T.cats.length === E.NC, `category thresholds: ${nW} weeks, every category`);
+  ok(T.cats.filter((o) => o.c.grp === 'S').every((o) => o.n === nW * E.teams.length), 'category thresholds: every team-week for the skater categories');
+  ok(T.cats.every((o) => o.q.every((x, j) => !j || (o.c.low ? x <= o.q[j - 1] + 1e-12 : x >= o.q[j - 1] - 1e-12))), 'category thresholds: the percentiles climb (fall for GAA)');
+  ok(near(DP.pctile([1, 2, 3, 4], 0.5), 2.5, 1e-12) && near(DP.pctile([5], 0.9), 5, 1e-12), 'category thresholds: percentile interpolation');
+  const m = T.team(E.teams[0]); ok(m.every((x) => x.beat === null || (x.beat >= 0 && x.beat <= 1)), 'category thresholds: a team\'s share of weeks beaten');
 }
 
 // ---- Start Here tour: every link is a page in the menu

@@ -67,6 +67,20 @@
     return r;
   };
 
+  // player page / card: what a typical skater of his position and age does next season, filled once data/aging.js loads
+  DP.fillAgeOutlook = function (root) {
+    if (!root) return;
+    U.qsa('[data-ageout]', root).forEach(function (box) {
+      var p = DP.E.byId[box.dataset.ageout]; if (!p || box.dataset.done) return; box.dataset.done = '1';
+      DP.loadAging(function (A) {
+        var nx = DP.agingNext(p, DP.agingCurves(A)); if (!nx || !document.body.contains(box)) return;
+        var sl = p.pos === 'D' ? 'D' : 'F', m = DP.E.ageMult(sl, nx.age + 1) / DP.E.ageMult(sl, nx.age);
+        var f = function (k) { var d = (nx[k] - 1) * 100; return esc(LAB[k].toLowerCase().replace('pim', 'PIM').replace('sog', 'SOG')) + ' <b class="' + (d >= 3 ? 'good' : d <= -3 ? 'bad' : '') + '">' + (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(0) + '%</b>'; };
+        box.innerHTML = '<span class="pct-k">📉 Age outlook</span> From ' + nx.age + ' to ' + (nx.age + 1) + ', a typical ' + (sl === 'D' ? 'defenseman' : 'forward') + ': ' + ['g', 'a', 'sog', 'hit', 'blk'].map(f).join(', ') + ' a game (four NHL seasons of data); the dynasty values assume ' + (m >= 1 ? '+' : '−') + Math.abs((m - 1) * 100).toFixed(0) + '%. <a href="#/aging' + (sl === 'D' ? '?pos=D' : '') + '">Aging Curves →</a>';
+        box.classList.add('on');
+      });
+    });
+  };
   var pctCell = function (r) { if (r === undefined || r === null) return '<span class="faint">–</span>'; var d = (r - 1) * 100; return '<span class="' + (d >= 3 ? 'good' : d <= -3 ? 'bad' : 'muted') + '">' + (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(0) + '%</span>'; };
 
   DP.pages.aging = {
@@ -97,6 +111,7 @@
           keys.map(function (k) { return '<tr><td class="nw">' + esc(LAB[k]) + '</td><td class="num"><b>' + o.peak[k] + '</b></td>' + ages.map(function (a) { var v = o.cur[k][a]; return v === undefined ? '<td></td>' : '<td class="olc" style="--v:' + v.toFixed(2) + '">' + Math.round(v * 100) + '</td>'; }).join('') + '</tr>'; }).join('') +
           '<tr><td class="nw muted">Dynasty value model</td><td class="num muted">' + ages.filter(function (a, i) { return model[i] >= 0.999; })[0] + '</td>' + model.map(function (v) { return '<td class="olc" style="--v:' + v.toFixed(2) + '">' + Math.round(v * 100) + '</td>'; }).join('') + '</tr>' +
           '<tr><td class="nw faint">Season pairs</td><td></td>' + ages.map(function (a) { return '<td class="num faint">' + (o.n[a] || '') + '</td>'; }).join('') + '</tr></tbody></table></div></div>';
+        if (DP.ageDriftCard) hh += DP.ageDriftCard(CV, me);
         // veterans next season
         if (me && DP.E.rosters[me]) {
           var vets = DP.E.rosters[me].filter(function (p) { return !p.G && p.age >= 27; }).map(function (p) { return { p: p, nx: DP.agingNext(p, CV) }; }).filter(function (x) { return x.nx; }).sort(function (a, b) { return b.p.DV - a.p.DV; });

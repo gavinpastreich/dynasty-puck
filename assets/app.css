@@ -776,3 +776,33 @@ nav.side .navi .fav.on { color: var(--accent); }
 .uslist .us-o { max-width: 9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .uslist .us-v { white-space: nowrap; text-align: right; }
 @media (max-width: 520px) { .uslist .us-o { display: none; } }
+
+/* Draft Race */
+.dr-heat { display: inline-flex; gap: 1px; vertical-align: middle; }
+.dr-heat i { display: inline-block; width: 9px; height: 16px; border-radius: 2px; background: color-mix(in srgb, var(--accent) calc(var(--v) * 100%), var(--line)); }
+.drh li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.drh li:last-child { border-bottom: 0; }
+.drh li.mine { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.drh .drh-v { white-space: nowrap; }
+.dr-t tr.opp td:first-child { box-shadow: inset 3px 0 0 var(--warn); }
+@media (max-width: 520px) { .drh li { grid-template-columns: minmax(0, 1fr) auto; } .drh .drh-p { grid-column: 1 / -1; grid-row: 2; } }
+
+/* team dynasty range (Contention Windows) */
+.trg li { display: grid; grid-template-columns: 170px minmax(0, 1fr) 120px; gap: 4px 12px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.trg li:last-child { border-bottom: 0; }
+.trg li.mine { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.trg-bar { position: relative; height: 12px; border-radius: 6px; background: var(--line2, var(--line)); }
+.trg-r { position: absolute; top: 0; bottom: 0; border-radius: 6px; background: color-mix(in srgb, var(--tc) 55%, transparent); }
+.trg-m { position: absolute; top: -3px; width: 4px; height: 18px; margin-left: -2px; background: var(--text, #fff); border-radius: 2px; }
+.trg-n { text-align: right; white-space: nowrap; }
+.trg-up { grid-column: 2 / -1; }
+@media (max-width: 620px) { .trg li { grid-template-columns: minmax(0, 1fr) auto; } .trg-bar { grid-column: 1 / -1; grid-row: 2; } .trg-up { grid-column: 1 / -1; } }
+
+.pc-ageout { margin-top: 6px; }
+.pc-ageout:empty { display: none; }
+
+/* category correlation map */
+.ccmap td.ccm { text-align: center; font-variant-numeric: tabular-nums; min-width: 38px; background: color-mix(in srgb, var(--c) calc(var(--a) * 70%), transparent); }
+.ccmap tbody th { text-align: left; white-space: nowrap; }
+
+td.adr { background: color-mix(in srgb, var(--c) calc(var(--a) * 45%), transparent); white-space: nowrap; }

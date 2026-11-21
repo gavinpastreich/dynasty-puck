@@ -71,7 +71,7 @@
       var show = q.show === 'val' || q.show === 'rec' ? q.show : 'rank';
       var S = E.catStrength(mode), H = S.hist, P = S.proj, nT = E.teams.length;
       if (mode === 'act' && !H.nReg) show = show === 'rec' ? 'rank' : show;
-      var state = function (o) { return Object.assign({ v: mode, show: show, cat: q.cat, team: q.team }, o || {}); };
+      var state = function (o) { return Object.assign({ v: mode, show: show, cat: q.cat, team: q.team, ccpos: q.ccpos }, o || {}); };
       var h = '<div class="page-head"><h1>🧩 Category Insights</h1><p class="sub">Where every team is strong and weak across the 15 categories, and who lines up as a trade partner. ' +
         (H.nReg ? 'Actual numbers are rebuilt from each week\'s locked Fantrax lineup and NHL stats (' + H.nReg + ' week' + (H.nReg > 1 ? 's' : '') + ' played).' : 'Actual results appear after Week 1.') + '</p></div>';
       h += '<div class="controls"><div class="seg" role="tablist" aria-label="Basis">' + MODES.map(function (m) { return '<button data-mode="' + m[0] + '" class="' + (m[0] === mode ? 'on' : '') + '">' + esc(m[1]) + '</button>'; }).join('') + '</div>' +
@@ -103,7 +103,10 @@
       // ---------------- drill-down
       var cat = q.cat !== undefined && q.cat !== '' && E.CATS[+q.cat] ? +q.cat : (me && E.rosters[me] ? S.rank[me].indexOf(Math.max.apply(null, S.rank[me])) : 0);
       h += drill(cat, S, me, state);
+      if (DP.catThresholdCard) h += DP.catThresholdCard(me);
+      if (DP.catCorrCard) h += DP.catCorrCard(q.ccpos === 'D' ? 'D' : 'F');
       el.innerHTML = h;
+      U.qsa('[data-ccpos]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('cats', null, state({ ccpos: b.dataset.ccpos === 'D' ? 'D' : undefined })); }); });
 
       U.qsa('[data-mode]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('cats', null, state({ v: b.dataset.mode })); }); });
       U.qs('#ct-show', el).addEventListener('change', function (e) { DP.go('cats', null, state({ show: e.target.value })); });

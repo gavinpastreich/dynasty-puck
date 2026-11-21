@@ -18,7 +18,7 @@
       assets.forEach(function (a, i) { if (a.v < head * 0.88 && i > 0) { tier++; head = a.v; } a.tier = tier; a.pts = Math.round(a.v / top * 1000) / 10; a.rank = i + 1; });
       // floor and ceiling (E.dvRange, model lens) moved onto this lens by the same difference, on the 100 scale
       assets.forEach(function (a) { if (a.kind !== 'player' || !E.dvRange) { a.up = -1; return; } var r = E.dvRange(a.p); a.lo = Math.max(0, (a.v + r.lo - a.p.DV) / top * 100); a.hi = (a.v + r.hi - a.p.DV) / top * 100; a.up = a.hi - a.pts; });
-      var h = '<div class="page-head"><h1>Dynasty Trade Value Chart</h1><p class="sub">Every player and future pick on one scale (100 = most valuable asset). Tiers break when value falls 12% below the top of the tier. Default lens: <b>league-implied</b>, fitted to the league\'s real trades; switch to the model lens to compare.' + (me ? ' <b>Worth to ' + esc(me) + '</b> puts the same assets on the same scale for your roster and window; green = fits you better than most assets do (relative to market), red = worth more to other teams.' : '') + '</p></div>';
+      var h = '<div class="page-head"><h1>💎 Dynasty Trade Value Chart</h1><p class="sub">Every player and future pick on one scale (100 = most valuable asset). Tiers break when value falls 12% below the top of the tier. Default lens: <b>league-implied</b>, fitted to the league\'s real trades; switch to the model lens to compare.' + (me ? ' <b>Worth to ' + esc(me) + '</b> puts the same assets on the same scale for your roster and window; green = fits you better than most assets do (relative to market), red = worth more to other teams.' : '') + '</p></div>';
       h += '<div class="controls"><label>Lens <select id="v-lens">' + ['league', 'model'].map(function (k) { return '<option value="' + k + '"' + (k === lensKey ? ' selected' : '') + '>' + esc(LS[k].name) + '</option>'; }).join('') + '</select></label><span class="small muted">' + esc(DP.lensText(L)) + '</span></div><div id="v-t"></div>';
       el.innerHTML = h;
       U.qs('#v-lens', el).addEventListener('change', function (e) { DP.go('values', null, { lens: e.target.value }); });
@@ -76,7 +76,7 @@
       var sdY = E.YEARS.map(function (_, y) { return Math.sqrt(E.sum(rows.map(function (r) { return Math.pow(r.s[y] - avgY[y], 2); })) / rows.length); });
       var nC = rows.filter(function (r) { return r.c.tier === 'contender'; }).length, nB = rows.filter(function (r) { return r.c.tier === 'bubble'; }).length;
       var topShare = E.sum(rows.map(function (r) { return r.c.tier === 'contender' ? r.c.champ : 0; }));
-      var h = '<div class="page-head"><h1>Contention Windows</h1><p class="sub">Who is really playing for the 2026-27 title, and who is built for later. Status comes from the season sim\'s title odds; the heat map is each roster\'s projected strength by season (best 12 F / 6 D / 2 G by projected WAR, counting only seasons the team still controls the player). Signings, trades and drafts will change it.</p></div>';
+      var h = '<div class="page-head"><h1>🪟 Contention Windows</h1><p class="sub">Who is really playing for the 2026-27 title, and who is built for later. Status comes from the season sim\'s title odds; the heat map is each roster\'s projected strength by season (best 12 F / 6 D / 2 G by projected WAR, counting only seasons the team still controls the player). Signings, trades and drafts will change it.</p></div>';
       h += '<div class="stats">' + DP.statTile('Contenders', String(nC), U.pct(topShare, 0) + ' of the title odds between them') + DP.statTile('On the bubble', String(nB), 'one big move from contending') + DP.statTile('Not contending', String(rows.length - nC - nB), 'better off selling 2026-27 value') + '</div>';
       h += '<div class="card"><div class="tbl-wrap"><table class="t heat"><thead><tr><th>Team</th><th>Status</th><th class="num">Title odds</th><th class="num" title="What one 2026-27 category win is worth to this team vs the league average">Win-now weight</th>' + E.YEARS.map(function (y) { return '<th class="num">' + y + '</th>'; }).join('') + '<th>Window</th><th>Strategy</th></tr></thead><tbody>';
       rows.sort(function (a, b) { return b.c.k[0] - a.c.k[0] || b.avg3 - a.avg3; }).forEach(function (r) {
@@ -95,6 +95,7 @@
         h += '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ': ' + esc(DP.strategy(me).short) + '</h2><p>' + esc(DP.strategy(me).text) + '</p><p class="small"><a href="#/team/' + encodeURIComponent(me) + '">Buy and sell targets on your Team Hub →</a></p></div>' +
           '<div class="card"><h2>' + U.teamBadge(me) + ' ' + esc(U.teamName(me)) + ' vs the league</h2>' + C.lines(E.YEARS.map(function (y) { return y.slice(2); }), [{ name: U.teamName(me), values: mine.s.map(function (v) { return +v.toFixed(1); }), color: U.teamColor(me) }, { name: 'League average', values: avg.map(function (v) { return +v.toFixed(1); }), color: 'var(--s1)', dash: true }], { height: 220, width: 900, title: 'Window vs league average' }) + '</div></div>';
       }
+      if (DP.teamRangeCard) h += DP.teamRangeCard(me);
       el.innerHTML = h;
     }
   };
@@ -105,7 +106,7 @@
     title: 'Standings',
     render: function (el) {
       var E = DP.E, act = E.actual(), FX = DP.league.fantrax || {}, div = FX.divisions || {}, me = DP.state.team;
-      var h = '<div class="page-head"><h1>Standings</h1><p class="sub">Category W-L-T straight from Fantrax (' + (DP.live.state === 'ok' ? 'live' : 'nightly sync') + '), with projected final records and odds from the season sim, which starts from the real standings and simulates only the weeks left.</p></div>';
+      var h = '<div class="page-head"><h1>📊 Standings</h1><p class="sub">Category W-L-T straight from Fantrax (' + (DP.live.state === 'ok' ? 'live' : 'nightly sync') + '), with projected final records and odds from the season sim, which starts from the real standings and simulates only the weeks left.</p></div>';
       if (!act) h += '<div class="callout">No matchups completed yet. ' + esc(DP.lockText(0) ? 'Week 1 ' + DP.lockText(0) + '.' : '') + ' Until then this page shows projections only.</div>';
       else if (act.odd) h += '<div class="callout warn">The Fantrax standings don\'t add up to 15 categories per week, so the sim is projecting from scratch.</div>';
       else h += '<div class="callout">' + act.done + ' of ' + E.REG_WEEKS + ' regular-season weeks played.</div>';
@@ -155,7 +156,7 @@
     title: 'Weekly Preview',
     render: function (el, hsh) {
       var E = DP.E, w = +(hsh.q.w || DP.currentWeek()), wi = w - 1, wk = E.weeks[wi];
-      var h = '<div class="page-head"><h1>Weekly Preview</h1><p class="sub">Auto-written previews of every matchup: favorite, win probability, the categories most likely to swing, schedule edges, injuries and graduation watch. Copy the text version into the league chat.</p></div>';
+      var h = '<div class="page-head"><h1>📰 Weekly Preview</h1><p class="sub">Auto-written previews of every matchup: favorite, win probability, the categories most likely to swing, schedule edges, injuries and graduation watch. Copy the text version into the league chat.</p></div>';
       h += '<div class="controls"><label>Week <select id="pv-w">' + E.weeks.map(function (x, i) { return x.po ? '' : '<option value="' + (i + 1) + '"' + (i + 1 === w ? ' selected' : '') + '>Week ' + x.n + ' · ' + U.date(new Date(x.start + 'T12:00:00Z')) + '</option>'; }).join('') + '</select></label><button class="btn" id="pv-copy">📋 Copy text version</button></div><div id="pv-out"><p class="muted">Writing previews…</p></div>';
       el.innerHTML = h;
       U.qs('#pv-w', el).addEventListener('change', function (e) { DP.go('preview', null, { w: e.target.value }); });

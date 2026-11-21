@@ -304,7 +304,7 @@
     render: function (el, hsh) {
       var E = DP.E, t = hsh.arg || DP.state.team;
       if (!t || !E.rosters[t]) {
-        el.innerHTML = '<div class="page-head"><h1>Team Hub</h1></div><div class="controls"><label>Team ' + ui.teamSelect('tsel', null, 'Choose a team…') + '</label></div>';
+        el.innerHTML = '<div class="page-head"><h1>🧢 Team Hub</h1></div><div class="controls"><label>Team ' + ui.teamSelect('tsel', null, 'Choose a team…') + '</label></div>';
         U.qs('#tsel', el).addEventListener('change', function (e) { DP.go('team', e.target.value); });
         return;
       }

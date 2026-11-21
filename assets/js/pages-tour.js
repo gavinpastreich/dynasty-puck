@@ -39,11 +39,12 @@
     ['The long game', 'Dynasty means next season matters too.', [
       ['cap', '💰', 'Contracts & Cap', 'Every contract, cap space by season (traded cap and IR relief included) and dead cap.'],
       ['offseason', '📅', 'Offseason Planner', 'Your roster season by season: ELC choices, RFA prices, who to keep and the cap that leaves.'],
+      ['draftrace', '🏁', 'Draft Race', 'The race for the top 2027 picks, who owns them and what a win costs a rebuilding team.'],
       ['aging', '📉', 'Aging Curves', 'When players peak in each of our categories and how fast they decline, from four NHL seasons.'],
       ['usage', '🕒', 'Ice Time', 'Who is getting more minutes and power-play time than last season and over the last two weeks.'],
       ['breakout', '🚀', 'Breakout Watch', 'Young players with a bigger role, promotions and production above their projection.'],
       ['movers', '📈', 'Market Movers', 'Every player\'s dynasty value night by night: risers, fallers and why.'],
-      ['windows', '📈', 'Contention Windows', 'Which teams are built for this season and which for later.']
+      ['windows', '🪟', 'Contention Windows', 'Which teams are built for this season and which for later.']
     ]],
     ['Prospects', 'Find the next star before he graduates.', [
       ['radar', '📡', 'Prospect Radar', 'Every prospect ranked by the model, with this season\'s stats, news and a ⭐ watchlist.'],
@@ -58,7 +59,7 @@
       ['rivals', '⚔️', 'Rivalries', 'The standings race and who has whose number in all-play.'],
       ['records', '📚', 'Record Book', 'Best weeks, biggest wins, streaks and individual highs.'],
       ['grades', '📝', 'GM Report Cards', 'Every GM graded on results, lineup calls, pickups, trades and roster value.'],
-      ['awards', '🏅', 'Awards & Wrapped', 'Season awards and your team\'s year in review.'],
+      ['awards', '🎁', 'Awards & Wrapped', 'Season awards and your team\'s year in review.'],
       ['trophies', '🏅', 'Trophy Case', 'The badges every team has earned, each from a real result.']
     ]]
   ];
@@ -68,7 +69,7 @@
     title: 'Start Here',
     render: function (el) {
       var me = DP.state.team;
-      var h = '<div class="page-head"><h1>🧭 Start Here</h1><p class="sub">A two-minute tour: what the site does and when to use each part, in the order a week goes. Everything is optional; use what helps you.</p></div>';
+      var h = '<div class="page-head"><h1>👋 Start Here</h1><p class="sub">A two-minute tour: what the site does and when to use each part, in the order a week goes. Everything is optional; use what helps you.</p></div>';
       h += '<div class="callout info">' + (me ? 'You\'re set up as <b>' + esc(U.teamName(me)) + '</b>. ' : '<b>First:</b> <button class="btn sm" data-pick>Pick your team</button> ') +
         'How the numbers work: Fantrax league data and NHL stats refresh every night (the scoreboard is live during games). Projections, values and odds are model estimates, explained on <a href="#/rules">Rules & Methods</a>. Search any player, team or page with the box at the top (or press /).</div>';
       h += STEPS.map(function (s, i) {

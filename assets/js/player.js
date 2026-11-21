@@ -102,6 +102,7 @@
     h += '</tbody></table></div>';
     if (DP.formLine) h += DP.formLine(p);
     if (DP.iceLine) h += DP.iceLine(p);
+    if (!p.G && p.age) h += '<div class="small pc-ageout" data-ageout="' + esc(p.id) + '"></div>';
     h += DP.nextGames ? DP.nextGames(p) : '';
     h += '<div class="pc-trend" data-trend="' + esc(p.id) + '"></div>';
     if (p.tkc) h += '<p class="note">Tk/Cor projection: per-GP rates ' + U.fmt(p.tkc[0], 2) + ' Tk and ' + U.fmt(p.tkc[1], 1) + ' Cor, blended from ' + U.fmt(p.tkc[4], 0) + ' weighted NHL games with a role prior of ' + U.fmt(p.tkc[2], 2) + ' / ' + U.fmt(p.tkc[3], 1) + '.</p>';
@@ -183,6 +184,7 @@
     if (DP.noteRecent) DP.noteRecent(p.id);
     ui.modal(DP.playerHtml(p, false));
     if (DP.fillTrends) DP.fillTrends(document.getElementById('modal-bg'));
+    if (DP.fillAgeOutlook) DP.fillAgeOutlook(document.getElementById('modal-bg'));
   };
 
   // compare list (shared with the Compare page)
@@ -240,6 +242,7 @@
       seasonLog(p, el);
       var mc = movesCard(p); if (mc) el.insertAdjacentHTML('beforeend', mc);
       if (DP.fillTrends) DP.fillTrends(el);
+      if (DP.fillAgeOutlook) DP.fillAgeOutlook(el);
     }
   };
   // players with the closest per-game category profile (rest-of-season rates), same position group. Each rate is

@@ -9,7 +9,7 @@
     title: 'Players',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, view = q.view || 'value';
-      var h = '<div class="page-head"><h1>Players</h1><p class="sub">Every rostered player plus every free agent with 2025-26 NHL games or a 2026-27 projection (' + E.P.length + ' players). Click a name for the full card. Values are model estimates (see Rules & Methods).</p></div>';
+      var h = '<div class="page-head"><h1>📋 Players</h1><p class="sub">Every rostered player plus every free agent with 2025-26 NHL games or a 2026-27 projection (' + E.P.length + ' players). Click a name for the full card. Values are model estimates (see Rules & Methods).</p></div>';
       h += '<div class="controls"><div class="seg" role="tablist">' + [['value', 'Value & contract'], ['proj', '2026-27 projection'], ['last', '2025-26 actual'], ['rates', 'Per-game rates']].map(function (v) { return '<button data-view="' + v[0] + '" class="' + (view === v[0] ? 'on' : '') + '">' + v[1] + '</button>'; }).join('') + '</div></div><div id="pl-t"></div>';
       el.innerHTML = h;
       U.qsa('[data-view]', el).forEach(function (b) { b.addEventListener('click', function () { DP.go('players', null, { view: b.dataset.view }); }); });
@@ -47,7 +47,7 @@
     render: function (el, hsh) {
       var E = DP.E, me = hsh.q.team || DP.state.team;
       var fas = E.P.filter(function (p) { return !p.gm && p.r && p.projGP >= 5; });
-      var h = '<div class="page-head"><h1>Free-Agent Finder</h1><p class="sub">' + fas.length + ' unowned players with a 2026-27 projection' + (me ? ', ranked by fit for ' + U.teamChip(me, { b: 1 }) + ': the change in your expected 2026-27 category wins if you add the player (your lineup re-optimized every week, replacing whoever he bumps).' : '. Pick a team to rank them by fit.') + '</p></div>';
+      var h = '<div class="page-head"><h1>🛒 Free-Agent Finder</h1><p class="sub">' + fas.length + ' unowned players with a 2026-27 projection' + (me ? ', ranked by fit for ' + U.teamChip(me, { b: 1 }) + ': the change in your expected 2026-27 category wins if you add the player (your lineup re-optimized every week, replacing whoever he bumps).' : '. Pick a team to rank them by fit.') + '</p></div>';
       h += '<div class="controls"><label>Fit for ' + ui.teamSelect('fa-team', me, 'No team (rank by WAR)') + '</label><span class="small muted" id="fa-status"></span></div>';
       if (me) {
         var s = DP.teamSummary()[me], order = E.CATS.map(function (c, i) { return i; }).sort(function (a, b) { return s.z[a] - s.z[b]; });
@@ -102,7 +102,7 @@
       var E = DP.E;
       var ids = (hsh.q.ids ? hsh.q.ids.split(',') : DP.cmp).filter(function (id) { return E.byId[id]; }).slice(0, 4);
       var ps = ids.map(function (id) { return E.byId[id]; });
-      var h = '<div class="page-head"><h1>Compare players</h1><p class="sub">Up to four players side by side. Add from any player card (＋ Compare) or search here.</p></div>';
+      var h = '<div class="page-head"><h1>⚖️ Compare players</h1><p class="sub">Up to four players side by side. Add from any player card (＋ Compare) or search here.</p></div>';
       h += '<div class="controls"><label>Add player <input type="search" id="c-q" placeholder="Type a name…" list="c-list" aria-label="Add player to compare"></label><datalist id="c-list">' + E.P.slice().sort(U.by(function (p) { return p.WAR; }, true)).slice(0, 900).map(function (p) { return '<option value="' + esc(p.n) + '">'; }).join('') + '</datalist>' +
         '<button class="btn sm ghost" id="c-clear">Clear</button>' + (ps.length ? '<button class="btn sm" id="c-share">🔗 Copy link</button>' : '') + '</div>';
       if (!ps.length) { el.innerHTML = h + '<div class="callout">Nothing to compare yet. Add players above.</div>'; wire(); return; }
@@ -118,7 +118,9 @@
       h += row('Age', function (p) { return p.age ? +p.age.toFixed(1) : null; }) + row('Contract', function (p) { return p.ct + (p.gm ? ' ' + U.m(p.sal26) : ''); }) +
         row('WAR (2026-27)', function (p) { return p.r ? +p.WAR.toFixed(1) : null; }, 'max') + row('Market value $M', function (p) { return +p.mkt.toFixed(2); }, 'max') +
         row('Surplus $M', function (p) { return +p.surplus.toFixed(2); }, 'max') + row('Dynasty value', function (p) { return +p.DV.toFixed(1); }, 'max') + row('Dynasty (league lens)', function (p) { return +E.dvWith(p, E.fitLeagueLens()).toFixed(1); }, 'max') +
-        row('Career NHL GP', function (p) { return p.cgp || 0; }) + row('Proj GP', function (p) { return p.projGP; }, 'max');
+        row('Career NHL GP', function (p) { return p.cgp || 0; }) + row('Proj GP', function (p) { return p.projGP; }, 'max') +
+        row('Dynasty floor', function (p) { return +DP.E.dvRange(p).lo.toFixed(1); }, 'max') + row('Dynasty ceiling', function (p) { return +DP.E.dvRange(p).hi.toFixed(1); }, 'max') +
+        (DP.iceOf && ps.some(function (p) { return DP.iceOf(p); }) ? row('Ice time a game', function (p) { var o = DP.iceOf(p); return o ? DP.mmss(o.toi) : null; }) + row('Power play a game', function (p) { var o = DP.iceOf(p); return o ? DP.mmss(o.pp) : null; }) + row('Ice time vs last season', function (p) { var o = DP.iceOf(p); return o && o.dS !== null ? (o.dS >= 0 ? '+' : '−') + DP.mmss(Math.abs(o.dS)) : null; }) : '');
       var skaters = ps.filter(function (p) { return !p.G; }).length, goalies = ps.length - skaters;
       if (skaters) {
         ['Pt-D', 'G', 'A', 'PIM', 'SOG', 'STP', 'Hit', 'Blk', 'Tk', 'Cor'].forEach(function (l, j) {
@@ -161,7 +163,7 @@
     render: function (el) {
       var E = DP.E, TS = DP.teamSummary(), me = DP.state.team;
       var owned = E.P.filter(function (p) { return p.gm; });
-      var h = '<div class="page-head"><h1>Leaderboards</h1><p class="sub">Contracts, dynasty value, prospect pools, roster age and cap efficiency across the league.</p></div><div class="grid g2">';
+      var h = '<div class="page-head"><h1>🥇 Leaderboards</h1><p class="sub">Contracts, dynasty value, prospect pools, roster age and cap efficiency across the league.</p></div><div class="grid g2">';
       var top = function (title, hint, rows, f) { return '<div class="card"><h2>' + title + '</h2><div class="hint">' + hint + '</div><ol class="list-plain">' + rows.map(function (p, i) { return '<li><span class="rank">' + (i + 1) + '</span>' + f(p) + '</li>'; }).join('') + '</ol></div>'; };
       var pl = function (right) { return function (p) { return ui.pos(p) + '<span>' + ui.pcell(p) + '<br><span class="small muted">' + U.teamLabel(p.gm) + ' · ' + ui.pill(p.ct) + ' ' + U.m(p.sal26) + '</span></span><span class="num" style="margin-left:auto">' + right(p) + '</span>'; }; };
       h += top('Best contracts (surplus)', 'Market value minus 2026-27 salary. MNR at $0 excluded.', owned.filter(function (p) { return p.ct !== 'MNR'; }).sort(U.by(function (p) { return p.surplus; }, true)).slice(0, 10), pl(function (p) { return '<b class="good">' + U.sm(p.surplus) + '</b>'; }));

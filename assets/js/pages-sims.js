@@ -34,7 +34,7 @@
       if (a === b) b = E.teams.find(function (t) { return t !== a; });
       var excl = {}; (q.x || '').split(',').filter(Boolean).forEach(function (id) { excl[id] = 1; });
       var autoInj = q.inj !== '0', useSet = q.set === '1';
-      var h = '<div class="page-head"><h1>Weekly Matchup Simulator</h1><p class="sub">Weekly lineup lock: each team starts its best 12F / 6D / 2G for the whole week. Real 2026-27 NHL schedule (games per team per fantasy week) and the real Fantrax H2H schedule.</p></div>';
+      var h = '<div class="page-head"><h1>🥊 Weekly Matchup Simulator</h1><p class="sub">Weekly lineup lock: each team starts its best 12F / 6D / 2G for the whole week. Real 2026-27 NHL schedule (games per team per fantasy week) and the real Fantrax H2H schedule.</p></div>';
       h += '<div class="controls"><label>Week <select id="m-w">' + weekOptions(w) + '</select></label><label>Team A <select id="m-a">' + U.teamOptions(a) + '</select></label><span class="muted">vs</span><label>Team B <select id="m-b">' + U.teamOptions(b) + '</select></label>' +
         '<button class="btn sm" id="m-sched">Use scheduled opponent</button><label title="Bench players listed OUT / on IR / holding out on Daily Faceoff for the weeks their status implies"><input type="checkbox" id="m-inj"' + (autoInj ? ' checked' : '') + '> Auto-bench injured (DFO list)</label>' +
         '<label title="Use the lineups each team has set in Fantrax (Active slots) instead of the optimal lineup"><input type="checkbox" id="m-set"' + (useSet ? ' checked' : '') + '> Lineups as set in Fantrax</label></div>';
@@ -98,7 +98,7 @@
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, me = DP.state.team;
       var n = +(q.n || 2000), po = +(q.po || 8), noise = q.noise !== undefined ? +q.noise : 3.5;
-      var h = '<div class="page-head"><h1>Season Simulator</h1><p class="sub">Monte Carlo of the full 24-week Fantrax schedule and an 8-team playoff (1v8, 4v5, 3v6, 2v7; weeks 25-27). Each week every category is drawn from its projected distribution; standings = total category W-L-T. A per-team strength shock (± projection error) is drawn each season.</p></div>';
+      var h = '<div class="page-head"><h1>🎲 Season Simulator</h1><p class="sub">Monte Carlo of the full 24-week Fantrax schedule and an 8-team playoff (1v8, 4v5, 3v6, 2v7; weeks 25-27). Each week every category is drawn from its projected distribution; standings = total category W-L-T. A per-team strength shock (± projection error) is drawn each season.</p></div>';
       h += '<div class="controls"><label>Simulations <select id="s-n">' + [500, 1000, 2000, 5000].map(function (x) { return '<option' + (x === n ? ' selected' : '') + '>' + x + '</option>'; }).join('') + '</select></label>' +
         '<label>Playoff teams <select id="s-po">' + [[8, '8 (league format)'], [6, '6 (what-if: top-2 byes)'], [4, '4 (what-if)']].map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === po ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
         '<label title="Standard deviation of a season-long team strength shock">Projection uncertainty <select id="s-noise">' + [[0, 'none'], [2, 'low'], [3.5, 'medium'], [6, 'high']].map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === noise ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
@@ -166,7 +166,7 @@
     title: 'Signing Simulator',
     render: function (el, hsh) {
       var E = DP.E, q = hsh.q, t = q.team || DP.state.team;
-      var h = '<div class="page-head"><h1>Offseason Signing Simulator</h1><p class="sub">Plan signings and drops, then compare cap, roster and category ranks before and after. Free agents and your own MNR/ELC players are in separate lists. Every add takes a custom salary.</p></div>';
+      var h = '<div class="page-head"><h1>✍️ Offseason Signing Simulator</h1><p class="sub">Plan signings and drops, then compare cap, roster and category ranks before and after. Free agents and your own MNR/ELC players are in separate lists. Every add takes a custom salary.</p></div>';
       h += '<div class="controls"><label>Team ' + ui.teamSelect('g-team', t, 'Choose a team…') + '</label></div>';
       if (!t) { el.innerHTML = h + '<div class="callout">Choose a team to start.</div>'; U.qs('#g-team', el).addEventListener('change', function (e) { DP.go('signing', null, { team: e.target.value }); }); return; }
       var st = U.store.get('sign_' + t, { adds: [], drops: [] });
