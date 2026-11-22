@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -10,6 +10,18 @@
    "ret": "",
    "detail": "Greer has been placed on IR with an upper-body injury.",
    "date": "2026-11-02",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Beckett Sennecke",
+   "team": "ANA",
+   "status": "IR",
+   "injury": "",
+   "ret": "",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -138,10 +150,10 @@
    "name": "Connor Bedard",
    "team": "CHI",
    "status": "OUT",
-   "injury": "shoulder",
+   "injury": "",
    "ret": "",
-   "detail": "Bedard (shoulder) will not travel on the upcoming road trip and is without a timeline to return.",
-   "date": "2026-11-19",
+   "detail": "Bedard will undergo shoulder surgery and is out indefinitely.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -186,10 +198,10 @@
    "name": "Nathan MacKinnon",
    "team": "COL",
    "status": "OUT",
-   "injury": "",
-   "ret": "Months",
-   "detail": "MacKinnon will miss at least a month with a lower-body injury.",
-   "date": "2026-11-14",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "MacKinnon (lower-body) is expected to be out for 12 weeks.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
    "holdout": false
@@ -213,7 +225,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -225,7 +237,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-20",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/dallas-stars/line-combinations",
    "holdout": false
@@ -404,8 +416,8 @@
    "status": "OUT",
    "injury": "personal",
    "ret": "",
-   "detail": "Panarin (personal) will remain out on Thursday but is expected to return on Saturday vs. Ottawa.",
-   "date": "2026-11-19",
+   "detail": "Panarin (personal) skated on Saturday but is not expected to play in Ottawa.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -415,9 +427,9 @@
    "team": "LAK",
    "status": "DTD",
    "injury": "undisclosed",
-   "ret": "Day-to-day",
-   "detail": "Moore (undisclosed) is out vs. Toronto on Thursday and is considered day-to-day.",
-   "date": "2026-11-19",
+   "ret": "",
+   "detail": "Moore (undisclosed) skated on Saturday but is not expected to play in Ottawa.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -435,13 +447,13 @@
    "holdout": false
   },
   {
-   "name": "Yakov Trenin",
+   "name": "Quinn Hughes",
    "team": "MIN",
    "status": "DTD",
-   "injury": "personal",
+   "injury": "upper-body",
    "ret": "",
-   "detail": "Trenin (personal) will be out vs. Calgary on Thursday.",
-   "date": "2026-11-19",
+   "detail": "Hughes (upper-body) will miss the final two games of the Wild's road-trip.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -507,18 +519,6 @@
    "holdout": false
   },
   {
-   "name": "Zack Bolduc",
-   "team": "MTL",
-   "status": "DTD",
-   "injury": "upper-body",
-   "ret": "",
-   "detail": "Bolduc (upper-body) will return to the Canadiens lineup on Saturday.",
-   "date": "2026-11-21",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Anthony Mantha",
    "team": "NJD",
    "status": "IR",
@@ -579,13 +579,13 @@
    "holdout": false
   },
   {
-   "name": "Logan Stanley",
+   "name": "Ryan Pulock",
    "team": "NYI",
    "status": "DTD",
-   "injury": "lower-body",
-   "ret": "Day-to-day",
-   "detail": "Stanley (lower-body) is considered day-to-day.",
-   "date": "2026-11-16",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Pulock (upper-body) will not play Saturday in Detroit.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -798,10 +798,10 @@
    "name": "Curtis Douglas",
    "team": "SEA",
    "status": "IR",
-   "injury": "upper-body",
+   "injury": "",
    "ret": "",
-   "detail": "Douglas (upper-body) has been placed on IR retroactive to October 30th.",
-   "date": "2026-11-05",
+   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
+   "date": "2026-11-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false
@@ -879,18 +879,6 @@
    "holdout": false
   },
   {
-   "name": "Ross Johnston",
-   "team": "STL",
-   "status": "DTD",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Johnston (personal) is out vs. Anaheim on Tuesday.",
-   "date": "2026-11-17",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/st-louis-blues/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Tyler Tucker",
    "team": "STL",
    "status": "IR",
@@ -918,10 +906,10 @@
    "name": "Conor Geekie",
    "team": "TBL",
    "status": "IR",
-   "injury": "undisclosed",
+   "injury": "",
    "ret": "",
-   "detail": "Geekie (undisclosed) has been placed on IR.",
-   "date": "2026-11-17",
+   "detail": "Geekie is out indefinitely with an upper-body injury.",
+   "date": "2026-11-21",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -1047,6 +1035,18 @@
    "holdout": false
   },
   {
+   "name": "Clayton Keller",
+   "team": "UTA",
+   "status": "DTD",
+   "injury": "illness",
+   "ret": "",
+   "detail": "Keller (illness) will not play Saturday vs. the Ducks.",
+   "date": "2026-11-21",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Dylan Guenther",
    "team": "UTA",
    "status": "IR",
@@ -1095,6 +1095,18 @@
    "holdout": false
   },
   {
+   "name": "Elias Pettersson",
+   "team": "VAN",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Pettersson (upper-body) will not play on Saturday.",
+   "date": "2026-11-21",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/vancouver-canucks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Thatcher Demko",
    "team": "VAN",
    "status": "IR",
@@ -1131,18 +1143,6 @@
    "holdout": false
   },
   {
-   "name": "Elias Salomonsson",
-   "team": "WPG",
-   "status": "Game-time decision",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Salomonsson (personal) returned to practice on Monday.",
-   "date": "2026-11-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Nick Bjugstad",
    "team": "WPG",
    "status": "IR",
@@ -1164,18 +1164,6 @@
    "date": "2026-10-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Cole Hutson",
-   "team": "WSH",
-   "status": "DTD",
-   "injury": "maintenance",
-   "ret": "",
-   "detail": "Hutson (maintenance) missed practice on Friday.",
-   "date": "2026-11-20",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
   },
   {

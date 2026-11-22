@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-21T17:30+00:00",
+"fetched": "2026-11-22T13:23+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -57,6 +57,16 @@
 "t": "NHL PROSPECTS: RUSSIA Early Season Favourites – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-russia-early-season-favourites-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
+}
+],
+"d27:davidhuk": [
+{
+"d": "2026-11-21",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – David Huk (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-david-huk-c",
+"w": 2
 }
 ],
 "d27:dimazhilkin": [
@@ -577,6 +587,14 @@
 ],
 "n8483442": [
 {
+"d": "2026-11-21",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Kraken Activate Curtis Douglas From Injured Reserve",
+"u": "https://www.prohockeyrumors.com/2026/11/kraken-activate-curtis-douglas-from-injured-reserve.html",
+"w": 1
+},
+{
 "d": "2026-11-15",
 "k": [],
 "s": "NHL.com (team site)",
@@ -693,6 +711,14 @@
 ],
 "n8483491": [
 {
+"d": "2026-11-22",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Spencer Carbery encouraged by Ivan Miroshnichenko’s first game in over a month: ‘I loved his energy. Loved his pace.’",
+"u": "https://russianmachineneverbreaks.com/2026/11/21/ivan-miroshnichenko-spencer-carbery-encouraged-first-game-month-capitals-bruins/",
+"w": 2
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "Russian Machine Never Breaks (WSH)",
@@ -764,6 +790,14 @@
 }
 ],
 "n8483513": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Preds Score Four, Return Home to Defeat Penguins",
+"u": "https://www.nhl.com/news/preds-score-four-return-home-to-defeat-penguins-2026-11-21",
+"w": 1
+},
 {
 "d": "2026-11-04",
 "k": [],
@@ -985,6 +1019,14 @@
 ],
 "n8484170": [
 {
+"d": "2026-11-21",
+"k": [],
+"s": "Sportsnet",
+"t": "Fowler shows he’s human as Canadiens fall to Flyers in final minute",
+"u": "https://www.sportsnet.ca/nhl/article/fowler-shows-hes-human-as-canadiens-fall-to-flyers-in-final-minute/",
+"w": 2
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "The Hockey News",
@@ -1073,14 +1115,6 @@
 "t": "Rookie Watch: Canadiens goalie Fowler named top first-year player for October",
 "u": "https://www.nhl.com/news/rookie-watch-montreal-canadiens-goalie-jacob-fowler-named-top-first-year-player-for-october",
 "w": 2
-},
-{
-"d": "2026-11-01",
-"k": [],
-"s": "NHL.com",
-"t": "NHL EDGE stats: Fowler’s early case for Calder Trophy",
-"u": "https://www.nhl.com/news/nhl-edge-stats-jacob-fowler-montreal-canadiens-2026-27",
-"w": 2
 }
 ],
 "n8484177": [
@@ -1163,6 +1197,18 @@
 "s": "Broad Street Hockey (PHI)",
 "t": "Flyers reportedly targeting Oliver Moore in trade talks with Blackhawks",
 "u": "https://www.broadstreethockey.com/post/flyers-reportedly-targeting-oliver-moore-in-trade-talks-with-blackhawks/",
+"w": 2
+}
+],
+"n8484201": [
+{
+"d": "2026-11-21",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Ducks Place Beckett Sennecke On IR, Recall Nico Myatovic",
+"u": "https://www.prohockeyrumors.com/2026/11/ducks-place-beckett-sennecke-on-ir-recall-nico-myatovic.html",
 "w": 2
 }
 ],
@@ -1589,6 +1635,16 @@
 ],
 "n8484798": [
 {
+"d": "2026-11-22",
+"k": [
+"trade"
+],
+"s": "Daily Hive Offside (VAN)",
+"t": "I Watched This Game: Rossi and Buium win Hughes trade for Canucks",
+"u": "https://dailyhive.com/offside/i-watched-this-game-rossi-buium-win-hughes-trade-canucks",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Sportsnet",
@@ -1989,6 +2045,16 @@
 ],
 "n8485385": [
 {
+"d": "2026-11-21",
+"k": [
+"injury"
+],
+"s": "Daily Faceoff",
+"t": "Canucks GM says getting Braeden Cootes ready for 2027 World Juniors ‘a priority’ following injury",
+"u": "https://www.dailyfaceoff.com/news/vancouver-canucks-gm-ryan-johnson-injury-update-news-nhl-braeden-cootes-world-juniors-canada",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [],
 "s": "Daily Hive Offside (VAN)",
@@ -2105,6 +2171,16 @@
 "w": 2
 }
 ],
+"n8485404": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "The AHL",
+"t": "AHL’s youngest player, Mrtka settling in with Amerks",
+"u": "https://www.buffalohockeybeat.com/sabres-prospect-radim-mrtka-ahls-youngest-player-settled-in-rochester-and-developing-with-amerks/#new_tab?utm_source=rss&utm_medium=rss&utm_campaign=ahls-youngest-player-mrtka-settling-in-with-amerks",
+"w": 2
+}
+],
 "n8485406": [
 {
 "d": "2026-11-19",
@@ -2198,6 +2274,14 @@
 }
 ],
 "n8485957": [
+{
+"d": "2026-11-21",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Rangers Announce Injury Updates",
+"u": "https://www.prohockeyrumors.com/2026/11/rangers-announce-injury-updates.html",
+"w": 1
+},
 {
 "d": "2026-11-11",
 "k": [
@@ -2595,6 +2679,14 @@
 ],
 "n8486101": [
 {
+"d": "2026-11-22",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Flyers prospects are already having an incredibly violent weekend",
+"u": "https://www.broadstreethockey.com/post/maksim-sokolovskii-shows-off-fighting-prowess-in-heavyweight-bout/",
+"w": 1
+},
+{
 "d": "2026-11-21",
 "k": [],
 "s": "Broad Street Hockey (PHI)",
@@ -2698,7 +2790,7 @@
 },
 "sources": [
 {
-"n": 83,
+"n": 81,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2707,7 +2799,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -2728,21 +2820,21 @@
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
 {
 "n": 10,
 "name": "McKeen's Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.mckeenshockey.com/feed/"
 },
@@ -2756,7 +2848,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2770,7 +2862,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -2917,7 +3009,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "7 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -2938,7 +3030,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -2966,7 +3058,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3001,14 +3093,14 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
 {
 "n": 9,
 "name": "Last Word on Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
