@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-22T13:23+00:00",
+"fetched": "2026-11-22T17:51+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -951,6 +951,16 @@
 "w": 2
 }
 ],
+"n8484154": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "The Win Column (CGY)",
+"t": "Did the Calgary Flames strike gold with Jonathan Castagna?",
+"u": "https://thewincolumn.ca/2026/11/22/did-the-calgary-flames-strike-gold-with-jonathan-castagna/",
+"w": 2
+}
+],
 "n8484158": [
 {
 "d": "2026-11-11",
@@ -1018,6 +1028,14 @@
 }
 ],
 "n8484170": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "The Rocket’s Teddy Bear Toss game is coming to the Bell Centre",
+"u": "https://www.nhl.com/news/the-rocket-s-teddy-bear-toss-game-is-coming-to-the-bell-centre",
+"w": 1
+},
 {
 "d": "2026-11-21",
 "k": [],
@@ -1106,14 +1124,6 @@
 "s": "NHL.com (team site)",
 "t": "Jacob Fowler earns Molson Cup honor for October",
 "u": "https://www.nhl.com/news/jacob-fowler-earns-molson-cup-honor-for-october",
-"w": 2
-},
-{
-"d": "2026-11-02",
-"k": [],
-"s": "NHL.com",
-"t": "Rookie Watch: Canadiens goalie Fowler named top first-year player for October",
-"u": "https://www.nhl.com/news/rookie-watch-montreal-canadiens-goalie-jacob-fowler-named-top-first-year-player-for-october",
 "w": 2
 }
 ],
@@ -1223,6 +1233,34 @@
 }
 ],
 "n8484220": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "The AHL",
+"t": "Reinbacher part of Canadiens’ larger plan",
+"u": "https://www.nytimes.com/athletic/7801971/2026/11/22/david-reinbachers-canadiens-flyers-development/?unlocked_article_code=1.SVE.xDHZ.iNolturw330i&source=emp_shared_article&smid=ta-ios-share#new_tab&utm_source=rss&utm_medium=rss&utm_campaign=reinbacher-part-of-canadiens-larger-plan",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Canadiens Reassign Brett Berard, David Reinbacher",
+"u": "https://www.prohockeyrumors.com/2026/11/canadiens-reassign-brett-berard-david-reinbacher.html",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [
+"sent down"
+],
+"s": "Sportsnet",
+"t": "Canadiens loan Brett Berard, David Reinbacher to AHL",
+"u": "https://www.sportsnet.ca/nhl/article/canadiens-loan-brett-berard-david-reinbacher-to-ahl/",
+"w": 2
+},
 {
 "d": "2026-11-21",
 "k": [],
@@ -2073,6 +2111,14 @@
 ],
 "n8485388": [
 {
+"d": "2026-11-22",
+"k": [],
+"s": "Last Word on Hockey",
+"t": "Analyzing Victor Eklund Islanders Success to Open Rookie Season",
+"u": "https://lastwordonsports.com/hockey/2026/11/22/victor-eklund-islanders-nhl/",
+"w": 2
+},
+{
 "d": "2026-11-02",
 "k": [],
 "s": "NHL.com",
@@ -2790,7 +2836,7 @@
 },
 "sources": [
 {
-"n": 81,
+"n": 82,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2827,7 +2873,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -2848,7 +2894,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "3 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2862,7 +2908,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -3009,7 +3055,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "7 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -3030,7 +3076,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3051,14 +3097,14 @@
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3093,14 +3139,14 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
 {
 "n": 9,
 "name": "Last Word on Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://lastwordonsports.com/hockey/feed/"
 },

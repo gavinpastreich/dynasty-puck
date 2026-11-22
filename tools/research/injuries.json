@@ -87,6 +87,18 @@
    "holdout": false
   },
   {
+   "name": "Nikolaj Ehlers",
+   "team": "CAR",
+   "status": "OUT",
+   "injury": "",
+   "ret": "",
+   "detail": "Ehlers suffered a lower-body injury on Saturday and will not play on Sunday.",
+   "date": "2026-11-22",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Conor Garland",
    "team": "CBJ",
    "status": "IR",
@@ -152,8 +164,8 @@
    "status": "OUT",
    "injury": "",
    "ret": "",
-   "detail": "Bedard will undergo shoulder surgery and is out indefinitely.",
-   "date": "2026-11-21",
+   "detail": "The Blackhawks have placed Connor Bedard (shoulder surgery) on IR.",
+   "date": "2026-11-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -657,19 +669,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-21",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Sean Durzi",
-   "team": "NYR",
-   "status": "IR",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Durzi (undisclosed) participated in a regular jersey for Monday's morning skate.",
-   "date": "2026-11-16",
+   "date": "2026-11-22",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false

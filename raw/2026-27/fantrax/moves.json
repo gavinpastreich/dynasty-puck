@@ -1275,5 +1275,14 @@
 "to": "Wags8210",
 "ct": "FA",
 "sal": 1000000
+},
+{
+"d": "2026-11-22",
+"id": "05gtp",
+"type": "drop",
+"from": "nbracken",
+"ct": "FA",
+"sal": 1000000,
+"n": "Mercer, Dawson"
 }
 ]

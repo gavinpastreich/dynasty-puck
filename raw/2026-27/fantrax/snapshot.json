@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-22T13:21:19+00:00",
+"fetched": "2026-11-22T17:48:45+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -1778,11 +1778,6 @@
 "n": "Evangelista, Luke",
 "pos": "RW",
 "t": "NJD"
-},
-"05gtp": {
-"n": "Mercer, Dawson",
-"pos": "RW",
-"t": "WPG"
 },
 "05gvo": {
 "n": "Michkov, Matvei",
@@ -5369,7 +5364,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 1000000,
-"slot": "IR"
+"slot": "A"
 },
 "03rfo": {
 "ct": "BID",
@@ -6160,7 +6155,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 2600000,
-"slot": "R"
+"slot": "A"
 },
 "051um": {
 "ct": "MNR",
@@ -6335,13 +6330,6 @@
 "gm": "M.M",
 "pos": "F",
 "sal": 2790000,
-"slot": "A"
-},
-"05gtp": {
-"ct": "FA",
-"gm": "nbracken",
-"pos": "F",
-"sal": 1000000,
 "slot": "A"
 },
 "05gvo": {
@@ -6580,7 +6568,7 @@
 "gm": "nbracken",
 "pos": "F",
 "sal": 3420000,
-"slot": "A"
+"slot": "R"
 },
 "05ra8": {
 "ct": "MNR",
@@ -8919,8 +8907,6 @@
 }
 },
 "waivers": [
-"07axh",
-"07axi",
 "07axj",
 "07axk",
 "07axl"

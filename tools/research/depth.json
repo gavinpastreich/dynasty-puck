@@ -276,21 +276,21 @@
   },
   "CAR": {
    "team": "Carolina Hurricanes",
-   "updated": "2026-11-21",
+   "updated": "2026-11-22",
    "source": "Walt Ruff",
    "url": "https://www.dailyfaceoff.com/teams/carolina-hurricanes/line-combinations",
    "pp1": [
     "Andrei Svechnikov",
     "Sebastian Aho",
     "Jackson Blake",
-    "Nikolaj Ehlers",
+    "Seth Jarvis",
     "Shayne Gostisbehere"
    ],
    "pp2": [
     "Taylor Hall",
-    "Mark Jankowski",
-    "Seth Jarvis",
     "Logan Stankoven",
+    "Mark Jankowski",
+    "Sean Walker",
     "Alexander Nikishin"
    ],
    "pk1": [
@@ -311,7 +311,7 @@
     "Andrei Svechnikov"
    ],
    "f2": [
-    "Nikolaj Ehlers",
+    "Taylor Hall",
     "Logan Stankoven",
     "Jackson Blake"
    ],
@@ -321,9 +321,9 @@
     "Seth Jarvis"
    ],
    "f4": [
-    "Taylor Hall",
+    "Eric Robinson",
     "Mark Jankowski",
-    "Eric Robinson"
+    "Jesperi Kotkaniemi"
    ],
    "d1": [
     "Jaccob Slavin",
@@ -1228,8 +1228,8 @@
   },
   "NYR": {
    "team": "New York Rangers",
-   "updated": "2026-11-21",
-   "source": "Andrew Crane",
+   "updated": "2026-11-22",
+   "source": "Jonny Lazarus",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "pp1": [
     "Alexis Lafrenière",
@@ -1255,7 +1255,7 @@
     "Noah Laba",
     "Will Cuylle",
     "Marcus Pettersson",
-    "Braden Schneider"
+    "Sean Durzi"
    ],
    "f1": [
     "Gabriel Perreault",
@@ -1274,7 +1274,8 @@
    ],
    "f4": [
     "Glenn Gawdin",
-    "Taylor Raddysh"
+    "Max Sasson",
+    "Matt Rempe"
    ],
    "d1": [
     "Vladislav Gavrikov",
@@ -1285,8 +1286,8 @@
     "Sean Durzi"
    ],
    "d3": [
-    "Matthew Robertson",
-    "Braden Schneider"
+    "Braden Schneider",
+    "Scott Morrow"
    ],
    "goalies": [
     "Dylan Garand",
