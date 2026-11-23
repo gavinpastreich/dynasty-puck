@@ -346,7 +346,7 @@
 "07912": "D,F",
 "07940": "D,F"
 },
-"fetched": "2026-11-23T15:58:35+00:00",
+"fetched": "2026-11-23T22:01:43+00:00",
 "league": {
 "end": "2027-04-10",
 "id": "cbufqc8umo5xrjzu",
@@ -553,6 +553,11 @@
 "n": "Kuemper, Darcy",
 "pos": "G",
 "t": "LAK"
+},
+"023wa": {
+"n": "Spurgeon, Jared",
+"pos": "D",
+"t": "MIN"
 },
 "02422": {
 "n": "Nugent-Hopkins, Ryan",
@@ -1092,7 +1097,7 @@
 "03rfp": {
 "n": "Montembeault, Sam",
 "pos": "G",
-"t": "MTL"
+"t": "DET"
 },
 "03rfx": {
 "n": "Novak, Tommy",
@@ -4607,6 +4612,13 @@
 "sal": 4100000,
 "slot": "R"
 },
+"023wa": {
+"ct": "FA",
+"gm": "mcianfra",
+"pos": "D",
+"sal": 1000000,
+"slot": "A"
+},
 "02422": {
 "ct": "BID",
 "gm": "nebsnave",
@@ -4710,7 +4722,7 @@
 "gm": "mcianfra",
 "pos": "D",
 "sal": 1500000,
-"slot": "R"
+"slot": "IR"
 },
 "02f9l": {
 "ct": "BID",
@@ -5900,7 +5912,7 @@
 "gm": "mcianfra",
 "pos": "D",
 "sal": 1000000,
-"slot": "A"
+"slot": "R"
 },
 "04qy5": {
 "ct": "BID",

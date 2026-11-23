@@ -1319,5 +1319,13 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Edstrom, Adam"
+},
+{
+"d": "2026-11-23",
+"id": "023wa",
+"type": "add",
+"to": "mcianfra",
+"ct": "FA",
+"sal": 1000000
 }
 ]

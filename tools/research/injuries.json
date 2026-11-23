@@ -32,8 +32,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Carlsson (upper-body) left Saturday’s game vs. Utah and did not return.",
-   "date": "2026-11-22",
+   "detail": "Carlsson (upper-body) will be a game-time decision in Seattle on Monday.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -154,6 +154,18 @@
    "ret": "Season",
    "detail": "Bahl (Achilles) has been placed on IR and will have season-ending surgery.",
    "date": "2026-11-08",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Martin Pospisil",
+   "team": "CGY",
+   "status": "OUT",
+   "injury": "concussion",
+   "ret": "",
+   "detail": "Pospisil (concussion) did not travel with the team to Ottawa.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "holdout": false
@@ -471,25 +483,25 @@
    "holdout": false
   },
   {
-   "name": "Artemi Panarin",
-   "team": "LAK",
-   "status": "OUT",
-   "injury": "personal",
-   "ret": "",
-   "detail": "Panarin (personal) will \"most likely\" play Monday in Montreal.",
-   "date": "2026-11-22",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Erik Gustafsson",
    "team": "LAK",
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Gustafsson (upper-body) left Saturday’s game vs. Ottawa and did not return.",
-   "date": "2026-11-22",
+   "detail": "Gustafsson (upper-body) is a game-time decision in Montreal on Monday.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Joel Edmundson",
+   "team": "LAK",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Edmundson (undisclosed) will be a game-time decision in Montreal on Monday.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -500,8 +512,8 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Moore (undisclosed) skated on Saturday but is not expected to play in Ottawa.",
-   "date": "2026-11-21",
+   "detail": "Moore (undisclosed) is a game-time decision in Montreal on Monday.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
    "holdout": false
@@ -524,8 +536,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Hughes (upper-body) will miss the final two games of the Wild's road-trip.",
-   "date": "2026-11-21",
+   "detail": "Hughes (upper-body) has been placed on IR.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -538,18 +550,6 @@
    "ret": "",
    "detail": "Kreider (lower-body) will miss 6-to-8 weeks.",
    "date": "2026-11-14",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Dylan Larkin",
-   "team": "MTL",
-   "status": "Game-time decision",
-   "injury": "",
-   "ret": "",
-   "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/montreal-canadiens/line-combinations",
    "holdout": false
@@ -903,9 +903,21 @@
    "holdout": false
   },
   {
+   "name": "Jacob Trouba",
+   "team": "SJS",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Trouba (lower-body) is out vs. Minnesota on Monday and will miss the remainder of the week.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Kiefer Sherwood",
    "team": "SJS",
-   "status": "OUT",
+   "status": "IR",
    "injury": "",
    "ret": "Week-to-week",
    "detail": "Sherwood is considered week-to-week with an upper-body injury.",
@@ -1026,10 +1038,10 @@
    "name": "Jack Roslovic",
    "team": "TOR",
    "status": "DTD",
-   "injury": "",
-   "ret": "Day-to-day",
-   "detail": "Roslovic missed Sunday's practice and is considered day-to-day with an upper-body injury.",
-   "date": "2026-11-22",
+   "injury": "upper-body",
+   "ret": "Months",
+   "detail": "Roslovic (upper-body) is a game-time decision vs. the Islanders on Monday.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1107,25 +1119,13 @@
    "holdout": false
   },
   {
-   "name": "Clayton Keller",
-   "team": "UTA",
-   "status": "DTD",
-   "injury": "illness",
-   "ret": "",
-   "detail": "Keller (illness) will not play Saturday vs. the Ducks.",
-   "date": "2026-11-21",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
-   "holdout": false
-  },
-  {
    "name": "Dylan Guenther",
    "team": "UTA",
    "status": "IR",
    "injury": "upper-body",
-   "ret": "",
-   "detail": "Guenther (upper-body) returned to practice in a full-contact jersey on Friday.",
-   "date": "2026-11-20",
+   "ret": "Day-to-day",
+   "detail": "Guenther (upper-body) will remain out vs. Winnipeg on Monday and is still considered day-to-day.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
@@ -1135,9 +1135,21 @@
    "team": "UTA",
    "status": "IR",
    "injury": "upper-body",
+   "ret": "Day-to-day",
+   "detail": "Marino (upper-body) is day-to-day and unsure if he will play on the current road trip.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Michael Carcone",
+   "team": "UTA",
+   "status": "OUT",
+   "injury": "upper-body",
    "ret": "Months",
-   "detail": "Marino (upper-body) returned to practice in a full-contact jersey on Wednesday.",
-   "date": "2026-11-18",
+   "detail": "Carcone (upper-body) is expected to be out for the next 3-4 months.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
    "holdout": false
@@ -1236,6 +1248,18 @@
    "date": "2026-10-16",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/winnipeg-jets/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Jordan Kyrou",
+   "team": "WSH",
+   "status": "DTD",
+   "injury": "",
+   "ret": "",
+   "detail": "Kyrou is expected to miss at least the next week with an upper-body injury.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/washington-capitals/line-combinations",
    "holdout": false
   },
   {
