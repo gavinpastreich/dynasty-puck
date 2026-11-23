@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-22T17:51+00:00",
+"fetched": "2026-11-23T16:01+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -110,6 +110,14 @@
 }
 ],
 "d27:landondupont": [
+{
+"d": "2026-11-23",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "I Watched This Game: Canucks remain in first place for Landon Dupont sweepstakes",
+"u": "https://dailyhive.com/offside/i-watched-this-game-canucks-blackhawks-landon-dupont-sweepstakes",
+"w": 2
+},
 {
 "d": "2026-11-18",
 "k": [],
@@ -1031,6 +1039,14 @@
 {
 "d": "2026-11-22",
 "k": [],
+"s": "Daily Faceoff",
+"t": "Jacob Fowler should be the easy Calder favorite – and maybe a Vezina candidate",
+"u": "https://www.dailyfaceoff.com/news/jacob-fowler-montreal-canadiens-calder-vezina-trophy-favorite-odds-top-nhl-goalies",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [],
 "s": "NHL.com (team site)",
 "t": "The Rocket’s Teddy Bear Toss game is coming to the Bell Centre",
 "u": "https://www.nhl.com/news/the-rocket-s-teddy-bear-toss-game-is-coming-to-the-bell-centre",
@@ -1116,14 +1132,6 @@
 "s": "NHL.com",
 "t": "Referee pulls out apple on ice, shows off to Canadiens goalie",
 "u": "https://www.nhl.com/news/nhl-referee-offers-apple-on-ice-to-canadiens-goalie-jacob-fowler",
-"w": 2
-},
-{
-"d": "2026-11-02",
-"k": [],
-"s": "NHL.com (team site)",
-"t": "Jacob Fowler earns Molson Cup honor for October",
-"u": "https://www.nhl.com/news/jacob-fowler-earns-molson-cup-honor-for-october",
 "w": 2
 }
 ],
@@ -1259,6 +1267,14 @@
 "s": "Sportsnet",
 "t": "Canadiens loan Brett Berard, David Reinbacher to AHL",
 "u": "https://www.sportsnet.ca/nhl/article/canadiens-loan-brett-berard-david-reinbacher-to-ahl/",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Montreal Canadiens send David Reinbacher, Brett Berard down to Laval Rocket",
+"u": "https://www.habseyesontheprize.com/montreal-canadiens-send-david-reinbacher-brett-berard-down-to-laval-rocket-habs/",
 "w": 2
 },
 {
@@ -1451,6 +1467,34 @@
 ],
 "n8484390": [
 {
+"d": "2026-11-23",
+"k": [
+"hot"
+],
+"s": "NHL.com",
+"t": "Kantserov gets 1st hat trick, lifts Blackhawks past Canucks",
+"u": "https://www.nhl.com/news/chicago-blackhawks-vancouver-canucks-game-recap-november-22-2026",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [
+"hot"
+],
+"s": "Sportsnet",
+"t": "Blackhawks’ Kantserov nets first career NHL hat trick against Canucks",
+"u": "https://www.sportsnet.ca/nhl/video/blackhawks-kantserov-nets-first-career-nhl-hat-trick-against-canucks/",
+"w": 2
+},
+{
+"d": "2026-11-22",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Roman Kantserov: Pops off with four points",
+"u": "https://www.rotowire.com//hockey/player/roman-kantserov-6987",
+"w": 2
+},
+{
 "d": "2026-11-08",
 "k": [],
 "s": "McKeen's Hockey",
@@ -1528,6 +1572,14 @@
 }
 ],
 "n8484769": [
+{
+"d": "2026-11-22",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Bears roommates Lynden Lakovic and Terik Parascak lost power after forgetting to pay utility bill: ‘I didn’t set up auto-payment, I guess’",
+"u": "https://russianmachineneverbreaks.com/2026/11/22/lynden-lakovic-terik-parascak-hershey-bears-power-bill/",
+"w": 2
+},
 {
 "d": "2026-11-21",
 "k": [],
@@ -1692,6 +1744,46 @@
 }
 ],
 "n8484799": [
+{
+"d": "2026-11-23",
+"k": [
+"honor"
+],
+"s": "The Hockey Writers",
+"t": "Who is Michael Hage: Detroit’s New Top Prospect",
+"u": "https://thehockeywriters.com/wmichael-hage-detroit-larkin/",
+"w": 2
+},
+{
+"d": "2026-11-23",
+"k": [
+"honor"
+],
+"s": "Daily Faceoff",
+"t": "What the Red Wings are getting in top prospect Michael Hage",
+"u": "https://www.dailyfaceoff.com/news/scouting-report-michael-hage-montreal-canadiens-detroit-red-wings-nhl-trade-dylan-larkin",
+"w": 2
+},
+{
+"d": "2026-11-23",
+"k": [
+"trade"
+],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Dylan Larkin acquired by the Montreal Canadiens for Michael Hage, Kirby Dach, Samuel Montembeault, draft picks",
+"u": "https://www.habseyesontheprize.com/dylan-larkin-trade-acquired-by-the-montreal-canadiens-for-michael-hage-kirby-dach-and-samuel-montembeault-draft-picks-detroit-red-wings/",
+"w": 2
+},
+{
+"d": "2026-11-23",
+"k": [
+"trade"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "NHL Notebook: Canadiens acquire Dylan Larkin from Red Wings for Michael Hage, two first-round picks",
+"u": "https://theleafsnation.com/news/nhl-notebook-montreal-canadiens-acquire-dylan-larkin-red-wings-michael-hage",
+"w": 2
+},
 {
 "d": "2026-11-19",
 "k": [
@@ -2083,6 +2175,14 @@
 ],
 "n8485385": [
 {
+"d": "2026-11-23",
+"k": [],
+"s": "Canucks Army (VAN)",
+"t": "Why Canucks management are prioritizing World Juniors for Braeden Cootes",
+"u": "https://canucksarmy.com/news/why-vancouver-canucks-management-prioritizing-world-juniors-braeden-cootes",
+"w": 2
+},
+{
 "d": "2026-11-21",
 "k": [
 "injury"
@@ -2255,6 +2355,14 @@
 ],
 "n8485412": [
 {
+"d": "2026-11-22",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Bears roommates Lynden Lakovic and Terik Parascak lost power after forgetting to pay utility bill: ‘I didn’t set up auto-payment, I guess’",
+"u": "https://russianmachineneverbreaks.com/2026/11/22/lynden-lakovic-terik-parascak-hershey-bears-power-bill/",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Russian Machine Never Breaks (WSH)",
@@ -2407,6 +2515,14 @@
 ],
 "n8486025": [
 {
+"d": "2026-11-23",
+"k": [],
+"s": "NHL.com",
+"t": "Rookie Watch: Stenberg, Bjorck trending up with Sharks, Jets",
+"u": "https://www.nhl.com/news/rookie-watch-ivar-stenberg-viggo-bjorck-trending-up-with-san-jose-winnipeg",
+"w": 2
+},
+{
 "d": "2026-11-10",
 "k": [],
 "s": "The Hockey News",
@@ -2541,6 +2657,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-23",
+"k": [],
+"s": "NHL.com",
+"t": "Gavin McKenna Watch: No. 1 pick hopes to do more to end Maple Leafs skid",
+"u": "https://www.nhl.com/news/gavin-mckenna-watch-no-1-pick-maple-leafs-hope-to-end-skid",
+"w": 2
+},
+{
 "d": "2026-11-21",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -2630,14 +2754,6 @@
 "s": "The Leafs Nation (TOR)",
 "t": "Maple Leafs lineup news: Gavin McKenna promoted to top power play unit, William Nylander on 3rd line",
 "u": "https://theleafsnation.com/news/toronto-maple-leafs-lineup-news-gavin-mckenna-promoted-top-power-play-unit-william-nylander-3rd-line",
-"w": 2
-},
-{
-"d": "2026-11-19",
-"k": [],
-"s": "Daily Faceoff",
-"t": "Can Porter Martone, Gavin McKenna work their way back into Calder conversation?",
-"u": "https://www.dailyfaceoff.com/news/calder-trophy-race-odds-gavin-mckenna-porter-martone-jacob-fowler-leafs-flyers-canadiens",
 "w": 2
 }
 ],
@@ -2836,7 +2952,7 @@
 },
 "sources": [
 {
-"n": 82,
+"n": 83,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -2845,7 +2961,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -2866,14 +2982,14 @@
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -2894,7 +3010,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -2922,7 +3038,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -3055,14 +3171,14 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "5 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -3076,14 +3192,14 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -3097,14 +3213,14 @@
 {
 "n": 10,
 "name": "The Win Column (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thewincolumn.ca/feed/"
 },
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3146,7 +3262,7 @@
 {
 "n": 9,
 "name": "Last Word on Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
@@ -3167,7 +3283,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },

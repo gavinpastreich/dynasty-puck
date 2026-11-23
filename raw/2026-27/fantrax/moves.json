@@ -1284,5 +1284,40 @@
 "ct": "FA",
 "sal": 1000000,
 "n": "Mercer, Dawson"
+},
+{
+"d": "2026-11-23",
+"id": "02azm",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "Murphy, Connor"
+},
+{
+"d": "2026-11-23",
+"id": "02wy3",
+"type": "add",
+"to": "SPG",
+"ct": "FA",
+"sal": 1000000
+},
+{
+"d": "2026-11-23",
+"id": "03nqi",
+"type": "drop",
+"from": "BHHC",
+"ct": "FA",
+"sal": 1000000,
+"n": "Lyon, Alex"
+},
+{
+"d": "2026-11-23",
+"id": "051v9",
+"type": "drop",
+"from": "SPG",
+"ct": "FA",
+"sal": 1000000,
+"n": "Edstrom, Adam"
 }
 ]
