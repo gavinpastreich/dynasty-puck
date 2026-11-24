@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -21,7 +21,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -32,7 +32,7 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Carlsson (upper-body) will be a game-time decision in Seattle on Monday.",
+   "detail": "Carlsson (upper-body) is out vs. Seattle on Monday.",
    "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
@@ -123,6 +123,18 @@
    "holdout": false
   },
   {
+   "name": "Mathieu Olivier",
+   "team": "CBJ",
+   "status": "DTD",
+   "injury": "upper-body",
+   "ret": "",
+   "detail": "Olivier (upper-body) left Monday's game vs. New Jersey and will not return.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Sean Monahan",
    "team": "CBJ",
    "status": "DTD",
@@ -171,6 +183,18 @@
    "holdout": false
   },
   {
+   "name": "Morgan Frost",
+   "team": "CGY",
+   "status": "DTD",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Frost (undisclosed) left Monday's game vs. Ottawa and will not return.",
+   "date": "2026-11-23",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
+   "holdout": false
+  },
+  {
    "name": "Anton Frondell",
    "team": "CHI",
    "status": "DTD",
@@ -198,10 +222,10 @@
    "name": "Connor Bedard",
    "team": "CHI",
    "status": "OUT",
-   "injury": "",
-   "ret": "",
-   "detail": "The Blackhawks have placed Connor Bedard (shoulder surgery) on IR.",
-   "date": "2026-11-22",
+   "injury": "shoulder",
+   "ret": "Months",
+   "detail": "Bedard (shoulder) underwent successful surgery and is expected to miss the next four months.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -345,7 +369,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/detroit-red-wings/line-combinations",
    "holdout": false
@@ -428,8 +452,8 @@
    "status": "DTD",
    "injury": "undisclosed",
    "ret": "",
-   "detail": "Nugent-Hopkins (undisclosed) is out vs. Philadelphia on Sunday.",
-   "date": "2026-11-15",
+   "detail": "Nugent-Hopkins (undisclosed) is cleared to play and will most likely return to the lineup on Tuesday.",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/edmonton-oilers/line-combinations",
    "holdout": false
@@ -485,34 +509,10 @@
   {
    "name": "Erik Gustafsson",
    "team": "LAK",
-   "status": "DTD",
-   "injury": "upper-body",
+   "status": "IR",
+   "injury": "hand",
    "ret": "",
-   "detail": "Gustafsson (upper-body) is a game-time decision in Montreal on Monday.",
-   "date": "2026-11-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Joel Edmundson",
-   "team": "LAK",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Edmundson (undisclosed) will be a game-time decision in Montreal on Monday.",
-   "date": "2026-11-23",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Trevor Moore",
-   "team": "LAK",
-   "status": "DTD",
-   "injury": "undisclosed",
-   "ret": "",
-   "detail": "Moore (undisclosed) is a game-time decision in Montreal on Monday.",
+   "detail": "Gustafsson (hand) has been placed on IR and will be out for the 2-4 weeks.",
    "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/los-angeles-kings/line-combinations",
@@ -646,6 +646,18 @@
    "ret": "Months",
    "detail": "Romanov will undergo surgery to repair an ACL tear and miss 6-8 months.",
    "date": "2026-10-07",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Kyle Palmieri",
+   "team": "NYI",
+   "status": "DTD",
+   "injury": "lower-body",
+   "ret": "",
+   "detail": "Palmieri (lower-body) left Monday's game vs. Toronto and will not return.",
+   "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-islanders/line-combinations",
    "holdout": false
@@ -873,7 +885,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false
@@ -991,9 +1003,9 @@
    "team": "TBL",
    "status": "IR",
    "injury": "",
-   "ret": "",
-   "detail": "Geekie is out indefinitely with an upper-body injury.",
-   "date": "2026-11-21",
+   "ret": "Months",
+   "detail": "Geekie underwent shoulder surgery on Monday and is expected to be out for 4-to-5 months.",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/tampa-bay-lightning/line-combinations",
    "holdout": false
@@ -1038,9 +1050,9 @@
    "name": "Jack Roslovic",
    "team": "TOR",
    "status": "DTD",
-   "injury": "upper-body",
-   "ret": "Months",
-   "detail": "Roslovic (upper-body) is a game-time decision vs. the Islanders on Monday.",
+   "injury": "undisclosed",
+   "ret": "",
+   "detail": "Roslovic (undisclosed) will not play on Monday.",
    "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
@@ -1089,7 +1101,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-22",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
@@ -1109,22 +1121,10 @@
   {
    "name": "Artem Duda",
    "team": "UTA",
-   "status": "DTD",
+   "status": "IR",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Duda (lower-body) will not play Monday vs. the Canucks.",
-   "date": "2026-11-16",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Dylan Guenther",
-   "team": "UTA",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "Day-to-day",
-   "detail": "Guenther (upper-body) will remain out vs. Winnipeg on Monday and is still considered day-to-day.",
+   "detail": "Duda (lower-body) has been placed on IR.",
    "date": "2026-11-23",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/utah-mammoth/line-combinations",

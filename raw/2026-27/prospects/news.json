@@ -1,7 +1,15 @@
 {
-"fetched": "2026-11-23T22:04+00:00",
+"fetched": "2026-11-24T15:57+00:00",
 "items": {
 "d27:alexisjoseph": [
+{
+"d": "2026-11-23",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Alexis Joseph (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-alexis-joseph-c-2",
+"w": 2
+},
 {
 "d": "2026-11-06",
 "k": [],
@@ -22,6 +30,14 @@
 }
 ],
 "d27:brockcripps": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "CHL (Canadian Hockey League)",
+"t": "Meet Team CHL: Brock Cripps makes his minutes matter",
+"u": "https://chl.ca/article/meet-team-chl-brock-cripps-makes-his-minutes-matter",
+"w": 2
+},
 {
 "d": "2026-11-10",
 "k": [],
@@ -47,6 +63,16 @@
 "t": "NHL PROSPECTS: WHL Early Season Favourites, Part Two – 2027 Draft Eligibles – Top Re-Entry Candidate – NHL Affiliated Prospect Taking a Big Step",
 "u": "https://www.mckeenshockey.com/nhl-blog/nhl-prospects-whl-early-season-favourites-part-2027-draft-eligibles-top-re-entry-candidate-nhl-affiliated-prospect-big-step/",
 "w": 1
+}
+],
+"d27:cartermeyer": [
+{
+"d": "2026-11-23",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Carter Meyer (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-carter-meyer-c",
+"w": 2
 }
 ],
 "d27:coopermcaslan": [
@@ -106,6 +132,14 @@
 "s": "CHL (Canadian Hockey League)",
 "t": "My Hockey Hero: James Scantlebury’s path from his dad’s backyard rink to Team CHL",
 "u": "https://chl.ca/article/myhockeyhero-james-scantleburys-path-from-his-dads-backyard-rink-to-team-chl",
+"w": 2
+},
+{
+"d": "2026-11-23",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – James Scantlebury (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-james-scantlebury-c-2",
 "w": 2
 }
 ],
@@ -1308,6 +1342,46 @@
 ],
 "n8484220": [
 {
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "NHL.com (team site)",
+"t": "Berard and Reinbacher recalled from Laval Rocket",
+"u": "https://www.nhl.com/news/berard-and-reinbacher-recalled-from-laval-rocket-nov-24-2026",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Canadiens Recall Brett Berard, David Reinbacher",
+"u": "https://www.prohockeyrumors.com/2026/11/canadiens-recall-brett-berard-david-reinbacher.html",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "Habs Eyes on the Prize (MTL)",
+"t": "Montreal Canadiens recall David Reinbacher, Brett Berard for road trip; Matheson to LTIR",
+"u": "https://www.habseyesontheprize.com/montreal-canadiens-recall-david-reinbacher-brett-berard-for-road-trip-habs-matheson-ltir-salary-cap/",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "Sportsnet",
+"t": "Canadiens recall forward Brett Berard, defenceman David Reinbacher from AHL",
+"u": "https://www.sportsnet.ca/nhl/article/canadiens-recall-forward-brett-berard-defenceman-david-reinbacher-from-ahl/",
+"w": 2
+},
+{
 "d": "2026-11-22",
 "k": [],
 "s": "The AHL",
@@ -1374,47 +1448,6 @@
 "t": "Montreal Canadiens recall Brett Berard from Laval Rocket",
 "u": "https://www.habseyesontheprize.com/montreal-canadiens-recall-brett-berard-from-laval-rocket/",
 "w": 1
-},
-{
-"d": "2026-11-15",
-"k": [
-"call-up"
-],
-"s": "Pro Hockey Rumors",
-"t": "Canadiens Recall David Reinbacher; Place Josh Anderson On IR",
-"u": "https://www.prohockeyrumors.com/2026/11/canadiens-recall-david-reinbacher-place-josh-anderson-on-ir.html",
-"w": 2
-},
-{
-"d": "2026-11-15",
-"k": [
-"call-up",
-"injury"
-],
-"s": "Habs Eyes on the Prize (MTL)",
-"t": "David Reinbacher recalled by Montreal Canadiens, Josh Anderson placed on IR",
-"u": "https://www.habseyesontheprize.com/david-reinbacher-recalled-by-montreal-canadiens-josh-anderson-placed-on-ir-mike-matheson-samuel-montembeault-ivan-demidov/",
-"w": 2
-},
-{
-"d": "2026-10-21",
-"k": [
-"sent down"
-],
-"s": "NHL.com (team site)",
-"t": "Canadiens loan Beck, Reinbacher to Laval Rocket",
-"u": "https://www.nhl.com/news/canadiens-loan-beck-reinbacher-to-laval-rocket-oct-21-2026",
-"w": 2
-},
-{
-"d": "2026-10-14",
-"k": [
-"call-up"
-],
-"s": "NHL.com (team site)",
-"t": "David Reinbacher recalled from Laval Rocket",
-"u": "https://www.nhl.com/news/david-reinbacher-recalled-from-laval-rocket-oct-14-2026",
-"w": 2
 }
 ],
 "n8484221": [
@@ -1856,6 +1889,14 @@
 "s": "The Leafs Nation (TOR)",
 "t": "NHL Notebook: Canadiens acquire Dylan Larkin from Red Wings for Michael Hage, two first-round picks",
 "u": "https://theleafsnation.com/news/nhl-notebook-montreal-canadiens-acquire-dylan-larkin-red-wings-michael-hage",
+"w": 2
+},
+{
+"d": "2026-11-23",
+"k": [],
+"s": "The Hockey News",
+"t": "What Michael Hage Can Bring To The Detroit Red Wings",
+"u": "https://thehockeynews.com/news/latest-news/what-michael-hage-can-bring-to-the-detroit-red-wings",
 "w": 2
 },
 {
@@ -2615,6 +2656,14 @@
 ],
 "n8486035": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Islanders Prospect Report: Nov. 24, 2026",
+"u": "https://www.nhl.com/news/islanders-prospect-report-nov-16-2026-x0104",
+"w": 1
+},
+{
 "d": "2026-11-16",
 "k": [],
 "s": "NHL.com (team site)",
@@ -2715,6 +2764,16 @@
 ],
 "n8486065": [
 {
+"d": "2026-11-23",
+"k": [
+"hot"
+],
+"s": "Canucks Army (VAN)",
+"t": "Canucks prospect Caleb Malhotra named Hockey East player of the week",
+"u": "https://canucksarmy.com/news/vancouver-canucks-prospect-caleb-malhotra-named-hockey-east-player-week",
+"w": 2
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "Canucks Army (VAN)",
@@ -2748,6 +2807,44 @@
 }
 ],
 "n8486067": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Editor in Leaf (TOR)",
+"t": "Gavin McKenna helps Maple Leafs do the unthinkable against Islanders",
+"u": "https://editorinleaf.com/gavin-mckenna-helps-maple-leafs-do-the-unthinkable-against-islanders?utm_source=RSS",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"hot"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "4 takeaways from Maple Leafs-Islanders: McKenna’s game-winner ends season-defining losing streak",
+"u": "https://theleafsnation.com/news/4-takeaways-toronto-maple-leafs-islanders-mckenna-game-winner-ends-season-defining-losing-streak",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"hot"
+],
+"s": "Maple Leafs Hot Stove (TOR)",
+"t": "Holy shit, a win: Maple Leafs end miserable streak with comeback, McKenna game-winner vs. Islanders — Game Review",
+"u": "https://mapleleafshotstove.com/2026/11/24/maple-leafs-end-miserable-streak-with-comeback-mckenna-game-winner-vs-islanders-game-review/",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [
+"hot"
+],
+"s": "Maple Leafs Hot Stove (TOR)",
+"t": "Jim Hiller on Gavin McKenna’s game-winner to snap the Leafs’ losing streak: “If I could have picked a guy in that moment to score that goal, it would have been Gavin… Really happy for him”",
+"u": "https://mapleleafshotstove.com/2026/11/24/jim-hiller-on-gavin-mckennas-game-winner-to-snap-the-leafs-losing-streak-if-i-could-have-picked-a-guy-in-that-moment-to-score-that-goal-it-would-have-been-gavin-really-happy-for-him/",
+"w": 2
+},
 {
 "d": "2026-11-23",
 "k": [],
@@ -2812,40 +2909,6 @@
 "s": "The Leafs Nation (TOR)",
 "t": "How Jim Hiller’s shockingly conservative handling of Gavin McKenna helped sink Leafs’ season",
 "u": "https://theleafsnation.com/news/how-jim-hiller-shockingly-conservative-handling-gavin-mckenna-sink-toronto-maple-leafs-season",
-"w": 2
-},
-{
-"d": "2026-11-20",
-"k": [],
-"s": "Maple Leafs Hot Stove (TOR)",
-"t": "Jim Hiller on Gavin McKenna bailing on a board battle vs. LA: “He’s got to make that decision, if he feels vulnerable… That might have been one where it was a good decision”",
-"u": "https://mapleleafshotstove.com/2026/11/20/jim-hiller-on-gavin-mckenna-bailing-on-a-board-battle-vs-la/",
-"w": 2
-},
-{
-"d": "2026-11-19",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Maple Leafs finally make the Gavin McKenna lineup change fans demanded",
-"u": "https://editorinleaf.com/maple-leafs-finally-make-the-gavin-mckenna-lineup-change-fans-demanded?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-19",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Maple Leafs rookie Gavin McKenna knows he’s ready for promotion to top power play unit",
-"u": "https://theleafsnation.com/news/toronto-maple-leafs-gavin-mckenna-ready-promotion-top-power-play",
-"w": 2
-},
-{
-"d": "2026-11-19",
-"k": [
-"call-up"
-],
-"s": "The Leafs Nation (TOR)",
-"t": "Maple Leafs lineup news: Gavin McKenna promoted to top power play unit, William Nylander on 3rd line",
-"u": "https://theleafsnation.com/news/toronto-maple-leafs-lineup-news-gavin-mckenna-promoted-top-power-play-unit-william-nylander-3rd-line",
 "w": 2
 }
 ],
@@ -3044,7 +3107,7 @@
 },
 "sources": [
 {
-"n": 85,
+"n": 87,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3053,7 +3116,7 @@
 {
 "n": 10,
 "name": "The AHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theahl.com/feed"
 },
@@ -3067,7 +3130,7 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
@@ -3102,7 +3165,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -3130,7 +3193,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -3263,21 +3326,21 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "5 new matches",
+"note": "6 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
@@ -3291,14 +3354,14 @@
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -3326,7 +3389,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -3347,7 +3410,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
