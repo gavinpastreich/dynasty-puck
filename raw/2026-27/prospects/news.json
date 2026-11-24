@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-24T15:57+00:00",
+"fetched": "2026-11-24T20:42+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -457,6 +457,14 @@
 ],
 "n8482661": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Wild Place Calvin Pickard On Waivers",
+"u": "https://www.prohockeyrumors.com/2026/11/wild-place-calvin-pickard-on-waivers.html",
+"w": 1
+},
+{
 "d": "2026-11-19",
 "k": [],
 "s": "NHL.com",
@@ -887,6 +895,14 @@
 ],
 "n8483516": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Jimmy Snuggerud: Questionable for Wednesday",
+"u": "https://www.rotowire.com//hockey/player/jimmy-snuggerud-6701",
+"w": 2
+},
+{
 "d": "2026-11-14",
 "k": [
 "injury"
@@ -1013,6 +1029,14 @@
 ],
 "n8484150": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Calgary Flames prospect is making a strong case for an NHL opportunity",
+"u": "https://dailyhive.com/offside/calgary-flames-prospect-strong-case-nhl-opportunity",
+"w": 1
+},
+{
 "d": "2026-11-23",
 "k": [
 "hot"
@@ -1070,6 +1094,14 @@
 }
 ],
 "n8484158": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Injury Notes: Palmieri, Pettersson, Dorofeyev",
+"u": "https://www.prohockeyrumors.com/2026/11/injury-notes-palmieri-pettersson-dorofeyev.html",
+"w": 1
+},
 {
 "d": "2026-11-11",
 "k": [],
@@ -1530,6 +1562,14 @@
 ],
 "n8484241": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Matthew Wood finding his footing in Seattle",
+"u": "https://www.nhl.com/news/seattle-kraken-forward-matthew-wood-finds-footing-in-seattle",
+"w": 2
+},
+{
 "d": "2026-11-03",
 "k": [],
 "s": "NHL.com",
@@ -1626,6 +1666,18 @@
 "t": "LA Kings Make Trio of Roster Moves",
 "u": "https://www.nhl.com/news/la-kings-make-trio-of-roster-moves-november-3",
 "w": 1
+}
+],
+"n8484759": [
+{
+"d": "2026-11-24",
+"k": [
+"sent down"
+],
+"s": "Pro Hockey Rumors",
+"t": "Senators Recall Djibril Toure, Assign Carter Yakemchuk",
+"u": "https://www.prohockeyrumors.com/2026/11/senators-recall-djibril-toure-assign-carter-yakemchuk.html",
+"w": 2
 }
 ],
 "n8484768": [
@@ -1852,6 +1904,24 @@
 ],
 "n8484799": [
 {
+"d": "2026-11-24",
+"k": [
+"trade"
+],
+"s": "NHL.com",
+"t": "Hage had ties to Larkin, Red Wings long before blockbuster trade from Montreal",
+"u": "https://www.nhl.com/news/michael-hage-had-ties-to-dylan-larkin-before-trade-between-red-wings-and-canadiens",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [],
+"s": "The Hockey News",
+"t": "Can Michael Hage Become For The Red Wings What Jarome Iginla Was For The Flames?",
+"u": "https://thehockeynews.com/news/latest-news/can-michael-hage-become-for-the-red-wings-what-jarome-iginla-was-for-the-flames",
+"w": 2
+},
+{
 "d": "2026-11-23",
 "k": [
 "honor"
@@ -1900,6 +1970,16 @@
 "w": 2
 },
 {
+"d": "2026-11-23",
+"k": [
+"trade"
+],
+"s": "NHL.com (team site)",
+"t": "Horcoff says Hage-headlined trade package from Canadiens ‘was the right one’ for Red Wings",
+"u": "https://www.nhl.com/news/horcoff-says-hage-headlined-trade-package-from-canadiens-was-the-right-one-for-red-wings",
+"w": 2
+},
+{
 "d": "2026-11-19",
 "k": [
 "trade"
@@ -1935,6 +2015,14 @@
 }
 ],
 "n8484800": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Berkly Catton might be the game-breaking talent the Kraken need",
+"u": "https://www.dailyfaceoff.com/news/berkly-catton-seattle-kraken-game-breaking-talent-pacific-division-playoff-odds",
+"w": 2
+},
 {
 "d": "2026-11-20",
 "k": [
@@ -2714,6 +2802,16 @@
 "w": 1
 }
 ],
+"n8486044": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Mile High Hockey (COL)",
+"t": "Prospect of the Quarter: Beckett Hamilton",
+"u": "https://www.milehighhockey.com/prospects-in-the-pipeline/67681/prospect-of-the-quarter-beckett-hamilton",
+"w": 2
+}
+],
 "n8486046": [
 {
 "d": "2026-11-23",
@@ -2846,6 +2944,22 @@
 "w": 2
 },
 {
+"d": "2026-11-24",
+"k": [],
+"s": "The Leafs Nation (TOR)",
+"t": "Jim Hiller touts Gavin McKenna’s performance following Monday’s victory: ‘He was on his game’",
+"u": "https://theleafsnation.com/news/jim-hiller-touts-gavin-mckenna-performance-victory-on-game",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [],
+"s": "ESPN NHL",
+"t": "'Just a big relief': McKenna's go-ahead goal helps Leafs end 9-game skid",
+"u": "https://www.espn.com/nhl/story/_/id/50579902/gavin-mckenna-scores-go-ahead-goal-maple-leafs-end-9-game-skid",
+"w": 2
+},
+{
 "d": "2026-11-23",
 "k": [],
 "s": "NHL.com",
@@ -2893,22 +3007,6 @@
 "s": "Editor in Leaf (TOR)",
 "t": "Jim Hiller has baffling explanation for Gavin McKenna’s overtime absence",
 "u": "https://editorinleaf.com/jim-hiller-has-baffling-explanation-for-gavin-mckenna-s-overtime-absence?utm_source=RSS",
-"w": 2
-},
-{
-"d": "2026-11-20",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "Jim Hiller says he wants to make sure Gavin McKenna is ‘ready’ before giving him shifts in overtime",
-"u": "https://theleafsnation.com/news/jim-hiller-wants-make-sure-gavin-mckenna-ready-shifts-overtime",
-"w": 2
-},
-{
-"d": "2026-11-20",
-"k": [],
-"s": "The Leafs Nation (TOR)",
-"t": "How Jim Hiller’s shockingly conservative handling of Gavin McKenna helped sink Leafs’ season",
-"u": "https://theleafsnation.com/news/how-jim-hiller-shockingly-conservative-handling-gavin-mckenna-sink-toronto-maple-leafs-season",
 "w": 2
 }
 ],
@@ -3107,7 +3205,7 @@
 },
 "sources": [
 {
-"n": 87,
+"n": 90,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3144,7 +3242,7 @@
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -3165,7 +3263,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "3 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -3193,7 +3291,7 @@
 {
 "n": 10,
 "name": "Habs Eyes on the Prize (MTL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.habseyesontheprize.com/rss/index.xml"
 },
@@ -3228,7 +3326,7 @@
 {
 "n": 10,
 "name": "Mile High Hockey (COL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.milehighhockey.com/rss/index.xml"
 },
@@ -3340,21 +3438,21 @@
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
 {
 "n": 10,
 "name": "Canucks Army (VAN)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://canucksarmy.com/feed"
 },
@@ -3389,7 +3487,7 @@
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -3410,7 +3508,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "3 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -3422,9 +3520,9 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 0,
+"n": 12,
 "name": "ESPN NHL",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.espn.com/espn/rss/nhl/news"
 },
@@ -3438,14 +3536,14 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
 {
 "n": 10,
 "name": "CHL (Canadian Hockey League)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://chl.ca/feed/"
 },
