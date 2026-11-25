@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-25T15:36:35
+Dynasty Puck HQ build 2026-11-25T19:55:51
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -87,7 +87,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-25T15:36:37+00:00): 620 rostered; changes vs CSV: {'owner': 62, 'dropped': 25}
+Fantrax sync (2026-11-25T19:55:52+00:00): 620 rostered; changes vs CSV: {'owner': 62, 'dropped': 25}
 Fantrax ADP: 281 players drafted on average before pick 280 (of 972 listed)
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1297 players (620 rostered)
@@ -109,7 +109,7 @@ Payroll check (2026-27): Fantrax salary vs contract sheet column
   Wags8210  Fantrax $ 98.24M  sheet $ 98.84M  {'BID': 19, 'FA': 6, 'RFA1': 1, 'MNR': 20}   <- differs by -0.60M (Fantrax is current)  (IR relief $22.64M)
   BULLIES   Fantrax $ 86.85M  sheet $ 88.85M  {'BID': 16, 'ELC1': 2, 'RFA1': 2, 'MNR': 21, 'FA': 2}   <- differs by -2.00M (Fantrax is current)  (IR relief $2.50M)
   nbracken  Fantrax $106.72M  sheet $ 99.42M  {'BID': 17, 'RFA1': 3, 'ELC1': 1, 'FA': 2, 'MNR': 21}   <- differs by +7.30M (Fantrax is current)  OVER CAP
-  SPG       Fantrax $102.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 2, 'MNR': 21}   <- differs by +2.00M (Fantrax is current)  (IR relief $15.80M)
+  SPG       Fantrax $102.25M  sheet $100.25M  {'BID': 16, 'RFA1': 5, 'FA': 2, 'MNR': 21}   <- differs by +2.00M (Fantrax is current)  (IR relief $4.50M)
   BHHC      Fantrax $100.40M  sheet $ 96.40M  {'BID': 18, 'MNR': 22, 'FA': 4, 'ELC1': 1}   <- differs by +4.00M (Fantrax is current)  (IR relief $4.70M)
   nebsnave  Fantrax $101.51M  sheet $ 98.81M  {'BID': 16, 'RFA1': 1, 'FA': 5, 'ELC1': 2, 'MNR': 20}   <- differs by +2.70M (Fantrax is current)  (IR relief $7.40M)
   M.M       Fantrax $102.52M  sheet $103.32M  {'BID': 17, 'RFA1': 1, 'FA': 4, 'ELC1': 3, 'MNR': 19}   <- differs by -0.80M (Fantrax is current)  (IR relief $11.30M)
@@ -149,7 +149,7 @@ Season to date (20262027): 866 players with games; rest-of-season projections bl
 Recent form 2026-11-11..2026-11-24: 741 players with games
 Scoreboard: week 9 2026-11-23..2026-11-24 + live 2026-11-25 (14 games, 0 in progress): ROO 4 skater GP, M.M 5 skater GP, mertin 8 skater GP, BHHC 9 skater GP …
 Weekly history: 8 finished weeks (8 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-25): 1209 line/PP/goalie tags; injuries matched 107/107
+Depth (Daily Faceoff, 2026-11-25): 1210 line/PP/goalie tags; injuries matched 110/110
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)

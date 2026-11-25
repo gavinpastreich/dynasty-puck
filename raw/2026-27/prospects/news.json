@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-25T15:40+00:00",
+"fetched": "2026-11-25T19:58+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -465,6 +465,16 @@
 "t": "Maple Leafs Prospect Roundup: Akhtyamov on call, Moldenhauer injured in fight-filled affair",
 "u": "https://theleafsnation.com/news/toronto-maple-leafs-prospect-roundup-akhtyamov-on-call-moldenhauer-injured",
 "w": 2
+},
+{
+"d": "2026-11-25",
+"k": [
+"call-up"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs recall Artur Akhtyamov from AHL’s Toronto Marlies",
+"u": "https://theleafsnation.com/news/maple-leafs-recall-artur-akhtyamov-from-ahls-toronto-marlies",
+"w": 2
 }
 ],
 "n8482657": [
@@ -791,6 +801,14 @@
 ],
 "n8483487": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "Pensburgh (PIT)",
+"t": "Rutger McGroarty looks like he belongs",
+"u": "https://www.pensburgh.com/analysis/83586/rutger-mcgroarty-looks-like-he-belongs",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [
 "call-up"
@@ -872,6 +890,14 @@
 }
 ],
 "n8483506": [
+{
+"d": "2026-11-25",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Blackhawks Starting to See Sam Rinzel’s Prospect Hype Translate to NHL Production",
+"u": "https://thehockeywriters.com/blackhawks-starting-to-see-sam-rinzels-prospect-hype-translate-to-nhl-production/",
+"w": 2
+},
 {
 "d": "2026-11-23",
 "k": [],
@@ -1513,6 +1539,24 @@
 }
 ],
 "n8484221": [
+{
+"d": "2026-11-25",
+"k": [
+"injury"
+],
+"s": "NHL.com (team site)",
+"t": "Isles Day-to-Day: Ritchie Expected to Return vs Blues",
+"u": "https://www.nhl.com/news/isles-day-to-day-ritchie-to-return-vs-blues",
+"w": 2
+},
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "Snapshots: Ritchie, Hodgson, Connelly",
+"u": "https://www.prohockeyrumors.com/2026/11/roster-notes-warren-hodgson-connelly.html",
+"w": 2
+},
 {
 "d": "2026-11-24",
 "k": [
@@ -2629,6 +2673,16 @@
 ],
 "n8485402": [
 {
+"d": "2026-11-25",
+"k": [
+"trade"
+],
+"s": "NHL Rumors",
+"t": "Simon Edvinsson Trade Talks Picking Up, and the Sharks Haven’t Included Michael Misa",
+"u": "https://nhlrumors.com/simon-edvinsson-trade-talks-picking-up-and-the-sharks-havent-included-michael-misa/2026/11/25/",
+"w": 2
+},
+{
 "d": "2026-11-16",
 "k": [],
 "s": "NHL Rumors",
@@ -3366,7 +3420,7 @@
 },
 "sources": [
 {
-"n": 91,
+"n": 92,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3389,21 +3443,21 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -3424,7 +3478,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "3 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -3438,7 +3492,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -3459,7 +3513,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -3529,7 +3583,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -3557,7 +3611,7 @@
 {
 "n": 10,
 "name": "Knights on Ice (VGK)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.knightsonice.com/rss/index.xml"
 },
@@ -3620,7 +3674,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "4 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -3634,7 +3688,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3662,14 +3716,14 @@
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -3697,7 +3751,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
