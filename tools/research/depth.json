@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "note": "Projected lines, power-play units and goalie tandems from Daily Faceoff team pages (training camp, subject to change).",
  "teams": {
   "ANA": {
@@ -208,8 +208,8 @@
   },
   "CGY": {
    "team": "Calgary Flames",
-   "updated": "2026-11-24",
-   "source": "Last Game (2026-11-23)",
+   "updated": "2026-11-25",
+   "source": "Projected",
    "url": "https://www.dailyfaceoff.com/teams/calgary-flames/line-combinations",
    "pp1": [
     "Joel Farabee",
@@ -240,7 +240,7 @@
    "f1": [
     "Joel Farabee",
     "Morgan Frost",
-    "Sam Morton"
+    "Matt Coronato"
    ],
    "f2": [
     "Matvei Gridin",
@@ -248,7 +248,7 @@
     "Adam Klapka"
    ],
    "f3": [
-    "Matt Coronato",
+    "Ben Jones",
     "Mikael Backlund",
     "Yegor Sharangovich"
    ],
@@ -344,8 +344,8 @@
   },
   "CHI": {
    "team": "Chicago Blackhawks",
-   "updated": "2026-11-23",
-   "source": "Last Game (2026-11-22)",
+   "updated": "2026-11-25",
+   "source": "Mark Lazerus",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "pp1": [
     "Tyler Bertuzzi",
@@ -356,7 +356,7 @@
    ],
    "pp2": [
     "Ryan Donato",
-    "Ryan Greene",
+    "Anton Frondell",
     "Oliver Moore",
     "Artyom Levshunov",
     "Teuvo Teravainen"
@@ -384,13 +384,13 @@
     "Patrick Kane"
    ],
    "f3": [
-    "Andrew Mangiapane",
     "Ryan Greene",
+    "Anton Frondell",
     "Teuvo Teravainen"
    ],
    "f4": [
     "Cole Smith",
-    "Dominic Toninato",
+    "Luke Glendening",
     "Jordan Greenway"
    ],
    "d1": [
@@ -950,8 +950,8 @@
     "David Spacek"
    ],
    "goalies": [
-    "Filip Gustavsson",
-    "Calvin Pickard"
+    "Jesper Wallstedt",
+    "Filip Gustavsson"
    ]
   },
   "MTL": {
@@ -1018,8 +1018,8 @@
     "Adam Engstrom"
    ],
    "goalies": [
-    "Jakub Dobes",
-    "Jacob Fowler"
+    "Jacob Fowler",
+    "Jakub Dobes"
    ]
   },
   "NSH": {
@@ -1500,8 +1500,8 @@
   },
   "SJS": {
    "team": "San Jose Sharks",
-   "updated": "2026-11-24",
-   "source": "Last Game (2026-11-23)",
+   "updated": "2026-11-25",
+   "source": "Max Miller",
    "url": "https://www.dailyfaceoff.com/teams/san-jose-sharks/line-combinations",
    "pp1": [
     "Ivar Stenberg",
@@ -1542,16 +1542,16 @@
    "f3": [
     "Mason Marchment",
     "Ty Dellandrea",
-    "Adam Gaudette"
+    "Collin Graf"
    ],
    "f4": [
     "Barclay Goodrow",
     "Zack Ostapchuk",
-    "Brett Leason"
+    "Adam Gaudette"
    ],
    "d1": [
     "Darnell Nurse",
-    "Michael Kesselring"
+    "Eric Pohlkamp"
    ],
    "d2": [
     "Nolan Allan",
@@ -1559,11 +1559,11 @@
    ],
    "d3": [
     "Dmitry Orlov",
-    "Eric Pohlkamp"
+    "Michael Kesselring"
    ],
    "goalies": [
-    "Yaroslav Askarov",
-    "Alex Nedeljkovic"
+    "Alex Nedeljkovic",
+    "Yaroslav Askarov"
    ]
   },
   "SEA": {
@@ -1902,8 +1902,8 @@
     "Nick DeSimone"
    ],
    "goalies": [
-    "Sebastian Cossa",
-    "Karel Vejmelka"
+    "Karel Vejmelka",
+    "Sebastian Cossa"
    ]
   },
   "VAN": {

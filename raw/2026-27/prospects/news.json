@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-24T20:42+00:00",
+"fetched": "2026-11-25T15:40+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -237,6 +237,16 @@
 "w": 1
 }
 ],
+"d27:michalhartl": [
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Draft Prospects Hockey",
+"t": "2027 NHL Draft Prospect Report – Michal Hartl (C)",
+"u": "https://draftprospectshockey.com/articles/2027-nhl-draft-prospect-report-michal-hartl-c",
+"w": 2
+}
+],
 "d27:nazarprivalov": [
 {
 "d": "2026-11-17",
@@ -443,6 +453,18 @@
 "t": "Sam Honzek plays his first AHL game in 18 months on Saturday night",
 "u": "https://flamesnation.ca/news/sam-honzek-calgary-wranglers-return-brett-sutter-plan-2026",
 "w": 1
+}
+],
+"n8482515": [
+{
+"d": "2026-11-25",
+"k": [
+"injury"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs Prospect Roundup: Akhtyamov on call, Moldenhauer injured in fight-filled affair",
+"u": "https://theleafsnation.com/news/toronto-maple-leafs-prospect-roundup-akhtyamov-on-call-moldenhauer-injured",
+"w": 2
 }
 ],
 "n8482657": [
@@ -987,6 +1009,14 @@
 ],
 "n8484142": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "Broad Street Hockey (PHI)",
+"t": "Rick Tocchet sees untapped potential in Denver Barkey at center",
+"u": "https://www.broadstreethockey.com/post/rick-tocchet-sees-untapped-potential-in-denver-barkey-at-center/",
+"w": 2
+},
+{
 "d": "2026-11-15",
 "k": [],
 "s": "Broad Street Hockey (PHI)",
@@ -1484,6 +1514,17 @@
 ],
 "n8484221": [
 {
+"d": "2026-11-24",
+"k": [
+"call-up",
+"injury"
+],
+"s": "NHL.com (team site)",
+"t": "Isles Day-to-Day: Palmieri Placed On IR, Ritchie Recalled From Hamilton",
+"u": "https://www.nhl.com/news/isles-day-to-day-palmieri-placed-on-injured-reserve",
+"w": 2
+},
+{
 "d": "2026-11-18",
 "k": [
 "injury"
@@ -1530,6 +1571,18 @@
 "t": "Brayden Schenn Becoming the Teacher for Young Islanders",
 "u": "https://www.nhl.com/news/brayden-schenn-becoming-the-teacher-for-young-islanders",
 "w": 1
+}
+],
+"n8484230": [
+{
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Blues Recall Adam Jiricek, Otto Stenberg",
+"u": "https://www.prohockeyrumors.com/2026/11/st-louis-blues-recall-adam-jiricek-otto-stenberg.html",
+"w": 2
 }
 ],
 "n8484234": [
@@ -1750,6 +1803,14 @@
 ],
 "n8484770": [
 {
+"d": "2026-11-24",
+"k": [],
+"s": "Raw Charge (TBL)",
+"t": "Conor Geekie to miss four to five months with shoulder injury",
+"u": "https://www.rawcharge.com/conor-geekie-to-miss-four-to-five-months-with-shoulder-injury-tampa-bay-lightning-sam-oreilly/",
+"w": 1
+},
+{
 "d": "2026-11-17",
 "k": [],
 "s": "Raw Charge (TBL)",
@@ -1832,7 +1893,27 @@
 "w": 1
 }
 ],
+"n8484774": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Flames Prospect Round-up: Bode Laylin has found a home with the Hitmen",
+"u": "https://flamesnation.ca/news/calgary-flames-prospect-roundup-henry-mews-brawl-wyttenbach-2026",
+"w": 1
+}
+],
 "n8484790": [
+{
+"d": "2026-11-24",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Blues Recall Adam Jiricek, Otto Stenberg",
+"u": "https://www.prohockeyrumors.com/2026/11/st-louis-blues-recall-adam-jiricek-otto-stenberg.html",
+"w": 2
+},
 {
 "d": "2026-11-09",
 "k": [],
@@ -2114,6 +2195,30 @@
 ],
 "n8484803": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "The Hockey News",
+"t": "Eichel And Connelly Lead Golden Knights Past Slumping Oilers: The Hockey News Morning Skate",
+"u": "https://thehockeynews.com/news/latest-news/eichel-and-connelly-lead-golden-knights-past-slumping-oilers-the-hockey-news-morning-skate",
+"w": 2
+},
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Knights on Ice (VGK)",
+"t": "Eichel, Connelly propel Golden Knights past Oilers",
+"u": "https://www.knightsonice.com/eichel-connelly-propel-golden-knights-past-oilers/",
+"w": 2
+},
+{
+"d": "2026-11-24",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Trevor Connelly: Logs three points in win",
+"u": "https://www.rotowire.com//hockey/player/trevor-connelly-7146",
+"w": 2
+},
+{
 "d": "2026-11-12",
 "k": [],
 "s": "The AHL",
@@ -2346,6 +2451,16 @@
 "w": 1
 }
 ],
+"n8484999": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Spencer Carbery singles out Ilya Protas as an example for struggling Capitals to follow",
+"u": "https://russianmachineneverbreaks.com/2026/11/24/ilya-protas-capitals-spencer-carbery-example-nhl/",
+"w": 2
+}
+],
 "n8485003": [
 {
 "d": "2026-11-09",
@@ -2373,6 +2488,16 @@
 "s": "Daily Hive Offside (VAN)",
 "t": "These four Canucks prospects are projected to play at World Juniors",
 "u": "https://dailyhive.com/offside/four-canucks-prospects-projected-world-junior",
+"w": 1
+}
+],
+"n8485376": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Flames Prospect Round-up: Bode Laylin has found a home with the Hitmen",
+"u": "https://flamesnation.ca/news/calgary-flames-prospect-roundup-henry-mews-brawl-wyttenbach-2026",
 "w": 1
 }
 ],
@@ -2467,6 +2592,14 @@
 }
 ],
 "n8485395": [
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Pro Hockey Rumors",
+"t": "James Hagens Returns To Bruins Practice In Noncontact Jersey",
+"u": "https://www.prohockeyrumors.com/2026/11/james-hagens-returns-to-bruins-practice-in-noncontact-jersey.html",
+"w": 2
+},
 {
 "d": "2026-11-07",
 "k": [
@@ -2814,12 +2947,30 @@
 ],
 "n8486046": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Blue Jackets prospect Oscar Hemming cleared to play for Finland at 2027 World Juniors",
+"u": "https://www.dailyfaceoff.com/news/columbus-blue-jackets-prospect-oscar-hemming-play-finland-2027-iihf-world-junior-championship-transfer-boston-college",
+"w": 2
+},
+{
 "d": "2026-11-23",
 "k": [],
 "s": "The Hockey News",
 "t": "World Juniors 2027: Hemming's Availability Key To Finland's Projected Roster",
 "u": "https://thehockeynews.com/news/latest-news/world-juniors-2027-hemmings-availability-key-to-finlands-projected-roster",
 "w": 2
+}
+],
+"n8486048": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Flames Prospect Round-up: Bode Laylin has found a home with the Hitmen",
+"u": "https://flamesnation.ca/news/calgary-flames-prospect-roundup-henry-mews-brawl-wyttenbach-2026",
+"w": 1
 }
 ],
 "n8486050": [
@@ -3160,6 +3311,16 @@
 "w": 2
 }
 ],
+"n8486294": [
+{
+"d": "2026-11-24",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Flames Prospect Round-up: Bode Laylin has found a home with the Hitmen",
+"u": "https://flamesnation.ca/news/calgary-flames-prospect-roundup-henry-mews-brawl-wyttenbach-2026",
+"w": 2
+}
+],
 "n8486300": [
 {
 "d": "2026-11-10",
@@ -3205,7 +3366,7 @@
 },
 "sources": [
 {
-"n": 90,
+"n": 91,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3277,7 +3438,7 @@
 {
 "n": 10,
 "name": "Broad Street Hockey (PHI)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
@@ -3326,7 +3487,7 @@
 {
 "n": 10,
 "name": "Mile High Hockey (COL)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.milehighhockey.com/rss/index.xml"
 },
@@ -3368,7 +3529,7 @@
 {
 "n": 10,
 "name": "Raw Charge (TBL)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
@@ -3396,7 +3557,7 @@
 {
 "n": 10,
 "name": "Knights on Ice (VGK)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.knightsonice.com/rss/index.xml"
 },
@@ -3445,7 +3606,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3459,7 +3620,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "0 new matches",
+"note": "4 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -3473,7 +3634,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3508,7 +3669,7 @@
 {
 "n": 10,
 "name": "Draft Prospects Hockey",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.draftprospectshockey.com/feed/"
 },
@@ -3520,9 +3681,9 @@
 "url": "https://lastwordonsports.com/hockey/feed/"
 },
 {
-"n": 12,
+"n": 0,
 "name": "ESPN NHL",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.espn.com/espn/rss/nhl/news"
 },

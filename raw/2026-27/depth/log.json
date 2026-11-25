@@ -4780,6 +4780,21 @@
     {"d": "2026-11-24", "t": "WSH", "n": "Ivan Miroshnichenko", "k": "pp", "from": "PP2", "to": "", "up": false},
     {"d": "2026-11-24", "t": "WSH", "n": "Justin Sourdif", "k": "pp", "from": "", "to": "PP1", "up": true},
     {"d": "2026-11-24", "t": "WSH", "n": "Logan Thompson", "k": "g", "from": "G2", "to": "G1", "up": true},
-    {"d": "2026-11-24", "t": "WSH", "n": "Ryan Leonard", "k": "line", "from": "F3", "to": "F2", "up": true}
+    {"d": "2026-11-24", "t": "WSH", "n": "Ryan Leonard", "k": "line", "from": "F3", "to": "F2", "up": true},
+    {"d": "2026-11-25", "t": "CGY", "n": "Ben Jones", "k": "line", "from": "", "to": "F3", "up": true},
+    {"d": "2026-11-25", "t": "CGY", "n": "Matt Coronato", "k": "line", "from": "F3", "to": "F1", "up": true},
+    {"d": "2026-11-25", "t": "CGY", "n": "Sam Morton", "k": "line", "from": "F1", "to": "", "up": false},
+    {"d": "2026-11-25", "t": "CHI", "n": "Andrew Mangiapane", "k": "line", "from": "F3", "to": "", "up": false},
+    {"d": "2026-11-25", "t": "CHI", "n": "Anton Frondell", "k": "line", "from": "", "to": "F3", "up": true},
+    {"d": "2026-11-25", "t": "CHI", "n": "Anton Frondell", "k": "pp", "from": "", "to": "PP2", "up": true},
+    {"d": "2026-11-25", "t": "CHI", "n": "Dominic Toninato", "k": "line", "from": "F4", "to": "", "up": false},
+    {"d": "2026-11-25", "t": "CHI", "n": "Luke Glendening", "k": "line", "from": "", "to": "F4", "up": true},
+    {"d": "2026-11-25", "t": "CHI", "n": "Ryan Greene", "k": "pp", "from": "PP2", "to": "", "up": false},
+    {"d": "2026-11-25", "t": "SJS", "n": "Alex Nedeljkovic", "k": "g", "from": "G2", "to": "G1", "up": true},
+    {"d": "2026-11-25", "t": "SJS", "n": "Brett Leason", "k": "line", "from": "F4", "to": "", "up": false},
+    {"d": "2026-11-25", "t": "SJS", "n": "Collin Graf", "k": "line", "from": "", "to": "F3", "up": true},
+    {"d": "2026-11-25", "t": "SJS", "n": "Eric Pohlkamp", "k": "line", "from": "D3", "to": "D1", "up": true},
+    {"d": "2026-11-25", "t": "SJS", "n": "Michael Kesselring", "k": "line", "from": "D1", "to": "D3", "up": false},
+    {"d": "2026-11-25", "t": "SJS", "n": "Yaroslav Askarov", "k": "g", "from": "G1", "to": "G2", "up": false}
   ]
 }

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -128,8 +128,8 @@
    "status": "DTD",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Olivier (upper-body) left Monday's game vs. New Jersey and will not return.",
-   "date": "2026-11-23",
+   "detail": "Olivier (upper-body) has been placed on IR.",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -197,11 +197,11 @@
   {
    "name": "Anton Frondell",
    "team": "CHI",
-   "status": "DTD",
+   "status": "Game-time decision",
    "injury": "undisclosed",
-   "ret": "",
-   "detail": "Frondell (undisclosed) will not play Sunday in Vancouver.",
-   "date": "2026-11-22",
+   "ret": "Months",
+   "detail": "Frondell (undisclosed) returned to practice on Tuesday.",
+   "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -237,7 +237,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-23",
+   "date": "2026-11-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/chicago-blackhawks/line-combinations",
    "holdout": false
@@ -248,7 +248,7 @@
    "status": "OUT",
    "injury": "lower-body",
    "ret": "",
-   "detail": "Makar (lower-body) returned to practice in a full contact jersey on Tuesday.",
+   "detail": "Makar (lower-body) has potential to return vs. Montreal on Wednesday.",
    "date": "2026-11-24",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/colorado-avalanche/line-combinations",
@@ -521,7 +521,7 @@
   {
    "name": "Quinn Hughes",
    "team": "MIN",
-   "status": "DTD",
+   "status": "IR",
    "injury": "upper-body",
    "ret": "",
    "detail": "Hughes (upper-body) has been placed on IR.",
