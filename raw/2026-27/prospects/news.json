@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-25T19:58+00:00",
+"fetched": "2026-11-26T15:18+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -435,14 +435,6 @@
 "t": "Garand's 'inner arrogance' should help Rangers cope with Shesterkin's absence",
 "u": "https://www.nhl.com/news/dylan-garand-inner-arrogance-will-help-new-york",
 "w": 2
-},
-{
-"d": "2026-10-11",
-"k": [],
-"s": "NHL.com",
-"t": "Rangers ‘know what needs to be done’ to win without Shesterkin",
-"u": "https://www.nhl.com/news/new-york-rangers-ready-to-win-without-goalie-igor-shesterkin",
-"w": 1
 }
 ],
 "n8482209": [
@@ -475,6 +467,16 @@
 "t": "Maple Leafs recall Artur Akhtyamov from AHL’s Toronto Marlies",
 "u": "https://theleafsnation.com/news/maple-leafs-recall-artur-akhtyamov-from-ahls-toronto-marlies",
 "w": 2
+},
+{
+"d": "2026-11-25",
+"k": [
+"call-up"
+],
+"s": "Pro Hockey Rumors",
+"t": "Maple Leafs Recall Artur Akhtyamov",
+"u": "https://www.prohockeyrumors.com/2026/11/maple-leafs-recall-artur-akhtyamov-2.html",
+"w": 2
 }
 ],
 "n8482657": [
@@ -488,6 +490,22 @@
 }
 ],
 "n8482661": [
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Daily Faceoff",
+"t": "Jesper Wallstedt emerging as one of the NHL’s top goaltenders: ‘A better version of myself’",
+"u": "https://www.dailyfaceoff.com/news/jesper-wallstedt-interview-minnesota-wild-success-nhl-hockeysvergie",
+"w": 2
+},
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Former Edmonton Oilers goalie dumped on waivers",
+"u": "https://dailyhive.com/offside/former-oilers-goalie-dumped-waivers",
+"w": 1
+},
 {
 "d": "2026-11-24",
 "k": [],
@@ -820,6 +838,16 @@
 }
 ],
 "n8483491": [
+{
+"d": "2026-11-26",
+"k": [
+"trade"
+],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "‘I thought he was strong tonight’: Ivan Miroshnichenko scores goal and records hustle assist on same day he resurfaces in trade rumors",
+"u": "https://russianmachineneverbreaks.com/2026/11/26/ivan-miroshnichenko-scores-goal-hustle-assist-trade-rumors-capitals-nhl/",
+"w": 2
+},
 {
 "d": "2026-11-22",
 "k": [],
@@ -1703,6 +1731,24 @@
 ],
 "n8484390": [
 {
+"d": "2026-11-26",
+"k": [
+"hot"
+],
+"s": "The Hockey Writers",
+"t": "Roman Kantserov on His First NHL Hat Trick, Adjusting to Chicago, and Learning From the Best",
+"u": "https://thehockeywriters.com/roman-kantserov-on-his-first-nhl-hat-trick-adjusting-to-chicago-and-learning-from-the-best/",
+"w": 2
+},
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Dobber Prospects",
+"t": "Prospect Ramblings – Kantserov Keeps Scoring, Hughes Opportunity in Colorado and Hagens Showing Upside",
+"u": "https://dobberprospects.com/2026/11/25/prospect-ramblings-kantserov-keeps-scoring-hughes-opportunity-in-colorado-and-hagens-showing-upside/",
+"w": 2
+},
+{
 "d": "2026-11-23",
 "k": [
 "hot"
@@ -2029,6 +2075,14 @@
 ],
 "n8484799": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "The Hockey News",
+"t": "Can Michael Hage Be A Foundational Part Of The Red Wings' Next Era?: The Hockey News Future Watch Show",
+"u": "https://thehockeynews.com/news/latest-news/can-michael-hage-be-a-foundational-part-of-the-red-wings-next-era-the-hockey-news-future-watch-show",
+"w": 2
+},
+{
 "d": "2026-11-24",
 "k": [
 "trade"
@@ -2128,14 +2182,6 @@
 "s": "The Hockey News",
 "t": "Report: Canadiens' Prospects Hage, Zharovsky 'Will Be Available' To The Team At The End Of The Season",
 "u": "https://thehockeynews.com/news/latest-news/report-canadiens-prospects-hage-zharovsky-will-be-available-to-the-team-at-the-end-of-the-season",
-"w": 1
-},
-{
-"d": "2026-11-08",
-"k": [],
-"s": "NHL Rumors",
-"t": "NHL Rumors: Bowen Byram, Two Canadiens Prospects, and Jordan Binnington",
-"u": "https://nhlrumors.com/nhl-rumors-bowen-byram-two-canadiens-prospects-and-jordan-binnington/2026/11/08/",
 "w": 1
 }
 ],
@@ -3111,6 +3157,14 @@
 ],
 "n8486067": [
 {
+"d": "2026-11-25",
+"k": [],
+"s": "Maple Leafs Hot Stove (TOR)",
+"t": "Jim Hiller on Gavin McKenna sitting the rest of the game after scoring the winner vs. NYI: “We could have used him again if things changed a little, but it turned out that he didn’t get back out there”",
+"u": "https://mapleleafshotstove.com/2026/11/25/jim-hiller-on-gavin-mckenna-sitting-the-rest-of-the-game-after-scoring-the-winner-vs-nyi/",
+"w": 2
+},
+{
 "d": "2026-11-24",
 "k": [],
 "s": "Editor in Leaf (TOR)",
@@ -3204,14 +3258,6 @@
 "s": "Maple Leafs Hot Stove (TOR)",
 "t": "Jim Hiller on Gavin McKenna not seeing the ice in OT in the Leafs’ loss to LA: “I just want to make sure he’s ready for that”",
 "u": "https://mapleleafshotstove.com/2026/11/20/jim-hiller-on-gavin-mckenna-not-seeing-the-ice-in-ot-in-the-leafs-loss-to-la/",
-"w": 2
-},
-{
-"d": "2026-11-20",
-"k": [],
-"s": "Editor in Leaf (TOR)",
-"t": "Jim Hiller has baffling explanation for Gavin McKenna’s overtime absence",
-"u": "https://editorinleaf.com/jim-hiller-has-baffling-explanation-for-gavin-mckenna-s-overtime-absence?utm_source=RSS",
 "w": 2
 }
 ],
@@ -3345,6 +3391,16 @@
 "w": 2
 }
 ],
+"n8486224": [
+{
+"d": "2026-11-26",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Future Flames: Joe Iginla Looks to Follow in Father’s Footsteps",
+"u": "https://thehockeywriters.com/future-flames-joe-iginla-looks-to-follow-in-fathers-footsteps/",
+"w": 2
+}
+],
 "n8486237": [
 {
 "d": "2026-11-15",
@@ -3353,6 +3409,16 @@
 "t": "The Dispatch: Rögle coach Dan Tangnes talks about rival prospects Luc Koblar and Nils Bartholdsson",
 "u": "https://www.habseyesontheprize.com/the-dispatch-podcast-rogle-coach-dan-tangnes-talks-about-rival-prospects-luc-koblar-and-nils-bartholdsson-shl-toronto-maple-leafs-boston-bruins/",
 "w": 2
+}
+],
+"n8486245": [
+{
+"d": "2026-11-25",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Unsung Canucks prospect is on an impressive scoring streak",
+"u": "https://dailyhive.com/offside/unsung-canucks-prospect-impressive-scoring-streak",
+"w": 1
 }
 ],
 "n8486268": [
@@ -3420,7 +3486,7 @@
 },
 "sources": [
 {
-"n": 92,
+"n": 84,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3436,28 +3502,28 @@
 {
 "n": 10,
 "name": "Dobber Prospects",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://dobberprospects.com/feed/"
 },
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "1 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -3513,7 +3579,7 @@
 {
 "n": 10,
 "name": "Pensburgh (PIT)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
@@ -3646,21 +3712,21 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "1 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3688,7 +3754,7 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
@@ -3716,7 +3782,7 @@
 {
 "n": 10,
 "name": "NHL Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.nhlrumors.com/feed/"
 },

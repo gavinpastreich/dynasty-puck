@@ -1,4 +1,4 @@
-Dynasty Puck HQ build 2026-11-25T19:55:51
+Dynasty Puck HQ build 2026-11-26T15:16:10
 Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   > Jeremy Lauzon: FA -> ROO (Fantrax)
   > Joseph Woll: FA -> ROO (Fantrax)
@@ -87,7 +87,7 @@ Fantrax: synced 620 rostered players, 126 future picks, 14 teams in standings
   < John Gibson: dropped by M.M since the CSV export (Fantrax)
   < Alex Lyon: dropped by nbracken since the CSV export (Fantrax)
   < Jakub Dobes: dropped by nebsnave since the CSV export (Fantrax)
-Fantrax sync (2026-11-25T19:55:52+00:00): 620 rostered; changes vs CSV: {'owner': 62, 'dropped': 25}
+Fantrax sync (2026-11-26T15:16:11+00:00): 620 rostered; changes vs CSV: {'owner': 62, 'dropped': 25}
 Fantrax ADP: 281 players drafted on average before pick 280 (of 972 listed)
 Fantrax: 8747 players; contract sheet: 610 rows; H2H: 27 periods, 168 games
 Universe: 1297 players (620 rostered)
@@ -146,10 +146,10 @@ Goalie reconcile: 2025-26 GP & W match NHL for 96/96
 NHL schedule: games per team Counter({84: 32})
 NHL games outside the fantasy calendar: 0
 Season to date (20262027): 866 players with games; rest-of-season projections blended (k = {'PtD': 60, 'G': 60, 'A': 60, 'PIM': 50, 'SOG': 30, 'STP': 60, 'Hit': 25, 'Blk': 25, 'Tk': 40, 'Cor': 40}, goalies {'W': 30, 'GAA': 30, 'SV': 40, 'SHO': 40})
-Recent form 2026-11-11..2026-11-24: 741 players with games
-Scoreboard: week 9 2026-11-23..2026-11-24 + live 2026-11-25 (14 games, 0 in progress): ROO 4 skater GP, M.M 5 skater GP, mertin 8 skater GP, BHHC 9 skater GP …
+Recent form 2026-11-12..2026-11-25: 747 players with games
+Scoreboard: week 9 2026-11-23..2026-11-25: ROO 18 skater GP, M.M 21 skater GP, mertin 23 skater GP, BHHC 25 skater GP …
 Weekly history: 8 finished weeks (8 frozen) in raw/2026-27/weekly
-Depth (Daily Faceoff, 2026-11-25): 1210 line/PP/goalie tags; injuries matched 110/110
+Depth (Daily Faceoff, 2026-11-26): 1210 line/PP/goalie tags; injuries matched 103/103
 Trades: 17 trades (117 rows); picks moved (2027+): 14; chain issues: 0
   ~ traded players not in the current player file: ['Anze Kopitar', 'John Klingberg']
   ! pick 2027 R2 (SPG): trade replay says M.M, Fantrax says BULLIES (using Fantrax)
@@ -177,7 +177,7 @@ Trades: 3 new trade(s) picked up from the Fantrax nightly log
 2025 draft: a departed owner's picks credited to PuckLuck (inferred from where their picks are today)
 2025 draft: a departed owner's picks credited to CGN (inferred from where their picks are today)
 2025 initial draft: 280 picks; matched to current player file: 279
-Leagues seen in player histories (top 40): NHL:8344, AHL:3673, OHL:851, NCAA:850, WHL:829, WC:719, WJC-20:688, USHL:627, QMJHL:410, WJC-18:403, KHL:328, SHL:308, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:176, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, VHL:112, J18 Region:112, U16 SM:107, J18 Allsvenskan:107, USHS-MN:104, AMBHL:102, USHS-Prep:102
+Leagues seen in player histories (top 40): NHL:8347, AHL:3675, OHL:851, NCAA:850, WHL:829, WC:719, WJC-20:688, USHL:627, QMJHL:410, WJC-18:403, KHL:328, SHL:308, WHC-17:285, QC Int PW:248, EHT:238, WJC-A:223, MHL:223, WC-A:221, Hlinka Gretzky Cup:191, OG:181, ECHL:176, J20 Nationell:169, Liiga:167, Brick Invitational:155, NTDP:149, Champions HL:143, WJ18-A:136, J18 Elit:129, WSI U15:128, U16 Div.1:123, J20 SuperElit:120, Swe-U18:117, Swe-Jr.:114, VHL:112, J18 Region:112, U16 SM:107, J18 Allsvenskan:107, USHS-MN:104, AMBHL:102, USHS-Prep:102
 Leagues without an NHLe factor (shown without NHLe): ['WC', 'WJC-20', 'WJC-18', 'WHC-17', 'QC Int PW', 'EHT', 'WJC-A', 'WC-A', 'Hlinka Gretzky Cup', 'OG', 'Brick Invitational', 'Champions HL', 'WJ18-A', 'J18 Elit', 'WSI U15', 'U16 Div.1', 'Swe-U18', 'U16 SM', 'J18 Allsvenskan', 'USHS-MN', 'AMBHL', 'USHS-Prep', 'Russia U16', '4 Nations', 'TV-Pucken', 'USA-S15', 'Russia U17', 'WSI U12', 'WJAC-19', 'Memorial Cup', 'J18 Nationell', 'USA-S17', 'WSI U13', 'International', 'WCup', 'U-18', 'U16 Elit', 'CSSHL U15', 'Ivan Hlinka Memorial', 'CSSHL U18', 'Russia U18', 'High-MN', 'U16 SM-sarja', 'Minor-ON', 'QMAAA', 'AMHL', 'U-17', 'USA-S16', 'WSI U14', 'GTHL U16']
 2026 draft: 223 picks, 99 with scouting notes, 36 on league rosters, 219 with histories
   ~ 2026 draft: dropped a wrong name match: Kent Sauer (#136) matched NHL id 8467413, born 1979-05-10, drafted 1998
