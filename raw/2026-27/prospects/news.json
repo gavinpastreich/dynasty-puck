@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-26T15:18+00:00",
+"fetched": "2026-11-26T19:39+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -1153,6 +1153,14 @@
 ],
 "n8484154": [
 {
+"d": "2026-11-26",
+"k": [],
+"s": "Flames Nation (CGY)",
+"t": "Jonathan Castagna’s been a welcome surprise in the Flames lineup for face-offs and beyond",
+"u": "https://flamesnation.ca/news/calgary-flames-rookie-jonathan-castagna-nhl-milestones-2026",
+"w": 2
+},
+{
 "d": "2026-11-23",
 "k": [],
 "s": "Flames Nation (CGY)",
@@ -1454,6 +1462,47 @@
 "t": "Islanders Prospect Report: Nov. 9, 2026",
 "u": "https://www.nhl.com/news/islanders-prospect-report-nov-9-2026",
 "w": 1
+}
+],
+"n8484210": [
+{
+"d": "2026-11-26",
+"k": [
+"injury"
+],
+"s": "Daily Faceoff",
+"t": "Rangers’ Gabe Perreault out 4-6 weeks with lower-body injury",
+"u": "https://www.dailyfaceoff.com/news/gabe-perreault-new-york-rangers-lower-body-injury-nhl-news-updates-hartford-wolf-pack",
+"w": 2
+},
+{
+"d": "2026-11-26",
+"k": [
+"injury"
+],
+"s": "Pro Hockey Rumors",
+"t": "Rangers Recall Juuso Parssinen; Gabe Perreault Out With Injury",
+"u": "https://www.prohockeyrumors.com/2026/11/rangers-recall-juuso-parssinen-gabe-perreault-out-with-injury.html",
+"w": 2
+},
+{
+"d": "2026-11-26",
+"k": [
+"call-up",
+"injury"
+],
+"s": "Blue Seat Blogs (NYR)",
+"t": "Gabe Perreault injury: Out 4-6 weeks, New York Rangers recall Juuso Parssinen",
+"u": "https://blueseatblogs.com/2026/11/26/gabe-perreault-injury-new-york-ranger/",
+"w": 2
+},
+{
+"d": "2026-11-26",
+"k": [],
+"s": "RotoWire NHL player news",
+"t": "Gabe Perreault: Set to miss 4-6 weeks",
+"u": "https://www.rotowire.com//hockey/player/gabe-perreault-6927",
+"w": 2
 }
 ],
 "n8484220": [
@@ -2791,6 +2840,14 @@
 ],
 "n8485412": [
 {
+"d": "2026-11-26",
+"k": [],
+"s": "Russian Machine Never Breaks (WSH)",
+"t": "Hershey Bears rout Penguins on Thanksgiving Eve thanks to two-goal performances from Lynden Lakovic and Jonny Brodzinski",
+"u": "https://russianmachineneverbreaks.com/2026/11/26/hershey-bears-penguins-thanksgiving-eve-lynden-lakovic-jonny-brodzinski/",
+"w": 2
+},
+{
 "d": "2026-11-22",
 "k": [],
 "s": "Russian Machine Never Breaks (WSH)",
@@ -2972,6 +3029,18 @@
 "s": "The Hockey News",
 "t": "Too Much Too Soon?: How Jets Rookie Viggo Bjorck Is Handling The Pressures Of The NHL",
 "u": "https://thehockeynews.com/news/latest-news/too-much-too-soon-how-jets-rookie-viggo-bjorck-is-handling-the-pressures-of-the-nhl",
+"w": 2
+}
+],
+"n8486032": [
+{
+"d": "2026-11-26",
+"k": [
+"honor"
+],
+"s": "The Hockey News",
+"t": "World Juniors 2027: Team USA's Projected Roster Headlined By Chase Reid And Wyatt Cullen",
+"u": "https://thehockeynews.com/news/latest-news/world-juniors-2027-team-usas-projected-roster-headlined-by-chase-reid-and-wyatt-cullen",
 "w": 2
 }
 ],
@@ -3291,6 +3360,16 @@
 ],
 "n8486087": [
 {
+"d": "2026-11-26",
+"k": [
+"honor"
+],
+"s": "The Hockey News",
+"t": "World Juniors 2027: Team USA's Projected Roster Headlined By Chase Reid And Wyatt Cullen",
+"u": "https://thehockeynews.com/news/latest-news/world-juniors-2027-team-usas-projected-roster-headlined-by-chase-reid-and-wyatt-cullen",
+"w": 2
+},
+{
 "d": "2026-11-13",
 "k": [],
 "s": "Broad Street Hockey (PHI)",
@@ -3502,21 +3581,21 @@
 {
 "n": 10,
 "name": "Dobber Prospects",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dobberprospects.com/feed/"
 },
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
@@ -3705,7 +3784,7 @@
 {
 "n": 90,
 "name": "Editor in Leaf (TOR)",
-"note": "6 new matches",
+"note": "7 new matches",
 "ok": true,
 "url": "https://editorinleaf.com/feed"
 },
@@ -3719,14 +3798,14 @@
 {
 "n": 25,
 "name": "Maple Leafs Hot Stove (TOR)",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://mapleleafshotstove.com/feed/"
 },
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3740,7 +3819,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -3761,7 +3840,7 @@
 {
 "n": 10,
 "name": "Blue Seat Blogs (NYR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://blueseatblogs.com/feed/"
 },
@@ -3817,7 +3896,7 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
