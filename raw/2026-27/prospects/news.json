@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-26T19:39+00:00",
+"fetched": "2026-11-27T15:07+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -76,6 +76,14 @@
 }
 ],
 "d27:coopermcaslan": [
+{
+"d": "2026-11-27",
+"k": [],
+"s": "CHL (Canadian Hockey League)",
+"t": "Meet Team CHL: How Cooper McAslan earned his ice time in London",
+"u": "https://chl.ca/meet-team-chl-how-cooper-mcaslan-earned-his-ice-time-in-london/",
+"w": 2
+},
 {
 "d": "2026-11-23",
 "k": [],
@@ -1507,6 +1515,14 @@
 ],
 "n8484220": [
 {
+"d": "2026-11-27",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Canadiens Now Forced to Rush Reinbacher with Guhle Out",
+"u": "https://thehockeywriters.com/canadiens-now-forced-to-rush-reinbacher-with-guhle-out/",
+"w": 2
+},
+{
 "d": "2026-11-24",
 "k": [
 "call-up"
@@ -1605,14 +1621,6 @@
 "t": "Monday Habs Headlines: David Reinbacher feels well-prepared for his promotion",
 "u": "https://www.habseyesontheprize.com/montreal-canadiens-news-david-reinbacher-recall-lane-hutson-power-play-comments-rangers-100-years-centennial-connor-mcdavid-assist-record-wayne-gretzky-cutter-guathier-goal-streak-iihf-russia-ban/",
 "w": 2
-},
-{
-"d": "2026-11-16",
-"k": [],
-"s": "Habs Eyes on the Prize (MTL)",
-"t": "Montreal Canadiens recall Brett Berard from Laval Rocket",
-"u": "https://www.habseyesontheprize.com/montreal-canadiens-recall-brett-berard-from-laval-rocket/",
-"w": 1
 }
 ],
 "n8484221": [
@@ -2040,6 +2048,16 @@
 "t": "Flames Prospect Round-up: Bode Laylin has found a home with the Hitmen",
 "u": "https://flamesnation.ca/news/calgary-flames-prospect-roundup-henry-mews-brawl-wyttenbach-2026",
 "w": 1
+}
+],
+"n8484787": [
+{
+"d": "2026-11-27",
+"k": [],
+"s": "The Hockey Writers",
+"t": "Wild’s Aron Kiviharju Is Quarterbacking HIFK’s Liiga Revival",
+"u": "https://thehockeywriters.com/wilds-aron-kiviharju-is-quarterbacking-hifks-liiga-revival/",
+"w": 2
 }
 ],
 "n8484790": [
@@ -2988,6 +3006,14 @@
 ],
 "n8486016": [
 {
+"d": "2026-11-26",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Canucks could send six prospects to World Juniors this year",
+"u": "https://dailyhive.com/offside/canucks-six-prospects-world-junior-championship",
+"w": 1
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "Canucks Army (VAN)",
@@ -3084,14 +3110,6 @@
 "t": "Islanders Prospect Report: Oct. 19, 2026",
 "u": "https://www.nhl.com/news/islanders-prospect-report-oct-19-2026",
 "w": 1
-},
-{
-"d": "2026-10-12",
-"k": [],
-"s": "NHL.com (team site)",
-"t": "Islanders Prospect Report: Oct. 12, 2026",
-"u": "https://www.nhl.com/news/islanders-prospect-report-oct-12-2026",
-"w": 1
 }
 ],
 "n8486037": [
@@ -3181,6 +3199,22 @@
 }
 ],
 "n8486065": [
+{
+"d": "2026-11-27",
+"k": [],
+"s": "Sportsnet",
+"t": "Prospects Report: Why Caleb Malhotra can be ‘impact player’ for Canucks",
+"u": "https://www.sportsnet.ca/nhl/article/prospects-report-why-caleb-malhotra-can-be-impact-player-for-canucks/",
+"w": 2
+},
+{
+"d": "2026-11-26",
+"k": [],
+"s": "The Hockey News",
+"t": "'It's Paying Off For Him': Boston University Coach Gushes Over Caleb Malhotra's Improved One-Timer",
+"u": "https://thehockeynews.com/news/latest-news/its-paying-off-for-him-boston-university-coach-gushes-over-caleb-malhotras-improved-one-timer",
+"w": 2
+},
 {
 "d": "2026-11-23",
 "k": [
@@ -3532,6 +3566,16 @@
 "w": 2
 }
 ],
+"n8486307": [
+{
+"d": "2026-11-26",
+"k": [],
+"s": "Daily Hive Offside (VAN)",
+"t": "Canucks could send six prospects to World Juniors this year",
+"u": "https://dailyhive.com/offside/canucks-six-prospects-world-junior-championship",
+"w": 1
+}
+],
 "n8486340": [
 {
 "d": "2026-11-13",
@@ -3565,7 +3609,7 @@
 },
 "sources": [
 {
-"n": 84,
+"n": 81,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3588,21 +3632,21 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "2 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -3623,7 +3667,7 @@
 {
 "n": 15,
 "name": "Pro Hockey Rumors",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.prohockeyrumors.com/feed"
 },
@@ -3805,7 +3849,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "0 new matches",
+"note": "2 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3819,7 +3863,7 @@
 {
 "n": 10,
 "name": "Flames Nation (CGY)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://flamesnation.ca/feed"
 },
@@ -3833,21 +3877,21 @@
 {
 "n": 20,
 "name": "Russian Machine Never Breaks (WSH)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://russianmachineneverbreaks.com/feed/"
 },
 {
 "n": 10,
 "name": "Blue Seat Blogs (NYR)",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://blueseatblogs.com/feed/"
 },
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -3896,14 +3940,14 @@
 {
 "n": 5,
 "name": "RotoWire NHL player news",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
 {
 "n": 10,
 "name": "CHL (Canadian Hockey League)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://chl.ca/feed/"
 },

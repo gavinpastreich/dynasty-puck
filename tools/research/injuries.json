@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "note": "Players listed injured / on injured reserve / game-time decisions on Daily Faceoff team pages (training-camp lines). Expected return is parsed from the latest news blurb when it says so.",
  "items": [
   {
@@ -10,18 +10,6 @@
    "ret": "",
    "detail": "Greer has been placed on IR with an upper-body injury.",
    "date": "2026-11-02",
-   "source": "Daily Faceoff",
-   "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
-   "holdout": false
-  },
-  {
-   "name": "Beckett Sennecke",
-   "team": "ANA",
-   "status": "IR",
-   "injury": "upper-body",
-   "ret": "Day-to-day",
-   "detail": "Sennecke (upper-body) is considered day-to-day.",
-   "date": "2026-11-25",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/anaheim-ducks/line-combinations",
    "holdout": false
@@ -135,13 +123,25 @@
    "holdout": false
   },
   {
-   "name": "Mathieu Olivier",
+   "name": "Denton Mateychuk",
    "team": "CBJ",
-   "status": "DTD",
+   "status": "OUT",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Olivier (upper-body) has been placed on IR.",
-   "date": "2026-11-24",
+   "detail": "Mateychuk (upper-body) is expected to be out vs. Detroit on Friday.",
+   "date": "2026-11-26",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Mathieu Olivier",
+   "team": "CBJ",
+   "status": "OUT",
+   "injury": "",
+   "ret": "Week-to-week",
+   "detail": "Olivier is considered week-to-week with an upper-body injury.",
+   "date": "2026-11-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/columbus-blue-jackets/line-combinations",
    "holdout": false
@@ -476,8 +476,8 @@
    "status": "IR",
    "injury": "upper-body",
    "ret": "",
-   "detail": "Hughes (upper-body) has been placed on IR.",
-   "date": "2026-11-23",
+   "detail": "Hughes (upper-body) is doubtful to return vs. Colorado on Friday.",
+   "date": "2026-11-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/minnesota-wild/line-combinations",
    "holdout": false
@@ -634,6 +634,18 @@
    "ret": "Months",
    "detail": "Šmits (upper-body) will miss 2-to-3 months.",
    "date": "2026-11-21",
+   "source": "Daily Faceoff",
+   "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
+   "holdout": false
+  },
+  {
+   "name": "Gabriel Perreault",
+   "team": "NYR",
+   "status": "OUT",
+   "injury": "lower-body",
+   "ret": "Months",
+   "detail": "Perreault (lower-body) is expected to be out for the next 4-6 weeks.",
+   "date": "2026-11-26",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/new-york-rangers/line-combinations",
    "holdout": false
@@ -801,7 +813,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/seattle-kraken/line-combinations",
    "holdout": false
@@ -1053,7 +1065,7 @@
    "injury": "",
    "ret": "",
    "detail": "Listed on Daily Faceoff's injury list; latest news isn't about the absence.",
-   "date": "2026-11-24",
+   "date": "2026-11-27",
    "source": "Daily Faceoff",
    "url": "https://www.dailyfaceoff.com/teams/toronto-maple-leafs/line-combinations",
    "holdout": false
