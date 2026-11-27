@@ -1,5 +1,5 @@
 {
-"fetched": "2026-11-27T15:07+00:00",
+"fetched": "2026-11-27T19:30+00:00",
 "items": {
 "d27:alexisjoseph": [
 {
@@ -456,6 +456,16 @@
 }
 ],
 "n8482515": [
+{
+"d": "2026-11-27",
+"k": [
+"sent down"
+],
+"s": "The Leafs Nation (TOR)",
+"t": "Maple Leafs activate Kirill Marchenko and Colton Sissons from IR, assign Artur Akhtyamov to AHL’s Toronto Marlies",
+"u": "https://theleafsnation.com/news/maple-leafs-activate-kirill-marchenko-and-colton-sissons-from-ir-assign-artur-akhtyamov-to-ahls-toronto-marlies",
+"w": 2
+},
 {
 "d": "2026-11-25",
 "k": [
@@ -925,6 +935,18 @@
 "w": 2
 }
 ],
+"n8483500": [
+{
+"d": "2026-11-27",
+"k": [
+"injury"
+],
+"s": "Daily Faceoff",
+"t": "Sabres’ Zach Benson, Noah Ostlund out against Penguins with injuries",
+"u": "https://www.dailyfaceoff.com/news/buffalo-sabres-zach-benson-noah-ostlund-out-pittsburgh-penguins-nhl-injury-news",
+"w": 2
+}
+],
 "n8483506": [
 {
 "d": "2026-11-25",
@@ -1369,6 +1391,14 @@
 ],
 "n8484177": [
 {
+"d": "2026-11-27",
+"k": [],
+"s": "NHL.com (team site)",
+"t": "Silayev, Rittich Recalled | TRANSACTION 11.27.26",
+"u": "https://www.nhl.com/news/silayev-rittich-recalled-transaction-11-27-26",
+"w": 1
+},
+{
 "d": "2026-11-17",
 "k": [],
 "s": "All About the Jersey (NJD)",
@@ -1473,6 +1503,14 @@
 }
 ],
 "n8484210": [
+{
+"d": "2026-11-27",
+"k": [],
+"s": "Blue Seat Blogs (NYR)",
+"t": "Thoughts on the endless New York Rangers injuries",
+"u": "https://blueseatblogs.com/2026/11/27/endless-new-york-rangers-injuries/",
+"w": 1
+},
 {
 "d": "2026-11-26",
 "k": [
@@ -2572,6 +2610,16 @@
 ],
 "n8484987": [
 {
+"d": "2026-11-27",
+"k": [
+"call-up"
+],
+"s": "NHL.com (team site)",
+"t": "Silayev, Rittich Recalled | TRANSACTION 11.27.26",
+"u": "https://www.nhl.com/news/silayev-rittich-recalled-transaction-11-27-26",
+"w": 2
+},
+{
 "d": "2026-11-20",
 "k": [],
 "s": "NHL.com (team site)",
@@ -3609,7 +3657,7 @@
 },
 "sources": [
 {
-"n": 81,
+"n": 83,
 "name": "NHL.com stories by player",
 "note": "490 players asked",
 "ok": true,
@@ -3632,21 +3680,21 @@
 {
 "n": 50,
 "name": "The Hockey News",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeynews.com/feed"
 },
 {
 "n": 8,
 "name": "The Hockey Writers",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://thehockeywriters.com/feed/"
 },
 {
 "n": 25,
 "name": "Daily Faceoff",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://www.dailyfaceoff.com/feed"
 },
@@ -3679,21 +3727,21 @@
 "url": "https://www.fantraxhq.com/feed/"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Broad Street Hockey (PHI)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.broadstreethockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Second City Hockey (CHI)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.secondcityhockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Habs Eyes on the Prize (MTL)",
 "note": "0 new matches",
 "ok": true,
@@ -3707,14 +3755,14 @@
 "url": "https://www.pensburgh.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Arctic Ice Hockey (WPG)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.arcticicehockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Fear the Fin (SJS)",
 "note": "0 new matches",
 "ok": true,
@@ -3735,14 +3783,14 @@
 "url": "https://www.milehighhockey.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Defending Big D (DAL)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.defendingbigd.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Winging It in Motown (DET)",
 "note": "0 new matches",
 "ok": true,
@@ -3770,49 +3818,49 @@
 "url": "https://www.canescountry.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Raw Charge (TBL)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.rawcharge.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Litter Box Cats (FLA)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.litterboxcats.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Die by the Blade (BUF)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.diebytheblade.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "On the Forecheck (NSH)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.ontheforecheck.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Knights on Ice (VGK)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.knightsonice.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "Davy Jones Locker Room (SEA)",
 "note": "0 new matches",
 "ok": true,
 "url": "https://www.davyjoneslockerroom.com/rss/index.xml"
 },
 {
-"n": 10,
+"n": 0,
 "name": "The Cannon (CBJ)",
 "note": "0 new matches",
 "ok": true,
@@ -3835,7 +3883,7 @@
 {
 "n": 10,
 "name": "The Leafs Nation (TOR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://theleafsnation.com/feed"
 },
@@ -3849,7 +3897,7 @@
 {
 "n": 50,
 "name": "Daily Hive Offside (VAN)",
-"note": "2 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://dailyhive.com/feed/offside"
 },
@@ -3884,14 +3932,14 @@
 {
 "n": 10,
 "name": "Blue Seat Blogs (NYR)",
-"note": "0 new matches",
+"note": "1 new matches",
 "ok": true,
 "url": "https://blueseatblogs.com/feed/"
 },
 {
 "n": 10,
 "name": "Sportsnet",
-"note": "1 new matches",
+"note": "0 new matches",
 "ok": true,
 "url": "https://www.sportsnet.ca/hockey/feed/"
 },
@@ -3945,10 +3993,10 @@
 "url": "https://www.rotowire.com/rss/news.php?sport=NHL"
 },
 {
-"n": 10,
+"n": 0,
 "name": "CHL (Canadian Hockey League)",
-"note": "1 new matches",
-"ok": true,
+"note": "HTTP Error 403: Forbidden",
+"ok": false,
 "url": "https://chl.ca/feed/"
 },
 {
